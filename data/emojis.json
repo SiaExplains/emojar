@@ -1,0 +1,81 @@
+[
+  {
+    "slug": "red-heart",
+    "char": "❤️",
+    "name": "Red Heart",
+    "category": "Smileys & Emotion",
+    "keywords": [
+      "love",
+      "heart",
+      "like",
+      "valentine",
+      "favorite"
+    ],
+    "version": "1.0"
+  },
+  {
+    "slug": "thumbs-up",
+    "char": "👍",
+    "name": "Thumbs Up",
+    "category": "People & Body",
+    "keywords": [
+      "approve",
+      "ok",
+      "yes",
+      "like"
+    ],
+    "version": "1.0"
+  },
+  {
+    "slug": "face-with-tears-of-joy",
+    "char": "😂",
+    "name": "Face with Tears of Joy",
+    "category": "Smileys & Emotion",
+    "keywords": [
+      "lol",
+      "laugh",
+      "cry",
+      "joy"
+    ],
+    "version": "1.0"
+  },
+  {
+    "slug": "fire",
+    "char": "🔥",
+    "name": "Fire",
+    "category": "Travel & Places",
+    "keywords": [
+      "lit",
+      "hot",
+      "flame",
+      "trending"
+    ],
+    "version": "1.0"
+  },
+  {
+    "slug": "party-popper",
+    "char": "🎉",
+    "name": "Party Popper",
+    "category": "Activities",
+    "keywords": [
+      "celebrate",
+      "party",
+      "birthday",
+      "confetti"
+    ],
+    "version": "1.0"
+  },
+  {
+    "slug": "rocket",
+    "char": "🚀",
+    "name": "Rocket",
+    "category": "Travel & Places",
+    "keywords": [
+      "startup",
+      "launch",
+      "ship",
+      "go"
+    ],
+    "version": "1.0"
+  }
+]

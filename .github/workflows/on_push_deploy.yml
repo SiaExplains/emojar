@@ -13,7 +13,6 @@ jobs:
       APP_NAME: emojar-frontend
       APP_DIR: /var/www/emojar
       NODE_VERSION: 20
-      # If you run behind Nginx with PM2 on a port (recommended):
       APP_PORT: "3006"
 
     steps:
@@ -30,28 +29,33 @@ jobs:
         run: npm ci
 
       - name: Build (Next.js standalone)
+        run: npm run build
+
+      - name: Verify standalone output
         run: |
-          # Ensure standalone output is enabled (Next 13+ does this automatically in production)
-          npm run build
-          # We will deploy only the minimal runtime:
-          #   - .next/standalone (server code + node_modules for runtime)
-          #   - .next/static (assets)
-          #   - public (static files)
+          test -d .next/standalone || {
+            echo "::error::'.next/standalone' not found. Set output: 'standalone' in next.config.mjs";
+            exit 1;
+          }
+
+      - name: Package deploy bundle
+        run: |
+          set -euo pipefail
           mkdir -p deploy
           cp -r .next/standalone deploy/standalone
           cp -r .next/static deploy/static
           if [ -d public ]; then cp -r public deploy/public; fi
-          # Put a small run script for PM2
+
+          # PM2 entry script
           cat > deploy/start.sh <<'EOS'
           #!/usr/bin/env bash
           set -euo pipefail
           cd "$(dirname "$0")/standalone"
-          # The Next standalone build expects .next/static and public one level up by default
-          # but we've copied them alongside, so this works as-is.
           PORT=${PORT:-3006}
           node server.js
           EOS
           chmod +x deploy/start.sh
+
           tar -czf emojar.tar.gz -C deploy .
 
       - name: Upload artifact to EC2
@@ -64,7 +68,7 @@ jobs:
           source: "emojar.tar.gz"
           target: "/tmp"
 
-      - name: Deploy on EC2 (untar, install PM2, restart)
+      - name: Deploy on EC2 (untar & restart PM2)
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -72,26 +76,27 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           port: ${{ secrets.EC2_PORT || 22 }}
           script: |
-            set -e
+            set -euo pipefail
 
-            # 1) Prepare app dir
-            sudo mkdir -p $APP_DIR
-            sudo chown -R $USER:$USER $APP_DIR
+            APP_NAME="${APP_NAME:-emojar-frontend}"
+            APP_DIR="${APP_DIR:-/var/www/emojar}"
+            APP_PORT="${APP_PORT:-3006}"
+            START_FILE="$APP_DIR/current/start.sh"
 
-            # 2) Unpack new build
-            rm -rf $APP_DIR/current
-            mkdir -p $APP_DIR/current
-            tar -xzf /tmp/emojar.tar.gz -C $APP_DIR/current
+            # Prepare & unpack
+            sudo mkdir -p "$APP_DIR"
+            sudo chown -R "$USER:$USER" "$APP_DIR"
+            rm -rf "$APP_DIR/current"
+            mkdir -p "$APP_DIR/current"
+            tar -xzf /tmp/emojar.tar.gz -C "$APP_DIR/current"
 
-            # 3) Start or reload with PM2
-            # App entry: $APP_DIR/current/start.sh (runs standalone Next server)
-            export PORT=${APP_PORT}
-            if pm2 list | grep -q "${APP_NAME}"; then
-              pm2 restart ${APP_NAME} --update-env --time
+            # Start/restart with absolute path
+            export PORT="$APP_PORT"
+            if pm2 list | grep -q "$APP_NAME"; then
+              pm2 restart "$APP_NAME" --update-env --time
             else
-              pm2 start $APP_DIR/current/start.sh --name ${APP_NAME} --time -- \
-                || (echo "PM2 start failed" && exit 1)
+              pm2 start "$START_FILE" --name "$APP_NAME" --time
             fi
 
             pm2 save
-            echo "Deployed ${APP_NAME} to $APP_DIR and running on port ${APP_PORT}"
+            echo "Deployed $APP_NAME to $APP_DIR (port $APP_PORT)"

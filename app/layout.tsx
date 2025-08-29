@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Script from 'next/script'
 import Link from 'next/link'
 import ConsentBanner from '@/components/ConsentBanner'
@@ -44,7 +45,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-            <Link href="/" className="font-semibold">Emojar</Link>
+            <div className='logo-container'>
+
+              <Link href="/" className="font-semibold">              <Image src="/logo-64.png" alt="Emojar Logo" width={138} height={64} /></Link>
+            </div>
             <nav className="text-sm flex gap-4">
               <Link href="/categories">Categories</Link>
               <Link href="https://github.com/SiaExplains" target="_blank">GitHub</Link>

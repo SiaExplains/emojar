@@ -15,3 +15,11 @@ body {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
 }
+
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}

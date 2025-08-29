@@ -41,10 +41,17 @@ jobs:
       - name: Package deploy bundle
         run: |
           set -euo pipefail
-          # Keep .next/static adjacent to standalone per Next standalone layout
+
+          # 1) Always keep .next/static next to "standalone"
           mkdir -p deploy/.next
           cp -r .next/standalone deploy/standalone
           cp -r .next/static deploy/.next/static
+
+          # 2) ALSO mirror static inside standalone/.next (covers builds that resolve from CWD)
+          mkdir -p deploy/standalone/.next
+          rsync -a --delete .next/static/ deploy/standalone/.next/static/
+
+          # public folder for /favicon.ico, /robots.txt, etc.
           if [ -d public ]; then cp -r public deploy/public; fi
 
           # PM2 entry script

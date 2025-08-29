@@ -41,9 +41,10 @@ jobs:
       - name: Package deploy bundle
         run: |
           set -euo pipefail
-          mkdir -p deploy
+          # Keep .next/static adjacent to standalone per Next standalone layout
+          mkdir -p deploy/.next
           cp -r .next/standalone deploy/standalone
-          cp -r .next/static deploy/static
+          cp -r .next/static deploy/.next/static
           if [ -d public ]; then cp -r public deploy/public; fi
 
           # PM2 entry script
@@ -93,9 +94,9 @@ jobs:
             mkdir -p "$APP_DIR/current"
             tar -xzf /tmp/emojar.tar.gz -C "$APP_DIR/current"
 
-            # Start/restart with absolute path
+            # Start/restart with robust PM2 existence check
             export PORT="$APP_PORT"
-            if pm2 list | grep -q "$APP_NAME"; then
+            if pm2 jlist | grep -q "\"name\":\"$APP_NAME\""; then
               pm2 restart "$APP_NAME" --update-env --time
             else
               pm2 start "$START_FILE" --name "$APP_NAME" --time

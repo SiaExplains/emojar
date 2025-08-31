@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <nav className="text-sm flex gap-4">
               <Link href="/categories">Categories</Link>
-              <Link href="https://github.com/SiaExplains" target="_blank">GitHub</Link>
+              <Link href="https://github.com/SiaExplains/emojar" target="_blank">GitHub</Link>
             </nav>
           </div>
         </header>

@@ -5,13 +5,15 @@ import Link from 'next/link'
 import ConsentBanner from '@/components/ConsentBanner'
 import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component'
 
+const description = 'Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.'
+
 export const metadata: Metadata = {
   title: 'Emojar — Copy & Paste Emojis Fast',
-  description: 'Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.',
+  description,
   keywords: ['emoji', 'copy emoji', 'paste emoji', 'emoji keyboard', 'smileys', 'emojar'],
   openGraph: {
     title: 'Emojar — Copy & Paste Emojis Fast',
-    description: 'Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.',
+    description,
     url: 'https://emojar.com',
     siteName: 'Emojar',
     type: 'website',

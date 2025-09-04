@@ -1,9 +1,39 @@
 import data from '@/data/emojis.json'
+import type { Metadata } from 'next'
 
 type Props = { params: { slug: string } }
 
 export function generateStaticParams() {
-  return data.map(e => ({ slug: e.slug }))
+  return data.map(e => ({ slug: e.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const emoji = data.find(e => e.slug === params.slug);
+  if (!emoji) return { title: 'Not found' };
+
+  const title = `${emoji.name} emoji | Copy & Paste`;
+  const description = `${emoji.name} emoji. ${emoji.char} emoji. copy ${emoji.name}. Category: ${emoji.category}. Related: ${emoji.keywords?.slice(0, 6).join(', ') || ''}`;
+
+  const url = `/emoji/${encodeURIComponent(emoji.slug)}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'article',
+      // If you later add a dynamic OG image endpoint, place it here:
+      // images: [{ url: `/api/og?title=${encodeURIComponent(emoji.name)}&char=${encodeURIComponent(emoji.char)}` }],
+    },
+    twitter: {
+      title,
+      description,
+      card: 'summary',
+    },
+  };
 }
 
 export default function EmojiPage({ params }: Props) {

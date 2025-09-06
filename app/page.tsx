@@ -53,8 +53,8 @@ export default function Home() {
       <CategoryPills categories={categories} />
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-        {results.map(e => (
-          <EmojiCard key={e.slug} emoji={e} onCopied={setCopied} />
+        {results.map((e, index) => (
+          <EmojiCard key={`${e.slug}-index-${index}`} emoji={e} onCopied={setCopied} />
         ))}
       </div>
 

@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       card: 'summary',
     },
+    robots: { index: true, follow: true },
   };
 }
 

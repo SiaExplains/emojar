@@ -17,17 +17,18 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const title = `${emoji.name} emoji | Copy & Paste`;
   const description = `${emoji.name} emoji. ${emoji.char} emoji. copy ${emoji.name}. Category: ${emoji.category}. Related: ${emoji.keywords?.slice(0, 6).join(', ') || ''}`;
 
-  const url = `/emoji/${encodeURIComponent(emoji.slug)}`;
-  const canonical = new URL(`/emoji/${encodeURIComponent(emoji.slug)}`, 'https://emojar.com');
+  const path = `/emoji/${encodeURIComponent(emoji.slug)}`; // <-- change to `/emoji/${...}` if needed
+  const canonical = new URL(path, 'https://emojar.com');
+
 
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: { canonical },           // URL or string is fine
     openGraph: {
       title,
       description,
-      url: canonical.toString(),
+      url: canonical.toString(),         // absolute
       type: 'article',
       // If you later add a dynamic OG image endpoint, place it here:
       // images: [{ url: `/api/og?title=${encodeURIComponent(emoji.name)}&char=${encodeURIComponent(emoji.char)}` }],
@@ -37,6 +38,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description,
       card: 'summary',
     },
+    robots: { index: true, follow: true },
   };
 }
 

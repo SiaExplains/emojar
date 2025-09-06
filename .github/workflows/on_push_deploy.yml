@@ -81,7 +81,7 @@ jobs:
             set -euo pipefail
 
             # Make Node & PM2 available for non-interactive shell (NVM install)
-            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v18.16.0/bin
+            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v20.19.5/bin
 
             APP_NAME="${APP_NAME:-emojar-frontend}"
             APP_DIR="${APP_DIR:-/var/www/emojar}"

@@ -1,3 +1,5 @@
+import withImages from 'next-images';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -6,4 +8,5 @@ const nextConfig = {
     typedRoutes: true
   }
 };
-export default nextConfig;
+
+export default withImages(nextConfig);

@@ -29,6 +29,17 @@ function makeSlugger() {
 }
 const uniqueSlug = makeSlugger();
 
+
+function cleanForSlug(name) {
+  return name
+    // drop any leading Unicode Emoji version markers like "E0.6 ", "E13.1 "
+    .replace(/^E\d+(?:\.\d+)?\s*/i, "")
+    // normalize flag names like "flag: Honduras" → "flag Honduras"
+    .replace(/^flag:\s*/i, "flag ")
+    .trim();
+}
+
+
 // ---------- CLDR (optional, for better names/keywords) ----------
 function pickArray(...candidates) {
   for (const c of candidates) {
@@ -159,7 +170,7 @@ function parseEmojiTest(txt) {
     let nameWithoutPrefix = name.replace(/^(\S+)\s+/, ""); // drop glyph
 
     out.push({
-      slug: uniqueSlug(name),
+      slug: uniqueSlug(slugify(cleanForSlug(name))),
       char: cp,
       name: nameWithoutPrefix,
       category: meta.group || "Uncategorized",

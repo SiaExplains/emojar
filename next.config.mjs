@@ -3,9 +3,13 @@ import withImages from 'next-images';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  inlineImageLimit: false,
   output: 'standalone',
   experimental: {
     typedRoutes: true
+  },
+  env: {
+    PUBLIC_URL: '/',
   }
 };
 

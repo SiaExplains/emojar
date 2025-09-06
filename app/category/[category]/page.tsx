@@ -3,7 +3,10 @@ import EmojiCard from '@/components/EmojiCard'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation';
 
-type Props = { params: { category: string } };
+
+
+type Props =  PageProps<any> & { params: { category: string } };
+
 
 export function generateStaticParams() {
   const categories = Array.from(new Set(data.map(e => e.category)));

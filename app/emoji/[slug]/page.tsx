@@ -1,13 +1,13 @@
 import data from '@/data/emojis.json'
 import type { Metadata } from 'next'
 
-type Props = { params: { slug: string } }
+
 
 export function generateStaticParams() {
   return data.map(e => ({ slug: e.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const emoji = data.find(e => e.slug === params.slug);
   if (!emoji) return { title: 'Not found' };
 
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function EmojiPage({ params }: Props) {
+export default function EmojiPage({ params }: { params: { slug: string } }) {
   const emoji = data.find(e => e.slug === params.slug)
   if (!emoji) return <div>Not found</div>
 

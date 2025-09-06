@@ -45,7 +45,7 @@ export default function Home() {
     <section className="space-y-6">
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-semibold">Copy & Paste Emojis</h1>
-        <p className="text-gray-600">Search, click, copy. That&apos;s it.</p>
+        <p className="text-gray-600">All the emojis in one jar</p>
       </div>
 
       <SearchBar value={query} onChange={setQuery} />

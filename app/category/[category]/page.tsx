@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const items = data.filter(e => e.category === decoded);
   if (items.length === 0) return { title: 'Not found' };
 
-  const title = `${decoded} Emojis | Copy & Paste`;
+  const title = `${decoded} Emojis | All the emojis in one jar`;
   const description = `${decoded.toLowerCase()} emoji on Emojar.com`;
 
   const url = `/category/${encodeURIComponent(decoded)}`;

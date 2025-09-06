@@ -8,11 +8,11 @@ import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component'
 const description = 'Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.'
 
 export const metadata: Metadata = {
-  title: 'Emojar — Copy & Paste Emojis Fast',
+  title: 'Emojar — All the emojis in one jar.',
   description,
   keywords: ['emoji', 'copy emoji', 'paste emoji', 'emoji keyboard', 'smileys', 'emojar'],
   openGraph: {
-    title: 'Emojar — Copy & Paste Emojis Fast',
+    title: 'Emojar — All the emojis in one jar.',
     description,
     url: 'https://emojar.com',
     siteName: 'Emojar',

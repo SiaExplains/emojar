@@ -28,39 +28,33 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Build (Next.js standalone)
+      - name: Build (Next.js)
         run: npm run build
 
-      - name: Verify standalone output
-        run: |
-          test -d .next/standalone || {
-            echo "::error::'.next/standalone' not found. Set output: 'standalone' in next.config.mjs";
-            exit 1;
-          }
+      # ——— NO standalone verification ———
 
-      - name: Package deploy bundle
+      - name: Package deploy bundle (non-standalone)
         run: |
           set -euo pipefail
 
-          # 1) Always keep .next/static next to "standalone"
-          mkdir -p deploy/.next
-          cp -r .next/standalone deploy/standalone
-          cp -r .next/static deploy/.next/static
-
-          # 2) ALSO mirror static inside standalone/.next (covers builds that resolve from CWD)
-          mkdir -p deploy/standalone/.next
-          rsync -a --delete .next/static/ deploy/standalone/.next/static/
-
-          # public folder for /favicon.ico, /robots.txt, etc.
+          mkdir -p deploy
+          # ship the built output and essentials needed at runtime
+          cp -r .next deploy/.next
           if [ -d public ]; then cp -r public deploy/public; fi
+          [ -f package.json ] && cp package.json deploy/package.json
+          [ -f package-lock.json ] && cp package-lock.json deploy/package-lock.json
+          [ -f next.config.mjs ] && cp next.config.mjs deploy/next.config.mjs
+          [ -f next.config.js ] && cp next.config.js deploy/next.config.js
+          [ -f tsconfig.json ] && cp tsconfig.json deploy/tsconfig.json
+          [ -f jsconfig.json ] && cp jsconfig.json deploy/jsconfig.json
 
-          # PM2 entry script
+          # PM2 entry script to run next start
           cat > deploy/start.sh <<'EOS'
           #!/usr/bin/env bash
           set -euo pipefail
-          cd "$(dirname "$0")/standalone"
+          cd "$(dirname "$0")"
           PORT=${PORT:-3006}
-          node server.js
+          npm run start -- -p "$PORT"
           EOS
           chmod +x deploy/start.sh
 
@@ -100,6 +94,10 @@ jobs:
             rm -rf "$APP_DIR/current"
             mkdir -p "$APP_DIR/current"
             tar -xzf /tmp/emojar.tar.gz -C "$APP_DIR/current"
+
+            # Install runtime deps on the server (prod only)
+            cd "$APP_DIR/current"
+            npm ci --omit=dev
 
             # Start/restart with robust PM2 existence check
             export PORT="$APP_PORT"

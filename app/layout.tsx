@@ -21,7 +21,8 @@ export const metadata: Metadata = {
   icons: { icon: 'favicon.ico' },
   manifest: 'manifest.webmanifest',
   robots: { index: true, follow: true },
-  metadataBase: new URL('https://emojar.com'),
+  metadataBase: new URL('https://emojar.com')
+
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

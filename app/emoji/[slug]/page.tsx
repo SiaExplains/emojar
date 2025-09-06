@@ -7,6 +7,9 @@ export function generateStaticParams() {
   return data.map(e => ({ slug: e.slug }));
 }
 
+
+
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const emoji = data.find(e => e.slug === params.slug);
   if (!emoji) return { title: 'Not found' };
@@ -15,15 +18,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const description = `${emoji.name} emoji. ${emoji.char} emoji. copy ${emoji.name}. Category: ${emoji.category}. Related: ${emoji.keywords?.slice(0, 6).join(', ') || ''}`;
 
   const url = `/emoji/${encodeURIComponent(emoji.slug)}`;
+  const canonical = new URL(`/emoji/${encodeURIComponent(emoji.slug)}`, 'https://emojar.com');
 
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical },
     openGraph: {
       title,
       description,
-      url,
+      url: canonical.toString(),
       type: 'article',
       // If you later add a dynamic OG image endpoint, place it here:
       // images: [{ url: `/api/og?title=${encodeURIComponent(emoji.name)}&char=${encodeURIComponent(emoji.char)}` }],

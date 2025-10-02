@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useMemo, useRef, useState } from 'react';
-import allEmojis from '../../../data/emojis.json';
-
+import { useEffect, useMemo, useRef, useState } from "react";
+import allEmojis from "../../../data/emojis.json";
+import "./page.css";
 type EmojiItem = {
   char: string;
   name: string;
@@ -11,28 +11,31 @@ type EmojiItem = {
   keywords?: string[];
 };
 
-type Mode = 'vs-computer' | 'vs-human';
+type Mode = "vs-computer" | "vs-human";
 
 type ScoreRow = {
-  when: string;              // ISO date
-  size: number;              // 3 | 4 | 5
+  when: string; // ISO date
+  size: number; // 3 | 4 | 5
   mode: Mode;
-  winner: string;            // player name
-  winnerEmoji: string;       // char
-  loser: string;             // player name
+  winner: string; // player name
+  winnerEmoji: string; // char
+  loser: string; // player name
   timeMs: number;
   moves: number;
 };
 
-const ROBOT = '🤖';
+const ROBOT = "🤖";
 
 function msToClock(ms: number) {
-  if (ms <= 0) return '00:00.0';
+  if (ms <= 0) return "00:00.0";
   const s = Math.floor(ms / 1000);
   const m = Math.floor(s / 60);
   const remS = s % 60;
   const tenths = Math.floor((ms % 1000) / 100);
-  return `${String(m).padStart(2, '0')}:${String(remS).padStart(2, '0')}.${tenths}`;
+  return `${String(m).padStart(2, "0")}:${String(remS).padStart(
+    2,
+    "0"
+  )}.${tenths}`;
 }
 
 function dedupeByChar(emojis: EmojiItem[]) {
@@ -46,9 +49,13 @@ function dedupeByChar(emojis: EmojiItem[]) {
 
 const EMOJIS: EmojiItem[] = dedupeByChar(
   (allEmojis as any[]).map((e: any) => ({
-    char: e.char, name: e.name, slug: e.slug, category: e.category, keywords: e.keywords ?? [],
+    char: e.char,
+    name: e.name,
+    slug: e.slug,
+    category: e.category,
+    keywords: e.keywords ?? [],
   }))
-).filter(e => e.char && e.name);
+).filter((e) => e.char && e.name);
 
 function useLines(size: number) {
   return useMemo(() => {
@@ -64,13 +71,20 @@ function useLines(size: number) {
     // main diag
     lines.push(Array.from({ length: size }, (_, i) => i * size + i));
     // anti diag
-    lines.push(Array.from({ length: size }, (_, i) => i * size + (size - 1 - i)));
+    lines.push(
+      Array.from({ length: size }, (_, i) => i * size + (size - 1 - i))
+    );
     return lines;
   }, [size]);
 }
 
-function checkWin(board: string[], size: number, who: string, lines: number[][]) {
-  return lines.some(line => line.every(idx => board[idx] === who));
+function checkWin(
+  board: string[],
+  size: number,
+  who: string,
+  lines: number[][]
+) {
+  return lines.some((line) => line.every((idx) => board[idx] === who));
 }
 
 function emptyIndices(board: string[]) {
@@ -87,23 +101,31 @@ function pickCenter(size: number, board: string[]) {
   } else {
     // pick one of the 4 near-centers for even boards
     const mids = [size / 2 - 1, size / 2];
-    for (const r of mids) for (const c of mids) {
-      const idx = r * size + c;
-      if (!board[idx]) return idx;
-    }
+    for (const r of mids)
+      for (const c of mids) {
+        const idx = r * size + c;
+        if (!board[idx]) return idx;
+      }
   }
   return -1;
 }
 
 function pickCorner(size: number, board: string[]) {
   const corners = [0, size - 1, size * (size - 1), size * size - 1];
-  const empties = corners.filter(i => !board[i]);
-  if (empties.length) return empties[Math.floor(Math.random() * empties.length)];
+  const empties = corners.filter((i) => !board[i]);
+  if (empties.length)
+    return empties[Math.floor(Math.random() * empties.length)];
   return -1;
 }
 
 // Simple but effective AI: win → block → center → corner → random
-function computerMove(board: string[], size: number, me: string, opp: string, lines: number[][]) {
+function computerMove(
+  board: string[],
+  size: number,
+  me: string,
+  opp: string,
+  lines: number[][]
+) {
   const empties = emptyIndices(board);
   if (!empties.length) return -1;
 
@@ -141,7 +163,7 @@ function EmojiSelect({
   disabled?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -149,17 +171,18 @@ function EmojiSelect({
       if (!wrapRef.current) return;
       if (!wrapRef.current.contains(e.target as Node)) setOpen(false);
     }
-    document.addEventListener('click', onDoc);
-    return () => document.removeEventListener('click', onDoc);
+    document.addEventListener("click", onDoc);
+    return () => document.removeEventListener("click", onDoc);
   }, []);
 
   const list = useMemo(() => {
     if (!query.trim()) return EMOJIS.slice(0, 10);
     const q = query.toLowerCase();
-    const filtered = EMOJIS.filter(e =>
-      e.char.includes(q) ||
-      e.name.toLowerCase().includes(q) ||
-      (e.keywords?.some(k => String(k).toLowerCase().includes(q)))
+    const filtered = EMOJIS.filter(
+      (e) =>
+        e.char.includes(q) ||
+        e.name.toLowerCase().includes(q) ||
+        e.keywords?.some((k) => String(k).toLowerCase().includes(q))
     );
     return filtered.slice(0, 40);
   }, [query]);
@@ -171,11 +194,13 @@ function EmojiSelect({
         <button
           type="button"
           disabled={disabled}
-          onClick={() => setOpen(v => !v)}
+          onClick={() => setOpen((v) => !v)}
           className="w-full flex items-center justify-between rounded-lg border px-3 py-2 bg-white disabled:opacity-50"
         >
-          <span className="text-2xl leading-none">{value || '⬇️'}</span>
-          <span className="text-gray-500 text-sm">{value ? 'Change' : 'Choose'}</span>
+          <span className="text-2xl leading-none">{value || "⬇️"}</span>
+          <span className="text-gray-500 text-sm">
+            {value ? "Change" : "Choose"}
+          </span>
         </button>
 
         {open && !disabled && (
@@ -184,20 +209,24 @@ function EmojiSelect({
               <input
                 autoFocus
                 value={query}
-                onChange={e => setQuery(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search emojis…"
                 className="w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring"
               />
               <div className="text-xs text-gray-500 mt-1">
-                Showing {list.length} {query ? 'results' : 'popular'} (choose one)
+                Showing {list.length} {query ? "results" : "popular"} (choose
+                one)
               </div>
             </div>
             <ul className="max-h-64 overflow-auto p-2 grid grid-cols-5 gap-2">
-              {list.map(e => (
+              {list.map((e) => (
                 <li key={e.char}>
                   <button
                     type="button"
-                    onClick={() => { onChange(e.char); setOpen(false); }}
+                    onClick={() => {
+                      onChange(e.char);
+                      setOpen(false);
+                    }}
                     className="w-full aspect-square flex items-center justify-center rounded-md border hover:bg-gray-50 text-2xl"
                     title={e.name}
                   >
@@ -214,16 +243,16 @@ function EmojiSelect({
 }
 
 export default function Page() {
-  const [mode, setMode] = useState<Mode>('vs-computer');
+  const [mode, setMode] = useState<Mode>("vs-computer");
   const [size, setSize] = useState<number>(3);
 
-  const [p1Name, setP1Name] = useState<string>('Player 1');
-  const [p2Name, setP2Name] = useState<string>('Computer');
+  const [p1Name, setP1Name] = useState<string>("Player 1");
+  const [p2Name, setP2Name] = useState<string>("Computer");
 
-  const [p1Emoji, setP1Emoji] = useState<string>('🙂');
+  const [p1Emoji, setP1Emoji] = useState<string>("🙂");
   const [p2Emoji, setP2Emoji] = useState<string>(ROBOT);
 
-  const [board, setBoard] = useState<string[]>(() => Array(3 * 3).fill(''));
+  const [board, setBoard] = useState<string[]>(() => Array(3 * 3).fill(""));
   const [turn, setTurn] = useState<1 | 2>(1);
   const [winner, setWinner] = useState<null | 1 | 2>(null);
   const [draw, setDraw] = useState<boolean>(false);
@@ -241,7 +270,7 @@ export default function Page() {
 
   // When size changes → reset board
   useEffect(() => {
-    setBoard(Array(size * size).fill(''));
+    setBoard(Array(size * size).fill(""));
     setTurn(1);
     setWinner(null);
     setDraw(false);
@@ -252,15 +281,15 @@ export default function Page() {
 
   // When mode changes → set computer defaults
   useEffect(() => {
-    if (mode === 'vs-computer') {
-      setP2Name('Computer');
+    if (mode === "vs-computer") {
+      setP2Name("Computer");
       setP2Emoji(ROBOT);
     } else {
-      setP2Name('Player 2');
-      if (p2Emoji === ROBOT) setP2Emoji('😎');
+      setP2Name("Player 2");
+      if (p2Emoji === ROBOT) setP2Emoji("😎");
     }
     // reset game
-    setBoard(Array(size * size).fill(''));
+    setBoard(Array(size * size).fill(""));
     setTurn(1);
     setWinner(null);
     setDraw(false);
@@ -275,7 +304,9 @@ export default function Page() {
       tickRef.current = window.setInterval(() => {
         setElapsed(Date.now() - startAt);
       }, 100);
-      return () => { if (tickRef.current) clearInterval(tickRef.current); };
+      return () => {
+        if (tickRef.current) clearInterval(tickRef.current);
+      };
     }
     if (!startAt || winner !== null || draw) {
       if (tickRef.current) clearInterval(tickRef.current);
@@ -284,7 +315,7 @@ export default function Page() {
 
   // Computer auto move
   useEffect(() => {
-    if (mode !== 'vs-computer') return;
+    if (mode !== "vs-computer") return;
     if (winner !== null || draw) return;
     if (turn !== 2) return;
 
@@ -340,7 +371,7 @@ export default function Page() {
           timeMs: finalMs,
           moves: nextMoves,
         };
-        setScores(prev => {
+        setScores((prev) => {
           const next = [...prev, row].sort((a, b) => a.timeMs - b.timeMs);
           return next.slice(0, 50); // keep top 50 overall
         });
@@ -352,7 +383,7 @@ export default function Page() {
   }
 
   function newGame() {
-    setBoard(Array(size * size).fill(''));
+    setBoard(Array(size * size).fill(""));
     setTurn(1);
     setWinner(null);
     setDraw(false);
@@ -361,18 +392,17 @@ export default function Page() {
     setElapsed(0);
   }
 
-  const boardCols = `grid grid-cols-${size} gap-2`;
+  const gridColNumber = size === 3 ? "3" : size === 4 ? "4" : "5";
+  const boardCols = `grid grid-cols-${gridColNumber} gap-2`;
   const sizeClass =
-    size === 3 ? 'text-5xl' :
-    size === 4 ? 'text-4xl' :
-                 'text-3xl';
+    size === 3 ? "text-3xl" : size === 4 ? "text-4xl" : "text-5xl";
 
   const invalidSameEmoji = p1Emoji === p2Emoji;
 
   const filteredScores = useMemo(() => {
     // fastest wins for current size & mode
     return scores
-      .filter(s => s.size === size && s.mode === mode)
+      .filter((s) => s.size === size && s.mode === mode)
       .sort((a, b) => a.timeMs - b.timeMs)
       .slice(0, 10);
   }, [scores, size, mode]);
@@ -391,8 +421,8 @@ export default function Page() {
                 <input
                   type="radio"
                   name="mode"
-                  checked={mode === 'vs-computer'}
-                  onChange={() => setMode('vs-computer')}
+                  checked={mode === "vs-computer"}
+                  onChange={() => setMode("vs-computer")}
                 />
                 <span>Play vs Computer</span>
               </label>
@@ -400,8 +430,8 @@ export default function Page() {
                 <input
                   type="radio"
                   name="mode"
-                  checked={mode === 'vs-human'}
-                  onChange={() => setMode('vs-human')}
+                  checked={mode === "vs-human"}
+                  onChange={() => setMode("vs-human")}
                 />
                 <span>2 Players (local)</span>
               </label>
@@ -412,7 +442,7 @@ export default function Page() {
             <label className="block text-sm font-medium mb-1">Board size</label>
             <select
               value={size}
-              onChange={e => setSize(Number(e.target.value))}
+              onChange={(e) => setSize(Number(e.target.value))}
               className="rounded-lg border px-3 py-2 bg-white"
             >
               <option value={3}>3 × 3</option>
@@ -423,19 +453,23 @@ export default function Page() {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-medium mb-1">Player 1 name</label>
+              <label className="block text-sm font-medium mb-1">
+                Player 1 name
+              </label>
               <input
                 value={p1Name}
-                onChange={e => setP1Name(e.target.value)}
+                onChange={(e) => setP1Name(e.target.value)}
                 className="w-full rounded-lg border px-3 py-2"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Player 2 name</label>
+              <label className="block text-sm font-medium mb-1">
+                Player 2 name
+              </label>
               <input
                 value={p2Name}
-                onChange={e => setP2Name(e.target.value)}
-                disabled={mode === 'vs-computer'}
+                onChange={(e) => setP2Name(e.target.value)}
+                disabled={mode === "vs-computer"}
                 className="w-full rounded-lg border px-3 py-2 disabled:bg-gray-50"
               />
             </div>
@@ -447,19 +481,23 @@ export default function Page() {
               value={p1Emoji}
               onChange={(v) => {
                 setP1Emoji(v);
-                if (mode === 'vs-human' && v === p2Emoji) setP2Emoji('😎');
+                if (mode === "vs-human" && v === p2Emoji) setP2Emoji("😎");
               }}
             />
             <EmojiSelect
-              label={mode === 'vs-computer' ? 'Computer emoji' : 'Player 2 emoji'}
+              label={
+                mode === "vs-computer" ? "Computer emoji" : "Player 2 emoji"
+              }
               value={p2Emoji}
               onChange={setP2Emoji}
-              disabled={mode === 'vs-computer'}
+              disabled={mode === "vs-computer"}
             />
           </div>
 
           {invalidSameEmoji && (
-            <div className="text-sm text-red-600">Players must use different emojis.</div>
+            <div className="text-sm text-red-600">
+              Players must use different emojis.
+            </div>
           )}
 
           <div className="flex items-center gap-3 pt-2">
@@ -484,35 +522,39 @@ export default function Page() {
         <div className="md:col-span-2 p-4 border rounded-xl">
           <div className="flex items-center justify-between mb-3">
             <div className="text-sm">
-              <span className="font-medium">Turn:</span>{' '}
+              <span className="font-medium">Turn:</span>{" "}
               {turn === 1 ? `${p1Name} ${p1Emoji}` : `${p2Name} ${p2Emoji}`}
             </div>
             <div className="text-sm">
-              <span className="font-medium">Timer:</span>{' '}
+              <span className="font-medium">Timer:</span>{" "}
               {msToClock(winner === null && !draw ? elapsed : elapsed)}
             </div>
             <div className="text-sm">
               <span className="font-medium">Moves:</span> {moves}
             </div>
           </div>
-
-          <div className={`${boardCols} select-none`}>
-            {board.map((cell, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleMove(idx)}
-                disabled={!!cell || invalidSameEmoji || winner !== null || draw}
-                className={`aspect-square rounded-xl border flex items-center justify-center bg-white hover:bg-gray-50 disabled:opacity-50 ${sizeClass}`}
-              >
-                {cell || ''}
-              </button>
-            ))}
+          <div className="ontainer mx-auto">
+            <div className={`${boardCols} select-none`}>
+              {board.map((cell, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleMove(idx)}
+                  disabled={
+                    !!cell || invalidSameEmoji || winner !== null || draw
+                  }
+                  className={`aspect-square rounded-xl border flex items-center justify-center bg-white hover:bg-gray-50 disabled:opacity-50 ${sizeClass}`}
+                >
+                  {cell || ""}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="mt-4 min-h-[2rem]">
             {winner !== null && (
               <div className="text-green-700 font-medium">
-                {winner === 1 ? p1Name : p2Name} wins in {msToClock(elapsed)}! 🎉
+                {winner === 1 ? p1Name : p2Name} wins in {msToClock(elapsed)}!
+                🎉
               </div>
             )}
             {draw && (
@@ -527,12 +569,21 @@ export default function Page() {
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">Fastest wins</h2>
           <div className="text-sm text-gray-600">
-            Showing top {filteredScores.length} — Mode: <span className="font-medium">{mode === 'vs-computer' ? 'vs Computer' : '2 Players'}</span>, Size: <span className="font-medium">{size}×{size}</span>
+            Showing top {filteredScores.length} — Mode:{" "}
+            <span className="font-medium">
+              {mode === "vs-computer" ? "vs Computer" : "2 Players"}
+            </span>
+            , Size:{" "}
+            <span className="font-medium">
+              {size}×{size}
+            </span>
           </div>
         </div>
 
         {filteredScores.length === 0 ? (
-          <div className="text-sm text-gray-500 mt-2">No wins recorded yet. Play a game!</div>
+          <div className="text-sm text-gray-500 mt-2">
+            No wins recorded yet. Play a game!
+          </div>
         ) : (
           <div className="mt-3 overflow-x-auto">
             <table className="w-full text-sm">
@@ -552,9 +603,13 @@ export default function Page() {
                     <td className="py-2 pr-4">{i + 1}</td>
                     <td className="py-2 pr-4">{s.winner}</td>
                     <td className="py-2 pr-4 text-xl">{s.winnerEmoji}</td>
-                    <td className="py-2 pr-4 font-mono">{msToClock(s.timeMs)}</td>
+                    <td className="py-2 pr-4 font-mono">
+                      {msToClock(s.timeMs)}
+                    </td>
                     <td className="py-2 pr-4">{s.moves}</td>
-                    <td className="py-2 pr-4">{new Date(s.when).toLocaleString()}</td>
+                    <td className="py-2 pr-4">
+                      {new Date(s.when).toLocaleString()}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -564,7 +619,8 @@ export default function Page() {
       </div>
 
       <p className="text-xs text-gray-500">
-        Tip: for larger boards (4×4/5×5), the win condition is a full row, column, or diagonal of your emoji.
+        Tip: for larger boards (4×4/5×5), the win condition is a full row,
+        column, or diagonal of your emoji.
       </p>
     </div>
   );

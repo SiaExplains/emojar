@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import "./AlphabetSorted.css";
 import EmojiCard from "./EmojiCard";
 import { Emoji } from "@/app/page";
 
@@ -12,8 +11,8 @@ type AlphabetSortedProps = {
 const AlphabetSorted = ({ char, emojis }: AlphabetSortedProps) => {
   const [copied, setCopied] = useState<string | null>(null);
   return (
-    <div className="emojis-container">
-      <div className="alphabet-section">
+    <div className="flex flex-col items-center justify-center mb-10 w-full gap-2.5 p-5">
+      <div>
         <h2
           className="text-2xl font-bold tracking-tight text-gray-900 mb-4 ml-2"
           id={char.toLocaleLowerCase()}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import "./page.css";
 import AlphabetSorted from "@/components/AlphabetSorted";
 import data from "@/data/emojis.json";
 
@@ -9,14 +8,14 @@ const AlphabetPage = () => {
   );
 
   return (
-    <div className="alphabet-page">
-      <h1 className="title">Alphabetic sorted emojis</h1>
-      <div className="alphabet-links">
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Alphabetic sorted emojis</h1>
+      <div className="flex flex-wrap gap-2 mb-4">
         {letters.map((letter, index) => (
           <Link
             key={`alphabet-section-${letter}-index-${index}`}
             href={`#${letter.toLowerCase()}`}
-            className="align-link"
+            className="py-2 px-4 underline text-[#3505b9]"
           >
             {letter}
           </Link>

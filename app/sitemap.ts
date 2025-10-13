@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // '/games/bubble-shooter',
   ];
 
+  const tablePages = ['/table/emoji-alphabet-shaped'];
   const alphabetSorted = Array.from({ length: 26 }, (_, i) =>
     String.fromCharCode(65 + i),
   ).map((letter) => `/sorted/alphabet#${letter.toLowerCase()}`);
@@ -25,6 +26,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
   gamesList.forEach((g) =>
     routes.push({ url: `${base}${g}`, lastModified: new Date() }),
+  );
+
+  tablePages.forEach((t) =>
+    routes.push({ url: `${base}${t}`, lastModified: new Date() }),
   );
   alphabetSorted.forEach((a) =>
     routes.push({ url: `${base}${a}`, lastModified: new Date() }),

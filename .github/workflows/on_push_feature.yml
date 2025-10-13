@@ -1,0 +1,37 @@
+name: Build & Test Emojar on Feature Branches
+
+on:
+  push:
+    branches: ['feature/*', 'fix/*', 'hotfix/*']
+    branches-ignore: ['main']
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_VERSION: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build (Next.js)
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+      - name: Run lint
+        run: npm run lint
+      - name: Run Code Format Check
+        run: npm run format

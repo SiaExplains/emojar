@@ -1,17 +1,16 @@
-import data from '@/data/emojis.json'
-import type { Metadata } from 'next'
-
-
+import data from '@/data/emojis.json';
+import type { Metadata } from 'next';
 
 export function generateStaticParams() {
-  return data.map(e => ({ slug: e.slug }));
+  return data.map((e) => ({ slug: e.slug }));
 }
 
-
-
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const emoji = data.find(e => e.slug === params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const emoji = data.find((e) => e.slug === params.slug);
   if (!emoji) return { title: 'Not found' };
 
   const title = `${emoji.name} emoji | Copy & Paste`;
@@ -20,15 +19,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const path = `/emoji/${encodeURIComponent(emoji.slug)}`; // <-- change to `/emoji/${...}` if needed
   const canonical = new URL(path, 'https://emojar.com');
 
-
   return {
     title,
     description,
-    alternates: { canonical },           // URL or string is fine
+    alternates: { canonical }, // URL or string is fine
     openGraph: {
       title,
       description,
-      url: canonical.toString(),         // absolute
+      url: canonical.toString(), // absolute
       type: 'article',
       // If you later add a dynamic OG image endpoint, place it here:
       // images: [{ url: `/api/og?title=${encodeURIComponent(emoji.name)}&char=${encodeURIComponent(emoji.char)}` }],
@@ -43,8 +41,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default function EmojiPage({ params }: { params: { slug: string } }) {
-  const emoji = data.find(e => e.slug === params.slug)
-  if (!emoji) return <div>Not found</div>
+  const emoji = data.find((e) => e.slug === params.slug);
+  if (!emoji) return <div>Not found</div>;
 
   return (
     <section className="space-y-4">
@@ -54,7 +52,12 @@ export default function EmojiPage({ params }: { params: { slug: string } }) {
       {emoji.keywords?.length ? (
         <div className="flex gap-2 flex-wrap">
           {emoji.keywords.map((k: string) => (
-            <span key={k} className="text-xs bg-gray-100 px-2 py-1 rounded-full">{k}</span>
+            <span
+              key={k}
+              className="text-xs bg-gray-100 px-2 py-1 rounded-full"
+            >
+              {k}
+            </span>
           ))}
         </div>
       ) : null}
@@ -65,5 +68,5 @@ export default function EmojiPage({ params }: { params: { slug: string } }) {
         ← Back
       </a>
     </section>
-  )
+  );
 }

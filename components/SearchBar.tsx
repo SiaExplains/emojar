@@ -1,6 +1,10 @@
-'use client'
+'use client';
 
-export default function SearchBar({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+type SearchBarProps = {
+  value: string;
+  onChange: (v: string) => void;
+};
+export default function SearchBar({ value, onChange }: SearchBarProps) {
   return (
     <div className="max-w-xl mx-auto">
       <input
@@ -11,5 +15,5 @@ export default function SearchBar({ value, onChange }: { value: string; onChange
         autoFocus
       />
     </div>
-  )
+  );
 }

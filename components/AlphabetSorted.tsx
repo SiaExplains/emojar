@@ -1,7 +1,7 @@
-"use client";
-import { useState } from "react";
-import EmojiCard from "./EmojiCard";
-import { Emoji } from "@/app/page";
+'use client';
+import { useState } from 'react';
+import EmojiCard from './EmojiCard';
+import { Emoji } from '@/app/page';
 
 type AlphabetSortedProps = {
   char: string;

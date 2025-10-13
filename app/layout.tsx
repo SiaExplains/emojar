@@ -1,35 +1,35 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import Script from "next/script";
-import Link from "next/link";
-import ConsentBanner from "@/components/ConsentBanner";
-import { HeaderLogo } from "@/components/HeaderLogo/HeaderLogo.component";
+import './globals.css';
+import type { Metadata } from 'next';
+import Script from 'next/script';
+import Link from 'next/link';
+import ConsentBanner from '@/components/ConsentBanner';
+import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component';
 
 const description =
-  "Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.";
+  'Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.';
 
 export const metadata: Metadata = {
-  title: "Emojar | All the emojis in one jar.",
+  title: 'Emojar | All the emojis in one jar.',
   description,
   keywords: [
-    "emoji",
-    "copy emoji",
-    "paste emoji",
-    "emoji keyboard",
-    "smileys",
-    "emojar",
+    'emoji',
+    'copy emoji',
+    'paste emoji',
+    'emoji keyboard',
+    'smileys',
+    'emojar',
   ],
   openGraph: {
-    title: "Emojar | All the emojis in one jar.",
+    title: 'Emojar | All the emojis in one jar.',
     description,
-    url: "https://emojar.com",
-    siteName: "Emojar",
-    type: "website",
+    url: 'https://emojar.com',
+    siteName: 'Emojar',
+    type: 'website',
   },
-  icons: { icon: "favicon.ico" },
-  manifest: "manifest.webmanifest",
+  icons: { icon: 'favicon.ico' },
+  manifest: 'manifest.webmanifest',
   robots: { index: true, follow: true },
-  metadataBase: new URL("https://emojar.com"),
+  metadataBase: new URL('https://emojar.com'),
 };
 
 export default function RootLayout({
@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const clientId =
-    process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-0000000000000000";
+    process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-0000000000000000';
 
   return (
     <html lang="en">

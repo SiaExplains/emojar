@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Emojar',
@@ -12,5 +12,5 @@ export default function manifest(): MetadataRoute.Manifest {
       { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
       { src: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
     ],
-  }
+  };
 }

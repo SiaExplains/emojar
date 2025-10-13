@@ -1,10 +1,10 @@
-import Link from "next/link";
-import AlphabetSorted from "@/components/AlphabetSorted";
-import data from "@/data/emojis.json";
+import Link from 'next/link';
+import AlphabetSorted from '@/components/AlphabetSorted';
+import data from '@/data/emojis.json';
 
 const AlphabetPage = () => {
   const letters = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(65 + i)
+    String.fromCharCode(65 + i),
   );
 
   return (
@@ -26,7 +26,7 @@ const AlphabetPage = () => {
           key={`alphabet-section-${letter}-index-${index}`}
           char={letter}
           emojis={data.filter((e) =>
-            e.name.toLocaleLowerCase().startsWith(letter.toLocaleLowerCase())
+            e.name.toLocaleLowerCase().startsWith(letter.toLocaleLowerCase()),
           )}
         />
       ))}

@@ -1,200 +1,216 @@
-/**
- * Build emojis.json from a local CLDR annotations.json.
- * Optional: if ./emoji-test.txt exists, enrich with category + version.
- *
- * Input  (required): ./annotations.json
- * Input  (optional): ./emoji-test.txt
- * Output: ./emojis.json
- *
- * Node 18+ (uses native fs/promises)
- */
-import { readFile, writeFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
-import path from "node:path";
+// gen2.js (generatev2)
+// Usage: node gen2.js  (requires emoji-test.txt in the same folder)
 
-// ---- config (change paths if needed) ----
-const ANNOTATIONS_PATH = path.resolve("./annotations.json");
-const EMOJI_TEST_PATH = path.resolve("./emoji-test.txt");
-const OUTPUT_PATH = path.resolve("./emojis.json");
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import * as path from 'node:path';
 
-// ---- utils ----
-const uniq = (arr) => Array.from(new Set(arr));
-function slugify(name) {
-  return String(name || "")
+// ---------- utils ----------
+const read = (p) => readFileSync(p, 'utf8');
+
+const slugify = (s) =>
+  s
     .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/--+/g, '-');
+
+const uniq = (arr) => Array.from(new Set(arr));
+
+function makeSlugger() {
+  const seen = new Map();
+  return function uniqueSlug(base) {
+    const b = slugify(base || 'emoji');
+    const n = (seen.get(b) || 0) + 1;
+    seen.set(b, n);
+    return n === 1 ? b : `${b}-${n}`;
+  };
+}
+const uniqueSlug = makeSlugger();
+
+function cleanForSlug(name) {
+  return (
+    name
+      // drop any leading Unicode Emoji version markers like "E0.6 ", "E13.1 "
+      .replace(/^E\d+(?:\.\d+)?\s*/i, '')
+      // normalize flag names like "flag: Honduras" → "flag Honduras"
+      .replace(/^flag:\s*/i, 'flag ')
+      .trim()
+  );
 }
 
-// Very lightweight category guesser (used only when emoji-test.txt is absent)
-function guessCategory(name = "", keywords = []) {
-  const s = (name + " " + keywords.join(" ")).toLowerCase();
-
-  if (/\bface|smil|grin|cry|tear|kiss|heart|love|angry|sad|joy|emoji\b/.test(s))
-    return "Smileys & Emotion";
-  if (/\bhand|thumb|person|people|man|woman|family|baby|gesture|body|eye|mouth|nose|ear\b/.test(s))
-    return "People & Body";
-  if (/\bcat|dog|monkey|bear|flower|tree|leaf|sun|moon|star|rain|cloud|animal|nature|plant\b/.test(s))
-    return "Animals & Nature";
-  if (/\bfood|drink|pizza|burger|fruit|vegetable|cake|coffee|tea|beer|wine\b/.test(s))
-    return "Food & Drink";
-  if (/\bball|sport|game|trophy|medal|celebrat|party|music|guitar|violin\b/.test(s))
-    return "Activities";
-  if (/\bcar|bus|train|ship|boat|plane|airplane|rocket|bike|bicycle|traffic|map|building|beach|mountain\b/.test(s))
-    return "Travel & Places";
-  if (/\bphone|computer|laptop|camera|tv|watch|tool|key|lock|bulb|bag|money|card|gift|book|scissors\b/.test(s))
-    return "Objects";
-  if (/\barrow|symbol|sign|mark|cross|check|star|sparkles|recycle|infinity|om|atom|peace|copyright|tm\b/.test(s))
-    return "Symbols";
-  if (/\bflag\b/.test(s)) return "Flags";
-  return "Uncategorized";
+// ---------- CLDR (optional, for better names/keywords) ----------
+function pickArray(...candidates) {
+  for (const c of candidates) {
+    if (Array.isArray(c)) return c;
+  }
+  return [];
 }
 
-// Parse emoji-test.txt if present -> Map<char, {category, name, version}>
-function parseEmojiTest(text) {
-  const lines = text.split(/\r?\n/);
-  let currentGroup = null;
-  const map = new Map();
+function loadCLDRAnnotations(filePath) {
+  if (!existsSync(filePath)) return {};
+  let json;
+  try {
+    json = JSON.parse(read(filePath));
+  } catch {
+    return {};
+  }
 
-  for (const line of lines) {
-    const g = line.match(/^#\s*group:\s*(.+)$/i);
-    if (g) {
-      currentGroup = g[1].trim();
+  // Try the common shapes:
+  // 1) { annotations: { annotations: [...] } }
+  // 2) { annotationsDerived: { annotations: [...] } }
+  // 3) { main: { en: { annotations: { annotations: [...] } } } }
+  // 4) Rare: { annotations: [...] } (already the array)
+  // Fallback: {} (ignore)
+  const rootA = json?.annotations;
+  const rootB = json?.annotationsDerived;
+  const rootC = json?.main?.en?.annotations;
+
+  const list = pickArray(
+    rootA?.annotations,
+    rootB?.annotations,
+    rootC?.annotations,
+    json?.annotations,
+  );
+
+  const out = {};
+  for (const entry of list) {
+    // Expected entry like:
+    // { "cp": "🇩🇪", "annotations": { "default": { "tts": "flag: Germany", "keywords": [...] } } }
+    const cp = entry?.cp;
+    if (!cp) continue;
+    const def = entry?.annotations?.default || {};
+    const tts = def.tts;
+    const keywords = Array.isArray(def.keywords) ? def.keywords : [];
+
+    if (!out[cp]) out[cp] = { name: undefined, keywords: [] };
+    if (tts && !out[cp].name) out[cp].name = tts;
+    if (keywords.length) out[cp].keywords.push(...keywords);
+  }
+
+  for (const k of Object.keys(out)) {
+    out[k].keywords = uniq((out[k].keywords || []).map(String));
+  }
+  return out;
+}
+
+function mergeCLDRMaps(a, b) {
+  const out = { ...a };
+  for (const [cp, obj] of Object.entries(b)) {
+    if (!out[cp]) {
+      out[cp] = { name: obj.name, keywords: [...(obj.keywords || [])] };
       continue;
     }
-    if (!line || line.startsWith("#") || !line.includes("#")) continue;
+    if (!out[cp].name && obj.name) out[cp].name = obj.name;
+    out[cp].keywords = uniq([
+      ...(out[cp].keywords || []),
+      ...(obj.keywords || []),
+    ]);
+  }
+  return out;
+}
 
-    const [, right] = line.split("#");
-    if (!right) continue;
-    const r = right.trim();
-    const charMatch = r.match(/^(\S+)/);
-    if (!charMatch) continue;
-    const char = charMatch[1];
+// ---------- emoji-test (source of truth) ----------
+function parseEmojiTest(txt) {
+  const map = new Map();
+  let group = '';
+  let subgroup = '';
 
-    const nameAndVersion = r.slice(char.length).trim();
-    const verMatch = nameAndVersion.match(/\bE(\d+(?:\.\d+)?)\b/i);
-    const version = verMatch ? verMatch[1] : "1.0";
-    const name = nameAndVersion.replace(/\bE\d+(\.\d+)?\b/i, "").trim();
-
-    if (char && currentGroup) {
-      map.set(char, { category: currentGroup, name, version });
+  const lines = txt.split(/\r?\n/);
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line || line.startsWith('#')) {
+      const grp = line.match(/^#\s*group:\s*(.+)$/i);
+      if (grp) {
+        group = grp[1].trim();
+        continue;
+      }
+      const sub = line.match(/^#\s*subgroup:\s*(.+)$/i);
+      if (sub) {
+        subgroup = sub[1].trim();
+        continue;
+      }
+      continue;
     }
+
+    const parts = line.split('#');
+    if (parts.length < 2) continue;
+
+    const left = parts[0].trim();
+    const right = parts[1].trim();
+
+    const rightTokens = right.split(/\s+/);
+    const emoji = rightTokens[0];
+    if (!emoji) continue;
+
+    const verMatch = right.match(/\sE(\d+(?:\.\d+)?)(?:\s|$)/);
+    const version = verMatch ? verMatch[1] : '1.0';
+
+    let name = right.replace(/^(\S+)\s+/, '');
+    name = name.replace(/\sE\d+(\.\d+)?\s*$/, '').trim();
+
+    const isFully = /;\s*fully-qualified/.test(left);
+    if (map.has(emoji) && !isFully) continue;
+
+    map.set(emoji, { name, group, subgroup, version });
   }
   return map;
 }
 
-// Filter: best-effort to keep only emoji-like keys if emoji-test.txt is absent.
-// Keeps ZWJ sequences, emoji presentation selectors, skin tones, and common emoji ranges.
-function looksLikeEmoji(cpStr) {
-  // If any char is in typical emoji planes or it contains ZWJ/VS-16, treat as emoji
-  if (/\u200D|\uFE0F/.test(cpStr)) return true; // ZWJ or VS16
-  // skin tones
-  if (/[\u{1F3FB}-\u{1F3FF}]/u.test(cpStr)) return true;
-  // Common emoji blocks
-  if (/[\u{1F300}-\u{1FAFF}]/u.test(cpStr)) return true;
-  if (/[\u2600-\u27BF]/.test(cpStr)) return true; // Misc symbols + Dingbats
-  // Flags (regional indicators)
-  if (/[\u{1F1E6}-\u{1F1FF}]/u.test(cpStr)) return true;
-  // Hearts etc.
-  if (/[\u2660-\u2666\u2764]/.test(cpStr)) return true;
-  return false;
-}
-
-async function main() {
-  // 1) read annotations.json
-  const raw = await readFile(ANNOTATIONS_PATH, "utf8");
-  const ann = JSON.parse(raw);
-
-  // CLDR structures vary slightly; support both common shapes:
-  // { annotations: { identity: {...}, annotations: { "😀": {default:[], tts:[]} } } }
-  // or { main: { en: { annotations: [ {cp, keywords, tts} ] } } }
-  const mapFromCLDR = new Map();
-
-  if (ann?.annotations?.annotations && typeof ann.annotations.annotations === "object") {
-    // key-value map form
-    for (const [cp, entry] of Object.entries(ann.annotations.annotations)) {
-      if (!cp) continue;
-      const keywords = Array.isArray(entry.default) ? entry.default : [];
-      const name = Array.isArray(entry.tts) && entry.tts[0] ? entry.tts[0] : null;
-      mapFromCLDR.set(cp, { keywords, name });
-    }
-  } else if (ann?.main) {
-    // array form
-    const anyLang = Object.values(ann.main)[0];
-    const list = anyLang?.annotations || [];
-    for (const entry of list) {
-      const cp = entry.cp;
-      if (!cp) continue;
-      const keywords = Array.isArray(entry.keywords) ? entry.keywords : [];
-      const name = entry.tts || null;
-      mapFromCLDR.set(cp, { keywords, name });
-    }
-  } else {
-    throw new Error("Unsupported annotations.json shape.");
+// ---------- main ----------
+(function main() {
+  const cwd = process.cwd();
+  const emojiTestPath = path.join(cwd, 'emoji-test.txt');
+  if (!existsSync(emojiTestPath)) {
+    console.error('ERROR: emoji-test.txt not found. Place it next to gen2.js.');
+    process.exit(1);
   }
 
-  // 2) optionally read emoji-test.txt to enrich + hard-filter to emojis
-  let emojiTestMap = null;
-  if (existsSync(EMOJI_TEST_PATH)) {
-    const et = await readFile(EMOJI_TEST_PATH, "utf8");
-    emojiTestMap = parseEmojiTest(et);
-  }
+  const emojiTest = parseEmojiTest(read(emojiTestPath));
 
-  // 3) build final list
+  // Optional CLDR enrichment
+  const cldrA = loadCLDRAnnotations(path.join(cwd, 'annotations.json')); // optional
+  const cldrB = loadCLDRAnnotations(path.join(cwd, 'annotations-derived.json')); // optional
+  const cldr = mergeCLDRMaps(cldrA, cldrB);
+
   const out = [];
+  for (const [cp, meta] of emojiTest.entries()) {
+    const fromCLDR = cldr[cp] || {};
+    const name = fromCLDR.name || meta.name || cp;
 
-  for (const [cp, data] of mapFromCLDR.entries()) {
-    // If we have emoji-test.txt, include only chars present there.
-    if (emojiTestMap && !emojiTestMap.has(cp)) continue;
-
-    // If we don't have emoji-test, drop obvious non-emoji.
-    if (!emojiTestMap && !looksLikeEmoji(cp)) continue;
-
-    const name = data.name || ""; // if missing, slug will still work
-    const keywords = uniq(
-      (data.keywords || [])
-        .map((k) => String(k).toLowerCase().trim())
-        .filter(Boolean)
-    );
-
-    let category = "Uncategorized";
-    let version = "1.0";
-
-    if (emojiTestMap && emojiTestMap.has(cp)) {
-      const e = emojiTestMap.get(cp);
-      category = e.category || category;
-      version = e.version || version;
-      // Prefer emoji-test name if CLDR name missing
-      if (!name && e.name) data.name = e.name;
-    } else {
-      // Heuristic category when no emoji-test
-      category = guessCategory(name, keywords);
-    }
+    const kwFromName = name
+      .toLowerCase()
+      .split(/[\s,:()\-]+/)
+      .filter(Boolean);
+    const keywords = uniq([...(fromCLDR.keywords || []), ...kwFromName]);
+    let nameWithoutPrefix = name.replace(/^(\S+)\s+/, ''); // drop glyph
 
     out.push({
-      slug: slugify(data.name || name || cp),
+      slug: uniqueSlug(slugify(cleanForSlug(name))),
       char: cp,
-      name: data.name || name || cp,
-      category,
+      name: nameWithoutPrefix,
+      category: meta.group || 'Uncategorized',
+      subgroup: meta.subgroup || undefined,
       keywords,
-      version,
+      version: meta.version || '1.0',
     });
   }
 
-  // Sort by category then name for stability
-  out.sort((a, b) =>
-    a.category === b.category
-      ? a.name.localeCompare(b.name)
-      : a.category.localeCompare(b.category)
+  out.sort(
+    (a, b) =>
+      (a.category || '').localeCompare(b.category || '') ||
+      a.name.localeCompare(b.name),
   );
 
-  await writeFile(OUTPUT_PATH, JSON.stringify(out, null, 2), "utf8");
-  console.log(`✅ Wrote ${out.length} entries to ${OUTPUT_PATH}`);
-}
+  const dest = path.join(cwd, 'emojis.json');
+  writeFileSync(dest, JSON.stringify(out, null, 2), 'utf8');
 
-main().catch((e) => {
-  console.error("Failed:", e);
-  process.exit(1);
-});
+  const total = out.length;
+  const flags = out.filter((e) => e.category === 'Flags').length;
+  const people = out.filter((e) => e.category === 'People & Body').length;
+  console.log(`✅ Wrote ${total} emoji to ${dest}`);
+  console.log(`   • Flags: ${flags}`);
+  console.log(`   • People & Body: ${people}`);
+})();

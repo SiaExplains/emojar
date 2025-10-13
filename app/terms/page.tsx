@@ -2,7 +2,9 @@ export default function TermsPage() {
   return (
     <main className="mx-auto max-w-3xl px-6 py-12 text-gray-800">
       <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
-      <p className="text-sm text-gray-500 mb-8">Last updated: August 29, 2025</p>
+      <p className="text-sm text-gray-500 mb-8">
+        Last updated: August 29, 2025
+      </p>
 
       <p className="mb-6">
         Welcome to <strong>Emojar.com</strong> (“Emojar,” “we,” “our,” or “us”).
@@ -80,7 +82,9 @@ export default function TermsPage() {
       </section>
 
       <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">5. Limitation of Liability</h2>
+        <h2 className="text-xl font-semibold mb-3">
+          5. Limitation of Liability
+        </h2>
         <p>
           To the maximum extent permitted by law, Emojar.com shall not be liable
           for any direct, indirect, incidental, or consequential damages
@@ -95,7 +99,7 @@ export default function TermsPage() {
         <p>
           By using Emojar.com, you acknowledge that we may collect basic usage
           data (e.g., through cookies or analytics) for site improvement and
-          advertising purposes. For details, please see our{" "}
+          advertising purposes. For details, please see our{' '}
           <a href="/privacy" className="text-blue-600 underline">
             Privacy Policy
           </a>
@@ -124,7 +128,7 @@ export default function TermsPage() {
       <section>
         <h2 className="text-xl font-semibold mb-3">9. Contact Us</h2>
         <p>
-          If you have any questions about these Terms, you can reach us at:{" "}
+          If you have any questions about these Terms, you can reach us at:{' '}
           <a
             href="mailto:support@emojar.com"
             className="text-blue-600 underline"

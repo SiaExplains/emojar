@@ -1,9 +1,9 @@
-import data from "@/data/emojis.json";
-import Link from "next/link";
+import data from '@/data/emojis.json';
+import Link from 'next/link';
 
 const AlphabetShapedPage = () => {
   const letters = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(65 + i)
+    String.fromCharCode(65 + i),
   );
   return (
     <div>

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState } from "react";
-import Fuse from "fuse.js";
-import data from "@/data/emojis.json";
-import EmojiCard from "@/components/EmojiCard";
-import SearchBar from "@/components/SearchBar";
-import CategoryPills from "@/components/CategoryPills";
+import { useEffect, useMemo, useState } from 'react';
+import Fuse from 'fuse.js';
+import data from '@/data/emojis.json';
+import EmojiCard from '@/components/EmojiCard';
+import SearchBar from '@/components/SearchBar';
+import CategoryPills from '@/components/CategoryPills';
 
 export type Emoji = {
   slug: string;
@@ -17,18 +17,18 @@ export type Emoji = {
 };
 
 export default function Home() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [results, setResults] = useState<Emoji[]>(data as Emoji[]);
   const [copied, setCopied] = useState<string | null>(null);
 
   const fuse = useMemo(
     () =>
       new Fuse(data, {
-        keys: ["name", "keywords", "char"],
+        keys: ['name', 'keywords', 'char'],
         threshold: 0.3,
         includeScore: false,
       }),
-    []
+    [],
   );
 
   useEffect(() => {

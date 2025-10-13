@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import allEmojis from "../../../data/emojis.json";
-import "./page.css";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import allEmojis from '../../../data/emojis.json';
+import './page.css';
 type EmojiItem = {
   char: string;
   name: string;
@@ -11,7 +11,7 @@ type EmojiItem = {
   keywords?: string[];
 };
 
-type Mode = "vs-computer" | "vs-human";
+type Mode = 'vs-computer' | 'vs-human';
 
 type ScoreRow = {
   when: string; // ISO date
@@ -24,17 +24,17 @@ type ScoreRow = {
   moves: number;
 };
 
-const ROBOT = "🤖";
+const ROBOT = '🤖';
 
 function msToClock(ms: number) {
-  if (ms <= 0) return "00:00.0";
+  if (ms <= 0) return '00:00.0';
   const s = Math.floor(ms / 1000);
   const m = Math.floor(s / 60);
   const remS = s % 60;
   const tenths = Math.floor((ms % 1000) / 100);
-  return `${String(m).padStart(2, "0")}:${String(remS).padStart(
+  return `${String(m).padStart(2, '0')}:${String(remS).padStart(
     2,
-    "0"
+    '0',
   )}.${tenths}`;
 }
 
@@ -54,7 +54,7 @@ const EMOJIS: EmojiItem[] = dedupeByChar(
     slug: e.slug,
     category: e.category,
     keywords: e.keywords ?? [],
-  }))
+  })),
 ).filter((e) => e.char && e.name);
 
 function useLines(size: number) {
@@ -72,7 +72,7 @@ function useLines(size: number) {
     lines.push(Array.from({ length: size }, (_, i) => i * size + i));
     // anti diag
     lines.push(
-      Array.from({ length: size }, (_, i) => i * size + (size - 1 - i))
+      Array.from({ length: size }, (_, i) => i * size + (size - 1 - i)),
     );
     return lines;
   }, [size]);
@@ -82,7 +82,7 @@ function checkWin(
   board: string[],
   size: number,
   who: string,
-  lines: number[][]
+  lines: number[][],
 ) {
   return lines.some((line) => line.every((idx) => board[idx] === who));
 }
@@ -124,7 +124,7 @@ function computerMove(
   size: number,
   me: string,
   opp: string,
-  lines: number[][]
+  lines: number[][],
 ) {
   const empties = emptyIndices(board);
   if (!empties.length) return -1;
@@ -163,7 +163,7 @@ function EmojiSelect({
   disabled?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -171,8 +171,8 @@ function EmojiSelect({
       if (!wrapRef.current) return;
       if (!wrapRef.current.contains(e.target as Node)) setOpen(false);
     }
-    document.addEventListener("click", onDoc);
-    return () => document.removeEventListener("click", onDoc);
+    document.addEventListener('click', onDoc);
+    return () => document.removeEventListener('click', onDoc);
   }, []);
 
   const list = useMemo(() => {
@@ -182,7 +182,7 @@ function EmojiSelect({
       (e) =>
         e.char.includes(q) ||
         e.name.toLowerCase().includes(q) ||
-        e.keywords?.some((k) => String(k).toLowerCase().includes(q))
+        e.keywords?.some((k) => String(k).toLowerCase().includes(q)),
     );
     return filtered.slice(0, 40);
   }, [query]);
@@ -197,9 +197,9 @@ function EmojiSelect({
           onClick={() => setOpen((v) => !v)}
           className="w-full flex items-center justify-between rounded-lg border px-3 py-2 bg-white disabled:opacity-50"
         >
-          <span className="text-2xl leading-none">{value || "⬇️"}</span>
+          <span className="text-2xl leading-none">{value || '⬇️'}</span>
           <span className="text-gray-500 text-sm">
-            {value ? "Change" : "Choose"}
+            {value ? 'Change' : 'Choose'}
           </span>
         </button>
 
@@ -214,7 +214,7 @@ function EmojiSelect({
                 className="w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring"
               />
               <div className="text-xs text-gray-500 mt-1">
-                Showing {list.length} {query ? "results" : "popular"} (choose
+                Showing {list.length} {query ? 'results' : 'popular'} (choose
                 one)
               </div>
             </div>
@@ -243,16 +243,16 @@ function EmojiSelect({
 }
 
 export default function Page() {
-  const [mode, setMode] = useState<Mode>("vs-computer");
+  const [mode, setMode] = useState<Mode>('vs-computer');
   const [size, setSize] = useState<number>(3);
 
-  const [p1Name, setP1Name] = useState<string>("Player 1");
-  const [p2Name, setP2Name] = useState<string>("Computer");
+  const [p1Name, setP1Name] = useState<string>('Player 1');
+  const [p2Name, setP2Name] = useState<string>('Computer');
 
-  const [p1Emoji, setP1Emoji] = useState<string>("🙂");
+  const [p1Emoji, setP1Emoji] = useState<string>('🙂');
   const [p2Emoji, setP2Emoji] = useState<string>(ROBOT);
 
-  const [board, setBoard] = useState<string[]>(() => Array(3 * 3).fill(""));
+  const [board, setBoard] = useState<string[]>(() => Array(3 * 3).fill(''));
   const [turn, setTurn] = useState<1 | 2>(1);
   const [winner, setWinner] = useState<null | 1 | 2>(null);
   const [draw, setDraw] = useState<boolean>(false);
@@ -270,7 +270,7 @@ export default function Page() {
 
   // When size changes → reset board
   useEffect(() => {
-    setBoard(Array(size * size).fill(""));
+    setBoard(Array(size * size).fill(''));
     setTurn(1);
     setWinner(null);
     setDraw(false);
@@ -281,15 +281,15 @@ export default function Page() {
 
   // When mode changes → set computer defaults
   useEffect(() => {
-    if (mode === "vs-computer") {
-      setP2Name("Computer");
+    if (mode === 'vs-computer') {
+      setP2Name('Computer');
       setP2Emoji(ROBOT);
     } else {
-      setP2Name("Player 2");
-      if (p2Emoji === ROBOT) setP2Emoji("😎");
+      setP2Name('Player 2');
+      if (p2Emoji === ROBOT) setP2Emoji('😎');
     }
     // reset game
-    setBoard(Array(size * size).fill(""));
+    setBoard(Array(size * size).fill(''));
     setTurn(1);
     setWinner(null);
     setDraw(false);
@@ -315,7 +315,7 @@ export default function Page() {
 
   // Computer auto move
   useEffect(() => {
-    if (mode !== "vs-computer") return;
+    if (mode !== 'vs-computer') return;
     if (winner !== null || draw) return;
     if (turn !== 2) return;
 
@@ -328,7 +328,6 @@ export default function Page() {
     // small delay for UX
     const t = setTimeout(() => handleMove(idx), 350);
     return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [turn, board, winner, draw, mode, p1Emoji, p2Emoji, size]);
 
   function handleMove(i: number) {
@@ -383,7 +382,7 @@ export default function Page() {
   }
 
   function newGame() {
-    setBoard(Array(size * size).fill(""));
+    setBoard(Array(size * size).fill(''));
     setTurn(1);
     setWinner(null);
     setDraw(false);
@@ -392,10 +391,10 @@ export default function Page() {
     setElapsed(0);
   }
 
-  const gridColNumber = size === 3 ? "3" : size === 4 ? "4" : "5";
+  const gridColNumber = size === 3 ? '3' : size === 4 ? '4' : '5';
   const boardCols = `grid grid-cols-${gridColNumber} gap-2`;
   const sizeClass =
-    size === 3 ? "text-3xl" : size === 4 ? "text-4xl" : "text-5xl";
+    size === 3 ? 'text-3xl' : size === 4 ? 'text-4xl' : 'text-5xl';
 
   const invalidSameEmoji = p1Emoji === p2Emoji;
 
@@ -421,8 +420,8 @@ export default function Page() {
                 <input
                   type="radio"
                   name="mode"
-                  checked={mode === "vs-computer"}
-                  onChange={() => setMode("vs-computer")}
+                  checked={mode === 'vs-computer'}
+                  onChange={() => setMode('vs-computer')}
                 />
                 <span>Play vs Computer</span>
               </label>
@@ -430,8 +429,8 @@ export default function Page() {
                 <input
                   type="radio"
                   name="mode"
-                  checked={mode === "vs-human"}
-                  onChange={() => setMode("vs-human")}
+                  checked={mode === 'vs-human'}
+                  onChange={() => setMode('vs-human')}
                 />
                 <span>2 Players (local)</span>
               </label>
@@ -469,7 +468,7 @@ export default function Page() {
               <input
                 value={p2Name}
                 onChange={(e) => setP2Name(e.target.value)}
-                disabled={mode === "vs-computer"}
+                disabled={mode === 'vs-computer'}
                 className="w-full rounded-lg border px-3 py-2 disabled:bg-gray-50"
               />
             </div>
@@ -481,16 +480,16 @@ export default function Page() {
               value={p1Emoji}
               onChange={(v) => {
                 setP1Emoji(v);
-                if (mode === "vs-human" && v === p2Emoji) setP2Emoji("😎");
+                if (mode === 'vs-human' && v === p2Emoji) setP2Emoji('😎');
               }}
             />
             <EmojiSelect
               label={
-                mode === "vs-computer" ? "Computer emoji" : "Player 2 emoji"
+                mode === 'vs-computer' ? 'Computer emoji' : 'Player 2 emoji'
               }
               value={p2Emoji}
               onChange={setP2Emoji}
-              disabled={mode === "vs-computer"}
+              disabled={mode === 'vs-computer'}
             />
           </div>
 
@@ -522,11 +521,11 @@ export default function Page() {
         <div className="md:col-span-2 p-4 border rounded-xl">
           <div className="flex items-center justify-between mb-3">
             <div className="text-sm">
-              <span className="font-medium">Turn:</span>{" "}
+              <span className="font-medium">Turn:</span>{' '}
               {turn === 1 ? `${p1Name} ${p1Emoji}` : `${p2Name} ${p2Emoji}`}
             </div>
             <div className="text-sm">
-              <span className="font-medium">Timer:</span>{" "}
+              <span className="font-medium">Timer:</span>{' '}
               {msToClock(winner === null && !draw ? elapsed : elapsed)}
             </div>
             <div className="text-sm">
@@ -544,7 +543,7 @@ export default function Page() {
                   }
                   className={`aspect-square rounded-xl border flex items-center justify-center bg-white hover:bg-gray-50 disabled:opacity-50 ${sizeClass}`}
                 >
-                  {cell || ""}
+                  {cell || ''}
                 </button>
               ))}
             </div>
@@ -569,11 +568,11 @@ export default function Page() {
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">Fastest wins</h2>
           <div className="text-sm text-gray-600">
-            Showing top {filteredScores.length} — Mode:{" "}
+            Showing top {filteredScores.length} — Mode:{' '}
             <span className="font-medium">
-              {mode === "vs-computer" ? "vs Computer" : "2 Players"}
+              {mode === 'vs-computer' ? 'vs Computer' : '2 Players'}
             </span>
-            , Size:{" "}
+            , Size:{' '}
             <span className="font-medium">
               {size}×{size}
             </span>

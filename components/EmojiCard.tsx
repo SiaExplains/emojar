@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from 'react';
+import Link from 'next/link';
 
 type Emoji = {
   slug: string;
@@ -27,7 +27,7 @@ export default function EmojiCard({
       onCopied?.(emoji.char);
       setTimeout(() => setIsCopying(false), 500);
       // session trending (MVP-only): count copies locally
-      const key = "emojar-copied-counts";
+      const key = 'emojar-copied-counts';
       const raw = localStorage.getItem(key);
       const map: Record<string, number> = raw ? JSON.parse(raw) : {};
       map[emoji.slug] = (map[emoji.slug] ?? 0) + 1;

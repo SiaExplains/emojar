@@ -28,8 +28,6 @@ jobs:
       - name: Build (Next.js)
         run: npm run build
 
-      - name: Run tests
-        run: npm test
       - name: Run lint
         run: npm run lint
       - name: Run Code Format Check

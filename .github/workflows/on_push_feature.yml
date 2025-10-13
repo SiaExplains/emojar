@@ -3,7 +3,6 @@ name: Build & Test Emojar on Feature Branches
 on:
   push:
     branches: ['feature/*', 'fix/*', 'hotfix/*']
-    branches-ignore: ['main']
   workflow_dispatch:
 
 jobs:

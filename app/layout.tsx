@@ -68,7 +68,7 @@ export default function RootLayout({
               </Link>
             </div>
             <nav className="text-sm flex gap-4">
-              <Link href="/sorted/alphabetShaped">Alphabet Shaped</Link>
+              <Link href="/table/emoji-alphabet-shaped">Alphabet Shaped</Link>
               <Link href="/sorted/alphabet">Alphabet</Link>
               <Link href="/categories">Categories</Link>
               <Link href="/games">Games</Link>

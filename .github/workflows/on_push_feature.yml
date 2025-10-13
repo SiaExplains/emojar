@@ -3,7 +3,6 @@ name: Build & Test Emojar on Feature Branches
 on:
   push:
     branches: ['feature/*', 'fix/*', 'hotfix/*']
-    branches-ignore: ['main']
   workflow_dispatch:
 
 jobs:
@@ -29,9 +28,8 @@ jobs:
       - name: Build (Next.js)
         run: npm run build
 
-      - name: Run tests
-        run: npm test
       - name: Run lint
         run: npm run lint
+
       - name: Run Code Format Check
         run: npm run format

@@ -28,7 +28,13 @@ jobs:
       - name: Build (Next.js)
         run: npm run build
 
-      - name: Run lint
+  code-quality:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+
+    steps:
+      - name: Lint code
         run: npm run lint
-      - name: Run Code Format Check
-        run: npm run format
+
+      - name: Run tests
+        run: npm test

@@ -4,6 +4,7 @@ import Script from 'next/script';
 import Link from 'next/link';
 import ConsentBanner from '@/components/ConsentBanner';
 import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component';
+import BackToTopButton from '@/components/BackToTopButton';
 
 const description =
   'Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.';
@@ -83,7 +84,7 @@ export default function RootLayout({
         </header>
 
         <main className="max-w-5xl mx-auto px-4 py-6">{children}</main>
-
+        <BackToTopButton />
         <footer className="border-t py-8 text-sm">
           <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
             <p>© {new Date().getFullYear()} Emojar</p>

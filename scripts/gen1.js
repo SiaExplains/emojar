@@ -118,12 +118,16 @@ function parseEmojiTest(txt) {
   let group = '';
   let subgroup = '';
 
-  const stripVS16 = (s) => [...s].filter(ch => ch.codePointAt(0) !== 0xFE0F).join("");
-  const statusRank = (s) => (
-    /;\s*fully-qualified/.test(s) ? 3 :
-    /;\s*minimally-qualified/.test(s) ? 2 :
-    /;\s*unqualified/.test(s) ? 1 : 0
-  );
+  const stripVS16 = (s) =>
+    [...s].filter((ch) => ch.codePointAt(0) !== 0xfe0f).join('');
+  const statusRank = (s) =>
+    /;\s*fully-qualified/.test(s)
+      ? 3
+      : /;\s*minimally-qualified/.test(s)
+        ? 2
+        : /;\s*unqualified/.test(s)
+          ? 1
+          : 0;
 
   const lines = txt.split(/\r?\n/);
   for (const raw of lines) {
@@ -163,12 +167,15 @@ function parseEmojiTest(txt) {
 
     const rank = statusRank(left);
     const key = stripVS16(emoji); // canonical key collapses FE0F variants
-     const current = map.get(key);
+    const current = map.get(key);
     if (!current || rank > current._rank) {
       map.set(key, {
-        char: emoji,      // keep the best actual string (prefer fully-qualified)
-        name, group, subgroup, version,
-        _rank: rank
+        char: emoji, // keep the best actual string (prefer fully-qualified)
+        name,
+        group,
+        subgroup,
+        version,
+        _rank: rank,
       });
     }
 
@@ -194,11 +201,11 @@ function parseEmojiTest(txt) {
   const cldr = mergeCLDRMaps(cldrA, cldrB);
 
   const out = [];
-    for (const [canonical, meta] of emojiTest.entries()) {
-    const cp = meta.char;                     // best variant string
+  for (const [canonical, meta] of emojiTest.entries()) {
+    const cp = meta.char; // best variant string
     const fromCLDR = cldr[cp] || cldr[canonical] || {};
-  // for (const [cp, meta] of emojiTest.entries()) {
-  //   const fromCLDR = cldr[cp] || {};
+    // for (const [cp, meta] of emojiTest.entries()) {
+    //   const fromCLDR = cldr[cp] || {};
     const name = fromCLDR.name || meta.name || cp;
 
     const kwFromName = name

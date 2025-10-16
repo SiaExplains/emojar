@@ -30,6 +30,7 @@ module.exports = [
   },
   globalIgnores([
     '**/.next/**',
+    '**/scripts/**',
     'node_modules/**',
     'dist/**',
     'tailwind.config.ts',

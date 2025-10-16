@@ -118,6 +118,17 @@ function parseEmojiTest(txt) {
   let group = '';
   let subgroup = '';
 
+  const stripVS16 = (s) =>
+    [...s].filter((ch) => ch.codePointAt(0) !== 0xfe0f).join('');
+  const statusRank = (s) =>
+    /;\s*fully-qualified/.test(s)
+      ? 3
+      : /;\s*minimally-qualified/.test(s)
+        ? 2
+        : /;\s*unqualified/.test(s)
+          ? 1
+          : 0;
+
   const lines = txt.split(/\r?\n/);
   for (const raw of lines) {
     const line = raw.trim();
@@ -151,8 +162,22 @@ function parseEmojiTest(txt) {
     let name = right.replace(/^(\S+)\s+/, '');
     name = name.replace(/\sE\d+(\.\d+)?\s*$/, '').trim();
 
-    const isFully = /;\s*fully-qualified/.test(left);
-    if (map.has(emoji) && !isFully) continue;
+    // const isFully = /;\s*fully-qualified/.test(left);
+    // if (map.has(emoji) && !isFully) continue;
+
+    const rank = statusRank(left);
+    const key = stripVS16(emoji); // canonical key collapses FE0F variants
+    const current = map.get(key);
+    if (!current || rank > current._rank) {
+      map.set(key, {
+        char: emoji, // keep the best actual string (prefer fully-qualified)
+        name,
+        group,
+        subgroup,
+        version,
+        _rank: rank,
+      });
+    }
 
     map.set(emoji, { name, group, subgroup, version });
   }
@@ -176,8 +201,11 @@ function parseEmojiTest(txt) {
   const cldr = mergeCLDRMaps(cldrA, cldrB);
 
   const out = [];
-  for (const [cp, meta] of emojiTest.entries()) {
-    const fromCLDR = cldr[cp] || {};
+  for (const [canonical, meta] of emojiTest.entries()) {
+    const cp = meta.char; // best variant string
+    const fromCLDR = cldr[cp] || cldr[canonical] || {};
+    // for (const [cp, meta] of emojiTest.entries()) {
+    //   const fromCLDR = cldr[cp] || {};
     const name = fromCLDR.name || meta.name || cp;
 
     const kwFromName = name
@@ -189,7 +217,7 @@ function parseEmojiTest(txt) {
 
     out.push({
       slug: uniqueSlug(slugify(cleanForSlug(name))),
-      char: cp,
+      char: cp, // emits fully-qualified when available
       name: nameWithoutPrefix,
       category: meta.group || 'Uncategorized',
       subgroup: meta.subgroup || undefined,

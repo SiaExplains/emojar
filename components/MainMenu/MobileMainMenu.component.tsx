@@ -57,15 +57,15 @@ const MobileMainMenu = () => {
         className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-neutral-300"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
         </svg>
         <span className="text-sm">Menu</span>
       </button>
-
-      {/* Backdrop (fixed, sits ABOVE your header z-40) */}
-      {drawerOpen && (
-        <div className="fixed inset-0 z-50 bg-black/10" aria-hidden="true"></div>
-      )}
 
       {/* Floating panel (absolute, does NOT change header height) */}
       {drawerOpen && (
@@ -116,7 +116,13 @@ const MobileMainMenu = () => {
                           className={`transition-transform ${open ? 'rotate-180' : ''}`}
                           aria-hidden="true"
                         >
-                          <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                          <path
+                            d="M6 9l6 6 6-6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinecap="round"
+                          />
                         </svg>
                       </button>
                     )}

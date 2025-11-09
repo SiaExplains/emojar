@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ConsentBanner from '@/components/ConsentBanner';
 import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component';
 import BackToTopButton from '@/components/BackToTopButton';
+import MainMenu from '@/components/MainMenu/MainMenu.compontent';
 
 const description =
   'Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.';
@@ -62,24 +63,16 @@ export default function RootLayout({
 
         <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div className="logo-container">
+            <div className="logo-container flex-shrink-0">
               <Link href="/" className="font-semibold">
                 <HeaderLogo />
                 {/* <Image src="/logo-64.png" alt="Emojar Logo" width={138} height={64} />*/}
               </Link>
             </div>
-            <nav className="text-sm flex gap-4">
-              <Link href="/table/emoji-alphabet-shaped">Alphabet Shaped</Link>
-              <Link href="/sorted/alphabet">Alphabet</Link>
-              <Link href="/categories">Categories</Link>
-              <Link href="/games">Games</Link>
-              <Link
-                href="https://github.com/SiaExplains/emojar"
-                target="_blank"
-              >
-                GitHub
-              </Link>
-            </nav>
+            <div className="flex-1" />
+            <div className="flex-shrink-0">
+              <MainMenu />
+            </div>
           </div>
         </header>
 

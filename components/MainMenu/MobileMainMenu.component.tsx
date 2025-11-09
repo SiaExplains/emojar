@@ -13,7 +13,7 @@ type MenuItem = {
 };
 
 function getChildren(item: MenuItem): MenuItem[] | null {
-  return (item.children ?? item.chilren) ?? null;
+  return item.children ?? item.chilren ?? null;
 }
 
 const MobileMainMenu = () => {
@@ -43,7 +43,7 @@ const MobileMainMenu = () => {
   }, [drawerOpen]);
 
   const toggleSection = (idx: number) =>
-    setOpenIndices(prev => ({ ...prev, [idx]: !prev[idx] }));
+    setOpenIndices((prev) => ({ ...prev, [idx]: !prev[idx] }));
 
   return (
     // Important: relative so the absolute panel anchors to this box, not the page.
@@ -53,7 +53,7 @@ const MobileMainMenu = () => {
         ref={triggerRef}
         aria-label="Toggle menu"
         aria-expanded={drawerOpen ? 'true' : 'false'}
-        onClick={() => setDrawerOpen(v => !v)}
+        onClick={() => setDrawerOpen((v) => !v)}
         className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-neutral-300"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
@@ -125,7 +125,7 @@ const MobileMainMenu = () => {
                   {hasKids && open && (
                     <div id={`mobile-section-${idx}`} className="mt-1">
                       <ul className="py-1">
-                        {kids!.map(child => (
+                        {kids!.map((child) => (
                           <li key={child.href}>
                             <Link
                               href={child.href}

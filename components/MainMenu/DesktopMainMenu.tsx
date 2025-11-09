@@ -15,7 +15,7 @@ type MenuItem = {
 
 function getChildren(item: MenuItem): MenuItem[] | null {
   // prefer correct "children", fallback to the typo
-  return (item.children ?? item.chilren) ?? null;
+  return item.children ?? item.chilren ?? null;
 }
 
 const DesktopMainMenu = () => {
@@ -74,7 +74,7 @@ const DesktopMainMenu = () => {
                   role="menu"
                 >
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {kids!.map(child => (
+                    {kids!.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}

@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import AlphabetSorted from '@/components/AlphabetSorted';
-import data from '@/data/emojis.json';
 
 const SortedPage = () => {
   const letters = Array.from({ length: 26 }, (_, i) =>

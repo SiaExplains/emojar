@@ -15,10 +15,10 @@ export const MENU_ROUTES = [
         label: 'Sorted Emoji by Alphabet',
         target: '_self',
       },
-      { 
+      {
         href: '/sorted/detail',
         label: 'Emoji with Detail',
-        target: '_self'
+        target: '_self',
       },
     ],
   },

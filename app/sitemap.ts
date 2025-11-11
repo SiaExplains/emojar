@@ -35,5 +35,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     routes.push({ url: `${base}${a}`, lastModified: new Date() }),
   );
 
+  routes.push({
+    url: `${base}/sorted/detail`,
+    lastModified: new Date(),
+  });
+
+  routes.push({
+    url: `${base}/sorted`,
+    lastModified: new Date(),
+  });
+
   return [...routes, ...emojiUrls];
 }

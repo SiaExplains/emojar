@@ -1,11 +1,27 @@
 export const MENU_ROUTES = [
   {
-    href: '/table/emoji-alphabet-shaped',
-    label: 'Alphabet Shaped',
+    href: '/sorted',
+    label: 'Sorted Emojis',
     target: '_self',
-    children: null,
+    children: [
+      {
+        href: '/table/emoji-alphabet-shaped',
+        label: 'Alphabet Shaped',
+        target: '_self',
+        children: null,
+      },
+      {
+        href: '/sorted/alphabet',
+        label: 'Sorted Emoji by Alphabet',
+        target: '_self',
+      },
+      {
+        href: '/sorted/detail',
+        label: 'Emoji with Detail',
+        target: '_self',
+      },
+    ],
   },
-  { href: '/sorted/alphabet', label: 'Alphabet', target: '_self' },
   {
     href: '/categories',
     label: 'Categories',

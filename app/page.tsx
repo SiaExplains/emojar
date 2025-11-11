@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
 import data from '@/data/emojis.json';
-import EmojiCard from '@/components/EmojiCard';
+import SmallEmojiCard from '@/components/SmallEmojiCard';
 import SearchBar from '@/components/SearchBar';
 import CategoryPills from '@/components/CategoryPills';
 
@@ -56,9 +56,9 @@ export default function Home() {
 
       <CategoryPills categories={categories} />
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
         {results.map((e, index) => (
-          <EmojiCard
+          <SmallEmojiCard
             key={`${e.slug}-index-${index}`}
             emoji={e}
             onCopied={setCopied}

@@ -1,5 +1,5 @@
 import data from '@/data/emojis.json';
-import EmojiCard from '@/components/EmojiCard';
+import SmallEmojiCard from '@/components/SmallEmojiCard';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -49,9 +49,9 @@ export default function CategoryPage({ params }: Props) {
   return (
     <section className="space-y-6">
       <h1 className="text-2xl font-semibold">{decoded}</h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
         {items.map((e) => (
-          <EmojiCard key={e.slug} emoji={e} />
+          <SmallEmojiCard key={e.slug} emoji={e} />
         ))}
       </div>
     </section>

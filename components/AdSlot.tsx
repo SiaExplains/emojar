@@ -23,7 +23,7 @@ export default function AdSlot() {
       data-ad-client={
         process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-0000000000000000'
       }
-      data-ad-slot="0000000000"
+      data-ad-slot="00000000000"
       data-ad-format="auto"
       data-full-width-responsive="true"
     />

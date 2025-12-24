@@ -28,6 +28,12 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      - name: Show GitHub Variables
+        run: |
+          echo ${{ secrets.EC2_HOST }}
+          echo ${{ secrets.EC2_USER }}
+          echo ${{ secrets.EC2_PORT }}
+
       - name: Build (Next.js)
         run: npm run build
 

@@ -28,11 +28,11 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Show GitHub Variables
+      - name: Check secrets presence
         run: |
-          echo ${{ secrets.EC2_HOST }}
-          echo ${{ secrets.EC2_USER }}
-          echo ${{ secrets.EC2_PORT }}
+          [ -z "${{ secrets.EC2_HOST }}" ] && echo "EC2_HOST is EMPTY" || echo "EC2_HOST is SET"
+          [ -z "${{ secrets.EC2_USER }}" ] && echo "EC2_USER is EMPTY" || echo "EC2_USER is SET"
+          [ -z "${{ secrets.EC2_KEY }}" ] && echo "EC2_KEY is EMPTY" || echo "EC2_KEY is SET"
 
       - name: Build (Next.js)
         run: npm run build

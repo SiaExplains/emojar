@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/games/xo',
     // '/games/snake',
     // '/games/minesweeper',
-    // '/games/hangman',
+    '/games/hangman',
     // '/games/bubble-shooter',
   ];
 

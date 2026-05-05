@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(./node_modules/.bin/next build *)",
+      "Bash(npm install *)",
+      "Bash(ln -s /Users/siavash/Projects/Emojar/src/.claude/worktrees/cranky-lichterman-d20c1b/node_modules /Users/siavash/Projects/Emojar/src/.claude/worktrees/musing-grothendieck-0e0692/node_modules)",
+      "Bash(node_modules/.bin/next build *)",
+      "Bash(nvm list *)",
+      "Read(//usr/local/bin/**)",
+      "Bash(brew list *)",
+      "Read(//usr/local/**)",
+      "Read(//opt/homebrew/Cellar/**)",
+      "Bash(~/.nvm/versions/node/v20.20.2/bin/node node_modules/.bin/next build)",
+      "Bash(~/.nvm/versions/node/v20.20.2/bin/node node_modules/.bin/next dev --port 3001)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/games/snake)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
+    ]
+  }
+}

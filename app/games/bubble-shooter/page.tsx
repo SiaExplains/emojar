@@ -105,7 +105,7 @@ export default function Page() {
 
   const landingRow = useMemo(() => {
     if (hoverCol === null) return null;
-    for (let r = ROWS - 1; r >= 0; r--) {
+    for (let r = 0; r < ROWS; r++) {
       if (grid[r][hoverCol] === null) return r;
     }
     return null;
@@ -116,7 +116,7 @@ export default function Page() {
       if (gameState === 'lost' || gameState === 'won') return;
 
       let landRow = -1;
-      for (let r = ROWS - 1; r >= 0; r--) {
+      for (let r = 0; r < ROWS; r++) {
         if (grid[r][col] === null) {
           landRow = r;
           break;
@@ -151,10 +151,7 @@ export default function Page() {
       let newGameState: GameState = 'playing';
       if (!anyLeft) {
         newGameState = 'won';
-      } else if (
-        g[ROWS - 1].some((cell) => cell !== null) ||
-        g[ROWS - 2].some((cell) => cell !== null)
-      ) {
+      } else if (g[ROWS - 1].some((cell) => cell !== null)) {
         newGameState = 'lost';
       }
 

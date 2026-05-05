@@ -50,34 +50,83 @@ function HangmanSVG({ wrong }: { wrong: number }) {
       strokeLinejoin="round"
     >
       {/* Gallows */}
-      <line x1="10" y1="150" x2="110" y2="150" stroke="#334155" strokeWidth="4" />
+      <line
+        x1="10"
+        y1="150"
+        x2="110"
+        y2="150"
+        stroke="#334155"
+        strokeWidth="4"
+      />
       <line x1="30" y1="150" x2="30" y2="10" stroke="#334155" strokeWidth="4" />
       <line x1="30" y1="10" x2="75" y2="10" stroke="#334155" strokeWidth="4" />
       <line x1="75" y1="10" x2="75" y2="30" stroke="#334155" strokeWidth="3" />
 
       {/* Head */}
       {wrong >= 1 && (
-        <circle cx="75" cy="42" r="12" stroke="#ef4444" strokeWidth="3" fill="none" />
+        <circle
+          cx="75"
+          cy="42"
+          r="12"
+          stroke="#ef4444"
+          strokeWidth="3"
+          fill="none"
+        />
       )}
       {/* Body */}
       {wrong >= 2 && (
-        <line x1="75" y1="54" x2="75" y2="100" stroke="#ef4444" strokeWidth="3" />
+        <line
+          x1="75"
+          y1="54"
+          x2="75"
+          y2="100"
+          stroke="#ef4444"
+          strokeWidth="3"
+        />
       )}
       {/* Left arm */}
       {wrong >= 3 && (
-        <line x1="75" y1="65" x2="52" y2="85" stroke="#ef4444" strokeWidth="3" />
+        <line
+          x1="75"
+          y1="65"
+          x2="52"
+          y2="85"
+          stroke="#ef4444"
+          strokeWidth="3"
+        />
       )}
       {/* Right arm */}
       {wrong >= 4 && (
-        <line x1="75" y1="65" x2="98" y2="85" stroke="#ef4444" strokeWidth="3" />
+        <line
+          x1="75"
+          y1="65"
+          x2="98"
+          y2="85"
+          stroke="#ef4444"
+          strokeWidth="3"
+        />
       )}
       {/* Left leg */}
       {wrong >= 5 && (
-        <line x1="75" y1="100" x2="52" y2="128" stroke="#ef4444" strokeWidth="3" />
+        <line
+          x1="75"
+          y1="100"
+          x2="52"
+          y2="128"
+          stroke="#ef4444"
+          strokeWidth="3"
+        />
       )}
       {/* Right leg */}
       {wrong >= 6 && (
-        <line x1="75" y1="100" x2="98" y2="128" stroke="#ef4444" strokeWidth="3" />
+        <line
+          x1="75"
+          y1="100"
+          x2="98"
+          y2="128"
+          stroke="#ef4444"
+          strokeWidth="3"
+        />
       )}
     </svg>
   );
@@ -100,10 +149,7 @@ export default function Page() {
   );
 
   const won = useMemo(
-    () =>
-      word
-        .split('')
-        .every((ch) => ch === ' ' || guessed.has(ch)),
+    () => word.split('').every((ch) => ch === ' ' || guessed.has(ch)),
     [word, guessed],
   );
 
@@ -118,9 +164,7 @@ export default function Page() {
       setGuessed(next);
 
       const newWrong = [...next].filter((l) => !word.includes(l)).length;
-      const newWon = word
-        .split('')
-        .every((ch) => ch === ' ' || next.has(ch));
+      const newWon = word.split('').every((ch) => ch === ' ' || next.has(ch));
       const newLost = newWrong >= MAX_WRONG;
 
       if (newWon || newLost) {
@@ -164,7 +208,10 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-3xl p-4 space-y-6">
       <h1 className="text-2xl font-semibold">Emoji Hangman</h1>
-      <p className="text-sm text-gray-500">Guess the emoji name letter by letter. You have {MAX_WRONG} wrong guesses.</p>
+      <p className="text-sm text-gray-500">
+        Guess the emoji name letter by letter. You have {MAX_WRONG} wrong
+        guesses.
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Left: hangman + emoji */}
@@ -176,11 +223,17 @@ export default function Page() {
           </div>
 
           <div className="text-sm text-gray-500">
-            Wrong: <span className="font-semibold text-red-500">{wrongGuesses}</span> / {MAX_WRONG}
+            Wrong:{' '}
+            <span className="font-semibold text-red-500">{wrongGuesses}</span> /{' '}
+            {MAX_WRONG}
           </div>
 
           {gameOver && (
-            <div className={`text-center font-semibold ${won ? 'text-green-600' : 'text-red-600'}`}>
+            <div
+              className={`text-center font-semibold ${
+                won ? 'text-green-600' : 'text-red-600'
+              }`}
+            >
               {won ? '🎉 You got it!' : `💀 The word was: "${current.name}"`}
             </div>
           )}
@@ -225,7 +278,9 @@ export default function Page() {
 
           <div className="text-xs text-gray-400 text-center">
             {word.split(' ').length > 1
-              ? `${word.split(' ').length} words · ${word.replace(/ /g, '').length} letters`
+              ? `${word.split(' ').length} words · ${
+                  word.replace(/ /g, '').length
+                } letters`
               : `${word.length} letters`}
           </div>
 
@@ -241,7 +296,11 @@ export default function Page() {
                   onClick={() => handleGuess(l)}
                   disabled={isGuessed || gameOver}
                   className={`w-9 h-9 rounded-md text-sm font-medium transition
-                    ${isCorrect ? 'bg-green-500 text-white border-green-500' : ''}
+                    ${
+                      isCorrect
+                        ? 'bg-green-500 text-white border-green-500'
+                        : ''
+                    }
                     ${isWrong ? 'bg-red-200 text-red-400 border-red-200' : ''}
                     ${!isGuessed ? 'border hover:bg-gray-100' : ''}
                     disabled:cursor-default`}
@@ -254,8 +313,12 @@ export default function Page() {
 
           {/* Stats */}
           <div className="flex gap-4 justify-center text-sm mt-2">
-            <span className="text-green-600 font-medium">✅ {winsCount} won</span>
-            <span className="text-red-500 font-medium">💀 {lossCount} lost</span>
+            <span className="text-green-600 font-medium">
+              ✅ {winsCount} won
+            </span>
+            <span className="text-red-500 font-medium">
+              💀 {lossCount} lost
+            </span>
           </div>
         </div>
       </div>
@@ -288,7 +351,11 @@ export default function Page() {
                   <tr key={i} className="border-t">
                     <td className="py-2 pr-4 text-xl">{s.emoji}</td>
                     <td className="py-2 pr-4">{s.word}</td>
-                    <td className={`py-2 pr-4 font-medium ${s.result === 'win' ? 'text-green-600' : 'text-red-500'}`}>
+                    <td
+                      className={`py-2 pr-4 font-medium ${
+                        s.result === 'win' ? 'text-green-600' : 'text-red-500'
+                      }`}
+                    >
                       {s.result === 'win' ? '✅ Win' : '💀 Loss'}
                     </td>
                     <td className="py-2 pr-4">{s.wrongGuesses}</td>
@@ -301,7 +368,9 @@ export default function Page() {
         </div>
       )}
 
-      <p className="text-xs text-gray-400">Tip: you can also use your keyboard to guess letters.</p>
+      <p className="text-xs text-gray-400">
+        Tip: you can also use your keyboard to guess letters.
+      </p>
     </div>
   );
 }

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(brew list *)",
+      "Read(//usr/local/bin/**)",
+      "Bash(git -C /Users/siavash/Projects/Emojar/src/.claude/worktrees/musing-northcutt-a67b60 config --list)",
+      "Bash(env)",
+      "Bash(brew install *)",
+      "Bash(gh --version)",
+      "Bash(git checkout *)"
+    ]
+  }
+}

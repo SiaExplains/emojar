@@ -6,7 +6,18 @@ const COLS = 20;
 const ROWS = 20;
 const BASE_SPEED = 150; // ms per tick
 
-const FOOD_EMOJIS = ['🍎', '🍊', '🍋', '🍇', '🍓', '🍒', '🍑', '🥝', '🍌', '🍉'];
+const FOOD_EMOJIS = [
+  '🍎',
+  '🍊',
+  '🍋',
+  '🍇',
+  '🍓',
+  '🍒',
+  '🍑',
+  '🥝',
+  '🍌',
+  '🍉',
+];
 
 type Point = { x: number; y: number };
 type Dir = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
@@ -62,12 +73,24 @@ export default function Page() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Sync refs with state
-  useEffect(() => { dirRef.current = dir; }, [dir]);
-  useEffect(() => { snakeRef.current = snake; }, [snake]);
-  useEffect(() => { foodRef.current = food; }, [food]);
-  useEffect(() => { foodEmojiRef.current = foodEmoji; }, [foodEmoji]);
-  useEffect(() => { scoreRef.current = score; }, [score]);
-  useEffect(() => { gameStateRef.current = gameState; }, [gameState]);
+  useEffect(() => {
+    dirRef.current = dir;
+  }, [dir]);
+  useEffect(() => {
+    snakeRef.current = snake;
+  }, [snake]);
+  useEffect(() => {
+    foodRef.current = food;
+  }, [food]);
+  useEffect(() => {
+    foodEmojiRef.current = foodEmoji;
+  }, [foodEmoji]);
+  useEffect(() => {
+    scoreRef.current = score;
+  }, [score]);
+  useEffect(() => {
+    gameStateRef.current = gameState;
+  }, [gameState]);
 
   const tick = useCallback(() => {
     const s = snakeRef.current;
@@ -161,20 +184,32 @@ export default function Page() {
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       const map: Record<string, Dir> = {
-        ArrowUp: 'UP', w: 'UP', W: 'UP',
-        ArrowDown: 'DOWN', s: 'DOWN', S: 'DOWN',
-        ArrowLeft: 'LEFT', a: 'LEFT', A: 'LEFT',
-        ArrowRight: 'RIGHT', d: 'RIGHT', D: 'RIGHT',
+        ArrowUp: 'UP',
+        w: 'UP',
+        W: 'UP',
+        ArrowDown: 'DOWN',
+        s: 'DOWN',
+        S: 'DOWN',
+        ArrowLeft: 'LEFT',
+        a: 'LEFT',
+        A: 'LEFT',
+        ArrowRight: 'RIGHT',
+        d: 'RIGHT',
+        D: 'RIGHT',
       };
       const newDir = map[e.key];
       if (newDir) {
         e.preventDefault();
-        if (gameStateRef.current === 'idle' || gameStateRef.current === 'over') return;
+        if (gameStateRef.current === 'idle' || gameStateRef.current === 'over')
+          return;
         changeDir(newDir);
       }
       if (e.key === ' ') {
         e.preventDefault();
-        if (gameStateRef.current === 'running' || gameStateRef.current === 'paused') {
+        if (
+          gameStateRef.current === 'running' ||
+          gameStateRef.current === 'paused'
+        ) {
           togglePause();
         }
       }
@@ -204,7 +239,12 @@ export default function Page() {
   }
 
   // Cleanup on unmount
-  useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
+  useEffect(
+    () => () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    },
+    [],
+  );
 
   const snakeSet = new Set(snake.map((p) => `${p.x},${p.y}`));
   const headKey = `${snake[0].x},${snake[0].y}`;
@@ -214,8 +254,12 @@ export default function Page() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">🐍 Emoji Snake</h1>
         <div className="flex items-center gap-4 text-sm">
-          <span>Score: <strong>{score}</strong></span>
-          <span>Length: <strong>{snake.length}</strong></span>
+          <span>
+            Score: <strong>{score}</strong>
+          </span>
+          <span>
+            Length: <strong>{snake.length}</strong>
+          </span>
         </div>
       </div>
 
@@ -259,7 +303,9 @@ export default function Page() {
         </div>
 
         {/* Overlay for idle / paused / game over */}
-        {(gameState === 'idle' || gameState === 'paused' || gameState === 'over') && (
+        {(gameState === 'idle' ||
+          gameState === 'paused' ||
+          gameState === 'over') && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 rounded-xl gap-3">
             {gameState === 'over' && (
               <div className="text-white text-3xl font-bold">Game Over</div>
@@ -274,7 +320,11 @@ export default function Page() {
               onClick={gameState === 'paused' ? togglePause : startGame}
               className="rounded-xl bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 text-lg transition"
             >
-              {gameState === 'idle' ? 'Start Game' : gameState === 'over' ? 'Play Again' : 'Resume'}
+              {gameState === 'idle'
+                ? 'Start Game'
+                : gameState === 'over'
+                  ? 'Play Again'
+                  : 'Resume'}
             </button>
           </div>
         )}

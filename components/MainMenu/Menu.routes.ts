@@ -63,7 +63,7 @@ export const MENU_ROUTES = [
     href: '/games',
     label: 'Games',
     target: '_self',
-    chilren: [
+    children: [
       { href: '/games/xo', label: 'XO', target: '_self' },
       { href: '/games/hangman', label: 'Hangman', target: '_self' },
       { href: '/games/snake', label: 'Snake', target: '_self' },

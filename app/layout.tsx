@@ -2,7 +2,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import Link from 'next/link';
-import ConsentBanner from '@/components/ConsentBanner';
 import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component';
 import BackToTopButton from '@/components/BackToTopButton';
 import MainMenu from '@/components/MainMenu/MainMenu.compontent';
@@ -32,6 +31,9 @@ export const metadata: Metadata = {
   manifest: 'manifest.webmanifest',
   robots: { index: true, follow: true },
   metadataBase: new URL('https://emojar.com'),
+  other: {
+    'google-adsense-account': process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? '',
+  },
 };
 
 export default function RootLayout({
@@ -39,34 +41,32 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const clientId =
-    process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-0000000000000000';
+  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? '';
 
   return (
     <html lang="en">
       <body className="min-h-screen">
-        {/* Consent gating: Only loads AdSense after consent (set by ConsentBanner) */}
-        <Script id="adsense-loader" strategy="afterInteractive">
-          {`
-            try {
-              const consent = typeof window !== 'undefined' ? localStorage.getItem('emojar-consent') : null;
-              if (consent === 'granted') {
-                const s = document.createElement('script');
-                s.setAttribute('data-ad-client', '${clientId}');
-                s.async = true;
-                s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-                document.head.appendChild(s);
-              }
-            } catch (e) {}
-          `}
-        </Script>
+        {/*
+          AdSense + Google Funding Choices:
+          Always load adsbygoogle.js unconditionally. Funding Choices (configured
+          in the AdSense / Google Ad Manager UI) intercepts this script for
+          EEA/UK/Swiss visitors and handles TCF v2.2 consent automatically.
+          No localStorage gating needed — Google controls consent enforcement.
+        */}
+        {clientId && (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        )}
 
         <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
             <div className="logo-container flex-shrink-0">
               <Link href="/" className="font-semibold">
                 <HeaderLogo />
-                {/* <Image src="/logo-64.png" alt="Emojar Logo" width={138} height={64} />*/}
               </Link>
             </div>
             <div className="flex-1" />
@@ -78,17 +78,19 @@ export default function RootLayout({
 
         <main className="max-w-5xl mx-auto px-4 py-6">{children}</main>
         <BackToTopButton />
+
         <footer className="border-t py-8 text-sm">
-          <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
+          <div className="max-w-5xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
             <p>© {new Date().getFullYear()} Emojar</p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
+              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
               <Link href="/privacy">Privacy</Link>
               <Link href="/terms">Terms</Link>
+              <Link href="/impressum">Impressum</Link>
             </div>
           </div>
         </footer>
-
-        <ConsentBanner />
       </body>
     </html>
   );

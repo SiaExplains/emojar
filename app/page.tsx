@@ -71,15 +71,6 @@ export default function Home() {
           Copied {copied}!
         </div>
       )}
-
-      {/* Example ad slot placeholder */}
-      <div className="mt-10">
-        <div className="text-xs text-gray-500 mb-2">Sponsored</div>
-        {/* Replace with real AdSense component once approved */}
-        <div className="border rounded-lg p-6 text-center text-gray-500">
-          Ad Slot Placeholder
-        </div>
-      </div>
     </section>
   );
 }

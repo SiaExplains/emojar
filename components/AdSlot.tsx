@@ -1,3 +1,4 @@
+// NOTE: do NOT import this component until AdSense approval is granted and real slot IDs are configured.
 'use client';
 import { useEffect } from 'react';
 

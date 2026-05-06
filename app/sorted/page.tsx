@@ -12,7 +12,7 @@ const SortedPage = () => {
         <ul>
           <li>
             <Link
-              href="/sorted/emoji-alphabet-shaped"
+              href="/table/emoji-alphabet-shaped"
               className="py-2 px-4 underline text-[#3505b9]"
             >
               Alphabet Shaped Emojis

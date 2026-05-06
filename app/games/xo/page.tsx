@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
+import Breadcrumb from '@/components/Breadcrumb';
 import './page.css';
 type EmojiItem = {
   char: string;
@@ -408,6 +409,13 @@ export default function Page() {
 
   return (
     <div className="mx-auto max-w-5xl p-4 space-y-6">
+      <Breadcrumb
+        crumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Games', href: '/games' },
+          { label: 'XO' },
+        ]}
+      />
       <h1 className="text-2xl font-semibold">Emoji XO (Tic-Tac-Toe)</h1>
 
       {/* Controls */}

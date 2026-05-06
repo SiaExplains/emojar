@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useMemo, useState } from 'react';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const COLS = 10;
 const ROWS = 12;
@@ -177,6 +178,13 @@ export default function Page() {
 
   return (
     <div className="mx-auto max-w-xl p-4 space-y-4">
+      <Breadcrumb
+        crumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Games', href: '/games' },
+          { label: 'Bubble Shooter' },
+        ]}
+      />
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">🫧 Bubble Shooter</h1>
         <div className="flex items-center gap-4 text-sm font-medium">

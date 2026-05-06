@@ -6,6 +6,7 @@ import data from '@/data/emojis.json';
 import EmojiCard from '@/components/EmojiCard';
 import SearchBar from '@/components/SearchBar';
 import CategoryPills from '@/components/CategoryPills';
+import Breadcrumb from '@/components/Breadcrumb';
 
 export type Emoji = {
   slug: string;
@@ -47,6 +48,13 @@ export default function AllEmojisWithDetail() {
 
   return (
     <section className="space-y-6">
+      <Breadcrumb
+        crumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Sorted Emojis', href: '/sorted' },
+          { label: 'With Detail' },
+        ]}
+      />
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-semibold">Copy & Paste Emojis</h1>
         <p className="text-gray-600">All the emojis in one jar</p>

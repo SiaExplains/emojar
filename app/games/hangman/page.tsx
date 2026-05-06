@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
+import Breadcrumb from '@/components/Breadcrumb';
 
 type EmojiItem = {
   char: string;
@@ -207,6 +208,13 @@ export default function Page() {
 
   return (
     <div className="mx-auto max-w-3xl p-4 space-y-6">
+      <Breadcrumb
+        crumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Games', href: '/games' },
+          { label: 'Hangman' },
+        ]}
+      />
       <h1 className="text-2xl font-semibold">Emoji Hangman</h1>
       <p className="text-sm text-gray-500">
         Guess the emoji name letter by letter. You have {MAX_WRONG} wrong

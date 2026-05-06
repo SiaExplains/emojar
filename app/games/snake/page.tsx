@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const COLS = 20;
 const ROWS = 20;
@@ -251,6 +252,13 @@ export default function Page() {
 
   return (
     <div className="mx-auto max-w-3xl p-4 space-y-4">
+      <Breadcrumb
+        crumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Games', href: '/games' },
+          { label: 'Snake' },
+        ]}
+      />
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">🐍 Emoji Snake</h1>
         <div className="flex items-center gap-4 text-sm">

@@ -33,6 +33,7 @@ module.exports = [
     '**/scripts/**',
     'node_modules/**',
     'dist/**',
+    '.claude/**',
     'tailwind.config.ts',
     'postcss.config.mjs',
     'scripts/generate.js',

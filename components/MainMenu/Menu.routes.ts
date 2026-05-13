@@ -76,6 +76,12 @@ export const MENU_ROUTES = [
     ],
   },
   {
+    href: '/blog',
+    label: 'Blog',
+    target: '_self',
+    children: null,
+  },
+  {
     href: 'https://github.com/SiaExplains/emojar',
     label: 'GitHub',
     target: '_blank',

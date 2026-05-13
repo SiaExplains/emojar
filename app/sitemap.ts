@@ -23,6 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/impressum',
     '/privacy',
     '/terms',
+    '/blog',
+    '/blog/emojar-games-launched',
   ].map((path) => ({ url: `${base}${path}`, lastModified: now }));
 
   const emojiRoutes: MetadataRoute.Sitemap = data.map((e) => ({

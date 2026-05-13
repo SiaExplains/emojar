@@ -164,15 +164,17 @@ export default function Home() {
                     {card.detail}
                   </p>
                   {'games' in card && card.games && (
-                    <div className="flex flex-wrap gap-2 mt-1">
+                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mt-2">
                       {card.games.map((game) => (
                         <Link
                           key={game.href}
                           href={game.href}
-                          className="flex items-center gap-1 px-3 py-1 rounded-full border text-sm hover:bg-gray-100 transition-colors"
+                          className="flex flex-col items-center gap-1 rounded-xl bg-gray-50 border hover:bg-gray-100 hover:shadow-sm transition-all p-3"
                         >
-                          <span>{game.icon}</span>
-                          <span>{game.title}</span>
+                          <span className="text-3xl">{game.icon}</span>
+                          <span className="text-xs font-medium text-center leading-tight">
+                            {game.title}
+                          </span>
                         </Link>
                       ))}
                     </div>

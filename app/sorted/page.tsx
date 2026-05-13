@@ -34,6 +34,14 @@ const SortedPage = () => {
               Emoji with Detail
             </Link>
           </li>
+          <li>
+            <Link
+              href="/emoji-collections/events"
+              className="py-2 px-4 underline text-[#3505b9]"
+            >
+              Emoji Collections: Events &amp; Holidays
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

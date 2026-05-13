@@ -1,0 +1,69 @@
+export const metadata = {
+  title: 'How to Play Emoji Minesweeper on Emojar | Emojar Blog',
+  description:
+    'A complete guide to Emoji Minesweeper on Emojar — rules, number logic, flagging mines, and strategy tips to clear the board safely.',
+  alternates: {
+    canonical: 'https://emojar.com/blog/emoji-minesweeper-game-guide',
+  },
+  openGraph: {
+    title: 'How to Play Emoji Minesweeper on Emojar',
+    description:
+      'Rules, number logic, and strategy tips for clearing the emoji mine field on Emojar.',
+    url: 'https://emojar.com/blog/emoji-minesweeper-game-guide',
+    siteName: 'Emojar',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3">
+    Game Guide
+  </p>
+  <h1>How to Play Emoji Minesweeper — Logic Puzzles with Emoji Tiles 💣🟦</h1>
+  <time dateTime="2026-05-13" className="text-sm text-gray-400">
+    13 May 2026
+  </time>
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+Minesweeper has been testing logical thinking since the early days of personal computing. The Emojar version keeps the same satisfying puzzle mechanics but wraps them in emoji tiles that make the board feel friendlier — right up until you click the wrong one.
+
+## The Objective
+
+Reveal every safe tile on the board without triggering a mine. If you uncover all non-mine tiles, you win. If you click a mine, the game ends immediately.
+
+## How It Works
+
+Each tile on the board is either:
+
+- A **mine** — clicking it ends the game, or
+- A **safe tile** — revealing it either shows a number or clears a blank area.
+
+**Numbers** tell you how many mines are in the eight cells directly adjacent to that tile. A tile showing **3** means exactly three of its neighbours are mines.
+
+**Blank tiles** (no number) mean none of the neighbours contain a mine. Clicking one automatically reveals all connected blank and numbered tiles — giving you a big free area to work from.
+
+## Flagging Mines
+
+Right-click (or long-press on mobile) a tile to place a 🚩 flag on it. Flags mark cells you believe are mines and prevent accidental clicks. You can remove a flag the same way.
+
+The mine counter at the top shows how many unflagged mines remain.
+
+## Strategy Tips
+
+- **Start in a corner or edge.** Your first click is always safe, and opening near a corner often reveals a useful blank cluster.
+- **Use the numbers.** If a tile shows **1** and you have already flagged its only unknown neighbour, all other neighbours are safe — reveal them immediately.
+- **Count to deduce.** If a numbered tile already has as many flags as its number, every remaining covered neighbour is safe to click.
+- **Look for 1-2-1 patterns.** This classic pattern lets you identify which of two cells must be a mine and which is safe.
+- **When in doubt, pick the edge.** Corner and edge tiles have fewer neighbours, which sometimes makes them statistically safer guesses.
+- **Never rush.** Minesweeper rewards patience. Slow down and check every constraint before clicking.
+
+## Why Emoji?
+
+The tiles, mine markers, and revealed cells all use emoji characters, giving the classic grey-block grid a colourful upgrade without changing any of the logic that makes Minesweeper so compelling.
+
+## Ready to Sweep?
+
+Open the [Minesweeper Game](/games/minesweeper) and start clearing tiles. Can you find every safe cell? 💣

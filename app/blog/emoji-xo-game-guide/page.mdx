@@ -1,0 +1,80 @@
+export const metadata = {
+  title: 'How to Play Emoji XO (Tic-Tac-Toe) on Emojar | Emojar Blog',
+  description:
+    'A complete guide to the Emoji XO game on Emojar — how to play, tips for winning, board size options, custom emoji pieces, and the computer opponent strategy.',
+  alternates: { canonical: 'https://emojar.com/blog/emoji-xo-game-guide' },
+  openGraph: {
+    title: 'How to Play Emoji XO (Tic-Tac-Toe) on Emojar',
+    description:
+      "Everything you need to know about Emojar's emoji-powered Tic-Tac-Toe: rules, strategy tips, board sizes, and custom pieces.",
+    url: 'https://emojar.com/blog/emoji-xo-game-guide',
+    siteName: 'Emojar',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3">
+    Game Guide
+  </p>
+  <h1>How to Play Emoji XO — Tic-Tac-Toe with a Twist ❌⭕</h1>
+  <time dateTime="2026-05-13" className="text-sm text-gray-400">
+    13 May 2026
+  </time>
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+Tic-Tac-Toe is one of the oldest strategy games in the world, and the Emojar version gives it a fresh coat of emoji paint. Instead of plain Xs and Os you play with any emoji you like — and the board can grow up to 5×5 for a real challenge.
+
+## How to Play
+
+The rules are the classic ones:
+
+1. Two players take turns placing their piece on an empty cell.
+2. The first player to align a full row, column, or diagonal wins.
+3. If all cells are filled with no winner, the game is a draw.
+
+On Emojar you can play **against a friend** in the same browser, or challenge the **computer opponent** and try to beat its AI.
+
+## Choosing Your Emoji Pieces
+
+Before the game starts, each player can pick any emoji from the full Emojar library to use as their piece. Want to battle 🦊 vs 🐼? Go for it. The emoji picker includes a search bar, so finding your favourite takes only a second.
+
+## Board Sizes
+
+The XO game supports three board sizes:
+
+| Size | Win condition |
+| ---- | ------------- |
+| 3×3  | 3 in a row    |
+| 4×4  | 4 in a row    |
+| 5×5  | 5 in a row    |
+
+Larger boards mean more room to manoeuvre — and more ways for the game to end in a draw if both players play defensively.
+
+## The Computer Opponent
+
+The AI follows a priority strategy:
+
+1. **Win** — if there is a winning move available, take it.
+2. **Block** — if the opponent is about to win, block them.
+3. **Centre** — claim the centre cell when it is free.
+4. **Corner** — occupy a corner to maximise winning lines.
+5. **Random** — fill any remaining open cell.
+
+On a 3×3 board a perfect human player can always force a draw. The challenge is to see how quickly you can do it.
+
+## Tips for Winning
+
+- **Take the centre first** on a 3×3 board — it gives you the most winning lines.
+- **Force a fork** — create two simultaneous threats so your opponent can only block one.
+- On larger boards, focus on **building consecutive runs** rather than isolated placements.
+- Pay close attention to diagonals; they are easy to overlook until it is too late.
+
+## Scoreboard
+
+Emojar tracks your **fastest wins** per board size and per mode (vs computer / vs friend). Your scores are saved locally in the browser, so you can race to beat your own record.
+
+Ready to play? Head to the [XO Game](/games/xo) and pick your emoji. 🎮

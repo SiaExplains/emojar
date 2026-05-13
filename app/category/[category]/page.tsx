@@ -1,5 +1,6 @@
 import data from '@/data/emojis.json';
 import SmallEmojiCard from '@/components/SmallEmojiCard';
+import Breadcrumb from '@/components/Breadcrumb';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -48,6 +49,12 @@ export default function CategoryPage({ params }: Props) {
 
   return (
     <section className="space-y-6">
+      <Breadcrumb
+        crumbs={[
+          { label: 'Categories', href: '/categories' },
+          { label: decoded },
+        ]}
+      />
       <h1 className="text-2xl font-semibold">{decoded}</h1>
       <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
         {items.map((e) => (

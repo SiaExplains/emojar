@@ -1,7 +1,7 @@
 export const MENU_ROUTES = [
   {
     href: '/sorted',
-    label: 'Sorted Emojis',
+    label: 'Collection',
     target: '_self',
     children: [
       {

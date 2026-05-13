@@ -17,6 +17,13 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'odd-one-out-game',
+    title: "Odd One Out — Spot the Emoji That Doesn't Belong",
+    date: '2026-05-14',
+    description:
+      "Five emojis, four share a theme — one doesn't fit. A new emoji logic game with 50+ curated rounds across food, animals, sports, nature, and more.",
+  },
+  {
     slug: 'guess-the-animal-game',
     title: 'Guess the Animal — Name the Emoji, Learn a Fact',
     date: '2026-05-13',

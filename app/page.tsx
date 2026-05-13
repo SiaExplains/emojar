@@ -17,6 +17,14 @@ export type Emoji = {
   version?: string;
 };
 
+const GAMES = [
+  { icon: '🪤', title: 'Hangman', href: '/games/hangman' },
+  { icon: '🐍', title: 'Snake', href: '/games/snake' },
+  { icon: '💣', title: 'Minesweeper', href: '/games/minesweeper' },
+  { icon: '⭕', title: 'Tic-Tac-Toe', href: '/games/xo' },
+  { icon: '🫧', title: 'Bubble Shooter', href: '/games/bubble-shooter' },
+];
+
 const FEATURE_CARDS = [
   {
     icon: '🎮',
@@ -25,6 +33,7 @@ const FEATURE_CARDS = [
       'Put your emoji knowledge to the test with a growing collection of mini-games. Guess the hidden emoji in Hangman, dodge walls in Snake, or carefully flag mines in Minesweeper — every game is emoji-themed and playable right in your browser.',
     href: '/games',
     cta: 'Play games →',
+    games: GAMES,
   },
   {
     icon: '📂',
@@ -154,6 +163,20 @@ export default function Home() {
                   <p className="text-gray-600 text-sm leading-relaxed">
                     {card.detail}
                   </p>
+                  {'games' in card && card.games && (
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      {card.games.map((game) => (
+                        <Link
+                          key={game.href}
+                          href={game.href}
+                          className="flex items-center gap-1 px-3 py-1 rounded-full border text-sm hover:bg-gray-100 transition-colors"
+                        >
+                          <span>{game.icon}</span>
+                          <span>{game.title}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                   <Link
                     href={card.href}
                     className="text-sm font-medium text-blue-600 hover:underline self-start"

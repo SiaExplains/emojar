@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 
 type EmojiEvent = {
@@ -236,9 +236,14 @@ function formatEventDate(month: number, day: number): string {
 export default function EmojiEventsPage() {
   const [copied, setCopied] = useState<string | null>(null);
   const [copiedAll, setCopiedAll] = useState<string | null>(null);
+  const [highlightId, setHighlightId] = useState<string | null>(null);
+  const [isCurrentEvent, setIsCurrentEvent] = useState(false);
 
-  const { currentEvent, nextEvent } = classifyEvents();
-  const highlightId = currentEvent?.id ?? nextEvent?.id ?? null;
+  useEffect(() => {
+    const { currentEvent, nextEvent } = classifyEvents();
+    setHighlightId(currentEvent?.id ?? nextEvent?.id ?? null);
+    setIsCurrentEvent(!!currentEvent);
+  }, []);
 
   const copyEmoji = useCallback((char: string) => {
     navigator.clipboard.writeText(char).then(() => {
@@ -256,7 +261,7 @@ export default function EmojiEventsPage() {
   }, []);
 
   const highlightedEvent = EVENTS.find((e) => e.id === highlightId);
-  const highlightLabel = currentEvent
+  const highlightLabel = isCurrentEvent
     ? '🎉 Happening Now'
     : '📅 Coming Up Next';
 

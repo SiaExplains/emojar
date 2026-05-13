@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/games/snake',
     '/games/bubble-shooter',
     '/games/minesweeper',
+    '/games/guess-the-flag',
     '/table/emoji-alphabet-shaped',
     '/sorted',
     '/sorted/alphabet',
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms',
     '/blog',
     '/blog/emojar-games-launched',
+    '/blog/guess-the-flag-game',
   ].map((path) => ({ url: `${base}${path}`, lastModified: now }));
 
   const emojiRoutes: MetadataRoute.Sitemap = data.map((e) => ({

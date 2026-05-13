@@ -49,7 +49,7 @@ const SortedPage = () => {
     <div className="py-10 space-y-10">
       <div>
         <h1 className="text-3xl font-semibold tracking-tight mb-2">
-          Collection
+          Collections
         </h1>
         <p className="text-gray-500 max-w-2xl">
           Four ways to explore the full emoji library — alphabetical order,

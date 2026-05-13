@@ -17,6 +17,29 @@ export type Emoji = {
   version?: string;
 };
 
+const CATEGORIES = [
+  {
+    icon: '😀',
+    title: 'Smileys & Emotion',
+    href: '/category/Smileys%20%26%20Emotion',
+  },
+  { icon: '👥', title: 'People & Body', href: '/category/People%20%26%20Body' },
+  {
+    icon: '🐾',
+    title: 'Animals & Nature',
+    href: '/category/Animals%20%26%20Nature',
+  },
+  { icon: '🍕', title: 'Food & Drink', href: '/category/Food%20%26%20Drink' },
+  {
+    icon: '✈️',
+    title: 'Travel & Places',
+    href: '/category/Travel%20%26%20Places',
+  },
+  { icon: '⚽', title: 'Activities', href: '/category/Activities' },
+  { icon: '💡', title: 'Objects', href: '/category/Objects' },
+  { icon: '♾️', title: 'Symbols', href: '/category/Symbols' },
+];
+
 const GAMES = [
   { icon: '🪤', title: 'Hangman', href: '/games/hangman' },
   { icon: '🐍', title: 'Snake', href: '/games/snake' },
@@ -42,6 +65,7 @@ const FEATURE_CARDS = [
       'Every one of the 3,600+ emojis is sorted into groups — Smileys & Emotion, Animals & Nature, Food & Drink, Travel & Places, and more. Tap any category to jump straight to the emojis you need.',
     href: '/categories',
     cta: 'Explore categories →',
+    categories: CATEGORIES,
   },
   {
     icon: '🔤',
@@ -163,6 +187,22 @@ export default function Home() {
                   <p className="text-gray-600 text-sm leading-relaxed">
                     {card.detail}
                   </p>
+                  {'categories' in card && card.categories && (
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                      {card.categories.map((cat) => (
+                        <Link
+                          key={cat.href}
+                          href={cat.href}
+                          className="flex flex-col items-center gap-1 rounded-xl bg-gray-50 border hover:bg-gray-100 hover:shadow-sm transition-all p-3"
+                        >
+                          <span className="text-3xl">{cat.icon}</span>
+                          <span className="text-xs font-medium text-center leading-tight">
+                            {cat.title}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                   {'games' in card && card.games && (
                     <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mt-2">
                       {card.games.map((game) => (

@@ -87,31 +87,31 @@ const GamesPage = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <ul className="flex flex-col divide-y divide-gray-100 border border-gray-100 rounded-xl overflow-hidden bg-white">
         {games.map((game) => (
-          <Link
-            key={game.path}
-            href={game.path}
-            className="group flex flex-col h-full border border-gray-100 rounded-xl bg-white p-5 hover:shadow-md hover:bg-gray-50 transition-all no-underline"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-3xl">{game.emoji}</span>
-              <span className="text-xs font-medium text-gray-400 bg-gray-100 rounded-full px-2.5 py-1">
-                Free
+          <li key={game.path}>
+            <Link
+              href={game.path}
+              className="group flex items-center gap-4 px-5 py-4 hover:bg-gray-50 transition-colors no-underline"
+            >
+              <span className="text-3xl w-12 text-center shrink-0">
+                {game.emoji}
               </span>
-            </div>
-            <h2 className="text-base font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
-              {game.name}
-            </h2>
-            <p className="text-xs text-gray-500 leading-relaxed">
-              {game.description}
-            </p>
-            <span className="mt-auto pt-3 text-sm font-medium text-blue-600">
-              Play now →
-            </span>
-          </Link>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {game.name}
+                </p>
+                <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                  {game.description}
+                </p>
+              </div>
+              <span className="text-sm font-medium text-blue-600 shrink-0">
+                Play →
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };

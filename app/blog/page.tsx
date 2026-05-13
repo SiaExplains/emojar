@@ -17,11 +17,53 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'emojar-may-2026-updates',
+    title: "What's New on Emojar — May 2026 Updates",
+    date: '2026-05-13',
+    description:
+      'A roundup of recent improvements: emoji games, category breadcrumbs, a refreshed homepage, an improved About page, and more.',
+  },
+  {
     slug: 'emojar-games-launched',
     title: 'Emojar Games Is Live — Play Emoji Mini-Games Now!',
     date: '2026-05-13',
     description:
       'We just launched the Emojar Games page. Play five emoji-themed mini-games: XO, Snake, Minesweeper, Hangman, and Bubble Shooter — all free, right in your browser.',
+  },
+  {
+    slug: 'emoji-xo-game-guide',
+    title: 'How to Play Emoji XO (Tic-Tac-Toe) on Emojar',
+    date: '2026-05-13',
+    description:
+      'Rules, board size options, custom emoji pieces, AI opponent strategy, and tips for winning the Emoji XO game.',
+  },
+  {
+    slug: 'emoji-snake-game-guide',
+    title: 'How to Play Emoji Snake on Emojar',
+    date: '2026-05-13',
+    description:
+      'Controls, survival tips, and high-score strategy for the Emoji Snake game on Emojar.',
+  },
+  {
+    slug: 'emoji-minesweeper-game-guide',
+    title: 'How to Play Emoji Minesweeper on Emojar',
+    date: '2026-05-13',
+    description:
+      'Number logic, flagging strategy, and pattern-reading tips for clearing the emoji mine field on Emojar.',
+  },
+  {
+    slug: 'emoji-hangman-game-guide',
+    title: 'How to Play Emoji Hangman on Emojar',
+    date: '2026-05-13',
+    description:
+      'Rules, best-first-letter strategy, and tips for guessing emoji Unicode names in the Emojar Hangman game.',
+  },
+  {
+    slug: 'emoji-bubble-shooter-game-guide',
+    title: 'How to Play Emoji Bubble Shooter on Emojar',
+    date: '2026-05-13',
+    description:
+      'Aiming, wall bounces, chain reactions, and score-maximising tips for the Emoji Bubble Shooter game.',
   },
 ];
 

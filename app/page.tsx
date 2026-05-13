@@ -83,11 +83,11 @@ const FEATURE_CARDS = [
     href: '/blog',
     cta: 'Read articles →',
     latestPost: {
-      title: 'Emojar Games Is Live — Play Emoji Mini-Games Now!',
+      title: "What's New on Emojar — May 2026 Updates",
       date: '2026-05-13',
       description:
-        'We just launched the Emojar Games page. Play five emoji-themed mini-games: XO, Snake, Minesweeper, Hangman, and Bubble Shooter — all free, right in your browser.',
-      href: '/blog/emojar-games-launched',
+        'Games, category breadcrumbs, a refreshed homepage, and more — here is everything that landed on Emojar this month.',
+      href: '/blog/emojar-may-2026-updates',
     },
   },
 ];
@@ -121,23 +121,50 @@ export default function Home() {
     return Array.from(s).sort();
   }, []);
 
-  const topCategories = useMemo(() => {
-    const counts = new Map<string, number>();
-    (data as Emoji[]).forEach((e) => {
-      counts.set(e.category, (counts.get(e.category) ?? 0) + 1);
-    });
-    return Array.from(counts.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 8)
-      .map(([cat]) => cat);
-  }, []);
-
   const popularEmojis = useMemo(() => (data as Emoji[]).slice(0, 100), []);
 
   const isSearching = query.trim() !== '';
 
+  const gamesCard = FEATURE_CARDS[0];
+  const otherCards = FEATURE_CARDS.slice(1);
+
   return (
     <section className="space-y-10">
+      {/* Emoji Games — frameless strip above the fold */}
+      <div>
+        <div className="flex items-center gap-1.5 mb-2">
+          <span>{gamesCard.icon}</span>
+          <span className="font-semibold">{gamesCard.title}</span>
+          <span className="text-gray-400 text-sm">
+            — play free in your browser
+          </span>
+        </div>
+        {'games' in gamesCard && gamesCard.games && (
+          <div className="grid grid-cols-5 gap-2">
+            {gamesCard.games.map((game) => (
+              <Link
+                key={game.href}
+                href={game.href}
+                className="flex flex-col items-center gap-0.5 rounded-lg bg-gray-50 border hover:bg-gray-100 hover:shadow-sm transition-all py-2 px-1"
+              >
+                <span className="text-2xl">{game.icon}</span>
+                <span className="text-xs font-medium text-center leading-tight">
+                  {game.title}
+                </span>
+              </Link>
+            ))}
+          </div>
+        )}
+        <div className="text-right mt-1.5">
+          <Link
+            href={gamesCard.href}
+            className="text-xs font-medium text-blue-600 hover:underline"
+          >
+            {gamesCard.cta}
+          </Link>
+        </div>
+      </div>
+
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-semibold">Copy &amp; Paste Emojis</h1>
         <p className="text-gray-600">All the emojis in one jar 🫙</p>
@@ -173,7 +200,7 @@ export default function Home() {
             </div>
             <div className="text-right">
               <Link
-                href="/categories"
+                href="/sorted/detail"
                 className="text-sm text-blue-600 hover:underline"
               >
                 Browse All Emojis →
@@ -181,9 +208,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Feature Cards */}
+          {/* Remaining Feature Cards */}
           <div className="space-y-4">
-            {FEATURE_CARDS.map((card) => (
+            {otherCards.map((card) => (
               <div
                 key={card.href}
                 className="border rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4"
@@ -227,22 +254,6 @@ export default function Home() {
                       </p>
                     </Link>
                   )}
-                  {'games' in card && card.games && (
-                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mt-2">
-                      {card.games.map((game) => (
-                        <Link
-                          key={game.href}
-                          href={game.href}
-                          className="flex flex-col items-center gap-1 rounded-xl bg-gray-50 border hover:bg-gray-100 hover:shadow-sm transition-all p-3"
-                        >
-                          <span className="text-3xl">{game.icon}</span>
-                          <span className="text-xs font-medium text-center leading-tight">
-                            {game.title}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
                   <Link
                     href={card.href}
                     className="text-sm font-medium text-blue-600 hover:underline self-start"
@@ -252,22 +263,6 @@ export default function Home() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Category Quick Links */}
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">📂 Browse by Category</h2>
-            <div className="flex flex-wrap gap-2">
-              {topCategories.map((cat) => (
-                <Link
-                  key={cat}
-                  href={`/category/${encodeURIComponent(cat)}`}
-                  className="px-3 py-1 rounded-full border text-sm hover:bg-gray-100 transition-colors"
-                >
-                  {cat}
-                </Link>
-              ))}
-            </div>
           </div>
         </>
       )}

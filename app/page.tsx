@@ -82,6 +82,13 @@ const FEATURE_CARDS = [
       'Dig into emoji culture with articles about origin stories, trending combos, creative use-cases, and tips for getting the most out of every emoji. New posts added regularly.',
     href: '/blog',
     cta: 'Read articles →',
+    latestPost: {
+      title: 'Emojar Games Is Live — Play Emoji Mini-Games Now!',
+      date: '2026-05-13',
+      description:
+        'We just launched the Emojar Games page. Play five emoji-themed mini-games: XO, Snake, Minesweeper, Hangman, and Bubble Shooter — all free, right in your browser.',
+      href: '/blog/emojar-games-launched',
+    },
   },
 ];
 
@@ -188,20 +195,37 @@ export default function Home() {
                     {card.detail}
                   </p>
                   {'categories' in card && card.categories && (
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                    <div className="flex flex-wrap gap-2 mt-1">
                       {card.categories.map((cat) => (
                         <Link
                           key={cat.href}
                           href={cat.href}
-                          className="flex flex-col items-center gap-1 rounded-xl bg-gray-50 border hover:bg-gray-100 hover:shadow-sm transition-all p-3"
+                          className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-sm hover:bg-gray-100 transition-colors"
                         >
-                          <span className="text-3xl">{cat.icon}</span>
-                          <span className="text-xs font-medium text-center leading-tight">
-                            {cat.title}
-                          </span>
+                          <span>{cat.icon}</span>
+                          <span>{cat.title}</span>
                         </Link>
                       ))}
                     </div>
+                  )}
+                  {'latestPost' in card && card.latestPost && (
+                    <Link
+                      href={card.latestPost.href}
+                      className="mt-1 block rounded-lg border bg-gray-50 p-3 hover:bg-gray-100 transition-colors"
+                    >
+                      <time className="text-xs text-gray-400 uppercase tracking-wide">
+                        {new Date(card.latestPost.date).toLocaleDateString(
+                          'en-GB',
+                          { day: 'numeric', month: 'long', year: 'numeric' },
+                        )}
+                      </time>
+                      <p className="mt-0.5 text-sm font-semibold leading-snug">
+                        {card.latestPost.title}
+                      </p>
+                      <p className="mt-1 text-xs text-gray-500 leading-relaxed line-clamp-2">
+                        {card.latestPost.description}
+                      </p>
+                    </Link>
                   )}
                   {'games' in card && card.games && (
                     <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mt-2">

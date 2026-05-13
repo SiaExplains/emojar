@@ -82,7 +82,7 @@ const FEATURE_CARDS = [
     detail:
       'Dig into emoji culture with articles about origin stories, trending combos, creative use-cases, and tips for getting the most out of every emoji. New posts added regularly.',
     href: '/blog',
-    cta: 'Read articles →',
+    cta: 'Read more articles →',
     latestPosts: [
       {
         title: 'Emoji Collections for Every Holiday & Event',

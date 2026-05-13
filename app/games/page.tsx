@@ -1,3 +1,14 @@
+import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Emoji Games | Emojar',
+  description:
+    'Play 10 free emoji-themed mini-games in your browser — Hangman, Snake, Minesweeper, Guess the Flag, Odd One Out, and more. No download required.',
+  alternates: { canonical: 'https://emojar.com/games' },
+  robots: { index: true, follow: true },
+};
+
 const games = [
   {
     name: 'XO Game',
@@ -63,26 +74,45 @@ const games = [
 
 const GamesPage = () => {
   return (
-    <div className="min-h-screen py-10">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        Emoji Games Gallery
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+    <section className="space-y-10 py-6">
+      <div>
+        <h1 className="text-3xl font-semibold tracking-tight mb-2">
+          Emoji Games
+        </h1>
+        <p className="text-gray-500 max-w-2xl">
+          {games.length} free emoji-themed games, all playable right in your
+          browser — no download, no sign-up. From memory puzzles and logic
+          challenges to trivia and classic arcade games, there&apos;s something
+          for every kind of player.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {games.map((game) => (
-          <a
+          <Link
             key={game.path}
             href={game.path}
-            className="bg-white rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col items-center text-center group"
+            className="group flex flex-col h-full border border-gray-100 rounded-xl bg-white p-5 hover:shadow-md hover:bg-gray-50 transition-all no-underline"
           >
-            <div className="text-5xl mb-4 group-hover:scale-110 transition">
-              {game.emoji}
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-3xl">{game.emoji}</span>
+              <span className="text-xs font-medium text-gray-400 bg-gray-100 rounded-full px-2.5 py-1">
+                Free
+              </span>
             </div>
-            <div className="font-semibold text-lg mb-2">{game.name}</div>
-            <div className="text-gray-500 text-sm">{game.description}</div>
-          </a>
+            <h2 className="text-base font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+              {game.name}
+            </h2>
+            <p className="text-xs text-gray-500 leading-relaxed">
+              {game.description}
+            </p>
+            <span className="mt-auto pt-3 text-sm font-medium text-blue-600">
+              Play now →
+            </span>
+          </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

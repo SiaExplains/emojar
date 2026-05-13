@@ -1,9 +1,11 @@
+import createMDX from '@next/mdx';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // remove: output: 'standalone'
   reactStrictMode: true,
-  // If you still hit image optimizer issues, you can temporarily un-optimize:
-  // images: { unoptimized: true },
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
 };
 
-export default nextConfig;
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);

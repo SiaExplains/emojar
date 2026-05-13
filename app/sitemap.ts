@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/games/bubble-shooter',
     '/games/minesweeper',
     '/games/guess-the-flag',
+    '/games/emoji-puzzle',
     '/table/emoji-alphabet-shaped',
     '/sorted',
     '/sorted/alphabet',
@@ -26,15 +27,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms',
     '/blog',
     '/blog/emojar-games-launched',
-    '/blog/guess-the-flag-game',
-    '/games/emoji-puzzle',
+    '/blog/emojar-may-2026-updates',
+    '/blog/emoji-bubble-shooter-game-guide',
+    '/blog/emoji-hangman-game-guide',
+    '/blog/emoji-minesweeper-game-guide',
     '/blog/emoji-puzzle-game',
+    '/blog/emoji-snake-game-guide',
+    '/blog/emoji-xo-game-guide',
+    '/blog/guess-the-flag-game',
   ].map((path) => ({ url: `${base}${path}`, lastModified: now }));
+
+  const categories = Array.from(new Set(data.map((e) => e.category)));
+  const categoryRoutes: MetadataRoute.Sitemap = categories.map((cat) => ({
+    url: `${base}/category/${encodeURIComponent(cat)}`,
+    lastModified: now,
+  }));
 
   const emojiRoutes: MetadataRoute.Sitemap = data.map((e) => ({
     url: `${base}/emoji/${e.slug}`,
     lastModified: now,
   }));
 
-  return [...staticRoutes, ...emojiRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...emojiRoutes];
 }

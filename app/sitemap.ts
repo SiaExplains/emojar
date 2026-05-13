@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/games/minesweeper',
     '/games/guess-the-flag',
     '/games/emoji-puzzle',
+    '/games/older-or-newer',
     '/table/emoji-alphabet-shaped',
     '/sorted',
     '/sorted/alphabet',
@@ -35,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/emoji-snake-game-guide',
     '/blog/emoji-xo-game-guide',
     '/blog/guess-the-flag-game',
+    '/blog/older-or-newer-game',
   ].map((path) => ({ url: `${base}${path}`, lastModified: now }));
 
   const categories = Array.from(new Set(data.map((e) => e.category)));

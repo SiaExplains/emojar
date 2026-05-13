@@ -41,6 +41,12 @@ const games = [
     description: 'Flip emoji cards and find every matching pair.',
     emoji: '🃏🧠',
   },
+  {
+    name: 'Older or Newer',
+    path: '/games/older-or-newer',
+    description: 'Guess which emoji was added to Unicode first.',
+    emoji: '🕰️📅',
+  },
 ];
 
 const GamesPage = () => {

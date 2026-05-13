@@ -35,6 +35,12 @@ const games = [
     description: 'Identify country flag emojis from four choices.',
     emoji: '🌍🚩',
   },
+  {
+    name: 'Emoji Puzzle',
+    path: '/games/emoji-puzzle',
+    description: 'Flip emoji cards and find every matching pair.',
+    emoji: '🃏🧠',
+  },
 ];
 
 const GamesPage = () => {

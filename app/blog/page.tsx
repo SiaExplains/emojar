@@ -17,6 +17,13 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'emoji-puzzle-game',
+    title: 'Emoji Puzzle — Test Your Memory with Emoji Cards',
+    date: '2026-05-13',
+    description:
+      'Flip emoji cards and find every matching pair. Our new memory match game has three difficulty levels — Easy (4×4), Medium (6×6), and Hard (8×8).',
+  },
+  {
     slug: 'emojar-may-2026-updates',
     title: "What's New on Emojar — May 2026 Updates",
     date: '2026-05-13',

@@ -20,6 +20,11 @@ export const MENU_ROUTES = [
         label: 'Emoji with Detail',
         target: '_self',
       },
+      {
+        href: '/emoji-collections/events',
+        label: '🎉 Events & Holidays',
+        target: '_self',
+      },
     ],
   },
   {
@@ -76,18 +81,6 @@ export const MENU_ROUTES = [
       {
         href: '/games/guess-the-flag',
         label: 'Guess the Flag',
-        target: '_self',
-      },
-    ],
-  },
-  {
-    href: '/emoji-collections/events',
-    label: 'Collections',
-    target: '_self',
-    children: [
-      {
-        href: '/emoji-collections/events',
-        label: '🎉 Events & Holidays',
         target: '_self',
       },
     ],

@@ -27,7 +27,7 @@ const posts = [
 
 export default function BlogIndexPage() {
   return (
-    <main className="mx-auto w-full max-w-4xl px-5 py-10">
+    <main className="mx-auto w-full px-5 py-10">
       <h1 className="text-3xl font-semibold tracking-tight mb-2">Blog</h1>
       <p className="text-gray-500 mb-10">
         News, updates, and emoji tips from the Emojar team.
@@ -38,7 +38,7 @@ export default function BlogIndexPage() {
           <li key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="group block rounded-xl border border-gray-100 bg-white p-6 shadow-sm hover:bg-gray-50 transition-colors"
+              className="group block rounded-xl border border-gray-100 bg-white p-6 shadow-sm hover:bg-gray-50 transition-colors no-underline"
             >
               <time className="text-xs text-gray-400 tracking-wide uppercase">
                 {new Date(post.date).toLocaleDateString('en-GB', {
@@ -47,9 +47,7 @@ export default function BlogIndexPage() {
                   year: 'numeric',
                 })}
               </time>
-              <h2 className="mt-1 text-xl font-semibold">
-                {post.title}
-              </h2>
+              <h2 className="mt-1 text-xl font-semibold">{post.title}</h2>
               <p className="mt-2 text-gray-500 text-sm leading-6">
                 {post.description}
               </p>

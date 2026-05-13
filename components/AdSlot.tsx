@@ -22,7 +22,7 @@ export default function AdSlot() {
       className="adsbygoogle"
       style={{ display: 'block' }}
       data-ad-client={
-        process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-0000000000000000'
+        process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-4461604896559377'
       }
       data-ad-slot="00000000000"
       data-ad-format="auto"

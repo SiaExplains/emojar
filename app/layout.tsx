@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   metadataBase: new URL('https://emojar.com'),
   other: {
-    'google-adsense-account': process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? '',
+    'google-adsense-account': process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? 'ca-pub-4461604896559377',
   },
 };
 
@@ -41,7 +41,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? '';
+  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? 'ca-pub-4461604896559377';
 
   return (
     <html lang="en">

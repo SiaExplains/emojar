@@ -1,7 +1,7 @@
 export const MENU_ROUTES = [
   {
     href: '/sorted',
-    label: 'Collection',
+    label: 'Collections',
     target: '_self',
     children: [
       {

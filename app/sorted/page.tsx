@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Sorted Emojis | Emojar',
+  title: 'Collection | Emojar',
   description:
     'Browse all 3,700+ emojis sorted alphabetically, by detail, by shape, and by holiday or event. Every way to explore the emoji library in one place.',
   alternates: { canonical: 'https://emojar.com/sorted' },
@@ -49,7 +49,7 @@ const SortedPage = () => {
     <div className="py-10 space-y-10">
       <div>
         <h1 className="text-3xl font-semibold tracking-tight mb-2">
-          Sorted Emojis
+          Collection
         </h1>
         <p className="text-gray-500 max-w-2xl">
           Four ways to explore the full emoji library — alphabetical order,

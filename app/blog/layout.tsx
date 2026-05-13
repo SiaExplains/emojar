@@ -6,7 +6,7 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="py-12">
+    <main className="mx-auto w-full max-w-2xl px-5 py-12">
       <Link
         href="/blog"
         className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-10"
@@ -37,6 +37,6 @@ export default function BlogLayout({
           Play Emoji Games 🎮
         </Link>
       </div>
-    </div>
+    </main>
   );
 }

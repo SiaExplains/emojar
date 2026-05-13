@@ -20,9 +20,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/games/guess-the-animal',
     '/games/odd-one-out',
     '/table/emoji-alphabet-shaped',
-    '/sorted',
-    '/sorted/alphabet',
-    '/sorted/detail',
+    '/collections',
+    '/collections/alphabet',
+    '/collections/detail',
+    '/emoji-collections/events',
     '/about',
     '/contact',
     '/impressum',
@@ -40,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/guess-the-flag-game',
     '/blog/older-or-newer-game',
     '/blog/guess-the-animal-game',
+    '/blog/emoji-events-collection',
     '/blog/odd-one-out-game',
   ].map((path) => ({ url: `${base}${path}`, lastModified: now }));
 

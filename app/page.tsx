@@ -46,6 +46,7 @@ const GAMES = [
   { icon: '💣', title: 'Minesweeper', href: '/games/minesweeper' },
   { icon: '⭕', title: 'Tic-Tac-Toe', href: '/games/xo' },
   { icon: '🫧', title: 'Bubble Shooter', href: '/games/bubble-shooter' },
+  { icon: '🚩', title: 'Guess the Flag', href: '/games/guess-the-flag' },
 ];
 
 const FEATURE_CARDS = [
@@ -81,14 +82,30 @@ const FEATURE_CARDS = [
     detail:
       'Dig into emoji culture with articles about origin stories, trending combos, creative use-cases, and tips for getting the most out of every emoji. New posts added regularly.',
     href: '/blog',
-    cta: 'Read articles →',
-    latestPost: {
-      title: "What's New on Emojar — May 2026 Updates",
-      date: '2026-05-13',
-      description:
-        'Games, category breadcrumbs, a refreshed homepage, and more — here is everything that landed on Emojar this month.',
-      href: '/blog/emojar-may-2026-updates',
-    },
+    cta: 'Read more articles →',
+    latestPosts: [
+      {
+        title: 'Emoji Collections for Every Holiday & Event',
+        date: '2026-05-14',
+        description:
+          'Curated emoji packs for 15 major holidays — New Year, Halloween, Christmas, Diwali, and more. Copy a single emoji or the whole set.',
+        href: '/blog/emoji-events-collection',
+      },
+      {
+        title: "Odd One Out — Spot the Emoji That Doesn't Belong",
+        date: '2026-05-14',
+        description:
+          "Five emojis, four share a theme — one doesn't fit. A new emoji logic game with 50+ curated rounds.",
+        href: '/blog/odd-one-out-game',
+      },
+      {
+        title: "What's New on Emojar — May 2026 Updates",
+        date: '2026-05-13',
+        description:
+          'Games, category breadcrumbs, a refreshed homepage, and more — here is everything that landed on Emojar this month.',
+        href: '/blog/emojar-may-2026-updates',
+      },
+    ],
   },
 ];
 
@@ -140,7 +157,7 @@ export default function Home() {
           </span>
         </div>
         {'games' in gamesCard && gamesCard.games && (
-          <div className="grid grid-cols-5 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {gamesCard.games.map((game) => (
               <Link
                 key={game.href}
@@ -235,24 +252,30 @@ export default function Home() {
                       ))}
                     </div>
                   )}
-                  {'latestPost' in card && card.latestPost && (
-                    <Link
-                      href={card.latestPost.href}
-                      className="mt-1 block rounded-lg border bg-gray-50 p-3 hover:bg-gray-100 transition-colors"
-                    >
-                      <time className="text-xs text-gray-400 uppercase tracking-wide">
-                        {new Date(card.latestPost.date).toLocaleDateString(
-                          'en-GB',
-                          { day: 'numeric', month: 'long', year: 'numeric' },
-                        )}
-                      </time>
-                      <p className="mt-0.5 text-sm font-semibold leading-snug">
-                        {card.latestPost.title}
-                      </p>
-                      <p className="mt-1 text-xs text-gray-500 leading-relaxed line-clamp-2">
-                        {card.latestPost.description}
-                      </p>
-                    </Link>
+                  {'latestPosts' in card && card.latestPosts && (
+                    <div className="mt-1 flex flex-col gap-2">
+                      {card.latestPosts.map((post) => (
+                        <Link
+                          key={post.href}
+                          href={post.href}
+                          className="block rounded-lg border bg-gray-50 p-3 hover:bg-gray-100 transition-colors"
+                        >
+                          <time className="text-xs text-gray-400 uppercase tracking-wide">
+                            {new Date(post.date).toLocaleDateString('en-GB', {
+                              day: 'numeric',
+                              month: 'long',
+                              year: 'numeric',
+                            })}
+                          </time>
+                          <p className="mt-0.5 text-sm font-semibold leading-snug">
+                            {post.title}
+                          </p>
+                          <p className="mt-1 text-xs text-gray-500 leading-relaxed line-clamp-2">
+                            {post.description}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
                   )}
                   <Link
                     href={card.href}

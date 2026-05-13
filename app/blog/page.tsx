@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { POST_TAGS } from '@/data/post-tags';
 
 export const metadata: Metadata = {
   title: 'Blog | Emojar',
@@ -16,6 +17,13 @@ export const metadata: Metadata = {
 };
 
 const posts = [
+  {
+    slug: 'emoji-events-collection',
+    title: 'Emoji Collections for Every Holiday & Event',
+    date: '2026-05-14',
+    description:
+      "Curated emoji packs for 15 major holidays — New Year, Valentine's Day, Halloween, Christmas, Diwali, and more. Copy a single emoji or the whole set.",
+  },
   {
     slug: 'odd-one-out-game',
     title: "Odd One Out — Spot the Emoji That Doesn't Belong",
@@ -99,31 +107,48 @@ export default function BlogIndexPage() {
   return (
     <div className="py-10">
       <h1 className="text-3xl font-semibold tracking-tight mb-2">Blog</h1>
-      <p className="text-gray-500 mb-10">
+      <p className="text-gray-500 mb-8">
         News, updates, and emoji tips from the Emojar team.
       </p>
 
-      <ul className="space-y-8">
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <Link
-              href={`/blog/${post.slug}`}
-              className="group block rounded-xl border border-gray-100 bg-white p-6 shadow-sm hover:bg-gray-50 transition-colors no-underline hover:no-underline"
-            >
-              <time className="text-xs text-gray-400 tracking-wide uppercase">
-                {new Date(post.date).toLocaleDateString('en-GB', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                })}
-              </time>
-              <h2 className="mt-1 text-xl font-semibold">{post.title}</h2>
-              <p className="mt-2 text-gray-500 text-sm leading-6">
-                {post.description}
-              </p>
-            </Link>
-          </li>
-        ))}
+      <ul className="space-y-3">
+        {posts.map((post) => {
+          const tags = POST_TAGS[post.slug] ?? [];
+          return (
+            <li key={post.slug}>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group block rounded-xl border border-gray-100 bg-white px-5 py-4 shadow-sm hover:bg-gray-50 transition-colors no-underline hover:no-underline"
+              >
+                <time className="text-xs text-gray-400 tracking-wide uppercase">
+                  {new Date(post.date).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </time>
+                <h2 className="mt-1 text-lg font-semibold leading-snug">
+                  {post.title}
+                </h2>
+                <p className="mt-1 text-gray-500 text-sm leading-6">
+                  {post.description}
+                </p>
+                {tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs bg-gray-100 text-gray-500 rounded-full px-2.5 py-0.5 font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

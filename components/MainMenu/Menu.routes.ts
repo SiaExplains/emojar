@@ -1,7 +1,7 @@
 export const MENU_ROUTES = [
   {
     href: '/sorted',
-    label: 'Sorted Emojis',
+    label: 'Collections',
     target: '_self',
     children: [
       {
@@ -18,6 +18,11 @@ export const MENU_ROUTES = [
       {
         href: '/sorted/detail',
         label: 'Emoji with Detail',
+        target: '_self',
+      },
+      {
+        href: '/emoji-collections/events',
+        label: 'Events & Holidays',
         target: '_self',
       },
     ],
@@ -78,6 +83,18 @@ export const MENU_ROUTES = [
         label: 'Guess the Flag',
         target: '_self',
       },
+      { href: '/games/emoji-puzzle', label: 'Emoji Puzzle', target: '_self' },
+      {
+        href: '/games/older-or-newer',
+        label: 'Older or Newer',
+        target: '_self',
+      },
+      {
+        href: '/games/guess-the-animal',
+        label: 'Guess the Animal',
+        target: '_self',
+      },
+      { href: '/games/odd-one-out', label: 'Odd One Out', target: '_self' },
     ],
   },
   {
@@ -85,10 +102,5 @@ export const MENU_ROUTES = [
     label: 'Blog',
     target: '_self',
     children: null,
-  },
-  {
-    href: 'https://github.com/SiaExplains/emojar',
-    label: 'GitHub',
-    target: '_blank',
   },
 ];

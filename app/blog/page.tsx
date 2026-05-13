@@ -17,6 +17,13 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'guess-the-animal-game',
+    title: 'Guess the Animal — Name the Emoji, Learn a Fact',
+    date: '2026-05-13',
+    description:
+      'A new emoji quiz covering all 130 animal emojis — mammals, birds, reptiles, marine life, and more. Every round ends with a fun animal fact.',
+  },
+  {
     slug: 'older-or-newer-game',
     title: 'Older or Newer — How Well Do You Know Emoji History?',
     date: '2026-05-13',

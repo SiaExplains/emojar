@@ -47,6 +47,12 @@ const games = [
     description: 'Guess which emoji was added to Unicode first.',
     emoji: '🕰️📅',
   },
+  {
+    name: 'Guess the Animal',
+    path: '/games/guess-the-animal',
+    description: 'Name the animal emoji and learn a fun fact.',
+    emoji: '🐾🦁',
+  },
 ];
 
 const GamesPage = () => {

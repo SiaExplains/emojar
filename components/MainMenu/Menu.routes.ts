@@ -22,7 +22,7 @@ export const MENU_ROUTES = [
       },
       {
         href: '/emoji-collections/events',
-        label: '🎉 Events & Holidays',
+        label: 'Events & Holidays',
         target: '_self',
       },
     ],

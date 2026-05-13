@@ -29,6 +29,12 @@ const games = [
     description: 'Match and pop emoji bubbles for points.',
     emoji: '🫧🎯',
   },
+  {
+    name: 'Guess the Flag',
+    path: '/games/guess-the-flag',
+    description: 'Identify country flag emojis from four choices.',
+    emoji: '🌍🚩',
+  },
 ];
 
 const GamesPage = () => {

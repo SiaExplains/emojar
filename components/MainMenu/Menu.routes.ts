@@ -73,6 +73,7 @@ export const MENU_ROUTES = [
         target: '_self',
       },
       { href: '/games/minesweeper', label: 'Minesweeper', target: '_self' },
+      { href: '/games/guess-the-flag', label: 'Guess the Flag', target: '_self' },
     ],
   },
   {

@@ -17,6 +17,13 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'emoji-events-collection',
+    title: 'Emoji Collections for Every Holiday & Event',
+    date: '2026-05-14',
+    description:
+      "Curated emoji packs for 15 major holidays — New Year, Valentine's Day, Halloween, Christmas, Diwali, and more. Copy a single emoji or the whole set.",
+  },
+  {
     slug: 'odd-one-out-game',
     title: "Odd One Out — Spot the Emoji That Doesn't Belong",
     date: '2026-05-14',

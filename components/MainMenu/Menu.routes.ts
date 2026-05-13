@@ -81,6 +81,18 @@ export const MENU_ROUTES = [
     ],
   },
   {
+    href: '/emoji-collections/events',
+    label: 'Collections',
+    target: '_self',
+    children: [
+      {
+        href: '/emoji-collections/events',
+        label: '🎉 Events & Holidays',
+        target: '_self',
+      },
+    ],
+  },
+  {
     href: '/blog',
     label: 'Blog',
     target: '_self',

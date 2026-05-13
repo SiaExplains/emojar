@@ -1,0 +1,15 @@
+export const POST_TAGS: Record<string, string[]> = {
+  'emoji-events-collection': ['Collection', 'Holidays', 'Copy & Paste'],
+  'odd-one-out-game': ['New Game', 'Logic', 'Quiz'],
+  'guess-the-animal-game': ['New Game', 'Animals', 'Quiz', 'Fun Facts'],
+  'older-or-newer-game': ['New Game', 'History', 'Unicode', 'Quiz'],
+  'emoji-puzzle-game': ['New Game', 'Memory', 'Puzzle'],
+  'emojar-may-2026-updates': ['Updates', 'News'],
+  'emojar-games-launched': ['Launch', 'Games', 'News'],
+  'emoji-xo-game-guide': ['Game Guide', 'XO', 'Strategy'],
+  'emoji-snake-game-guide': ['Game Guide', 'Snake', 'Tips'],
+  'emoji-minesweeper-game-guide': ['Game Guide', 'Minesweeper', 'Strategy'],
+  'emoji-hangman-game-guide': ['Game Guide', 'Hangman', 'Tips'],
+  'emoji-bubble-shooter-game-guide': ['Game Guide', 'Bubble Shooter', 'Tips'],
+  'guess-the-flag-game': ['New Game', 'Flags', 'Geography', 'Quiz'],
+};

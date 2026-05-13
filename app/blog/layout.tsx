@@ -28,15 +28,6 @@ export default function BlogLayout({
       >
         {children}
       </article>
-
-      <div className="mt-16 pt-8 border-t border-gray-100 flex justify-end">
-        <Link
-          href="/games"
-          className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 transition-colors"
-        >
-          Play Emoji Games 🎮
-        </Link>
-      </div>
     </main>
   );
 }

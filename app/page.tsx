@@ -21,26 +21,34 @@ const FEATURE_CARDS = [
   {
     icon: '🎮',
     title: 'Emoji Games',
-    description: 'Hangman, Snake, Minesweeper & more',
+    detail:
+      'Put your emoji knowledge to the test with a growing collection of mini-games. Guess the hidden emoji in Hangman, dodge walls in Snake, or carefully flag mines in Minesweeper — every game is emoji-themed and playable right in your browser.',
     href: '/games',
+    cta: 'Play games →',
   },
   {
     icon: '📂',
     title: 'Browse Categories',
-    description: 'Explore emojis by category',
+    detail:
+      'Every one of the 3,600+ emojis is sorted into groups — Smileys & Emotion, Animals & Nature, Food & Drink, Travel & Places, and more. Tap any category to jump straight to the emojis you need.',
     href: '/categories',
+    cta: 'Explore categories →',
   },
   {
     icon: '🔤',
     title: 'A–Z Sorted',
-    description: 'Browse all emojis alphabetically',
+    detail:
+      "Browse the entire emoji library in strict alphabetical order. Handy when you remember part of an emoji name but can't find it in search — just scan the list and copy with one click.",
     href: '/sorted/alphabet',
+    cta: 'Browse A–Z →',
   },
   {
     icon: '📖',
     title: 'Blog',
-    description: 'Articles, tips & emoji culture',
+    detail:
+      'Dig into emoji culture with articles about origin stories, trending combos, creative use-cases, and tips for getting the most out of every emoji. New posts added regularly.',
     href: '/blog',
+    cta: 'Read articles →',
   },
 ];
 
@@ -135,21 +143,26 @@ export default function Home() {
 
           {/* Feature Cards */}
           <div className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-              {FEATURE_CARDS.map((card) => (
-                <Link
-                  key={card.href}
-                  href={card.href}
-                  className="border rounded-xl p-4 hover:shadow-md transition-shadow flex flex-col gap-1"
-                >
-                  <span className="text-3xl">{card.icon}</span>
-                  <span className="font-semibold">{card.title}</span>
-                  <span className="text-sm text-gray-500">
-                    {card.description}
-                  </span>
-                </Link>
-              ))}
-            </div>
+            {FEATURE_CARDS.map((card) => (
+              <div
+                key={card.href}
+                className="border rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4"
+              >
+                <span className="text-4xl shrink-0">{card.icon}</span>
+                <div className="flex flex-col gap-2 flex-1">
+                  <span className="text-lg font-semibold">{card.title}</span>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {card.detail}
+                  </p>
+                  <Link
+                    href={card.href}
+                    className="text-sm font-medium text-blue-600 hover:underline self-start"
+                  >
+                    {card.cta}
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Category Quick Links */}

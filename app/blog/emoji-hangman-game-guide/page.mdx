@@ -1,0 +1,61 @@
+export const metadata = {
+  title: 'How to Play Emoji Hangman on Emojar | Emojar Blog',
+  description:
+    'A complete guide to Emoji Hangman on Emojar — how the game works, tips for guessing emoji words, and the best letter strategy.',
+  alternates: { canonical: 'https://emojar.com/blog/emoji-hangman-game-guide' },
+  openGraph: {
+    title: 'How to Play Emoji Hangman on Emojar',
+    description:
+      'Rules, letter strategy, and tips for guessing emoji words in the Emojar Hangman game.',
+    url: 'https://emojar.com/blog/emoji-hangman-game-guide',
+    siteName: 'Emojar',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3">
+    Game Guide
+  </p>
+  <h1>How to Play Emoji Hangman — Guess the Word Before Time Runs Out 🤔🔤</h1>
+  <time dateTime="2026-05-13" className="text-sm text-gray-400">
+    13 May 2026
+  </time>
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+Hangman is a word-guessing classic that tests vocabulary, pattern recognition, and a little nerve. The Emojar version uses **emoji names** as the hidden words — so instead of guessing a random noun, you are trying to identify an emoji from its official Unicode name, one letter at a time.
+
+## The Objective
+
+Guess the hidden emoji word before you exhaust your allowed wrong guesses. Each correct letter reveals its position(s) in the word. Each wrong guess costs you one try.
+
+## How It Works
+
+1. A hidden emoji name is shown as a row of blank dashes — one per letter, with spaces preserved.
+2. You guess one letter at a time by clicking (or tapping) the on-screen keyboard.
+3. **Correct guess** — the letter is revealed in every position it appears.
+4. **Wrong guess** — a miss is recorded. Too many misses and the game ends.
+5. You win by uncovering the full word before you run out of guesses.
+
+The emoji itself is revealed when you win, so you get a satisfying visual payoff at the end.
+
+## Tips for Guessing Emoji Names
+
+Emoji names follow official Unicode conventions, which gives you useful patterns to exploit:
+
+- **Start with vowels.** E, A, I, O, U appear in almost every word. Guess them early to map the word's skeleton.
+- **Try common consonants next.** R, S, T, N, L are the most frequent consonants in English. After vowels, these will reveal the most letters.
+- **Look for compound words.** Many emoji names are two words joined by a space or hyphen (e.g. "face with tears of joy" or "red heart"). Once you see the word count, you can guess common short words like "with", "of", "and".
+- **Think in categories.** If you spot a pattern like \_ \_ \_ \_ \_ \_ \_ _ (8 letters) and you have already revealed "_ a \_ e", think about emoji face names.
+- **Avoid rare letters until the end.** Q, X, Z, J appear in very few emoji names — save them for when you are nearly done.
+
+## Why Emoji Names Make It Harder (and More Fun)
+
+Standard Hangman uses common nouns. Emoji Hangman uses the Unicode Consortium's formal names — which are descriptive but sometimes wonderfully odd. You might have to guess "oncoming automobile" or "person in lotus position". The strangeness is half the fun.
+
+## Ready to Guess?
+
+Head over to the [Hangman Game](/games/hangman) and test your emoji vocabulary. How many can you get on the first try? 🪤

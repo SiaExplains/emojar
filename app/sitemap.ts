@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/games/emoji-puzzle',
     '/games/older-or-newer',
     '/games/guess-the-animal',
+    '/games/odd-one-out',
     '/table/emoji-alphabet-shaped',
     '/sorted',
     '/sorted/alphabet',
@@ -39,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/guess-the-flag-game',
     '/blog/older-or-newer-game',
     '/blog/guess-the-animal-game',
+    '/blog/odd-one-out-game',
   ].map((path) => ({ url: `${base}${path}`, lastModified: now }));
 
   const categories = Array.from(new Set(data.map((e) => e.category)));

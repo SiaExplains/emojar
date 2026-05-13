@@ -53,6 +53,12 @@ const games = [
     description: 'Name the animal emoji and learn a fun fact.',
     emoji: '🐾🦁',
   },
+  {
+    name: 'Odd One Out',
+    path: '/games/odd-one-out',
+    description: "Spot the emoji that doesn't share the theme.",
+    emoji: '🔍🤔',
+  },
 ];
 
 const GamesPage = () => {

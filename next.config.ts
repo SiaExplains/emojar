@@ -7,13 +7,12 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Task 0.2: Enforce canonical domain — www → non-www (permanent 301)
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.emojar.com' }],
-        destination: 'https://emojar.com/:path*',
-        permanent: true,
-      },
+      // NOTE: www → non-www redirect must be configured in the Vercel dashboard
+      // (Domains → set emojar.com as primary, www.emojar.com as redirect).
+      // Do NOT handle it here — Next.js host-based redirects cause redirect loops
+      // on Vercel because the edge network normalises the Host header before the
+      // app sees it, making the condition unreliable and causing infinite loops.
+
       // Task 0.5: Redirect all old /collections and /sorted routes → /collection
       { source: '/collections', destination: '/collection', permanent: true },
       {

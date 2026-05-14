@@ -18,6 +18,13 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'seo-indexation-recovery',
+    title: 'How We Recovered Emojar From a Google Indexation Drop',
+    date: '2026-05-14',
+    description:
+      'Emojar lost most of its indexed pages in early 2026. Here is exactly what caused it — server errors, a www redirect conflict, dead sitemap URLs — and how we fixed everything.',
+  },
+  {
     slug: 'emoji-events-collection',
     title: 'Emoji Collections for Every Holiday & Event',
     date: '2026-05-14',

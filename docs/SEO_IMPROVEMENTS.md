@@ -52,6 +52,10 @@
 
 ## PRIORITY 0 — Fix Indexation Crisis (Do These First)
 
+> ✅ **Tasks 0.2, 0.3, 0.4, 0.5 implemented** in PR `seo/priority-0-indexation-fix` (May 2026).
+> Task 0.1 (5xx errors) requires investigation in the production hosting dashboard — steps documented below.
+> Task 0.6 (re-indexing) is a GSC action to perform after deploying the above PR.
+
 ### Task 0.1 — Diagnose and Fix Server Errors (5xx) on 2,523 Pages
 
 **Files:** Hosting/deployment config, `next.config.ts`, any API routes or dynamic pages  
@@ -72,7 +76,7 @@
 
 ---
 
-### Task 0.2 — Fix www vs non-www Canonical Conflict
+### ✅ Task 0.2 — Fix www vs non-www Canonical Conflict
 
 **Files:** `next.config.ts`, hosting redirect config (Vercel `vercel.json` or dashboard)  
 **Problem:** Two sitemaps are submitted — `www.emojar.com` and `emojar.com`. The codebase uses `https://emojar.com` as canonical (`metadataBase`, all hardcoded URLs). If `www.emojar.com` serves real content instead of redirecting, Google sees duplicate pages and picks its own canonical (explaining the 18 "Duplicate, Google chose different canonical" and 100 "Alternate page with proper canonical tag" entries).
@@ -122,7 +126,13 @@
 
 ---
 
-### Task 0.4 — Recover "Discovered – Currently Not Indexed" (1,380 Pages)
+### ✅ Task 0.3 — Investigate and Fix "Crawled – Currently Not Indexed" (1,446 Pages)
+
+**Implemented:** Added `CATEGORY_CONTEXT` map to emoji detail pages generating a unique "common uses" paragraph per category + keyword combination. Added "More in [Category]" section with 8 same-category emoji links per page, creating richer cross-linked content. Added proper `notFound()` call so unknown slugs return real 404.
+
+---
+
+### ✅ Task 0.4 — Recover "Discovered – Currently Not Indexed" (1,380 Pages)
 
 **Files:** No code change needed immediately — this is a crawl budget issue.  
 **Problem:** Google knows these URLs exist (via sitemap) but hasn't allocated crawl budget to visit them. This is a downstream effect of the 5xx errors in Task 0.1: when Googlebot encounters hundreds of errors, it reduces its crawl rate for the entire domain.
@@ -137,7 +147,7 @@
 
 ---
 
-### Task 0.5 — Fix Soft 404s (3 Pages) and Hard 404 (1 Page)
+### ✅ Task 0.5 — Fix Soft 404s (3 Pages) and Hard 404 (1 Page)
 
 **Files:** TBD after inspecting URLs in GSC  
 **Problem:** 3 soft 404s (pages that return 200 but show "not found" style content) and 1 hard 404. These waste crawl budget and can hurt domain trust.
@@ -238,7 +248,7 @@ openGraph: {
 
 ---
 
-### Task 1.4 — Set Sitemap Priorities and Change Frequencies
+### ✅ Task 1.4 — Set Sitemap Priorities and Change Frequencies
 
 **File:** `app/sitemap.ts`  
 **Problem:** No `priority` or `changeFreq` is set; all pages default to 0.5 / no-hint. Google deprioritises undifferentiated sitemaps.  

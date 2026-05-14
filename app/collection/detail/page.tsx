@@ -51,7 +51,7 @@ export default function AllEmojisWithDetail() {
       <Breadcrumb
         crumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Sorted Emojis', href: '/sorted' },
+          { label: 'Collection', href: '/collection' },
           { label: 'With Detail' },
         ]}
       />

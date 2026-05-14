@@ -71,13 +71,13 @@ The www sitemap entry in GSC should also be removed once this redirect is live.
 
 The sitemap included three URLs that no longer exist:
 
-- `/collections` → the page moved to `/sorted`
-- `/collections/alphabet` → now at `/sorted/alphabet`
-- `/collections/detail` → now at `/sorted/detail`
+- `/collections` → the page moved to `/collection`
+- `/collections/alphabet` → now at `/collection/alphabet`
+- `/collections/detail` → now at `/collection/detail`
 
 These routes were renamed in a previous update but the sitemap was never updated to match. Googlebot was requesting these URLs, getting 404 responses, and — after enough failed requests — treating the whole domain as less reliable.
 
-**Fix:** Added 301 redirects for all three old paths pointing to the new locations, and replaced the dead URLs in `sitemap.ts` with the correct `/sorted/*` routes.
+**Fix:** Added 301 redirects for all three old paths pointing to the new locations, and replaced the dead URLs in `sitemap.ts` with the correct `/collection/*` routes.
 
 ## Root cause 3: Soft 404 on emoji pages
 

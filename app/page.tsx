@@ -73,7 +73,7 @@ const FEATURE_CARDS = [
     title: 'A–Z Sorted',
     detail:
       "Browse the entire emoji library in strict alphabetical order. Handy when you remember part of an emoji name but can't find it in search — just scan the list and copy with one click.",
-    href: '/sorted/alphabet',
+    href: '/collection/alphabet',
     cta: 'Browse A–Z →',
   },
   {
@@ -217,7 +217,7 @@ export default function Home() {
             </div>
             <div className="text-right">
               <Link
-                href="/sorted/detail"
+                href="/collection/detail"
                 className="text-sm text-blue-600 hover:underline"
               >
                 Browse All Emojis →

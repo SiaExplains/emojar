@@ -101,19 +101,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${base}/sorted`,
+      url: `${base}/collection`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: `${base}/sorted/alphabet`,
+      url: `${base}/collection/alphabet`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
-      url: `${base}/sorted/detail`,
+      url: `${base}/collection/detail`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',
       priority: 0.5,

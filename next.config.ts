@@ -14,16 +14,27 @@ const nextConfig = {
         destination: 'https://emojar.com/:path*',
         permanent: true,
       },
-      // Task 0.5: Redirect renamed /collections routes → /sorted (permanent 301)
-      { source: '/collections', destination: '/sorted', permanent: true },
+      // Task 0.5: Redirect all old /collections and /sorted routes → /collection
+      { source: '/collections', destination: '/collection', permanent: true },
       {
         source: '/collections/alphabet',
-        destination: '/sorted/alphabet',
+        destination: '/collection/alphabet',
         permanent: true,
       },
       {
         source: '/collections/detail',
-        destination: '/sorted/detail',
+        destination: '/collection/detail',
+        permanent: true,
+      },
+      { source: '/sorted', destination: '/collection', permanent: true },
+      {
+        source: '/sorted/alphabet',
+        destination: '/collection/alphabet',
+        permanent: true,
+      },
+      {
+        source: '/sorted/detail',
+        destination: '/collection/detail',
         permanent: true,
       },
     ];

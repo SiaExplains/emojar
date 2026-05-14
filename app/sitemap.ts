@@ -1,59 +1,259 @@
 import type { MetadataRoute } from 'next';
 import data from '@/data/emojis.json';
 
+// Stable build date — emoji/static content doesn't change at runtime.
+// Using a fixed date avoids Google treating every deploy as a full content refresh.
+const SITE_LAUNCH = new Date('2024-01-01');
+const LAST_UPDATED = new Date('2026-05-14');
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://emojar.com';
-  const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    '',
-    '/categories',
-    '/games',
-    '/games/xo',
-    '/games/hangman',
-    '/games/snake',
-    '/games/bubble-shooter',
-    '/games/minesweeper',
-    '/games/guess-the-flag',
-    '/games/emoji-puzzle',
-    '/games/older-or-newer',
-    '/games/guess-the-animal',
-    '/games/odd-one-out',
-    '/table/emoji-alphabet-shaped',
-    '/collections',
-    '/collections/alphabet',
-    '/collections/detail',
-    '/emoji-collections/events',
-    '/about',
-    '/contact',
-    '/impressum',
-    '/privacy',
-    '/terms',
-    '/blog',
-    '/blog/emojar-games-launched',
-    '/blog/emojar-may-2026-updates',
-    '/blog/emoji-bubble-shooter-game-guide',
-    '/blog/emoji-hangman-game-guide',
-    '/blog/emoji-minesweeper-game-guide',
-    '/blog/emoji-puzzle-game',
-    '/blog/emoji-snake-game-guide',
-    '/blog/emoji-xo-game-guide',
-    '/blog/guess-the-flag-game',
-    '/blog/older-or-newer-game',
-    '/blog/guess-the-animal-game',
-    '/blog/emoji-events-collection',
-    '/blog/odd-one-out-game',
-  ].map((path) => ({ url: `${base}${path}`, lastModified: now }));
+    {
+      url: `${base}`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'daily',
+      priority: 1.0,
+    },
+    {
+      url: `${base}/categories`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/blog`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${base}/games`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/games/xo`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/hangman`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/snake`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/bubble-shooter`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/minesweeper`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/guess-the-flag`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/emoji-puzzle`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/older-or-newer`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/guess-the-animal`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/games/odd-one-out`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/emoji-collections/events`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/collection`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${base}/collection/alphabet`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${base}/collection/detail`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${base}/table/emoji-alphabet-shaped`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${base}/about`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${base}/contact`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${base}/impressum`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${base}/privacy`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${base}/terms`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    // Blog posts
+    {
+      url: `${base}/blog/emoji-events-collection`,
+      lastModified: new Date('2026-05-14'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/odd-one-out-game`,
+      lastModified: new Date('2026-05-14'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/guess-the-animal-game`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/older-or-newer-game`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emoji-puzzle-game`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emojar-may-2026-updates`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emojar-games-launched`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emoji-xo-game-guide`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emoji-snake-game-guide`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emoji-minesweeper-game-guide`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emoji-hangman-game-guide`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emoji-bubble-shooter-game-guide`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/guess-the-flag-game`,
+      lastModified: new Date('2026-05-13'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/seo-indexation-recovery`,
+      lastModified: new Date('2026-05-14'),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+  ];
 
   const categories = Array.from(new Set(data.map((e) => e.category)));
   const categoryRoutes: MetadataRoute.Sitemap = categories.map((cat) => ({
     url: `${base}/category/${encodeURIComponent(cat)}`,
-    lastModified: now,
+    lastModified: LAST_UPDATED,
+    changeFrequency: 'weekly',
+    priority: 0.8,
   }));
 
   const emojiRoutes: MetadataRoute.Sitemap = data.map((e) => ({
     url: `${base}/emoji/${e.slug}`,
-    lastModified: now,
+    lastModified: SITE_LAUNCH,
+    changeFrequency: 'monthly',
+    priority: 0.7,
   }));
 
   return [...staticRoutes, ...categoryRoutes, ...emojiRoutes];

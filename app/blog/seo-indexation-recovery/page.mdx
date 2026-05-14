@@ -1,0 +1,124 @@
+import PostTags from '@/components/PostTags';
+export const metadata = {
+  title: 'How We Recovered Emojar From a Google Indexation Drop | Emojar Blog',
+  description:
+    'Emojar lost most of its indexed pages in early 2026. Here is exactly what caused it — server errors, a www redirect conflict, dead sitemap URLs — and how we fixed everything.',
+  alternates: { canonical: 'https://emojar.com/blog/seo-indexation-recovery' },
+  openGraph: {
+    title: 'How We Recovered Emojar From a Google Indexation Drop',
+    description:
+      'Server errors, www vs non-www conflicts, dead sitemap URLs — a transparent breakdown of what went wrong and how we fixed it.',
+    url: 'https://emojar.com/blog/seo-indexation-recovery',
+    siteName: 'Emojar',
+    type: 'article',
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3">
+    Technical Update
+  </p>
+  <h1>How We Recovered Emojar From a Google Indexation Drop 🔍</h1>
+  <time dateTime="2026-05-14" className="text-sm text-gray-400">
+    14 May 2026
+  </time>
+  <PostTags slug="seo-indexation-recovery" />
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+In early 2026, Emojar's Google Search Console showed something alarming: the number of indexed pages had dropped from roughly **12,000** to just **126**. The site was still live and working perfectly for visitors — but Google had essentially stopped crawling and indexing it.
+
+This post documents exactly what happened, what we found in GSC, and every fix we deployed.
+
+## What Google Search Console showed
+
+Opening the **Coverage** (now **Indexing**) report in GSC revealed eight different reasons pages weren't being indexed. The two biggest were:
+
+| Reason | Pages affected |
+|---|---|
+| Server error (5xx) | **2,523** |
+| Crawled – currently not indexed | **1,446** |
+| Discovered – currently not indexed | **1,380** |
+| Alternate page with proper canonical tag | 100 |
+| Duplicate, Google chose different canonical | 18 |
+
+Two sitemaps had also been submitted — `https://www.emojar.com/sitemap.xml` and `https://emojar.com/sitemap.xml` — each reporting ~3,836 discovered pages. That duplication alone was a clear signal of a canonical conflict.
+
+The performance tab told the rest of the story: **0 clicks** over 7 days despite 264 impressions, with an average position of 44.7. The site was appearing in search results but so deep that nobody was clicking, and most pages weren't indexed at all.
+
+## Root cause 1: www vs non-www canonical conflict
+
+The Emojar codebase has always used `https://emojar.com` (no www) as the canonical base. Every `<link rel="canonical">` tag, every Open Graph URL, and `metadataBase` in `app/layout.tsx` all point to the non-www domain.
+
+The problem: `https://www.emojar.com` was also serving the full site without redirecting. Google was crawling both domains, comparing the content, and in 18 cases deciding that the www version was the "real" canonical — overriding the tag we set. This created 100 "Alternate page with proper canonical tag" entries (Google chose non-www as canonical, which is correct, but it still had to process both copies) and 18 where it chose www against our preference.
+
+**Fix:** Added a permanent 301 redirect in `next.config.ts` that sends all `www.emojar.com` traffic to `emojar.com`:
+
+```js
+{
+  source: '/:path*',
+  has: [{ type: 'host', value: 'www.emojar.com' }],
+  destination: 'https://emojar.com/:path*',
+  permanent: true,
+}
+```
+
+The www sitemap entry in GSC should also be removed once this redirect is live.
+
+## Root cause 2: Dead routes in the sitemap
+
+The sitemap included three URLs that no longer exist:
+
+- `/collections` → the page moved to `/collection`
+- `/collections/alphabet` → now at `/collection/alphabet`
+- `/collections/detail` → now at `/collection/detail`
+
+These routes were renamed in a previous update but the sitemap was never updated to match. Googlebot was requesting these URLs, getting 404 responses, and — after enough failed requests — treating the whole domain as less reliable.
+
+**Fix:** Added 301 redirects for all three old paths pointing to the new locations, and replaced the dead URLs in `sitemap.ts` with the correct `/collection/*` routes.
+
+## Root cause 3: Soft 404 on emoji pages
+
+For any emoji slug that didn't match the database (e.g. a mistyped URL or an old link), the page component was rendering a plain `<div>Emoji not found.</div>` while returning HTTP status **200**. Google classifies this as a "soft 404" — a page that says "not found" in content but claims to be a valid page.
+
+**Fix:** The page now calls `notFound()` from `next/navigation`, which triggers Next.js's built-in 404 handler and returns the correct 404 HTTP status.
+
+## Root cause 4: Sitemap quality issues
+
+The sitemap was using `lastModified: new Date()` — meaning the current time at the moment the sitemap was generated. Because the sitemap is a server function called on every request, Googlebot would see all 3,800+ URLs claiming to have been modified in the last few seconds, every single time it fetched the sitemap. This burns crawl budget on re-crawling content that hasn't changed.
+
+**Fix:** Emoji pages now use a stable `2024-01-01` lastModified (their real content origin date), blog posts use their actual publication date, and the homepage/categories use a realistic `2026-05-14` update date. Priorities and `changeFrequency` hints were also added so Googlebot can allocate its crawl budget more sensibly:
+
+| Page type | Priority | Change frequency |
+|---|---|---|
+| Homepage | 1.0 | daily |
+| Categories | 0.9 | weekly |
+| Category pages | 0.8 | weekly |
+| Emoji detail pages | 0.7 | monthly |
+| Blog posts | 0.7 | monthly |
+| Games | 0.6 | monthly |
+
+## Root cause 5: Thin content on emoji pages
+
+The "Crawled – currently not indexed" count (1,446 pages) points to a content quality issue. Google crawls these pages but decides they don't merit a place in the index — the most common reason is that the page doesn't offer enough unique, helpful content.
+
+Looking at the emoji detail pages, the description field in our data was auto-generated from a template: *"The X emoji is part of Y category since Unicode Z. It is associated with: a, b, c."* — a single formulaic sentence that Google's helpful content system would easily identify as low-value.
+
+**Fix:** Each emoji detail page now includes:
+
+- A **"Common uses"** paragraph that derives meaningful context from the emoji's category (e.g. "People commonly use this emoji for expressing feelings, reactions, and emotions in messages and social media posts") along with the emoji's specific keywords
+- A **"More in [Category]"** section linking to 8 other emojis from the same category — adding unique cross-links that vary per page
+
+Together these changes ensure each emoji page has materially different, readable content rather than a copy-paste template.
+
+## What's next
+
+These are the highest-leverage technical fixes. Once Google re-crawls the site, indexed pages should recover toward the ~3,800 that are now in the sitemap. We're also working on:
+
+- Dynamic Open Graph images for emoji pages (visual share previews)
+- Richer structured data (Article schema for blog posts, WebSite SearchAction for the sitelinks search box)
+- Deeper content on emoji pages: meaning context, platform rendering notes, and FAQ sections
+
+If you notice anything broken or have feedback, [get in touch](/contact). 🫙

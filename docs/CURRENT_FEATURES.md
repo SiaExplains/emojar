@@ -213,10 +213,11 @@ All 10 games at `/games` are:
 - Lists all posts with publication date, title, description, and tags
 - Tags system for filtering/grouping posts
 
-### Published Articles (13 posts)
+### Published Articles (14 posts)
 
 | Post | Type |
 |---|---|
+| How We Recovered Emojar From a Google Indexation Drop | Technical / SEO |
 | What's New on Emojar — May 2026 Updates | Platform update |
 | Emoji Collections for Every Holiday & Event | Feature highlight |
 | How to Play Odd One Out | Game guide |
@@ -249,17 +250,24 @@ All 10 games at `/games` are:
 
 ### Sitemap & Crawlability
 - Dynamic XML sitemap at `/sitemap.xml` covering:
-  - All static routes
-  - All 10 category pages
-  - All 3,790 emoji detail pages (with `lastmod` dates)
-  - All blog posts
+  - All static routes (with `priority` and `changeFrequency` per route type)
+  - All 10 category pages (`priority: 0.8`, `changeFrequency: weekly`)
+  - All 3,790 emoji detail pages (`priority: 0.7`, `changeFrequency: monthly`, stable `lastModified: 2024-01-01`)
+  - All blog posts (with actual publication dates)
 - `robots.txt` — allows all major crawlers
+- **www → non-www permanent redirect (308)** — `www.emojar.com` redirects to `emojar.com` via `next.config.ts`
+- **Dead route redirects** — `/collections`, `/collections/alphabet`, `/collections/detail` redirect to `/sorted/*`
 
 ### Structured Data
 - **JSON-LD** breadcrumb lists on category and emoji detail pages
 - **OpenGraph metadata** on every page (og:title, og:description, og:image)
 - **Canonical URLs** and meta keywords on all pages
 - **robots directives** per page
+
+### Emoji Detail Page Content (SEO-enriched)
+- Each emoji page generates a unique **"Common uses"** paragraph from the emoji's category and keywords
+- **"More in [Category]"** grid — 8 same-category emoji links per page, unique per page
+- Proper **`notFound()`** call for unknown slugs (returns real 404, not soft 404)
 
 ### Performance & PWA
 - Static generation for all emoji, category, and blog pages (pre-rendered at build time)
@@ -276,7 +284,7 @@ All 10 games at `/games` are:
 | Category pages | 10 |
 | Emoji detail pages | 3,790 |
 | Game pages | 10 |
-| Blog posts | 13+ |
+| Blog posts | 14+ |
 | Collection / sorted / table pages | ~5 |
 
 ---

@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   title: 'Collection | Emojar',
   description:
     'Browse all 3,700+ emojis sorted alphabetically, by detail, by shape, and by holiday or event. Every way to explore the emoji library in one place.',
-  alternates: { canonical: 'https://emojar.com/sorted' },
+  alternates: { canonical: 'https://emojar.com/collection' },
   robots: { index: true, follow: true },
 };
 
 const SECTIONS = [
   {
-    href: '/sorted/alphabet',
+    href: '/collection/alphabet',
     icon: '🔤',
     title: 'Sorted by Alphabet',
     description:
@@ -19,7 +19,7 @@ const SECTIONS = [
     badge: '3,700+ emojis',
   },
   {
-    href: '/sorted/detail',
+    href: '/collection/detail',
     icon: '📖',
     title: 'Emoji with Detail',
     description:
@@ -44,7 +44,7 @@ const SECTIONS = [
   },
 ];
 
-const SortedPage = () => {
+const CollectionPage = () => {
   return (
     <div className="py-10 space-y-10">
       <div>
@@ -89,4 +89,4 @@ const SortedPage = () => {
   );
 };
 
-export default SortedPage;
+export default CollectionPage;

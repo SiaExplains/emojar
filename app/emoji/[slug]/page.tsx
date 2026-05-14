@@ -1,9 +1,30 @@
 import data from '@/data/emojis.json';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import CopyButton from '@/components/CopyButton';
 
 type EmojiEntry = (typeof data)[number];
+
+const CATEGORY_CONTEXT: Record<string, string> = {
+  'Smileys & Emotion':
+    'expressing feelings, reactions, and emotions in messages and social media posts',
+  'People & Body':
+    'representing people, gestures, and human actions in everyday communication',
+  'Animals & Nature':
+    'talking about animals, plants, weather, and the natural world',
+  'Food & Drink':
+    'sharing food experiences, recipes, restaurant visits, and culinary moments',
+  'Travel & Places':
+    'discussing travel destinations, vehicles, buildings, and geographic locations',
+  Activities:
+    'sharing sports, hobbies, celebrations, and recreational activities',
+  Objects: 'referencing tools, clothing, technology, and everyday items',
+  Symbols:
+    'conveying abstract concepts, directions, warnings, and universal signs',
+  Flags: 'representing countries, regions, and international topics',
+  Component: 'modifying skin tone or hair style on supported people emojis',
+};
 
 export function generateStaticParams() {
   return data.map((e) => ({ slug: e.slug }));
@@ -16,7 +37,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const emoji = data.find((e) => e.slug === slug) as EmojiEntry | undefined;
-  if (!emoji) return { title: 'Not found' };
+  if (!emoji) return { title: 'Emoji not found | Emojar' };
 
   const canonical = new URL(`/emoji/${emoji.slug}`, 'https://emojar.com');
 
@@ -47,11 +68,16 @@ export default async function EmojiPage({
 }) {
   const { slug } = await params;
   const emoji = data.find((e) => e.slug === slug) as EmojiEntry | undefined;
-  if (!emoji) return <div className="p-8">Emoji not found.</div>;
+  if (!emoji) notFound();
 
   const relatedEmojis = (emoji.relatedSlugs ?? [])
     .map((s) => data.find((e) => e.slug === s))
     .filter(Boolean) as EmojiEntry[];
+
+  const excludedSlugs = new Set([emoji.slug, ...(emoji.relatedSlugs ?? [])]);
+  const categoryEmojis = data
+    .filter((e) => e.category === emoji.category && !excludedSlugs.has(e.slug))
+    .slice(0, 8);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -146,6 +172,19 @@ export default async function EmojiPage({
             was introduced in Unicode {emoji.version} and is supported across
             all major platforms including iOS, Android, Windows, and macOS.
           </p>
+          {CATEGORY_CONTEXT[emoji.category] && (
+            <p className="mt-3 text-gray-700 leading-7">
+              People commonly use the {emoji.char} {emoji.name} emoji for{' '}
+              {CATEGORY_CONTEXT[emoji.category]}.
+              {(emoji.keywords ?? []).length > 2 && (
+                <>
+                  {' '}
+                  It is often associated with{' '}
+                  {(emoji.keywords ?? []).slice(0, 4).join(', ')}.
+                </>
+              )}
+            </p>
+          )}
         </section>
 
         {/* Quick facts */}
@@ -259,6 +298,36 @@ export default async function EmojiPage({
                 </Link>
               ))}
             </div>
+          </section>
+        )}
+
+        {/* Also in this category */}
+        {categoryEmojis.length > 0 && (
+          <section>
+            <h2 className="text-xl font-semibold mb-3">
+              More in {emoji.category}
+            </h2>
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 mb-4">
+              {categoryEmojis.map((e) => (
+                <Link
+                  key={e.slug}
+                  href={`/emoji/${e.slug}`}
+                  className="border rounded-xl p-2 flex flex-col items-center gap-1 hover:bg-gray-50 transition text-center"
+                  title={e.name}
+                >
+                  <span className="text-2xl">{e.char}</span>
+                  <span className="text-xs text-gray-500 leading-tight line-clamp-1">
+                    {e.name}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <Link
+              href={`/category/${encodeURIComponent(emoji.category)}`}
+              className="inline-flex items-center gap-1 text-sm text-blue-600 hover:underline"
+            >
+              Browse all {emoji.category} emojis →
+            </Link>
           </section>
         )}
 

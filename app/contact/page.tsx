@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     siteName: 'Emojar',
     type: 'website',
   },
+  twitter: {
+    card: 'summary',
+    title: 'Contact Emojar',
+    description:
+      'Get in touch with Emojar for inquiries, press, or legal requests.',
+  },
   robots: { index: true, follow: true },
 };
 

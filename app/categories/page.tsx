@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   description:
     'Browse 3,700+ emojis by category — Smileys & Emotion, Animals & Nature, Food & Drink, Travel & Places, Activities, Objects, Symbols, Flags, and more.',
   alternates: { canonical: 'https://emojar.com/categories' },
+  openGraph: {
+    title: 'Emoji Categories | Emojar',
+    description:
+      'Browse 3,700+ emojis by category — Smileys & Emotion, Animals & Nature, Food & Drink, and more.',
+    url: 'https://emojar.com/categories',
+    siteName: 'Emojar',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Emoji Categories | Emojar',
+    description:
+      'Browse 3,700+ emojis by category — Smileys & Emotion, Animals & Nature, Food & Drink, and more.',
+  },
   robots: { index: true, follow: true },
 };
 

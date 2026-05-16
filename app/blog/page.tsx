@@ -13,6 +13,18 @@ export const metadata: Metadata = {
     siteName: 'Emojar',
     type: 'website',
   },
+  keywords: [
+    'emoji blog',
+    'emoji tips',
+    'emoji games',
+    'emojar updates',
+    'emoji news',
+  ],
+  twitter: {
+    card: 'summary',
+    title: 'Emojar Blog',
+    description: 'News, updates, and emoji tips from the Emojar team.',
+  },
   robots: { index: true, follow: true },
 };
 

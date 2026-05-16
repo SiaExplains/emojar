@@ -5,7 +5,7 @@ export function HeaderLogo() {
   return (
     <Image
       src="/logo-64.png"
-      alt="Emojar Logo"
+      alt="Emojar – Copy & paste emojis instantly"
       width={138}
       height={64}
       priority

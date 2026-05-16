@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     siteName: 'Emojar',
     type: 'website',
   },
+  twitter: {
+    card: 'summary',
+    title: 'About Emojar',
+    description: 'Learn about Emojar — a free emoji search and copy tool.',
+  },
   robots: { index: true, follow: true },
 };
 

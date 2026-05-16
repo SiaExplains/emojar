@@ -6,6 +6,20 @@ export const metadata: Metadata = {
   description:
     'Play 10 free emoji-themed mini-games in your browser — Hangman, Snake, Minesweeper, Guess the Flag, Odd One Out, and more. No download required.',
   alternates: { canonical: 'https://emojar.com/games' },
+  openGraph: {
+    title: 'Emoji Games | Emojar',
+    description:
+      'Play 10 free emoji-themed mini-games — Hangman, Snake, Minesweeper, Guess the Flag, and more. No download required.',
+    url: 'https://emojar.com/games',
+    siteName: 'Emojar',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Emoji Games | Emojar',
+    description:
+      'Play 10 free emoji-themed mini-games — Hangman, Snake, Minesweeper, Guess the Flag, and more.',
+  },
   robots: { index: true, follow: true },
 };
 

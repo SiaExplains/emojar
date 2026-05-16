@@ -1,0 +1,30 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Odd One Out — Emoji Edition | Emojar Games',
+  description:
+    'Four emojis belong to the same group — one does not. Can you spot the odd one out? A quick-fire emoji quiz that tests your pattern recognition.',
+  alternates: { canonical: 'https://emojar.com/games/odd-one-out' },
+  openGraph: {
+    title: 'Odd One Out — Emoji Edition | Emojar Games',
+    description:
+      'Four emojis, one does not belong. Find the odd one out in this quick emoji quiz.',
+    url: 'https://emojar.com/games/odd-one-out',
+    siteName: 'Emojar',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Odd One Out — Emoji Edition | Emojar Games',
+    description: 'Find the emoji that does not belong in each group.',
+  },
+  robots: { index: true, follow: true },
+};
+
+export default function OddOneOutLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <>{children}</>;
+}

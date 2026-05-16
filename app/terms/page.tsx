@@ -1,3 +1,25 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | Emojar',
+  description:
+    'Read the Emojar Terms of Service. By using Emojar.com you agree to these terms covering permitted use, intellectual property, disclaimers, and governing law.',
+  alternates: { canonical: 'https://emojar.com/terms' },
+  openGraph: {
+    title: 'Terms of Service | Emojar',
+    description: 'Terms of Service for Emojar.com.',
+    url: 'https://emojar.com/terms',
+    siteName: 'Emojar',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Terms of Service | Emojar',
+    description: 'Terms of Service for Emojar.com.',
+  },
+  robots: { index: true, follow: true },
+};
+
 export default function TermsPage() {
   return (
     <main className="mx-auto max-w-3xl px-6 py-12 text-gray-800">

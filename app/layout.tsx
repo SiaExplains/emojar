@@ -27,6 +27,11 @@ export const metadata: Metadata = {
     siteName: 'Emojar',
     type: 'website',
   },
+  twitter: {
+    card: 'summary',
+    title: 'Emojar | All the emojis in one jar.',
+    description,
+  },
   icons: { icon: 'favicon.ico' },
   manifest: 'manifest.webmanifest',
   robots: { index: true, follow: true },

@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     siteName: 'Emojar',
     type: 'article',
   },
+  twitter: {
+    card: 'summary',
+    title: 'Privacy Policy | Emojar',
+    description: 'GDPR-compliant privacy policy for Emojar.com.',
+  },
   robots: { index: true, follow: true },
 };
 

@@ -50,9 +50,9 @@
 | `/` | Homepage with search, popular emojis, category grid, A–Z link, and blog preview |
 | `/categories` | Grid of all 10 categories with sample emojis and counts |
 | `/category/[category]` | Full emoji grid for a single category |
-| `/sorted` | Hub linking to all browse modes |
-| `/sorted/alphabet` | All 3,790+ emojis listed A–Z by official name |
-| `/sorted/detail` | Full library with name, category, and metadata visible inline |
+| `/collection` | Hub linking to all browse modes |
+| `/collection/alphabet` | All 3,790+ emojis listed A–Z by official name |
+| `/collection/detail` | Full library with name, category, and metadata visible inline |
 | `/table/emoji-alphabet-shaped` | Curated table of emojis that visually resemble letters A–Z |
 
 ### The 10 Emoji Categories
@@ -255,14 +255,17 @@ All 10 games at `/games` are:
   - All 3,790 emoji detail pages (`priority: 0.7`, `changeFrequency: monthly`, stable `lastModified: 2024-01-01`)
   - All blog posts (with actual publication dates)
 - `robots.txt` — allows all major crawlers
-- **www → non-www permanent redirect (308)** — `www.emojar.com` redirects to `emojar.com` via `next.config.ts`
-- **Dead route redirects** — `/collections`, `/collections/alphabet`, `/collections/detail` redirect to `/sorted/*`
+- **www → non-www permanent redirect** — `www.emojar.com` redirects to `emojar.com` via the Vercel dashboard (Domains setting)
+- **Dead route redirects** — `/collections`, `/collections/alphabet`, `/collections/detail`, `/sorted`, `/sorted/alphabet`, `/sorted/detail` redirect to `/collection/*` via `next.config.ts`
 
-### Structured Data
+### Structured Data & Social Metadata
 - **JSON-LD** breadcrumb lists on category and emoji detail pages
-- **OpenGraph metadata** on every page (og:title, og:description, og:image)
-- **Canonical URLs** and meta keywords on all pages
+- **OpenGraph metadata** on every page (og:title, og:description, og:url, og:siteName, og:type)
+- **Twitter Card metadata** (`summary` card) on every page including all game pages and blog posts
+- **Canonical URLs** on all pages
+- **meta keywords** on home, categories, category detail pages, blog index, and all 14 blog posts
 - **robots directives** per page
+- **Logo alt text** describes the site purpose ("Emojar – Copy & paste emojis instantly") for image SEO
 
 ### Emoji Detail Page Content (SEO-enriched)
 - Each emoji page generates a unique **"Common uses"** paragraph from the emoji's category and keywords

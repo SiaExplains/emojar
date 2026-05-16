@@ -106,26 +106,6 @@
 
 ---
 
-### Task 0.3 — Investigate and Fix "Crawled – Currently Not Indexed" (1,446 Pages)
-
-**Files:** `app/emoji/[slug]/page.tsx`, `app/category/[category]/page.tsx`  
-**Problem:** Google has crawled these pages but decided they don't merit indexing. The most common reason for a tool like Emojar is **thin content** — pages that only show an emoji character, its name, and a copy button offer very little textual content for Google to evaluate.
-
-**Action:**
-1. In GSC → Pages → click "Crawled – currently not indexed" → inspect 5–10 of the URLs. Note which page types appear (emoji detail? category? games?).
-2. For **emoji detail pages** (most likely culprit): add substantive content that Google can read:
-   - Unicode codepoint and version (e.g. "U+1F600, Unicode 6.0")
-   - A 2–3 sentence description of the emoji's meaning and common uses
-   - Platform variations note ("appears differently on Apple, Google, and Samsung")
-   - A "Related emojis" section with 6–8 linked emojis from the same category
-   - Keywords in the copy: `[Emoji Name] emoji meaning`, `copy [Emoji Name] emoji`, `[Emoji Name] emoji text`
-3. For **category pages**: ensure the page has a descriptive paragraph above the emoji grid, not just the grid alone.
-4. Target: each emoji page should have at least 150–200 words of readable text.
-
-**Why:** Google's "helpful content" system filters out low-content pages. Adding real descriptive text, meaning, and context turns emoji pages from thin stubs into genuinely useful reference pages.
-
----
-
 ### ✅ Task 0.3 — Investigate and Fix "Crawled – Currently Not Indexed" (1,446 Pages)
 
 **Implemented:** Added `CATEGORY_CONTEXT` map to emoji detail pages generating a unique "common uses" paragraph per category + keyword combination. Added "More in [Category]" section with 8 same-category emoji links per page, creating richer cross-linked content. Added proper `notFound()` call so unknown slugs return real 404.
@@ -181,7 +161,9 @@
 
 ## PRIORITY 1 — High Impact, Low Effort
 
-### Task 1.1 — Fix Logo Alt Text
+> ✅ **Tasks 1.1, 1.2, 1.3, 1.4, 1.5 all implemented** in PR `seo/priority-1-metadata` (May 2026).
+
+### ✅ Task 1.1 — Fix Logo Alt Text
 
 **File:** `components/HeaderLogo.tsx` (or wherever the logo `<Image>` is rendered)  
 **Problem:** The live site shows no descriptive alt text on the logo image; screen readers and Googlebot image search lose context.  
@@ -192,7 +174,7 @@
 
 ---
 
-### Task 1.2 — Add Twitter Card Metadata to All Pages
+### ✅ Task 1.2 — Add Twitter Card Metadata to All Pages
 
 **Files:** Every `generateMetadata` function across:
 - `app/layout.tsx`
@@ -223,7 +205,7 @@ For pages that later get OG images (Task 2.1), upgrade to `card: 'summary_large_
 
 ---
 
-### Task 1.3 — Add OpenGraph Metadata to Missing Pages
+### ✅ Task 1.3 — Add OpenGraph Metadata to Missing Pages
 
 **Files:**
 - `app/categories/page.tsx` — missing `openGraph.image`
@@ -275,7 +257,7 @@ Also replace `lastModified: now` (current runtime date) for emoji pages with a s
 
 ---
 
-### Task 1.5 — Add `keywords` Meta to Category and Blog Pages
+### ✅ Task 1.5 — Add `keywords` Meta to Category and Blog Pages
 
 **Files:**
 - `app/category/[category]/page.tsx`

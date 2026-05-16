@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import Link from 'next/link';
+import { Analytics } from '@vercel/analytics/next';
 import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component';
 import BackToTopButton from '@/components/BackToTopButton';
 import MainMenu from '@/components/MainMenu/MainMenu.compontent';
@@ -98,6 +99,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );

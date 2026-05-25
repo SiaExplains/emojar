@@ -29,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${base}/personality`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${base}/games`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',
@@ -238,6 +244,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date('2026-05-14'),
       changeFrequency: 'monthly',
       priority: 0.6,
+    },
+    {
+      url: `${base}/blog/find-your-emoji-personality`,
+      lastModified: new Date('2026-05-25'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
   ];
 

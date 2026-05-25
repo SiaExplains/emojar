@@ -30,6 +30,14 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'find-your-emoji-personality',
+    title:
+      'Find Your Emoji Personality — A Character Quiz Backed by Psychology',
+    date: '2026-05-25',
+    description:
+      'Answer 12 personality-science questions and discover which 5 emojis match your character. Then download or share your personalised emoji card.',
+  },
+  {
     slug: 'seo-indexation-recovery',
     title: 'How We Recovered Emojar From a Google Indexation Drop',
     date: '2026-05-14',

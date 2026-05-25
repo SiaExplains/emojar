@@ -1,0 +1,111 @@
+import PostTags from '@/components/PostTags';
+export const metadata = {
+  title: "Find Your Emoji Personality — A Character Quiz Backed by Psychology | Emojar Blog",
+  description:
+    "Answer 12 personality-science questions and discover which 5 emojis mirror your character. Then download or share your personalised emoji personality card.",
+  alternates: { canonical: "https://emojar.com/blog/find-your-emoji-personality" },
+  openGraph: {
+    title: "Find Your Emoji Personality — A Character Quiz Backed by Psychology",
+    description:
+      "12 questions based on the Big Five personality model → 5 emoji matches + shareable card. Free, no account needed.",
+    url: "https://emojar.com/blog/find-your-emoji-personality",
+    siteName: "Emojar",
+    type: "article",
+  },
+  keywords: ["emoji personality quiz", "which emoji am i", "emoji character test", "personality test emoji", "Big Five emoji", "find your emoji"],
+  twitter: {
+    card: "summary",
+    title: "Find Your Emoji Personality — A Character Quiz Backed by Psychology",
+    description:
+      "12 questions based on the Big Five personality model → 5 emoji matches + a shareable card.",
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 mb-3">
+    New Feature
+  </p>
+  <h1>Find Your Emoji Personality 🪞</h1>
+  <time dateTime="2026-05-25" className="text-sm text-gray-400">
+    25 May 2026
+  </time>
+  <PostTags slug="find-your-emoji-personality" />
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+We have been thinking about this for a while: emojis are not just decoration — they are tiny, universal symbols of human emotion and character. So we built something we have not seen anywhere else: **a personality quiz that uses real psychology to match you with the emojis that best represent who you are**.
+
+[**Take the quiz now →**](https://emojar.com/personality)
+
+---
+
+## The Science Behind It
+
+The quiz is rooted in the **Big Five personality model** (also known as OCEAN) — the most widely validated framework in personality psychology, developed over decades of research by psychologists including Lewis Goldberg and Paul Costa. The Big Five describes personality across five broad dimensions:
+
+| Trait | What it measures |
+|---|---|
+| **Openness** | Creativity, curiosity, and willingness to explore new ideas |
+| **Conscientiousness** | Organisation, grit, dependability, and goal-directed behaviour |
+| **Extraversion** | Social energy, enthusiasm, and positive affect |
+| **Agreeableness** | Warmth, empathy, trust, and cooperation |
+| **Neuroticism** | Emotional reactivity and tendency toward negative affect (we flip this to **Calm**) |
+
+For Emojar's quiz, we adapted these five dimensions into language that feels natural in the context of emojis: **Joy, Warmth, Calm, Openness, and Grit** (J, W, C, O, G). The labels are different; the underlying science is the same.
+
+---
+
+## How the Matching Works
+
+Each of the 12 questions has four answer choices. Every choice quietly awards points to one or more personality dimensions based on what psychologists know about behaviour and self-report patterns.
+
+For example, a question about *how you handle a setback* might award high Grit points for "pick yourself up and try again," high Openness for "channel it into something creative," and high Calm for "reflect deeply and extract every lesson."
+
+Once you finish, your answers are summed into a five-dimensional personality vector — your personal fingerprint across J, W, C, O, and G.
+
+We then compare your vector against **30 emoji personalities** using **cosine similarity** — a standard technique from machine learning that measures how closely two vectors point in the same direction. The five emojis whose personality profiles best align with yours become your matches.
+
+---
+
+## What Makes a Good Emoji Match?
+
+Every emoji in the pool was given a trait vector based on its cultural associations, Unicode description, and how people actually use it. A few examples:
+
+- **🦁 Lion** scores very high on Grit and moderately on Openness — the courageous, independent type.
+- **🐬 Dolphin** scores high on both Joy and Warmth — the playful empath who navigates social situations with ease.
+- **🧘 Person in Lotus Position** scores high on Calm and Grit — grounded, disciplined, and emotionally steady.
+- **🌈 Rainbow** goes high on Openness and Joy — the radiant optimist who sees possibility everywhere.
+- **🎯 Direct Hit** maximises Grit and Calm — the focused strategist who cuts straight to what matters.
+
+---
+
+## Your Result Card
+
+After you finish, you get:
+
+1. **Your primary emoji match** — the single emoji that most closely mirrors your personality profile, with a personalised explanation of why it fits.
+2. **Your full palette** — all five matches ranked, each with its own explanation so you can see the full picture of your character.
+3. **A shareable image card** — a 1080×1080 PNG containing your five emojis against a dark gradient background, with your primary emoji's description and the Emojar branding. You can download it as an image file or share it directly on mobile via the Web Share API.
+
+---
+
+## How to Take the Quiz
+
+1. Go to [emojar.com/personality](https://emojar.com/personality)
+2. Read each question and tap the answer that feels most like you — there are no right or wrong choices
+3. The quiz auto-advances after each answer, taking roughly 2 minutes in total
+4. See your results, read the explanations, and download or share your card
+
+No account, no email, no score to beat. Just 12 honest questions and a personalised result.
+
+---
+
+## Try It Now
+
+Curious which emoji is your mirror? Find out in two minutes:
+
+[**Start the Emoji Personality Quiz →**](https://emojar.com/personality)
+
+And if you share your result online, tag it **#EmojarPersonality** — we would love to see what the community gets.

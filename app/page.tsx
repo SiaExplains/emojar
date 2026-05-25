@@ -182,6 +182,26 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Emoji Personality Quiz CTA */}
+      <Link
+        href="/personality"
+        className="flex items-center gap-4 rounded-2xl border bg-gradient-to-r from-gray-900 to-gray-700 text-white px-6 py-4 hover:from-gray-800 hover:to-gray-600 transition-all shadow-md group"
+      >
+        <span className="text-4xl shrink-0">🪞</span>
+        <div className="flex-1 min-w-0">
+          <p className="font-semibold text-base leading-snug">
+            Find Your Emoji Personality
+          </p>
+          <p className="text-gray-300 text-sm mt-0.5">
+            Answer 12 psychology-based questions → get 5 emoji matches +
+            shareable card
+          </p>
+        </div>
+        <span className="text-gray-400 group-hover:text-white transition-colors shrink-0 text-lg">
+          →
+        </span>
+      </Link>
+
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-semibold">Copy &amp; Paste Emojis</h1>
         <p className="text-gray-600">All the emojis in one jar 🫙</p>

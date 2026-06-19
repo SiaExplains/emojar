@@ -182,25 +182,49 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Emoji Personality Quiz CTA */}
-      <Link
-        href="/personality"
-        className="flex items-center gap-4 rounded-2xl border bg-gradient-to-r from-gray-900 to-gray-700 text-white px-6 py-4 hover:from-gray-800 hover:to-gray-600 transition-all shadow-md group"
-      >
-        <span className="text-4xl shrink-0">🪞</span>
-        <div className="flex-1 min-w-0">
-          <p className="font-semibold text-base leading-snug">
-            Find Your Emoji Personality
-          </p>
-          <p className="text-gray-300 text-sm mt-0.5">
-            Answer 12 psychology-based questions → get 5 emoji matches +
-            shareable card
-          </p>
+      {/* Emoji Tools Strip */}
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+          Emoji Tools
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* Personality Quiz */}
+          <Link
+            href="/personality"
+            className="flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-gray-900 to-gray-700 text-white px-5 py-4 hover:from-gray-800 hover:to-gray-600 transition-all shadow-sm group"
+          >
+            <span className="text-3xl shrink-0">🪞</span>
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-sm leading-snug">
+                Emoji Personality Quiz
+              </p>
+              <p className="text-gray-400 text-xs mt-0.5">
+                12 questions → your 5 emoji matches
+              </p>
+            </div>
+            <span className="text-gray-500 group-hover:text-white transition-colors shrink-0">
+              →
+            </span>
+          </Link>
+
+          {/* Emoji to PNG */}
+          <Link
+            href="/emoji-to-png"
+            className="flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-violet-600 to-indigo-600 text-white px-5 py-4 hover:from-violet-500 hover:to-indigo-500 transition-all shadow-sm group"
+          >
+            <span className="text-3xl shrink-0">🖼️</span>
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-sm leading-snug">Emoji to PNG</p>
+              <p className="text-violet-200 text-xs mt-0.5">
+                Download any emoji as an image
+              </p>
+            </div>
+            <span className="text-violet-300 group-hover:text-white transition-colors shrink-0">
+              →
+            </span>
+          </Link>
         </div>
-        <span className="text-gray-400 group-hover:text-white transition-colors shrink-0 text-lg">
-          →
-        </span>
-      </Link>
+      </div>
 
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-semibold">Copy &amp; Paste Emojis</h1>

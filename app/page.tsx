@@ -229,6 +229,15 @@ export default function Home() {
 
   const popularEmojis = useMemo(() => (data as Emoji[]).slice(0, 120), []);
 
+  const categoryEmojis = useMemo(() => {
+    const map: Record<string, Emoji[]> = {};
+    (data as Emoji[]).forEach((e) => {
+      if (!map[e.category]) map[e.category] = [];
+      if (map[e.category].length < 6) map[e.category].push(e);
+    });
+    return map;
+  }, []);
+
   const isSearching = query.trim() !== '';
   const totalEmojis = (data as Emoji[]).length;
 
@@ -386,7 +395,7 @@ export default function Home() {
           </div>
 
           {/* ---------------------------------------------------------------- */}
-          {/* CATEGORIES — all 10 with colors + counts                         */}
+          {/* CATEGORIES — directory list with emoji previews                  */}
           {/* ---------------------------------------------------------------- */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -398,7 +407,7 @@ export default function Home() {
                 All categories →
               </Link>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+            <div className="rounded-2xl border border-gray-100 overflow-hidden divide-y divide-gray-100">
               {categories.map((cat) => {
                 const meta = CATEGORY_META[cat] ?? {
                   icon: '📁',
@@ -406,20 +415,37 @@ export default function Home() {
                   border: 'border-gray-200',
                   text: 'text-gray-900',
                 };
+                const previews = categoryEmojis[cat] ?? [];
                 return (
                   <Link
                     key={cat}
                     href={`/category/${encodeURIComponent(cat)}`}
-                    className={`flex flex-col gap-1 rounded-xl border ${meta.bg} ${meta.border} px-3 py-3 transition-all hover:shadow-sm`}
+                    className="group flex items-center gap-3 px-4 py-3 bg-white hover:bg-gray-50 transition-colors"
                   >
-                    <span className="text-2xl">{meta.icon}</span>
+                    <span className="text-xl shrink-0 w-7 text-center">
+                      {meta.icon}
+                    </span>
                     <span
-                      className={`text-xs font-semibold leading-tight ${meta.text}`}
+                      className={`text-sm font-semibold w-36 shrink-0 ${meta.text}`}
                     >
                       {cat}
                     </span>
-                    <span className="text-xs text-gray-400">
+                    <span className="flex-1 flex gap-1 overflow-hidden">
+                      {previews.map((e) => (
+                        <span
+                          key={e.slug}
+                          className="text-lg leading-none"
+                          title={e.name}
+                        >
+                          {e.char}
+                        </span>
+                      ))}
+                    </span>
+                    <span className="text-xs text-gray-400 shrink-0 w-20 text-right">
                       {(categoryCounts[cat] ?? 0).toLocaleString()} emojis
+                    </span>
+                    <span className="text-gray-300 group-hover:text-gray-500 transition-colors shrink-0 ml-1">
+                      →
                     </span>
                   </Link>
                 );
@@ -506,7 +532,7 @@ export default function Home() {
           </div>
 
           {/* ---------------------------------------------------------------- */}
-          {/* BLOG                                                              */}
+          {/* BLOG — featured hero + compact list                              */}
           {/* ---------------------------------------------------------------- */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -518,31 +544,71 @@ export default function Home() {
                 All posts →
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {LATEST_POSTS.map((post) => (
+
+            {/* Featured first post */}
+            {LATEST_POSTS[0] && (
+              <Link
+                href={`/blog/${LATEST_POSTS[0].slug}`}
+                className="group block rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-6 py-6 text-white hover:from-indigo-500 hover:to-violet-500 transition-all shadow-sm"
+              >
+                <div className="flex items-start gap-4">
+                  <span className="text-5xl leading-none shrink-0 mt-0.5">
+                    {LATEST_POSTS[0].emoji}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <span
+                      className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full mb-2 bg-white/20 text-white`}
+                    >
+                      {LATEST_POSTS[0].tag}
+                    </span>
+                    <p className="font-bold text-lg leading-snug">
+                      {LATEST_POSTS[0].title}
+                    </p>
+                    <time className="text-indigo-200 text-xs mt-1 block">
+                      {new Date(LATEST_POSTS[0].date).toLocaleDateString(
+                        'en-GB',
+                        {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric',
+                        },
+                      )}
+                    </time>
+                  </div>
+                  <span className="text-indigo-300 group-hover:text-white transition-colors shrink-0 text-lg mt-1">
+                    →
+                  </span>
+                </div>
+              </Link>
+            )}
+
+            {/* Remaining posts as compact list */}
+            <div className="rounded-2xl border border-gray-100 overflow-hidden divide-y divide-gray-100">
+              {LATEST_POSTS.slice(1).map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group flex flex-col gap-2 rounded-xl border bg-white px-4 py-4 hover:bg-gray-50 hover:shadow-sm transition-all"
+                  className="group flex items-center gap-3 px-4 py-3.5 bg-white hover:bg-gray-50 transition-colors"
                 >
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">{post.emoji}</span>
-                    <span
-                      className={`text-xs font-semibold px-2 py-0.5 rounded-full ${post.tagColor}`}
-                    >
-                      {post.tag}
-                    </span>
-                  </div>
-                  <p className="font-semibold text-sm leading-snug group-hover:text-blue-700 transition-colors">
+                  <span className="text-xl shrink-0">{post.emoji}</span>
+                  <span
+                    className={`hidden sm:inline-block text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 ${post.tagColor}`}
+                  >
+                    {post.tag}
+                  </span>
+                  <p className="flex-1 text-sm font-semibold leading-snug min-w-0 group-hover:text-blue-700 transition-colors">
                     {post.title}
                   </p>
-                  <time className="text-xs text-gray-400">
+                  <time className="text-xs text-gray-400 shrink-0">
                     {new Date(post.date).toLocaleDateString('en-GB', {
                       day: 'numeric',
-                      month: 'long',
+                      month: 'short',
                       year: 'numeric',
                     })}
                   </time>
+                  <span className="text-gray-300 group-hover:text-gray-500 transition-colors shrink-0 ml-1">
+                    →
+                  </span>
                 </Link>
               ))}
             </div>

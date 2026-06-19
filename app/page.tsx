@@ -17,101 +17,183 @@ export type Emoji = {
   version?: string;
 };
 
-const CATEGORIES = [
+// ---------------------------------------------------------------------------
+// Static data for below-fold sections
+// ---------------------------------------------------------------------------
+
+const ALL_GAMES = [
   {
+    emoji: '⭕',
+    title: 'XO',
+    sub: 'Tic-Tac-Toe',
+    href: '/games/xo',
+    bg: 'bg-blue-50 border-blue-100 hover:bg-blue-100',
+  },
+  {
+    emoji: '🐍',
+    title: 'Snake',
+    sub: 'Eat the fruit',
+    href: '/games/snake',
+    bg: 'bg-green-50 border-green-100 hover:bg-green-100',
+  },
+  {
+    emoji: '💣',
+    title: 'Minesweeper',
+    sub: 'Clear the field',
+    href: '/games/minesweeper',
+    bg: 'bg-slate-50 border-slate-100 hover:bg-slate-100',
+  },
+  {
+    emoji: '🪤',
+    title: 'Hangman',
+    sub: 'Guess the name',
+    href: '/games/hangman',
+    bg: 'bg-amber-50 border-amber-100 hover:bg-amber-100',
+  },
+  {
+    emoji: '🫧',
+    title: 'Bubble Shooter',
+    sub: 'Pop to win',
+    href: '/games/bubble-shooter',
+    bg: 'bg-sky-50 border-sky-100 hover:bg-sky-100',
+  },
+  {
+    emoji: '🚩',
+    title: 'Guess the Flag',
+    sub: 'Country quiz',
+    href: '/games/guess-the-flag',
+    bg: 'bg-rose-50 border-rose-100 hover:bg-rose-100',
+  },
+  {
+    emoji: '🧩',
+    title: 'Emoji Puzzle',
+    sub: 'Memory match',
+    href: '/games/emoji-puzzle',
+    bg: 'bg-purple-50 border-purple-100 hover:bg-purple-100',
+  },
+  {
+    emoji: '⏳',
+    title: 'Older or Newer',
+    sub: 'Emoji history',
+    href: '/games/older-or-newer',
+    bg: 'bg-orange-50 border-orange-100 hover:bg-orange-100',
+  },
+  {
+    emoji: '🐾',
+    title: 'Guess the Animal',
+    sub: 'Animal quiz',
+    href: '/games/guess-the-animal',
+    bg: 'bg-emerald-50 border-emerald-100 hover:bg-emerald-100',
+  },
+  {
+    emoji: '🎯',
+    title: 'Odd One Out',
+    sub: 'Logic & trivia',
+    href: '/games/odd-one-out',
+    bg: 'bg-red-50 border-red-100 hover:bg-red-100',
+  },
+];
+
+const CATEGORY_META: Record<
+  string,
+  { icon: string; bg: string; border: string; text: string }
+> = {
+  'Smileys & Emotion': {
     icon: '😀',
-    title: 'Smileys & Emotion',
-    href: '/category/Smileys%20%26%20Emotion',
+    bg: 'bg-amber-50',
+    border: 'border-amber-200',
+    text: 'text-amber-900',
   },
-  { icon: '👥', title: 'People & Body', href: '/category/People%20%26%20Body' },
-  {
+  'People & Body': {
+    icon: '👋',
+    bg: 'bg-blue-50',
+    border: 'border-blue-200',
+    text: 'text-blue-900',
+  },
+  'Animals & Nature': {
     icon: '🐾',
-    title: 'Animals & Nature',
-    href: '/category/Animals%20%26%20Nature',
+    bg: 'bg-green-50',
+    border: 'border-green-200',
+    text: 'text-green-900',
   },
-  { icon: '🍕', title: 'Food & Drink', href: '/category/Food%20%26%20Drink' },
-  {
+  'Food & Drink': {
+    icon: '🍕',
+    bg: 'bg-orange-50',
+    border: 'border-orange-200',
+    text: 'text-orange-900',
+  },
+  'Travel & Places': {
     icon: '✈️',
-    title: 'Travel & Places',
-    href: '/category/Travel%20%26%20Places',
+    bg: 'bg-cyan-50',
+    border: 'border-cyan-200',
+    text: 'text-cyan-900',
   },
-  { icon: '⚽', title: 'Activities', href: '/category/Activities' },
-  { icon: '💡', title: 'Objects', href: '/category/Objects' },
-  { icon: '♾️', title: 'Symbols', href: '/category/Symbols' },
+  Activities: {
+    icon: '⚽',
+    bg: 'bg-violet-50',
+    border: 'border-violet-200',
+    text: 'text-violet-900',
+  },
+  Objects: {
+    icon: '💡',
+    bg: 'bg-slate-50',
+    border: 'border-slate-200',
+    text: 'text-slate-900',
+  },
+  Symbols: {
+    icon: '♾️',
+    bg: 'bg-indigo-50',
+    border: 'border-indigo-200',
+    text: 'text-indigo-900',
+  },
+  Flags: {
+    icon: '🚩',
+    bg: 'bg-rose-50',
+    border: 'border-rose-200',
+    text: 'text-rose-900',
+  },
+  Component: {
+    icon: '🎨',
+    bg: 'bg-gray-50',
+    border: 'border-gray-200',
+    text: 'text-gray-900',
+  },
+};
+
+const LATEST_POSTS = [
+  {
+    slug: 'emoji-to-png-download',
+    title: 'Download Any Emoji as a PNG',
+    date: '2026-06-19',
+    tag: 'New Tool',
+    tagColor: 'bg-indigo-100 text-indigo-700',
+    emoji: '🖼️',
+  },
+  {
+    slug: 'find-your-emoji-personality',
+    title: 'Find Your Emoji Personality',
+    date: '2026-05-25',
+    tag: 'Quiz',
+    tagColor: 'bg-violet-100 text-violet-700',
+    emoji: '🪞',
+  },
+  {
+    slug: 'emoji-events-collection',
+    title: 'Emoji Collections for Every Holiday',
+    date: '2026-05-14',
+    tag: 'Collection',
+    tagColor: 'bg-amber-100 text-amber-700',
+    emoji: '🎉',
+  },
 ];
 
-const GAMES = [
-  { icon: '🪤', title: 'Hangman', href: '/games/hangman' },
-  { icon: '🐍', title: 'Snake', href: '/games/snake' },
-  { icon: '💣', title: 'Minesweeper', href: '/games/minesweeper' },
-  { icon: '⭕', title: 'Tic-Tac-Toe', href: '/games/xo' },
-  { icon: '🫧', title: 'Bubble Shooter', href: '/games/bubble-shooter' },
-  { icon: '🚩', title: 'Guess the Flag', href: '/games/guess-the-flag' },
-];
-
-const FEATURE_CARDS = [
-  {
-    icon: '🎮',
-    title: 'Emoji Games',
-    detail:
-      'Put your emoji knowledge to the test with a growing collection of mini-games. Guess the hidden emoji in Hangman, dodge walls in Snake, or carefully flag mines in Minesweeper — every game is emoji-themed and playable right in your browser.',
-    href: '/games',
-    cta: 'Play games →',
-    games: GAMES,
-  },
-  {
-    icon: '📂',
-    title: 'Browse Categories',
-    detail:
-      'Every one of the 3,600+ emojis is sorted into groups — Smileys & Emotion, Animals & Nature, Food & Drink, Travel & Places, and more. Tap any category to jump straight to the emojis you need.',
-    href: '/categories',
-    cta: 'Explore categories →',
-    categories: CATEGORIES,
-  },
-  {
-    icon: '🔤',
-    title: 'A–Z Sorted',
-    detail:
-      "Browse the entire emoji library in strict alphabetical order. Handy when you remember part of an emoji name but can't find it in search — just scan the list and copy with one click.",
-    href: '/collection/alphabet',
-    cta: 'Browse A–Z →',
-  },
-  {
-    icon: '📖',
-    title: 'Blog',
-    detail:
-      'Dig into emoji culture with articles about origin stories, trending combos, creative use-cases, and tips for getting the most out of every emoji. New posts added regularly.',
-    href: '/blog',
-    cta: 'Read more articles →',
-    latestPosts: [
-      {
-        title: 'Emoji Collections for Every Holiday & Event',
-        date: '2026-05-14',
-        description:
-          'Curated emoji packs for 15 major holidays — New Year, Halloween, Christmas, Diwali, and more. Copy a single emoji or the whole set.',
-        href: '/blog/emoji-events-collection',
-      },
-      {
-        title: "Odd One Out — Spot the Emoji That Doesn't Belong",
-        date: '2026-05-14',
-        description:
-          "Five emojis, four share a theme — one doesn't fit. A new emoji logic game with 50+ curated rounds.",
-        href: '/blog/odd-one-out-game',
-      },
-      {
-        title: "What's New on Emojar — May 2026 Updates",
-        date: '2026-05-13',
-        description:
-          'Games, category breadcrumbs, a refreshed homepage, and more — here is everything that landed on Emojar this month.',
-        href: '/blog/emojar-may-2026-updates',
-      },
-    ],
-  },
-];
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
 
 export default function Home() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<Emoji[]>(data as Emoji[]);
+  const [searchResults, setSearchResults] = useState<Emoji[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
 
   const fuse = useMemo(
@@ -125,11 +207,10 @@ export default function Home() {
   );
 
   useEffect(() => {
-    if (!query.trim()) {
-      setResults(data as Emoji[]);
+    if (query.trim()) {
+      setSearchResults(fuse.search(query).map((x) => x.item as Emoji));
     } else {
-      const r = fuse.search(query).map((x) => x.item as Emoji);
-      setResults(r);
+      setSearchResults([]);
     }
   }, [query, fuse]);
 
@@ -138,204 +219,340 @@ export default function Home() {
     return Array.from(s).sort();
   }, []);
 
-  const popularEmojis = useMemo(() => (data as Emoji[]).slice(0, 100), []);
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    (data as Emoji[]).forEach((e) => {
+      counts[e.category] = (counts[e.category] ?? 0) + 1;
+    });
+    return counts;
+  }, []);
+
+  const popularEmojis = useMemo(() => (data as Emoji[]).slice(0, 120), []);
 
   const isSearching = query.trim() !== '';
-
-  const gamesCard = FEATURE_CARDS[0];
-  const otherCards = FEATURE_CARDS.slice(1);
+  const totalEmojis = (data as Emoji[]).length;
 
   return (
     <section className="space-y-10">
-      {/* Emoji Games — frameless strip above the fold */}
-      <div>
-        <div className="flex items-center gap-1.5 mb-2">
-          <span>{gamesCard.icon}</span>
-          <span className="font-semibold">{gamesCard.title}</span>
-          <span className="text-gray-400 text-sm">
-            — play free in your browser
-          </span>
+      {/* ------------------------------------------------------------------ */}
+      {/* HERO                                                                */}
+      {/* ------------------------------------------------------------------ */}
+      <div className="text-center space-y-4 pt-2">
+        {/* Stats strip */}
+        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-gray-400 font-medium">
+          <span>✨ {totalEmojis.toLocaleString()} emojis</span>
+          <span aria-hidden>·</span>
+          <span>📂 {categories.length} categories</span>
+          <span aria-hidden>·</span>
+          <span>🎮 10 games</span>
+          <span aria-hidden>·</span>
+          <span>🛠️ 2 tools</span>
+          <span aria-hidden>·</span>
+          <span>💚 Free forever</span>
         </div>
-        {'games' in gamesCard && gamesCard.games && (
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-            {gamesCard.games.map((game) => (
-              <Link
-                key={game.href}
-                href={game.href}
-                className="flex flex-col items-center gap-0.5 rounded-lg bg-gray-50 border hover:bg-gray-100 hover:shadow-sm transition-all py-2 px-1"
-              >
-                <span className="text-2xl">{game.icon}</span>
-                <span className="text-xs font-medium text-center leading-tight">
-                  {game.title}
-                </span>
-              </Link>
-            ))}
-          </div>
-        )}
-        <div className="text-right mt-1.5">
-          <Link
-            href={gamesCard.href}
-            className="text-xs font-medium text-blue-600 hover:underline"
-          >
-            {gamesCard.cta}
-          </Link>
-        </div>
-      </div>
 
-      {/* Emoji Tools Strip */}
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
-          Emoji Tools
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+          Copy &amp; Paste Any Emoji,
+          <br className="hidden sm:block" /> Instantly
+        </h1>
+        <p className="text-gray-500 text-base max-w-md mx-auto leading-relaxed">
+          Search {totalEmojis.toLocaleString()}+ emojis, copy with one tap. Plus
+          games, tools, and collections — all free.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {/* Personality Quiz */}
-          <Link
-            href="/personality"
-            className="flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-gray-900 to-gray-700 text-white px-5 py-4 hover:from-gray-800 hover:to-gray-600 transition-all shadow-sm group"
-          >
-            <span className="text-3xl shrink-0">🪞</span>
-            <div className="flex-1 min-w-0">
-              <p className="font-semibold text-sm leading-snug">
-                Emoji Personality Quiz
-              </p>
-              <p className="text-gray-400 text-xs mt-0.5">
-                12 questions → your 5 emoji matches
-              </p>
-            </div>
-            <span className="text-gray-500 group-hover:text-white transition-colors shrink-0">
-              →
-            </span>
-          </Link>
-
-          {/* Emoji to PNG */}
-          <Link
-            href="/emoji-to-png"
-            className="flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-violet-600 to-indigo-600 text-white px-5 py-4 hover:from-violet-500 hover:to-indigo-500 transition-all shadow-sm group"
-          >
-            <span className="text-3xl shrink-0">🖼️</span>
-            <div className="flex-1 min-w-0">
-              <p className="font-semibold text-sm leading-snug">Emoji to PNG</p>
-              <p className="text-violet-200 text-xs mt-0.5">
-                Download any emoji as an image
-              </p>
-            </div>
-            <span className="text-violet-300 group-hover:text-white transition-colors shrink-0">
-              →
-            </span>
-          </Link>
-        </div>
       </div>
 
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-semibold">Copy &amp; Paste Emojis</h1>
-        <p className="text-gray-600">All the emojis in one jar 🫙</p>
-      </div>
-
+      {/* ------------------------------------------------------------------ */}
+      {/* SEARCH + CATEGORY PILLS                                             */}
+      {/* ------------------------------------------------------------------ */}
       <SearchBar value={query} onChange={setQuery} />
-
       <CategoryPills categories={categories} />
 
+      {/* ------------------------------------------------------------------ */}
+      {/* EMOJI GRID  (search results OR popular)                             */}
+      {/* ------------------------------------------------------------------ */}
       {isSearching ? (
-        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
-          {results.map((e, index) => (
-            <SmallEmojiCard
-              key={`${e.slug}-index-${index}`}
-              emoji={e}
-              onCopied={setCopied}
-            />
-          ))}
+        <div className="space-y-3">
+          <p className="text-sm text-gray-400">
+            {searchResults.length === 0
+              ? `No results for "${query}"`
+              : `${searchResults.length.toLocaleString()} result${searchResults.length === 1 ? '' : 's'} for "${query}"`}
+          </p>
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
+            {searchResults.map((e, i) => (
+              <SmallEmojiCard
+                key={`${e.slug}-sr-${i}`}
+                emoji={e}
+                onCopied={setCopied}
+              />
+            ))}
+          </div>
         </div>
       ) : (
         <>
-          {/* Popular Emojis */}
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">⭐ Popular Emojis</h2>
+          {/* Popular emojis */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold">⭐ Popular Emojis</h2>
+              <Link
+                href="/collection/detail"
+                className="text-sm text-blue-600 hover:underline"
+              >
+                Browse all {totalEmojis.toLocaleString()} →
+              </Link>
+            </div>
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
-              {popularEmojis.map((e, index) => (
+              {popularEmojis.map((e, i) => (
                 <SmallEmojiCard
-                  key={`${e.slug}-popular-${index}`}
+                  key={`${e.slug}-pop-${i}`}
                   emoji={e}
                   onCopied={setCopied}
                 />
               ))}
             </div>
-            <div className="text-right">
+          </div>
+
+          <hr className="border-gray-100" />
+
+          {/* ---------------------------------------------------------------- */}
+          {/* EMOJI TOOLS                                                       */}
+          {/* ---------------------------------------------------------------- */}
+          <div className="space-y-3">
+            <h2 className="text-lg font-semibold">🛠️ Emoji Tools</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
-                href="/collection/detail"
-                className="text-sm text-blue-600 hover:underline"
+                href="/emoji-to-png"
+                className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-violet-600 to-indigo-600 px-5 py-4 text-white shadow-sm transition-all hover:from-violet-500 hover:to-indigo-500"
               >
-                Browse All Emojis →
+                <span className="text-3xl shrink-0">🖼️</span>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-sm">Emoji to PNG</p>
+                  <p className="text-violet-200 text-xs mt-0.5">
+                    Download any emoji as a high-quality image
+                  </p>
+                </div>
+                <span className="text-violet-300 transition-colors group-hover:text-white shrink-0">
+                  →
+                </span>
+              </Link>
+
+              <Link
+                href="/personality"
+                className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-gray-900 to-gray-700 px-5 py-4 text-white shadow-sm transition-all hover:from-gray-800 hover:to-gray-600"
+              >
+                <span className="text-3xl shrink-0">🪞</span>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-sm">
+                    Emoji Personality Quiz
+                  </p>
+                  <p className="text-gray-400 text-xs mt-0.5">
+                    12 questions → discover your 5 emoji matches
+                  </p>
+                </div>
+                <span className="text-gray-500 transition-colors group-hover:text-white shrink-0">
+                  →
+                </span>
               </Link>
             </div>
           </div>
 
-          {/* Remaining Feature Cards */}
-          <div className="space-y-4">
-            {otherCards.map((card) => (
-              <div
-                key={card.href}
-                className="border rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4"
+          {/* ---------------------------------------------------------------- */}
+          {/* GAMES — all 10                                                    */}
+          {/* ---------------------------------------------------------------- */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold">🎮 Emoji Games</h2>
+              <Link
+                href="/games"
+                className="text-sm text-blue-600 hover:underline"
               >
-                <span className="text-4xl shrink-0">{card.icon}</span>
-                <div className="flex flex-col gap-2 flex-1">
-                  <span className="text-lg font-semibold">{card.title}</span>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {card.detail}
-                  </p>
-                  {'categories' in card && card.categories && (
-                    <div className="flex flex-wrap gap-2 mt-1">
-                      {card.categories.map((cat) => (
-                        <Link
-                          key={cat.href}
-                          href={cat.href}
-                          className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-sm hover:bg-gray-100 transition-colors"
-                        >
-                          <span>{cat.icon}</span>
-                          <span>{cat.title}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                  {'latestPosts' in card && card.latestPosts && (
-                    <div className="mt-1 flex flex-col gap-2">
-                      {card.latestPosts.map((post) => (
-                        <Link
-                          key={post.href}
-                          href={post.href}
-                          className="block rounded-lg border bg-gray-50 p-3 hover:bg-gray-100 transition-colors"
-                        >
-                          <time className="text-xs text-gray-400 uppercase tracking-wide">
-                            {new Date(post.date).toLocaleDateString('en-GB', {
-                              day: 'numeric',
-                              month: 'long',
-                              year: 'numeric',
-                            })}
-                          </time>
-                          <p className="mt-0.5 text-sm font-semibold leading-snug">
-                            {post.title}
-                          </p>
-                          <p className="mt-1 text-xs text-gray-500 leading-relaxed line-clamp-2">
-                            {post.description}
-                          </p>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                See all 10 →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+              {ALL_GAMES.map((game) => (
+                <Link
+                  key={game.href}
+                  href={game.href}
+                  className={`flex flex-col items-center gap-1.5 rounded-xl border ${game.bg} px-3 py-3.5 text-center transition-all hover:shadow-sm`}
+                >
+                  <span className="text-3xl">{game.emoji}</span>
+                  <span className="font-semibold text-sm leading-tight">
+                    {game.title}
+                  </span>
+                  <span className="text-xs text-gray-400">{game.sub}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* ---------------------------------------------------------------- */}
+          {/* CATEGORIES — all 10 with colors + counts                         */}
+          {/* ---------------------------------------------------------------- */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold">📂 Browse by Category</h2>
+              <Link
+                href="/categories"
+                className="text-sm text-blue-600 hover:underline"
+              >
+                All categories →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+              {categories.map((cat) => {
+                const meta = CATEGORY_META[cat] ?? {
+                  icon: '📁',
+                  bg: 'bg-gray-50',
+                  border: 'border-gray-200',
+                  text: 'text-gray-900',
+                };
+                return (
                   <Link
-                    href={card.href}
-                    className="text-sm font-medium text-blue-600 hover:underline self-start"
+                    key={cat}
+                    href={`/category/${encodeURIComponent(cat)}`}
+                    className={`flex flex-col gap-1 rounded-xl border ${meta.bg} ${meta.border} px-3 py-3 transition-all hover:shadow-sm`}
                   >
-                    {card.cta}
+                    <span className="text-2xl">{meta.icon}</span>
+                    <span
+                      className={`text-xs font-semibold leading-tight ${meta.text}`}
+                    >
+                      {cat}
+                    </span>
+                    <span className="text-xs text-gray-400">
+                      {(categoryCounts[cat] ?? 0).toLocaleString()} emojis
+                    </span>
                   </Link>
-                </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ---------------------------------------------------------------- */}
+          {/* HOLIDAY COLLECTIONS                                               */}
+          {/* ---------------------------------------------------------------- */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold">🎉 Emoji Collections</h2>
+              <Link
+                href="/emoji-collections/events"
+                className="text-sm text-blue-600 hover:underline"
+              >
+                All 15 collections →
+              </Link>
+            </div>
+            <Link
+              href="/emoji-collections/events"
+              className="group flex items-center gap-5 rounded-2xl border border-purple-100 bg-gradient-to-r from-purple-50 to-fuchsia-50 px-6 py-5 transition-all hover:shadow-md"
+            >
+              <div className="shrink-0 text-4xl sm:text-5xl tracking-wide select-none leading-none">
+                🌈❤️🧡💛💚💙💜
               </div>
-            ))}
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-purple-900">
+                  Holiday &amp; Event Collections
+                </p>
+                <p className="text-sm text-purple-600 mt-1 leading-relaxed">
+                  15 curated emoji packs — New Year, Valentine&apos;s, Pride,
+                  Halloween, Christmas, Diwali &amp; more. Copy the whole set in
+                  one tap.
+                </p>
+              </div>
+              <span className="text-purple-300 transition-colors group-hover:text-purple-600 shrink-0 text-lg">
+                →
+              </span>
+            </Link>
+          </div>
+
+          {/* ---------------------------------------------------------------- */}
+          {/* BROWSE MORE                                                       */}
+          {/* ---------------------------------------------------------------- */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link
+              href="/collection/alphabet"
+              className="flex items-center gap-3 rounded-xl border bg-gray-50 px-4 py-3.5 hover:bg-gray-100 hover:shadow-sm transition-all"
+            >
+              <span className="text-2xl shrink-0">🔤</span>
+              <div>
+                <p className="font-semibold text-sm">A–Z Browse</p>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  All emojis in alphabetical order
+                </p>
+              </div>
+            </Link>
+            <Link
+              href="/collection/detail"
+              className="flex items-center gap-3 rounded-xl border bg-gray-50 px-4 py-3.5 hover:bg-gray-100 hover:shadow-sm transition-all"
+            >
+              <span className="text-2xl shrink-0">📋</span>
+              <div>
+                <p className="font-semibold text-sm">Detail View</p>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  Names, categories &amp; metadata visible
+                </p>
+              </div>
+            </Link>
+            <Link
+              href="/table/emoji-alphabet-shaped"
+              className="flex items-center gap-3 rounded-xl border bg-gray-50 px-4 py-3.5 hover:bg-gray-100 hover:shadow-sm transition-all"
+            >
+              <span className="text-2xl shrink-0">🅰️</span>
+              <div>
+                <p className="font-semibold text-sm">Letter-Shaped Emojis</p>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  Emojis that look like A–Z
+                </p>
+              </div>
+            </Link>
+          </div>
+
+          {/* ---------------------------------------------------------------- */}
+          {/* BLOG                                                              */}
+          {/* ---------------------------------------------------------------- */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold">📖 From the Blog</h2>
+              <Link
+                href="/blog"
+                className="text-sm text-blue-600 hover:underline"
+              >
+                All posts →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {LATEST_POSTS.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group flex flex-col gap-2 rounded-xl border bg-white px-4 py-4 hover:bg-gray-50 hover:shadow-sm transition-all"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">{post.emoji}</span>
+                    <span
+                      className={`text-xs font-semibold px-2 py-0.5 rounded-full ${post.tagColor}`}
+                    >
+                      {post.tag}
+                    </span>
+                  </div>
+                  <p className="font-semibold text-sm leading-snug group-hover:text-blue-700 transition-colors">
+                    {post.title}
+                  </p>
+                  <time className="text-xs text-gray-400">
+                    {new Date(post.date).toLocaleDateString('en-GB', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    })}
+                  </time>
+                </Link>
+              ))}
+            </div>
           </div>
         </>
       )}
 
+      {/* Copy toast */}
       {copied && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full shadow">
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-4 py-2 rounded-full shadow-lg">
           Copied {copied}!
         </div>
       )}

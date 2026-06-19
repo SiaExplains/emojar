@@ -1,0 +1,106 @@
+import PostTags from '@/components/PostTags';
+export const metadata = {
+  title: "Emojar Homepage Redesign — Everything in One Place | Emojar Blog",
+  description:
+    "We redesigned the Emojar homepage to surface all features at a glance: 3,790 emojis, 10 games, 2 tools, 10 category tiles, holiday collections, and the latest blog posts.",
+  alternates: { canonical: "https://emojar.com/blog/homepage-redesign-june-2026" },
+  openGraph: {
+    title: "Emojar Homepage Redesign — Everything in One Place",
+    description:
+      "The Emojar homepage now surfaces all 10 games, all 10 categories, tools, collections, and the blog in one clean layout.",
+    url: "https://emojar.com/blog/homepage-redesign-june-2026",
+    siteName: "Emojar",
+    type: "article",
+  },
+  keywords: ["emojar update", "emoji website", "emoji tools", "emoji games homepage", "emojar redesign"],
+  twitter: {
+    card: "summary",
+    title: "Emojar Homepage Redesign — Everything in One Place",
+    description:
+      "All 10 games, all 10 categories, tools, and collections now on the homepage.",
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
+    Platform Update
+  </p>
+  <h1>Emojar Homepage Redesign — Everything in One Place 🏠</h1>
+  <time dateTime="2026-06-20" className="text-sm text-gray-400">
+    20 June 2026
+  </time>
+  <PostTags slug="homepage-redesign-june-2026" />
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+We just shipped a new homepage for Emojar. The goal: any visitor should be able to see exactly what Emojar does and where everything is — without needing to dig through the navigation.
+
+Here is what changed and why.
+
+---
+
+## What was wrong with the old layout
+
+The previous homepage was functional but buried too much. The search bar — the most important thing on the site — appeared below a games strip and a tools strip. First-time visitors had to scroll past features they had never heard of before reaching the reason they came: finding and copying an emoji.
+
+The feature cards that followed the search were long, generic, and text-heavy. Worse, they only showed 6 of the 10 available games and hid the 10 emoji categories inside a hard-to-scan list of pill links.
+
+---
+
+## What changed
+
+### 1. Hero first
+
+The page now opens with a short stats strip (3,790 emojis · 10 categories · 10 games · 2 tools · Free forever) followed by a clear headline and one-line summary. This sets the context before the user interacts with anything.
+
+### 2. Search front and centre
+
+The search bar now appears immediately below the hero — not buried after feature cards. The category pills sit directly below it for quick navigation to a specific group.
+
+### 3. All 10 games, not 6
+
+The previous homepage showed 6 games in a horizontal strip. The new layout shows all 10 in a 2×5 colour-coded grid, each tile with the game name and a one-line description. Every game is one tap away.
+
+| Game | What it is |
+|---|---|
+| ⭕ XO | Tic-Tac-Toe with custom emoji pieces |
+| 🐍 Snake | Guide your emoji snake to eat fruit |
+| 💣 Minesweeper | Uncover tiles, flag the mines |
+| 🪤 Hangman | Guess emoji Unicode names |
+| 🫧 Bubble Shooter | Pop matching emoji bubbles |
+| 🚩 Guess the Flag | Match flag emoji to country |
+| 🧩 Emoji Puzzle | Memory match with emoji cards |
+| ⏳ Older or Newer | Guess which emoji came first |
+| 🐾 Guess the Animal | Name the animal emoji |
+| 🎯 Odd One Out | Spot the emoji that does not belong |
+
+### 4. All 10 categories with colour coding
+
+Categories are now displayed as a 5-column grid of colour-coded tiles, each showing the category name, an icon, and the exact emoji count. This makes it easy to find the right section without reading dense text.
+
+### 5. Emoji Collections teaser
+
+The [Holiday & Event Collections](/emoji-collections/events) page — 15 curated emoji packs for major events throughout the year — now has a dedicated banner on the homepage. Previously it was not linked from the homepage at all.
+
+### 6. Browse shortcuts
+
+Three quick-access cards for alternate browse modes: A–Z sorted, Detail view (with names and metadata inline), and the Letter-Shaped Emojis table.
+
+### 7. Redesigned blog section
+
+The blog section now uses card-style post tiles with emoji icons, colour-coded tags, and the post title. The previous layout embedded blog posts inside a generic feature card, making them easy to miss.
+
+---
+
+## What did not change
+
+- The search still uses Fuse.js with the same 0.3 threshold
+- Copy to clipboard works identically — one tap, toast confirmation
+- The emoji grid uses the same SmallEmojiCard components
+- All routes and URLs are unchanged
+
+---
+
+The new homepage is live at [emojar.com](https://emojar.com). If you notice anything that should be improved, use the [contact form](/contact).

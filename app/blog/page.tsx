@@ -30,6 +30,13 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'homepage-redesign-june-2026',
+    title: 'Emojar Homepage Redesign — Everything in One Place',
+    date: '2026-06-20',
+    description:
+      'The Emojar homepage now shows all 10 games, all 10 colour-coded categories, emoji tools, holiday collections, and the latest blog posts — in one clean layout.',
+  },
+  {
     slug: 'emoji-to-png-download',
     title: 'Download Any Emoji as a PNG Image — Free, Instant, No Sign-up',
     date: '2026-06-19',

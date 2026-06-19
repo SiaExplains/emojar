@@ -35,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${base}/emoji-to-png`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${base}/games`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',
@@ -248,6 +254,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${base}/blog/find-your-emoji-personality`,
       lastModified: new Date('2026-05-25'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/emoji-to-png-download`,
+      lastModified: new Date('2026-06-19'),
       changeFrequency: 'monthly',
       priority: 0.7,
     },

@@ -30,6 +30,13 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'emoji-to-png-download',
+    title: 'Download Any Emoji as a PNG Image — Free, Instant, No Sign-up',
+    date: '2026-06-19',
+    description:
+      'The Emojar Emoji to PNG tool lets you convert any of the 3,790 emojis to a high-quality image. Choose your size, background, and padding — then download in one click.',
+  },
+  {
     slug: 'find-your-emoji-personality',
     title:
       'Find Your Emoji Personality — A Character Quiz Backed by Psychology',

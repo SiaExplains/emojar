@@ -1,4 +1,5 @@
 export const POST_TAGS: Record<string, string[]> = {
+  'emoji-to-png-download': ['New Tool', 'Download', 'PNG'],
   'find-your-emoji-personality': ['Quiz', 'Personality', 'New Feature'],
   'seo-indexation-recovery': ['Technical', 'SEO', 'Updates'],
   'emoji-events-collection': ['Collection', 'Holidays', 'Copy & Paste'],

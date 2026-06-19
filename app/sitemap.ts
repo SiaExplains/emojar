@@ -263,6 +263,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    {
+      url: `${base}/blog/homepage-redesign-june-2026`,
+      lastModified: new Date('2026-06-20'),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
   ];
 
   const categories = Array.from(new Set(data.map((e) => e.category)));

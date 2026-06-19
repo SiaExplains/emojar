@@ -1,4 +1,5 @@
 export const POST_TAGS: Record<string, string[]> = {
+  'homepage-redesign-june-2026': ['Update', 'Design', 'News'],
   'emoji-to-png-download': ['New Tool', 'Download', 'PNG'],
   'find-your-emoji-personality': ['Quiz', 'Personality', 'New Feature'],
   'seo-indexation-recovery': ['Technical', 'SEO', 'Updates'],

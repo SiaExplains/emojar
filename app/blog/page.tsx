@@ -30,6 +30,14 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'emoji-tools-collection-2026',
+    title:
+      '6 New Free Emoji Tools — Favicon, Palette, Watermark, Card, Inspector & Kitchen',
+    date: '2026-06-24',
+    description:
+      'Six new browser-based emoji tools just launched on Emojar: generate favicons, extract color palettes, add watermarks to photos, build social cards, inspect Unicode, and combine emojis with Emoji Kitchen.',
+  },
+  {
     slug: 'homepage-redesign-june-2026',
     title: 'Emojar Homepage Redesign — Everything in One Place',
     date: '2026-06-20',

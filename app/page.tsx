@@ -246,27 +246,55 @@ export default function Home() {
       {/* ------------------------------------------------------------------ */}
       {/* HERO                                                                */}
       {/* ------------------------------------------------------------------ */}
-      <div className="text-center space-y-4 pt-2">
-        {/* Stats strip */}
-        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-gray-400 font-medium">
-          <span>✨ {totalEmojis.toLocaleString()} emojis</span>
-          <span aria-hidden>·</span>
-          <span>📂 {categories.length} categories</span>
-          <span aria-hidden>·</span>
-          <span>🎮 10 games</span>
-          <span aria-hidden>·</span>
-          <span>🛠️ 2 tools</span>
-          <span aria-hidden>·</span>
-          <span>💚 Free forever</span>
+      <div className="text-center space-y-5 pt-2">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+          Your Emoji Playground —
+          <br className="hidden sm:block" /> Search, Play &amp; Create
+        </h1>
+        <p className="text-gray-500 text-base max-w-lg mx-auto leading-relaxed">
+          {totalEmojis.toLocaleString()} Unicode emojis to search and copy, 10
+          games to play, and 8 free tools to create — all in one place.
+        </p>
+
+        {/* Feature pillars — visible above the fold so every visitor sees the full platform */}
+        <div className="grid grid-cols-3 gap-3 max-w-xl mx-auto pt-1">
+          <Link
+            href="/categories"
+            className="group flex flex-col items-center gap-1.5 rounded-2xl border border-amber-100 bg-amber-50 px-3 py-4 hover:border-amber-200 hover:shadow-sm transition-all"
+          >
+            <span className="text-2xl">🔍</span>
+            <span className="text-xs font-bold text-amber-900">
+              Search &amp; Copy
+            </span>
+            <span className="text-xs text-amber-700 leading-tight">
+              {totalEmojis.toLocaleString()} emojis · 10 categories
+            </span>
+          </Link>
+          <Link
+            href="/games"
+            className="group flex flex-col items-center gap-1.5 rounded-2xl border border-violet-100 bg-violet-50 px-3 py-4 hover:border-violet-200 hover:shadow-sm transition-all"
+          >
+            <span className="text-2xl">🎮</span>
+            <span className="text-xs font-bold text-violet-900">10 Games</span>
+            <span className="text-xs text-violet-700 leading-tight">
+              XO · Snake · Wordle · more
+            </span>
+          </Link>
+          <Link
+            href="/emoji-tools"
+            className="group flex flex-col items-center gap-1.5 rounded-2xl border border-indigo-100 bg-indigo-50 px-3 py-4 hover:border-indigo-200 hover:shadow-sm transition-all"
+          >
+            <span className="text-2xl">🛠️</span>
+            <span className="text-xs font-bold text-indigo-900">8 Tools</span>
+            <span className="text-xs text-indigo-700 leading-tight">
+              PNG · Cards · Kitchen · more
+            </span>
+          </Link>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
-          Copy &amp; Paste Any Emoji,
-          <br className="hidden sm:block" /> Instantly
-        </h1>
-        <p className="text-gray-500 text-base max-w-md mx-auto leading-relaxed">
-          Search {totalEmojis.toLocaleString()}+ emojis, copy with one tap. Plus
-          games, tools, and collections — all free.
+        {/* Free badge */}
+        <p className="text-xs text-gray-400 font-medium">
+          💚 Free forever · No account required · No ads on tools
         </p>
       </div>
 
@@ -326,7 +354,17 @@ export default function Home() {
           {/* EMOJI TOOLS                                                       */}
           {/* ---------------------------------------------------------------- */}
           <div className="space-y-3">
-            <h2 className="text-lg font-semibold">🛠️ Emoji Tools</h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold">🛠️ Emoji Tools</h2>
+              <Link
+                href="/emoji-tools"
+                className="text-sm text-blue-600 hover:underline"
+              >
+                See all tools →
+              </Link>
+            </div>
+
+            {/* Featured tools — 2-column strip */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
                 href="/emoji-to-png"
@@ -360,6 +398,99 @@ export default function Home() {
                 <span className="text-gray-500 transition-colors group-hover:text-white shrink-0">
                   →
                 </span>
+              </Link>
+            </div>
+
+            {/* Additional tools — 3-column grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <Link
+                href="/emoji-favicon"
+                className="group flex flex-col gap-2 rounded-xl border border-orange-100 bg-orange-50 px-4 py-3.5 hover:bg-orange-100 hover:shadow-sm transition-all"
+              >
+                <span className="text-2xl">🏠</span>
+                <div>
+                  <p className="font-semibold text-sm text-orange-900">
+                    Favicon Generator
+                  </p>
+                  <p className="text-xs text-orange-600 mt-0.5 leading-snug">
+                    Turn any emoji into a website favicon
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                href="/emoji-color-palette"
+                className="group flex flex-col gap-2 rounded-xl border border-pink-100 bg-pink-50 px-4 py-3.5 hover:bg-pink-100 hover:shadow-sm transition-all"
+              >
+                <span className="text-2xl">🎨</span>
+                <div>
+                  <p className="font-semibold text-sm text-pink-900">
+                    Color Palette
+                  </p>
+                  <p className="text-xs text-pink-600 mt-0.5 leading-snug">
+                    Extract the colors from any emoji
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                href="/emoji-watermark"
+                className="group flex flex-col gap-2 rounded-xl border border-cyan-100 bg-cyan-50 px-4 py-3.5 hover:bg-cyan-100 hover:shadow-sm transition-all"
+              >
+                <span className="text-2xl">💧</span>
+                <div>
+                  <p className="font-semibold text-sm text-cyan-900">
+                    Watermark Tool
+                  </p>
+                  <p className="text-xs text-cyan-600 mt-0.5 leading-snug">
+                    Add an emoji watermark to your photo
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                href="/emoji-card"
+                className="group flex flex-col gap-2 rounded-xl border border-yellow-100 bg-yellow-50 px-4 py-3.5 hover:bg-yellow-100 hover:shadow-sm transition-all"
+              >
+                <span className="text-2xl">🃏</span>
+                <div>
+                  <p className="font-semibold text-sm text-yellow-900">
+                    Social Card
+                  </p>
+                  <p className="text-xs text-yellow-600 mt-0.5 leading-snug">
+                    Create a 1080×1080 shareable card
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                href="/emoji-inspector"
+                className="group flex flex-col gap-2 rounded-xl border border-teal-100 bg-teal-50 px-4 py-3.5 hover:bg-teal-100 hover:shadow-sm transition-all"
+              >
+                <span className="text-2xl">🔍</span>
+                <div>
+                  <p className="font-semibold text-sm text-teal-900">
+                    Unicode Inspector
+                  </p>
+                  <p className="text-xs text-teal-600 mt-0.5 leading-snug">
+                    Inspect any text character by character
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                href="/emoji-kitchen"
+                className="group flex flex-col gap-2 rounded-xl border border-lime-100 bg-lime-50 px-4 py-3.5 hover:bg-lime-100 hover:shadow-sm transition-all"
+              >
+                <span className="text-2xl">🍳</span>
+                <div>
+                  <p className="font-semibold text-sm text-lime-900">
+                    Emoji Kitchen
+                  </p>
+                  <p className="text-xs text-lime-600 mt-0.5 leading-snug">
+                    Combine two emojis into one mashup
+                  </p>
+                </div>
               </Link>
             </div>
           </div>

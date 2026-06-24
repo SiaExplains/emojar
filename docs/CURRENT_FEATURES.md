@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** May 2026
+> **Last updated:** June 2026
 
 ---
 
@@ -22,6 +22,53 @@
 ---
 
 ## 1. Core Emoji Tools
+
+### Emoji Tools Hub (`/emoji-tools`)
+- Dedicated hub page listing all 8 tools in a 2×4 card grid
+- Each card: gradient color, emoji icon, name, 1-line description
+- Linked from homepage and "Tools" nav menu item
+
+### Emoji to PNG (`/emoji-to-png`)
+- Convert any of 3,790 emojis to PNG at 64–1024px
+- 8 background presets + custom colour + transparent
+- 4 padding levels; live 256px canvas preview
+- In-browser download, no server upload
+
+### Emoji Personality Quiz (`/personality`)
+- 12-question Big Five OCEAN personality quiz
+- Cosine similarity matching to a pool of 30 emojis
+- Shareable 1080×1080 Canvas PNG result card
+
+### Emoji Favicon Generator (`/emoji-favicon`)
+- Turn any emoji into a favicon PNG at 16/32/48/64px
+- Instant download, in-browser Canvas rendering
+
+### Emoji Color Palette Extractor (`/emoji-color-palette`)
+- Renders emoji on canvas, samples pixel data, extracts 6 dominant colors
+- Displays swatches with hex codes and copy buttons
+- Downloadable palette strip as PNG
+
+### Emoji Watermark Tool (`/emoji-watermark`)
+- Upload any JPEG/PNG/WebP image
+- Overlay any emoji at 4 corners, center, or tiled; control size (5–30%) and opacity (10–100%)
+- All in-browser, no server upload; download composite as PNG
+
+### Social Card Generator (`/emoji-card`)
+- 1080×1080 canvas social card with custom text + emoji backdrop pattern
+- Controls: background color, text color, font size, emoji tiling
+- Download full-res PNG in-browser
+
+### Unicode Inspector (`/emoji-inspector`)
+- Paste any text; inspect each character's code point (U+XXXX), Unicode name, category, version, and byte length
+- Uses `Intl.Segmenter` for correct grapheme cluster handling (ZWJ sequences, skin-tone variants)
+
+### Emoji Kitchen (`/emoji-kitchen`)
+- Combine two emojis using Google Emoji Kitchen
+- Tries 15 date variants × 2 orderings to find a valid combination image
+- Graceful "not found" message for unsupported pairs
+- Example combos shown for discovery
+
+---
 
 ### Emoji Database
 - **3,790 Unicode-standard emojis** with full metadata

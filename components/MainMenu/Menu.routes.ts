@@ -1,6 +1,6 @@
 export const MENU_ROUTES = [
   {
-    href: '/sorted',
+    href: '/collection',
     label: 'Collections',
     target: '_self',
     children: [
@@ -11,12 +11,12 @@ export const MENU_ROUTES = [
         children: null,
       },
       {
-        href: '/sorted/alphabet',
+        href: '/collection/alphabet',
         label: 'Sorted Emoji by Alphabet',
         target: '_self',
       },
       {
-        href: '/sorted/detail',
+        href: '/collection/detail',
         label: 'Emoji with Detail',
         target: '_self',
       },
@@ -95,6 +95,37 @@ export const MENU_ROUTES = [
         target: '_self',
       },
       { href: '/games/odd-one-out', label: 'Odd One Out', target: '_self' },
+    ],
+  },
+  {
+    href: '/emoji-tools',
+    label: 'Tools',
+    target: '_self',
+    children: [
+      { href: '/emoji-to-png', label: '🖼️ Emoji to PNG', target: '_self' },
+      { href: '/personality', label: '🪞 Personality Quiz', target: '_self' },
+      {
+        href: '/emoji-favicon',
+        label: '🏠 Favicon Generator',
+        target: '_self',
+      },
+      {
+        href: '/emoji-color-palette',
+        label: '🎨 Color Palette',
+        target: '_self',
+      },
+      {
+        href: '/emoji-watermark',
+        label: '💧 Watermark Tool',
+        target: '_self',
+      },
+      { href: '/emoji-card', label: '🃏 Social Card', target: '_self' },
+      {
+        href: '/emoji-inspector',
+        label: '🔍 Unicode Inspector',
+        target: '_self',
+      },
+      { href: '/emoji-kitchen', label: '🍳 Emoji Kitchen', target: '_self' },
     ],
   },
   {

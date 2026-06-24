@@ -1,0 +1,119 @@
+import PostTags from '@/components/PostTags';
+export const metadata = {
+  title: "6 New Free Emoji Tools on Emojar — Favicon, Palette, Watermark, Card, Inspector & Kitchen | Emojar Blog",
+  description: "Emojar just launched 6 new free browser-based emoji tools: Favicon Generator, Color Palette Extractor, Watermark Tool, Social Card Generator, Unicode Inspector, and Emoji Kitchen. No sign-up, no upload, all in your browser.",
+  alternates: { canonical: "https://emojar.com/blog/emoji-tools-collection-2026" },
+  openGraph: {
+    title: "6 New Free Emoji Tools on Emojar",
+    description: "Favicon Generator, Color Palette, Watermark Tool, Social Card, Unicode Inspector, and Emoji Kitchen — all free, all in your browser.",
+    url: "https://emojar.com/blog/emoji-tools-collection-2026",
+    siteName: "Emojar",
+    type: "article",
+  },
+  keywords: ["emoji tools", "emoji favicon generator", "emoji color palette", "emoji watermark", "emoji social card", "emoji unicode inspector", "emoji kitchen", "free emoji tools online"],
+  twitter: {
+    card: "summary",
+    title: "6 New Free Emoji Tools on Emojar",
+    description: "Favicon Generator, Color Palette, Watermark, Social Card, Unicode Inspector, and Emoji Kitchen — all free.",
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 mb-3">
+    New Tools
+  </p>
+  <h1>6 New Free Emoji Tools on Emojar 🛠️</h1>
+  <time dateTime="2026-06-24" className="text-sm text-gray-400">
+    24 June 2026
+  </time>
+  <PostTags slug="emoji-tools-collection-2026" />
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+Emojar started as a simple emoji search and copy tool. Then came games. Then the Emoji to PNG converter and the Personality Quiz. Today we are adding six more tools — all free, all running entirely in your browser with no file upload and no account required.
+
+Here is what is new.
+
+---
+
+## 1. Emoji Favicon Generator
+
+Every website needs a favicon — that small icon that appears in browser tabs and bookmarks. The standard approach is to open a design tool, resize an image, export it in the right format, and figure out which file names your framework expects.
+
+The [Emoji Favicon Generator](/emoji-favicon) skips all of that. Search any of the 3,790 emojis on Emojar, pick a size (16×16, 32×32, 48×48, or 64×64 pixels), and click Download. You get a PNG file ready to drop into your project.
+
+This is especially useful for side projects and prototypes where you want a distinctive favicon quickly. A single emoji renders crisply at small sizes because they are designed as ideograms — they read instantly at 16 pixels in a way that a photo or illustration does not.
+
+---
+
+## 2. Emoji Color Palette Extractor
+
+Designers often want to know the exact colors inside an image so they can build a matching palette. The [Color Palette Extractor](/emoji-color-palette) does this for any emoji.
+
+Select an emoji and the tool renders it on a canvas, samples the pixel data, and clusters the colors into the six dominant hues. Each color appears as a swatch with its hex code alongside a copy button. You can also download the full palette as a PNG strip — useful for pasting into Figma, Notion, or a brand guide.
+
+The tool filters out near-transparent and near-white pixels automatically, so you get the actual expressive colors of the emoji rather than the background or outline.
+
+---
+
+## 3. Emoji Watermark Tool
+
+The [Emoji Watermark Tool](/emoji-watermark) lets you overlay any emoji onto a photo or image you upload. Upload a JPEG, PNG, or WebP file, then choose:
+
+- **Which emoji** to use as the watermark
+- **Position** — four corners, center, or tiled across the entire image
+- **Size** — from 5% to 30% of the image width
+- **Opacity** — from 10% to 100%
+
+The live canvas preview updates as you adjust controls. When you are happy with the result, click Download to save the composited image as a PNG.
+
+Because everything runs on the Canvas API in your browser, your original image is never sent to any server. This is important when you are working with private or sensitive photos — the tool is entirely local.
+
+---
+
+## 4. Social Card Generator
+
+The [Social Card Generator](/emoji-card) creates a 1080×1080 PNG ready to post on Instagram, WhatsApp, or Twitter/X. Type up to three lines of text, choose a background color, pick an emoji to use as a repeating pattern, and select your text color and size.
+
+The output canvas is exactly 1080×1080 pixels — the format Instagram recommends for square posts. The emoji pattern tiles across the background at low opacity so it adds texture without distracting from the text.
+
+This is the same Canvas-based approach used by the [Personality Quiz](/personality) result card. The download button exports the full-resolution image, not the scaled-down preview shown in the browser.
+
+---
+
+## 5. Unicode Inspector
+
+The [Unicode Inspector](/emoji-inspector) is a developer-focused tool. Paste any text — a mix of emoji and regular characters — and the tool breaks it down character by character, showing:
+
+- The character itself
+- Its Unicode code point (e.g. U+1F600)
+- Its official Unicode name (e.g. *Grinning Face*)
+- Its category (Smileys & Emotion, People & Body, etc.)
+- The Unicode version it was introduced in
+- Its byte length in UTF-8
+
+The tool uses `Intl.Segmenter` when available (Chrome 87+, Firefox 125+) to handle multi-codepoint sequences like family emojis (👨‍👩‍👧) and skin-tone modified emojis (👋🏽) as single grapheme clusters rather than splitting them into their component codepoints.
+
+Useful for debugging text encoding issues, understanding why certain emojis show as boxes in older environments, or just satisfying curiosity about how emoji sequences work at the byte level.
+
+---
+
+## 6. Emoji Kitchen
+
+[Emoji Kitchen](/emoji-kitchen) is Google's system for combining two emojis into a single mashup image. Google uses these combinations in the Android keyboard — but until now you needed an Android device to see them.
+
+The Emojar Emoji Kitchen viewer lets you pick any two emojis and instantly see what their combination looks like. Select Emoji A and Emoji B, and the tool queries Google's public Emoji Kitchen image library. If a combination exists, the result appears immediately. If it does not, a clear message tells you the combination is not available.
+
+Not every pair has a Kitchen image — the library covers thousands of combinations but not every mathematical combination of 3,790 emojis. The most expressive and popular emojis (faces, hearts, animals, weather symbols) have the highest coverage.
+
+---
+
+## Where to find all the tools
+
+All eight emoji tools — including the original [Emoji to PNG](/emoji-to-png) and [Personality Quiz](/personality) — are now listed on the new [Emoji Tools](/emoji-tools) hub page. You can also access them from the **Tools** menu in the site navigation.
+
+Every tool runs entirely in your browser. No account, no file upload, no watermark added to your output. Just open the tool, use it, and download.
+
+More tools are in the pipeline. If you have a specific emoji utility you would find useful, [get in touch](/contact).

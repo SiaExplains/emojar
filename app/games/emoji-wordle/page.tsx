@@ -102,7 +102,7 @@ export default function EmojiWordlePage() {
         if (prev === 'correct') return;
         if (next === 'correct' || prev === undefined) {
           map[ch] = next;
-        } else if (next === 'present' && prev !== 'correct') {
+        } else if (next === 'present') {
           map[ch] = next;
         }
       });

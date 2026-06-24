@@ -1,16 +1,40 @@
+import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: '8 New Emoji Games: Wordle, 2048, Whack-a-Mole & More | Emojar',
-  description: 'We just launched 8 new emoji games — Emoji Wordle, Emoji 2048, Whack-a-Mole, Speed Sort, Timeline Challenge, Pictionary, Missing Piece, and Story Builder. All free, no sign-up.',
-  alternates: { canonical: 'https://emojar.com/blog/emoji-games-batch-2' },
-  openGraph: { title: '8 New Emoji Games on Emojar', description: 'Play Emoji Wordle, 2048, Whack-a-Mole and 5 more brand new emoji games — all free in your browser.', url: 'https://emojar.com/blog/emoji-games-batch-2', siteName: 'Emojar', type: 'article' },
+  title: "8 New Emoji Games: Wordle, 2048, Whack-a-Mole and More | Emojar Blog",
+  description: "We just launched 8 new emoji games — Emoji Wordle, Emoji 2048, Whack-a-Mole, Speed Sort, Timeline Challenge, Pictionary, Missing Piece, and Story Builder. All free, no sign-up.",
+  alternates: { canonical: "https://emojar.com/blog/emoji-games-batch-2" },
+  openGraph: {
+    title: "8 New Emoji Games on Emojar",
+    description: "Play Emoji Wordle, 2048, Whack-a-Mole and 5 more brand new emoji games — all free in your browser.",
+    url: "https://emojar.com/blog/emoji-games-batch-2",
+    siteName: "Emojar",
+    type: "article",
+  },
+  keywords: ["emoji games", "emoji wordle", "emoji 2048", "whack a mole", "emoji speed sort", "emoji timeline", "emoji pictionary", "emoji story builder", "free browser games"],
+  twitter: {
+    card: "summary",
+    title: "8 New Emoji Games on Emojar",
+    description: "Emoji Wordle, 2048, Whack-a-Mole and 5 more — all free, no sign-up.",
+  },
   robots: { index: true, follow: true },
 };
 
-# 8 New Emoji Games: Wordle, 2048, Whack-a-Mole & More
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 mb-3">
+    New Games
+  </p>
+  <h1>8 New Emoji Games on Emojar 🎮</h1>
+  <time dateTime="2026-06-24" className="text-sm text-gray-400">
+    24 June 2026
+  </time>
+  <PostTags slug="emoji-games-batch-2" />
+</div>
 
-**Published:** 24 June 2026
+<hr className="border-gray-100 mb-8" />
 
-We just shipped eight brand-new emoji games on Emojar, bringing the total game count to **18 free games** — no download, no account required. Here is what just launched.
+Emojar started with 10 emoji-themed games. Today we are doubling down and launching **8 more**, bringing the total to **18 free games** — all playable in your browser, no download, no account.
+
+Here is what just launched.
 
 ---
 
@@ -18,7 +42,9 @@ We just shipped eight brand-new emoji games on Emojar, bringing the total game c
 
 [Play Emoji Wordle →](/games/emoji-wordle)
 
-Wordle, but every target word is the official Unicode name of an emoji. You get six guesses to identify a random five-letter emoji name. After each guess the tiles turn green (correct position), yellow (wrong position), or gray (not in the word). A colour-coded on-screen keyboard tracks every letter you have tried. A new random emoji name is picked each game, drawn from the full 3,700+ emoji dataset.
+Wordle, but every target word is the official Unicode name of an emoji. You get six guesses to identify a random five-letter emoji name. After each guess the tiles turn green (correct position), yellow (wrong position), or gray (not in the word). A colour-coded on-screen keyboard tracks every letter you have tried. A new random emoji name is picked each game, drawn from the full 3,700-plus emoji dataset.
+
+If you have ever played the original Wordle you will find this instantly familiar — with the added twist that the word is always emoji-adjacent. "FLAME", "GLOBE", "HEART", "SWORD", "PIZZA" — the variety is surprising.
 
 ---
 
@@ -26,7 +52,9 @@ Wordle, but every target word is the official Unicode name of an emoji. You get 
 
 [Play Emoji 2048 →](/games/emoji-2048)
 
-The classic 2048 sliding-tile puzzle — but every power-of-two tile is replaced with an emoji. Tiles start as 🌱 (2) and grow through 🌿, 🍀, 🌸, 🌺, 🌻, 🎃, 🎄, 🌈, ⭐, and finally 🏆 (2048). Slide with arrow keys on desktop or swipe on mobile. Your score and personal best are saved in your browser.
+The classic 2048 sliding-tile puzzle — but every power-of-two tile is an emoji. Tiles start as 🌱 (2) and evolve through 🌿, 🍀, 🌸, 🌺, 🌻, 🎃, 🎄, 🌈, ⭐, and finally 🏆 (2048). Use arrow keys on desktop or swipe on mobile. Your score and personal best are saved in your browser so you can pick up where you left off.
+
+The emoji progression gives the tile-merging mechanic a satisfying visual arc that plain numbers lack — watching 🌱 grow into 🏆 through ten merges feels like an actual journey.
 
 ---
 
@@ -34,7 +62,9 @@ The classic 2048 sliding-tile puzzle — but every power-of-two tile is replaced
 
 [Play Whack-a-Mole →](/games/whack-a-mole)
 
-A 3×3 grid of holes with random emojis popping up and hiding. You have 30 seconds to tap or click as many as you can. The spawn interval speeds up over time — what starts at a comfortable pace quickly becomes a frantic reflex test. High scores are stored in localStorage so you can chase your personal best across sessions.
+A 3x3 grid of holes. Random emojis pop up one at a time — click or tap them before they disappear. The spawn rate speeds up as time passes, so the last ten seconds of a 30-second round are genuinely frantic. Your score is how many you hit. High scores are saved locally so you can compete against yourself.
+
+This is the most accessible game in the set — it needs no explanation and works perfectly on a phone.
 
 ---
 
@@ -42,7 +72,9 @@ A 3×3 grid of holes with random emojis popping up and hiding. You have 30 secon
 
 [Play Speed Sort →](/games/speed-sort)
 
-One emoji appears at a time and you must press the correct category button — Smileys & Emotion, Animals & Nature, Food & Drink, or Travel & Places — before a 3-second countdown hits zero. Ten rounds per game. Build a consecutive-correct streak for bragging rights. The game reveals the right answer if you miss or run out of time.
+One emoji appears on screen. Four category buttons appear below it. You have three seconds to press the correct category. Ten rounds per game, with a streak bonus for consecutive correct answers.
+
+The four categories are Smileys and Emotion, Animals and Nature, Food and Drink, and Travel and Places — common enough that you can build intuition quickly, but varied enough that you will occasionally be surprised. Speed Sort is ideal for short breaks when you want something with a definite end point.
 
 ---
 
@@ -50,7 +82,9 @@ One emoji appears at a time and you must press the correct category button — S
 
 [Play Timeline Challenge →](/games/emoji-timeline)
 
-Five emojis appear in a random scrambled order. Your job is to rearrange them from oldest to newest by their Unicode version number (which is stored in our emoji database for every one of the 3,700+ emojis). Click an emoji to pick it up, then click a slot to swap. Hit Submit to see how many positions you got right. Five rounds, up to 25 total points.
+Five emojis appear in a scrambled order. Your job is to rearrange them from oldest to newest based on when they were added to Unicode. Click an emoji to pick it up, then click a slot to place it. Hit Submit to see how many you got right. The game reveals the actual Unicode version for each emoji after you submit.
+
+Five rounds total, 25 possible correct placements. It is a surprisingly effective way to learn emoji history — you quickly develop a sense for which emojis are "classic" (Unicode 6.0 from 2010) and which are recent additions.
 
 ---
 
@@ -58,7 +92,9 @@ Five emojis appear in a random scrambled order. Your job is to rearrange them fr
 
 [Play Emoji Pictionary →](/games/emoji-pictionary)
 
-A curated set of 40 emoji clues, each mapping to one or more valid text answers. You type your guess in a text box and the game auto-accepts the moment you match any valid answer — no submit button required. The 60-second clock keeps ticking, so speed matters as much as knowledge. Skip anything you are stuck on and cycle through as many clues as possible.
+An emoji clue appears on screen. Type what you think it represents and press Enter. The game accepts any of the valid answers (case-insensitive). A 60-second timer runs while you try to get through as many clues as possible. Skip a clue if you are stuck — it moves to the next one immediately.
+
+The clue set covers 40 common concepts: emotions, actions, places, things. Some are obvious (🔥 = fire / hot), others are trickier (📚 = books / library / read). Your final score is how many you answered correctly before time ran out.
 
 ---
 
@@ -66,7 +102,9 @@ A curated set of 40 emoji clues, each mapping to one or more valid text answers.
 
 [Play Missing Piece →](/games/missing-piece)
 
-A 3×3 grid of emojis, all from the same category, with one cell hidden behind a ❓. Pick the correct emoji from four multiple-choice options. Ten rounds, one point per correct answer. The correct answer is always revealed after you pick — right or wrong — so you can learn as you play.
+A 3x3 grid of emojis all from the same category — with one cell hidden behind a question mark. Four answer options appear below the grid. Pick the emoji you think belongs in the hidden cell. Ten rounds total.
+
+This is part pattern recognition, part emoji knowledge. You learn to associate emojis within categories, which makes it a gentle quiz format for anyone building their emoji literacy.
 
 ---
 
@@ -74,10 +112,16 @@ A 3×3 grid of emojis, all from the same category, with one cell hidden behind a
 
 [Play Story Builder →](/games/story-builder)
 
-Pick one emoji from a set of four options for each of six chapters. After all six chapters are filled, Emojar generates a short narrative sentence for each choice — "Once upon a time, there was a hot beverage…" and so on. When your story is complete you can hit **Share Story** to copy the six-emoji sequence to your clipboard and paste it anywhere.
+Six chapter slots. For each slot, four emoji options appear from different categories — pick one. After you have chosen all six, the game assembles your picks into a short story using a fill-in template: "Once there was a [name]...", "Then suddenly a [name] appeared...", and so on.
+
+When your story is complete, copy it to your clipboard and share it. Hit New Story to start over with a fresh set of emoji options. The randomised choices mean every story is different, and the juxtapositions that emerge from the template often produce genuinely funny results.
 
 ---
 
-## All 18 games, all free
+## Where to find all 18 games
 
-Every one of the 18 games on Emojar runs entirely in your browser with no account, no download, and no subscription. Scores are saved locally where it makes sense. [Browse all games →](/games)
+All 18 emoji games are listed on the [Games hub](/games). You can also reach individual games from the **Games** menu in the site navigation — the dropdown now includes all 18 titles.
+
+Every game runs entirely in your browser. No account, no download, no ads on game pages.
+
+More games are in the pipeline. If you have an idea for an emoji game you would like to see, [let us know](/contact).

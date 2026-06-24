@@ -4,12 +4,12 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Emoji Games | Emojar',
   description:
-    'Play 10 free emoji-themed mini-games in your browser — Hangman, Snake, Minesweeper, Guess the Flag, Odd One Out, and more. No download required.',
+    'Play 18 free emoji-themed mini-games in your browser — Wordle, 2048, Whack-a-Mole, Hangman, Snake, Minesweeper, Guess the Flag, Odd One Out, and more. No download required.',
   alternates: { canonical: 'https://emojar.com/games' },
   openGraph: {
     title: 'Emoji Games | Emojar',
     description:
-      'Play 10 free emoji-themed mini-games — Hangman, Snake, Minesweeper, Guess the Flag, and more. No download required.',
+      'Play 18 free emoji-themed mini-games — Wordle, 2048, Whack-a-Mole, Hangman, Snake, and more. No download required.',
     url: 'https://emojar.com/games',
     siteName: 'Emojar',
     type: 'website',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Emoji Games | Emojar',
     description:
-      'Play 10 free emoji-themed mini-games — Hangman, Snake, Minesweeper, Guess the Flag, and more.',
+      'Play 18 free emoji-themed mini-games — Wordle, 2048, Whack-a-Mole, Hangman, Snake, and more.',
   },
   robots: { index: true, follow: true },
 };
@@ -94,6 +94,62 @@ const games = [
     emoji: '🔍🤔',
     color: 'from-rose-100 to-pink-200',
   },
+  {
+    name: 'Emoji Wordle',
+    path: '/games/emoji-wordle',
+    description: 'Guess the 5-letter emoji name in 6 tries.',
+    emoji: '🟩🟨',
+    color: 'from-green-100 to-emerald-200',
+  },
+  {
+    name: 'Emoji 2048',
+    path: '/games/emoji-2048',
+    description: 'Merge emoji tiles to reach the 🏆 2048 tile.',
+    emoji: '🌱🏆',
+    color: 'from-orange-100 to-amber-200',
+  },
+  {
+    name: 'Whack-a-Mole',
+    path: '/games/whack-a-mole',
+    description: 'Tap emoji moles before they disappear! 30 seconds.',
+    emoji: '🔨🕳️',
+    color: 'from-yellow-100 to-orange-200',
+  },
+  {
+    name: 'Speed Sort',
+    path: '/games/speed-sort',
+    description: 'Sort emojis into categories before time runs out.',
+    emoji: '⚡📂',
+    color: 'from-blue-100 to-cyan-200',
+  },
+  {
+    name: 'Timeline Challenge',
+    path: '/games/emoji-timeline',
+    description: 'Arrange emojis from oldest to newest Unicode version.',
+    emoji: '📅🕰️',
+    color: 'from-purple-100 to-violet-200',
+  },
+  {
+    name: 'Emoji Pictionary',
+    path: '/games/emoji-pictionary',
+    description: 'Type what the emoji means — 60 seconds on the clock!',
+    emoji: '🎨💬',
+    color: 'from-pink-100 to-rose-200',
+  },
+  {
+    name: 'Missing Piece',
+    path: '/games/missing-piece',
+    description: 'Find the hidden emoji in a 3×3 category grid.',
+    emoji: '🧩❓',
+    color: 'from-teal-100 to-green-200',
+  },
+  {
+    name: 'Story Builder',
+    path: '/games/story-builder',
+    description: 'Pick emojis for each chapter to build your story.',
+    emoji: '📖✨',
+    color: 'from-indigo-100 to-blue-200',
+  },
 ];
 
 const GamesPage = () => {
@@ -104,10 +160,10 @@ const GamesPage = () => {
           Emoji Games
         </h1>
         <p className="text-gray-500 max-w-2xl">
-          {games.length} free emoji-themed games, all playable right in your
-          browser — no download, no sign-up. From memory puzzles and logic
-          challenges to trivia and classic arcade games, there&apos;s something
-          for every kind of player.
+          18 free emoji-themed games, all playable right in your browser — no
+          download, no sign-up. From memory puzzles and logic challenges to
+          trivia and classic arcade games, there&apos;s something for every kind
+          of player.
         </p>
       </div>
 

@@ -95,6 +95,34 @@ export const MENU_ROUTES = [
         target: '_self',
       },
       { href: '/games/odd-one-out', label: 'Odd One Out', target: '_self' },
+      {
+        href: '/games/emoji-wordle',
+        label: '🟩 Emoji Wordle',
+        target: '_self',
+      },
+      { href: '/games/emoji-2048', label: '🏆 Emoji 2048', target: '_self' },
+      {
+        href: '/games/whack-a-mole',
+        label: '🔨 Whack-a-Mole',
+        target: '_self',
+      },
+      { href: '/games/speed-sort', label: '⚡ Speed Sort', target: '_self' },
+      { href: '/games/emoji-timeline', label: '📅 Timeline', target: '_self' },
+      {
+        href: '/games/emoji-pictionary',
+        label: '🎨 Pictionary',
+        target: '_self',
+      },
+      {
+        href: '/games/missing-piece',
+        label: '🧩 Missing Piece',
+        target: '_self',
+      },
+      {
+        href: '/games/story-builder',
+        label: '📖 Story Builder',
+        target: '_self',
+      },
     ],
   },
   {

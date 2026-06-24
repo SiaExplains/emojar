@@ -30,6 +30,14 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: 'emoji-games-batch-2',
+    title: '8 New Emoji Games: Wordle, 2048, Whack-a-Mole & More',
+    date: '2026-06-24',
+    description:
+      'Play Emoji Wordle, 2048, Whack-a-Mole, Speed Sort, Timeline, Pictionary, Missing Piece, and Story Builder — all free in your browser.',
+    emoji: '🎮',
+  },
+  {
     slug: 'emoji-tools-collection-2026',
     title:
       '6 New Free Emoji Tools — Favicon, Palette, Watermark, Card, Inspector & Kitchen',

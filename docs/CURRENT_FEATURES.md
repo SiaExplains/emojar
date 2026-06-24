@@ -174,7 +174,7 @@ Each of the 3,790 emojis has its own page at `/emoji/[slug]` containing:
 
 ## 5. Emoji Games
 
-All 10 games at `/games` are:
+All 18 games at `/games` are:
 - **Browser-based** — no download, no account required
 - **Free to play**
 - **Locally scored** — scores stored in `localStorage`
@@ -252,6 +252,57 @@ All 10 games at `/games` are:
 - Logic/trivia format
 - Categories: food, animals, sports, nature, and more
 
+### Game 11 — Emoji Wordle · `/games/emoji-wordle`
+- Guess a **5-letter emoji name** in 6 tries
+- Letter-level feedback: green (correct position), yellow (wrong position), gray (not in word)
+- Colour-coded on-screen keyboard tracks every guessed letter
+- Word pool: all single 5-letter words from the 3,700+ Unicode emoji name database
+- New random word each game; target emoji revealed on win/loss
+
+### Game 12 — Emoji 2048 · `/games/emoji-2048`
+- Classic 2048 sliding-tile game on a 4×4 grid
+- Tiles display emoji instead of numbers: 🌱(2) → 🌿 → 🍀 → 🌸 → 🌺 → 🌻 → 🎃 → 🎄 → 🌈 → ⭐ → 🏆(2048)
+- Arrow keys (desktop) or swipe (mobile) to slide
+- Score = sum of all merged tile values; personal best saved in localStorage
+- Win state when 🏆 tile appears (option to keep going); lose state when no moves remain
+
+### Game 13 — Emoji Whack-a-Mole · `/games/whack-a-mole`
+- 3×3 grid of holes; random emojis from the dataset pop up
+- Visible for 800 ms before hiding; spawn interval shrinks over time (starts 1000 ms, min 400 ms)
+- **30-second timer**; score = total hits
+- High score stored in localStorage
+
+### Game 14 — Emoji Speed Sort · `/games/speed-sort`
+- One emoji shown per round; player presses the correct category button from 4 choices
+- Categories: Smileys & Emotion · Animals & Nature · Food & Drink · Travel & Places
+- **3-second countdown** per round; wrong answer or timeout reveals the correct category
+- **10 rounds** per game; consecutive-correct streak tracked; wrong answer resets streak
+
+### Game 15 — Emoji Timeline Challenge · `/games/emoji-timeline`
+- **5 emojis** shown in scrambled order; player reorders them oldest → newest by Unicode version
+- Click-to-select + click-to-swap interaction (no external drag-and-drop library)
+- Submit reveals how many are in the correct position; correct order with version numbers shown
+- **5 rounds**; max score 25 (5 correct positions × 5 rounds)
+
+### Game 16 — Emoji Pictionary · `/games/emoji-pictionary`
+- 40 pre-built emoji clues mapped to accepted text answers
+- Player types in a text box; correct answers accepted instantly (case insensitive, any valid synonym)
+- **60-second timer** — solve as many as possible; skip button available
+- Score = number correct out of 40
+
+### Game 17 — Emoji Missing Piece · `/games/missing-piece`
+- **3×3 grid** of emojis all from the same category; one cell hidden as ❓
+- Pick the correct emoji from **4 multiple-choice options** (1 correct + 3 distractors from same category pool)
+- Correct answer always revealed after each pick
+- **10 rounds**; score = correct picks
+
+### Game 18 — Emoji Story Builder · `/games/story-builder`
+- **6 chapter slots**; each slot offers 4 random emojis from different categories
+- Player picks one emoji per chapter sequentially
+- After all 6 chosen, app generates a short story sentence per chapter using templates
+- **Share Story** button copies the 6-emoji sequence to clipboard
+- New Story button re-randomizes all chapter options
+
 ---
 
 ## 6. Blog
@@ -260,7 +311,7 @@ All 10 games at `/games` are:
 - Lists all posts with publication date, title, description, and tags
 - Tags system for filtering/grouping posts
 
-### Published Articles (14 posts)
+### Published Articles (15 posts)
 
 | Post | Type |
 |---|---|
@@ -333,8 +384,8 @@ All 10 games at `/games` are:
 | Static pages (home, legal, about, etc.) | ~10 |
 | Category pages | 10 |
 | Emoji detail pages | 3,790 |
-| Game pages | 10 |
-| Blog posts | 14+ |
+| Game pages | 18 |
+| Blog posts | 15+ |
 | Collection / sorted / table pages | ~5 |
 
 ---

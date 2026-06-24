@@ -149,6 +149,54 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${base}/games/emoji-wordle`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/games/emoji-2048`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/games/whack-a-mole`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/games/speed-sort`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/games/emoji-timeline`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/games/emoji-pictionary`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/games/missing-piece`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/games/story-builder`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${base}/emoji-collections/events`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',
@@ -316,6 +364,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date('2026-06-20'),
       changeFrequency: 'monthly',
       priority: 0.6,
+    },
+    {
+      url: `${base}/blog/emoji-games-batch-2`,
+      lastModified: new Date('2026-06-24'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
   ];
 

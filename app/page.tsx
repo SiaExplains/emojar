@@ -92,6 +92,62 @@ const ALL_GAMES = [
     href: '/games/odd-one-out',
     bg: 'bg-red-50 border-red-100 hover:bg-red-100',
   },
+  {
+    emoji: '🟩',
+    title: 'Emoji Wordle',
+    sub: 'Guess the name',
+    href: '/games/emoji-wordle',
+    bg: 'bg-green-50 border-green-100 hover:bg-green-100',
+  },
+  {
+    emoji: '🏆',
+    title: 'Emoji 2048',
+    sub: 'Merge tiles',
+    href: '/games/emoji-2048',
+    bg: 'bg-amber-50 border-amber-100 hover:bg-amber-100',
+  },
+  {
+    emoji: '🔨',
+    title: 'Whack-a-Mole',
+    sub: 'Tap fast!',
+    href: '/games/whack-a-mole',
+    bg: 'bg-yellow-50 border-yellow-100 hover:bg-yellow-100',
+  },
+  {
+    emoji: '⚡',
+    title: 'Speed Sort',
+    sub: 'Categorize!',
+    href: '/games/speed-sort',
+    bg: 'bg-cyan-50 border-cyan-100 hover:bg-cyan-100',
+  },
+  {
+    emoji: '📅',
+    title: 'Timeline',
+    sub: 'Oldest → newest',
+    href: '/games/emoji-timeline',
+    bg: 'bg-violet-50 border-violet-100 hover:bg-violet-100',
+  },
+  {
+    emoji: '🎨',
+    title: 'Pictionary',
+    sub: 'Decode emojis',
+    href: '/games/emoji-pictionary',
+    bg: 'bg-rose-50 border-rose-100 hover:bg-rose-100',
+  },
+  {
+    emoji: '🧩',
+    title: 'Missing Piece',
+    sub: 'Find the emoji',
+    href: '/games/missing-piece',
+    bg: 'bg-teal-50 border-teal-100 hover:bg-teal-100',
+  },
+  {
+    emoji: '📖',
+    title: 'Story Builder',
+    sub: 'Build your tale',
+    href: '/games/story-builder',
+    bg: 'bg-indigo-50 border-indigo-100 hover:bg-indigo-100',
+  },
 ];
 
 const CATEGORY_META: Record<
@@ -252,7 +308,7 @@ export default function Home() {
           <br className="hidden sm:block" /> Search, Play &amp; Create
         </h1>
         <p className="text-gray-500 text-base max-w-lg mx-auto leading-relaxed">
-          {totalEmojis.toLocaleString()} Unicode emojis to search and copy, 10
+          {totalEmojis.toLocaleString()} Unicode emojis to search and copy, 18
           games to play, and 8 free tools to create — all in one place.
         </p>
 
@@ -275,7 +331,7 @@ export default function Home() {
             className="group flex flex-col items-center gap-1.5 rounded-2xl border border-violet-100 bg-violet-50 px-3 py-4 hover:border-violet-200 hover:shadow-sm transition-all"
           >
             <span className="text-2xl">🎮</span>
-            <span className="text-xs font-bold text-violet-900">10 Games</span>
+            <span className="text-xs font-bold text-violet-900">18 Games</span>
             <span className="text-xs text-violet-700 leading-tight">
               XO · Snake · Wordle · more
             </span>
@@ -505,7 +561,7 @@ export default function Home() {
                 href="/games"
                 className="text-sm text-blue-600 hover:underline"
               >
-                See all 10 →
+                See all 18 →
               </Link>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">

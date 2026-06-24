@@ -8,21 +8,23 @@ import BackToTopButton from '@/components/BackToTopButton';
 import MainMenu from '@/components/MainMenu/MainMenu.compontent';
 
 const description =
-  'Search, copy and paste emojis instantly. Fast, clean, mobile-friendly.';
+  'Your emoji playground — search and copy 3,790 emojis, play 10 emoji games, and use 8 free emoji tools. No sign-up, no ads on tools, free forever.';
 
 export const metadata: Metadata = {
-  title: 'Emojar | All the emojis in one jar.',
+  title: 'Emojar — Emoji Search, Games & Tools',
   description,
   keywords: [
     'emoji',
+    'emoji search',
     'copy emoji',
-    'paste emoji',
+    'emoji games',
+    'emoji tools',
+    'emoji to png',
     'emoji keyboard',
-    'smileys',
     'emojar',
   ],
   openGraph: {
-    title: 'Emojar | All the emojis in one jar.',
+    title: 'Emojar — Emoji Search, Games & Tools',
     description,
     url: 'https://emojar.com',
     siteName: 'Emojar',
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Emojar | All the emojis in one jar.',
+    title: 'Emojar — Emoji Search, Games & Tools',
     description,
   },
   icons: { icon: 'favicon.ico' },

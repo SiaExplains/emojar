@@ -246,27 +246,55 @@ export default function Home() {
       {/* ------------------------------------------------------------------ */}
       {/* HERO                                                                */}
       {/* ------------------------------------------------------------------ */}
-      <div className="text-center space-y-4 pt-2">
-        {/* Stats strip */}
-        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-gray-400 font-medium">
-          <span>✨ {totalEmojis.toLocaleString()} emojis</span>
-          <span aria-hidden>·</span>
-          <span>📂 {categories.length} categories</span>
-          <span aria-hidden>·</span>
-          <span>🎮 10 games</span>
-          <span aria-hidden>·</span>
-          <span>🛠️ 8 tools</span>
-          <span aria-hidden>·</span>
-          <span>💚 Free forever</span>
+      <div className="text-center space-y-5 pt-2">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+          Your Emoji Playground —
+          <br className="hidden sm:block" /> Search, Play &amp; Create
+        </h1>
+        <p className="text-gray-500 text-base max-w-lg mx-auto leading-relaxed">
+          {totalEmojis.toLocaleString()} Unicode emojis to search and copy, 10
+          games to play, and 8 free tools to create — all in one place.
+        </p>
+
+        {/* Feature pillars — visible above the fold so every visitor sees the full platform */}
+        <div className="grid grid-cols-3 gap-3 max-w-xl mx-auto pt-1">
+          <Link
+            href="/categories"
+            className="group flex flex-col items-center gap-1.5 rounded-2xl border border-amber-100 bg-amber-50 px-3 py-4 hover:border-amber-200 hover:shadow-sm transition-all"
+          >
+            <span className="text-2xl">🔍</span>
+            <span className="text-xs font-bold text-amber-900">
+              Search &amp; Copy
+            </span>
+            <span className="text-xs text-amber-700 leading-tight">
+              {totalEmojis.toLocaleString()} emojis · 10 categories
+            </span>
+          </Link>
+          <Link
+            href="/games"
+            className="group flex flex-col items-center gap-1.5 rounded-2xl border border-violet-100 bg-violet-50 px-3 py-4 hover:border-violet-200 hover:shadow-sm transition-all"
+          >
+            <span className="text-2xl">🎮</span>
+            <span className="text-xs font-bold text-violet-900">10 Games</span>
+            <span className="text-xs text-violet-700 leading-tight">
+              XO · Snake · Wordle · more
+            </span>
+          </Link>
+          <Link
+            href="/emoji-tools"
+            className="group flex flex-col items-center gap-1.5 rounded-2xl border border-indigo-100 bg-indigo-50 px-3 py-4 hover:border-indigo-200 hover:shadow-sm transition-all"
+          >
+            <span className="text-2xl">🛠️</span>
+            <span className="text-xs font-bold text-indigo-900">8 Tools</span>
+            <span className="text-xs text-indigo-700 leading-tight">
+              PNG · Cards · Kitchen · more
+            </span>
+          </Link>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
-          Copy &amp; Paste Any Emoji,
-          <br className="hidden sm:block" /> Instantly
-        </h1>
-        <p className="text-gray-500 text-base max-w-md mx-auto leading-relaxed">
-          Search {totalEmojis.toLocaleString()}+ emojis, copy with one tap. Plus
-          games, tools, and collections — all free.
+        {/* Free badge */}
+        <p className="text-xs text-gray-400 font-medium">
+          💚 Free forever · No account required · No ads on tools
         </p>
       </div>
 

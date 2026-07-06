@@ -1,0 +1,79 @@
+import PostTags from '@/components/PostTags';
+export const metadata = {
+  title: 'How to Play Emoji Timeline — Sort Emojis by Unicode Release Order | Emojar Blog',
+  description:
+    'A guide to Emoji Timeline on Emojar: arrange 5 emojis from oldest to newest Unicode release. 5 rounds testing your emoji history knowledge.',
+  alternates: { canonical: 'https://emojar.com/blog/emoji-timeline' },
+  openGraph: {
+    title: 'How to Play Emoji Timeline — Sort Emojis by Unicode Release Order',
+    description:
+      'Do you know which emoji came first? Arrange 5 emojis oldest to newest in Emoji Timeline and test your Unicode history knowledge.',
+    url: 'https://emojar.com/blog/emoji-timeline',
+    siteName: 'Emojar',
+    type: 'article',
+  },
+  keywords: ['emoji timeline game', 'emoji history game', 'unicode emoji order', 'emoji release date game', 'emoji knowledge quiz'],
+  twitter: {
+    card: 'summary',
+    title: 'How to Play Emoji Timeline — Sort Emojis by Unicode Release Order',
+    description: 'Do you know which emoji came first? Test your Unicode history in Emoji Timeline.',
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3">
+    Game Guide
+  </p>
+  <h1>How to Play Emoji Timeline — Who Came First? 📅🔢🏆</h1>
+  <time dateTime="2026-06-02" className="text-sm text-gray-400">
+    2 June 2026
+  </time>
+  <PostTags slug="emoji-timeline" />
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+Most people know emojis but very few people know the history of emojis. Emoji Timeline tests exactly that hidden knowledge: when you see five familiar emoji characters displayed out of order, can you arrange them from the one released longest ago to the one released most recently? It is a game about emoji archaeology.
+
+## How Unicode Versioning Works
+
+Every emoji is tied to a specific Unicode version — the technical standard maintained by the Unicode Consortium that governs how characters are encoded across all digital systems. Early versions like Unicode 6.0 (released 2010) introduced a relatively small set of 722 emoji. Later versions expanded rapidly:
+
+- **Unicode 6.0 (2010)** — the founding batch: smileys, basic animals, food, weather
+- **Unicode 7.0 (2014)** — added sports, flags, new symbols
+- **Unicode 8.0 (2015)** — middle finger, taco, unicorn; racially diverse skin tones
+- **Unicode 9.0 (2016)** — selfie, face palm, avocado, bacon
+- **Unicode 10.0 (2017)** — T-Rex, zombie, mind blown, exploding head
+- **Unicode 11.0 (2018)** — lobster, bagel, softball, kangaroo
+- **Unicode 12.0 (2019)** — otter, sloth, waffle, guide dog
+- **Unicode 13.0 (2020)** — bubble tea, smiling face with tear, pinched fingers
+- **Unicode 14.0 (2021)** — coral, biting lip, empty nest, melting face
+
+When emojis from very different eras are grouped together, the ordering is more obvious. When emojis come from adjacent Unicode versions (e.g. 12.0 and 13.0), the challenge becomes genuinely hard.
+
+## The Rules
+
+Each round shows **5 emojis** displayed in a random order. Your job is to rearrange them into correct chronological order — oldest Unicode version first, newest last. You interact by clicking or dragging the emoji cards into your chosen sequence, then submitting.
+
+There are **5 rounds** per session. Each correctly ordered pair scores points; a fully correct sequence scores maximum for that round.
+
+## Why Order Matters
+
+Beyond the game, understanding emoji release order reveals fascinating cultural history. The fact that 🍕 pizza (Unicode 8.0, 2015) predates 🥑 avocado (Unicode 9.0, 2016) by just one version mirrors exactly how both foods moved through mainstream internet culture. The 🦖 T-Rex arriving in 2017 tracks with the Jurassic World sequel release window. Emoji history is cultural history.
+
+Knowing even rough era buckets — "early 2010s emojis look simpler and more universal", "late 2010s emojis get more niche and culturally specific" — gives you a strong mental model to work from.
+
+## Tips for Getting the Order Right
+
+**Use visual complexity as a clue.** Older emojis tend to represent universal, simple concepts (heart, sun, smiley face). Newer emojis are often more niche or culturally specific (boba tea, flatbread, anatomical heart).
+
+**Food emojis tell a story.** Basic foods (apple, burger, pizza) came early. Trendy foods (avocado, taco, dumpling, bubble tea) arrived in waves that mirror food culture trends.
+
+**Technology emojis lag.** Emojis representing technology (smartphone, computer, headphones) tend to appear in mid-range versions; very niche tech (VR headset, satellite) arrives later.
+
+**When in doubt, go common sense.** If one emoji represents something that existed and was culturally relevant before the internet existed (e.g. 🌙 moon, 🌊 wave) and another represents a 2010s internet trend (🦋 or 🧋), the former is almost certainly older.
+
+## Play and Learn
+
+Emoji Timeline is one of the most educational games on Emojar because every incorrect answer teaches you something real about Unicode history. Head to [Emoji Timeline](/games/emoji-timeline) and see how well you know your emoji history. For another knowledge-testing game, try the [Older or Newer game guide](/blog/older-or-newer-game).

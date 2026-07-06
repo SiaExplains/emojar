@@ -1,0 +1,80 @@
+import PostTags from '@/components/PostTags';
+export const metadata = {
+  title: 'How to Play Emoji Wordle — Guess the Emoji Name in 6 Tries | Emojar Blog',
+  description:
+    'Learn how to play Emoji Wordle on Emojar: guess a 5-letter emoji Unicode name in 6 tries using color-coded feedback. Strategy tips included.',
+  alternates: { canonical: 'https://emojar.com/blog/emoji-wordle' },
+  openGraph: {
+    title: 'How to Play Emoji Wordle — Guess the Emoji Name in 6 Tries',
+    description:
+      'Green, yellow, gray — master the color feedback and crack the emoji Unicode name in 6 tries.',
+    url: 'https://emojar.com/blog/emoji-wordle',
+    siteName: 'Emojar',
+    type: 'article',
+  },
+  keywords: ['emoji wordle', 'emoji word game', 'wordle emoji', 'emoji games', 'emoji unicode name game'],
+  twitter: {
+    card: 'summary',
+    title: 'How to Play Emoji Wordle — Guess the Emoji Name in 6 Tries',
+    description: 'Green, yellow, gray — master the color feedback and crack the emoji Unicode name.',
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3">
+    Game Guide
+  </p>
+  <h1>How to Play Emoji Wordle — Guess the Emoji Unicode Name 🟩🟨⬛</h1>
+  <time dateTime="2026-05-17" className="text-sm text-gray-400">
+    17 May 2026
+  </time>
+  <PostTags slug="emoji-wordle" />
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+Wordle conquered the internet because the rules are simple and the challenge is endlessly replayable. Emoji Wordle takes that same satisfying loop and twists it: instead of guessing a random English word, you are guessing the official Unicode name of an emoji. Think "PIZZA", "HEART", "FLAME", or "SNAKE" — the exact name each emoji carries in the Unicode standard.
+
+## The Rules
+
+You have **6 attempts** to guess a hidden 5-letter word — specifically the Unicode name (or part of it) for an emoji shown at the top of the screen. Type any valid 5-letter guess and hit Enter. After each guess the tiles flip to reveal color-coded feedback.
+
+Each round starts fresh. There is no penalty for using all 6 attempts, but cracking it in 2 or 3 is where the bragging rights live.
+
+## Understanding the Color Feedback
+
+The three colors are the whole game. Internalize them and everything else follows.
+
+- **Green tile** — the letter is correct and in the exact right position.
+- **Yellow tile** — the letter exists in the hidden word but is sitting in the wrong position.
+- **Gray tile** — the letter does not appear anywhere in the hidden word.
+
+Example: if the hidden word is "PIZZA" and you guess "PLACE", the P turns green (right spot), the A turns yellow (exists but wrong position), and L, C, E turn gray.
+
+## Color Strategy: Using Feedback Efficiently
+
+The keyboard on screen also updates with the same color coding, so you always have a running map of what you know. The most common mistake is ignoring yellow tiles — a yellow letter is confirmed information; you know it belongs somewhere in the word.
+
+After each guess, pause and ask:
+- Which positions are now locked in green?
+- Which letters are confirmed but need relocating?
+- Which letters can be eliminated entirely?
+
+## Starting Word Strategy
+
+A strong opening guess eliminates as many common letters as possible in one shot. In standard Wordle, players swear by words like CRANE or SLATE. For emoji Unicode names, the most frequent letters are **A, E, R, S, T, L, N, O** — names like "HEART", "EARTH", "TEARS", or "STERN" cover several of these at once.
+
+Avoid opening with a word that repeats letters (e.g. "POPPY") — you waste tile reveals on repeated information.
+
+## Common Emoji Name Patterns
+
+Unicode names follow predictable conventions. Many emoji names are simple nouns: PIZZA, FLAME, HEART, GHOST, CROWN, STORM, TIGER. Others are adjectives or descriptive: ANGRY, HAPPY, SUNNY, RAINY. Knowing this vocabulary helps — if you see a face emoji, think emotion words; if you see an animal, think the animal name itself.
+
+A few names are surprisingly short concept words stretched to 5 letters, so do not overthink it. The game always shows you the emoji, so let the image guide your vocabulary choices.
+
+## Scoring and Streaks
+
+Emoji Wordle tracks your guess distribution — how often you solve it in 1, 2, 3, 4, 5, or 6 tries. A streak counter rewards consistent daily play. Missing a day resets the streak, so checking in regularly is part of the meta-game.
+
+Play [Emoji Wordle](/games/emoji-wordle) and see how fast you can crack today's emoji name. For more word-based fun, try the [Emoji Hangman guide](/blog/emoji-hangman-game-guide) next.

@@ -133,6 +133,7 @@ export default function RootLayout({
           <div className="max-w-5xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
             <p>© {new Date().getFullYear()} Emojar</p>
             <div className="flex flex-wrap gap-4">
+              <Link href="/blog">Blog</Link>
               <Link href="/about">About</Link>
               <Link href="/contact">Contact</Link>
               <Link href="/privacy">Privacy</Link>

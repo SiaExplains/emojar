@@ -115,6 +115,90 @@ const BLOG_POSTS_DATA: Record<string, BlogPostMeta> = {
       'Aiming, wall bounces, chain reactions, and score-maximising tips for the Emoji Bubble Shooter game.',
     date: '2026-05-13',
   },
+  'emoji-wordle': {
+    title: 'Emoji Wordle — Guess the 5-Letter Emoji Name in 6 Tries',
+    description:
+      'Guess a hidden emoji Unicode name in six tries. Green means correct position, yellow means right letter wrong place, gray means not in the word.',
+    date: '2026-05-17',
+  },
+  'emoji-2048': {
+    title: 'Emoji 2048 — Merge Tiles from 🌱 to 🏆',
+    description:
+      'Slide emoji tiles to merge matching pairs. Work your way from a tiny seedling all the way to the trophy. Best score saved automatically.',
+    date: '2026-05-20',
+  },
+  'emoji-whack-a-mole': {
+    title: 'Emoji Whack-a-Mole — 30 Seconds to Score as High as You Can',
+    description:
+      'Emojis pop up on a 3×3 grid — tap them before they disappear. 30 seconds on the clock and speed increases as you score.',
+    date: '2026-05-23',
+  },
+  'emoji-speed-sort': {
+    title: 'Emoji Speed Sort — Categorise Emojis Against the Clock',
+    description:
+      'An emoji pops up and you have 3 seconds to tap the right category. 10 rounds, escalating pressure. How fast is your emoji brain?',
+    date: '2026-05-27',
+  },
+  'emoji-timeline': {
+    title: 'Emoji Timeline Challenge — Order Emojis by Unicode Release',
+    description:
+      'Five emojis out of order — arrange them from oldest to newest by Unicode version. 5 rounds. How well do you know emoji history?',
+    date: '2026-06-02',
+  },
+  'emoji-pictionary': {
+    title: 'Emoji Pictionary — Guess the Emoji from the Clue',
+    description:
+      'A text clue appears and you type the matching emoji. 40 clues, 60-second timer, skip option. Test how well you think in emoji.',
+    date: '2026-06-05',
+  },
+  'emoji-missing-piece': {
+    title: 'Emoji Missing Piece — Spot the Hidden Emoji in the Grid',
+    description:
+      'A 3×3 emoji grid with one tile hidden behind ❓. Can you identify the missing emoji from four options? 10 rounds of pattern-recognition fun.',
+    date: '2026-06-09',
+  },
+  'emoji-story-builder': {
+    title: 'Emoji Story Builder — Create & Share a 6-Chapter Emoji Story',
+    description:
+      'Pick one emoji per chapter across 6 story stages. The result is a unique, shareable emoji narrative — no two stories are the same.',
+    date: '2026-06-12',
+  },
+  'emoji-favicon-generator': {
+    title: 'Turn Any Emoji into a Browser Favicon — Free Download',
+    description:
+      'Generate a favicon from any of the 3,790 emojis in seconds. Download as ICO or PNG. No design tools needed.',
+    date: '2026-04-14',
+  },
+  'emoji-color-palette': {
+    title: 'Extract a Color Palette from Any Emoji',
+    description:
+      'Pick any emoji and instantly extract its color palette. Copy HEX or RGB codes to use in your designs. Free browser tool, no sign-up.',
+    date: '2026-04-21',
+  },
+  'emoji-watermark-tool': {
+    title: 'Add an Emoji Watermark to Any Photo — Free & Private',
+    description:
+      'Upload a photo, place any emoji as a watermark, adjust size and opacity, then download. Everything runs locally — your photos never leave your device.',
+    date: '2026-04-28',
+  },
+  'emoji-social-card': {
+    title: 'Emoji Social Card Generator — Create Shareable Cards for Free',
+    description:
+      'Build a custom social media card with any emoji, your own text, and a gradient background. Download as PNG for Twitter, Instagram, or LinkedIn.',
+    date: '2026-05-05',
+  },
+  'emoji-unicode-inspector': {
+    title: 'Emoji Unicode Inspector — See Every Codepoint Instantly',
+    description:
+      'Paste any text and instantly see the Unicode codepoints, names, versions, and categories for every character. Built for developers and emoji enthusiasts.',
+    date: '2026-05-09',
+  },
+  'emoji-kitchen-tool': {
+    title: 'Emoji Kitchen on Emojar — Combine Any Two Emojis',
+    description:
+      'Mix any two emojis using Google Emoji Kitchen and download the mashup. Free, instant, no sign-up required.',
+    date: '2026-05-12',
+  },
 };
 
 export default BLOG_POSTS_DATA;

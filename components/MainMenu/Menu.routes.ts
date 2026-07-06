@@ -156,10 +156,4 @@ export const MENU_ROUTES = [
       { href: '/emoji-kitchen', label: '🍳 Emoji Kitchen', target: '_self' },
     ],
   },
-  {
-    href: '/blog',
-    label: 'Blog',
-    target: '_self',
-    children: null,
-  },
 ];

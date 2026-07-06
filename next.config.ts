@@ -1,19 +1,23 @@
+import createMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm],
+  },
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-  experimental: {
-    mdxRs: true,
-  },
   async redirects() {
     return [
       // NOTE: www → non-www redirect must be configured in the Vercel dashboard
       // (Domains → set emojar.com as primary, www.emojar.com as redirect).
       // Do NOT handle it here — Next.js host-based redirects cause redirect loops
-      // on Vercel because the edge network normalises the Host header before the
-      // app sees it, making the condition unreliable and causing infinite loops.
+      // on Vercel.
 
-      // Task 0.5: Redirect all old /collections and /sorted routes → /collection
       { source: '/collections', destination: '/collection', permanent: true },
       {
         source: '/collections/alphabet',
@@ -40,4 +44,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

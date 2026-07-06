@@ -1,0 +1,65 @@
+import PostTags from '@/components/PostTags';
+export const metadata = {
+  title: 'Emoji Unicode Inspector — See Every Codepoint Instantly | Emojar Blog',
+  description:
+    'Paste any text and instantly see the Unicode codepoints, names, versions, and categories for every character. A free browser tool built for developers and emoji enthusiasts.',
+  alternates: { canonical: 'https://emojar.com/blog/emoji-unicode-inspector' },
+  openGraph: {
+    title: 'Emoji Unicode Inspector — See Every Codepoint Instantly',
+    description: 'Paste text, get Unicode codepoints, names, and versions for every character — free tool.',
+    url: 'https://emojar.com/blog/emoji-unicode-inspector',
+    siteName: 'Emojar',
+    type: 'article',
+  },
+  keywords: ['unicode inspector', 'emoji codepoints', 'unicode lookup', 'emoji unicode tool', 'character inspector'],
+  twitter: {
+    card: 'summary',
+    title: 'Emoji Unicode Inspector — See Every Codepoint Instantly',
+    description: 'Paste text and see the full Unicode breakdown for every character.',
+  },
+  robots: { index: true, follow: true },
+};
+
+<div className="mb-8">
+  <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3">
+    Tool Guide
+  </p>
+  <h1>Emoji Unicode Inspector — See Every Codepoint Instantly 🔍</h1>
+  <time dateTime="2026-05-09" className="text-sm text-gray-400">
+    9 May 2026
+  </time>
+  <PostTags slug="emoji-unicode-inspector" />
+</div>
+
+<hr className="border-gray-100 mb-8" />
+
+Behind every emoji is a sequence of Unicode codepoints that define what it is, when it was introduced, and how it should render. The [Emoji Unicode Inspector](/emoji-inspector) on Emojar makes that data instantly visible — paste any text and get the full breakdown character by character.
+
+## What the Inspector Shows
+
+Paste any text — a sentence, a string of emojis, a mix of both — and the inspector parses each character and displays:
+
+- **Codepoint** — the raw Unicode value, e.g. `U+1F600` for 😀
+- **Name** — the official Unicode name, e.g. `GRINNING FACE`
+- **Version** — which Unicode version introduced this character, e.g. `Unicode 6.1`
+- **Category** — the Unicode general category, e.g. `So` (Symbol, Other)
+- **Script** — for text characters, the writing system (Latin, Arabic, Devanagari, etc.)
+- **Visual preview** — the character rendered large so you can see exactly what it is
+
+Multi-codepoint sequences — like skin tone modifiers (🏻🏼🏽🏾🏿) or ZWJ sequences (👨‍💻) — are shown as grouped sequences with each component listed individually.
+
+## Why Developers Use This
+
+**Debugging invisible characters**: Copypastedtext sometimes includes zero-width joiners (U+200D), non-breaking spaces (U+00A0), or byte-order marks that break string comparisons or database storage. Paste the string here and you'll see every hidden character.
+
+**Understanding ZWJ sequences**: Family emojis like 👨‍👩‍👧‍👦 are constructed from multiple emojis joined with Zero Width Joiner (U+200D). The inspector breaks down every component so you can see exactly what's in the sequence.
+
+**Unicode version targeting**: If you're building for a specific platform version, knowing which Unicode version an emoji was introduced in helps you predict rendering support.
+
+**String length discrepancies**: JavaScript's `string.length` counts UTF-16 code units, not characters. Emojis outside the Basic Multilingual Plane count as 2. The inspector helps you understand why a 3-emoji string has a `.length` of 6.
+
+## Use Cases Beyond Development
+
+Even without writing code, the inspector is useful. Curious what Unicode name an unusual emoji has? What version of Unicode introduced the 🫶 heart hands? Which category does ㊗️ belong to? Paste it and find out instantly.
+
+Try the [Emoji Unicode Inspector](/emoji-inspector) — free, no account needed, works on any device.

@@ -43,7 +43,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: 'Emojar',
       type: 'website',
-      images: [{ url: `/api/og?type=category&name=${encodeURIComponent(decoded)}`, width: 1200, height: 630 }],
+      images: [
+        {
+          url: `/api/og?type=category&name=${encodeURIComponent(decoded)}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       title,

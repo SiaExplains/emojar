@@ -12,7 +12,8 @@ const BLOG_POSTS_DATA: Record<string, BlogPostMeta> = {
     date: '2026-06-24',
   },
   'emoji-tools-collection-2026': {
-    title: '6 New Free Emoji Tools — Favicon, Palette, Watermark, Card, Inspector & Kitchen',
+    title:
+      '6 New Free Emoji Tools — Favicon, Palette, Watermark, Card, Inspector & Kitchen',
     description:
       'Six new browser-based emoji tools just launched on Emojar: generate favicons, extract color palettes, add watermarks to photos, build social cards, inspect Unicode, and combine emojis with Emoji Kitchen.',
     date: '2026-06-24',
@@ -30,7 +31,8 @@ const BLOG_POSTS_DATA: Record<string, BlogPostMeta> = {
     date: '2026-06-19',
   },
   'find-your-emoji-personality': {
-    title: 'Find Your Emoji Personality — A Character Quiz Backed by Psychology',
+    title:
+      'Find Your Emoji Personality — A Character Quiz Backed by Psychology',
     description:
       'Answer 12 personality-science questions and discover which 5 emojis match your character. Then download or share your personalised emoji card.',
     date: '2026-05-25',
@@ -91,7 +93,8 @@ const BLOG_POSTS_DATA: Record<string, BlogPostMeta> = {
   },
   'emoji-snake-game-guide': {
     title: 'How to Play Emoji Snake on Emojar',
-    description: 'Controls, survival tips, and high-score strategy for the Emoji Snake game on Emojar.',
+    description:
+      'Controls, survival tips, and high-score strategy for the Emoji Snake game on Emojar.',
     date: '2026-05-13',
   },
   'emoji-minesweeper-game-guide': {

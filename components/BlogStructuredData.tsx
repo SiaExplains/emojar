@@ -17,7 +17,11 @@ export default function BlogStructuredData() {
     description: post.description,
     datePublished: post.date,
     dateModified: post.date,
-    author: { '@type': 'Organization', name: 'Emojar', url: 'https://emojar.com' },
+    author: {
+      '@type': 'Organization',
+      name: 'Emojar',
+      url: 'https://emojar.com',
+    },
     publisher: {
       '@type': 'Organization',
       name: 'Emojar',

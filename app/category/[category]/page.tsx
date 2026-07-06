@@ -43,13 +43,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: 'Emojar',
       type: 'website',
-      // If you later add a dynamic OG image endpoint, place it here:
-      // images: [{ url: `/api/og?cat=${encodeURIComponent(decoded)}` }],
+      images: [
+        {
+          url: `/api/og?type=category&name=${encodeURIComponent(decoded)}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       title,
       description,
-      card: 'summary',
+      card: 'summary_large_image',
+      images: [`/api/og?type=category&name=${encodeURIComponent(decoded)}`],
     },
     robots: { index: true, follow: true },
   };
@@ -60,20 +66,47 @@ export default function CategoryPage({ params }: Props) {
   const items = data.filter((e) => e.category === decoded);
   if (items.length === 0) return notFound();
 
+  const url = `https://emojar.com/category/${encodeURIComponent(decoded)}`;
+  const description = `Browse all ${items.length} ${decoded} emojis — copy any emoji with one tap, view names, and discover related symbols on Emojar.`;
+
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `${decoded} Emojis`,
+    description,
+    url,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: items.length,
+      itemListElement: items.slice(0, 10).map((e, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: e.name,
+        url: `https://emojar.com/emoji/${e.slug}`,
+      })),
+    },
+  };
+
   return (
-    <section className="space-y-6">
-      <Breadcrumb
-        crumbs={[
-          { label: 'Categories', href: '/categories' },
-          { label: decoded },
-        ]}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
-      <h1 className="text-2xl font-semibold">{decoded}</h1>
-      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
-        {items.map((e) => (
-          <SmallEmojiCard key={e.slug} emoji={e} />
-        ))}
-      </div>
-    </section>
+      <section className="space-y-6">
+        <Breadcrumb
+          crumbs={[
+            { label: 'Categories', href: '/categories' },
+            { label: decoded },
+          ]}
+        />
+        <h1 className="text-2xl font-semibold">{decoded}</h1>
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
+          {items.map((e) => (
+            <SmallEmojiCard key={e.slug} emoji={e} />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

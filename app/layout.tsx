@@ -1,5 +1,5 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/next';
@@ -8,7 +8,7 @@ import BackToTopButton from '@/components/BackToTopButton';
 import MainMenu from '@/components/MainMenu/MainMenu.compontent';
 
 const description =
-  'Your emoji playground — search and copy 3,790 emojis, play 10 emoji games, and use 8 free emoji tools. No sign-up, no ads on tools, free forever.';
+  'Your emoji playground — search and copy 3,790 emojis, play 18 emoji games, and use 8 free emoji tools. No sign-up, no ads on tools, free forever.';
 
 export const metadata: Metadata = {
   title: 'Emojar — Emoji Search, Games & Tools',
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     type: 'website',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emojar — Emoji Search, Games & Tools',
     description,
   },
-  icons: { icon: 'favicon.ico' },
+  icons: { icon: 'favicon.ico', apple: 'apple-icon.png' },
   manifest: 'manifest.webmanifest',
   robots: { index: true, follow: true },
   metadataBase: new URL('https://emojar.com'),
@@ -43,6 +43,33 @@ export const metadata: Metadata = {
     'google-adsense-account':
       process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? 'ca-pub-4461604896559377',
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Emojar',
+  url: 'https://emojar.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://emojar.com/?q={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Emojar',
+  url: 'https://emojar.com',
+  logo: 'https://emojar.com/logo-64.png',
 };
 
 export default function RootLayout({
@@ -55,7 +82,20 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+      </head>
       <body className="min-h-screen">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+
         {/*
           AdSense + Google Funding Choices:
           Always load adsbygoogle.js unconditionally. Funding Choices (configured

@@ -40,22 +40,26 @@ export async function generateMetadata({
   if (!emoji) return { title: 'Emoji not found | Emojar' };
 
   const canonical = new URL(`/emoji/${emoji.slug}`, 'https://emojar.com');
+  const ogImageUrl = `https://emojar.com/api/og?emoji=${encodeURIComponent(emoji.char)}&name=${encodeURIComponent(emoji.name)}`;
+  const metaDescription = `${emoji.char} ${emoji.name} emoji — copy and paste instantly. Meaning, Unicode ${emoji.version}, category: ${emoji.category}. Works on iOS, Android, Windows, macOS.`;
 
   return {
     title: `${emoji.char} ${emoji.name} Emoji — Copy, Meaning & Details | Emojar`,
-    description: emoji.description,
+    description: metaDescription,
     keywords: emoji.keywords,
     alternates: { canonical },
     openGraph: {
-      title: `${emoji.name} Emoji`,
-      description: emoji.description,
+      title: `${emoji.name} Emoji — Copy & Paste`,
+      description: metaDescription,
       url: canonical.toString(),
       type: 'article',
+      images: [{ url: ogImageUrl, width: 1200, height: 630 }],
     },
     twitter: {
-      title: `${emoji.name} Emoji`,
-      description: emoji.description,
-      card: 'summary',
+      title: `${emoji.name} Emoji — Copy & Paste`,
+      description: metaDescription,
+      card: 'summary_large_image',
+      images: [ogImageUrl],
     },
     robots: { index: true, follow: true },
   };
@@ -118,11 +122,24 @@ export default async function EmojiPage({
     },
   };
 
+  const emojiSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Thing',
+    name: emoji.name,
+    description: emoji.description,
+    url: `https://emojar.com/emoji/${emoji.slug}`,
+    identifier: (emoji.codepoints ?? []).join(', '),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(emojiSchema) }}
       />
 
       <article className="mx-auto max-w-3xl space-y-10 py-6 px-2">

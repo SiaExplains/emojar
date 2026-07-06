@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Breadcrumb from '@/components/Breadcrumb';
+import BlogStructuredData from '@/components/BlogStructuredData';
 
 export default function BlogLayout({
   children,
@@ -7,6 +9,8 @@ export default function BlogLayout({
 }) {
   return (
     <main className="mx-auto w-full max-w-2xl px-5 py-12">
+      <BlogStructuredData />
+      <Breadcrumb crumbs={[{ label: 'Blog', href: '/blog' }]} />
       <Link
         href="/blog"
         className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-10"

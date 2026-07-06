@@ -46,7 +46,9 @@ export function BlogLayoutWrapper({ children }: { children: React.ReactNode }) {
             SG
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-800">Siavash Ghanbari</p>
+            <p className="text-sm font-semibold text-gray-800">
+              Siavash Ghanbari
+            </p>
             <p className="text-xs text-gray-400">Founder of Emojar</p>
           </div>
         </div>

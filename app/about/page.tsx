@@ -2,21 +2,23 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Emojar | Emoji search, copy, games and more',
+  title: 'About Emojar — Emoji Search, Games & Tools by Siavash Ghanbari',
   description:
-    'Learn about Emojar — a free, fast emoji search, copy, browse, and play platform with 3,700+ emojis, emoji games, and category browsing, built by a solo developer in Berlin.',
+    'Emojar is a free emoji platform built by Siavash Ghanbari in Berlin. Search and copy 3,790 emojis, play 18 browser games, and use 8 free tools — no account, no ads on tools.',
   alternates: { canonical: 'https://emojar.com/about' },
   openGraph: {
-    title: 'About Emojar',
-    description: 'Learn about Emojar — a free emoji search and copy tool.',
+    title: 'About Emojar — Emoji Search, Games & Tools',
+    description:
+      'Built by Siavash Ghanbari in Berlin. 3,790 emojis, 18 games, 8 tools. Free forever, no sign-up.',
     url: 'https://emojar.com/about',
     siteName: 'Emojar',
-    type: 'website',
+    type: 'profile',
   },
   twitter: {
     card: 'summary',
     title: 'About Emojar',
-    description: 'Learn about Emojar — a free emoji search and copy tool.',
+    description:
+      'Built by Siavash Ghanbari in Berlin. 3,790 emojis, 18 games, 8 tools.',
   },
   robots: { index: true, follow: true },
 };
@@ -27,137 +29,259 @@ export default function AboutPage() {
       <h1 className="text-3xl font-semibold tracking-tight">About Emojar</h1>
 
       <section className="mt-8 space-y-6 text-gray-800 leading-7">
-        <h2 className="text-xl font-semibold">What is Emojar?</h2>
+        {/* Founder intro */}
+        <div className="flex items-start gap-4 p-5 bg-gray-50 rounded-xl border border-gray-100">
+          <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-lg flex-shrink-0">
+            SG
+          </div>
+          <div>
+            <p className="font-semibold text-gray-900">Siavash Ghanbari</p>
+            <p className="text-sm text-gray-500">
+              Founder &amp; sole developer · Berlin, Germany
+            </p>
+            <p className="text-sm text-gray-600 mt-2">
+              Software engineer and product thinker. Built Emojar as a side
+              project that grew into a platform used by thousands of people
+              every month.
+            </p>
+          </div>
+        </div>
+
+        <h2 className="text-xl font-semibold">The story behind Emojar</h2>
         <p>
-          Emojar is a free, fast, and mobile-friendly emoji platform. You can
-          search across all <strong>3,700+ Unicode-standard emojis</strong>,
-          read their official names, keywords, and Unicode codepoints — and copy
-          any emoji to your clipboard with a single tap. No account, no app
-          install, no friction.
+          I built the first version of Emojar because the existing emoji
+          reference sites were either cluttered with ads, slow on mobile, or
+          required an account just to copy a character. I wanted something
+          instant — you search, you copy, you go. That original idea still
+          defines how every feature on Emojar works: no friction, no sign-up, no
+          nonsense.
         </p>
         <p>
-          Whether you&apos;re writing a caption, replying to a message, or just
-          curious what that symbol means, Emojar gives you the answer instantly.
-          Each emoji page lists the character, its Unicode version, category,
-          related emojis, and shortcode aliases for platforms like Slack and
-          GitHub.
+          Over time, the site grew beyond search. I added emoji games when I
+          realised how much fun it is to play with the Unicode library as a game
+          mechanic. Then came the tools — a PNG exporter, a favicon generator, a
+          color palette extractor — utilities that I personally needed and that
+          fit naturally alongside the emoji data. As of 2026, Emojar has{' '}
+          <strong>18 browser games</strong>, <strong>8 free tools</strong>, and
+          a complete index of <strong>3,790 Unicode emojis</strong>, all free,
+          all working without a login.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-8">What you can do here</h2>
+
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold text-gray-900">
+              🔍 Search &amp; copy emojis
+            </h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Fuzzy-search all 3,790 Unicode emojis by name, keyword, or
+              character. Click any result to copy it to your clipboard. Each
+              emoji page shows its Unicode codepoint, version, category,
+              keywords, and Slack/GitHub shortcodes.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-gray-900">
+              🗂️ Browse by category
+            </h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Every emoji is grouped into 10 official Unicode categories —
+              Smileys &amp; Emotion, Animals &amp; Nature, Food &amp; Drink,
+              Travel &amp; Places, Activities, Objects, Symbols, Flags, People
+              &amp; Body, and Component. Browse the full{' '}
+              <Link href="/categories" className="underline">
+                categories index
+              </Link>{' '}
+              or go straight to a{' '}
+              <Link href="/collection/alphabet" className="underline">
+                sorted A–Z view
+              </Link>
+              .
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-gray-900">🎮 18 emoji games</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              All games run in the browser with no install required. Current
+              lineup:{' '}
+              <Link href="/games/xo" className="underline">
+                XO (Tic-Tac-Toe)
+              </Link>
+              ,{' '}
+              <Link href="/games/snake" className="underline">
+                Snake
+              </Link>
+              ,{' '}
+              <Link href="/games/minesweeper" className="underline">
+                Minesweeper
+              </Link>
+              ,{' '}
+              <Link href="/games/hangman" className="underline">
+                Hangman
+              </Link>
+              ,{' '}
+              <Link href="/games/bubble-shooter" className="underline">
+                Bubble Shooter
+              </Link>
+              ,{' '}
+              <Link href="/games/emoji-puzzle" className="underline">
+                Memory Puzzle
+              </Link>
+              ,{' '}
+              <Link href="/games/older-or-newer" className="underline">
+                Older or Newer
+              </Link>
+              ,{' '}
+              <Link href="/games/guess-the-animal" className="underline">
+                Guess the Animal
+              </Link>
+              ,{' '}
+              <Link href="/games/guess-the-flag" className="underline">
+                Guess the Flag
+              </Link>
+              ,{' '}
+              <Link href="/games/odd-one-out" className="underline">
+                Odd One Out
+              </Link>
+              ,{' '}
+              <Link href="/games/emoji-wordle" className="underline">
+                Emoji Wordle
+              </Link>
+              ,{' '}
+              <Link href="/games/emoji-2048" className="underline">
+                Emoji 2048
+              </Link>
+              ,{' '}
+              <Link href="/games/whack-a-mole" className="underline">
+                Whack-a-Mole
+              </Link>
+              ,{' '}
+              <Link href="/games/speed-sort" className="underline">
+                Speed Sort
+              </Link>
+              ,{' '}
+              <Link href="/games/emoji-timeline" className="underline">
+                Timeline
+              </Link>
+              ,{' '}
+              <Link href="/games/emoji-pictionary" className="underline">
+                Pictionary
+              </Link>
+              ,{' '}
+              <Link href="/games/missing-piece" className="underline">
+                Missing Piece
+              </Link>
+              , and{' '}
+              <Link href="/games/story-builder" className="underline">
+                Story Builder
+              </Link>
+              .
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-gray-900">🛠️ 8 free tools</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Browser-based utilities that run locally on your device — your
+              files never leave your computer:{' '}
+              <Link href="/emoji-to-png" className="underline">
+                Emoji to PNG
+              </Link>
+              ,{' '}
+              <Link href="/emoji-favicon" className="underline">
+                Favicon Generator
+              </Link>
+              ,{' '}
+              <Link href="/emoji-color-palette" className="underline">
+                Color Palette
+              </Link>
+              ,{' '}
+              <Link href="/emoji-watermark" className="underline">
+                Watermark Tool
+              </Link>
+              ,{' '}
+              <Link href="/emoji-card" className="underline">
+                Social Card
+              </Link>
+              ,{' '}
+              <Link href="/emoji-inspector" className="underline">
+                Unicode Inspector
+              </Link>
+              ,{' '}
+              <Link href="/emoji-kitchen" className="underline">
+                Emoji Kitchen
+              </Link>
+              , and{' '}
+              <Link href="/personality" className="underline">
+                Personality Quiz
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+
+        <h2 className="text-xl font-semibold mt-8">
+          Data &amp; editorial standards
+        </h2>
+        <p>
+          All emoji data comes directly from the{' '}
+          <strong>Unicode Common Locale Data Repository (CLDR)</strong> and the
+          Unicode Consortium&apos;s official emoji test files. Names, keywords,
+          and categories reflect the Unicode standard — the same specification
+          followed by Apple, Google, Microsoft, and every other major platform.
+          There is no user-generated content, no synthetic descriptions, and no
+          keyword stuffing on this site.
         </p>
 
         <h2 className="text-xl font-semibold mt-8">
-          What can you do on Emojar?
+          Our principles: free, fast, private
         </h2>
-        <ul className="list-disc pl-5 space-y-2">
+        <ul className="list-disc pl-5 space-y-2 text-gray-700">
           <li>
-            <strong>Search &amp; copy</strong> — Fuzzy-search all 3,700+ emojis
-            by name, keyword, or character. Click any emoji to copy it to your
-            clipboard instantly.
+            <strong>Free forever</strong> — every game, tool, and emoji is free
+            to use with no account required
           </li>
           <li>
-            <strong>Browse by category</strong> — Every emoji is grouped into
-            categories like Smileys &amp; Emotion, Animals &amp; Nature, Food
-            &amp; Drink, Travel &amp; Places, Activities, Objects, and Symbols.
-            Browse the full{' '}
-            <Link href="/categories" className="underline">
-              categories index
-            </Link>{' '}
-            to find exactly what you need.
+            <strong>No ads on tools</strong> — the tools run ad-free; ads only
+            appear on content pages where they don&apos;t interfere with
+            functionality
           </li>
           <li>
-            <strong>A–Z sorted browser</strong> — Scan the entire emoji library
-            in strict alphabetical order, useful when you remember part of a
-            name but can&apos;t pin it down in search.
+            <strong>Privacy-first</strong> — watermark and photo tools process
+            your images locally in the browser; nothing is uploaded to any
+            server
           </li>
           <li>
-            <strong>Emoji Games 🎮</strong> — Play five free, emoji-themed
-            mini-games right in your browser on the{' '}
-            <Link href="/games" className="underline">
-              games page
-            </Link>
-            :
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>
-                <strong>XO (Tic-Tac-Toe)</strong> — Classic tic-tac-toe with
-                custom emoji pieces, configurable board sizes (3×3, 4×4, 5×5),
-                and a built-in computer opponent.
-              </li>
-              <li>
-                <strong>Snake</strong> — Guide your emoji snake around the
-                board, eat the food, and grow as long as you can.
-              </li>
-              <li>
-                <strong>Minesweeper</strong> — Uncover emoji tiles and flag the
-                hidden mines without triggering them.
-              </li>
-              <li>
-                <strong>Hangman</strong> — Guess the mystery emoji word letter
-                by letter before you run out of tries.
-              </li>
-              <li>
-                <strong>Bubble Shooter</strong> — Match and pop emoji bubbles to
-                clear the board and rack up points.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Blog</strong> — Articles about emoji culture, game guides,
-            and Emojar updates. New posts added regularly.{' '}
-            <Link href="/blog" className="underline">
-              Read the blog →
-            </Link>
+            <strong>No tracking beyond analytics</strong> — we use Google
+            Analytics for aggregate traffic data only; no personal profiling
           </li>
         </ul>
 
-        <h2 className="text-xl font-semibold mt-8">Who runs it?</h2>
+        <h2 className="text-xl font-semibold mt-8">How Emojar is funded</h2>
         <p>
-          Emojar is built and maintained by a single developer based in{' '}
-          <strong>Berlin, Germany</strong>. It started as a personal side
-          project — a minimal alternative to overloaded emoji databases — and
-          has grown into a small but useful reference site for people who work
-          with text and communication every day.
-        </p>
-
-        <h2 className="text-xl font-semibold mt-8">
-          Our data and editorial principles
-        </h2>
-        <p>
-          All emoji data on Emojar is derived directly from the{' '}
-          <strong>Unicode Common Locale Data Repository (CLDR)</strong> and the
-          Unicode Consortium&apos;s official emoji test files. We do not
-          generate creative or fictional descriptions — every name, keyword, and
-          categorisation reflects the Unicode standard. There is no
-          user-generated content on this site.
-        </p>
-        <p>
-          This means you can trust the data here as a factual representation of
-          the emoji as defined by the Unicode Consortium — the same body whose
-          specifications Apple, Google, Microsoft, and every other major
-          platform follow when rendering emoji characters.
-        </p>
-
-        <h2 className="text-xl font-semibold mt-8">How is Emojar funded?</h2>
-        <p>
-          Emojar is funded through <strong>display advertising</strong> (Google
-          AdSense) and may in future include affiliate links to relevant
-          products. We aim to keep the ad experience unobtrusive — no
-          interstitials, no autoplay video, no pop-ups. We believe a clean, fast
-          page is better for everyone, including advertisers.
-        </p>
-        <p>
-          We are transparent about this: if you see an ad on Emojar, it helps
-          keep the site free and the server lights on.
+          Emojar runs on <strong>Google AdSense display ads</strong> on content
+          pages, and may in future include clearly labelled affiliate links. The
+          goal is a clean, unobtrusive ad experience — no interstitials, no
+          autoplay video, no pop-ups. A clean, fast page is better for everyone.
         </p>
 
         <h2 className="text-xl font-semibold mt-8">Get in touch</h2>
         <p>
           Questions, feedback, or a legal matter?{' '}
           <Link href="/contact" className="underline">
-            Visit the contact page
+            Contact page
           </Link>{' '}
-          or check our{' '}
+          ·{' '}
           <Link href="/impressum" className="underline">
             Impressum
           </Link>{' '}
-          for legal details.
+          ·{' '}
+          <Link href="/privacy" className="underline">
+            Privacy policy
+          </Link>
         </p>
       </section>
     </main>

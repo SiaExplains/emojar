@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji Color Palette Extractor — Get Colors from Any Emoji | Emojar',
@@ -35,5 +36,10 @@ export default function EmojiColorPaletteLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="emoji-color-palette" />
+    </>
+  );
 }

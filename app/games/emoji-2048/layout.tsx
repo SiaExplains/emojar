@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji 2048 | Emojar Games',
@@ -26,5 +27,10 @@ export default function Emoji2048Layout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="emoji-2048" />
+    </>
+  );
 }

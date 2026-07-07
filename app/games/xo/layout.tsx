@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji XO (Tic-Tac-Toe) | Emojar Games',
@@ -22,5 +23,10 @@ export const metadata: Metadata = {
 };
 
 export default function XoLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="xo" />
+    </>
+  );
 }

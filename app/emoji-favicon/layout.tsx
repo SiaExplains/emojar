@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji Favicon Generator — Create Tiny Emoji Icons | Emojar',
@@ -36,5 +37,10 @@ export default function EmojieFaviconLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="emoji-favicon" />
+    </>
+  );
 }

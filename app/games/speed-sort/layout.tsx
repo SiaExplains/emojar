@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji Speed Sort | Emojar Games',
@@ -27,5 +28,10 @@ export default function SpeedSortLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="speed-sort" />
+    </>
+  );
 }

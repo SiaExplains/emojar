@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji to PNG — Download Any Emoji as an Image | Emojar',
@@ -36,5 +37,10 @@ export default function EmojiToPngLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="emoji-to-png" />
+    </>
+  );
 }

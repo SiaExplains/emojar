@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji Bubble Shooter | Emojar Games',
@@ -26,5 +27,10 @@ export default function BubbleShooterLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="bubble-shooter" />
+    </>
+  );
 }

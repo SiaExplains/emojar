@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji Puzzle (Memory Match) | Emojar Games',
@@ -26,5 +27,10 @@ export default function EmojiPuzzleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="emoji-puzzle" />
+    </>
+  );
 }

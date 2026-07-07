@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { StaticPageSection } from '@/components/StaticPageSection';
 
 export const metadata: Metadata = {
   title: 'Emoji Unicode Inspector — Analyze Codepoints & Bytes | Emojar',
@@ -36,5 +37,10 @@ export default function EmojiInspectorLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <StaticPageSection slug="emoji-inspector" />
+    </>
+  );
 }

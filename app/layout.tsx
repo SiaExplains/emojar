@@ -1,11 +1,12 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/next';
 import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component';
 import BackToTopButton from '@/components/BackToTopButton';
 import MainMenu from '@/components/MainMenu/MainMenu.compontent';
+import { SiteChrome, PageMain } from '@/components/ChromeGate';
+import { AdSenseScript } from '@/components/AdSenseScript';
 
 const description =
   'Your emoji playground — search and copy 3,790 emojis, play 18 emoji games, and use 8 free emoji tools. No sign-up, no ads on tools, free forever.';
@@ -96,52 +97,43 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
 
-        {/*
-          AdSense + Google Funding Choices:
-          Always load adsbygoogle.js unconditionally. Funding Choices (configured
-          in the AdSense / Google Ad Manager UI) intercepts this script for
-          EEA/UK/Swiss visitors and handles TCF v2.2 consent automatically.
-          No localStorage gating needed — Google controls consent enforcement.
-        */}
-        {clientId && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        )}
+        <AdSenseScript clientId={clientId} />
 
-        <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
-          <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div className="logo-container flex-shrink-0">
-              <Link href="/" className="font-semibold">
-                <HeaderLogo />
-              </Link>
+        <SiteChrome>
+          <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
+            <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+              <div className="logo-container flex-shrink-0">
+                <Link href="/" className="font-semibold">
+                  <HeaderLogo />
+                </Link>
+              </div>
+              <div className="flex-1" />
+              <div className="flex-shrink-0">
+                <MainMenu />
+              </div>
             </div>
-            <div className="flex-1" />
-            <div className="flex-shrink-0">
-              <MainMenu />
-            </div>
-          </div>
-        </header>
+          </header>
+        </SiteChrome>
 
-        <main className="max-w-5xl mx-auto px-4 py-6">{children}</main>
-        <BackToTopButton />
+        <PageMain>{children}</PageMain>
 
-        <footer className="border-t py-8 text-sm">
-          <div className="max-w-5xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
-            <p>© {new Date().getFullYear()} Emojar</p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/blog">Blog</Link>
-              <Link href="/about">About</Link>
-              <Link href="/contact">Contact</Link>
-              <Link href="/privacy">Privacy</Link>
-              <Link href="/terms">Terms</Link>
-              <Link href="/impressum">Impressum</Link>
+        <SiteChrome>
+          <BackToTopButton />
+
+          <footer className="border-t py-8 text-sm">
+            <div className="max-w-5xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
+              <p>© {new Date().getFullYear()} Emojar</p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/blog">Blog</Link>
+                <Link href="/about">About</Link>
+                <Link href="/contact">Contact</Link>
+                <Link href="/privacy">Privacy</Link>
+                <Link href="/terms">Terms</Link>
+                <Link href="/impressum">Impressum</Link>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </SiteChrome>
         <Analytics />
       </body>
     </html>

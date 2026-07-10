@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 
 const games = [
   {
+    name: 'Emopet',
+    path: '/games/emopet',
+    description: 'Adopt, feed, and care for your own 3D emoji pet.',
+    emoji: '🐾✨',
+    color: 'from-fuchsia-100 to-purple-200',
+  },
+  {
     name: 'XO Game',
     path: '/games/xo',
     description: 'Play classic tic-tac-toe using fun emojis.',
@@ -160,7 +167,7 @@ const GamesPage = () => {
           Emoji Games
         </h1>
         <p className="text-gray-500 max-w-2xl">
-          18 free emoji-themed games, all playable right in your browser — no
+          19 free emoji-themed games, all playable right in your browser — no
           download, no sign-up. From memory puzzles and logic challenges to
           trivia and classic arcade games, there&apos;s something for every kind
           of player.

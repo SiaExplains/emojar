@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import SmallEmojiCard from './SmallEmojiCard';
-import { Emoji } from '@/app/page';
+import { Emoji } from '@/components/EmojiHub';
 
 type AlphabetSortedProps = {
   char: string;

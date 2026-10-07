@@ -26,7 +26,7 @@ export default function BlogStructuredData() {
       '@type': 'Organization',
       name: 'Emojar',
       url: 'https://emojar.com',
-      logo: { '@type': 'ImageObject', url: 'https://emojar.com/logo-64.png' },
+      logo: { '@type': 'ImageObject', url: 'https://emojar.com/logo.png' },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',

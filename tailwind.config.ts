@@ -6,6 +6,7 @@ export default {
     './app/**/*.{ts,tsx,md,mdx}',
     './app/games/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
+    './lib/online-tools/**/*.ts',
   ],
   theme: {
     extend: {},

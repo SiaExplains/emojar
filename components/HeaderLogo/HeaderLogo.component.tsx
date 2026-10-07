@@ -1,13 +1,13 @@
-// e.g. in your Header component
 import Image from 'next/image';
 
 export function HeaderLogo() {
   return (
     <Image
-      src="/logo-64.png"
-      alt="Emojar – Copy & paste emojis instantly"
-      width={138}
-      height={64}
+      src="/logo.png"
+      alt="Emojar – free online tools"
+      width={505}
+      height={128}
+      className="h-8 w-auto sm:h-9"
       priority
     />
   );

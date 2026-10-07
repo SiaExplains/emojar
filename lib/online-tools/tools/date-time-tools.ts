@@ -261,6 +261,8 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       'kw calculator',
     ],
     relatedTools: [
+      'day-of-week-calculator',
+      'printable-calendar',
       'date-add-subtract',
       'date-difference-calculator',
       'working-days-calculator',
@@ -419,6 +421,7 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       '10 minute timer',
     ],
     relatedTools: [
+      'alarm-clock',
       'pomodoro-timer',
       'stopwatch',
       'countdown-generator',
@@ -462,6 +465,7 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       '25 minute timer',
     ],
     relatedTools: [
+      'alarm-clock',
       'online-timer',
       'stopwatch',
       'world-clock',
@@ -483,6 +487,195 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       {
         q: 'What should I do during a break?',
         a: 'Step away from the screen — stand up, stretch or get water. Checking messages tends to pull your attention back into work mode.',
+      },
+    ],
+  },
+  {
+    slug: 'alarm-clock',
+    category: 'date-time-tools',
+    name: 'Online Alarm Clock',
+    icon: '⏰',
+    shortDescription: 'Set alarms with sounds, snooze and repeat days.',
+    description:
+      'Set one or more alarms in your browser with a label, a choice of sounds, repeat days and 5- or 10-minute snooze, plus an optional desktop notification. A big live clock shows the time and how long until the next alarm.',
+    title: 'Online Alarm Clock – Free Alarm with Sounds, Snooze & Repeat',
+    metaDescription:
+      'Free online alarm clock: set alarms with labels, sounds, repeat days and snooze, plus optional notifications. Runs in your browser — no app or sign-up.',
+    keywords: [
+      'online alarm clock',
+      'alarm clock',
+      'set an alarm',
+      'wake me up',
+      'alarm online',
+    ],
+    relatedTools: [
+      'online-timer',
+      'pomodoro-timer',
+      'world-clock',
+      'stopwatch',
+      'countdown-generator',
+    ],
+    component: 'alarm-clock',
+    popular: true,
+    howTo: [
+      'Pick a time, an optional label and a sound — click “Test sound” once so the browser allows audio.',
+      'Choose repeat days, or leave them empty for a one-time alarm, then click “Add alarm”.',
+      'Keep the tab open; when it rings, stop it or snooze for 5 or 10 minutes.',
+    ],
+    about: [
+      'The alarm runs in this browser tab: sounds are generated with the Web Audio API, so there is nothing to download, and alarms are saved in your browser (localStorage) so they’re still there after a reload. A one-time alarm switches itself off after ringing; repeating alarms ring on the chosen weekdays.',
+      'Browsers can’t ring from a closed tab, and phones and laptops may pause pages when they sleep or the screen locks. For important alarms — an early flight, medication — use your phone’s built-in alarm as well. The optional notification helps when the tab is in the background.',
+    ],
+    faqs: [
+      {
+        q: 'Will the alarm ring if my computer goes to sleep?',
+        a: 'No — a sleeping device pauses the browser. Keep it awake and plugged in, and leave the tab open (it can be in the background).',
+      },
+      {
+        q: 'Why do I need to click “Test sound”?',
+        a: 'Browsers block audio until you interact with the page. One click unlocks sound for the alarm.',
+      },
+    ],
+  },
+  {
+    slug: 'day-of-week-calculator',
+    category: 'date-time-tools',
+    name: 'Day of the Week Calculator',
+    icon: '📅',
+    shortDescription: 'What day of the week was (or will be) any date?',
+    description:
+      'Find the day of the week for any date — past or future — plus the day of the year, ISO week number, quarter, whether it’s a leap year and how far it is from today. See the same date’s weekday in other years too.',
+    title: 'Day of the Week Calculator – What Day Was That Date?',
+    metaDescription:
+      'Find the day of the week for any date: what day was 1 January 2000, what weekday is your birthday next year. Plus day of year, ISO week and leap year.',
+    keywords: [
+      'day of the week calculator',
+      'what day was',
+      'what day of the week',
+      'day finder',
+      'weekday calculator',
+    ],
+    relatedTools: [
+      'date-difference-calculator',
+      'week-number-calculator',
+      'age-calculator',
+      'printable-calendar',
+      'date-add-subtract',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'day-of-week' },
+    howTo: [
+      'Pick a date — today is filled in to start.',
+      'Read the weekday and the details below it.',
+      'Check the table to see which weekday the same date falls on in other years.',
+    ],
+    about: [
+      'The weekday of a date shifts by one each year (365 days is 52 weeks plus 1 day) and by two after 29 February in a leap year — that is why your birthday moves through the week. Leap years are divisible by 4, except century years not divisible by 400: 2000 was a leap year, 1900 was not.',
+      'Dates use the Gregorian calendar throughout, the standard in most countries today. For historical dates before a country switched from the Julian calendar (1582 in much of Europe, 1752 in Britain), contemporary records may name a different weekday.',
+    ],
+    faqs: [
+      {
+        q: 'What day of the week was 1 January 2000?',
+        a: 'A Saturday.',
+      },
+      {
+        q: 'What happens to 29 February birthdays?',
+        a: 'In non-leap years the date doesn’t exist; the table marks those years instead of guessing between 28 February and 1 March.',
+      },
+    ],
+  },
+  {
+    slug: 'printable-calendar',
+    category: 'date-time-tools',
+    name: 'Printable Calendar Generator',
+    icon: '🗓️',
+    shortDescription: 'Make a printable monthly or yearly calendar PDF.',
+    description:
+      'Create a printable calendar as a PDF: one month, a whole year on one page, or 12 monthly pages. Choose Monday or Sunday starts, week numbers, notes lines, A4 or Letter, portrait or landscape, your accent colour and the language.',
+    title: 'Printable Calendar Generator – Free Monthly & Yearly PDF',
+    metaDescription:
+      'Make a free printable calendar PDF for any month or year: Monday or Sunday start, week numbers, notes, A4 or Letter, landscape or portrait, 12 languages.',
+    keywords: [
+      'printable calendar',
+      'calendar generator',
+      'printable calendar 2027',
+      'monthly calendar pdf',
+      'yearly calendar printable',
+    ],
+    relatedTools: [
+      'day-of-week-calculator',
+      'week-number-calculator',
+      'working-days-calculator',
+      'invoice-generator',
+      'date-difference-calculator',
+    ],
+    component: 'calendar-maker',
+    popular: true,
+    howTo: [
+      'Choose the year and a month — or “Whole year”.',
+      'Set the week start, paper size, orientation, language and options such as week numbers.',
+      'Click “Download PDF” and print it at 100 % (actual size).',
+    ],
+    about: [
+      'Monthly pages give each day a large box for writing, with optional lines for notes underneath; the year view fits all twelve months on one page for a wall planner. Weekends are highlighted in your accent colour, and ISO week numbers (Monday-based, used in Europe and in business planning) can be added in the margin.',
+      'The PDF is built in your browser. Month and weekday names come from your browser’s built-in language data; the languages offered are Latin-script ones because the PDF uses a standard font that every printer and viewer supports.',
+    ],
+    faqs: [
+      {
+        q: 'Should my calendar start on Monday or Sunday?',
+        a: 'Most of Europe and the ISO standard start the week on Monday; the US, Canada and Japan usually start on Sunday. Pick whichever matches the calendars you use.',
+      },
+      {
+        q: 'Can I add holidays?',
+        a: 'Not automatically — holidays differ by country and region. Use the notes lines or write them into the day boxes after printing.',
+      },
+    ],
+  },
+  {
+    slug: 'time-card-calculator',
+    category: 'date-time-tools',
+    alsoIn: ['calculators'],
+    name: 'Time Card Calculator',
+    icon: '🕘',
+    shortDescription: 'Add up weekly hours, breaks, overtime and pay.',
+    description:
+      'Enter start and end times for each day — with breaks, 12- or 24-hour times and overnight shifts — to get daily and weekly hours, overtime after 40 hours (or per day), and gross pay at your hourly rate. Export to CSV.',
+    title: 'Time Card Calculator – Weekly Hours, Overtime & Pay',
+    metaDescription:
+      'Free time card calculator: add up hours worked per day and week with breaks, overnight shifts and overtime, in hh:mm and decimal hours, plus gross pay. CSV export.',
+    keywords: [
+      'time card calculator',
+      'timesheet calculator',
+      'hours worked calculator',
+      'work hours calculator',
+      'overtime calculator',
+    ],
+    relatedTools: [
+      'salary-to-hourly-calculator',
+      'time-duration-calculator',
+      'working-days-calculator',
+      'invoice-generator',
+      'percentage-calculator',
+    ],
+    component: 'time-card',
+    popular: true,
+    howTo: [
+      'Type start and end times for each day you worked (e.g. 9:00 and 17:30, or 9am and 5:30pm) and the break in minutes.',
+      'Set your hourly rate and when overtime starts — 40 hours a week by default, or per day.',
+      'Read total, regular and overtime hours and pay, then copy or download the CSV.',
+    ],
+    about: [
+      'Hours are shown both as hours:minutes (8:30) and as decimal hours (8.50), which is what payroll and invoices usually need — 15 minutes is 0.25 h, not 0.15. An end time earlier than the start is treated as an overnight shift, so 22:00 to 6:00 counts 8 hours.',
+      'Overtime is calculated after a weekly threshold (40 h by default, as under the US FLSA), after a daily threshold, or both, and paid at the multiplier you set (1.5× by default). Rules differ by country, state and contract, so treat the pay figure as an estimate before tax.',
+    ],
+    faqs: [
+      {
+        q: 'How do I convert minutes to decimal hours?',
+        a: 'Divide by 60: 45 minutes = 0.75 h, so 7 h 45 min is 7.75 hours.',
+      },
+      {
+        q: 'Are unpaid breaks subtracted?',
+        a: 'Yes — whatever you enter as the break is subtracted from that day. Leave it empty for paid breaks.',
       },
     ],
   },

@@ -130,6 +130,53 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
   totp: load(() => import('./tools/TotpTool')),
   'cooking-converter': load(() => import('./tools/CookingConverterTool')),
   'size-converter': load(() => import('./tools/SizeConverterTool')),
+  'alarm-clock': load(() => import('./tools/AlarmClockTool')),
+  'calendar-maker': load(() => import('./tools/CalendarMakerTool')),
+  'time-card': load(() => import('./tools/TimeCardTool')),
+  'team-generator': load(() =>
+    import('./tools/GeneratorTools').then((m) => ({
+      default: m.TeamGeneratorTool,
+    })),
+  ),
+  'username-generator': load(() =>
+    import('./tools/GeneratorTools').then((m) => ({
+      default: m.UsernameGeneratorTool,
+    })),
+  ),
+  'fake-data': load(() =>
+    import('./tools/GeneratorTools').then((m) => ({ default: m.FakeDataTool })),
+  ),
+  'random-color': load(() =>
+    import('./tools/GeneratorTools').then((m) => ({
+      default: m.RandomColorTool,
+    })),
+  ),
+  'invoice-generator': load(() => import('./tools/InvoiceTool')),
+  'email-signature': load(() => import('./tools/EmailSignatureTool')),
+  'password-strength': load(() => import('./tools/PasswordStrengthTool')),
+  'audio-trimmer': load(() =>
+    import('./tools/AudioTools').then((m) => ({ default: m.AudioTrimmerTool })),
+  ),
+  'audio-converter': load(() =>
+    import('./tools/AudioTools').then((m) => ({
+      default: m.AudioConverterTool,
+    })),
+  ),
+  'video-compressor': load(() =>
+    import('./tools/RecorderTools').then((m) => ({
+      default: m.VideoCompressorTool,
+    })),
+  ),
+  'voice-recorder': load(() =>
+    import('./tools/RecorderTools').then((m) => ({
+      default: m.VoiceRecorderTool,
+    })),
+  ),
+  'screen-recorder': load(() =>
+    import('./tools/RecorderTools').then((m) => ({
+      default: m.ScreenRecorderTool,
+    })),
+  ),
 };
 
 export function ToolRenderer({

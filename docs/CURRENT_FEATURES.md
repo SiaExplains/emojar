@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** 7 October 2026 (v0.10.0 — 213 online tools; platform since v0.2.0)
+> **Last updated:** 7 October 2026 (v0.11.0 — 229 online tools; platform since v0.2.0)
 
 ---
 
@@ -43,7 +43,7 @@ homepage and main navigation lead with the tools.
 |---|---|
 | `/online-tool` | Hub: search, popular tools, all 11 categories with every tool, FAQ |
 | `/online-tool/[category]` | Category page: intro, search, tool grid, popular conversions, other categories |
-| `/online-tool/[category]/[tool]` | Tool page (213 tools) |
+| `/online-tool/[category]/[tool]` | Tool page (229 tools) |
 | `/online-tool/image-tools/image-converter/[pair]-converter` | 11 conversion landing pages |
 | `/online-tool/image-tools/compress-image-to-size/compress-image-to-[20,50,100,200]kb` | 4 exact-size landing pages |
 | `/online-tool/image-tools/social-media-image-resizer/[platform]-…` | 5 platform landing pages (Instagram, Facebook, X, LinkedIn, YouTube thumbnail) |
@@ -62,7 +62,7 @@ relevant) · “How to use” steps · “What is …?” · FAQ (plus an automa
 privacy FAQ) · related tools · sibling conversions · “In-depth guide” link once
 the tool's blog guide is published (pages revalidate daily).
 
-### Categories and tools (213)
+### Categories and tools (229)
 
 | Category                                       | Tools                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -73,9 +73,9 @@ the tool's blog guide is published (pages revalidate daily).
 | 🎨 Color Tools (10)                            | Color Picker (eyedropper + pick from image), HEX→RGB, RGB→HEX, HEX→HSL, RGB→HSL, HSL→RGB, Color Converter (HEX/RGB/HSL/HSV/CMYK), Palette Generator, CSS Gradient Generator, WCAG Contrast Checker                                                                                                                                                                                                                      |
 | 🧮 Calculators (35)                            | Percentage, Percentage Increase, Age, Date, BMI, BMR/TDEE, Loan (amortisation), EMI (monthly schedule), Tip, Discount, Compound Interest, VAT, Time Duration, Average (mean/median/mode/std dev), Scientific (own parser, no `eval`), GPA, Grade (weighted + final needed), Calorie, Pregnancy Due Date, Ovulation                                                                                                     , Mortgage (tax, insurance, PMI, HOA, extra payments), Salary to Hourly, Fraction, Ratio, Aspect Ratio, Body Fat (U.S. Navy), Ideal Weight, Profit Margin (+ Markup page), ROI (CAGR), Savings Goal, Retirement, Unit Price, Probability (binomial, nCr/nPr), Square Root, Exponent |
 | 📏 Unit Converters (20 + 2 cross-listed)                        | Length, Weight, Temperature, Area, Volume, Speed, Time, Data Storage, Energy, Pressure, Frequency, Angle, Number to Words (cardinal/ordinal/cheque), Roman Numerals (1–3999), Power (hp/PS/BTU·h; Watts to Horsepower page), Torque, Fuel Economy (reciprocal units; MPG to L/100 km page), Cooking Measurement (by ingredient density; Cups to Grams page; oven chart), Shoe Size (men/women/kids, foot-length lookup), Clothing Size (4 charts, measurement lookup)                                                                                                                                                                                                                                            |
-| 🔐 Security & Generators (12 + 2 cross-listed) | Password, Passphrase, Random Number, Random String, SHA-256, SHA-512, QR Code Generator (URL/text/Wi-Fi/email/phone/SMS, PNG/SVG), QR Code Scanner (camera or image), Barcode Generator, Wheel Spinner, Dice Roller (notation like 4d6kh3), Coin Flip                                                                                                                                                                   |
-| 🕒 Date & Time Tools (12)                      | Unix Timestamp Converter, Timestamp Converter, Time Zone Converter, Date Difference, Add/Subtract Days, Working Days (with holidays), Week Number (ISO), Countdown Generator (shareable link), World Clock, Stopwatch (laps, full screen), Online Timer, Pomodoro Timer                                                                                                                                                 |
-| 🎬 Audio & Video Tools (2)                     | MP4 to MP3 (WebAudio decode + LAME in a worker), Video to GIF (native `<video>` + gifenc, max 400 frames)                                                                                                                                                                                                                                                                                                               |
+| 🔐 Security & Generators (19 + 2 cross-listed) | Password, Passphrase, Random Number, Random String, SHA-256, SHA-512, QR Code Generator (URL/text/Wi-Fi/email/phone/SMS, PNG/SVG), QR Code Scanner (camera or image), Barcode Generator, Wheel Spinner, Dice Roller (notation like 4d6kh3), Coin Flip, Random Team, Username, Fake Test Data (seedable, RFC 2606/5737 values), Random Color, Invoice (PDF), Email Signature (escaped table HTML), Password Strength Checker (pattern-aware entropy; opt-in HIBP k-anonymity — the only outbound request)                                                                                                                                                                   |
+| 🕒 Date & Time Tools (16)                      | Unix Timestamp Converter, Timestamp Converter, Time Zone Converter, Date Difference, Add/Subtract Days, Working Days (with holidays), Week Number (ISO), Countdown Generator (shareable link), World Clock, Stopwatch (laps, full screen), Online Timer, Pomodoro Timer, Alarm Clock (Web Audio sounds, repeat, snooze, localStorage), Day of the Week (form calculator), Printable Calendar (pdf-lib, 12 Latin-script languages), Time Card (overnight shifts, weekly/daily overtime, CSV)                                                                                                                                                 |
+| 🎬 Audio & Video Tools (7)                     | MP4 to MP3 (WebAudio decode + LAME in a worker), Video to GIF (native `<video>` + gifenc, max 400 frames), Video Compressor (mediabunny/WebCodecs, H.264 or VP9), Audio Trimmer (waveform, fades), Audio Converter (MP3/WAV + AAC/Opus), Voice Recorder, Screen Recorder (getDisplayMedia + mic mix)                                                                                                                                                                                                                                                                                                               |
 | 🎥 Device Tests (6)                            | Webcam Test (resolution, frame rate, snapshot), Microphone Test (level meter, record & play back), Keyboard Tester (full layout by `KeyboardEvent.code`, rollover/ghosting, key codes), Screen Resolution Checker (CSS vs physical pixels, DPR, viewport, aspect ratio, rAF refresh-rate estimate, HDR/gamut), Dead Pixel Test (9 full-screen colours, opt-in flashing stuck-pixel fixer), What Is My Browser (UA parser + Client Hints, GPU, feature checklist; What Is My User Agent page; also in Developer Tools) |
 
 UUID Generator and Hash Generator are also listed under Security & Generators;
@@ -100,9 +100,9 @@ External links: `lib/online-tools/external.ts` lists third-party tools shown on 
 ### Tool guides (blog)
 
 - One Markdown guide per tool in `content/guides/<tool-slug>.md` plus a launch
-  post (214 total); format documented in `content/guides/README.md`.
+  post (230 total); format documented in `content/guides/README.md`.
 - Publish dates live in `lib/blog/guide-schedule.ts` (5 per day from
-  2026-10-07 to 2026-11-04, plus one extra guide per day 10-08 → 12-15 for the image, PDF, calculator, text, device, developer and converter tools). Unpublished guides 404 and stay out of the
+  2026-10-07 to 2026-11-04, plus one extra guide per day 10-08 → 12-31 for every batch since v0.4.0). Unpublished guides 404 and stay out of the
   sitemap, blog index and `llms.txt`; pages revalidate daily (ISR).
 - `lib/blog/guides.test.ts` enforces: one guide per tool, unique slugs and
   titles, title ≤ 70 and description 100–170 characters, ≥ 600 words, no H1,
@@ -487,12 +487,12 @@ All 18 games at `/games` are:
 
 | Type | Count |
 |---|---|
-| Online tools (hub + 11 categories + 213 tools + 38 landing pages) | 263 |
+| Online tools (hub + 11 categories + 229 tools + 38 landing pages) | 279 |
 | Static pages (home, emoji hub, legal, about, etc.) | ~11 |
 | Category pages | 10 |
 | Emoji detail pages | 3,790 |
 | Game pages | 18 |
-| Blog posts (MDX) + tool guides (`content/guides`, drip-published) | 15+ + 214 |
+| Blog posts (MDX) + tool guides (`content/guides`, drip-published) | 15+ + 230 |
 | Collection / sorted / table pages | ~5 |
 
 ---

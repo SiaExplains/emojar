@@ -19,6 +19,7 @@ export const SECURITY_TOOLS: ToolDefinition[] = [
       'secure password generator',
     ],
     relatedTools: [
+      'password-strength-checker',
       'passphrase-generator',
       'random-string-generator',
       'hash-generator',
@@ -378,6 +379,7 @@ export const SECURITY_TOOLS: ToolDefinition[] = [
       'random picker wheel',
     ],
     relatedTools: [
+      'random-team-generator',
       'random-number-generator',
       'dice-roller',
       'coin-flip',
@@ -475,6 +477,326 @@ export const SECURITY_TOOLS: ToolDefinition[] = [
       {
         q: 'Is a real coin fair?',
         a: 'Nearly. Studies of human flips found a slight bias (about 51%) towards the side that started facing up; a virtual coin has no such bias.',
+      },
+    ],
+  },
+  {
+    slug: 'random-team-generator',
+    category: 'security-generators',
+    name: 'Random Team Generator',
+    icon: '👥',
+    shortDescription: 'Split a list of names into fair random teams.',
+    description:
+      'Paste a list of names and split them into random teams — by number of teams or people per team — as evenly as possible. Optionally put one captain in each team, then reshuffle until you’re happy and copy the result.',
+    title: 'Random Team Generator – Split Names into Fair Teams',
+    metaDescription:
+      'Free random team generator: paste names and split them into even random teams by count or team size, with optional captains. Reshuffle and copy in one click.',
+    keywords: [
+      'random team generator',
+      'team generator',
+      'random group generator',
+      'split into teams',
+      'team picker',
+    ],
+    relatedTools: [
+      'wheel-spinner',
+      'random-number-generator',
+      'dice-roller',
+      'coin-flip',
+      'username-generator',
+    ],
+    component: 'team-generator',
+    popular: true,
+    howTo: [
+      'Paste or type the names, one per line or separated by commas.',
+      'Choose the number of teams or the number of people per team, and optionally list captains.',
+      'Click “Make teams”, reshuffle if you like, and copy the teams.',
+    ],
+    about: [
+      'Names are shuffled with your browser’s cryptographically secure random generator and dealt so team sizes differ by at most one — 10 people into 3 teams gives 4, 3 and 3. Captains are placed first, one per team, so each team gets a leader before the rest are shuffled in.',
+      'Useful for classrooms, sports, workshops, hackathons and game nights. Nothing is stored or sent, so it’s fine for pupils’ or colleagues’ names.',
+    ],
+    faqs: [
+      {
+        q: 'Is the split really random?',
+        a: 'Yes. Every arrangement is equally likely; ties for the smallest team are broken randomly too, so team 1 isn’t favoured.',
+      },
+      {
+        q: 'Can I balance teams by skill?',
+        a: 'List your strongest players as captains — they’ll be spread one per team — and the rest are shuffled in.',
+      },
+    ],
+  },
+  {
+    slug: 'username-generator',
+    category: 'security-generators',
+    name: 'Username Generator',
+    icon: '🪪',
+    shortDescription: 'Ideas for usernames, gamer tags and handles.',
+    description:
+      'Generate 20 username ideas at a time in different styles — adjective + animal, two words, gamer tags, cute or professional (from your name) — with optional numbers, separators, a word to include and a maximum length.',
+    title: 'Username Generator – Cool, Gamer & Professional Name Ideas',
+    metaDescription:
+      'Free username generator: get 20 ideas at once — adjective + animal, gamer tags, cute or professional handles — with numbers, separators and a length limit.',
+    keywords: [
+      'username generator',
+      'gamer tag generator',
+      'random username',
+      'username ideas',
+      'nickname generator',
+    ],
+    relatedTools: [
+      'password-generator',
+      'passphrase-generator',
+      'random-string-generator',
+      'fancy-text-generator',
+      'random-team-generator',
+    ],
+    component: 'username-generator',
+    howTo: [
+      'Pick a style — or “Professional” and enter your name.',
+      'Set a separator, a maximum length and whether to add numbers or include a word.',
+      'Click “Generate more” until you like one, then copy it.',
+    ],
+    about: [
+      'Good usernames are easy to say, spell and remember, and don’t reveal personal information like your birth year or full name — which matters if you use the same handle on many sites. Short handles (under 15 characters) also fit everywhere, including X’s 15-character limit.',
+      'Words are picked with your browser’s secure random generator. The tool can’t check whether a name is free on a given site, so have a couple of favourites ready.',
+    ],
+    faqs: [
+      {
+        q: 'Should my username and password be related?',
+        a: 'No. Usernames are often public; your password must be completely separate — use the Password Generator for that.',
+      },
+    ],
+  },
+  {
+    slug: 'fake-data-generator',
+    category: 'security-generators',
+    alsoIn: ['developer-tools'],
+    name: 'Fake Test Data Generator',
+    icon: '🧪',
+    shortDescription: 'Mock names, emails, addresses as CSV, JSON or SQL.',
+    description:
+      'Generate realistic fake test data — names, emails, phone numbers, addresses, companies, dates, prices, UUIDs, IPs and more — up to 1,000 rows as CSV, JSON or SQL INSERT statements. Use a seed to get the same data every time.',
+    title: 'Fake Test Data Generator – Mock Data as CSV, JSON & SQL',
+    metaDescription:
+      'Generate fake test data: names, emails, phones, addresses, dates, UUIDs and more, up to 1,000 rows as CSV, JSON or SQL. Safe example.com emails, seedable.',
+    keywords: [
+      'fake data generator',
+      'test data generator',
+      'mock data generator',
+      'dummy data',
+      'random data generator',
+    ],
+    relatedTools: [
+      'json-formatter',
+      'csv-to-json',
+      'uuid-generator',
+      'sql-formatter',
+      'lorem-ipsum-generator',
+    ],
+    component: 'fake-data',
+    howTo: [
+      'Tick the fields you need — they appear in the order you choose them.',
+      'Set the number of rows, the format (CSV, JSON or SQL) and, optionally, a seed.',
+      'Copy or download the data into your app, spreadsheet or database.',
+    ],
+    about: [
+      'Test data should look real but never belong to a real person. Emails use the reserved example.com, example.org and example.net domains (RFC 2606), phone numbers use the 555-0100–0199 range set aside for fiction, and IP addresses come from the documentation ranges (RFC 5737), so nothing generated here can reach a real inbox, phone or server.',
+      'With a seed, the same settings always produce the same rows — handy for reproducible tests and demos. CSV values are quoted when needed and SQL strings are escaped, so the output imports cleanly.',
+    ],
+    faqs: [
+      {
+        q: 'Can I use this data in production?',
+        a: 'No — it’s for development, testing and demos only. Names and addresses are invented combinations.',
+      },
+      {
+        q: 'Why are all emails @example.com?',
+        a: 'Those domains are reserved and can never be registered, so test emails can’t accidentally be delivered to someone.',
+      },
+    ],
+  },
+  {
+    slug: 'random-color-generator',
+    category: 'security-generators',
+    alsoIn: ['color-tools'],
+    name: 'Random Color Generator',
+    icon: '🎲',
+    shortDescription: 'Random pastel, vivid or dark colours with HEX codes.',
+    description:
+      'Generate random colours — any, pastel, vivid, dark, light or around one hue — in sets of up to 10. Lock the ones you like and regenerate the rest (press Space), and copy HEX, RGB or HSL values.',
+    title: 'Random Color Generator – Random HEX, Pastel & Vivid Colours',
+    metaDescription:
+      'Generate random colours with HEX, RGB and HSL codes: any, pastel, vivid, dark, light or one hue. Lock favourites, press Space to regenerate. Free and instant.',
+    keywords: [
+      'random color generator',
+      'random hex color',
+      'random colour',
+      'pastel color generator',
+      'color randomizer',
+    ],
+    relatedTools: [
+      'color-palette-generator',
+      'color-picker',
+      'gradient-generator',
+      'contrast-checker',
+      'color-converter',
+    ],
+    component: 'random-color',
+    howTo: [
+      'Choose the kind of colour and how many you want.',
+      'Press Space or click Generate; lock the swatches you want to keep.',
+      'Copy a colour’s HEX code, or all codes at once.',
+    ],
+    about: [
+      'Colours are generated in HSL — hue, saturation and lightness — which makes moods easy to control: pastels are light and moderately saturated, vivid colours are fully saturated at medium lightness, and “around one hue” keeps all colours within ±15° of the hue you choose.',
+      'Each swatch shows whether black or white text is more readable on it, based on WCAG relative luminance. For a full accessibility check of a text and background pair, use the Contrast Checker.',
+    ],
+    faqs: [
+      {
+        q: 'How many hex colours are there?',
+        a: '16,777,216 — 256 levels each of red, green and blue.',
+      },
+    ],
+  },
+  {
+    slug: 'invoice-generator',
+    category: 'security-generators',
+    name: 'Invoice Generator (PDF)',
+    icon: '🧾',
+    shortDescription: 'Create a professional PDF invoice for free.',
+    description:
+      'Create a clean PDF invoice in minutes: your details and logo, the client, line items, tax or VAT, discount, currency, due date and payment notes. Totals update as you type, and you can keep the draft in your browser for next time.',
+    title: 'Free Invoice Generator – Create & Download a PDF Invoice',
+    metaDescription:
+      'Free invoice generator: add your logo, client, items, tax/VAT and discount, choose the currency and download a professional PDF. No sign-up, nothing uploaded.',
+    keywords: [
+      'invoice generator',
+      'free invoice maker',
+      'invoice template',
+      'create invoice pdf',
+      'freelance invoice',
+    ],
+    relatedTools: [
+      'time-card-calculator',
+      'vat-calculator',
+      'profit-margin-calculator',
+      'email-signature-generator',
+      'printable-calendar',
+    ],
+    component: 'invoice-generator',
+    popular: true,
+    howTo: [
+      'Fill in the invoice number, dates, your details and the client’s.',
+      'Add line items with quantity and unit price, then set tax, discount and currency.',
+      'Add a logo and notes if you like, then click “Download PDF invoice”.',
+    ],
+    about: [
+      'An invoice usually needs a unique number, issue and due dates, both parties’ names and addresses, a description of each item with quantity and price, the tax rate and amount, and the total. Many countries also require tax or VAT IDs and, for some businesses, specific wording — add those to the details or notes fields.',
+      'The PDF is created in your browser, so client details stay on your device. Ticking “Remember this draft” saves it in this browser only. The built-in PDF font supports Latin letters including accents and €, £ and ¥ signs.',
+    ],
+    faqs: [
+      {
+        q: 'Is the invoice legally valid?',
+        a: 'The format is standard, but legal requirements depend on your country and business. Check that you include every detail your tax authority asks for.',
+      },
+      {
+        q: 'Can I number invoices automatically?',
+        a: 'Tick “Remember this draft” and change the number each time — the rest of your details stay filled in.',
+      },
+    ],
+  },
+  {
+    slug: 'email-signature-generator',
+    category: 'security-generators',
+    name: 'Email Signature Generator',
+    icon: '✉️',
+    shortDescription: 'Professional HTML email signatures for Gmail & Outlook.',
+    description:
+      'Create a professional email signature with your name, title, company, phone, website, photo or logo and social links. Pick a template and colour, then copy it straight into Gmail, Outlook or Apple Mail — or copy the HTML.',
+    title:
+      'Email Signature Generator – Free HTML Signature for Gmail & Outlook',
+    metaDescription:
+      'Free email signature generator: name, title, phone, photo, social links and brand colour in 3 templates. Copy into Gmail, Outlook or Apple Mail, or copy the HTML.',
+    keywords: [
+      'email signature generator',
+      'email signature',
+      'gmail signature',
+      'outlook signature',
+      'html email signature',
+    ],
+    relatedTools: [
+      'invoice-generator',
+      'qr-code-generator',
+      'meta-tag-generator',
+      'html-entity-encoder',
+      'username-generator',
+    ],
+    component: 'email-signature',
+    howTo: [
+      'Fill in your details and pick a template and brand colour.',
+      'Check the preview, then click “Copy signature”.',
+      'Paste it into your email client’s signature settings (instructions below the preview).',
+    ],
+    about: [
+      'Email clients ignore most modern CSS, so the signature is built the old-fashioned way: an HTML table with inline styles and web-safe fonts. That renders consistently in Gmail, Outlook, Apple Mail and on phones. Links are limited to http(s), tel: and mailto:, and every value is escaped.',
+      'Photos and logos are loaded from a public URL rather than attached, which keeps emails small and avoids your logo appearing as an attachment. Keep the image square and around 160 × 160 pixels so it stays sharp on high-resolution screens.',
+    ],
+    faqs: [
+      {
+        q: 'Why doesn’t my photo show?',
+        a: 'Use a public https image URL — not a file on your computer. Some clients hide images until the reader allows them.',
+      },
+      {
+        q: 'Can I edit the signature later?',
+        a: 'Change the fields here and copy it again, or edit the HTML directly in clients that support it.',
+      },
+    ],
+  },
+  {
+    slug: 'password-strength-checker',
+    category: 'security-generators',
+    name: 'Password Strength Checker',
+    icon: '🛡️',
+    shortDescription: 'How strong is your password? Checked locally.',
+    description:
+      'Check how strong a password really is: estimated entropy, how long it would take to crack in different attack scenarios, and the patterns that weaken it — common passwords, dictionary words, keyboard runs, repeats and dates. Optionally check known breaches without revealing the password.',
+    title: 'Password Strength Checker – How Long to Crack Your Password?',
+    metaDescription:
+      'Test your password strength locally: entropy, crack time, and weak patterns like common words, keyboard runs and dates. Optional private breach check (k-anonymity).',
+    keywords: [
+      'password strength checker',
+      'password checker',
+      'how secure is my password',
+      'password strength test',
+      'is my password strong',
+    ],
+    relatedTools: [
+      'password-generator',
+      'passphrase-generator',
+      'bcrypt-generator',
+      'totp-generator',
+      'sha256-generator',
+    ],
+    component: 'password-strength',
+    popular: true,
+    howTo: [
+      'Type a password — it is checked as you type and never leaves the page.',
+      'Read the rating, crack-time estimates and the patterns that make it weaker.',
+      'Optionally click “Check known breaches” to see if it appeared in leaked password lists.',
+    ],
+    about: [
+      'Attackers don’t guess randomly: they try leaked passwords, dictionary words with common substitutions (P@ssw0rd), keyboard runs (qwerty), names and dates first. So the checker starts from the character-pool entropy and lowers it for every predictable pattern it finds, then estimates crack times for a rate-limited online attack, an offline attack on a slow hash like bcrypt, and an offline attack on a fast hash.',
+      'The breach check is opt-in and uses Have I Been Pwned’s k-anonymity range API: your browser computes the SHA-1 hash, sends only its first 5 characters, receives every leaked hash starting with them, and compares the rest locally. Neither the password nor its full hash is sent. For the best protection use a long random password or passphrase per site in a password manager, plus two-factor authentication.',
+    ],
+    faqs: [
+      {
+        q: 'Is it safe to type my real password here?',
+        a: 'The check runs in your browser and nothing is sent unless you click the breach check, which sends only a 5-character hash prefix. Still, the safest habit is to test a similar password, not your real one.',
+      },
+      {
+        q: 'How long should a password be?',
+        a: 'At least 12 characters, ideally 16+ or a passphrase of four or more random words. Length beats complexity.',
       },
     ],
   },

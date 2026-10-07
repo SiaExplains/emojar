@@ -123,7 +123,22 @@ export type ToolComponentKey =
   | 'code-to-image'
   | 'totp'
   | 'cooking-converter'
-  | 'size-converter';
+  | 'size-converter'
+  | 'alarm-clock'
+  | 'calendar-maker'
+  | 'time-card'
+  | 'team-generator'
+  | 'username-generator'
+  | 'fake-data'
+  | 'random-color'
+  | 'invoice-generator'
+  | 'email-signature'
+  | 'password-strength'
+  | 'audio-trimmer'
+  | 'audio-converter'
+  | 'video-compressor'
+  | 'voice-recorder'
+  | 'screen-recorder';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

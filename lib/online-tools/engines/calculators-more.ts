@@ -8,7 +8,15 @@ import type {
   CalculatorDefinition,
   ShowIf,
 } from './calculators';
-import { addMonths, parseDateInput, toDateInput, todayUtc } from './dates';
+import {
+  addMonths,
+  dayOfYear,
+  diffDays,
+  isoWeek,
+  parseDateInput,
+  toDateInput,
+  todayUtc,
+} from './dates';
 import { formatNumber } from './units';
 
 const fmt = (n: number, sig = 10) => formatNumber(n, sig);
@@ -2245,7 +2253,74 @@ const exponent: CalculatorDefinition = {
 
 /* =================================================================== */
 
+const WEEKDAY = (d: Date) =>
+  d.toLocaleDateString('en-US', { weekday: 'long', timeZone: 'UTC' });
+const isLeap = (y: number) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+
+const dayOfWeek: CalculatorDefinition = {
+  fields: [
+    {
+      id: 'date',
+      label: 'Date',
+      type: 'date',
+      default: (now: Date) => toDateInput(todayUtc(now)),
+    },
+  ],
+  compute: (v) => {
+    const d = parseDateInput(v.date ?? '');
+    if (!d) return fail('Please enter a valid date.');
+    const today = todayUtc(new Date());
+    const y = d.getUTCFullYear();
+    const diff = diffDays(today, d);
+    const { week, year: weekYear } = isoWeek(d);
+    const rel =
+      diff === 0
+        ? 'Today'
+        : diff > 0
+          ? `In ${diff.toLocaleString('en-US')} day${diff === 1 ? '' : 's'}`
+          : `${(-diff).toLocaleString('en-US')} day${diff === -1 ? '' : 's'} ago`;
+    const yearDays = isLeap(y) ? 366 : 365;
+    const n = dayOfYear(d);
+    return {
+      ok: true,
+      results: [
+        { label: 'Day of the week', value: WEEKDAY(d), primary: true },
+        {
+          label: 'Date',
+          value: d.toLocaleDateString('en-US', {
+            dateStyle: 'full',
+            timeZone: 'UTC',
+          }),
+        },
+        { label: 'Relative to today', value: rel },
+        { label: 'Day of the year', value: `${n} of ${yearDays}` },
+        {
+          label: 'ISO week',
+          value: `Week ${week}${weekYear !== y ? ` of ${weekYear}` : ''}`,
+        },
+        { label: 'Quarter', value: `Q${Math.floor(d.getUTCMonth() / 3) + 1}` },
+        {
+          label: `Is ${y} a leap year?`,
+          value: isLeap(y) ? 'Yes (366 days)' : 'No (365 days)',
+        },
+      ],
+      table: {
+        caption: 'The same date in other years',
+        columns: ['Year', 'Day of the week'],
+        rows: Array.from({ length: 11 }, (_, i) => y - 3 + i).map((yy) => {
+          const dd = new Date(Date.UTC(yy, d.getUTCMonth(), d.getUTCDate()));
+          // 29 February only exists in leap years.
+          return dd.getUTCMonth() === d.getUTCMonth()
+            ? [String(yy), WEEKDAY(dd)]
+            : [String(yy), '— (no 29 February)'];
+        }),
+      },
+    };
+  },
+};
+
 export const MORE_CALCULATORS: Record<string, CalculatorDefinition> = {
+  'day-of-week': dayOfWeek,
   mortgage,
   salary,
   fraction,

@@ -4,7 +4,7 @@ Free, privacy-first **online tools** that run entirely in the browser — plus
 3,790 emojis to search and copy, 18 emoji games and 8 emoji tools.
 Live at [emojar.com](https://emojar.com).
 
-- **Online tools** (`/online-tool`) — 213 tools in 11 categories: image, PDF,
+- **Online tools** (`/online-tool`) — 229 tools in 11 categories: image, PDF,
   developer, text, color, calculators, unit converters, security & generators,
   date & time, audio & video, and device tests. Each tool has an in-depth guide
   on the blog (`content/guides/`, drip-published on a schedule), and `/faq`
@@ -26,7 +26,8 @@ encryption), `mammoth` + `html-to-pdfmake` + `pdfmake` (Word to PDF),
 `heic2any`, `tesseract.js` (OCR), `gifenc`, `@breezystack/lamejs` (MP3),
 `fflate` (ZIP), `qrcode`, `jsqr`, `jsbarcode`, `yaml`, `marked`, `turndown`,
 `dompurify`, `exifr`, `terser`, `sql-formatter`, `prettier/standalone`,
-`svgo` (SVG optimizer), `bcryptjs` (in a worker) and `highlight.js` (code to image).
+`svgo` (SVG optimizer), `bcryptjs` (in a worker), `highlight.js` (code to image)
+and `mediabunny` (WebCodecs video compression and AAC/Opus audio, MPL-2.0).
 
 ## Getting started
 

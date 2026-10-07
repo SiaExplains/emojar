@@ -1,4 +1,4 @@
-import type { ToolDefinition } from '../types';
+import type { FAQItem, ToolDefinition, ToolVariant } from '../types';
 
 type Spec = {
   quantity: string;
@@ -10,6 +10,14 @@ type Spec = {
   faq: { q: string; a: string };
   keywords: string[];
   related: string[];
+  /** Hand-written SEO copy overriding the generated defaults. */
+  title?: string;
+  meta?: string;
+  description?: string;
+  extraAbout?: string[];
+  extraFaqs?: FAQItem[];
+  variants?: ToolVariant[];
+  popular?: boolean;
 };
 
 const SPECS: Spec[] = [
@@ -51,6 +59,7 @@ const SPECS: Spec[] = [
     faq: { q: 'How many pounds is 1 kg?', a: 'About 2.2046 lb.' },
     keywords: ['weight converter', 'kg to lbs', 'lbs to kg', 'grams to ounces'],
     related: [
+      'cooking-measurement-converter',
       'volume-converter',
       'bmi-calculator',
       'length-converter',
@@ -76,7 +85,12 @@ const SPECS: Spec[] = [
       'fahrenheit to celsius',
       'kelvin',
     ],
-    related: ['energy-converter', 'pressure-converter', 'length-converter'],
+    related: [
+      'cooking-measurement-converter',
+      'energy-converter',
+      'pressure-converter',
+      'length-converter',
+    ],
   },
   {
     quantity: 'area',
@@ -117,7 +131,12 @@ const SPECS: Spec[] = [
       'ml to cups',
       'fl oz to ml',
     ],
-    related: ['weight-converter', 'area-converter', 'length-converter'],
+    related: [
+      'cooking-measurement-converter',
+      'weight-converter',
+      'area-converter',
+      'length-converter',
+    ],
   },
   {
     quantity: 'speed',
@@ -135,7 +154,7 @@ const SPECS: Spec[] = [
       'mph to km/h',
       'knots converter',
     ],
-    related: ['length-converter', 'time-converter'],
+    related: ['fuel-economy-converter', 'length-converter', 'time-converter'],
   },
   {
     quantity: 'time',
@@ -197,7 +216,13 @@ const SPECS: Spec[] = [
       'kwh to joules',
       'calories converter',
     ],
-    related: ['bmr-calculator', 'temperature-converter', 'pressure-converter'],
+    related: [
+      'power-converter',
+      'torque-converter',
+      'bmr-calculator',
+      'temperature-converter',
+      'pressure-converter',
+    ],
   },
   {
     quantity: 'pressure',
@@ -242,6 +267,154 @@ const SPECS: Spec[] = [
     keywords: ['angle converter', 'degrees to radians', 'radians to degrees'],
     related: ['frequency-converter', 'length-converter', 'image-rotator'],
   },
+  {
+    quantity: 'power',
+    name: 'Power',
+    icon: '⚡',
+    examples: 'kW to hp, watts to horsepower, hp to kW',
+    intro:
+      'Convert power units — watts, kilowatts, megawatts, mechanical, metric (PS) and electrical horsepower, BTU per hour and tons of refrigeration.',
+    title: 'Power Converter – kW to hp, Watts to Horsepower & BTU/h',
+    meta: 'Convert kW to hp, watts to horsepower, PS to kW and BTU/h to watts. Mechanical, metric (PS) and electrical horsepower explained. Instant and free.',
+    description:
+      'Convert power between watts, kilowatts, horsepower and more: 100 kW is 134.1 mechanical hp or 136 PS, and a 12,000 BTU/h air conditioner draws about 3.5 kW of cooling power. Results update as you type, with every unit listed.',
+    about:
+      'There are three common horsepowers: mechanical (imperial) hp = 745.7 W, used for US and UK car engines; metric hp (PS, CV, pk) = 735.5 W, used in Europe and Japan; and electrical hp = exactly 746 W, used for electric motors.',
+    extraAbout: [
+      'Air conditioners and heaters are rated in BTU per hour: 1 W = 3.412 BTU/h, and one “ton” of refrigeration is 12,000 BTU/h (about 3.517 kW) — the cooling power of melting one short ton of ice per day.',
+    ],
+    faq: {
+      q: 'Is PS the same as horsepower?',
+      a: 'Almost: 1 PS (metric horsepower) is 735.5 W, about 1.4 % less than mechanical hp (745.7 W). A 150 PS car engine is about 148 hp.',
+    },
+    extraFaqs: [
+      {
+        q: 'How many watts is 1 horsepower?',
+        a: 'Mechanical horsepower is 745.7 W, metric horsepower 735.5 W and electrical horsepower exactly 746 W.',
+      },
+    ],
+    keywords: [
+      'power converter',
+      'kw to hp',
+      'watts to horsepower',
+      'hp to kw',
+      'btu to watts',
+    ],
+    related: [
+      'energy-converter',
+      'torque-converter',
+      'fuel-economy-converter',
+      'speed-converter',
+    ],
+    variants: [
+      {
+        slug: 'watts-to-horsepower',
+        name: 'Watts to Horsepower Converter',
+        title: 'Watts to Horsepower Converter – W to hp (and hp to W)',
+        metaDescription:
+          'Convert watts to horsepower: 1 W = 0.00134 hp and 1 hp = 745.7 W. Also metric PS and electrical hp. Enter a value for an instant, exact result.',
+        description:
+          'Enter watts to get mechanical horsepower — 1,000 W is 1.341 hp — with metric (PS) and electrical horsepower listed below.',
+        config: { quantity: 'power', init_from: 'W', init_to: 'hp' },
+        keywords: ['watts to horsepower', 'w to hp', 'convert watts to hp'],
+      },
+    ],
+  },
+  {
+    quantity: 'torque',
+    name: 'Torque',
+    icon: '🔧',
+    examples: 'Nm to lb-ft, lb-ft to Nm, kgf·m to Nm',
+    intro:
+      'Convert torque units — newton-meters, kilonewton-meters, newton-centimeters, pound-feet, pound-inches, ounce-inches and kilogram-force meters and centimeters.',
+    title: 'Torque Converter – Nm to lb-ft, ft-lb to Nm & kgf·m',
+    meta: 'Convert torque: newton-meters to pound-feet (Nm to lb-ft), lb-in, oz-in and kgf·m. For engines, bolts and torque wrenches. Instant and free.',
+    description:
+      'Convert torque between newton-meters, pound-feet, pound-inches and kilogram-force meters — 100 N·m is 73.76 lb·ft. Useful for engine specs, wheel nuts and torque-wrench settings.',
+    about:
+      'Torque is a turning force: force times the distance from the axis. 1 lbf·ft = 1.3558 N·m, and 1 kgf·m = 9.80665 N·m. A pound-foot and a foot-pound are the same quantity; engineers write lb·ft for torque to tell it apart from the energy unit.',
+    extraAbout: [
+      'Wheel nuts on a typical car are tightened to 100–140 N·m (74–103 lb·ft); small screws and bike parts are specified in N·m or lb·in, where 12 lb·in make 1 lb·ft.',
+    ],
+    faq: {
+      q: 'How many lb-ft is 100 Nm?',
+      a: 'About 73.76 lb·ft. To convert N·m to lb·ft, multiply by 0.7376.',
+    },
+    keywords: [
+      'torque converter',
+      'nm to lb ft',
+      'ft lb to nm',
+      'torque conversion',
+      'kgf m to nm',
+    ],
+    related: [
+      'power-converter',
+      'energy-converter',
+      'pressure-converter',
+      'weight-converter',
+    ],
+  },
+  {
+    quantity: 'fuel-economy',
+    name: 'Fuel Economy',
+    icon: '⛽',
+    examples: 'mpg to L/100 km, L/100 km to mpg, km/L',
+    intro:
+      'Convert fuel economy between miles per gallon (US and UK), liters per 100 km, kilometers per liter and gallons per 100 miles.',
+    title: 'Fuel Economy Converter – MPG to L/100 km (US & UK Gallons)',
+    meta: 'Convert mpg to L/100 km and back, plus km/L and UK mpg. 30 US mpg = 7.84 L/100 km. Handles reciprocal units correctly. Free and instant.',
+    description:
+      'Convert fuel consumption between miles per gallon and liters per 100 km — 30 US mpg is 7.84 L/100 km and 5 L/100 km is 56.5 UK mpg — plus km/L and gallons per 100 miles.',
+    about:
+      'Miles per gallon and km per liter measure distance per fuel (higher is better), while L/100 km and gallons per 100 miles measure fuel per distance (lower is better). Converting between them is a reciprocal, not a multiplication: L/100 km = 235.21 ÷ US mpg.',
+    extraAbout: [
+      'UK and US mpg differ because the imperial gallon (4.546 L) is about 20 % bigger than the US gallon (3.785 L), so the same car shows a higher mpg figure in the UK: 40 UK mpg is only 33.3 US mpg.',
+    ],
+    faq: {
+      q: 'How do I convert mpg to L/100 km?',
+      a: 'Divide 235.21 by US mpg (or 282.48 by UK mpg). For example, 30 US mpg = 235.21 ÷ 30 = 7.84 L/100 km.',
+    },
+    extraFaqs: [
+      {
+        q: 'Why do small mpg gains matter more for thirsty cars?',
+        a: 'Because fuel used is the reciprocal. Going from 10 to 12 mpg saves more fuel per mile than going from 40 to 50 mpg — L/100 km shows this directly.',
+      },
+    ],
+    keywords: [
+      'fuel economy converter',
+      'mpg to l/100km',
+      'l/100km to mpg',
+      'mpg converter',
+      'km/l to mpg',
+    ],
+    related: [
+      'speed-converter',
+      'volume-converter',
+      'length-converter',
+      'power-converter',
+    ],
+    variants: [
+      {
+        slug: 'mpg-to-l-per-100km',
+        name: 'MPG to L/100 km Converter',
+        title: 'MPG to L/100 km Converter – Miles per Gallon to Liters',
+        metaDescription:
+          'Convert miles per gallon to liters per 100 km instantly: 30 US mpg = 7.84 L/100 km. Choose US or UK gallons; see km/L too.',
+        description:
+          'Enter miles per gallon (US) to get liters per 100 km — 25 mpg is 9.41 L/100 km. Switch to UK mpg for imperial gallons.',
+        config: {
+          quantity: 'fuel-economy',
+          init_from: 'mpgus',
+          init_to: 'l100km',
+        },
+        keywords: [
+          'mpg to l/100km',
+          'mpg to liters per 100 km',
+          'miles per gallon to l/100km',
+        ],
+      },
+    ],
+  },
 ];
 
 const MEASUREMENT_CONVERTERS: ToolDefinition[] = SPECS.map((s) => ({
@@ -250,14 +423,21 @@ const MEASUREMENT_CONVERTERS: ToolDefinition[] = SPECS.map((s) => ({
   name: `${s.name} Converter`,
   icon: s.icon,
   shortDescription: `Convert ${s.examples}.`,
-  description: `${s.intro} Type a value to see the result instantly, together with a table of every other unit.`,
-  title: `${s.name} Converter – ${s.examples.split(',')[0].replace(/^\w/, (c) => c.toUpperCase())} & More`,
-  metaDescription: `Free ${s.name.toLowerCase()} converter: ${s.examples} and more. Accurate results as you type, with a full conversion table.`,
+  description:
+    s.description ??
+    `${s.intro} Type a value to see the result instantly, together with a table of every other unit.`,
+  title:
+    s.title ??
+    `${s.name} Converter – ${s.examples.split(',')[0].replace(/^\w/, (c) => c.toUpperCase())} & More`,
+  metaDescription:
+    s.meta ??
+    `Free ${s.name.toLowerCase()} converter: ${s.examples} and more. Accurate results as you type, with a full conversion table.`,
   keywords: s.keywords,
   relatedTools: s.related,
   component: 'unit-converter',
   config: { quantity: s.quantity },
-  popular: s.quantity === 'length' || s.quantity === 'temperature',
+  popular:
+    s.popular ?? (s.quantity === 'length' || s.quantity === 'temperature'),
   howTo: [
     'Enter a value.',
     'Choose the unit to convert from and to (use ⇄ to swap).',
@@ -265,10 +445,176 @@ const MEASUREMENT_CONVERTERS: ToolDefinition[] = SPECS.map((s) => ({
   ],
   about: [
     s.about,
+    ...(s.extraAbout ?? []),
     'Results show up to 10 significant digits; very large or small values switch to scientific notation.',
   ],
-  faqs: [s.faq],
+  faqs: [s.faq, ...(s.extraFaqs ?? [])],
+  ...(s.variants ? { variants: s.variants } : {}),
 }));
+
+const EVERYDAY_CONVERTERS: ToolDefinition[] = [
+  {
+    slug: 'cooking-measurement-converter',
+    category: 'unit-converters',
+    name: 'Cooking Measurement Converter',
+    icon: '🥄',
+    shortDescription: 'Cups to grams, tbsp to ml, oz to g — by ingredient.',
+    description:
+      'Convert recipe measurements between cups, tablespoons, teaspoons, milliliters, grams, ounces and sticks of butter. Pick the ingredient to convert volume to weight correctly — 1 cup of flour is about 120 g, but 1 cup of sugar is about 198 g — plus an oven temperature chart with gas marks.',
+    title: 'Cooking Measurement Converter – Cups to Grams, Tbsp, Ml & Oz',
+    metaDescription:
+      'Convert cups to grams, tablespoons to ml, ounces to grams and more by ingredient (flour, sugar, butter…). US, metric and UK cups, plus oven temperatures.',
+    keywords: [
+      'cooking measurement converter',
+      'cups to grams',
+      'grams to cups',
+      'tablespoons to ml',
+      'baking conversion chart',
+    ],
+    relatedTools: [
+      'weight-converter',
+      'volume-converter',
+      'temperature-converter',
+      'unit-price-calculator',
+      'calorie-calculator',
+    ],
+    component: 'cooking-converter',
+    popular: true,
+    howTo: [
+      'Enter the amount and choose the unit you have and the unit you want.',
+      'Pick the ingredient — it matters when converting between volume (cups, spoons) and weight (grams, ounces).',
+      'Read the result; kitchen fractions such as ⅓ cup are shown where they fit.',
+    ],
+    about: [
+      'Volume and weight can only be converted with the ingredient’s density: a cup of water weighs 237 g, a cup of all-purpose flour about 120 g and a cup of honey about 336 g. The tool uses typical weights for a level, spooned cup from published baking charts; weighing with a kitchen scale is always the most accurate.',
+      'Cup sizes differ by country: a US cup is 236.6 ml, a metric cup (Australia, New Zealand, Canada) 250 ml, and old British recipes used a 284 ml imperial cup. One US tablespoon is 3 teaspoons (14.8 ml); an Australian tablespoon is 20 ml.',
+    ],
+    faqs: [
+      {
+        q: 'How many grams is 1 cup of flour?',
+        a: 'About 120 g of all-purpose flour, spooned and levelled. Scooped flour can weigh 140 g or more, which is why bakers prefer weights.',
+      },
+      {
+        q: 'How many tablespoons are in a cup?',
+        a: '16 US tablespoons, or 48 teaspoons. A quarter cup is 4 tablespoons.',
+      },
+      {
+        q: 'How much is a stick of butter?',
+        a: 'A US stick is ½ cup, 8 tablespoons or 4 oz — about 113 g.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'cups-to-grams',
+        name: 'Cups to Grams Converter',
+        title: 'Cups to Grams Converter – Flour, Sugar, Butter & More',
+        metaDescription:
+          'Convert cups to grams for 30+ ingredients: 1 cup flour = 120 g, sugar = 198 g, butter = 227 g. US and metric cups. Free baking converter.',
+        description:
+          'Choose an ingredient and enter cups to get grams — 1 cup of all-purpose flour is 120 g, granulated sugar 198 g and butter 227 g.',
+        config: { init_from: 'cup', init_to: 'g' },
+        keywords: [
+          'cups to grams',
+          'cup of flour in grams',
+          'cups to grams converter',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'shoe-size-converter',
+    category: 'unit-converters',
+    name: 'Shoe Size Converter',
+    icon: '👟',
+    shortDescription: 'US, UK, EU and cm shoe sizes for men, women and kids.',
+    description:
+      'Convert shoe sizes between US, UK, EU and foot length in cm, inches and Mondopoint (JP) for men, women and kids — or measure your foot and find your size. US men’s 10 is UK 9.5 and EU 44 on the standard chart.',
+    title: 'Shoe Size Converter – US, UK, EU & CM for Men, Women, Kids',
+    metaDescription:
+      'Convert shoe sizes between US, UK, EU and cm for men, women and kids, or find your size from foot length. Includes Mondopoint/JP sizes and a full chart.',
+    keywords: [
+      'shoe size converter',
+      'us to eu shoe size',
+      'uk to us shoe size',
+      'shoe size chart',
+      'eu shoe size to us',
+    ],
+    relatedTools: [
+      'clothing-size-converter',
+      'length-converter',
+      'unit-price-calculator',
+      'bmi-calculator',
+    ],
+    component: 'size-converter',
+    config: { kind: 'shoe' },
+    popular: true,
+    howTo: [
+      'Choose men, women or kids.',
+      'Select your size system and size — or enter your foot length.',
+      'Read the matching US, UK, EU, cm and Mondopoint sizes; the row is highlighted in the chart.',
+    ],
+    about: [
+      'Each system counts differently: US and UK sizes step in thirds of an inch from different starting points (and US women’s sizes are about 1 to 1.5 larger than men’s), EU sizes use Paris points of ⅔ cm, and Mondopoint and Japanese sizes are simply the foot length in millimeters or centimeters. That is why conversions can differ by half a size between charts.',
+      'To measure, stand on paper in the evening (feet swell during the day), mark heel and longest toe, and measure in cm. If you are between sizes, choose the larger one. Brands — especially sports and European brands — run differently, so check the brand’s own chart.',
+    ],
+    faqs: [
+      {
+        q: 'Is women’s US size the same as men’s?',
+        a: 'No. A US women’s size is about 1 to 1.5 larger than the men’s size for the same foot: on this chart a women’s 9 (26 cm) matches a men’s 8.',
+      },
+      {
+        q: 'What size is EU 42 in US?',
+        a: 'On the standard chart EU 42 is US men’s 8.5 or US women’s about 10.5–11.',
+      },
+    ],
+  },
+  {
+    slug: 'clothing-size-converter',
+    category: 'unit-converters',
+    name: 'Clothing Size Converter',
+    icon: '👕',
+    shortDescription: 'International clothing sizes: US, UK, EU, IT, JP.',
+    description:
+      'Convert clothing sizes between US, UK, EU, French, Italian and (for women’s sizes) Japanese systems and S/M/L letters — women’s dresses and tops, men’s jackets, shirts and trousers — or enter your measurements to find your size.',
+    title: 'Clothing Size Converter – US, UK, EU, IT & JP Size Charts',
+    metaDescription:
+      'Convert women’s and men’s clothing sizes between US, UK, EU, IT, FR and JP, plus S/M/L. Dresses, jackets, shirts and trousers — or find a size by measurement.',
+    keywords: [
+      'clothing size converter',
+      'us to uk dress size',
+      'eu to us clothing size',
+      'international size chart',
+      'italian size to us',
+    ],
+    relatedTools: [
+      'shoe-size-converter',
+      'length-converter',
+      'bmi-calculator',
+      'body-fat-calculator',
+    ],
+    component: 'size-converter',
+    config: { kind: 'clothing' },
+    howTo: [
+      'Choose the type of clothing.',
+      'Select a size system and size, or enter your bust, chest, neck or waist measurement.',
+      'Read the equivalent sizes; the row is highlighted in the chart.',
+    ],
+    about: [
+      'Women’s sizes follow fixed offsets between countries: UK = US + 4, EU/German = US + 30, French = EU + 2, and Italian = EU + 6 — so a US 8 is a UK 12, EU 38 and IT 44. Men’s jackets in the US and UK are labelled by chest size in inches (40 = about 102 cm), while EU jacket sizes are about half the chest in centimeters (50).',
+      'Men’s dress shirts are sized by neck circumference (15.5 in ≈ 39 cm) and trousers by waist in inches. Letter sizes vary most between brands and countries; a measurement-based lookup is the safest way to buy abroad.',
+    ],
+    faqs: [
+      {
+        q: 'What is a US size 8 in UK and EU?',
+        a: 'A US women’s 8 is a UK 12 and an EU 38 (Italian 44, French 40).',
+      },
+      {
+        q: 'Are Asian sizes smaller?',
+        a: 'Often yes — Japanese, Chinese and Korean brands tend to cut smaller, so going up one letter size is common. Use your measurements to check.',
+      },
+    ],
+  },
+];
 
 const NUMBER_CONVERTERS: ToolDefinition[] = [
   {
@@ -368,4 +714,5 @@ const NUMBER_CONVERTERS: ToolDefinition[] = [
 export const UNIT_CONVERTERS: ToolDefinition[] = [
   ...MEASUREMENT_CONVERTERS,
   ...NUMBER_CONVERTERS,
+  ...EVERYDAY_CONVERTERS,
 ];

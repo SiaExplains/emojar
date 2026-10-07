@@ -567,7 +567,12 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'text to morse',
       'morse to text',
     ],
-    relatedTools: ['text-case-converter', 'base64-encoder', 'url-encoder'],
+    relatedTools: [
+      'text-to-binary',
+      'text-case-converter',
+      'base64-encoder',
+      'url-encoder',
+    ],
     component: 'text-transform',
     config: { transform: 'morse' },
     howTo: [

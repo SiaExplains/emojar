@@ -610,3 +610,81 @@ export function convertBases(
     })
     .join('\n\n');
 }
+
+/* ------------------------------------------------------------------ */
+/* Text ↔ binary                                                        */
+/* ------------------------------------------------------------------ */
+
+export type ByteFormat = 'binary' | 'hex' | 'decimal' | 'octal';
+
+const BYTE_BASE: Record<ByteFormat, number> = {
+  binary: 2,
+  hex: 16,
+  decimal: 10,
+  octal: 8,
+};
+const BYTE_WIDTH: Record<ByteFormat, number> = {
+  binary: 8,
+  hex: 2,
+  decimal: 3,
+  octal: 3,
+};
+
+/** Text → UTF-8 bytes written in binary (or hex / decimal / octal). */
+export function textToBytes(
+  text: string,
+  format: ByteFormat = 'binary',
+  separator = ' ',
+): string {
+  const bytes = new TextEncoder().encode(text);
+  const pad = format === 'decimal' && separator ? 0 : BYTE_WIDTH[format];
+  return Array.from(bytes, (b) =>
+    b.toString(BYTE_BASE[format]).padStart(pad, '0'),
+  ).join(separator);
+}
+
+/** Binary (or hex / decimal / octal) bytes → text, decoded as UTF-8. */
+export function bytesToText(
+  input: string,
+  format: ByteFormat = 'binary',
+): string {
+  const base = BYTE_BASE[format];
+  const clean = input.trim();
+  if (!clean) return '';
+  let groups = clean.split(/[\s,;]+/).filter(Boolean);
+  // Unseparated binary/hex: split into fixed-width bytes.
+  if (groups.length === 1 && (format === 'binary' || format === 'hex')) {
+    const width = BYTE_WIDTH[format];
+    const g = groups[0].replace(/^0x/i, '');
+    if (g.length % width !== 0)
+      throw new ToolInputError(
+        format === 'binary'
+          ? `Binary text needs groups of 8 bits — ${g.length} digits isn’t a multiple of 8.`
+          : 'Hex text needs 2 digits per byte.',
+      );
+    groups = g.match(new RegExp(`.{${width}}`, 'g')) ?? [];
+  }
+  const valid = new RegExp(`^[${'0123456789abcdef'.slice(0, base)}]+$`, 'i');
+  const bytes = groups.map((g, i) => {
+    const t = format === 'hex' ? g.replace(/^0x/i, '') : g;
+    if (!valid.test(t))
+      throw new ToolInputError(
+        `Group ${i + 1} (“${g}”) is not a valid ${format} byte.`,
+      );
+    const n = parseInt(t, base);
+    if (n > 255)
+      throw new ToolInputError(
+        `Group ${i + 1} (“${g}”) is larger than one byte (255).`,
+      );
+    return n;
+  });
+  try {
+    return new TextDecoder('utf-8', { fatal: true }).decode(
+      new Uint8Array(bytes),
+    );
+  } catch {
+    throw new ToolInputError(
+      'These bytes are not valid UTF-8 text — a byte may be missing or the groups are misaligned.',
+    );
+  }
+}

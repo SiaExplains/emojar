@@ -13,6 +13,7 @@ import {
   toolPath,
   toolsInCategory,
 } from '@/lib/online-tools/registry';
+import { externalToolsIn } from '@/lib/online-tools/external';
 import { faqJsonLd, hubMetadata, itemListJsonLd } from '@/lib/online-tools/seo';
 
 export const metadata: Metadata = hubMetadata(TOOLS.length);
@@ -117,12 +118,21 @@ export default function OnlineToolsHub() {
             </div>
             <p className="max-w-3xl text-sm text-gray-600">{c.intro}</p>
             <ToolGrid
-              tools={tools.map((t) => ({
-                href: toolPath(t),
-                name: t.name,
-                description: t.shortDescription,
-                icon: t.icon,
-              }))}
+              tools={[
+                ...tools.map((t) => ({
+                  href: toolPath(t),
+                  name: t.name,
+                  description: t.shortDescription,
+                  icon: t.icon,
+                })),
+                ...externalToolsIn(c.slug).map((t) => ({
+                  href: t.url,
+                  name: t.name,
+                  description: t.description,
+                  icon: t.icon,
+                  external: true,
+                })),
+              ]}
             />
           </section>
         );

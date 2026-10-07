@@ -121,7 +121,9 @@ export type ToolComponentKey =
   | 'robots-txt'
   | 'http-status'
   | 'code-to-image'
-  | 'totp';
+  | 'totp'
+  | 'cooking-converter'
+  | 'size-converter';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

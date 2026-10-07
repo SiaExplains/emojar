@@ -183,6 +183,7 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       'healthy weight',
     ],
     relatedTools: [
+      'clothing-size-converter',
       'bmr-calculator',
       'weight-converter',
       'length-converter',

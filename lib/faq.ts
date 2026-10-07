@@ -493,6 +493,40 @@ export const FAQ_GROUPS: FaqGroup[] = [
           },
         ],
       },
+      {
+        q: 'How many grams are in a cup?',
+        a: 'It depends on the ingredient, because a cup measures volume: about 120 g of all-purpose flour, 198 g of sugar, 227 g of butter and 237 g of water per US cup. The Cooking Measurement Converter uses a density for each ingredient.',
+        links: [
+          {
+            href: '/online-tool/unit-converters/cooking-measurement-converter',
+            label: 'Cooking Measurement Converter',
+          },
+        ],
+      },
+      {
+        q: 'Why are UK and US miles per gallon different?',
+        a: 'A UK (imperial) gallon is 4.546 liters and a US gallon 3.785 liters, so the same car scores about 20 % more mpg in the UK. Converting to L/100 km avoids the confusion.',
+        links: [
+          {
+            href: '/online-tool/unit-converters/fuel-economy-converter',
+            label: 'Fuel Economy Converter',
+          },
+        ],
+      },
+      {
+        q: 'Are shoe and clothing size conversions exact?',
+        a: 'No — the charts are the standard conversions, but brands cut differently. Measure your foot or body and use the measurement lookup, then check the brand’s own chart when buying.',
+        links: [
+          {
+            href: '/online-tool/unit-converters/shoe-size-converter',
+            label: 'Shoe Size Converter',
+          },
+          {
+            href: '/online-tool/unit-converters/clothing-size-converter',
+            label: 'Clothing Size Converter',
+          },
+        ],
+      },
     ],
   },
   {

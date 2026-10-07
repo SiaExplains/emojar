@@ -797,4 +797,632 @@ export const IMAGE_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'passport-photo-maker',
+    category: 'image-tools',
+    name: 'Passport Photo Maker',
+    icon: '🛂',
+    shortDescription: 'Crop a photo to passport and visa size, ready to print.',
+    description:
+      'Turn any portrait into a correctly sized passport or visa photo — 2 × 2 inches for the US, 35 × 45 mm for the UK, EU and Schengen, plus Canada, India, China, Australia and Japan. Line the face up with the head guide, then download the photo at 300 DPI or a print-ready 4 × 6 in, A4 or US Letter sheet. Your photo never leaves your device.',
+    title: 'Passport Photo Maker – 2x2 & 35x45 mm, Print Sheet, Free',
+    metaDescription:
+      'Make passport and visa photos online: US 2x2 inch, UK/EU 35x45 mm and more. Head-size guide, 300 DPI, printable 4x6 or A4 sheet. Free and private.',
+    keywords: [
+      'passport photo maker',
+      'passport size photo',
+      '2x2 photo',
+      '35x45 mm photo',
+      'visa photo maker',
+      'passport photo online',
+    ],
+    relatedTools: [
+      'compress-image-to-size',
+      'image-cropper',
+      'profile-picture-maker',
+      'image-background-remover',
+      'image-resizer',
+    ],
+    component: 'passport-photo',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose the country and document — or enter a custom size in millimetres.',
+      'Upload a front-facing photo taken against a plain, light background.',
+      'Drag and zoom until the face fills the dashed oval: chin at the bottom, top of the head at the top.',
+      'Download the single photo for online applications, or a print sheet to print at 100 % on 4 × 6 in, A4 or US Letter paper.',
+    ],
+    about: [
+      'Passport photos are judged on exact size and on how much of the frame the head fills. A US photo is 2 × 2 inches (600 × 600 px at 300 DPI) with the head 1 to 1⅜ inches tall; UK, EU and Schengen photos are 35 × 45 mm with the head roughly 29–36 mm from chin to crown, depending on the country.',
+      'The tool crops and scales your photo to the chosen size at 300 DPI and draws a head-size guide to help you frame it. It does not edit the background, remove shadows or check expression and glasses rules — follow your government’s current photo requirements for those.',
+      'For online applications that also limit the file size, run the result through the Compress Image to Exact Size tool.',
+    ],
+    faqs: [
+      {
+        q: 'What size is a passport photo?',
+        a: 'It depends on the country: 2 × 2 in (51 × 51 mm) for US passports and visas, 35 × 45 mm for the UK, the EU/Schengen area, India, Australia and Japan, 50 × 70 mm for Canada and 33 × 48 mm for China.',
+      },
+      {
+        q: 'How do I print passport photos at home or in a shop?',
+        a: 'Download the print sheet (4 × 6 in, A4 or US Letter) and print it at 100 % / “actual size” — not “fit to page”, which changes the size. Most photo kiosks print 4 × 6 in sheets cheaply.',
+      },
+      {
+        q: 'Can the tool make the background white?',
+        a: 'No. Take the photo against a plain white or light-grey wall. A plain-coloured background can sometimes be cleaned up with the Background Remover first.',
+      },
+    ],
+  },
+  {
+    slug: 'profile-picture-maker',
+    category: 'image-tools',
+    name: 'Profile Picture Maker',
+    icon: '👤',
+    shortDescription:
+      'Circle-crop a photo and add a border for social profiles.',
+    description:
+      'Create a round profile picture with a coloured or gradient ring in seconds. Drag and zoom your photo inside the circle, pick a border and background, and download a crisp PNG (or a JPG on a solid colour) for LinkedIn, Instagram, X, Discord, Slack or WhatsApp — processed entirely in your browser.',
+    title: 'Profile Picture Maker – Circle Crop & Border, PNG, Free',
+    metaDescription:
+      'Make a profile picture online: crop your photo into a circle, add a solid or gradient border and transparent background. Download PNG. Free, no upload.',
+    keywords: [
+      'profile picture maker',
+      'circle crop image',
+      'pfp maker',
+      'round profile picture',
+      'add border to profile picture',
+    ],
+    relatedTools: [
+      'image-cropper',
+      'social-media-image-resizer',
+      'passport-photo-maker',
+      'image-background-remover',
+      'favicon-generator',
+    ],
+    component: 'profile-picture',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Upload a clear photo of your face.',
+      'Drag and zoom to centre your face in the circle.',
+      'Choose a circle, rounded square or square, then a border and background.',
+      'Download the PNG at 400, 800 or 1024 pixels.',
+    ],
+    about: [
+      'Social networks display profile pictures as small circles, so a tight crop with your face filling about two thirds of the frame reads best. The small preview shows how the picture looks at the size people will actually see.',
+      'A transparent PNG keeps the corners outside the circle invisible on any background. Turn transparency off to get a JPG with a solid background colour instead.',
+    ],
+    faqs: [
+      {
+        q: 'What size should a profile picture be?',
+        a: 'Upload at least 400 × 400 px; 800 × 800 px is a safe choice for every major platform, which then scales it down for display.',
+      },
+      {
+        q: 'Will the platform crop my picture again?',
+        a: 'Most platforms crop to a circle themselves, so the area outside the circle is hidden anyway. Keeping your face centred makes sure nothing important is cut off.',
+      },
+    ],
+  },
+  {
+    slug: 'add-text-to-image',
+    category: 'image-tools',
+    name: 'Add Text to Image',
+    icon: '🔤',
+    shortDescription:
+      'Write text on a photo with any font, colour and position.',
+    description:
+      'Add text to a photo online: type your words, choose the font, colour, size and position, and add an outline (or keep the soft shadow) so they stay readable. Rotate the text, make it semi-transparent or repeat it across the image, then download the result — no app, no account and no upload.',
+    title: 'Add Text to Image Online – Fonts, Colours & Outline, Free',
+    metaDescription:
+      'Add text to photos online for free. Choose font, size, colour, position, outline and rotation, then download. Works on JPG, PNG and WebP — no upload.',
+    keywords: [
+      'add text to image',
+      'add text to photo',
+      'write on picture',
+      'put text on image',
+      'text on photo online',
+    ],
+    relatedTools: [
+      'watermark-image',
+      'meme-generator',
+      'fancy-text-generator',
+      'image-resizer',
+      'image-compressor',
+    ],
+    component: 'image-watermark',
+    config: { mode: 'text' },
+    handlesFiles: true,
+    howTo: [
+      'Upload an image (or several to add the same text to each).',
+      'Type your text — use a new line for a second line.',
+      'Pick a font, colour, size and one of nine positions; add an outline for busy photos.',
+      'Download the image — PNG and WebP keep their format; other files are saved as high-quality JPG.',
+    ],
+    about: [
+      'Text is drawn onto the image pixels, so it shows up the same everywhere the picture is shared. Size is set as a percentage of the image width, which keeps it proportional on large and small photos alike.',
+      'An outline or soft shadow keeps light text readable on bright backgrounds. For bold top-and-bottom captions in the classic meme style, use the Meme Generator.',
+    ],
+    faqs: [
+      {
+        q: 'Which fonts can I use?',
+        a: 'Sans-serif, serif, monospace, Impact and a handwriting style, using the fonts installed on your device — so the exact look can differ slightly between computers and phones.',
+      },
+      {
+        q: 'Does adding text reduce image quality?',
+        a: 'PNG files stay lossless. JPG and WebP files are saved again at high quality (92 %), which is visually indistinguishable for photos.',
+      },
+    ],
+  },
+  {
+    slug: 'watermark-image',
+    category: 'image-tools',
+    name: 'Watermark Image',
+    icon: '©️',
+    shortDescription: 'Add a text or logo watermark to many photos at once.',
+    description:
+      'Protect your photos with a watermark: add your name, © notice or logo, set the opacity and position — or tile it diagonally across the whole image — and apply it to up to 50 photos in one go. Everything happens in your browser, so your originals are never uploaded.',
+    title: 'Watermark Photos Online – Text or Logo, Batch, Free',
+    metaDescription:
+      'Add a watermark to photos online: text or logo, opacity, position or tiled pattern. Batch-watermark up to 50 images and download a ZIP. Free, no upload.',
+    keywords: [
+      'watermark image',
+      'add watermark to photo',
+      'watermark photos online',
+      'logo watermark',
+      'batch watermark',
+    ],
+    relatedTools: [
+      'add-text-to-image',
+      'watermark-pdf',
+      'image-compressor',
+      'image-resizer',
+      'blur-image',
+    ],
+    component: 'image-watermark',
+    config: { mode: 'watermark' },
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Upload one photo or a whole batch.',
+      'Choose a text watermark or upload your logo (a PNG with transparency works best).',
+      'Set size, opacity and position — or switch on “tiled” to cover the whole image.',
+      'Download one image, or all of them as a ZIP.',
+    ],
+    about: [
+      'A corner watermark credits your work without distracting from it; a tiled, semi-transparent watermark makes it much harder to crop out and reuse a preview. Around 30–50 % opacity is a common balance between visibility and the photo itself.',
+      'No watermark is impossible to remove — determined editors can paint over it — but a visible mark discourages casual copying and keeps your name attached when images are shared.',
+    ],
+    faqs: [
+      {
+        q: 'Can I watermark many photos at once?',
+        a: 'Yes. Add up to 50 images; the same watermark settings are applied to every one and you download them together as a ZIP.',
+      },
+      {
+        q: 'Where should a watermark go?',
+        a: 'A bottom corner is the least intrusive. For previews you sell or send for approval, a tiled diagonal watermark across the whole image protects best.',
+      },
+    ],
+  },
+  {
+    slug: 'blur-image',
+    category: 'image-tools',
+    name: 'Blur & Pixelate Image',
+    icon: '🫥',
+    shortDescription:
+      'Hide faces, number plates and private details in a photo.',
+    description:
+      'Blur or pixelate parts of an image to hide faces, licence plates, addresses or account numbers before you share it. Drag boxes over the areas to hide, choose blur, pixelate or a solid box in any colour, and download — the original pixels are replaced, and the photo never leaves your device.',
+    title: 'Blur & Pixelate Image Online – Hide Faces & Plates, Free',
+    metaDescription:
+      'Blur faces, pixelate licence plates or black out private info in photos and screenshots. Drag boxes, choose the effect, download. Free, no upload.',
+    keywords: [
+      'blur image',
+      'pixelate image',
+      'blur face in photo',
+      'censor image',
+      'blur license plate',
+      'redact screenshot',
+    ],
+    relatedTools: [
+      'image-exif-viewer',
+      'watermark-image',
+      'image-cropper',
+      'add-text-to-image',
+      'image-compressor',
+    ],
+    component: 'blur-image',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Upload a photo or screenshot.',
+      'Drag a box over each face, plate or detail you want to hide.',
+      'Choose pixelate, blur or a solid box and adjust the strength.',
+      'Download the image — the hidden areas are permanently replaced.',
+    ],
+    about: [
+      'The effect is baked into the exported pixels, so the hidden detail cannot be recovered from the file you share. A solid box is the safest choice for text such as card or account numbers, because weak blurs on short text can sometimes be guessed.',
+      'The exported image is re-encoded in your browser, so camera and GPS metadata from the original is dropped as well. To check what an original photo reveals, open it in the EXIF Viewer.',
+    ],
+    faqs: [
+      {
+        q: 'Can a blurred or pixelated area be un-blurred?',
+        a: 'Not from this file — the original pixels are replaced. Very light pixelation of short text (like a few digits) can occasionally be guessed, so use strong settings or a solid box for sensitive text.',
+      },
+      {
+        q: 'Does it detect faces automatically?',
+        a: 'No. You choose exactly what to hide by dragging boxes, which also avoids missed faces from imperfect automatic detection.',
+      },
+    ],
+  },
+  {
+    slug: 'photo-collage-maker',
+    category: 'image-tools',
+    name: 'Photo Collage Maker',
+    icon: '🧩',
+    shortDescription: 'Combine 2–9 photos into one image with grid layouts.',
+    description:
+      'Make a photo collage online from 2 to 9 pictures. Choose a grid or a layout with one large photo, pick a square, Instagram portrait, story or landscape shape, adjust spacing and rounded corners, and drag each photo into position. Download a high-resolution JPG — no watermark, no sign-up, no upload.',
+    title: 'Photo Collage Maker – Grid Layouts, No Watermark, Free',
+    metaDescription:
+      'Create a photo collage online from 2–9 photos. Grid and featured layouts, square, 4:5, 9:16 or 16:9, spacing and rounded corners. Free, no watermark.',
+    keywords: [
+      'photo collage maker',
+      'collage maker',
+      'picture grid',
+      'combine photos',
+      'photo grid maker',
+    ],
+    relatedTools: [
+      'image-grid-splitter',
+      'social-media-image-resizer',
+      'gif-maker',
+      'image-compressor',
+      'add-text-to-image',
+    ],
+    component: 'photo-collage',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Upload 2–9 photos.',
+      'Pick a layout and the collage shape (square, 4:5, 9:16, 16:9 or 3:2).',
+      'Click a cell to choose its photo; drag inside it to reposition and use zoom to crop closer.',
+      'Set spacing, rounded corners and background colour, then download.',
+    ],
+    about: [
+      'Each photo fills its cell and is cropped to fit, so you decide which part stays visible by dragging. Layouts with one large cell work well to feature a main photo with supporting shots.',
+      'Choose 4:5 for Instagram feed posts, 9:16 for stories and 16:9 for presentations or YouTube. Export at 4096 px for printing.',
+    ],
+    faqs: [
+      {
+        q: 'Does the collage have a watermark?',
+        a: 'No. The downloaded image contains only your photos and the background colour you choose.',
+      },
+      {
+        q: 'How many photos can I use?',
+        a: 'Up to 9. Layouts are available for 2, 3, 4, 5, 6 and 9 photos.',
+      },
+    ],
+  },
+  {
+    slug: 'image-grid-splitter',
+    category: 'image-tools',
+    name: 'Image Grid Splitter',
+    icon: '🔲',
+    shortDescription:
+      'Split an image into 3, 6, 9 or 12 tiles for an Instagram grid.',
+    description:
+      'Split a photo into a 1×3, 2×3, 3×3, 4×3, 1×2 or custom grid of tiles for an Instagram profile puzzle feed or a carousel. Keep the full image or cut square or portrait tiles from its centre, see the posting order on each tile, and download all pieces as a ZIP — in full quality, without uploading the image.',
+    title: 'Image Grid Splitter – Instagram Grid 3x3, 3x1, Free',
+    metaDescription:
+      'Split an image into a 3x3, 2x3 or 1x3 grid for Instagram. Square or portrait tiles, posting order numbers and ZIP download. Free, private, no upload.',
+    keywords: [
+      'image splitter',
+      'instagram grid maker',
+      'split image into grid',
+      'image grid splitter',
+      'split photo for instagram',
+    ],
+    relatedTools: [
+      'photo-collage-maker',
+      'social-media-image-resizer',
+      'image-cropper',
+      'image-resizer',
+      'image-compressor',
+    ],
+    component: 'grid-splitter',
+    handlesFiles: true,
+    howTo: [
+      'Upload an image.',
+      'Choose a grid (3, 6, 9 or 12 tiles, or custom rows and columns) and a tile shape.',
+      'Click “Split image” and check the numbered tiles.',
+      'Post them starting with tile 1 (bottom right) — or download all as a ZIP.',
+    ],
+    about: [
+      'Instagram shows the newest post first, at the top left of your profile. To make the pieces line up, post the bottom-right tile first and the top-left tile last; the numbers on each tile show that order.',
+      'Square tiles give the classic grid look. Instagram’s profile grid now shows posts as 3:4 previews, so choose 3:4 tiles if you want the puzzle to line up exactly on the profile page.',
+    ],
+    faqs: [
+      {
+        q: 'In what order should I post the tiles?',
+        a: 'Post tile 1 first and the highest number last. Tile 1 is the bottom-right piece; the last one is the top-left piece, which ends up at the top of your profile.',
+      },
+      {
+        q: 'Does splitting reduce quality?',
+        a: 'No resizing happens — each tile is cut from the original pixels. PNG, WebP and GIF uploads are saved as lossless PNG tiles (keeping transparency); other photos as JPG at 95 % quality.',
+      },
+    ],
+  },
+  {
+    slug: 'gif-maker',
+    category: 'image-tools',
+    name: 'GIF Maker',
+    icon: '🎞️',
+    shortDescription: 'Turn a set of images into an animated GIF.',
+    description:
+      'Make an animated GIF from photos, screenshots or drawings. Add images, put them in order, set how long each frame shows and the width, choose looping, and download the GIF — created in your browser without uploading anything and without a watermark.',
+    title: 'GIF Maker – Make a GIF From Images Online, Free',
+    metaDescription:
+      'Create animated GIFs from JPG, PNG or WebP images. Reorder frames, set the speed and size, loop forever. Free online GIF maker — no upload, no watermark.',
+    keywords: [
+      'gif maker',
+      'images to gif',
+      'make a gif',
+      'animated gif maker',
+      'photo to gif',
+    ],
+    relatedTools: [
+      'video-to-gif',
+      'photo-collage-maker',
+      'image-resizer',
+      'image-compressor',
+      'image-converter',
+    ],
+    component: 'gif-maker',
+    handlesFiles: true,
+    howTo: [
+      'Add two or more images — each becomes one frame.',
+      'Use the arrows to put the frames in order.',
+      'Set the time per frame, the width and how different-sized images are fitted.',
+      'Click “Create GIF”, preview it and download.',
+    ],
+    about: [
+      'GIFs are limited to 256 colours per frame, so they suit graphics, screenshots and short slideshows better than detailed photos. Smaller widths and fewer frames keep the file light enough for chats and email.',
+      'The first image sets the GIF’s proportions. Others are fitted inside it with coloured bars, or cropped to fill the frame if you prefer. GIFs made here are opaque: transparent areas are filled with the bar colour. To turn a video clip into a GIF, use Video to GIF.',
+    ],
+    faqs: [
+      {
+        q: 'How many images can a GIF have?',
+        a: 'Up to 200 frames here. For smooth animation use 50–100 ms per frame; for a slideshow, 0.5–2 seconds per frame.',
+      },
+      {
+        q: 'Why does my GIF look grainy?',
+        a: 'GIF can store only 256 colours per frame, so photos with smooth gradients show banding. Lower the width or use simpler images for the cleanest result.',
+      },
+    ],
+  },
+  {
+    slug: 'favicon-generator',
+    category: 'image-tools',
+    name: 'Favicon Generator',
+    icon: '⭐',
+    shortDescription: 'Create favicon.ico and app icons from any image.',
+    description:
+      'Generate a complete favicon set from your logo or any image: a multi-size favicon.ico (16, 32 and 48 px), PNG favicons, an Apple touch icon, Android icons and a web app manifest — plus the HTML to paste into your site’s <head>. Downloaded as one ZIP, made entirely in your browser.',
+    title: 'Favicon Generator – ICO, PNG & Apple Touch Icon, Free',
+    metaDescription:
+      'Create a favicon from any image: favicon.ico (16/32/48), PNG icons, apple-touch-icon, Android icons, site.webmanifest and HTML code. Free ZIP, no upload.',
+    keywords: [
+      'favicon generator',
+      'favicon.ico',
+      'png to ico',
+      'apple touch icon',
+      'create favicon',
+    ],
+    relatedTools: [
+      'image-converter',
+      'svg-to-png',
+      'image-resizer',
+      'profile-picture-maker',
+      'image-to-base64',
+    ],
+    component: 'favicon-generator',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Upload your logo (square, 512 px or larger, or an SVG).',
+      'Adjust padding, background and rounded corners while watching the 16 px preview.',
+      'Download the favicon package (ZIP) and copy the files to your site’s root folder.',
+      'Paste the provided HTML into your page’s <head>.',
+    ],
+    about: [
+      'Browsers still look for /favicon.ico, and the ICO format can hold several sizes in one file — this one contains 16, 32 and 48 px versions. Phones use the 180 px Apple touch icon and the 192 and 512 px Android icons referenced in site.webmanifest.',
+      'Fine detail disappears at 16 × 16 pixels, so simple logos, a single letter or a bold symbol work best. Check the 16 px preview before you download.',
+    ],
+    faqs: [
+      {
+        q: 'Which favicon sizes do I need?',
+        a: 'favicon.ico (with 16, 32 and 48 px inside), a 180 × 180 apple-touch-icon.png and 192 and 512 px PNGs for Android and installed web apps. The package includes all of them.',
+      },
+      {
+        q: 'Why is the Apple icon not transparent?',
+        a: 'iOS fills transparent areas of touch icons with black, so the Apple icon always uses your background colour.',
+      },
+    ],
+  },
+  {
+    slug: 'social-media-image-resizer',
+    category: 'image-tools',
+    name: 'Social Media Image Resizer',
+    icon: '📱',
+    shortDescription:
+      'Resize images for Instagram, Facebook, X, LinkedIn and YouTube.',
+    description:
+      'Resize a photo to the exact size each social network expects — Instagram posts and stories, Facebook covers, X headers, LinkedIn banners, YouTube thumbnails, Pinterest pins and TikTok. Crop and position the image, or fit it whole on a blurred or solid background, and export one size or every size as a ZIP.',
+    title: 'Social Media Image Resizer – All Sizes 2026, Free',
+    metaDescription:
+      'Resize images for Instagram, Facebook, X, LinkedIn, YouTube, Pinterest and TikTok. Exact 2026 sizes, crop or fit with blurred background. Free, no upload.',
+    keywords: [
+      'social media image resizer',
+      'resize image for instagram',
+      'social media image sizes',
+      'facebook cover size',
+      'youtube thumbnail size',
+    ],
+    relatedTools: [
+      'image-resizer',
+      'image-cropper',
+      'image-grid-splitter',
+      'profile-picture-maker',
+      'image-compressor',
+    ],
+    component: 'social-resizer',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose the platform and the size (post, story, cover, banner, thumbnail…).',
+      'Upload your image.',
+      'Drag to choose the visible area — or fit the whole image on a blurred or solid background.',
+      'Download that size, or all sizes for the platform as a ZIP.',
+    ],
+    about: [
+      'Every network crops images that do not match its expected shape, often cutting off faces or text. Resizing to the exact pixel size first means you decide what stays visible.',
+      'The fit modes keep the entire picture, adding a blurred copy of it or a solid colour around the edges — useful for wide photos in vertical stories.',
+    ],
+    faqs: [
+      {
+        q: 'What is the best image size for Instagram?',
+        a: '1080 × 1350 px (4:5 portrait) takes the most space in the feed. Square posts are 1080 × 1080 px and stories and Reels 1080 × 1920 px.',
+      },
+      {
+        q: 'Will the network compress my image anyway?',
+        a: 'Yes, all platforms recompress uploads. Uploading at the exact recommended size avoids an extra resize and usually keeps images sharper.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'instagram-image-resizer',
+        name: 'Instagram Image Resizer',
+        title: 'Instagram Image Resizer – Post, Story & Reel Sizes',
+        metaDescription:
+          'Resize photos for Instagram: 1080x1350 portrait, 1080x1080 square, 1080x1920 stories and Reels. Crop or fit with blurred background. Free, private.',
+        description:
+          'Resize any photo to Instagram’s sizes — 1080 × 1350 portrait posts, 1080 × 1080 squares, 1080 × 566 landscape posts and 1080 × 1920 stories and Reels. Choose what stays in frame or fit the whole image on a blurred background, without uploading it.',
+        config: { platform: 'instagram' },
+        keywords: [
+          'instagram image resizer',
+          'instagram post size',
+          'instagram story size',
+          'resize photo for instagram',
+        ],
+      },
+      {
+        slug: 'facebook-image-resizer',
+        name: 'Facebook Image Resizer',
+        title: 'Facebook Image Resizer – Cover, Post & Event Sizes',
+        metaDescription:
+          'Resize images for Facebook: 1200x630 posts and link images, 851x315 page covers, 1920x1005 event covers and stories. Free and private.',
+        description:
+          'Get the right size for every Facebook image — 1200 × 630 feed posts and link previews, 851 × 315 page covers, 1920 × 1005 event covers, stories and profile pictures. Position the crop yourself so nothing important is cut off.',
+        config: { platform: 'facebook' },
+        keywords: [
+          'facebook cover photo size',
+          'facebook image resizer',
+          'facebook post size',
+        ],
+      },
+      {
+        slug: 'twitter-x-image-resizer',
+        name: 'X (Twitter) Image Resizer',
+        title: 'X (Twitter) Image Resizer – Header & Post Sizes',
+        metaDescription:
+          'Resize images for X (Twitter): 1500x500 header, 1600x900 post images and 400x400 profile pictures. Crop or fit, free and private.',
+        description:
+          'Resize images for X (formerly Twitter): a 1500 × 500 header, 1600 × 900 in-feed images that are not cropped in the timeline, square posts and a 400 × 400 profile picture.',
+        config: { platform: 'twitter-x' },
+        keywords: [
+          'twitter header size',
+          'x header size',
+          'twitter image size',
+          'x image resizer',
+        ],
+      },
+      {
+        slug: 'linkedin-image-resizer',
+        name: 'LinkedIn Image Resizer',
+        title: 'LinkedIn Image Resizer – Banner & Post Sizes',
+        metaDescription:
+          'Resize images for LinkedIn: 1584x396 profile background, 1200x627 posts, 1128x191 company covers and profile photos. Free, no upload.',
+        description:
+          'Make LinkedIn images that fit: a 1584 × 396 personal banner, 1128 × 191 company page cover, 1200 × 627 post and link images, square posts and a 400 × 400 profile photo.',
+        config: { platform: 'linkedin' },
+        keywords: [
+          'linkedin banner size',
+          'linkedin background photo size',
+          'linkedin image resizer',
+        ],
+      },
+      {
+        slug: 'youtube-thumbnail-resizer',
+        name: 'YouTube Thumbnail Resizer',
+        title: 'YouTube Thumbnail Resizer – 1280x720 & Banner',
+        metaDescription:
+          'Resize images to a 1280x720 YouTube thumbnail, 2560x1440 channel banner, channel icon or Shorts cover. Free, private, in your browser.',
+        description:
+          'Resize a screenshot or photo to a 1280 × 720 YouTube thumbnail (16:9), a 2560 × 1440 channel banner, an 800 × 800 channel icon or a 9:16 Shorts cover — and keep the important part in frame.',
+        config: { platform: 'youtube' },
+        keywords: [
+          'youtube thumbnail size',
+          'youtube thumbnail resizer',
+          'youtube banner size',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'image-to-ascii-art',
+    category: 'image-tools',
+    name: 'Image to ASCII Art',
+    icon: '🔣',
+    shortDescription: 'Convert a picture into text-based ASCII art.',
+    description:
+      'Turn any image into ASCII art made of text characters. Choose the width, the character set (classic ASCII, detailed, block characters, two-tone or your own), invert it for dark backgrounds or keep the original colours, then copy the text or download it as a .txt or PNG.',
+    title: 'Image to ASCII Art Converter – Text & Colour, Free',
+    metaDescription:
+      'Convert images to ASCII art online. Adjustable width, classic or block characters, invert and colour modes. Copy text or download TXT/PNG. Free, private.',
+    keywords: [
+      'image to ascii',
+      'ascii art generator',
+      'picture to text art',
+      'ascii art converter',
+      'photo to ascii',
+    ],
+    relatedTools: [
+      'fancy-text-generator',
+      'image-to-text',
+      'image-to-base64',
+      'meme-generator',
+      'image-converter',
+    ],
+    component: 'ascii-art',
+    handlesFiles: true,
+    howTo: [
+      'Upload an image — high-contrast pictures work best.',
+      'Set the width in characters and choose a character set.',
+      'Toggle invert for dark backgrounds or colour for a coloured version.',
+      'Copy the text, or download it as .txt or as a PNG image.',
+    ],
+    about: [
+      'Each character stands for the brightness of a small block of the image: dense characters like @ and # for dark areas, light ones like . and spaces for bright areas. More characters across means more detail but a wider result.',
+      'Text characters are taller than they are wide, so each character stands for a block of the image twice as tall as it is wide — that keeps circles round instead of stretched. Paste the result into a code block or a monospace font to see it correctly.',
+    ],
+    faqs: [
+      {
+        q: 'Why does my ASCII art look distorted when I paste it?',
+        a: 'ASCII art needs a monospace font, where every character has the same width. Paste it into a code block, a plain-text editor or a chat’s code formatting.',
+      },
+      {
+        q: 'Can I keep the colours?',
+        a: 'Yes — turn on Colour to see a coloured preview and download a coloured PNG. Plain .txt files cannot store colour.',
+      },
+    ],
+  },
 ];

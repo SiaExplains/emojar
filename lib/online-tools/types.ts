@@ -87,7 +87,17 @@ export type ToolComponentKey =
   | 'mp4-to-mp3'
   | 'video-to-gif'
   | 'webcam-test'
-  | 'microphone-test';
+  | 'microphone-test'
+  | 'passport-photo'
+  | 'profile-picture'
+  | 'image-watermark'
+  | 'blur-image'
+  | 'photo-collage'
+  | 'grid-splitter'
+  | 'gif-maker'
+  | 'favicon-generator'
+  | 'social-resizer'
+  | 'ascii-art';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

@@ -232,6 +232,46 @@
 
 ---
 
+## 🧰 Online Tools — Follow-ups
+
+> The Online Tools platform shipped in v0.2.0 (see `CURRENT_FEATURES.md` §0).
+> These are known gaps and natural next steps. Add new tools as registry
+> entries in `lib/online-tools/tools/` (see README → “Adding an online tool”).
+
+### [ ] Fix `npm run dev` with Turbopack
+**Description:** `next dev --turbopack` fails at startup because the MDX remark plugin options in `next.config.ts` cannot be serialised for Turbopack on Next 15.
+**Implementation:** pass the remark plugin by name/string (Turbopack-compatible form) or drop `--turbopack` from the `dev` script.
+**Acceptance Criteria:** `npm run dev` starts and blog MDX pages render.
+
+### [ ] “Download all as ZIP” for batch outputs
+**Description:** Image converter/compressor/resizer and Split PDF produce several files; today “Download all” triggers one download per file.
+**Implementation:** small client-side ZIP writer (e.g. `fflate`), lazy-loaded.
+**Acceptance Criteria:** one ZIP download containing all results; nothing uploaded.
+
+### [ ] AI background removal (opt-in)
+**Description:** The current Background Remover handles plain/solid backgrounds only.
+**Implementation:** optional in-browser segmentation model (permissively licensed, e.g. MediaPipe), downloaded only when the user opts in; keep the current fast mode as default.
+**Acceptance Criteria:** people/objects can be cut out of photos without uploading them; page states the model download size.
+
+### [ ] OCR for scanned PDFs and images
+**Description:** PDF to Text cannot read scanned PDFs (no text layer).
+**Implementation:** in-browser OCR (e.g. Tesseract.js, lazy-loaded with language packs).
+**Acceptance Criteria:** text extracted from a scanned page, processed locally.
+
+### [ ] Audio & video tools
+**Description:** The original spec mentions audio/video utilities (convert, trim, extract audio).
+**Implementation:** FFmpeg.wasm in a worker, loaded only on those pages.
+**Acceptance Criteria:** conversions run locally; large files show progress and do not freeze the UI.
+
+### [ ] More conversion landing pages
+**Description:** Variant pages (e.g. `jpg-to-png-converter`) rank for specific queries. Candidates: HEIC to JPG (needs a decoder), AVIF to JPG, GIF to PNG, unit-specific pages (km to miles, kg to lbs, °C to °F).
+**Acceptance Criteria:** each page has a unique title, description and intro; no duplicate pages for the same query.
+
+### [ ] Blog post announcing the Online Tools platform
+**Description:** A draft was written during the v0.2.0 work but not published. Review, adapt and publish under `app/blog/`.
+
+---
+
 ## ⚠️ NEEDS CLARIFICATION
 
 > The following features need more detail before implementation can begin. Please review and clarify.
@@ -252,5 +292,5 @@
 
 ---
 
-*Last updated: 2026-05-13*
+*Last updated: 2026-10-07*
 *Source: Desired-Emojar-feature-list.docx*

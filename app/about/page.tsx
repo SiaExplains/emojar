@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Emojar — Emoji Search, Games & Tools by Siavash Ghanbari',
+  title: 'About Emojar — Free Online Tools & Emoji Search by Siavash Ghanbari',
   description:
-    'Emojar is a free emoji platform built by Siavash Ghanbari in Berlin. Search and copy 3,790 emojis, play 18 browser games, and use 8 free tools — no account, no ads on tools.',
+    'Emojar is a collection of free, privacy-first online tools built by Siavash Ghanbari in Berlin — 110+ browser-based utilities, plus 3,790 emojis to copy and 18 emoji games. No account needed.',
   alternates: { canonical: 'https://emojar.com/about' },
   openGraph: {
-    title: 'About Emojar — Emoji Search, Games & Tools',
+    title: 'About Emojar — Free Online Tools & Emoji Search',
     description:
-      'Built by Siavash Ghanbari in Berlin. 3,790 emojis, 18 games, 8 tools. Free forever, no sign-up.',
+      'Built by Siavash Ghanbari in Berlin. 110+ private online tools, 3,790 emojis and 18 games. Free, no sign-up.',
     url: 'https://emojar.com/about',
     siteName: 'Emojar',
     type: 'profile',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'About Emojar',
     description:
-      'Built by Siavash Ghanbari in Berlin. 3,790 emojis, 18 games, 8 tools.',
+      'Built by Siavash Ghanbari in Berlin. 110+ online tools, 3,790 emojis, 18 games.',
   },
   robots: { index: true, follow: true },
 };
@@ -61,15 +61,71 @@ export default function AboutPage() {
           realised how much fun it is to play with the Unicode library as a game
           mechanic. Then came the tools — a PNG exporter, a favicon generator, a
           color palette extractor — utilities that I personally needed and that
-          fit naturally alongside the emoji data. As of 2026, Emojar has{' '}
-          <strong>18 browser games</strong>, <strong>8 free tools</strong>, and
-          a complete index of <strong>3,790 Unicode emojis</strong>, all free,
-          all working without a login.
+          fit naturally alongside the emoji data.
+        </p>
+        <p>
+          In October 2026 those utilities became the heart of the site. Emojar
+          is now a collection of <strong>110+ free online tools</strong> — image
+          and PDF converters, developer utilities, text tools, calculators, unit
+          converters and generators — that run entirely in your browser, so your
+          files never leave your device. The emoji side is still here too: a
+          complete index of <strong>3,790 Unicode emojis</strong>,{' '}
+          <strong>18 browser games</strong> and <strong>8 emoji tools</strong>,
+          all free and all working without a login.
         </p>
 
         <h2 className="text-xl font-semibold mt-8">What you can do here</h2>
 
         <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold text-gray-900">
+              🧰 110+ online tools
+            </h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Small, fast utilities for everyday tasks:{' '}
+              <Link
+                href="/online-tool/image-tools/image-converter"
+                className="underline"
+              >
+                Image Converter
+              </Link>
+              ,{' '}
+              <Link
+                href="/online-tool/pdf-tools/merge-pdf"
+                className="underline"
+              >
+                Merge PDF
+              </Link>
+              ,{' '}
+              <Link
+                href="/online-tool/developer-tools/json-formatter"
+                className="underline"
+              >
+                JSON Formatter
+              </Link>
+              ,{' '}
+              <Link
+                href="/online-tool/text-tools/word-counter"
+                className="underline"
+              >
+                Word Counter
+              </Link>
+              ,{' '}
+              <Link
+                href="/online-tool/security-generators/password-generator"
+                className="underline"
+              >
+                Password Generator
+              </Link>{' '}
+              and many more across nine categories. Every tool processes your
+              files and text locally in the browser.{' '}
+              <Link href="/online-tool" className="underline">
+                Browse all online tools
+              </Link>
+              .
+            </p>
+          </div>
+
           <div>
             <h3 className="font-semibold text-gray-900">
               🔍 Search &amp; copy emojis
@@ -183,7 +239,7 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-gray-900">🛠️ 8 free tools</h3>
+            <h3 className="font-semibold text-gray-900">🛠️ 8 emoji tools</h3>
             <p className="text-sm text-gray-600 mt-1">
               Browser-based utilities that run locally on your device — your
               files never leave your computer:{' '}
@@ -250,9 +306,9 @@ export default function AboutPage() {
             functionality
           </li>
           <li>
-            <strong>Privacy-first</strong> — watermark and photo tools process
-            your images locally in the browser; nothing is uploaded to any
-            server
+            <strong>Privacy-first</strong> — every online tool, plus the
+            watermark and photo tools, processes your files locally in the
+            browser; nothing is uploaded to any server
           </li>
           <li>
             <strong>No tracking beyond analytics</strong> — we use Google

@@ -2,12 +2,13 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** June 2026
+> **Last updated:** 7 October 2026 (v0.2.0 — Online Tools platform)
 
 ---
 
 ## Table of Contents
 
+0. [Online Tools](#0-online-tools)
 1. [Core Emoji Tools](#1-core-emoji-tools)
 2. [Emoji Browsing & Organization](#2-emoji-browsing--organization)
 3. [Emoji Detail Pages](#3-emoji-detail-pages)
@@ -21,12 +22,81 @@
 
 ---
 
+## 0. Online Tools
+
+Since v0.2.0 (October 2026) Emojar is positioned as a platform of **free,
+privacy-first online tools**. The emoji features below remain, but the
+homepage and main navigation lead with the tools.
+
+### Principles
+- **Browser-only processing** — files and text never leave the device. No
+  upload APIs, nothing stored, no tool input sent to analytics.
+- Free, no account, mobile-friendly, keyboard accessible.
+- Friendly error messages (e.g. *“Invalid JSON: … (line 1, column 8)”*); no
+  stack traces shown to users.
+- Heavy work off the main thread: image encoding in a Web Worker, PDF parsing
+  in pdf.js's worker, regex testing in a worker with a 1.5 s timeout.
+
+### Routes
+
+| Route | Description |
+|---|---|
+| `/online-tool` | Hub: search, popular tools, all 9 categories with every tool, FAQ |
+| `/online-tool/[category]` | Category page: intro, search, tool grid, popular conversions, other categories |
+| `/online-tool/[category]/[tool]` | Tool page (113 tools) |
+| `/online-tool/image-tools/image-converter/[pair]-converter` | 11 conversion landing pages |
+
+Permanent redirects: `/online-tool/image-convertor`, `/online-tool/image-converter`,
+`/online-tool/image-tools/image-convertor` → the image converter;
+`…/image-converter/*-convertor` → `*-converter`; `/online-tools/*` → `/online-tool/*`.
+Unknown slugs return a real 404.
+
+### Tool page layout
+H1 + answer-first intro · privacy badge · the tool · limitation note (where
+relevant) · “How to use” steps · “What is …?” · FAQ (plus an automatic
+privacy FAQ) · related tools · sibling conversions.
+
+### Categories and tools (113)
+
+| Category | Tools |
+|---|---|
+| 🖼️ Image Tools (11) | Image Converter (JPG/PNG/WebP/PDF; input also GIF, BMP, AVIF, SVG, PDF), Image Compressor, Image Resizer, Image Cropper, Image Rotator, Image Flipper, Background Remover (plain/solid backgrounds), EXIF Viewer (+ strip metadata), Image to Base64, Base64 to Image, SVG to PNG |
+| 📄 PDF Tools (10) | Merge PDF, Split PDF, Compress PDF (lossless or rasterised “strong”), Rotate PDF, Extract Pages, Reorder Pages (thumbnails), PDF to JPG, PDF to PNG, PDF to Text, PDF Metadata Viewer/Editor |
+| 🧑‍💻 Developer Tools (23 + 2 cross-listed) | JSON Formatter, JSON Validator, JSON Minifier, JSON↔YAML, JSON↔CSV, XML/HTML/CSS/JavaScript Formatter, JavaScript Minifier, Base64 Encoder/Decoder, URL Encoder/Decoder, JWT Decoder, UUID Generator (v4/v7), Hash Generator (MD5/SHA-1/256/384/512 + HMAC), Regex Tester, Cron Expression Generator, Markdown↔HTML |
+| 📝 Text Tools (15) | Word, Character and Sentence Counter, Text Case Converter (12 cases), Uppercase, Lowercase, Title Case, Remove Duplicate Lines, Remove Empty Lines, Sort Lines, Text Diff, Find and Replace (regex), Lorem Ipsum, Markdown Previewer, Morse Code |
+| 🎨 Color Tools (10) | Color Picker (eyedropper + pick from image), HEX→RGB, RGB→HEX, HEX→HSL, RGB→HSL, HSL→RGB, Color Converter (HEX/RGB/HSL/HSV/CMYK), Palette Generator, CSS Gradient Generator, WCAG Contrast Checker |
+| 🧮 Calculators (14) | Percentage, Percentage Increase, Age, Date, BMI, BMR/TDEE, Loan (amortisation), EMI (monthly schedule), Tip, Discount, Compound Interest, VAT, Time Duration, Average (mean/median/mode/std dev) |
+| 📏 Unit Converters (12) | Length, Weight, Temperature, Area, Volume, Speed, Time, Data Storage, Energy, Pressure, Frequency, Angle |
+| 🔐 Security & Generators (9 + 2 cross-listed) | Password, Passphrase, Random Number, Random String, SHA-256, SHA-512, QR Code Generator (URL/text/Wi-Fi/email/phone/SMS, PNG/SVG), QR Code Scanner (camera or image), Barcode Generator |
+| 🕒 Date & Time Tools (9) | Unix Timestamp Converter, Timestamp Converter, Time Zone Converter, Date Difference, Add/Subtract Days, Working Days (with holidays), Week Number (ISO), Countdown Generator (shareable link), World Clock |
+
+UUID Generator and Hash Generator are also listed under Security & Generators;
+Unix Timestamp and Timestamp Converter are also listed under Developer Tools.
+Each tool has one canonical URL.
+
+### Known limitations (stated on the pages)
+- Background Remover handles plain and solid-colour backgrounds; AI cut-outs
+  of people need a large model that is not loaded.
+- Compress PDF “strong” mode turns pages into images (text no longer
+  selectable). PDF to Text needs a real text layer (no OCR).
+- Formatting TypeScript-only syntax is not supported by the JavaScript formatter.
+
+### Architecture
+- `lib/online-tools/registry.ts` — single source of truth for routes, names,
+  metadata, related tools, search, sitemap and `llms.txt`.
+- `lib/online-tools/tools/*.ts` — per-category tool data and page copy.
+- `lib/online-tools/engines/*` — pure logic, covered by Vitest.
+- `components/online-tools/ToolPage.tsx` — shared server-rendered layout;
+  `ToolRenderer.tsx` lazy-loads each tool's client component.
+
+---
+
 ## 1. Core Emoji Tools
 
 ### Emoji Tools Hub (`/emoji-tools`)
 - Dedicated hub page listing all 8 tools in a 2×4 card grid
 - Each card: gradient color, emoji icon, name, 1-line description
-- Linked from homepage and "Tools" nav menu item
+- Linked from the `/emoji` hub and the "Emoji" nav menu
 
 ### Emoji to PNG (`/emoji-to-png`)
 - Convert any of 3,790 emojis to PNG at 64–1024px
@@ -94,7 +164,8 @@
 
 | Route | Description |
 |---|---|
-| `/` | Homepage with search, popular emojis, category grid, A–Z link, and blog preview |
+| `/` | Homepage — leads with online tools (search, popular tools, categories); compact “Looking for emojis?” links |
+| `/emoji` | Emoji hub (former homepage): search, popular emojis, category grid, games, emoji tools, collections, blog preview |
 | `/categories` | Grid of all 10 categories with sample emojis and counts |
 | `/category/[category]` | Full emoji grid for a single category |
 | `/collection` | Hub linking to all browse modes |
@@ -118,7 +189,7 @@
 | Component | Skin-tone modifiers and hair components |
 
 ### Popular Emojis
-- Homepage shows a curated selection of frequently-used emojis
+- The /emoji hub shows a curated selection of frequently-used emojis
 - Covers sports, games, animals, and celebrations
 
 ---
@@ -363,7 +434,9 @@ All 18 games at `/games` are:
 - **Canonical URLs** on all pages
 - **meta keywords** on home, categories, category detail pages, blog index, and all 14 blog posts
 - **robots directives** per page
-- **Logo alt text** describes the site purpose ("Emojar – Copy & paste emojis instantly") for image SEO
+- **Online tools SEO** — unique title, meta description, canonical and OG/Twitter image (`/api/og?type=tool`) per tool, category and variant; JSON-LD `WebApplication`, `FAQPage`, `HowTo`, `BreadcrumbList`, `CollectionPage/ItemList`; WebSite `SearchAction` → `/online-tool?q=`
+- **`/llms.txt`** — Markdown index of all tool categories and tools for AI assistants, generated from the registry
+- **Logo** — `public/logo.png` in the header (alt: "Emojar – free online tools")
 
 ### Emoji Detail Page Content (SEO-enriched)
 - Each emoji page generates a unique **"Common uses"** paragraph from the emoji's category and keywords
@@ -373,15 +446,16 @@ All 18 games at `/games` are:
 ### Performance & PWA
 - Static generation for all emoji, category, and blog pages (pre-rendered at build time)
 - Client-side hydration only where needed (games, search)
-- `manifest.webmanifest` — PWA-installable
-- Favicon and mobile icons included
-- **Turbopack** for fast development builds
+- `manifest.webmanifest` — generated by `app/manifest.ts` (the old static file conflicted with it and returned 500 until v0.2.0)
+- Favicon set: `favicon.ico`, 16/32/96 px PNGs, Apple touch icons, Android icons (36–192 px), 512 px icon, Windows tiles + `browserconfig.xml`
+- Development server: `npx next dev` (webpack). `npm run dev` (Turbopack) currently fails because of the MDX remark plugin options
 
-### Routing Summary (46+ routes)
+### Routing Summary (4,000+ pages)
 
 | Type | Count |
 |---|---|
-| Static pages (home, legal, about, etc.) | ~10 |
+| Online tools (hub + 9 categories + 113 tools + 11 conversion pages) | 134 |
+| Static pages (home, emoji hub, legal, about, etc.) | ~11 |
 | Category pages | 10 |
 | Emoji detail pages | 3,790 |
 | Game pages | 18 |
@@ -396,12 +470,12 @@ All 18 games at `/games` are:
 - **Fuzzy search** — results appear instantly as you type
 - **Breadcrumb navigation** — clear path from category → emoji detail
 - **Related emojis** — cross-linked from every detail page
-- **Popular emojis** — curated selection on homepage
+- **Popular emojis** — curated selection on the /emoji hub
 - **Local score history** — all game scores persist in `localStorage`
 - **Mobile-first responsive design** — works on all screen sizes
 - **Keyboard accessibility** — detail pages explain how to type emojis with Win/Mac/mobile keyboard shortcuts
 - **Back-to-top button** — sticky button on long pages
-- **Desktop & mobile menus** — separate components for each viewport
+- **Desktop & mobile menus** — separate components for each viewport; two top-level entries: **Online Tools** (all 9 categories) and **Emoji** (search, categories, collections, emoji tools, games)
 
 ---
 
@@ -414,4 +488,4 @@ All 18 games at `/games` are:
 
 ---
 
-*Built with Next.js 15 · React 19 · TypeScript · Tailwind CSS · Fuse.js · Deployed on Node.js*
+*Built with Next.js 15 · React 19 · TypeScript · Tailwind CSS · Fuse.js · pdf-lib · pdf.js · Deployed on Vercel*

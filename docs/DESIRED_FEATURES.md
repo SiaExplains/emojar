@@ -259,8 +259,8 @@
 **Acceptance Criteria:** text extracted from a scanned page, processed locally.
 
 ### [ ] More audio & video tools
-**Description:** v0.3.0 shipped MP4 to MP3 and Video to GIF with native browser APIs. Still missing: general video conversion, trimming, compression and formats the browser can't decode.
-**Implementation:** FFmpeg.wasm in a worker, loaded only on those pages.
+**Description:** Shipped so far: MP4 to MP3 and Video to GIF (v0.3.0); Video Compressor, Audio Trimmer/Converter and Voice/Screen Recorders (v0.11.0, WebCodecs via mediabunny). Still missing: video trimming/cutting, formats the browser can't decode (e.g. some MOV/HEVC, AVI, WMV) and MP3 for files above 48 kHz without resampling.
+**Implementation:** mediabunny's trim option for video cutting; FFmpeg.wasm in a worker only for formats WebCodecs can't decode.
 **Acceptance Criteria:** conversions run locally; large files show progress and do not freeze the UI.
 
 ### [ ] More conversion landing pages

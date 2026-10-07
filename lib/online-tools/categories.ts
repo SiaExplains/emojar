@@ -92,9 +92,9 @@ export const CATEGORIES: CategoryDefinition[] = [
     icon: '🔐',
     title: 'Free Password, QR Code & Random Generators – Secure & Private',
     metaDescription:
-      'Generate strong passwords, passphrases, UUIDs, random numbers, hashes, QR codes and barcodes. Uses your browser’s cryptographic random generator — nothing is sent anywhere.',
+      'Generate and check passwords, make random teams, usernames, colours and test data, create invoices and email signatures, QR codes and more — all in your browser.',
     intro:
-      'Generate passwords, random values, hashes, QR codes and barcodes using your browser’s cryptographically secure random number generator. Generated values never leave your device.',
+      'Passwords and a strength checker, random numbers, teams, usernames, colours and fake test data, invoices, email signatures, QR codes and barcodes. Random values come from your browser’s cryptographic generator and never leave your device.',
     accent: 'bg-violet-50 border-violet-100 text-violet-900',
   },
   {
@@ -104,9 +104,9 @@ export const CATEGORIES: CategoryDefinition[] = [
     icon: '🕒',
     title: 'Free Date & Time Tools – Timestamps, Time Zones & Date Math',
     metaDescription:
-      'Convert Unix timestamps and time zones, calculate date differences and working days, find week numbers, and create countdowns — free online date and time tools.',
+      'Convert timestamps and time zones, count days, find the day of the week, add up time cards, make printable calendars and set alarms, timers and Pomodoros — free, in your browser.',
     intro:
-      'Convert timestamps and time zones, add and subtract dates, and count working days. Calculations use your browser’s built-in time zone database.',
+      'Everyday date and time tools: timestamps, time zones, date maths, day of the week, week numbers, time cards, printable calendars, plus an alarm clock, timers, a stopwatch and a Pomodoro timer. Everything runs in your browser.',
     accent: 'bg-sky-50 border-sky-100 text-sky-900',
   },
   {
@@ -114,11 +114,11 @@ export const CATEGORIES: CategoryDefinition[] = [
     name: 'Audio & Video Tools',
     shortName: 'Audio & Video',
     icon: '🎬',
-    title: 'Free Online Audio & Video Tools – MP4 to MP3, Video to GIF',
+    title: 'Free Online Audio & Video Tools – Compress, Convert, Trim & Record',
     metaDescription:
-      'Extract MP3 audio from MP4 videos and turn video clips into GIFs online. Everything is processed in your browser — your videos are never uploaded.',
+      'Compress videos, convert and trim audio, record your voice or screen, extract MP3 from MP4 and make GIFs — free, in your browser, with nothing uploaded.',
     intro:
-      'Convert videos to MP3 audio and animated GIFs without installing software. Your video files are processed on your own device and never uploaded.',
+      'Compress videos, convert and cut audio, record your voice or screen, extract MP3 from video and make GIFs — without installing software. Files and recordings are processed on your own device and never uploaded.',
     accent: 'bg-orange-50 border-orange-100 text-orange-900',
   },
   {

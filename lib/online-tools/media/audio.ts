@@ -80,3 +80,40 @@ export function encodeMp3(
     ]);
   });
 }
+
+/** Builds an AudioBuffer from processed channels (for MP3 encoding). */
+export function toAudioBuffer(
+  channels: Float32Array[],
+  sampleRate: number,
+): AudioBuffer {
+  const buf = new AudioBuffer({
+    length: Math.max(1, channels[0]?.length ?? 1),
+    numberOfChannels: Math.max(1, channels.length),
+    sampleRate,
+  });
+  channels.forEach((c, i) =>
+    buf.copyToChannel(c as Float32Array<ArrayBuffer>, i),
+  );
+  return buf;
+}
+
+export const channelsOf = (buf: AudioBuffer) =>
+  Array.from({ length: buf.numberOfChannels }, (_, i) => buf.getChannelData(i));
+
+/** Resamples with an OfflineAudioContext (e.g. 48 kHz → 44.1 kHz). */
+export async function resample(
+  buf: AudioBuffer,
+  rate: number,
+): Promise<AudioBuffer> {
+  if (buf.sampleRate === rate) return buf;
+  const ctx = new OfflineAudioContext(
+    buf.numberOfChannels,
+    Math.ceil(buf.duration * rate),
+    rate,
+  );
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  src.connect(ctx.destination);
+  src.start();
+  return ctx.startRendering();
+}

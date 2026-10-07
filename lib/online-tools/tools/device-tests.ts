@@ -20,6 +20,7 @@ export const DEVICE_TESTS: ToolDefinition[] = [
       'webcam resolution test',
     ],
     relatedTools: [
+      'screen-recorder',
       'microphone-test',
       'keyboard-tester',
       'qr-code-scanner',
@@ -66,6 +67,7 @@ export const DEVICE_TESTS: ToolDefinition[] = [
       'mic check',
     ],
     relatedTools: [
+      'voice-recorder',
       'webcam-test',
       'keyboard-tester',
       'text-to-speech',

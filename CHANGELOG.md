@@ -4,6 +4,23 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.11.0] — 2026-10-08
+
+### Added
+
+- Four date and time tools: Online Alarm Clock (sounds, repeat days,
+  snooze, notifications), Day of the Week Calculator, Printable Calendar
+  Generator (monthly or yearly PDF, 12 languages) and Time Card Calculator
+  (breaks, overnight shifts, overtime and pay).
+- Seven generators: Random Team Generator, Username Generator, Fake Test
+  Data Generator (CSV, JSON or SQL with safe example data), Random Color
+  Generator, Invoice Generator (PDF), Email Signature Generator and Password
+  Strength Checker (with an optional private breach check).
+- Five audio and video tools: Video Compressor, Audio Trimmer, Audio
+  Converter (MP3, WAV, M4A, OGG), Voice Recorder and Screen Recorder.
+- A guide on the blog for each, published one per day from 16 to 31
+  December, and four new FAQ answers.
+
 ## [0.10.0] — 2026-10-08
 
 ### Added

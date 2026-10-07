@@ -150,6 +150,7 @@ export const COLOR_TOOLS: ToolDefinition[] = [
       'color harmony',
     ],
     relatedTools: [
+      'random-color-generator',
       'color-picker',
       'gradient-generator',
       'contrast-checker',

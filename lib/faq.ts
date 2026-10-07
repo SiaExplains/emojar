@@ -564,6 +564,16 @@ export const FAQ_GROUPS: FaqGroup[] = [
           },
         ],
       },
+      {
+        q: 'Does the Password Strength Checker send my password anywhere?',
+        a: 'No. The rating is calculated in your browser. The optional breach check sends only the first 5 characters of the password’s SHA-1 hash to Have I Been Pwned and compares the rest on your device (k-anonymity).',
+        links: [
+          {
+            href: '/online-tool/security-generators/password-strength-checker',
+            label: 'Password Strength Checker',
+          },
+        ],
+      },
     ],
   },
   {
@@ -630,6 +640,36 @@ export const FAQ_GROUPS: FaqGroup[] = [
           {
             href: '/online-tool/device-tests/screen-resolution-checker',
             label: 'Screen Resolution Checker',
+          },
+        ],
+      },
+      {
+        q: 'Will the online alarm clock ring in a background tab?',
+        a: 'Yes, as long as the tab stays open and the device is awake. Browsers can’t ring from a closed tab, and phones may pause pages when the screen locks — use your phone’s alarm for anything critical.',
+        links: [
+          {
+            href: '/online-tool/date-time-tools/alarm-clock',
+            label: 'Online Alarm Clock',
+          },
+        ],
+      },
+      {
+        q: 'Which browsers can compress videos?',
+        a: 'The Video Compressor uses the WebCodecs API, available in recent Chrome, Edge, Safari (16.4+) and Firefox (130+). The video is re-encoded on your device and never uploaded.',
+        links: [
+          {
+            href: '/online-tool/audio-video-tools/video-compressor',
+            label: 'Video Compressor',
+          },
+        ],
+      },
+      {
+        q: 'Can I record my screen on a phone?',
+        a: 'Mostly no — phone browsers don’t allow screen capture from a web page. Use the built-in screen recording of iOS or Android; on desktop the Screen Recorder works in all major browsers.',
+        links: [
+          {
+            href: '/online-tool/audio-video-tools/screen-recorder',
+            label: 'Screen Recorder',
           },
         ],
       },

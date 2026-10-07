@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.11.1] — 2026-10-08
+
+### Changed
+
+- Docs refreshed after the 0.11.0 release: backlog notes on real-device
+  checks for the new recorders and on reusing the alarm clock's timing for
+  the timers.
+
 ## [0.11.0] — 2026-10-08
 
 ### Added

@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** 7 October 2026 (v0.11.0 — 229 online tools; platform since v0.2.0)
+> **Last updated:** 8 October 2026 (v0.11.1 — 229 online tools; platform since v0.2.0)
 
 ---
 

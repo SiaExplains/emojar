@@ -4,6 +4,28 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.10.0] — 2026-10-08
+
+### Added
+
+- Seven new converters: Cooking Measurement Converter (cups, spoons, ml,
+  grams and ounces by ingredient, with a Cups to Grams page and an oven
+  temperature chart), Shoe Size Converter (US, UK, EU, cm and Mondopoint
+  for men, women and kids, or by foot length), Clothing Size Converter
+  (women’s dresses, men’s jackets, shirts and trousers), Fuel Economy
+  Converter (mpg ↔ L/100 km, with an MPG to L/100 km page), Power Converter
+  (with a Watts to Horsepower page), Torque Converter and Text to Binary
+  (with a Binary to Text page).
+- A guide on the blog for each, published one per day from 9 to 15
+  December, and three new converter questions on the FAQ page.
+- FocusCrew (focus-crew.com), a shared Pomodoro timer, is listed under Date &
+  Time Tools as an external link that opens in a new tab.
+
+### Changed
+
+- The homepage headline now shows the live tool count (“+213 Free online
+  tools that run in your browser”).
+
 ## [0.9.0] — 2026-10-08
 
 ### Added

@@ -14,6 +14,7 @@ import {
   toolsInCategory,
 } from '@/lib/online-tools/registry';
 import { categoryItemList, categoryMetadata } from '@/lib/online-tools/seo';
+import { externalToolsIn } from '@/lib/online-tools/external';
 import type { CategorySlug } from '@/lib/online-tools/types';
 
 type Params = { category: string };
@@ -83,12 +84,21 @@ export default async function CategoryPage({
           All {c.name.toLowerCase()}
         </h2>
         <ToolGrid
-          tools={tools.map((t) => ({
-            href: toolPath(t),
-            name: t.name,
-            description: t.shortDescription,
-            icon: t.icon,
-          }))}
+          tools={[
+            ...tools.map((t) => ({
+              href: toolPath(t),
+              name: t.name,
+              description: t.shortDescription,
+              icon: t.icon,
+            })),
+            ...externalToolsIn(c.slug as CategorySlug).map((t) => ({
+              href: t.url,
+              name: t.name,
+              description: t.description,
+              icon: t.icon,
+              external: true,
+            })),
+          ]}
         />
       </section>
 

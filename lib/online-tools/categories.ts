@@ -80,9 +80,9 @@ export const CATEGORIES: CategoryDefinition[] = [
     icon: '📏',
     title: 'Free Online Unit Converters – Length, Weight, Temperature & More',
     metaDescription:
-      'Convert length, weight, temperature, area, volume, speed, time, data storage, energy, pressure, frequency and angle units instantly and accurately.',
+      'Convert length, weight, temperature, volume, speed, power, torque, fuel economy, cooking measures, shoe and clothing sizes and more — instantly and accurately.',
     intro:
-      'Convert between metric, imperial and scientific units. Type a value, pick the units, and see the result together with a full conversion table.',
+      'Convert between metric, imperial and scientific units — plus everyday conversions such as cups to grams, mpg to L/100 km and international shoe and clothing sizes. Type a value, pick the units, and see the result together with a full conversion table.',
     accent: 'bg-cyan-50 border-cyan-100 text-cyan-900',
   },
   {

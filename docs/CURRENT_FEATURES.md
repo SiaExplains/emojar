@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** 7 October 2026 (v0.9.0 — 206 online tools; platform since v0.2.0)
+> **Last updated:** 7 October 2026 (v0.10.0 — 213 online tools; platform since v0.2.0)
 
 ---
 
@@ -43,11 +43,11 @@ homepage and main navigation lead with the tools.
 |---|---|
 | `/online-tool` | Hub: search, popular tools, all 11 categories with every tool, FAQ |
 | `/online-tool/[category]` | Category page: intro, search, tool grid, popular conversions, other categories |
-| `/online-tool/[category]/[tool]` | Tool page (206 tools) |
+| `/online-tool/[category]/[tool]` | Tool page (213 tools) |
 | `/online-tool/image-tools/image-converter/[pair]-converter` | 11 conversion landing pages |
 | `/online-tool/image-tools/compress-image-to-size/compress-image-to-[20,50,100,200]kb` | 4 exact-size landing pages |
 | `/online-tool/image-tools/social-media-image-resizer/[platform]-…` | 5 platform landing pages (Instagram, Facebook, X, LinkedIn, YouTube thumbnail) |
-| `/online-tool/[category]/[tool]/[variant]` (other) | 14 preset landing pages: Markup Calculator, Mirror Text, Underline Text, Blank Text Generator, Arrow / Check Mark / Currency Symbols, What Is My User Agent, HTML Entity Decoder, Binary to Decimal, Hex to Decimal, Decimal to Binary, XML to JSON, CIDR Calculator |
+| `/online-tool/[category]/[tool]/[variant]` (other) | 19 preset landing pages: Markup Calculator, Mirror Text, Underline Text, Blank Text Generator, Arrow / Check Mark / Currency Symbols, What Is My User Agent, HTML Entity Decoder, Binary to Decimal, Hex to Decimal, Decimal to Binary, XML to JSON, CIDR Calculator, Watts to Horsepower, MPG to L/100 km, Cups to Grams, Binary to Text |
 | `/blog/[slug]` | Tool guides from `content/guides/*.md` (one per tool + launch post); 404 until their publish date |
 | `/faq` | FAQ grouped by category, `FAQPage` JSON-LD, linked from the footer |
 
@@ -62,17 +62,17 @@ relevant) · “How to use” steps · “What is …?” · FAQ (plus an automa
 privacy FAQ) · related tools · sibling conversions · “In-depth guide” link once
 the tool's blog guide is published (pages revalidate daily).
 
-### Categories and tools (206)
+### Categories and tools (213)
 
 | Category                                       | Tools                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 🖼️ Image Tools (26)                            | Image Converter (JPG/PNG/WebP/PDF; input also GIF, BMP, AVIF, SVG, PDF), Image Compressor, Image Resizer, Image Cropper, Image Rotator, Image Flipper, Background Remover (plain/solid backgrounds), EXIF Viewer (+ strip metadata), Image to Base64, Base64 to Image, SVG to PNG, HEIC to JPG (JPG/PNG/WebP), Image to Text (OCR, 14 languages), Compress Image to Exact Size (20/50/100/200 KB pages), Meme Generator, Passport Photo Maker (US/UK/EU/Canada/India/China/Australia/Japan + custom, print sheets), Profile Picture Maker, Add Text to Image, Watermark Image (text/logo, tiled, batch), Blur & Pixelate, Photo Collage Maker, Image Grid Splitter, GIF Maker, Favicon Generator (ICO + app icons + manifest), Social Media Image Resizer (7 platforms, 5 landing pages), Image to ASCII Art |
 | 📄 PDF Tools (21)                              | Merge PDF, Split PDF, Compress PDF (lossless or rasterised “strong”), Rotate PDF, Extract Pages, Reorder Pages (thumbnails), PDF to JPG, PDF to PNG, PDF to Text, PDF Metadata Viewer/Editor, Sign PDF (draw/type, click to place), Add Page Numbers, Watermark PDF, Protect PDF (AES-256), Unlock PDF (with the password)                                                                                             , Delete Pages (thumbnail selection), Crop PDF (crop box, trim white margins), Edit PDF (text, images, white-out, highlight, box; Latin fonts), Fill PDF Form (AcroForm fields, flatten), Grayscale PDF (vector grayscale keeping text, black & white, scanned look), Word to PDF (DOCX via mammoth + pdfmake, or browser print) |
-| 🧑‍💻 Developer Tools (41 + 4 cross-listed)       | JSON Formatter, JSON Validator, JSON Minifier, JSON↔YAML, JSON↔CSV, XML/HTML/CSS/JavaScript Formatter, JavaScript Minifier, Base64 Encoder/Decoder, URL Encoder/Decoder, JWT Decoder, UUID Generator (v4/v7), Hash Generator (MD5/SHA-1/256/384/512 + HMAC), Regex Tester, Cron Expression Generator, Markdown↔HTML, SQL Formatter (dialects), JSON to TypeScript, HTML Entity Encoder/Decoder, Number Base Converter (2–36, BigInt; 3 landing pages), JSON ↔ XML, JSON Diff (structural, paths), String Escape (JSON/JS/Java/Python/SQL/CSV/regex/shell/XML), URL Parser & Query Builder, User Agent Parser (+ bot detection), Subnet Calculator (IPv4/IPv6; CIDR page), Chmod Calculator, SVG Optimizer (svgo), Meta Tag & Open Graph Generator (previews), Robots.txt Generator + tester, HTTP Status Codes, Code to Image (highlight.js → canvas PNG), Bcrypt (bcryptjs in a worker), TOTP / 2FA (RFC 6238, Web Crypto)                                                    |
+| 🧑‍💻 Developer Tools (42 + 4 cross-listed)       | JSON Formatter, JSON Validator, JSON Minifier, JSON↔YAML, JSON↔CSV, XML/HTML/CSS/JavaScript Formatter, JavaScript Minifier, Base64 Encoder/Decoder, URL Encoder/Decoder, JWT Decoder, UUID Generator (v4/v7), Hash Generator (MD5/SHA-1/256/384/512 + HMAC), Regex Tester, Cron Expression Generator, Markdown↔HTML, SQL Formatter (dialects), JSON to TypeScript, HTML Entity Encoder/Decoder, Number Base Converter (2–36, BigInt; 3 landing pages), JSON ↔ XML, JSON Diff (structural, paths), String Escape (JSON/JS/Java/Python/SQL/CSV/regex/shell/XML), URL Parser & Query Builder, User Agent Parser (+ bot detection), Subnet Calculator (IPv4/IPv6; CIDR page), Chmod Calculator, SVG Optimizer (svgo), Meta Tag & Open Graph Generator (previews), Robots.txt Generator + tester, HTTP Status Codes, Code to Image (highlight.js → canvas PNG), Bcrypt (bcryptjs in a worker), TOTP / 2FA (RFC 6238, Web Crypto), Text to Binary (UTF-8; binary/hex/decimal/octal; Binary to Text page; also in Unit Converters and Text Tools)                                                    |
 | 📝 Text Tools (27)                             | Word, Character and Sentence Counter, Text Case Converter (12 cases), Uppercase, Lowercase, Title Case, Remove Duplicate Lines, Remove Empty Lines, Sort Lines, Text Diff, Find and Replace (regex), Lorem Ipsum, Markdown Previewer, Morse Code, Fancy Text Generator (20+ Unicode styles), Text to Speech (device voices), Upside Down Text (+ Mirror Text page), Strikethrough Text (+ Underline Text page; 7 combining-mark styles, remove), Reverse Text (characters/words/each word/lines, emoji-safe), Text Repeater (≤ 10,000×, 2 M chars), Remove Line Breaks (keep paragraphs, de-hyphenate), Add Prefix / Suffix to Lines (`{n}` numbering), Readability Score (Flesch, FK, Fog, SMOG, Coleman–Liau, ARI), Invisible Character (copy palette, blank text generator page, hidden-character detector/cleaner), Special Characters & Symbols (~590 symbols in 15 groups, search, tray; arrow/check mark/currency pages), Slug Generator (also in Developer Tools) |
 | 🎨 Color Tools (10)                            | Color Picker (eyedropper + pick from image), HEX→RGB, RGB→HEX, HEX→HSL, RGB→HSL, HSL→RGB, Color Converter (HEX/RGB/HSL/HSV/CMYK), Palette Generator, CSS Gradient Generator, WCAG Contrast Checker                                                                                                                                                                                                                      |
 | 🧮 Calculators (35)                            | Percentage, Percentage Increase, Age, Date, BMI, BMR/TDEE, Loan (amortisation), EMI (monthly schedule), Tip, Discount, Compound Interest, VAT, Time Duration, Average (mean/median/mode/std dev), Scientific (own parser, no `eval`), GPA, Grade (weighted + final needed), Calorie, Pregnancy Due Date, Ovulation                                                                                                     , Mortgage (tax, insurance, PMI, HOA, extra payments), Salary to Hourly, Fraction, Ratio, Aspect Ratio, Body Fat (U.S. Navy), Ideal Weight, Profit Margin (+ Markup page), ROI (CAGR), Savings Goal, Retirement, Unit Price, Probability (binomial, nCr/nPr), Square Root, Exponent |
-| 📏 Unit Converters (14)                        | Length, Weight, Temperature, Area, Volume, Speed, Time, Data Storage, Energy, Pressure, Frequency, Angle, Number to Words (cardinal/ordinal/cheque), Roman Numerals (1–3999)                                                                                                                                                                                                                                            |
+| 📏 Unit Converters (20 + 2 cross-listed)                        | Length, Weight, Temperature, Area, Volume, Speed, Time, Data Storage, Energy, Pressure, Frequency, Angle, Number to Words (cardinal/ordinal/cheque), Roman Numerals (1–3999), Power (hp/PS/BTU·h; Watts to Horsepower page), Torque, Fuel Economy (reciprocal units; MPG to L/100 km page), Cooking Measurement (by ingredient density; Cups to Grams page; oven chart), Shoe Size (men/women/kids, foot-length lookup), Clothing Size (4 charts, measurement lookup)                                                                                                                                                                                                                                            |
 | 🔐 Security & Generators (12 + 2 cross-listed) | Password, Passphrase, Random Number, Random String, SHA-256, SHA-512, QR Code Generator (URL/text/Wi-Fi/email/phone/SMS, PNG/SVG), QR Code Scanner (camera or image), Barcode Generator, Wheel Spinner, Dice Roller (notation like 4d6kh3), Coin Flip                                                                                                                                                                   |
 | 🕒 Date & Time Tools (12)                      | Unix Timestamp Converter, Timestamp Converter, Time Zone Converter, Date Difference, Add/Subtract Days, Working Days (with holidays), Week Number (ISO), Countdown Generator (shareable link), World Clock, Stopwatch (laps, full screen), Online Timer, Pomodoro Timer                                                                                                                                                 |
 | 🎬 Audio & Video Tools (2)                     | MP4 to MP3 (WebAudio decode + LAME in a worker), Video to GIF (native `<video>` + gifenc, max 400 frames)                                                                                                                                                                                                                                                                                                               |
@@ -81,6 +81,8 @@ the tool's blog guide is published (pages revalidate daily).
 UUID Generator and Hash Generator are also listed under Security & Generators;
 Unix Timestamp, Timestamp Converter, Slug Generator and What Is My Browser are also listed under Developer Tools; Number Base Converter under Unit Converters; Bcrypt and TOTP under Security & Generators; SVG Optimizer under Image Tools.
 Each tool has one canonical URL.
+
+External links: `lib/online-tools/external.ts` lists third-party tools shown on a category page and the hub (currently FocusCrew under Date & Time). They open in a new tab, are marked “External site”, have no tool page or sitemap entry and are not counted in tool totals. The homepage H1 shows the live count of Emojar tools (`TOOLS.length`).
 
 ### Known limitations (stated on the pages)
 - Background Remover handles plain and solid-colour backgrounds; AI cut-outs
@@ -98,9 +100,9 @@ Each tool has one canonical URL.
 ### Tool guides (blog)
 
 - One Markdown guide per tool in `content/guides/<tool-slug>.md` plus a launch
-  post (207 total); format documented in `content/guides/README.md`.
+  post (214 total); format documented in `content/guides/README.md`.
 - Publish dates live in `lib/blog/guide-schedule.ts` (5 per day from
-  2026-10-07 to 2026-11-04, plus one extra guide per day 10-08 → 12-08 for the image, PDF, calculator, text, device and developer tools). Unpublished guides 404 and stay out of the
+  2026-10-07 to 2026-11-04, plus one extra guide per day 10-08 → 12-15 for the image, PDF, calculator, text, device, developer and converter tools). Unpublished guides 404 and stay out of the
   sitemap, blog index and `llms.txt`; pages revalidate daily (ISR).
 - `lib/blog/guides.test.ts` enforces: one guide per tool, unique slugs and
   titles, title ≤ 70 and description 100–170 characters, ≥ 600 words, no H1,
@@ -485,12 +487,12 @@ All 18 games at `/games` are:
 
 | Type | Count |
 |---|---|
-| Online tools (hub + 11 categories + 206 tools + 34 landing pages) | 252 |
+| Online tools (hub + 11 categories + 213 tools + 38 landing pages) | 263 |
 | Static pages (home, emoji hub, legal, about, etc.) | ~11 |
 | Category pages | 10 |
 | Emoji detail pages | 3,790 |
 | Game pages | 18 |
-| Blog posts (MDX) + tool guides (`content/guides`, drip-published) | 15+ + 207 |
+| Blog posts (MDX) + tool guides (`content/guides`, drip-published) | 15+ + 214 |
 | Collection / sorted / table pages | ~5 |
 
 ---

@@ -215,4 +215,12 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'html-entity-encoder': '2026-12-06',
   'user-agent-parser': '2026-12-07',
   'string-escape': '2026-12-08',
+  // v0.10.0 converters: one extra guide per day after the developer-tool guides.
+  'cooking-measurement-converter': '2026-12-09',
+  'shoe-size-converter': '2026-12-10',
+  'text-to-binary': '2026-12-11',
+  'fuel-economy-converter': '2026-12-12',
+  'clothing-size-converter': '2026-12-13',
+  'power-converter': '2026-12-14',
+  'torque-converter': '2026-12-15',
 };

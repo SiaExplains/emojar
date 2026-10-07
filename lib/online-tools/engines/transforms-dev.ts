@@ -9,6 +9,9 @@ import {
   jsonToXml,
   unescapeString,
   xmlToJson,
+  bytesToText,
+  textToBytes,
+  type ByteFormat,
   type EntityEncodeMode,
   type EscapeMode,
 } from './dev-tools';
@@ -222,5 +225,65 @@ export const DEV_TRANSFORMS: Record<string, TransformDefinition> = {
         o.to === 'all' || !o.to ? 'all' : Number(o.to),
         { group: !!o.group, upper: !!o.upper },
       ),
+  },
+  'text-binary': {
+    inputLabel: 'Text or binary',
+    outputLabel: 'Result',
+    actionLabel: 'Convert',
+    placeholder: 'Type text to encode, or paste binary like 01001000 01101001',
+    sample: 'Hi 👋',
+    sampleFor: (o) =>
+      o.mode === 'decode'
+        ? ((
+            {
+              hex: '48 65 6c 6c 6f 20 f0 9f 8c 8d',
+              decimal: '72 101 108 108 111 32 240 159 140 141',
+              octal: '110 145 154 154 157 040 360 237 214 215',
+            } as Record<string, string>
+          )[String(o.format)] ??
+          '01001000 01100101 01101100 01101100 01101111 00100000 11110000 10011111 10001100 10001101')
+        : 'Hi 👋',
+    outputExt: 'txt',
+    live: true,
+    options: [
+      {
+        id: 'mode',
+        label: 'Mode',
+        type: 'select',
+        choices: [
+          { value: 'encode', label: 'Text → binary' },
+          { value: 'decode', label: 'Binary → text' },
+        ],
+        default: 'encode',
+      },
+      {
+        id: 'format',
+        label: 'Number format',
+        type: 'select',
+        choices: [
+          { value: 'binary', label: 'Binary (8 bits per byte)' },
+          { value: 'hex', label: 'Hexadecimal' },
+          { value: 'decimal', label: 'Decimal (0–255)' },
+          { value: 'octal', label: 'Octal' },
+        ],
+        default: 'binary',
+      },
+      {
+        id: 'spaces',
+        label: 'Space between bytes',
+        type: 'checkbox',
+        default: true,
+      },
+    ],
+    run: (input, o) => {
+      const format = (o.format as ByteFormat) || 'binary';
+      return o.mode === 'decode'
+        ? bytesToText(input, format)
+        : textToBytes(
+            input,
+            format,
+            o.spaces === false && format !== 'decimal' ? '' : ' ',
+          );
+    },
   },
 };

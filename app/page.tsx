@@ -74,7 +74,7 @@ export default function Home() {
 
       <header className="space-y-5 pt-2 text-center">
         <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl">
-          Free online tools that
+          +{TOOLS.length} Free online tools that
           <br className="hidden sm:block" /> run in your browser
         </h1>
         <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">

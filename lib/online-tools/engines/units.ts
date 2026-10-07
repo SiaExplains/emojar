@@ -7,6 +7,8 @@ export type Unit = {
   symbol: string;
   /** Multiply by this to get the base unit. */
   factor: number;
+  /** Reciprocal unit (e.g. L/100 km): base = factor / value. */
+  inverse?: boolean;
 };
 
 export type Quantity = {
@@ -18,11 +20,18 @@ export type Quantity = {
   defaultTo: string;
 };
 
-const u = (id: string, name: string, symbol: string, factor: number): Unit => ({
+const u = (
+  id: string,
+  name: string,
+  symbol: string,
+  factor: number,
+  inverse?: boolean,
+): Unit => ({
   id,
   name,
   symbol,
   factor,
+  ...(inverse ? { inverse } : {}),
 });
 
 export const QUANTITIES: Record<string, Quantity> = {
@@ -238,6 +247,64 @@ export const QUANTITIES: Record<string, Quantity> = {
       u('turn', 'Turn', 'tr', 2 * Math.PI),
     ],
   },
+  power: {
+    id: 'power',
+    name: 'Power',
+    base: 'W',
+    defaultFrom: 'kW',
+    defaultTo: 'hp',
+    units: [
+      u('W', 'Watt', 'W', 1),
+      u('kW', 'Kilowatt', 'kW', 1000),
+      u('MW', 'Megawatt', 'MW', 1e6),
+      u('hp', 'Horsepower (mechanical, imperial)', 'hp', 745.69987158227022),
+      u('PS', 'Metric horsepower (PS, CV, pk)', 'PS', 735.49875),
+      u('hpE', 'Electrical horsepower', 'hp(E)', 746),
+      u('BTUh', 'BTU per hour', 'BTU/h', 0.29307107017),
+      u('kcalh', 'Kilocalorie per hour', 'kcal/h', 1.163),
+      u('ftlbs', 'Foot-pound per second', 'ft·lbf/s', 1.3558179483),
+      u('TR', 'Ton of refrigeration', 'TR', 3516.8528421),
+    ],
+  },
+  torque: {
+    id: 'torque',
+    name: 'Torque',
+    base: 'Nm',
+    defaultFrom: 'Nm',
+    defaultTo: 'lbft',
+    units: [
+      u('Nm', 'Newton-meter', 'N·m', 1),
+      u('kNm', 'Kilonewton-meter', 'kN·m', 1000),
+      u('Ncm', 'Newton-centimeter', 'N·cm', 0.01),
+      u('lbft', 'Pound-foot', 'lbf·ft', 1.3558179483),
+      u('lbin', 'Pound-inch', 'lbf·in', 0.112984829),
+      u('ozin', 'Ounce-inch', 'ozf·in', 0.00706155183),
+      u('kgfm', 'Kilogram-force meter', 'kgf·m', 9.80665),
+      u('kgfcm', 'Kilogram-force centimeter', 'kgf·cm', 0.0980665),
+    ],
+  },
+  // Base unit: kilometers per liter. Consumption units are reciprocal.
+  'fuel-economy': {
+    id: 'fuel-economy',
+    name: 'Fuel economy',
+    base: 'kml',
+    defaultFrom: 'mpgus',
+    defaultTo: 'l100km',
+    units: [
+      u('l100km', 'Liters per 100 kilometers', 'L/100 km', 100, true),
+      u('kml', 'Kilometers per liter', 'km/L', 1),
+      u('mpgus', 'Miles per gallon (US)', 'mpg (US)', 0.42514370749),
+      u('mpguk', 'Miles per gallon (UK)', 'mpg (UK)', 0.35400618994),
+      u('mpl', 'Miles per liter', 'mi/L', 1.609344),
+      u(
+        'gal100mi',
+        'US gallons per 100 miles',
+        'gal/100 mi',
+        42.514370749,
+        true,
+      ),
+    ],
+  },
 };
 
 function toCelsius(value: number, from: string): number {
@@ -279,7 +346,14 @@ export function convertUnit(
   const f = q.units.find((x) => x.id === from);
   const t = q.units.find((x) => x.id === to);
   if (!f || !t) throw new Error(`Unknown unit ${from} or ${to}`);
-  return (value * f.factor) / t.factor;
+  // Reciprocal units: 0 L/100 km has no finite km/L, so the result is NaN.
+  const base = f.inverse
+    ? value === 0
+      ? NaN
+      : f.factor / value
+    : value * f.factor;
+  if (t.inverse) return base === 0 ? NaN : t.factor / base;
+  return base / t.factor;
 }
 
 /** Human-friendly number: up to 10 significant digits, no float noise. */

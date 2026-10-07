@@ -18,14 +18,24 @@ import {
 export default function UnitConverterTool({ config }: ToolProps) {
   const q = QUANTITIES[String(config.quantity)];
   const [value, setValue] = useState('1');
-  const [from, setFrom] = useState(q?.defaultFrom ?? '');
-  const [to, setTo] = useState(q?.defaultTo ?? '');
+  // Variant pages preset the units with init_from / init_to.
+  const pick = (key: string, fallback: string) => {
+    const v = config[key];
+    return typeof v === 'string' && q?.units.some((x) => x.id === v)
+      ? v
+      : fallback;
+  };
+  const [from, setFrom] = useState(() =>
+    pick('init_from', q?.defaultFrom ?? ''),
+  );
+  const [to, setTo] = useState(() => pick('init_to', q?.defaultTo ?? ''));
 
   if (!q) return <ErrorMessage>This converter is not available.</ErrorMessage>;
 
   const n = Number(value);
   const valid = value.trim() !== '' && Number.isFinite(n);
   const result = valid ? convertUnit(n, q.id, from, to) : NaN;
+  const reciprocalZero = valid && !Number.isFinite(result);
   const options = q.units.map((u) => ({
     value: u.id,
     label: `${u.name} (${u.symbol})`,
@@ -65,7 +75,14 @@ export default function UnitConverterTool({ config }: ToolProps) {
         <ErrorMessage>Please enter a valid number.</ErrorMessage>
       )}
 
-      {valid && (
+      {reciprocalZero && (
+        <ErrorMessage>
+          This conversion is a reciprocal (consumption ↔ distance per unit), so
+          0 has no finite result. Enter a value above zero.
+        </ErrorMessage>
+      )}
+
+      {valid && !reciprocalZero && (
         <div
           className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-emerald-100 bg-emerald-50 px-5 py-4"
           aria-live="polite"
@@ -81,7 +98,7 @@ export default function UnitConverterTool({ config }: ToolProps) {
         </div>
       )}
 
-      {valid && (
+      {valid && !reciprocalZero && (
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <caption className="mb-2 text-left text-sm font-semibold text-gray-900">

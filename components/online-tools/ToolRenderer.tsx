@@ -128,6 +128,8 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
   'http-status': load(() => import('./tools/HttpStatusTool')),
   'code-to-image': load(() => import('./tools/CodeToImageTool')),
   totp: load(() => import('./tools/TotpTool')),
+  'cooking-converter': load(() => import('./tools/CookingConverterTool')),
+  'size-converter': load(() => import('./tools/SizeConverterTool')),
 };
 
 export function ToolRenderer({

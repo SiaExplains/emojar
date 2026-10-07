@@ -1077,6 +1077,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'base converter',
     ],
     relatedTools: [
+      'text-to-binary',
       'roman-numeral-converter',
       'chmod-calculator',
       'subnet-calculator',
@@ -1839,6 +1840,73 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       {
         q: 'Is it safe to type my 2FA secret into a website?',
         a: 'Only into one you trust, because the secret is equivalent to the second factor. This page runs entirely in your browser and sends nothing, but for everyday logins keep using a dedicated authenticator app.',
+      },
+    ],
+  },
+  {
+    slug: 'text-to-binary',
+    category: 'developer-tools',
+    alsoIn: ['unit-converters', 'text-tools'],
+    name: 'Text to Binary Converter',
+    icon: '0️⃣',
+    shortDescription: 'Text ↔ binary, hex and decimal bytes (UTF-8).',
+    description:
+      'Convert text to binary code — “Hi” becomes 01001000 01101001 — or binary back to readable text. Uses UTF-8, so accents and emoji work, and can also show the bytes as hex, decimal or octal.',
+    title: 'Text to Binary Converter – Binary to Text Translator (UTF-8)',
+    metaDescription:
+      'Convert text to binary and binary to text online. UTF-8, so emoji and accents work. Also hex, decimal and octal bytes, with or without spaces. Free.',
+    keywords: [
+      'text to binary',
+      'binary to text',
+      'binary translator',
+      'binary code translator',
+      'text to binary converter',
+    ],
+    relatedTools: [
+      'number-base-converter',
+      'base64-encoder',
+      'morse-code-converter',
+      'hash-generator',
+      'string-escape',
+    ],
+    component: 'text-transform',
+    config: { transform: 'text-binary' },
+    popular: true,
+    howTo: [
+      'Type text, or paste binary (8-bit groups, with or without spaces).',
+      'Choose Text → binary or Binary → text, and the number format.',
+      'Copy the result.',
+    ],
+    about: [
+      'Computers store text as bytes. The text is first encoded as UTF-8 — one byte for each basic Latin letter (H = 72 = 01001000), two for accented letters like é (11000011 10101001) and four for most emoji — and each byte is then written as eight binary digits. The same bytes can be shown as hex (48 69), decimal (72 105) or octal.',
+      'When decoding, each space-separated group is read as one byte (so 7-bit ASCII groups work too), and the result must be valid UTF-8 — otherwise the tool says so instead of printing garbage. Binary without spaces is split into 8-bit groups automatically and must be a multiple of 8 digits long.',
+    ],
+    faqs: [
+      {
+        q: 'What is “hello” in binary?',
+        a: '01101000 01100101 01101100 01101100 01101111 — one 8-bit byte per letter in UTF-8 (and ASCII).',
+      },
+      {
+        q: 'Why does an emoji become 32 bits?',
+        a: 'Emoji are outside the basic range, so UTF-8 uses four bytes for them — four groups of eight bits.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'binary-to-text',
+        name: 'Binary to Text Converter',
+        title: 'Binary to Text Converter – Translate Binary Code to Words',
+        metaDescription:
+          'Translate binary code to text: paste 8-bit groups like 01001000 01101001 and get “Hi”. UTF-8, with or without spaces, plus hex and decimal input.',
+        description:
+          'Paste binary code — 8-bit groups like 01001000 01101001 — and read the text. UTF-8 is supported, so emoji and accented letters decode correctly.',
+        config: { transform: 'text-binary', init_mode: 'decode' },
+        keywords: [
+          'binary to text',
+          'binary to english',
+          'binary decoder',
+          'translate binary',
+        ],
       },
     ],
   },

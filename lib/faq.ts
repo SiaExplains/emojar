@@ -356,6 +356,46 @@ export const FAQ_GROUPS: FaqGroup[] = [
     icon: '🧮',
     items: [
       {
+        q: 'What is the difference between profit margin and markup?',
+        a: 'Margin is profit as a share of the selling price; markup is profit as a share of the cost. Buying at 60 and selling at 100 is a 40 % margin but a 66.7 % markup.',
+        links: [
+          {
+            href: '/online-tool/calculators/profit-margin-calculator',
+            label: 'Profit Margin Calculator',
+          },
+        ],
+      },
+      {
+        q: 'Does the mortgage calculator include taxes, insurance and PMI?',
+        a: 'Yes. It adds property tax, home insurance, HOA fees and PMI (charged until you owe 80 % of the home price) to principal and interest, and shows how extra payments shorten the loan. Use your own local rates for an accurate estimate.',
+        links: [
+          {
+            href: '/online-tool/calculators/mortgage-calculator',
+            label: 'Mortgage Calculator',
+          },
+        ],
+      },
+      {
+        q: 'What is the 4 % rule for retirement?',
+        a: 'A rule of thumb that withdrawing about 4 % of your savings in the first year of retirement, then adjusting for inflation, is likely to last around 30 years. The retirement calculator lets you change the rate and checks how long your desired income lasts — an estimate, not financial advice.',
+        links: [
+          {
+            href: '/online-tool/calculators/retirement-calculator',
+            label: 'Retirement Calculator',
+          },
+        ],
+      },
+      {
+        q: 'How accurate is a tape-measure body fat estimate?',
+        a: 'The U.S. Navy method is usually within about 3–4 percentage points of lab methods like DEXA, as long as you measure carefully. It is less accurate for very muscular or very lean people and is not medical advice.',
+        links: [
+          {
+            href: '/online-tool/calculators/body-fat-calculator',
+            label: 'Body Fat Calculator',
+          },
+        ],
+      },
+      {
         q: 'How accurate are the calculators?',
         a: 'They use standard published formulas (for example the Mifflin-St Jeor equation for calories and standard amortization for loans) and full floating-point precision. Results are rounded only for display.',
       },

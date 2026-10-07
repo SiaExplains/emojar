@@ -418,6 +418,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'difference checker',
     ],
     relatedTools: [
+      'json-diff',
       'find-and-replace',
       'remove-duplicate-lines',
       'json-formatter',

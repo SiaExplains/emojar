@@ -20,6 +20,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'json viewer',
     ],
     relatedTools: [
+      'json-diff',
       'json-validator',
       'json-minifier',
       'json-to-yaml',
@@ -291,7 +292,12 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'xml minify',
       'pretty print xml',
     ],
-    relatedTools: ['html-formatter', 'json-formatter', 'css-formatter'],
+    relatedTools: [
+      'json-to-xml',
+      'html-formatter',
+      'json-formatter',
+      'css-formatter',
+    ],
     component: 'text-transform',
     config: { transform: 'xml-format' },
     howTo: [
@@ -554,6 +560,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'encodeuricomponent',
     ],
     relatedTools: [
+      'url-parser',
       'url-decoder',
       'slug-generator',
       'base64-encoder',
@@ -625,6 +632,8 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'jwt debugger',
     ],
     relatedTools: [
+      'bcrypt-generator',
+      'totp-generator',
       'base64-decoder',
       'json-formatter',
       'unix-timestamp-converter',
@@ -718,6 +727,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'file hash',
     ],
     relatedTools: [
+      'bcrypt-generator',
       'sha256-generator',
       'sha512-generator',
       'base64-encoder',
@@ -979,6 +989,856 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       {
         q: 'Should I use interface or type?',
         a: 'Both work for object shapes. Interfaces can be extended and merged; type aliases can also express unions. Many teams pick one for consistency.',
+      },
+    ],
+  },
+  {
+    slug: 'html-entity-encoder',
+    category: 'developer-tools',
+    name: 'HTML Entity Encoder / Decoder',
+    icon: '🔣',
+    shortDescription: 'Encode & < > " as HTML entities, or decode them.',
+    description:
+      'Encode text for safe use in HTML — & < > " and \' become &amp; &lt; &gt; &quot; and &#39; — and optionally turn accented letters and symbols into named or numeric entities. Switch to Decode to turn &eacute;, &#233; and &#xE9; back into é.',
+    title: 'HTML Entity Encoder & Decoder – Escape HTML Characters Online',
+    metaDescription:
+      'Encode text to HTML entities (&amp; &lt; &gt; &quot;) or decode named and numeric entities back to text. Named, decimal and hex options. Free and private.',
+    keywords: [
+      'html entity encoder',
+      'html entity decoder',
+      'html escape',
+      'html encode online',
+      'decode html entities',
+    ],
+    relatedTools: [
+      'string-escape',
+      'url-encoder',
+      'html-formatter',
+      'special-characters',
+      'markdown-to-html',
+    ],
+    component: 'text-transform',
+    config: { transform: 'html-entities' },
+    howTo: [
+      'Paste your text or HTML.',
+      'Choose Encode or Decode; for encoding, pick whether non-ASCII characters become named, decimal or hex entities.',
+      'Copy or download the result.',
+    ],
+    about: [
+      'Five characters have special meaning in HTML: & starts an entity, < and > delimit tags, and " and \' end attribute values. Encoding them is what stops user-supplied text from breaking a page or injecting markup. The minimal mode does exactly that and leaves everything else readable; the other modes also convert characters outside ASCII, which is useful for old systems and email templates that mangle UTF-8.',
+      'Decoding understands every named entity in the HTML standard (more than 2,000, such as &nbsp; &hellip; and &rarr;) as well as decimal (&#8230;) and hexadecimal (&#x2026;) references. Decoding happens in your browser’s own HTML parser in a sandboxed document, so markup in the input is never rendered or run.',
+    ],
+    faqs: [
+      {
+        q: 'Do I need to encode accented letters like é?',
+        a: 'Not on a page served as UTF-8, which is almost every modern page. Encoding only & < > " and \' is enough; use the named or numeric modes for systems that can’t handle UTF-8.',
+      },
+      {
+        q: 'Is HTML encoding enough to prevent XSS?',
+        a: 'It is the right defence for text placed between tags and inside quoted attributes. Values used in URLs, JavaScript or CSS need their own escaping — use your framework’s built-in escaping wherever possible.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'html-entity-decoder',
+        name: 'HTML Entity Decoder',
+        title: 'HTML Entity Decoder – Convert &amp; &nbsp; &#39; Back to Text',
+        metaDescription:
+          'Decode HTML entities online: turn &amp; &nbsp; &eacute; &#39; and &#x2014; back into normal characters. Supports all named, decimal and hex entities.',
+        description:
+          'Paste text full of &amp;, &nbsp;, &#39; or &#x2014; and get readable characters back — every named, decimal and hexadecimal HTML entity is supported.',
+        config: { transform: 'html-entities', init_mode: 'decode' },
+        keywords: [
+          'html entity decoder',
+          'decode html',
+          'unescape html',
+          'html entities to text',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'number-base-converter',
+    category: 'developer-tools',
+    alsoIn: ['unit-converters'],
+    name: 'Number Base Converter',
+    icon: '🔢',
+    shortDescription: 'Binary, octal, decimal and hex — any base 2–36.',
+    description:
+      'Convert numbers between binary, octal, decimal, hexadecimal and any base from 2 to 36. Paste one number per line, use prefixes like 0x and 0b, and convert numbers of any size — 64-bit values and beyond are exact.',
+    title: 'Number Base Converter – Binary, Hex, Decimal & Octal',
+    metaDescription:
+      'Convert between binary, decimal, hexadecimal, octal and any base 2–36. Exact for huge numbers, accepts 0x/0b prefixes, converts many numbers at once. Free.',
+    keywords: [
+      'number base converter',
+      'binary to decimal',
+      'hex to decimal',
+      'decimal to binary',
+      'base converter',
+    ],
+    relatedTools: [
+      'roman-numeral-converter',
+      'chmod-calculator',
+      'subnet-calculator',
+      'color-converter',
+      'scientific-calculator',
+    ],
+    component: 'text-transform',
+    config: { transform: 'number-base' },
+    popular: true,
+    howTo: [
+      'Enter one or more numbers, one per line.',
+      'Choose the base you are converting from (or Auto to detect 0x, 0b and 0o prefixes) and the base to convert to.',
+      'Copy the result; turn on digit grouping for easier reading.',
+    ],
+    about: [
+      'Each base uses a different number of digits: binary uses 0 and 1, octal 0–7, decimal 0–9 and hexadecimal 0–9 plus a–f. Hex is popular in programming because one hex digit is exactly four binary digits, so 0xFF is 1111 1111 — one byte.',
+      'Numbers are converted with arbitrary-precision integers, so even values larger than 2⁶⁴ convert exactly instead of being rounded, as they would be in a normal calculator. Negative numbers keep their minus sign; fractions are not supported.',
+    ],
+    faqs: [
+      {
+        q: 'How do I convert binary to decimal by hand?',
+        a: 'Multiply each digit by its place value (1, 2, 4, 8 … from the right) and add them up: 1011 = 8 + 0 + 2 + 1 = 11.',
+      },
+      {
+        q: 'Does it show two’s complement for negative numbers?',
+        a: 'No — negative numbers are shown with a minus sign. Two’s complement depends on the bit width (8, 16, 32 or 64 bits) chosen by a program.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'binary-to-decimal',
+        name: 'Binary to Decimal Converter',
+        title: 'Binary to Decimal Converter – Convert Binary Numbers Online',
+        metaDescription:
+          'Convert binary to decimal instantly: paste binary numbers (with or without 0b) and get exact decimal values, even for very long numbers. Converts many at once.',
+        description:
+          'Paste binary numbers — 1011, 0b11111111 or long 64-bit values — and get their exact decimal value, one per line.',
+        config: { transform: 'number-base', init_from: '2', init_to: '10' },
+        keywords: [
+          'binary to decimal',
+          'binary converter',
+          'convert binary to number',
+        ],
+      },
+      {
+        slug: 'hex-to-decimal',
+        name: 'Hex to Decimal Converter',
+        title: 'Hex to Decimal Converter – Hexadecimal to Number',
+        metaDescription:
+          'Convert hexadecimal to decimal: paste hex values like FF, 0x1A3F or DEADBEEF and get exact decimal numbers. Works for 64-bit and larger values.',
+        description:
+          'Paste hex values — FF, 0x1A3F, DEADBEEF — and get their exact decimal value. Upper and lower case both work.',
+        config: { transform: 'number-base', init_from: '16', init_to: '10' },
+        keywords: ['hex to decimal', 'hexadecimal to decimal', 'hex converter'],
+      },
+      {
+        slug: 'decimal-to-binary',
+        name: 'Decimal to Binary Converter',
+        title: 'Decimal to Binary Converter – Number to Binary Online',
+        metaDescription:
+          'Convert decimal numbers to binary instantly, with optional 4-bit grouping. Exact for very large numbers; paste several numbers to convert them at once.',
+        description:
+          'Type a decimal number and get its binary form — 255 becomes 11111111 — with optional grouping into blocks of four bits.',
+        config: {
+          transform: 'number-base',
+          init_from: '10',
+          init_to: '2',
+          init_group: true,
+        },
+        keywords: [
+          'decimal to binary',
+          'number to binary',
+          'convert to binary',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'json-to-xml',
+    category: 'developer-tools',
+    name: 'JSON to XML Converter',
+    icon: '🔀',
+    shortDescription: 'Convert JSON to XML, and XML back to JSON.',
+    description:
+      'Convert JSON to well-formed XML: objects become elements, arrays become repeated elements, and keys starting with @ become attributes. Switch direction to turn XML into JSON. Choose the root and array item names.',
+    title: 'JSON to XML Converter – Convert JSON to XML (and Back) Online',
+    metaDescription:
+      'Convert JSON to XML online with custom root and item names, @attributes and pretty printing — or XML to JSON. Free, instant and processed in your browser.',
+    keywords: [
+      'json to xml',
+      'json to xml converter',
+      'convert json to xml',
+      'xml to json',
+      'json xml',
+    ],
+    relatedTools: [
+      'xml-formatter',
+      'json-formatter',
+      'json-to-yaml',
+      'json-to-csv',
+      'json-diff',
+    ],
+    component: 'text-transform',
+    config: { transform: 'json-xml' },
+    howTo: [
+      'Paste your JSON (or XML when converting XML → JSON).',
+      'Optionally set the root element and the name used for array items.',
+      'Copy or download the converted output.',
+    ],
+    about: [
+      'JSON and XML model data differently, so a few conventions are used: each object key becomes a child element, an array becomes the same element repeated (“tags”: [“a”, “b”] → <tags>a</tags><tags>b</tags>), null becomes an empty element, and keys prefixed with @ become attributes. Keys that aren’t valid XML names — like “2nd key” — are adjusted to _2nd_key.',
+      'XML → JSON does the reverse: attributes get an @ prefix, repeated elements become arrays, text next to child elements is stored as #text, and numbers and true/false are converted to JSON types. Inline DTDs are rejected to avoid entity-expansion attacks.',
+    ],
+    faqs: [
+      {
+        q: 'Why is there no root element in my JSON?',
+        a: 'If the JSON object has a single top-level key, that key becomes the root. Otherwise everything is wrapped in <root> — or the name you enter.',
+      },
+      {
+        q: 'Does XML → JSON keep the order of mixed elements?',
+        a: 'Elements with the same name are grouped into one array, so the original interleaving of different elements is not preserved.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'xml-to-json',
+        name: 'XML to JSON Converter',
+        title: 'XML to JSON Converter – Convert XML to JSON Online',
+        metaDescription:
+          'Convert XML to JSON online: attributes become @keys, repeated elements become arrays and numbers keep their type. Paste XML and copy clean, formatted JSON.',
+        description:
+          'Paste XML and get clean JSON: attributes become @keys, repeated elements become arrays, and numbers and booleans keep their type.',
+        config: { transform: 'json-xml', init_direction: 'xml-to-json' },
+        keywords: [
+          'xml to json',
+          'xml to json converter',
+          'convert xml to json',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'json-diff',
+    category: 'developer-tools',
+    name: 'JSON Diff',
+    icon: '🧮',
+    shortDescription: 'Compare two JSON documents and list every change.',
+    description:
+      'Compare two JSON documents and see exactly what changed — added, removed and changed values with their paths, like $.settings.theme. Key order and formatting are ignored, and you can ignore the order of array items too.',
+    title: 'JSON Diff – Compare Two JSON Files Online (Structural)',
+    metaDescription:
+      'Compare JSON online: see added, removed and changed values by path ($.user.name), ignoring key order and whitespace. Optional array-order ignore. Free and private.',
+    keywords: [
+      'json diff',
+      'json compare',
+      'compare json online',
+      'json difference',
+      'diff two json files',
+    ],
+    relatedTools: [
+      'text-diff',
+      'json-formatter',
+      'json-validator',
+      'json-to-xml',
+      'yaml-to-json',
+    ],
+    component: 'json-diff',
+    howTo: [
+      'Paste the original JSON on the left and the changed JSON on the right.',
+      'Read the list of differences — each one shows its path and the old and new value.',
+      'Tick “Ignore the order of items in arrays” if order doesn’t matter, then copy the report.',
+    ],
+    about: [
+      'A text diff compares lines, so reformatting or reordering keys makes everything look different. A structural diff parses both documents first and compares values, so {"a":1,"b":2} and {"b":2,"a":1} are equal. Each difference is reported with a JSONPath-style location: $ is the root, .name is a key and [2] an array index.',
+      'Arrays are compared position by position by default, which is right for ordered lists. With “ignore order” on, items are matched by value instead — useful for tag lists or sets of IDs.',
+    ],
+    faqs: [
+      {
+        q: 'Why do I see many changes when only one item was inserted in an array?',
+        a: 'Position-by-position comparison shifts every later item. Turn on “Ignore the order of items in arrays” to match items by value instead.',
+      },
+      {
+        q: 'Is 1 the same as 1.0?',
+        a: 'Yes — both are the same JSON number. "1" (a string) and 1 (a number) are different and are reported as a change.',
+      },
+    ],
+  },
+  {
+    slug: 'string-escape',
+    category: 'developer-tools',
+    name: 'String Escape / Unescape',
+    icon: '🧷',
+    shortDescription: 'Escape strings for JSON, JS, Python, SQL, CSV, regex…',
+    description:
+      'Escape or unescape text for JSON, JavaScript, Java and C#, Python, SQL, CSV, regular expressions, shell commands and XML. Turn quotes, backslashes, line breaks and tabs into the right escape sequences — or decode \\n, \\u00e9 and \\" back into text.',
+    title: 'String Escape & Unescape – JSON, JavaScript, SQL, Regex & More',
+    metaDescription:
+      'Escape or unescape strings for JSON, JavaScript, Java, C#, Python, SQL, CSV, regex, shell and XML. Handles quotes, backslashes, newlines and Unicode. Free.',
+    keywords: [
+      'string escape',
+      'escape string online',
+      'json escape',
+      'unescape string',
+      'escape quotes',
+    ],
+    relatedTools: [
+      'html-entity-encoder',
+      'url-encoder',
+      'json-formatter',
+      'regex-tester',
+      'base64-encoder',
+    ],
+    component: 'text-transform',
+    config: { transform: 'string-escape' },
+    howTo: [
+      'Paste the text.',
+      'Choose Escape or Unescape and the language or format.',
+      'Copy the result into your code, query or file.',
+    ],
+    about: [
+      "Every language has characters that can’t appear raw inside a string literal. JSON, JavaScript, Java, C# and Python use backslash sequences (\\\" \\\\ \\n \\t \\u00e9); SQL doubles single quotes (O''Brien); CSV wraps a field in quotes and doubles the quotes inside; regular expressions put a backslash before . * + ? ( ) [ ] { } | ^ $ \\ / and -; and the shell mode wraps text in single quotes so nothing is expanded.",
+      'Escaping for SQL here is for writing literals by hand — in application code always use parameterised queries instead, which make escaping unnecessary and prevent SQL injection.',
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between JSON and JavaScript escaping?',
+        a: 'JSON only allows double-quoted strings, so single quotes are left alone. JavaScript mode also escapes single quotes, backticks and $ so the result works in any kind of JS string, including template literals.',
+      },
+      {
+        q: 'Why does unescaping JSON fail?',
+        a: 'The input must be a valid JSON string body: every " and \\ inside it must already be escaped, and \\u must be followed by four hex digits.',
+      },
+    ],
+  },
+  {
+    slug: 'url-parser',
+    category: 'developer-tools',
+    name: 'URL Parser & Query String Builder',
+    icon: '🔗',
+    shortDescription: 'Split a URL into parts and edit its query string.',
+    description:
+      'Paste a URL to see its protocol, host, port, path, query parameters and fragment. Edit, add, reorder or remove parameters — including utm_, gclid and fbclid tracking tags — and the URL is rebuilt and correctly encoded as you type.',
+    title: 'URL Parser & Query String Builder – Edit URL Parameters Online',
+    metaDescription:
+      'Parse any URL into protocol, host, path, query and hash. Edit, add or remove query parameters, strip utm_/gclid/fbclid tracking and copy the rebuilt URL. Free.',
+    keywords: [
+      'url parser',
+      'query string builder',
+      'parse url online',
+      'url parameters',
+      'remove utm parameters',
+    ],
+    relatedTools: [
+      'url-encoder',
+      'url-decoder',
+      'meta-tag-generator',
+      'slug-generator',
+      'jwt-decoder',
+    ],
+    component: 'url-parser',
+    howTo: [
+      'Paste a full URL, including https://.',
+      'Read its parts in the table, then edit the query parameters below it.',
+      'Copy the rebuilt URL.',
+    ],
+    about: [
+      'A URL has up to eight parts: scheme (https:), user info, host, port, path, query string (?key=value&…), and fragment (#section). The tool uses your browser’s standard URL parser — the same one websites use — so results match what browsers actually do, including default ports (443 for https) and decoding of percent-encoded characters.',
+      'Query parameters are rebuilt with application/x-www-form-urlencoded encoding: spaces become +, and &, = and # inside values are percent-encoded so they can’t break the URL. Parameter order is kept, and repeated keys (tag=a&tag=b) are supported.',
+    ],
+    faqs: [
+      {
+        q: 'Is it safe to remove utm_ parameters?',
+        a: 'Yes for sharing links — they only tell analytics where a visit came from. Removing them doesn’t change the page you land on.',
+      },
+      {
+        q: 'Why does my space show as + and not %20?',
+        a: 'In query strings both mean a space. The form-encoding standard browsers use for parameters writes it as +.',
+      },
+    ],
+  },
+  {
+    slug: 'user-agent-parser',
+    category: 'developer-tools',
+    name: 'User Agent Parser',
+    icon: '🕵️',
+    shortDescription: 'Parse any user-agent string; spot bots and crawlers.',
+    description:
+      'Paste one or many user-agent strings — from logs, analytics or bug reports — and see the browser, version, engine, operating system and device type for each, plus whether it is a bot such as Googlebot, an AI crawler or curl. Export as CSV.',
+    title: 'User Agent Parser – Decode Browser, OS, Device & Bots',
+    metaDescription:
+      'Parse user-agent strings: browser, version, rendering engine, OS and device type, plus bot detection for Googlebot, AI crawlers and scripts. Bulk parse and export CSV.',
+    keywords: [
+      'user agent parser',
+      'parse user agent',
+      'user agent decoder',
+      'user agent lookup',
+      'bot user agent',
+    ],
+    relatedTools: [
+      'what-is-my-browser',
+      'robots-txt-generator',
+      'http-status-codes',
+      'regex-tester',
+      'jwt-decoder',
+    ],
+    component: 'ua-parser',
+    howTo: [
+      'Paste user-agent strings, one per line (your own is filled in to start).',
+      'Read the browser, engine, operating system and device for each, and any bot warning.',
+      'Click “Copy as CSV” to take the results to a spreadsheet.',
+    ],
+    about: [
+      'Browsers send a user-agent string with every request, and it ends up in server logs and analytics. The format is a historical mess — every browser claims to be “Mozilla/5.0” and Chrome-based browsers also mention Safari — so the parser checks the specific tokens in the right order (Edg/ before Chrome/, CriOS for Chrome on iPhone, “; wv)” for Android WebViews).',
+      'Bot detection recognises search-engine crawlers, AI crawlers (GPTBot, ClaudeBot, PerplexityBot…), link-preview bots and common scripts. Any client can fake its user agent, so for real Googlebot or Bingbot traffic confirm it with a reverse DNS lookup of the IP address.',
+    ],
+    faqs: [
+      {
+        q: 'Why is the Windows version “10 or 11”?',
+        a: 'Windows 11 browsers still send “Windows NT 10.0”, so the string alone can’t tell them apart. Only User-Agent Client Hints, read live by a browser, can.',
+      },
+      {
+        q: 'Why are versions like 130.0.0.0?',
+        a: 'Chrome reduced the user agent for privacy: minor version numbers are frozen to 0. The full version is only available through Client Hints.',
+      },
+    ],
+  },
+  {
+    slug: 'subnet-calculator',
+    category: 'developer-tools',
+    name: 'Subnet Calculator',
+    icon: '🌐',
+    shortDescription: 'IPv4/IPv6 CIDR: network, mask, broadcast, hosts.',
+    description:
+      'Enter an IP address with a CIDR prefix (192.168.1.10/24) or a subnet mask to get the network and broadcast address, subnet and wildcard masks, first and last usable host and the number of hosts. Split a network into smaller subnets. IPv6 prefixes are supported too.',
+    title: 'Subnet Calculator – IPv4 & IPv6 CIDR, Mask & Host Range',
+    metaDescription:
+      'Free subnet calculator: network, broadcast, subnet and wildcard mask, usable host range and host count for any IPv4 CIDR, plus subnetting and IPv6 prefixes.',
+    keywords: [
+      'subnet calculator',
+      'ip subnet calculator',
+      'subnet mask calculator',
+      'ipv4 subnet',
+      'ipv6 subnet calculator',
+    ],
+    relatedTools: [
+      'number-base-converter',
+      'chmod-calculator',
+      'url-parser',
+      'http-status-codes',
+      'what-is-my-browser',
+    ],
+    component: 'subnet-calculator',
+    popular: true,
+    howTo: [
+      'Enter an address with a prefix like 10.0.0.5/16, or an address and mask like 10.0.0.5 255.255.0.0.',
+      'Read the network, broadcast, masks and usable host range.',
+      'Optionally choose a longer prefix to split the network into equal subnets.',
+    ],
+    about: [
+      'The prefix length (/24) says how many leading bits identify the network; the rest identify hosts. A /24 leaves 8 host bits: 256 addresses, of which the first (network) and last (broadcast) are reserved, leaving 254 usable hosts. The subnet mask 255.255.255.0 is the same information written as an address, and the wildcard mask 0.0.0.255 — used in Cisco ACLs and OSPF — is its inverse.',
+      'The tool also tells you whether an address is private (10/8, 172.16/12, 192.168/16), loopback, link-local, carrier-grade NAT or public. For IPv6 it shows the first and last address of the prefix and the total count; IPv6 has no broadcast address, and /64 is the standard size for a LAN.',
+    ],
+    faqs: [
+      {
+        q: 'How many hosts are in a /24, /25 or /30?',
+        a: '/24: 254 usable hosts, /25: 126, /26: 62, /27: 30, /28: 14, /29: 6, /30: 2. Each extra prefix bit halves the network.',
+      },
+      {
+        q: 'Why does /31 have 2 usable hosts?',
+        a: 'RFC 3021 allows /31 on point-to-point links, where no broadcast address is needed, so both addresses are usable.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'cidr-calculator',
+        name: 'CIDR Calculator',
+        title: 'CIDR Calculator – CIDR to IP Range, Mask & Host Count',
+        metaDescription:
+          'Convert CIDR notation to an IP range: enter 10.0.0.0/22 to get the first and last address, subnet mask, wildcard and number of hosts. IPv4 and IPv6.',
+        description:
+          'Enter a CIDR block such as 10.0.0.0/22 to see the IP range it covers, its subnet mask, wildcard mask and how many hosts it holds.',
+        config: {},
+        keywords: [
+          'cidr calculator',
+          'cidr to ip range',
+          'cidr notation',
+          'ip range calculator',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'chmod-calculator',
+    category: 'developer-tools',
+    name: 'Chmod Calculator',
+    icon: '🔐',
+    shortDescription: 'Linux file permissions: 755 ↔ rwxr-xr-x.',
+    description:
+      'Work out Linux and macOS file permissions: tick read, write and execute for owner, group and others to get the octal number (755) and symbolic form (rwxr-xr-x), or type either one to see what it means. Includes setuid, setgid and sticky bits and the chmod command.',
+    title: 'Chmod Calculator – Linux File Permissions (755, 644, rwxr-xr-x)',
+    metaDescription:
+      'Calculate chmod permissions: convert between octal (755, 644) and symbolic (rwxr-xr-x), set setuid, setgid and sticky bits, and copy the chmod command.',
+    keywords: [
+      'chmod calculator',
+      'chmod 755',
+      'linux file permissions',
+      'chmod 644',
+      'unix permissions calculator',
+    ],
+    relatedTools: [
+      'number-base-converter',
+      'subnet-calculator',
+      'cron-expression-generator',
+      'robots-txt-generator',
+      'hash-generator',
+    ],
+    component: 'chmod-calculator',
+    howTo: [
+      'Tick the permissions you want for owner, group and others — or type an octal or symbolic value.',
+      'Add setuid, setgid or sticky if needed.',
+      'Enter the file name and copy the chmod command.',
+    ],
+    about: [
+      'Each of the three classes — owner, group, others — gets three permission bits: read (4), write (2) and execute (1). Adding them gives one octal digit per class, so rwx = 7, r-x = 5 and r-- = 4, and rwxr-xr-x is 755. On a folder, execute means “may enter the folder” and read means “may list its contents”.',
+      'An optional leading digit sets the special bits: 4 setuid (run as the file’s owner), 2 setgid (run as the group, or new files in a folder inherit its group) and 1 sticky (in a shared folder like /tmp, only owners can delete their files). In the symbolic form they appear as s or t in place of x — uppercase S or T if the underlying execute bit is off.',
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between 644 and 755?',
+        a: '644 (rw-r--r--) lets the owner edit and everyone read — right for normal files. 755 (rwxr-xr-x) also lets everyone execute or enter — right for scripts, programs and folders.',
+      },
+      {
+        q: 'Is chmod 777 safe?',
+        a: 'Rarely. It lets every user on the system change or replace the file. Use the narrowest permissions that work, such as 755 or 775 with the right group.',
+      },
+    ],
+  },
+  {
+    slug: 'svg-optimizer',
+    category: 'developer-tools',
+    alsoIn: ['image-tools'],
+    name: 'SVG Optimizer',
+    icon: '🪶',
+    shortDescription: 'Shrink SVG files by removing editor junk.',
+    description:
+      'Make SVG files smaller with SVGO, the standard SVG optimiser: remove editor metadata, comments and hidden elements, round numbers and simplify paths. See the size saving and a before/after preview, then copy or download the result.',
+    title: 'SVG Optimizer – Minify & Compress SVG Files Online (SVGO)',
+    metaDescription:
+      'Optimise SVG files online with SVGO: strip metadata and comments, round numbers, simplify paths and see before/after size and preview. Free, runs in your browser.',
+    keywords: [
+      'svg optimizer',
+      'svg minifier',
+      'compress svg',
+      'optimize svg online',
+      'svgo online',
+    ],
+    relatedTools: [
+      'svg-to-png',
+      'image-compressor',
+      'favicon-generator',
+      'html-entity-encoder',
+      'code-to-image',
+    ],
+    component: 'svg-optimizer',
+    handlesFiles: true,
+    howTo: [
+      'Drop an SVG file or paste its code.',
+      'Adjust precision and options — the result updates automatically.',
+      'Compare the previews, then copy or download the optimised SVG.',
+    ],
+    about: [
+      'SVGs exported from Illustrator, Inkscape, Figma or Sketch carry a lot that browsers don’t need: editor namespaces and metadata, comments, empty groups, default attribute values and coordinates with six decimal places. Removing them usually saves 20–60 % without any visible change, which speeds up pages that inline icons or logos.',
+      'Precision controls how many decimal places coordinates keep: 2–3 is safe for icons, while very small or detailed drawings may need more. “Remove width/height” keeps only the viewBox so the image scales to its container. Previews are rendered as images, so scripts inside an SVG never run on this page.',
+    ],
+    faqs: [
+      {
+        q: 'Will optimising change how my SVG looks?',
+        a: 'Normally not. If curves shift slightly, raise the precision; compare the before and after previews before using the result.',
+      },
+      {
+        q: 'Should I gzip SVGs as well?',
+        a: 'Yes — servers usually compress SVG with gzip or Brotli automatically. Optimising first still helps, because it removes data compression can’t.',
+      },
+    ],
+  },
+  {
+    slug: 'meta-tag-generator',
+    category: 'developer-tools',
+    name: 'Meta Tag & Open Graph Generator',
+    icon: '🏷️',
+    shortDescription: 'SEO meta tags, Open Graph and X cards with previews.',
+    description:
+      'Generate the HTML meta tags for a page — title, description, canonical, robots, Open Graph for Facebook and LinkedIn, and X (Twitter) cards — with live previews of how the link will look in Google and when shared. Length warnings help you avoid truncation.',
+    title: 'Meta Tag & Open Graph Generator – SEO Tags with Live Previews',
+    metaDescription:
+      'Generate SEO meta tags, Open Graph and X/Twitter card tags with live Google, Facebook and X previews and length warnings. Copy the HTML for your <head>. Free.',
+    keywords: [
+      'meta tag generator',
+      'open graph generator',
+      'og tags',
+      'twitter card generator',
+      'seo meta tags',
+    ],
+    relatedTools: [
+      'robots-txt-generator',
+      'url-parser',
+      'favicon-generator',
+      'social-media-image-resizer',
+      'html-entity-encoder',
+    ],
+    component: 'meta-tag-generator',
+    popular: true,
+    howTo: [
+      'Fill in the title, description, page URL and share image.',
+      'Check the length counters and the Google, Facebook and X previews.',
+      'Copy the generated HTML into the <head> of your page.',
+    ],
+    about: [
+      'The title and meta description are what search engines usually show in results; keep titles to about 60 characters and descriptions to about 155 so they aren’t cut off. The canonical link tells search engines which URL is the main version of a page. Open Graph tags (og:title, og:image…) control link previews on Facebook, LinkedIn, WhatsApp, Slack and Discord, and twitter:card tags control X.',
+      'Share images should be 1200 × 630 pixels (1.91:1) and under about 5 MB. All values are HTML-escaped in the output, so quotes and ampersands in a title can’t break your markup. Platforms cache previews, so after changing tags use their sharing debuggers to refresh them.',
+    ],
+    faqs: [
+      {
+        q: 'Does Google use the meta keywords tag?',
+        a: 'No — Google has ignored it for years, so this generator doesn’t add it.',
+      },
+      {
+        q: 'Do I need both Open Graph and Twitter tags?',
+        a: 'X falls back to Open Graph for title, description and image, but it needs twitter:card to choose the large-image layout. The generator includes both for full control.',
+      },
+    ],
+  },
+  {
+    slug: 'robots-txt-generator',
+    category: 'developer-tools',
+    name: 'Robots.txt Generator',
+    icon: '🤖',
+    shortDescription: 'Build robots.txt, block AI crawlers, test URLs.',
+    description:
+      'Create a robots.txt file with rules for all crawlers or specific bots, sitemap links and ready-made presets — including one that blocks AI crawlers such as GPTBot, ClaudeBot and Google-Extended. Test any path against your rules before you publish.',
+    title: 'Robots.txt Generator & Tester – Block AI Crawlers, Add Sitemaps',
+    metaDescription:
+      'Generate robots.txt with allow/disallow rules, sitemaps and presets to block AI crawlers (GPTBot, ClaudeBot, CCBot). Test URLs against the rules. Free.',
+    keywords: [
+      'robots.txt generator',
+      'robots txt',
+      'block ai crawlers',
+      'robots.txt tester',
+      'disallow gptbot',
+    ],
+    relatedTools: [
+      'meta-tag-generator',
+      'user-agent-parser',
+      'http-status-codes',
+      'url-parser',
+      'slug-generator',
+    ],
+    component: 'robots-txt',
+    howTo: [
+      'Start from a preset or edit the rule groups: user agents, paths to disallow and exceptions to allow.',
+      'Add your sitemap URL.',
+      'Test a few paths, then download robots.txt and upload it to the root of your site.',
+    ],
+    about: [
+      'robots.txt sits at the root of a domain and tells crawlers which paths they may fetch. Rules are grouped by user agent; a crawler uses the most specific group that names it and ignores the rest, so a Googlebot group replaces the * rules for Google entirely. Within a group the longest matching rule wins, and Allow wins a tie — so Allow: /private/open overrides Disallow: /private/. * matches any characters and $ anchors the end, as in Disallow: /*.pdf$.',
+      'The tester follows these rules (Google’s interpretation, standardised in RFC 9309). Remember that robots.txt is a request, not access control: well-behaved crawlers honour it, but it doesn’t hide content, and a blocked URL can still be indexed from links — use noindex for that.',
+    ],
+    faqs: [
+      {
+        q: 'How do I block ChatGPT and other AI crawlers?',
+        a: 'Use the “Block AI crawlers” preset. It disallows GPTBot, ClaudeBot, Google-Extended, CCBot, PerplexityBot and others while leaving normal search engines allowed.',
+      },
+      {
+        q: 'Does Crawl-delay work?',
+        a: 'Bing and Yandex honour it; Google ignores it and adjusts its crawl rate automatically.',
+      },
+    ],
+  },
+  {
+    slug: 'http-status-codes',
+    category: 'developer-tools',
+    name: 'HTTP Status Code Lookup',
+    icon: '🚦',
+    shortDescription: 'Every HTTP status code explained, with SEO notes.',
+    description:
+      'Look up any HTTP status code — 200, 301, 404, 503 and every other registered code — and see what it means, what usually causes it and how search engines treat it. Search by number or keyword and filter by class.',
+    title: 'HTTP Status Codes – Full List with Meanings & SEO Impact',
+    metaDescription:
+      'Look up every HTTP status code from 100 to 511: what it means, common causes and SEO impact (301 vs 302, 404 vs 410, 503). Search and filter by class.',
+    keywords: [
+      'http status codes',
+      'http status code list',
+      '404 meaning',
+      '301 vs 302',
+      '503 service unavailable',
+    ],
+    relatedTools: [
+      'robots-txt-generator',
+      'url-parser',
+      'user-agent-parser',
+      'meta-tag-generator',
+      'json-formatter',
+    ],
+    component: 'http-status',
+    howTo: [
+      'Type a code or a word such as “redirect” or “timeout”.',
+      'Filter by class: 1xx informational, 2xx success, 3xx redirection, 4xx client errors, 5xx server errors.',
+      'Read the meaning and, where relevant, how search engines treat it.',
+    ],
+    about: [
+      'The first digit says what happened: 2xx success, 3xx “look elsewhere”, 4xx the request was wrong (or not allowed) and 5xx the server failed. The definitions come from the IANA registry, mostly RFC 9110, which replaced the older HTTP/1.1 RFCs in 2022.',
+      'For SEO the important pairs are 301/308 (permanent — ranking signals move to the new URL) vs 302/307 (temporary), 404 vs 410 (both remove a page; 410 slightly faster), and 503 with Retry-After for maintenance, which tells crawlers to come back instead of dropping pages.',
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between 401 and 403?',
+        a: '401 means “we don’t know who you are — log in”. 403 means “we know who you are, but you’re not allowed”.',
+      },
+      {
+        q: 'Should I use 301 or 308?',
+        a: 'Both are permanent. 308 guarantees the method (e.g. POST) is kept; for normal page moves 301 is the most widely understood.',
+      },
+    ],
+  },
+  {
+    slug: 'code-to-image',
+    category: 'developer-tools',
+    name: 'Code to Image',
+    icon: '🖼️',
+    shortDescription: 'Beautiful code screenshots as PNG.',
+    description:
+      'Turn code into a beautiful image for slides, docs and social posts: syntax highlighting for 20 languages, themes like One Dark and Dracula, gradient backgrounds, window buttons, line numbers and 1–3× export. Download a PNG or copy it to the clipboard.',
+    title: 'Code to Image – Create Beautiful Code Screenshots (PNG)',
+    metaDescription:
+      'Create beautiful code screenshots: syntax highlighting for 20 languages, themes, gradient backgrounds, window frame and line numbers. Download PNG or copy. Free.',
+    keywords: [
+      'code to image',
+      'code screenshot',
+      'carbon alternative',
+      'code snippet image',
+      'beautiful code images',
+    ],
+    relatedTools: [
+      'svg-optimizer',
+      'javascript-formatter',
+      'markdown-previewer',
+      'json-formatter',
+      'meme-generator',
+    ],
+    component: 'code-to-image',
+    popular: true,
+    howTo: [
+      'Paste your code and pick the language (or let it detect automatically).',
+      'Choose a theme, background, padding and font size; add a title or line numbers.',
+      'Download the PNG or copy the image straight into your post or slides.',
+    ],
+    about: [
+      'Code is highlighted with highlight.js and drawn onto a canvas in your browser, so the image is crisp at 2× or 3× for high-resolution screens and print. Tabs become two spaces and very long files are limited to 300 lines — for social posts, 10–25 lines read best.',
+      'Images are great for slides and social media, but they aren’t searchable or accessible to screen readers and can’t be copied. When sharing code people should reuse, also link the text — for example in a gist — and describe what the code does in your post.',
+    ],
+    faqs: [
+      {
+        q: 'Which font is used?',
+        a: 'Your system’s monospace font (SF Mono, Menlo, Consolas…), so the image can look slightly different on another computer.',
+      },
+      {
+        q: 'Can I get a transparent background?',
+        a: 'Yes — choose “None (transparent)” as the background to export just the code window on a transparent PNG.',
+      },
+    ],
+  },
+  {
+    slug: 'bcrypt-generator',
+    category: 'developer-tools',
+    alsoIn: ['security-generators'],
+    name: 'Bcrypt Hash Generator',
+    icon: '🧂',
+    shortDescription: 'Hash passwords with bcrypt and verify hashes.',
+    description:
+      'Generate bcrypt password hashes with a cost factor from 4 to 15, and check whether a password matches an existing bcrypt hash. Hashing runs in a background worker in your browser; nothing is sent or stored.',
+    title: 'Bcrypt Hash Generator & Checker – Hash and Verify Passwords',
+    metaDescription:
+      'Generate bcrypt password hashes with a chosen cost factor and verify a password against a $2a$/$2b$/$2y$ hash. Runs in your browser — nothing is sent anywhere.',
+    keywords: [
+      'bcrypt generator',
+      'bcrypt hash',
+      'bcrypt online',
+      'bcrypt checker',
+      'password hash generator',
+    ],
+    relatedTools: [
+      'hash-generator',
+      'password-generator',
+      'totp-generator',
+      'jwt-decoder',
+      'sha256-generator',
+    ],
+    component: 'bcrypt',
+    howTo: [
+      'Type the password and choose a cost factor (10–12 is typical).',
+      'Click “Generate hash” and copy it.',
+      'To verify, enter a password and an existing hash and click Verify.',
+    ],
+    about: [
+      'bcrypt is a password-hashing function designed to be slow: the cost factor sets the work to 2^cost rounds, so each step up doubles the time. That slowness makes guessing passwords from a stolen database expensive, which plain hashes such as SHA-256 do not. A bcrypt hash stores everything needed to check it — version ($2b$), cost, a random 22-character salt and the 31-character result — which is why the same password gives a different hash each time.',
+      'Choose a cost that takes roughly 100–300 ms on your server; 10–12 is common today. bcrypt only uses the first 72 bytes of a password, and the tool warns when input is longer.',
+    ],
+    faqs: [
+      {
+        q: 'Why is the hash different every time?',
+        a: 'A new random salt is generated for each hash. Verification reads the salt from the stored hash, so any of them will match the right password.',
+      },
+      {
+        q: 'Is bcrypt still recommended?',
+        a: 'Yes, it remains a solid choice. Argon2id is the newer recommendation for new systems; scrypt and PBKDF2 are also acceptable with strong settings.',
+      },
+    ],
+  },
+  {
+    slug: 'totp-generator',
+    category: 'developer-tools',
+    alsoIn: ['security-generators'],
+    name: 'TOTP / 2FA Code Generator',
+    icon: '⏱️',
+    shortDescription: 'Live 2FA codes from a secret key or otpauth link.',
+    description:
+      'Generate time-based one-time passwords (TOTP) like an authenticator app: enter a Base32 secret or an otpauth:// link and see the current 6- to 8-digit code with a countdown, plus the previous and next codes. Useful for testing 2FA and recovering from a backup secret.',
+    title: 'TOTP Generator – 2FA Authenticator Codes from a Secret Key',
+    metaDescription:
+      'Generate TOTP 2FA codes from a Base32 secret or otpauth:// link: SHA-1/256/512, 6–8 digits, 30/60 s, with countdown. Runs in your browser; nothing is stored.',
+    keywords: [
+      'totp generator',
+      '2fa code generator',
+      'authenticator online',
+      'totp code',
+      'google authenticator code',
+    ],
+    relatedTools: [
+      'bcrypt-generator',
+      'password-generator',
+      'qr-code-scanner',
+      'hash-generator',
+      'jwt-decoder',
+    ],
+    component: 'totp',
+    howTo: [
+      'Paste the secret key (letters A–Z and digits 2–7) or the full otpauth:// link from a QR code.',
+      'Check the algorithm, digits and period match the service (most use SHA-1, 6 digits, 30 s).',
+      'Use the current code before the countdown runs out.',
+    ],
+    about: [
+      'TOTP (RFC 6238) is the algorithm behind Google Authenticator, Microsoft Authenticator, 1Password and most 2FA apps. Both sides know a shared secret; every 30 seconds each computes an HMAC of the current time step and reduces it to a short code. Because the code depends only on the secret and the clock, this page produces the same codes as your app — verified against the RFC’s test vectors.',
+      'A QR code for 2FA contains an otpauth:// link with the secret and settings; scan it with the QR Code Scanner to read it. Treat the secret like a password: anyone who has it can generate your codes. This page keeps it in memory only and stores nothing.',
+    ],
+    faqs: [
+      {
+        q: 'Why doesn’t the code match my app?',
+        a: 'Most often the device clock is off — enable automatic time. Also check the algorithm, digits and period, and that the secret has no typos.',
+      },
+      {
+        q: 'Is it safe to type my 2FA secret into a website?',
+        a: 'Only into one you trust, because the secret is equivalent to the second factor. This page runs entirely in your browser and sends nothing, but for everyday logins keep using a dedicated authenticator app.',
       },
     ],
   },

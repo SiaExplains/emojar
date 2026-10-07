@@ -109,7 +109,19 @@ export type ToolComponentKey =
   | 'keyboard-tester'
   | 'screen-info'
   | 'dead-pixel'
-  | 'browser-info';
+  | 'browser-info'
+  | 'svg-optimizer'
+  | 'bcrypt'
+  | 'json-diff'
+  | 'url-parser'
+  | 'ua-parser'
+  | 'subnet-calculator'
+  | 'chmod-calculator'
+  | 'meta-tag-generator'
+  | 'robots-txt'
+  | 'http-status'
+  | 'code-to-image'
+  | 'totp';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

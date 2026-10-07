@@ -317,6 +317,46 @@ export const FAQ_GROUPS: FaqGroup[] = [
           },
         ],
       },
+      {
+        q: 'What bcrypt cost factor should I use?',
+        a: 'Pick the highest cost that keeps hashing around 100–300 ms on your server — usually 10 to 12 today. Each step doubles the time, which also doubles the work for anyone guessing passwords from a stolen database.',
+        links: [
+          {
+            href: '/online-tool/developer-tools/bcrypt-generator',
+            label: 'Bcrypt Hash Generator',
+          },
+        ],
+      },
+      {
+        q: 'Is it safe to enter a 2FA secret in the TOTP generator?',
+        a: 'The page calculates codes in your browser with Web Crypto and stores nothing, so the secret never leaves the tab. Still, the secret is as sensitive as a password: use the tool for testing and backup recovery, and a dedicated authenticator app for everyday logins.',
+        links: [
+          {
+            href: '/online-tool/developer-tools/totp-generator',
+            label: 'TOTP / 2FA Code Generator',
+          },
+        ],
+      },
+      {
+        q: 'What is the difference between CIDR notation and a subnet mask?',
+        a: 'They describe the same thing. /24 means the first 24 bits are the network, which written as a mask is 255.255.255.0. CIDR is shorter and also works for IPv6.',
+        links: [
+          {
+            href: '/online-tool/developer-tools/subnet-calculator',
+            label: 'Subnet Calculator',
+          },
+        ],
+      },
+      {
+        q: 'Why use JSON Diff instead of Text Diff for JSON?',
+        a: 'Text Diff compares lines, so reformatting or reordering keys shows up as changes. JSON Diff parses both documents and reports only real value changes, each with its path such as $.user.email.',
+        links: [
+          {
+            href: '/online-tool/developer-tools/json-diff',
+            label: 'JSON Diff',
+          },
+        ],
+      },
     ],
   },
   {

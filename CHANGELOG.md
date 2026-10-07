@@ -4,6 +4,16 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.2.1] — 2026-10-07
+
+### Changed
+
+- The About, Terms of Service and Privacy pages now describe Emojar as an
+  online-tools platform and state that files and text used with the tools are
+  processed in the browser and never uploaded.
+- Rewrote the README (setup, scripts, project structure, how to add a tool) and
+  updated the feature reference and backlog documents.
+
 ## [0.2.0] — 2026-10-07
 
 ### Added

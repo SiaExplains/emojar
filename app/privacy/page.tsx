@@ -26,7 +26,7 @@ export default function PrivacyPage() {
     <main className="mx-auto w-full max-w-3xl px-5 py-10">
       <h1 className="text-3xl font-semibold tracking-tight">Privacy Policy</h1>
       <p className="mt-2 text-sm text-gray-500">
-        Last updated: <time dateTime="2026-05-06">6 May 2026</time>
+        Last updated: <time dateTime="2026-10-07">7 October 2026</time>
       </p>
 
       <section className="mt-8 space-y-8 text-gray-800 leading-7">
@@ -68,8 +68,11 @@ export default function PrivacyPage() {
         <div>
           <h2 className="text-xl font-semibold">2. What We Collect</h2>
           <p className="mt-2">
-            Emojar is a read-only emoji reference tool. You do not create an
-            account or submit personal data directly. We may receive:
+            Emojar is an emoji reference and online-tools website. You do not
+            create an account or submit personal data directly. Files and text
+            you use with our online tools are processed entirely in your browser
+            — they are not uploaded to, stored on, or logged by our servers. We
+            may receive:
           </p>
           <ul className="list-disc pl-6 mt-2 space-y-2">
             <li>

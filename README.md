@@ -1,37 +1,119 @@
-# Emojar — MVP Starter
+# Emojar
 
-A minimal Next.js 14 + TypeScript + Tailwind project to launch **Emojar.com**.
+Free, privacy-first **online tools** that run entirely in the browser — plus
+3,790 emojis to search and copy, 18 emoji games and 8 emoji tools.
+Live at [emojar.com](https://emojar.com).
 
-## Features
+- **Online tools** (`/online-tool`) — 113 tools in 9 categories: image, PDF,
+  developer, text, color, calculators, unit converters, security & generators,
+  and date & time. Files and text are processed on the user's device; there are
+  no upload APIs and nothing is stored.
+- **Emoji** (`/emoji`, `/emoji/[slug]`, `/categories`, `/games`,
+  `/emoji-tools`) — search, browse and copy emojis, holiday collections, games
+  and emoji-specific tools.
+- **Blog** (`/blog`) — MDX posts.
 
-- ⚡️ Client-side fuzzy search (Fuse.js) on a local emoji JSON dataset
-- 📚 Categories & emoji pages with static routes
-- 📋 One-click copy to clipboard + toast
-- 🌙 Dark-ready styles (Tailwind) + clean UI
-- 🔎 SEO metadata, robots, sitemap route
-- 🍪 Basic consent banner (replace with a proper CMP for production)
-- 🪧 AdSense placeholders (replace with your publisher id and ad slots)
-- 📱 PWA manifest
+## Stack
 
-## Quickstart
+Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 3 · Fuse.js ·
+MDX · Vitest · ESLint + Prettier · deployed on Vercel.
+
+Browser-side libraries used by the tools (each loaded only on the tool that
+needs it): `pdf-lib`, `pdfjs-dist`, `qrcode`, `jsqr`, `jsbarcode`, `yaml`,
+`marked`, `turndown`, `dompurify`, `exifr`, `terser`, `prettier/standalone`.
+
+## Getting started
+
+Requires Node.js 20+ and npm.
 
 ```bash
-pnpm i # or npm i / yarn
-pnpm dev
+npm ci
+npx next dev
 ```
 
-Then visit http://localhost:3000
+Then open http://localhost:3000.
 
-## Production
+> `npm run dev` uses Turbopack, which currently fails to start because the MDX
+> remark plugin options can't be serialised for Turbopack on Next 15. Use
+> `npx next dev` (webpack) until that is fixed.
 
-```bash
-pnpm build && pnpm start
+## Scripts
+
+| Command            | What it does                           |
+| ------------------ | -------------------------------------- |
+| `npx next dev`     | Development server (webpack)           |
+| `npm run build`    | Production build (also runs ESLint)    |
+| `npm start`        | Serve the production build             |
+| `npm run lint`     | ESLint (must be clean, zero warnings)  |
+| `npx tsc --noEmit` | Type check                             |
+| `npm test`         | Vitest unit tests (`lib/**/*.test.ts`) |
+| `npm run format`   | Prettier                               |
+
+## Project structure
+
+```
+app/
+  page.tsx                       Homepage (tools-first)
+  online-tool/                   Online tools hub, category, tool and variant routes
+  emoji/page.tsx                 Emoji search hub (former homepage)
+  emoji/[slug]/                  3,790 emoji detail pages
+  games/, emoji-*/, blog/        Emoji games, emoji tools, blog
+  sitemap.ts, robots.txt/, llms.txt/, manifest.ts, api/og/
+components/
+  online-tools/                  ToolPage, ToolCard, ToolSearch, shared UI, tool components
+  EmojiHub.tsx, MainMenu/, …     Emoji UI and site chrome
+lib/
+  online-tools/                  Tool registry, categories, SEO helpers
+    tools/                       One data file per category (copy, FAQ, metadata)
+    engines/                     Pure, unit-tested logic (text, data formats, units, …)
+    image/, pdf/                 Browser image pipeline (Web Worker) and PDF helpers
+data/                            Emoji dataset and static page content
+public/                          Logo, favicons and app icons
 ```
 
-## Where to customize
+## Adding an online tool
 
-- `public/ads.txt` → put your AdSense publisher ID
-- `components/AdSlot.tsx` → replace slot id with your own
-- `app/layout.tsx` → AdSense `data-ad-client` and SEO
-- `data/emojis.json` → extend this with the full dataset
-- `components/ConsentBanner.tsx` → replace with a GDPR-compliant CMP before going live in the EU
+The registry in `lib/online-tools/` is the single source of truth: routes,
+titles, meta descriptions, canonical URLs, JSON-LD, related-tool links, the
+sitemap, search and `llms.txt` are all generated from it.
+
+1. Add an entry to the right file in `lib/online-tools/tools/` (`slug`,
+   `name`, `title`, `metaDescription`, `description`, `howTo`, `about`, `faqs`,
+   `relatedTools`, `component`, optional `config` and `variants`).
+2. If an existing generic component fits, point `component` at it and pass
+   `config`:
+   - `text-transform` + a transform id from `engines/transforms.ts`
+   - `form-calculator` + a calculator id from `engines/calculators.ts`
+   - `unit-converter` + a quantity from `engines/units.ts`
+   - `color-convert`, `hash-generator`, `image-converter`, `pdf-pages`, …
+3. Otherwise add a component in `components/online-tools/tools/` and register
+   its key in `components/online-tools/ToolRenderer.tsx` and
+   `lib/online-tools/types.ts`.
+4. Put the logic in `lib/online-tools/engines/` and cover it with tests;
+   `lib/online-tools/registry.test.ts` checks slugs, titles, related links and
+   engine references for every tool.
+
+Rules for tools: process data in the browser, never upload or store user
+files, show friendly error messages (`ToolInputError`), and release object
+URLs.
+
+## SEO
+
+Every tool, category and variant page gets a unique title and description, a
+canonical URL, Open Graph/Twitter tags with an image from `/api/og?type=tool`,
+and `WebApplication`, `FAQPage`, `HowTo` and `BreadcrumbList` JSON-LD. Renamed
+routes must get a permanent redirect in `next.config.ts`.
+
+## Docs
+
+- `CHANGELOG.md` — release notes
+- `docs/CURRENT_FEATURES.md` — full feature reference
+- `docs/DESIRED_FEATURES.md` — backlog
+- `docs/SEO-Improvements-21-07-2026.md`, `docs/adsense-tasks.md` — SEO and
+  AdSense work
+
+## Monetization notes
+
+- `public/ads.txt` holds the AdSense publisher ID.
+- `components/AdSlot.tsx` contains placeholder ad slot IDs — replace them only
+  after AdSense approval.

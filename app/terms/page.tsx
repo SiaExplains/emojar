@@ -46,14 +46,15 @@ export default function TermsPage() {
         </p>
         <ul className="list-disc pl-6 space-y-2 leading-7">
           <li>
-            <strong>Online tools</strong> — 110+ utilities at{' '}
+            <strong>Online tools</strong> — 140+ utilities at{' '}
             <Link href="/online-tool" className="underline">
               /online-tool
             </Link>
             , including image, PDF, developer, text, and color tools,
-            calculators, unit converters, generators, and date &amp; time tools.
-            These tools process files and text locally in your browser; the
-            content you use with them is never sent to our servers.
+            calculators, unit converters, generators, date &amp; time tools,
+            audio and video converters, and webcam and microphone tests. These
+            tools process files and text locally in your browser; the content
+            you use with them is never sent to our servers.
           </li>
           <li>
             <strong>Emoji search &amp; copy</strong> — search, browse, and

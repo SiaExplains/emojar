@@ -1346,6 +1346,337 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
   },
 };
 
+const ACTIVITY_CHOICES = [
+  { value: '1.2', label: 'Sedentary (little or no exercise)' },
+  { value: '1.375', label: 'Light (1–3 days/week)' },
+  { value: '1.55', label: 'Moderate (3–5 days/week)' },
+  { value: '1.725', label: 'Active (6–7 days/week)' },
+  { value: '1.9', label: 'Very active (physical job + training)' },
+];
+
+function gestation(days: number) {
+  return `${Math.floor(days / 7)} weeks ${days % 7} day${days % 7 === 1 ? '' : 's'}`;
+}
+
+Object.assign(CALCULATORS, {
+  calorie: {
+    fields: [
+      {
+        id: 'sex',
+        label: 'Sex',
+        type: 'select',
+        default: 'female',
+        choices: [
+          { value: 'female', label: 'Female' },
+          { value: 'male', label: 'Male' },
+        ],
+      },
+      {
+        id: 'age',
+        label: 'Age',
+        type: 'number',
+        default: '32',
+        min: 15,
+        suffix: 'years',
+      },
+      {
+        id: 'weight',
+        label: 'Weight',
+        type: 'number',
+        default: '70',
+        step: 'any',
+        suffix: 'kg',
+      },
+      {
+        id: 'height',
+        label: 'Height',
+        type: 'number',
+        default: '170',
+        step: 'any',
+        suffix: 'cm',
+      },
+      {
+        id: 'activity',
+        label: 'Activity level',
+        type: 'select',
+        default: '1.375',
+        choices: ACTIVITY_CHOICES,
+      },
+      {
+        id: 'goal',
+        label: 'Goal',
+        type: 'select',
+        default: '-0.5',
+        choices: [
+          { value: '-1', label: 'Lose 1 kg per week (aggressive)' },
+          { value: '-0.5', label: 'Lose 0.5 kg per week' },
+          { value: '-0.25', label: 'Lose 0.25 kg per week' },
+          { value: '0', label: 'Maintain weight' },
+          { value: '0.25', label: 'Gain 0.25 kg per week' },
+          { value: '0.5', label: 'Gain 0.5 kg per week' },
+        ],
+      },
+      {
+        id: 'macros',
+        label: 'Macro split',
+        type: 'select',
+        default: 'balanced',
+        choices: [
+          {
+            value: 'balanced',
+            label: 'Balanced (30% protein, 40% carbs, 30% fat)',
+          },
+          { value: 'low-carb', label: 'Lower carb (35 / 25 / 40)' },
+          { value: 'high-carb', label: 'Higher carb (20 / 55 / 25)' },
+        ],
+      },
+    ],
+    compute: (v: Record<string, string>): CalcOutput => {
+      const age = num(v, 'age');
+      const w = num(v, 'weight');
+      const h = num(v, 'height');
+      if (!(age > 0) || !(w > 0) || !(h > 0))
+        return fail('Please enter a positive age, weight and height.');
+      const bmr = 10 * w + 6.25 * h - 5 * age + (v.sex === 'male' ? 5 : -161);
+      const tdee = bmr * Number(v.activity || 1.375);
+      // 1 kg of body fat ≈ 7,700 kcal → per day over a week.
+      const goal = Number(v.goal || 0);
+      const raw = tdee + (goal * 7700) / 7;
+      const floor = v.sex === 'male' ? 1500 : 1200;
+      const target = Math.max(raw, goal < 0 ? floor : 0);
+      const split =
+        v.macros === 'low-carb'
+          ? [0.35, 0.25, 0.4]
+          : v.macros === 'high-carb'
+            ? [0.2, 0.55, 0.25]
+            : [0.3, 0.4, 0.3];
+      const kcal = (x: number) =>
+        `${Math.round(x).toLocaleString('en-US')} kcal/day`;
+      return {
+        ok: true,
+        results: [
+          { label: 'Daily calorie target', value: kcal(target), primary: true },
+          { label: 'Maintenance (TDEE)', value: kcal(tdee) },
+          { label: 'Basal metabolic rate (BMR)', value: kcal(bmr) },
+          {
+            label: 'Protein',
+            value: `${Math.round((target * split[0]) / 4)} g/day`,
+          },
+          {
+            label: 'Carbohydrates',
+            value: `${Math.round((target * split[1]) / 4)} g/day`,
+          },
+          {
+            label: 'Fat',
+            value: `${Math.round((target * split[2]) / 9)} g/day`,
+          },
+        ],
+        note:
+          (raw < target
+            ? `The target was raised to ${floor} kcal/day, a common minimum without medical supervision. `
+            : '') +
+          'Estimates use the Mifflin-St Jeor equation and ~7,700 kcal per kg of body fat. They are not medical advice.',
+      };
+    },
+  },
+
+  'due-date': {
+    fields: [
+      {
+        id: 'method',
+        label: 'Calculate from',
+        type: 'select',
+        default: 'lmp',
+        choices: [
+          { value: 'lmp', label: 'First day of last period' },
+          { value: 'conception', label: 'Conception date' },
+          { value: 'ivf3', label: 'IVF transfer (3-day embryo)' },
+          { value: 'ivf5', label: 'IVF transfer (5-day embryo)' },
+        ],
+      },
+      {
+        id: 'date',
+        label: 'Date',
+        type: 'date',
+        default: (n: Date) => toDateInput(addDays(todayUtc(n), -70)),
+      },
+      {
+        id: 'cycle',
+        label: 'Average cycle length',
+        type: 'number',
+        default: '28',
+        min: 20,
+        suffix: 'days',
+        showIf: { field: 'method', values: ['lmp'] },
+      },
+      {
+        id: 'today',
+        label: 'Today',
+        type: 'date',
+        default: today,
+        help: 'Used for “how far along” — change it to check another date.',
+      },
+    ],
+    compute: (v: Record<string, string>): CalcOutput => {
+      const d = needDates(v, 'date', 'today');
+      if (!d) return fail('Please enter valid dates.');
+      const [start, now] = d;
+      const cycle = Math.round(num(v, 'cycle') || 28);
+      if (v.method === 'lmp' && (cycle < 20 || cycle > 45))
+        return fail('Cycle length should be between 20 and 45 days.');
+      // Days from the method's reference date to the estimated due date.
+      const offsets: Record<string, number> = {
+        lmp: 280 + (cycle - 28),
+        conception: 266,
+        ivf3: 263,
+        ivf5: 261,
+      };
+      const due = addDays(start, offsets[v.method ?? 'lmp'] ?? 280);
+      // Gestational age is counted from an equivalent LMP (due date − 280 days).
+      const lmpEq = addDays(due, -280);
+      const ga = diffDays(lmpEq, now);
+      if (ga < 0)
+        return fail('That date is in the future relative to “today”.');
+      if (ga > 44 * 7)
+        return fail('That date is more than 44 weeks ago — please check it.');
+      const trimester =
+        ga < 14 * 7
+          ? 'First trimester'
+          : ga < 28 * 7
+            ? 'Second trimester'
+            : 'Third trimester';
+      const milestone = (w: number) => formatLongDate(addDays(lmpEq, w * 7));
+      return {
+        ok: true,
+        results: [
+          {
+            label: 'Estimated due date',
+            value: formatLongDate(due),
+            primary: true,
+          },
+          {
+            label: 'How far along',
+            value: `${gestation(ga)} (${trimester.toLowerCase()})`,
+          },
+          {
+            label: 'Days until due date',
+            value: diffDays(now, due).toLocaleString('en-US'),
+          },
+          {
+            label: 'Estimated conception',
+            value: formatLongDate(addDays(lmpEq, 14)),
+          },
+        ],
+        table: {
+          caption: 'Key milestones',
+          columns: ['Milestone', 'Week', 'Date'],
+          rows: [
+            [
+              'End of first trimester',
+              '13w 6d',
+              formatLongDate(addDays(lmpEq, 13 * 7 + 6)),
+            ],
+            [
+              'Anatomy scan window',
+              '18–22',
+              `${milestone(18)} – ${milestone(22)}`,
+            ],
+            ['Third trimester begins', '28', milestone(28)],
+            ['Full term', '39', milestone(39)],
+            ['Due date', '40', formatLongDate(due)],
+          ],
+        },
+        note: 'Only about 1 in 20 babies arrives on the due date. This is an estimate based on standard pregnancy dating, not medical advice — your care provider may adjust it after an ultrasound.',
+      };
+    },
+  },
+
+  ovulation: {
+    fields: [
+      {
+        id: 'lmp',
+        label: 'First day of last period',
+        type: 'date',
+        default: (n: Date) => toDateInput(addDays(todayUtc(n), -10)),
+      },
+      {
+        id: 'cycle',
+        label: 'Average cycle length',
+        type: 'number',
+        default: '28',
+        min: 20,
+        suffix: 'days',
+      },
+      {
+        id: 'luteal',
+        label: 'Luteal phase length',
+        type: 'number',
+        default: '14',
+        min: 9,
+        suffix: 'days',
+        help: 'Days from ovulation to your next period. 14 is typical; leave it unless you track it.',
+      },
+    ],
+    compute: (v: Record<string, string>): CalcOutput => {
+      const d = needDates(v, 'lmp');
+      const cycle = Math.round(num(v, 'cycle'));
+      const luteal = Math.round(num(v, 'luteal') || 14);
+      if (!d) return fail('Please enter a valid date.');
+      if (!(cycle >= 20 && cycle <= 45))
+        return fail('Cycle length should be between 20 and 45 days.');
+      if (!(luteal >= 9 && luteal <= 18))
+        return fail('Luteal phase length should be between 9 and 18 days.');
+      if (luteal >= cycle - 5)
+        return fail(
+          'The luteal phase must be at least 6 days shorter than the cycle.',
+        );
+      const rows: string[][] = [];
+      for (let i = 0; i < 3; i++) {
+        const start = addDays(d[0], i * cycle);
+        const ov = addDays(start, cycle - luteal);
+        rows.push([
+          formatLongDate(start),
+          `${formatLongDate(addDays(ov, -5))} – ${formatLongDate(addDays(ov, 1))}`,
+          formatLongDate(ov),
+        ]);
+      }
+      const ov = addDays(d[0], cycle - luteal);
+      return {
+        ok: true,
+        results: [
+          {
+            label: 'Estimated ovulation',
+            value: formatLongDate(ov),
+            primary: true,
+          },
+          {
+            label: 'Most fertile days',
+            value: `${formatLongDate(addDays(ov, -2))} – ${formatLongDate(ov)}`,
+          },
+          {
+            label: 'Fertile window',
+            value: `${formatLongDate(addDays(ov, -5))} – ${formatLongDate(addDays(ov, 1))}`,
+          },
+          {
+            label: 'Next period expected',
+            value: formatLongDate(addDays(d[0], cycle)),
+          },
+          {
+            label: 'Pregnancy test from',
+            value: formatLongDate(addDays(d[0], cycle + 1)),
+          },
+        ],
+        table: {
+          caption: 'Next three cycles',
+          columns: ['Period starts', 'Fertile window', 'Ovulation'],
+          rows,
+        },
+        note: 'Calendar estimates assume regular cycles. Ovulation can shift by several days from cycle to cycle, so this is not a form of contraception and not medical advice.',
+      };
+    },
+  },
+} satisfies Record<string, CalculatorDefinition>);
+
 export function initialValues(
   def: CalculatorDefinition,
   now = new Date(),

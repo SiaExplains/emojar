@@ -62,7 +62,13 @@ export function outputName(original: string, ext: string, suffix = ''): string {
 
 export type ResizeSpec =
   | { mode: 'percent'; percent: number }
-  | { mode: 'pixels'; width?: number; height?: number; keepAspect: boolean };
+  | {
+      mode: 'pixels';
+      width?: number;
+      height?: number;
+      keepAspect: boolean;
+      onlyShrink?: boolean;
+    };
 
 export function computeSize(
   w: number,
@@ -76,7 +82,10 @@ export function computeSize(
       height: Math.max(1, Math.round(h * f)),
     };
   }
-  const { width, height, keepAspect } = spec;
+  const { width, height, keepAspect, onlyShrink } = spec;
+  // "Max width" style limits never enlarge an image that already fits.
+  if (onlyShrink && (!width || w <= width) && (!height || h <= height))
+    return { width: w, height: h };
   if (keepAspect) {
     if (width && height) {
       const f = Math.min(width / w, height / h);

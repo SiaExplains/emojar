@@ -1,0 +1,92 @@
+---
+slug: css-gradient-tips-avoid-muddy-colors
+tool: gradient-generator
+title: 'CSS Gradient Checklist: Angles, Stops and No Muddy Middles'
+description: Nine practical tips for better CSS gradients, from fixing the gray dead zone between complementary colors to hard stops, angles and readable text.
+tags: [CSS, Design, Checklist]
+---
+
+A good CSS gradient comes down to three things: choosing colors that blend cleanly (neighbors on the color wheel, or a middle stop between opposites), setting a deliberate angle, and keeping any text on top readable at both ends. Most "ugly gradient" problems are a muddy gray band in the middle, which you fix with one extra color stop.
+
+Here's a checklist to run through every time you build one.
+
+## 1. Watch out for the gray dead zone
+
+Browsers blend gradient colors in RGB by default, moving each channel in a straight line. When the two colors are opposites, their channels cancel out halfway. Blue `#0000ff` to yellow `#ffff00` passes through `rgb(128, 128, 128)` exactly in the middle: a flat gray.
+
+**Fix:** add a stop in between with a saturated color that sits between them on the color wheel. For blue to yellow, a green or a pink-red middle stop at 50% keeps the gradient vivid all the way across. Or choose colors closer together.
+
+## 2. Neighbors blend best
+
+Colors 20–60° apart on the color wheel (indigo to violet, orange to pink, teal to blue) produce smooth, rich gradients with no dead zone. The default in the [CSS Gradient Generator](/online-tool/color-tools/gradient-generator), indigo `#6366f1` to pink `#ec4899`, is a good example. For ideas, the Analogous option in the [Color Palette Generator](/online-tool/color-tools/color-palette-generator) hands you a ready set of neighbors.
+
+## 3. Know what the angle means
+
+In `linear-gradient()`, the angle is the direction the gradient travels toward:
+
+| Angle  | Direction               |
+| ------ | ----------------------- |
+| 0deg   | Bottom → top            |
+| 90deg  | Left → right            |
+| 135deg | Top-left → bottom-right |
+| 180deg | Top → bottom            |
+| 270deg | Right → left            |
+
+135° is a popular default because diagonal gradients feel more dynamic than horizontal or vertical ones. The **Angle** slider goes from 0° to 360°, and the preview updates as you drag.
+
+## 4. Use stop positions to control the blend
+
+Each color stop has a position from 0% to 100%. Moving stops closer together makes the transition sharper; spreading them out makes it gentler. If you want the first color to dominate, move the second stop toward 100% and add a copy of the first color at around 40%.
+
+## 5. Create hard edges with matching positions
+
+Two stops at the same position create a sharp line instead of a blend. For example, four stops at 0%, 50%, 50% and 100%, where the first two share one color and the last two share another, give a crisp split background with no blend. That's how flat two-tone headers and simple stripes are done in pure CSS.
+
+## 6. Keep the fallback line
+
+The generated CSS has two lines:
+
+```css
+background: #6366f1;
+background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+```
+
+The first line is a solid fallback using your first color. Every current browser supports gradients, but the fallback still helps in edge cases such as some HTML email clients, and it's what shows if the second line is ever mistyped. Keep both.
+
+## 7. Check text contrast at both ends
+
+Text on a gradient sits on many colors at once. White text might be readable on the indigo end and unreadable on a pale end. Test your text color against the lightest and the darkest stop in the [Contrast Checker](/online-tool/color-tools/contrast-checker); both must pass.
+
+## 8. Radial gradients start from the center
+
+**Radial** mode produces `radial-gradient(circle, ...)`: the first stop is at the center and the last at the edge. It's great for spotlights and soft glows behind a product image. To move the center or use an ellipse, edit the CSS after copying, for example `radial-gradient(circle at top left, ...)`.
+
+## 9. Subtle beats loud for large areas
+
+Full-page backgrounds look best with low-contrast gradients: two tints of the same hue or neighbors that differ only slightly in lightness. Save the saturated, high-contrast blends for buttons, badges and hero sections. Very subtle gradients across very large areas can show faint visible steps ("banding") on some screens; a slightly stronger color difference usually hides it.
+
+## How to build a gradient step by step
+
+1. Choose **Type**: Linear or Radial.
+2. For linear, set the **Angle** with the slider.
+3. Under **Color stops**, pick each color with its color input and drag its position slider. Click **+ Add stop** for more colors (up to 6) or **✕** to remove one (minimum 2).
+4. Check the live preview at the top.
+5. Click **Copy** next to **CSS** and paste it into your stylesheet.
+
+The gradient is generated by your browser, both in the preview and on your site, so it scales to any size without image files.
+
+## FAQ
+
+### Do the stops have to be in order?
+
+No. The tool sorts stops by position when it writes the CSS, so you can add a stop and drag it anywhere.
+
+### Can I use transparency in a gradient?
+
+The color pickers here produce solid colors. To fade into transparency, edit the copied CSS and replace a color with an `rgb()` value that has alpha, such as `rgb(99 102 241 / 0%)`.
+
+### Can I animate a CSS gradient?
+
+Not directly with transitions in most browsers. Common workarounds are animating `background-position` on an oversized gradient or fading a second layer's opacity.
+
+Build your next background in the [CSS Gradient Generator](/online-tool/color-tools/gradient-generator) and copy the code.

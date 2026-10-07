@@ -7,7 +7,9 @@ export type CategorySlug =
   | 'calculators'
   | 'unit-converters'
   | 'security-generators'
-  | 'date-time-tools';
+  | 'date-time-tools'
+  | 'audio-video-tools'
+  | 'device-tests';
 
 export type FAQItem = { q: string; a: string };
 
@@ -61,7 +63,31 @@ export type ToolComponentKey =
   | 'pdf-compress'
   | 'pdf-to-image'
   | 'pdf-to-text'
-  | 'pdf-metadata';
+  | 'pdf-metadata'
+  | 'heic-to-jpg'
+  | 'image-to-text'
+  | 'compress-to-size'
+  | 'meme-generator'
+  | 'pdf-sign'
+  | 'pdf-page-numbers'
+  | 'pdf-watermark'
+  | 'pdf-protect'
+  | 'fancy-text'
+  | 'text-to-speech'
+  | 'scientific-calculator'
+  | 'gpa-calculator'
+  | 'grade-calculator'
+  | 'number-to-words'
+  | 'roman-numerals'
+  | 'wheel-spinner'
+  | 'dice-roller'
+  | 'coin-flip'
+  | 'stopwatch'
+  | 'timer'
+  | 'mp4-to-mp3'
+  | 'video-to-gif'
+  | 'webcam-test'
+  | 'microphone-test';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

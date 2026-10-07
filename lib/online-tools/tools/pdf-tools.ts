@@ -164,7 +164,7 @@ export const PDF_TOOLS: ToolDefinition[] = [
     howTo: [
       'Choose a PDF file.',
       'Enter the pages to rotate (or leave “all”) and choose the angle.',
-      'Click “Rotate” and download the PDF.',
+      'Click “Rotate pages” and download the PDF.',
     ],
     about: [
       'PDF rotation changes each page’s rotation attribute, so text and images keep their full quality. The change is saved permanently in the downloaded file.',
@@ -219,7 +219,7 @@ export const PDF_TOOLS: ToolDefinition[] = [
     icon: '🔀',
     shortDescription: 'Change the order of pages in a PDF.',
     description:
-      'Rearrange the pages of a PDF with page thumbnails and move buttons, or type a new order. Remove pages you do not need and download the result — all in your browser.',
+      'Rearrange the pages of a PDF with page thumbnails and move buttons. Remove pages you do not need and download the result — all in your browser.',
     title: 'Reorder PDF Pages – Rearrange & Delete PDF Pages Online',
     metaDescription:
       'Reorder PDF pages online with thumbnails. Move, delete and rearrange pages, then download the new PDF. Free, private, processed in your browser.',
@@ -412,6 +412,237 @@ export const PDF_TOOLS: ToolDefinition[] = [
       {
         q: 'Can I remove the author name?',
         a: 'Yes — clear the Author field and download the updated PDF.',
+      },
+    ],
+  },
+
+  {
+    slug: 'sign-pdf',
+    category: 'pdf-tools',
+    name: 'Sign PDF',
+    icon: '✍️',
+    shortDescription: 'Draw or type a signature and place it on a PDF.',
+    description:
+      'Sign a PDF by drawing your signature with a mouse or finger, or by typing your name in a handwriting font, then click where it should go. The signed PDF is created in your browser — the document is never uploaded.',
+    title: 'Sign PDF Online – Draw or Type Your Signature, Free & Private',
+    metaDescription:
+      'Sign PDF documents online for free. Draw or type your signature, place it on any page, and download — the PDF is never uploaded to a server.',
+    keywords: [
+      'sign pdf',
+      'sign pdf online',
+      'add signature to pdf',
+      'e-sign pdf free',
+      'pdf signature',
+    ],
+    relatedTools: [
+      'add-page-numbers-to-pdf',
+      'watermark-pdf',
+      'merge-pdf',
+      'protect-pdf',
+      'compress-pdf',
+    ],
+    component: 'pdf-sign',
+    handlesFiles: true,
+    popular: true,
+    limitation:
+      'This adds a visible signature image (an electronic signature). It does not add a certificate-based digital signature, which some legal processes require.',
+    howTo: [
+      'Choose the PDF you need to sign.',
+      'Draw your signature, or type your name and pick a style.',
+      'Pick the page, click on the preview where the signature should go, adjust its size, and download the signed PDF.',
+    ],
+    about: [
+      'A drawn or typed signature placed on a PDF is a simple electronic signature. It is accepted for many everyday documents such as rental forms, permission slips and invoices.',
+      'Contracts that require an advanced or qualified electronic signature (for example under the EU eIDAS regulation) need a certificate-based signing service instead.',
+    ],
+    faqs: [
+      {
+        q: 'Can I add the date next to my signature?',
+        a: 'Yes — tick “Add today’s date” and today’s date is placed under the signature.',
+      },
+      {
+        q: 'Can I sign several pages?',
+        a: 'Place the signature, then switch pages and place it again before downloading; every placement is kept.',
+      },
+    ],
+  },
+  {
+    slug: 'add-page-numbers-to-pdf',
+    category: 'pdf-tools',
+    name: 'Add Page Numbers to PDF',
+    icon: '🔢',
+    shortDescription: 'Number the pages of a PDF.',
+    description:
+      'Add page numbers to a PDF in the position and format you choose — “1”, “Page 1”, “1 of 10” or “Page 1 of 10” — and skip the cover page if you like. Numbering happens in your browser.',
+    title: 'Add Page Numbers to PDF Online – Free, No Upload',
+    metaDescription:
+      'Add page numbers to any PDF online. Choose position, format (Page 1 of 10), font size and start number. Free and processed in your browser.',
+    keywords: [
+      'add page numbers to pdf',
+      'number pdf pages',
+      'pdf page numbering',
+      'insert page numbers pdf',
+    ],
+    relatedTools: [
+      'merge-pdf',
+      'watermark-pdf',
+      'sign-pdf',
+      'reorder-pdf-pages',
+      'split-pdf',
+    ],
+    component: 'pdf-page-numbers',
+    handlesFiles: true,
+    howTo: [
+      'Choose a PDF.',
+      'Pick the position, number format, font size and the number to start from.',
+      'Click “Add page numbers” and download the PDF.',
+    ],
+    about: [
+      'Page numbers are drawn onto each page as text in Helvetica, so they print and display everywhere. Rotated pages are handled so the numbers stay upright.',
+      'Use “Skip first page” for documents with a cover; numbering then starts on page 2 with the start number you choose.',
+    ],
+    faqs: [
+      {
+        q: 'Can I number only some pages?',
+        a: 'You can skip the first page. To number a section only, extract those pages, number them and merge the PDF back together.',
+      },
+    ],
+  },
+  {
+    slug: 'watermark-pdf',
+    category: 'pdf-tools',
+    name: 'Watermark PDF',
+    icon: '💧',
+    shortDescription: 'Stamp text like CONFIDENTIAL or DRAFT on a PDF.',
+    description:
+      'Add a text watermark such as “CONFIDENTIAL”, “DRAFT” or your company name across every page of a PDF, with your choice of size, colour, opacity and angle. Processed locally in your browser.',
+    title: 'Watermark PDF Online – Add CONFIDENTIAL or DRAFT Text Free',
+    metaDescription:
+      'Add a text watermark to every page of a PDF online. Set text, colour, opacity, size and rotation. Free and private — your PDF is never uploaded.',
+    keywords: [
+      'watermark pdf',
+      'add watermark to pdf',
+      'pdf watermark online',
+      'confidential watermark pdf',
+      'draft watermark',
+    ],
+    relatedTools: [
+      'add-page-numbers-to-pdf',
+      'protect-pdf',
+      'sign-pdf',
+      'compress-pdf',
+      'merge-pdf',
+    ],
+    component: 'pdf-watermark',
+    handlesFiles: true,
+    howTo: [
+      'Choose a PDF.',
+      'Type the watermark text and adjust size, colour, opacity and angle (diagonal by default).',
+      'Click “Add watermark” and download the PDF.',
+    ],
+    about: [
+      'A watermark discourages copying and makes the status of a document obvious. It is drawn as semi-transparent text on top of each page.',
+      'The watermark font covers Latin-script text, including accented letters such as é, ü and ñ. Cyrillic, Greek, Asian scripts and emoji are not supported.',
+      'A watermark is not tamper-proof: anyone with a PDF editor can remove it. Combine it with password protection for sensitive documents.',
+    ],
+    faqs: [
+      {
+        q: 'Will the text under the watermark still be selectable?',
+        a: 'Yes. The watermark is added on top; the original text layer is unchanged.',
+      },
+    ],
+  },
+  {
+    slug: 'protect-pdf',
+    category: 'pdf-tools',
+    name: 'Protect PDF',
+    icon: '🔒',
+    shortDescription: 'Add a password to a PDF (AES-256).',
+    description:
+      'Password-protect a PDF with AES-256 encryption so it can only be opened with your password. Optionally block printing and copying. Encryption happens in your browser using qpdf — the file and the password never leave your device.',
+    title: 'Protect PDF With Password – AES-256 Encryption Online, Free',
+    metaDescription:
+      'Add a password to a PDF online with AES-256 encryption. Optionally restrict printing and copying. Your PDF and password never leave your device.',
+    keywords: [
+      'protect pdf',
+      'password protect pdf',
+      'encrypt pdf',
+      'lock pdf',
+      'add password to pdf',
+    ],
+    relatedTools: [
+      'unlock-pdf',
+      'watermark-pdf',
+      'sign-pdf',
+      'compress-pdf',
+      'password-generator',
+    ],
+    component: 'pdf-protect',
+    config: { mode: 'protect' },
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose a PDF.',
+      'Enter a password (twice) and choose whether to allow printing and copying.',
+      'Click “Protect PDF” and download the encrypted file.',
+    ],
+    about: [
+      'The PDF is encrypted with AES-256, the strongest standard encryption in the PDF specification, using qpdf compiled to WebAssembly. Without the password the content cannot be read.',
+      'There is no way to recover a forgotten password — keep a copy of the unprotected original or store the password in a password manager.',
+    ],
+    faqs: [
+      {
+        q: 'How strong should the password be?',
+        a: 'Use at least 12 characters or a 4–5 word passphrase. Short passwords can be guessed by offline cracking tools.',
+      },
+      {
+        q: 'Are printing and copying restrictions secure?',
+        a: 'They are honoured by mainstream PDF readers but are not encryption — some tools ignore them. Only the open password truly protects the content.',
+      },
+    ],
+  },
+  {
+    slug: 'unlock-pdf',
+    category: 'pdf-tools',
+    name: 'Unlock PDF',
+    icon: '🔓',
+    shortDescription: 'Remove the password from a PDF you can open.',
+    description:
+      'Remove the password and restrictions from a PDF you have the password for, so you don’t have to type it every time. Decryption runs locally in your browser.',
+    title: 'Unlock PDF – Remove PDF Password Online (With Your Password)',
+    metaDescription:
+      'Remove the password from a PDF you are allowed to open. Enter the password once and download an unlocked copy. Free and processed in your browser.',
+    keywords: [
+      'unlock pdf',
+      'remove pdf password',
+      'decrypt pdf',
+      'pdf password remover',
+    ],
+    relatedTools: [
+      'protect-pdf',
+      'merge-pdf',
+      'compress-pdf',
+      'pdf-to-text',
+      'split-pdf',
+    ],
+    component: 'pdf-protect',
+    config: { mode: 'unlock' },
+    handlesFiles: true,
+    limitation:
+      'You need the PDF’s password. This tool does not crack or guess passwords. Only unlock documents you own or are authorised to modify.',
+    howTo: [
+      'Choose the password-protected PDF.',
+      'Enter its password.',
+      'Click “Unlock PDF” and download the copy without a password.',
+    ],
+    about: [
+      'Bank statements, payslips and tax documents are often password-protected. Once you have the password, an unlocked copy is easier to archive, merge or print.',
+      'PDFs with only printing/copying restrictions (an owner password) can usually be unlocked without entering anything.',
+    ],
+    faqs: [
+      {
+        q: 'I forgot the password — can you unlock it?',
+        a: 'No. The tool only removes a password you provide. Contact whoever sent the document for the password.',
       },
     ],
   },

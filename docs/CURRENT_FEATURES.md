@@ -41,10 +41,13 @@ homepage and main navigation lead with the tools.
 
 | Route | Description |
 |---|---|
-| `/online-tool` | Hub: search, popular tools, all 9 categories with every tool, FAQ |
+| `/online-tool` | Hub: search, popular tools, all 11 categories with every tool, FAQ |
 | `/online-tool/[category]` | Category page: intro, search, tool grid, popular conversions, other categories |
-| `/online-tool/[category]/[tool]` | Tool page (113 tools) |
+| `/online-tool/[category]/[tool]` | Tool page (144 tools) |
 | `/online-tool/image-tools/image-converter/[pair]-converter` | 11 conversion landing pages |
+| `/online-tool/image-tools/compress-image-to-size/compress-image-to-[20,50,100,200]kb` | 4 exact-size landing pages |
+| `/blog/[slug]` | Tool guides from `content/guides/*.md` (one per tool + launch post); 404 until their publish date |
+| `/faq` | FAQ grouped by category, `FAQPage` JSON-LD, linked from the footer |
 
 Permanent redirects: `/online-tool/image-convertor`, `/online-tool/image-converter`,
 `/online-tool/image-tools/image-convertor` → the image converter;
@@ -54,21 +57,24 @@ Unknown slugs return a real 404.
 ### Tool page layout
 H1 + answer-first intro · privacy badge · the tool · limitation note (where
 relevant) · “How to use” steps · “What is …?” · FAQ (plus an automatic
-privacy FAQ) · related tools · sibling conversions.
+privacy FAQ) · related tools · sibling conversions · “In-depth guide” link once
+the tool's blog guide is published (pages revalidate daily).
 
-### Categories and tools (113)
+### Categories and tools (144)
 
-| Category | Tools |
-|---|---|
-| 🖼️ Image Tools (11) | Image Converter (JPG/PNG/WebP/PDF; input also GIF, BMP, AVIF, SVG, PDF), Image Compressor, Image Resizer, Image Cropper, Image Rotator, Image Flipper, Background Remover (plain/solid backgrounds), EXIF Viewer (+ strip metadata), Image to Base64, Base64 to Image, SVG to PNG |
-| 📄 PDF Tools (10) | Merge PDF, Split PDF, Compress PDF (lossless or rasterised “strong”), Rotate PDF, Extract Pages, Reorder Pages (thumbnails), PDF to JPG, PDF to PNG, PDF to Text, PDF Metadata Viewer/Editor |
-| 🧑‍💻 Developer Tools (23 + 2 cross-listed) | JSON Formatter, JSON Validator, JSON Minifier, JSON↔YAML, JSON↔CSV, XML/HTML/CSS/JavaScript Formatter, JavaScript Minifier, Base64 Encoder/Decoder, URL Encoder/Decoder, JWT Decoder, UUID Generator (v4/v7), Hash Generator (MD5/SHA-1/256/384/512 + HMAC), Regex Tester, Cron Expression Generator, Markdown↔HTML |
-| 📝 Text Tools (15) | Word, Character and Sentence Counter, Text Case Converter (12 cases), Uppercase, Lowercase, Title Case, Remove Duplicate Lines, Remove Empty Lines, Sort Lines, Text Diff, Find and Replace (regex), Lorem Ipsum, Markdown Previewer, Morse Code |
-| 🎨 Color Tools (10) | Color Picker (eyedropper + pick from image), HEX→RGB, RGB→HEX, HEX→HSL, RGB→HSL, HSL→RGB, Color Converter (HEX/RGB/HSL/HSV/CMYK), Palette Generator, CSS Gradient Generator, WCAG Contrast Checker |
-| 🧮 Calculators (14) | Percentage, Percentage Increase, Age, Date, BMI, BMR/TDEE, Loan (amortisation), EMI (monthly schedule), Tip, Discount, Compound Interest, VAT, Time Duration, Average (mean/median/mode/std dev) |
-| 📏 Unit Converters (12) | Length, Weight, Temperature, Area, Volume, Speed, Time, Data Storage, Energy, Pressure, Frequency, Angle |
-| 🔐 Security & Generators (9 + 2 cross-listed) | Password, Passphrase, Random Number, Random String, SHA-256, SHA-512, QR Code Generator (URL/text/Wi-Fi/email/phone/SMS, PNG/SVG), QR Code Scanner (camera or image), Barcode Generator |
-| 🕒 Date & Time Tools (9) | Unix Timestamp Converter, Timestamp Converter, Time Zone Converter, Date Difference, Add/Subtract Days, Working Days (with holidays), Week Number (ISO), Countdown Generator (shareable link), World Clock |
+| Category                                       | Tools                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🖼️ Image Tools (15)                            | Image Converter (JPG/PNG/WebP/PDF; input also GIF, BMP, AVIF, SVG, PDF), Image Compressor, Image Resizer, Image Cropper, Image Rotator, Image Flipper, Background Remover (plain/solid backgrounds), EXIF Viewer (+ strip metadata), Image to Base64, Base64 to Image, SVG to PNG, HEIC to JPG (JPG/PNG/WebP), Image to Text (OCR, 14 languages), Compress Image to Exact Size (20/50/100/200 KB pages), Meme Generator |
+| 📄 PDF Tools (15)                              | Merge PDF, Split PDF, Compress PDF (lossless or rasterised “strong”), Rotate PDF, Extract Pages, Reorder Pages (thumbnails), PDF to JPG, PDF to PNG, PDF to Text, PDF Metadata Viewer/Editor, Sign PDF (draw/type, click to place), Add Page Numbers, Watermark PDF, Protect PDF (AES-256), Unlock PDF (with the password)                                                                                              |
+| 🧑‍💻 Developer Tools (25 + 2 cross-listed)       | JSON Formatter, JSON Validator, JSON Minifier, JSON↔YAML, JSON↔CSV, XML/HTML/CSS/JavaScript Formatter, JavaScript Minifier, Base64 Encoder/Decoder, URL Encoder/Decoder, JWT Decoder, UUID Generator (v4/v7), Hash Generator (MD5/SHA-1/256/384/512 + HMAC), Regex Tester, Cron Expression Generator, Markdown↔HTML, SQL Formatter (dialects), JSON to TypeScript                                                    |
+| 📝 Text Tools (17)                             | Word, Character and Sentence Counter, Text Case Converter (12 cases), Uppercase, Lowercase, Title Case, Remove Duplicate Lines, Remove Empty Lines, Sort Lines, Text Diff, Find and Replace (regex), Lorem Ipsum, Markdown Previewer, Morse Code, Fancy Text Generator (20+ Unicode styles), Text to Speech (device voices)                                                                                             |
+| 🎨 Color Tools (10)                            | Color Picker (eyedropper + pick from image), HEX→RGB, RGB→HEX, HEX→HSL, RGB→HSL, HSL→RGB, Color Converter (HEX/RGB/HSL/HSV/CMYK), Palette Generator, CSS Gradient Generator, WCAG Contrast Checker                                                                                                                                                                                                                      |
+| 🧮 Calculators (20)                            | Percentage, Percentage Increase, Age, Date, BMI, BMR/TDEE, Loan (amortisation), EMI (monthly schedule), Tip, Discount, Compound Interest, VAT, Time Duration, Average (mean/median/mode/std dev), Scientific (own parser, no `eval`), GPA, Grade (weighted + final needed), Calorie, Pregnancy Due Date, Ovulation                                                                                                      |
+| 📏 Unit Converters (14)                        | Length, Weight, Temperature, Area, Volume, Speed, Time, Data Storage, Energy, Pressure, Frequency, Angle, Number to Words (cardinal/ordinal/cheque), Roman Numerals (1–3999)                                                                                                                                                                                                                                            |
+| 🔐 Security & Generators (12 + 2 cross-listed) | Password, Passphrase, Random Number, Random String, SHA-256, SHA-512, QR Code Generator (URL/text/Wi-Fi/email/phone/SMS, PNG/SVG), QR Code Scanner (camera or image), Barcode Generator, Wheel Spinner, Dice Roller (notation like 4d6kh3), Coin Flip                                                                                                                                                                   |
+| 🕒 Date & Time Tools (12)                      | Unix Timestamp Converter, Timestamp Converter, Time Zone Converter, Date Difference, Add/Subtract Days, Working Days (with holidays), Week Number (ISO), Countdown Generator (shareable link), World Clock, Stopwatch (laps, full screen), Online Timer, Pomodoro Timer                                                                                                                                                 |
+| 🎬 Audio & Video Tools (2)                     | MP4 to MP3 (WebAudio decode + LAME in a worker), Video to GIF (native `<video>` + gifenc, max 400 frames)                                                                                                                                                                                                                                                                                                               |
+| 🎥 Device Tests (2)                            | Webcam Test (resolution, frame rate, snapshot), Microphone Test (level meter, record & play back)                                                                                                                                                                                                                                                                                                                       |
 
 UUID Generator and Hash Generator are also listed under Security & Generators;
 Unix Timestamp and Timestamp Converter are also listed under Developer Tools.
@@ -80,6 +86,29 @@ Each tool has one canonical URL.
 - Compress PDF “strong” mode turns pages into images (text no longer
   selectable). PDF to Text needs a real text layer (no OCR).
 - Formatting TypeScript-only syntax is not supported by the JavaScript formatter.
+- OCR downloads the Tesseract engine and language model (~5–15 MB) from a CDN on
+  first use; the image itself stays local. Text to Speech “online” voices send
+  text to the browser vendor's speech service and are labelled as such.
+- Watermark text supports Latin script only (standard PDF font).
+- Audio & video use native browser decoding: formats the browser can't play
+  (e.g. some MOV/HEVC files) are rejected.
+
+### Tool guides (blog)
+
+- One Markdown guide per tool in `content/guides/<tool-slug>.md` plus a launch
+  post (145 total); format documented in `content/guides/README.md`.
+- Publish dates live in `lib/blog/guide-schedule.ts` (5 per day from
+  2026-10-07 to 2026-11-04). Unpublished guides 404 and stay out of the
+  sitemap, blog index and `llms.txt`; pages revalidate daily (ISR).
+- `lib/blog/guides.test.ts` enforces: one guide per tool, unique slugs and
+  titles, title ≤ 70 and description 100–170 characters, ≥ 600 words, no H1,
+  only internal links that exist, no repeated paragraphs across posts.
+- Each guide renders `BlogPosting` + `FAQPage` JSON-LD and links to its tool.
+
+### FAQ page
+
+- `/faq` — questions grouped by General, Privacy, each tool category, Emoji
+  and Support (`lib/faq.ts`), with anchor navigation and `FAQPage` JSON-LD.
 
 ### Architecture
 - `lib/online-tools/registry.ts` — single source of truth for routes, names,

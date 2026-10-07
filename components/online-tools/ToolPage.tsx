@@ -152,9 +152,12 @@ export function ToolHeader({
 export function ToolPage({
   tool,
   variant,
+  guide,
 }: {
   tool: ToolDefinition;
   variant?: ToolVariant;
+  /** Published blog guide for this tool, if any. */
+  guide?: { slug: string; title: string };
 }) {
   const category = getCategory(tool.category)!;
   const name = variant?.name ?? tool.name;
@@ -282,6 +285,26 @@ export function ToolPage({
           ))}
         </section>
       </div>
+
+      {guide && (
+        <section
+          aria-labelledby="guide-heading"
+          className="rounded-2xl border border-gray-100 bg-gray-50 p-5"
+        >
+          <h2
+            id="guide-heading"
+            className="text-sm font-semibold uppercase tracking-wide text-gray-500"
+          >
+            In-depth guide
+          </h2>
+          <Link
+            href={`/blog/${guide.slug}`}
+            className="mt-1 block text-lg font-semibold text-indigo-700 hover:underline"
+          >
+            {guide.title} →
+          </Link>
+        </section>
+      )}
 
       <FAQ faqs={faqs} />
       <RelatedTools tool={tool} />

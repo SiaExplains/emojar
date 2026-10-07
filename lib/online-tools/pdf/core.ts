@@ -122,7 +122,7 @@ export async function splitPdf(
       );
   } else {
     for (const r of spec.ranges
-      .split(/[;,]/)
+      .split(';')
       .map((s) => s.trim())
       .filter(Boolean))
       groups.push(parsePageRanges(r, total));
@@ -262,6 +262,210 @@ export async function imagesToPdf(
         height: h * f,
       });
     }
+  }
+  return doc.save();
+}
+
+// ── Stamping: page numbers, watermarks, signatures ─────────────────────────
+
+export type NumberPosition =
+  | 'bottom-center'
+  | 'bottom-right'
+  | 'bottom-left'
+  | 'top-center'
+  | 'top-right'
+  | 'top-left';
+export type NumberFormat = 'n' | 'page-n' | 'n-of-total' | 'page-n-of-total';
+
+export function pageLabel(
+  format: NumberFormat,
+  n: number,
+  total: number,
+): string {
+  switch (format) {
+    case 'page-n':
+      return `Page ${n}`;
+    case 'n-of-total':
+      return `${n} of ${total}`;
+    case 'page-n-of-total':
+      return `Page ${n} of ${total}`;
+    default:
+      return String(n);
+  }
+}
+
+/** Visible page box after rotation, plus a mapper from visual to PDF user space. */
+function visualFrame(page: import('pdf-lib').PDFPage) {
+  const { width, height } = page.getSize();
+  const angle = (((page.getRotation().angle % 360) + 360) % 360) as
+    | 0
+    | 90
+    | 180
+    | 270;
+  const vw = angle % 180 ? height : width;
+  const vh = angle % 180 ? width : height;
+  // Map a point in visual coordinates (origin bottom-left as seen) to page space.
+  const map = (x: number, y: number) => {
+    switch (angle) {
+      case 90:
+        return { x: width - y, y: x };
+      case 180:
+        return { x: width - x, y: height - y };
+      case 270:
+        return { x: y, y: height - x };
+      default:
+        return { x, y };
+    }
+  };
+  return { vw, vh, angle, map };
+}
+
+export async function addPageNumbers(
+  bytes: Uint8Array | ArrayBuffer,
+  opts: {
+    position: NumberPosition;
+    format: NumberFormat;
+    start: number;
+    fontSize: number;
+    skipFirst: boolean;
+    margin?: number;
+  },
+): Promise<Uint8Array> {
+  const { StandardFonts, rgb, degrees } = await lib();
+  const doc = await loadPdf(bytes);
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const pages = doc.getPages();
+  const numbered = opts.skipFirst ? pages.length - 1 : pages.length;
+  const margin = opts.margin ?? 28;
+  pages.forEach((page, i) => {
+    if (opts.skipFirst && i === 0) return;
+    const n = opts.start + (opts.skipFirst ? i - 1 : i);
+    const text = pageLabel(opts.format, n, opts.start + numbered - 1);
+    const { vw, vh, angle, map } = visualFrame(page);
+    const tw = font.widthOfTextAtSize(text, opts.fontSize);
+    const [vert, horiz] = opts.position.split('-') as [
+      'top' | 'bottom',
+      'left' | 'center' | 'right',
+    ];
+    const vx =
+      horiz === 'left'
+        ? margin
+        : horiz === 'right'
+          ? vw - margin - tw
+          : (vw - tw) / 2;
+    const vy = vert === 'top' ? vh - margin - opts.fontSize : margin;
+    const p = map(vx, vy);
+    page.drawText(text, {
+      x: p.x,
+      y: p.y,
+      size: opts.fontSize,
+      font,
+      color: rgb(0.2, 0.2, 0.2),
+      rotate: degrees(angle),
+    });
+  });
+  return doc.save();
+}
+
+function hexToRgb01(hex: string): [number, number, number] {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  const n = m ? parseInt(m[1], 16) : 0x999999;
+  return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+}
+
+export async function addTextWatermark(
+  bytes: Uint8Array | ArrayBuffer,
+  opts: {
+    text: string;
+    fontSize: number;
+    color: string;
+    opacity: number;
+    angle: number;
+    position?: 'center' | 'tile';
+  },
+): Promise<Uint8Array> {
+  if (!opts.text.trim())
+    throw new ToolInputError('Please enter the watermark text.');
+  const { StandardFonts, rgb, degrees } = await lib();
+  const doc = await loadPdf(bytes);
+  const font = await doc.embedFont(StandardFonts.HelveticaBold);
+  // Helvetica (WinAnsi) can't encode every character; fail with a clear message.
+  try {
+    font.encodeText(opts.text);
+  } catch {
+    throw new ToolInputError(
+      'The watermark text contains characters the built-in PDF font cannot display (e.g. emoji or non-Latin scripts). Please use Latin letters.',
+    );
+  }
+  const [r, g, b] = hexToRgb01(opts.color);
+  for (const page of doc.getPages()) {
+    const { vw, vh, angle, map } = visualFrame(page);
+    const tw = font.widthOfTextAtSize(opts.text, opts.fontSize);
+    const rad = (opts.angle * Math.PI) / 180;
+    const draw = (cx: number, cy: number) => {
+      // Start point so the rotated text is centred on (cx, cy).
+      const sx =
+        cx - (Math.cos(rad) * tw) / 2 + (Math.sin(rad) * opts.fontSize) / 3;
+      const sy =
+        cy - (Math.sin(rad) * tw) / 2 - (Math.cos(rad) * opts.fontSize) / 3;
+      const p = map(sx, sy);
+      page.drawText(opts.text, {
+        x: p.x,
+        y: p.y,
+        size: opts.fontSize,
+        font,
+        color: rgb(r, g, b),
+        opacity: Math.min(1, Math.max(0.05, opts.opacity)),
+        rotate: degrees(opts.angle + angle),
+      });
+    };
+    if (opts.position === 'tile') {
+      const stepX = tw * 0.9 + 80;
+      const stepY = opts.fontSize * 4;
+      for (let y = stepY / 2; y < vh; y += stepY)
+        for (let x = stepX / 2; x < vw + stepX; x += stepX) draw(x, y);
+    } else draw(vw / 2, vh / 2);
+  }
+  return doc.save();
+}
+
+export type ImagePlacement = {
+  pageIndex: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+/**
+ * Stamps a PNG (e.g. a signature) at positions given as fractions (0–1) of
+ * the visible page, measured from the top-left corner as seen on screen.
+ */
+export async function stampImage(
+  bytes: Uint8Array | ArrayBuffer,
+  png: Uint8Array | ArrayBuffer,
+  placements: ImagePlacement[],
+): Promise<Uint8Array> {
+  if (!placements.length)
+    throw new ToolInputError('Place the signature on the page first.');
+  const { degrees } = await lib();
+  const doc = await loadPdf(bytes);
+  const image = await doc.embedPng(png);
+  for (const pl of placements) {
+    const page = doc.getPage(pl.pageIndex);
+    const { vw, vh, angle, map } = visualFrame(page);
+    const w = pl.width * vw;
+    const h = pl.height * vh;
+    const vx = pl.x * vw;
+    const vy = vh - pl.y * vh - h; // flip from top-left to bottom-left
+    const p = map(vx, vy);
+    page.drawImage(image, {
+      x: p.x,
+      y: p.y,
+      width: w,
+      height: h,
+      rotate: degrees(angle),
+    });
   }
   return doc.save();
 }

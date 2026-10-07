@@ -1,22 +1,26 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { publishedGuides } from '@/lib/blog/guides';
+import { getCategory, getTool } from '@/lib/online-tools/registry';
 
 export const metadata: Metadata = {
   title: 'Blog | Emojar',
   description:
-    'Guides, game tips, tool tutorials, and updates from Siavash Ghanbari — founder of Emojar.',
+    'Practical guides to free online tools — images, PDFs, text, code, calculators and more — plus emoji game tips and updates from Emojar founder Siavash Ghanbari.',
   alternates: { canonical: 'https://emojar.com/blog' },
   openGraph: {
     title: 'Emojar Blog',
     description:
-      'Guides, game tips, tool tutorials, and updates from Siavash Ghanbari — founder of Emojar.',
+      'Practical guides to free online tools — images, PDFs, text, code, calculators and more — plus emoji game tips and updates from Emojar founder Siavash Ghanbari.',
     url: 'https://emojar.com/blog',
     siteName: 'Emojar',
     type: 'website',
   },
   keywords: [
+    'online tools guide',
+    'how to convert images',
+    'pdf tips',
     'emoji blog',
-    'emoji tips',
     'emoji games',
     'emojar updates',
     'emoji tools guide',
@@ -359,19 +363,52 @@ function formatMonthLabel(key: string) {
   });
 }
 
+const PAGE_SIZE = 20;
+
+/** Published tool guides in the same shape as the hand-written posts. */
+function guidePosts(): typeof posts {
+  return publishedGuides().map((g) => {
+    const tool = g.tool ? getTool(g.tool) : undefined;
+    const category = tool ? getCategory(tool.category) : undefined;
+    return {
+      slug: g.slug,
+      title: g.title,
+      date: g.publishDate,
+      description: g.description,
+      emoji: tool?.icon ?? '🧰',
+      tags: ['Tool Guide', ...(category ? [category.shortName] : []), ...g.tags]
+        .filter((t, i, a) => a.indexOf(t) === i)
+        .slice(0, 4),
+    };
+  });
+}
+
 export default async function BlogIndexPage({
   searchParams,
 }: {
-  searchParams: Promise<{ tag?: string }>;
+  searchParams: Promise<{ tag?: string; page?: string }>;
 }) {
   const sp = await searchParams;
   const activeTag = sp?.tag ?? null;
+  const allPosts = [...guidePosts(), ...posts].sort((a, b) =>
+    b.date.localeCompare(a.date),
+  );
 
-  const filtered = activeTag
-    ? posts.filter((p) => p.tags.includes(activeTag))
-    : posts;
+  const matching = activeTag
+    ? allPosts.filter((p) => p.tags.includes(activeTag))
+    : allPosts;
+  const pages = Math.max(1, Math.ceil(matching.length / PAGE_SIZE));
+  const page = Math.min(pages, Math.max(1, Number(sp?.page) || 1));
+  const filtered = matching.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const pageHref = (n: number) => {
+    const q = new URLSearchParams();
+    if (activeTag) q.set('tag', activeTag);
+    if (n > 1) q.set('page', String(n));
+    const qs = q.toString();
+    return qs ? `/blog?${qs}` : '/blog';
+  };
 
-  const allTags = getAllTags(posts);
+  const allTags = getAllTags(allPosts).slice(0, 30);
 
   return (
     <div className="py-10">
@@ -440,6 +477,37 @@ export default async function BlogIndexPage({
               </li>
             ))}
           </ul>
+
+          {pages > 1 && (
+            <nav
+              aria-label="Pagination"
+              className="mt-8 flex items-center justify-between text-sm"
+            >
+              {page > 1 ? (
+                <Link
+                  href={pageHref(page - 1)}
+                  className="text-blue-600 hover:underline"
+                >
+                  ← Newer posts
+                </Link>
+              ) : (
+                <span />
+              )}
+              <span className="text-gray-400">
+                Page {page} of {pages}
+              </span>
+              {page < pages ? (
+                <Link
+                  href={pageHref(page + 1)}
+                  className="text-blue-600 hover:underline"
+                >
+                  Older posts →
+                </Link>
+              ) : (
+                <span />
+              )}
+            </nav>
+          )}
         </div>
 
         {/* Sidebar */}
@@ -476,7 +544,7 @@ export default async function BlogIndexPage({
               Archive
             </h3>
             <ul className="space-y-1.5">
-              {groupByMonth(posts).map(([key, monthPosts]) => (
+              {groupByMonth(allPosts).map(([key, monthPosts]) => (
                 <li key={key} className="flex justify-between text-sm">
                   <span className="text-gray-600">{formatMonthLabel(key)}</span>
                   <span className="text-gray-400">({monthPosts.length})</span>
@@ -499,7 +567,8 @@ export default async function BlogIndexPage({
               </div>
             </div>
             <p className="text-xs text-gray-500 leading-5">
-              Building Emojar — a free emoji search, games &amp; tools platform.
+              Building Emojar — free online tools that run in your browser, plus
+              emoji search and games.
             </p>
           </div>
         </aside>

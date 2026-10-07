@@ -76,7 +76,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'Compare against the common limits shown below.',
     ],
     about: [
-      'Characters are counted as user-perceived characters, so an emoji such as 👍 counts as one even though it is stored as two code units. Some platforms (like SMS) count differently for non-Latin text.',
+      'Characters are counted as Unicode code points, so a simple emoji such as 👍 counts as one even though it is stored as two UTF-16 code units. Emoji with skin tones or combined emoji (like families) consist of several code points and count as more than one. Some platforms (like SMS) count differently again.',
     ],
     faqs: [
       {
@@ -576,6 +576,103 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       {
         q: 'What does SOS look like in Morse?',
         a: '... --- ... — three short, three long, three short.',
+      },
+    ],
+  },
+
+  {
+    slug: 'fancy-text-generator',
+    category: 'text-tools',
+    name: 'Fancy Text Generator',
+    icon: '✨',
+    shortDescription: 'Turn text into 𝐛𝐨𝐥𝐝, 𝓈𝒸𝓇𝒾𝓅𝓉, ⓒⓘⓡⓒⓛⓔⓓ and more.',
+    description:
+      'Type once and get your text in 20+ Unicode “fonts” — 𝐛𝐨𝐥𝐝, 𝘪𝘵𝘢𝘭𝘪𝘤, 𝓈𝒸𝓇𝒾𝓅𝓉, 𝔤𝔬𝔱𝔥𝔦𝔠, ⓒⓘⓡⓒⓛⓔⓓ, ｖａｐｏｒｗａｖｅ, upside-down and more — ready to copy into Instagram bios, TikTok, Discord and X.',
+    title: 'Fancy Text Generator – Cool Fonts to Copy and Paste',
+    metaDescription:
+      'Generate fancy text in 20+ Unicode fonts: bold, italic, script, gothic, circled, bubble, upside-down and more. Copy and paste into Instagram, TikTok and Discord.',
+    keywords: [
+      'fancy text generator',
+      'cool fonts',
+      'font generator copy and paste',
+      'instagram fonts',
+      'bold text generator',
+    ],
+    relatedTools: [
+      'text-case-converter',
+      'character-counter',
+      'morse-code-converter',
+      'meme-generator',
+      'uppercase-converter',
+    ],
+    component: 'fancy-text',
+    popular: true,
+    howTo: [
+      'Type or paste your text.',
+      'Scroll through the styles — every one updates as you type.',
+      'Click Copy next to the style you like and paste it anywhere.',
+    ],
+    about: [
+      'These are not real fonts: each letter is swapped for a different Unicode character that looks styled, such as “𝐀” (Mathematical Bold Capital A, U+1D400). That is why the style survives copy and paste into apps that don’t let you choose a font.',
+      'Screen readers may read these characters letter by letter or skip them, and some platforms don’t support every symbol. Use them for short accents like names and headlines, not for whole paragraphs.',
+    ],
+    faqs: [
+      {
+        q: 'Why do some characters show as boxes?',
+        a: 'The device viewing the text lacks a font with that symbol. Bold, italic and script styles are the most widely supported.',
+      },
+      {
+        q: 'Do fancy fonts hurt accessibility?',
+        a: 'They can — screen readers may not read them as normal words. Keep important information in plain text.',
+      },
+    ],
+  },
+  {
+    slug: 'text-to-speech',
+    category: 'text-tools',
+    name: 'Text to Speech',
+    icon: '🗣️',
+    shortDescription: 'Read text aloud with natural voices.',
+    description:
+      'Paste text and listen to it read aloud. Choose a voice and language, adjust speed and pitch, and follow along as each word is highlighted (where the voice supports it). Uses your device’s built-in speech voices.',
+    title: 'Text to Speech Online – Read Text Aloud Free, No Sign-Up',
+    metaDescription:
+      'Free text to speech online: paste text and hear it read aloud. Choose voices and languages, change speed and pitch. Uses your device’s built-in voices.',
+    keywords: [
+      'text to speech',
+      'tts online',
+      'read text aloud',
+      'text to voice',
+      'speech synthesis',
+    ],
+    relatedTools: [
+      'word-counter',
+      'pdf-to-text',
+      'image-to-text',
+      'markdown-previewer',
+      'morse-code-converter',
+    ],
+    component: 'text-to-speech',
+    popular: true,
+    limitation:
+      'Voices come from your browser and operating system, so the selection differs between devices. Voices marked “online” are provided by your browser vendor and send the text to their service; on-device voices work fully offline.',
+    howTo: [
+      'Paste or type your text.',
+      'Choose a voice and adjust speed and pitch.',
+      'Press Play; use Pause, Resume and Stop as needed.',
+    ],
+    about: [
+      'The tool uses the Web Speech API built into modern browsers. Most systems include several on-device voices; Chrome and Edge also offer higher-quality online voices.',
+      'Listening is a good way to proofread: hearing a sentence makes missing words and awkward phrasing much easier to notice.',
+    ],
+    faqs: [
+      {
+        q: 'Can I download the audio as an MP3?',
+        a: 'Browsers do not expose the synthesized audio to web pages, so it can be played but not saved as a file.',
+      },
+      {
+        q: 'Why are there no voices?',
+        a: 'Some browsers load voices a moment after the page opens, and some Linux systems ship without any. Reload the page or install a speech engine.',
       },
     ],
   },

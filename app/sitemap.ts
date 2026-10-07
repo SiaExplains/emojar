@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import data from '@/data/emojis.json';
+import { publishedGuides } from '@/lib/blog/guides';
 import {
   CATEGORIES,
   TOOLS,
@@ -13,6 +14,9 @@ import {
 // Using a fixed date avoids Google treating every deploy as a full content refresh.
 const SITE_LAUNCH = new Date('2024-01-01');
 const LAST_UPDATED = new Date('2026-05-14');
+
+// Re-generated daily so newly published guides appear on their date.
+export const revalidate = 86400;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://emojar.com';
@@ -432,9 +436,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
   ];
 
+  const guideRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/faq`,
+      lastModified: toolsUpdated,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    ...publishedGuides().map((g) => ({
+      url: `${base}/blog/${g.slug}`,
+      lastModified: new Date(g.publishDate),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+  ];
+
   return [
     ...staticRoutes,
     ...onlineToolRoutes,
+    ...guideRoutes,
     ...categoryRoutes,
     ...emojiRoutes,
   ];

@@ -4,6 +4,24 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.4.0] — 2026-10-07
+
+### Added
+
+- Ten more image tools, all running in the browser: Passport Photo Maker
+  (country presets, head guide, 4 × 6 in / A4 / Letter print sheets), Profile
+  Picture Maker (circle crop and borders), Add Text to Image and Watermark
+  Image (text or logo, tiled, batch up to 50), Blur & Pixelate Image, Photo
+  Collage Maker (2–9 photos), Image Grid Splitter (Instagram grid with posting
+  order), GIF Maker, Favicon Generator (ICO, Apple and Android icons,
+  manifest) and Image to ASCII Art.
+- Social Media Image Resizer with exact sizes for Instagram, Facebook, X,
+  LinkedIn, YouTube, Pinterest and TikTok, plus dedicated Instagram, Facebook,
+  X, LinkedIn and YouTube thumbnail pages.
+- A guide on the blog for each new tool, published one per day from
+  8 to 18 October.
+- New image questions on the FAQ page.
+
 ## [0.3.0] — 2026-10-07
 
 ### Added

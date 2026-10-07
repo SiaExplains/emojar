@@ -147,4 +147,16 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'markdown-to-html': '2026-11-04',
   'html-to-markdown': '2026-11-04',
   'json-to-typescript': '2026-11-04',
+  // v0.4.0 image tools: one extra guide per day alongside the original schedule.
+  'passport-photo-maker': '2026-10-08',
+  'watermark-image': '2026-10-09',
+  'social-media-image-resizer': '2026-10-10',
+  'photo-collage-maker': '2026-10-11',
+  'favicon-generator': '2026-10-12',
+  'blur-image': '2026-10-13',
+  'profile-picture-maker': '2026-10-14',
+  'add-text-to-image': '2026-10-15',
+  'image-grid-splitter': '2026-10-16',
+  'gif-maker': '2026-10-17',
+  'image-to-ascii-art': '2026-10-18',
 };

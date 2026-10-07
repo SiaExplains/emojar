@@ -4,12 +4,12 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'About Emojar — Free Online Tools & Emoji Search by Siavash Ghanbari',
   description:
-    'Emojar is a collection of free, privacy-first online tools built by Siavash Ghanbari in Berlin — 140+ browser-based utilities, plus 3,790 emojis to copy and 18 emoji games. No account needed.',
+    'Emojar is a collection of free, privacy-first online tools built by Siavash Ghanbari in Berlin — 150+ browser-based utilities, plus 3,790 emojis to copy and 18 emoji games. No account needed.',
   alternates: { canonical: 'https://emojar.com/about' },
   openGraph: {
     title: 'About Emojar — Free Online Tools & Emoji Search',
     description:
-      'Built by Siavash Ghanbari in Berlin. 140+ private online tools, 3,790 emojis and 18 games. Free, no sign-up.',
+      'Built by Siavash Ghanbari in Berlin. 150+ private online tools, 3,790 emojis and 18 games. Free, no sign-up.',
     url: 'https://emojar.com/about',
     siteName: 'Emojar',
     type: 'profile',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'About Emojar',
     description:
-      'Built by Siavash Ghanbari in Berlin. 140+ online tools, 3,790 emojis, 18 games.',
+      'Built by Siavash Ghanbari in Berlin. 150+ online tools, 3,790 emojis, 18 games.',
   },
   robots: { index: true, follow: true },
 };
@@ -65,7 +65,7 @@ export default function AboutPage() {
         </p>
         <p>
           In October 2026 those utilities became the heart of the site. Emojar
-          is now a collection of <strong>140+ free online tools</strong> — image
+          is now a collection of <strong>150+ free online tools</strong> — image
           and PDF converters, developer utilities, text tools, calculators, unit
           converters and generators — that run entirely in your browser, so your
           files never leave your device. The emoji side is still here too: a
@@ -79,7 +79,7 @@ export default function AboutPage() {
         <div className="space-y-4">
           <div>
             <h3 className="font-semibold text-gray-900">
-              🧰 140+ online tools
+              🧰 150+ online tools
             </h3>
             <p className="text-sm text-gray-600 mt-1">
               Small, fast utilities for everyday tasks:{' '}

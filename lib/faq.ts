@@ -129,11 +129,51 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: 'How do I reduce a photo to 20 KB or 50 KB for an online form?',
-        a: 'Use Compress Image to Exact Size: pick 20, 50, 100 or 200 KB (or type any limit) and the tool finds the highest quality that fits, reducing dimensions only if it must. The result is never larger than your limit.',
+        a: 'Use Compress Image to Exact Size: pick a preset such as 20, 50 or 100 KB (or type any limit) and the tool finds the highest quality that fits, reducing dimensions only if it must. The result is never larger than your limit.',
         links: [
           {
             href: '/online-tool/image-tools/compress-image-to-size',
             label: 'Compress Image to Exact Size',
+          },
+        ],
+      },
+      {
+        q: 'How do I make a passport photo at home?',
+        a: 'Take a front-facing photo against a plain light wall, then use the Passport Photo Maker: choose your country (for example 2 × 2 in for the US or 35 × 45 mm for the UK and EU), line the face up with the head guide and download a 300 DPI photo or a 4 × 6 in / A4 print sheet. Always check your government’s current photo rules.',
+        links: [
+          {
+            href: '/online-tool/image-tools/passport-photo-maker',
+            label: 'Passport Photo Maker',
+          },
+        ],
+      },
+      {
+        q: 'Can a blurred or pixelated face be recovered?',
+        a: 'Not from an image exported by the Blur & Pixelate tool — the original pixels in the hidden area are replaced. For short text such as account numbers, use the solid box option, because light pixelation of a few characters can sometimes be guessed.',
+        links: [
+          {
+            href: '/online-tool/image-tools/blur-image',
+            label: 'Blur & Pixelate Image',
+          },
+        ],
+      },
+      {
+        q: 'In what order do I post an Instagram grid?',
+        a: 'Instagram shows the newest post at the top left, so post the bottom-right tile first and the top-left tile last. The Image Grid Splitter numbers every tile in that posting order.',
+        links: [
+          {
+            href: '/online-tool/image-tools/image-grid-splitter',
+            label: 'Image Grid Splitter',
+          },
+        ],
+      },
+      {
+        q: 'Which favicon files does a website need?',
+        a: 'A favicon.ico (with 16, 32 and 48 px sizes inside), a 180 × 180 apple-touch-icon.png for iPhones and 192 and 512 px PNG icons referenced in a site.webmanifest. The Favicon Generator creates all of them plus the HTML from any image.',
+        links: [
+          {
+            href: '/online-tool/image-tools/favicon-generator',
+            label: 'Favicon Generator',
           },
         ],
       },

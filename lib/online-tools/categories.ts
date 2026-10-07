@@ -8,9 +8,9 @@ export const CATEGORIES: CategoryDefinition[] = [
     icon: '🖼️',
     title: 'Free Online Image Tools – Convert, Compress & Resize',
     metaDescription:
-      'Convert, compress, resize, crop and rotate images online. JPG, PNG, WebP, SVG and PDF supported. Your images are processed in your browser and never uploaded.',
+      'Convert, compress, resize and edit images online: passport photos, collages, watermarks, blur, favicons, GIFs and more. Processed in your browser, never uploaded.',
     intro:
-      'Convert, compress, resize and edit images directly in your browser. Every image tool on this page works offline-capable and locally: your photos are never uploaded to a server.',
+      'Convert, compress, resize and edit images directly in your browser — from passport photos, collages and social media sizes to watermarks, blurring, favicons and GIFs. Every image tool on this page works locally: your photos are never uploaded to a server.',
     accent: 'bg-indigo-50 border-indigo-100 text-indigo-900',
   },
   {

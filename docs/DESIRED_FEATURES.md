@@ -259,7 +259,7 @@
 **Acceptance Criteria:** text extracted from a scanned page, processed locally.
 
 ### [ ] More audio & video tools
-**Description:** Shipped so far: MP4 to MP3 and Video to GIF (v0.3.0); Video Compressor, Audio Trimmer/Converter and Voice/Screen Recorders (v0.11.0, WebCodecs via mediabunny). Still missing: video trimming/cutting, formats the browser can't decode (e.g. some MOV/HEVC, AVI, WMV) and MP3 for files above 48 kHz without resampling.
+**Description:** Shipped so far: MP4 to MP3 and Video to GIF (v0.3.0); Video Compressor, Audio Trimmer/Converter and Voice/Screen Recorders (v0.11.0, WebCodecs via mediabunny). Still missing: video trimming/cutting, formats the browser can't decode (e.g. some MOV/HEVC, AVI, WMV). (MP3 output above 48 kHz is resampled, since MP3 itself tops out at 48 kHz.)
 **Implementation:** mediabunny's trim option for video cutting; FFmpeg.wasm in a worker only for formats WebCodecs can't decode.
 **Acceptance Criteria:** conversions run locally; large files show progress and do not freeze the UI.
 
@@ -275,10 +275,10 @@
 **Acceptance Criteria:** a language selector switches formula and syllable rules; English stays the default.
 
 ### [ ] Timer alarms in background tabs
-**Description:** Countdown maths is drift-free, but the finish is detected on a 1 s interval that browsers throttle in hidden tabs, so the alarm can sound late. Also schedule a `setTimeout` for the end time (or use a worker).
+**Description:** Countdown maths is drift-free, but the finish is detected on a 1 s interval that browsers throttle in hidden tabs, so the alarm can sound late. Also schedule a `setTimeout` for the end time (or use a worker). The Alarm Clock (v0.11.0) already does this (exact `setTimeout` plus a catch-up check from the last ring), so the Timer, Countdown and Pomodoro can reuse that approach.
 
-### [ ] Mic/webcam tests: verify on real devices
-**Description:** Capture was only verified on the permission-denied path in the dev browser; check the level meter, recording and camera stats on macOS, Windows, Android and iOS.
+### [ ] Mic/webcam tests and recorders: verify on real devices
+**Description:** Capture was only verified on the permission-denied path in the dev browser; check the level meter, recording and camera stats on macOS, Windows, Android and iOS. The same applies to the Voice Recorder and Screen Recorder (v0.11.0): recording, pause/resume, mic mixing in screen recordings, and the MP3/WAV exports.
 
 ---
 

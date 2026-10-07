@@ -167,3 +167,52 @@ export async function renderThumbnail(
     await close();
   }
 }
+
+/**
+ * Renders pages one at a time and hands each canvas to `onPage` (white
+ * background, crop box and rotation applied), so long documents never keep
+ * more than one page image in memory.
+ */
+export async function forEachRenderedPage(
+  bytes: ArrayBuffer,
+  opts: {
+    dpi: number;
+    pages?: number[];
+    signal?: AbortSignal;
+    onProgress?: (done: number, total: number) => void;
+  },
+  onPage: (canvas: HTMLCanvasElement, pageIndex: number) => Promise<void>,
+): Promise<void> {
+  const { doc, close } = await openPdf(bytes);
+  const pages = opts.pages ?? Array.from({ length: doc.numPages }, (_, i) => i);
+  try {
+    for (let k = 0; k < pages.length; k++) {
+      if (opts.signal?.aborted) break;
+      const page = await doc.getPage(pages[k] + 1);
+      const viewport = page.getViewport({ scale: opts.dpi / 72 });
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.floor(viewport.width);
+      canvas.height = Math.floor(viewport.height);
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      if (!ctx)
+        throw new ToolInputError(
+          'Your browser could not create an image canvas.',
+        );
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      await page.render({
+        canvas,
+        canvasContext: ctx,
+        viewport,
+        intent: 'print',
+      }).promise;
+      await onPage(canvas, pages[k]);
+      canvas.width = 0;
+      canvas.height = 0;
+      page.cleanup();
+      opts.onProgress?.(k + 1, pages.length);
+    }
+  } finally {
+    await close();
+  }
+}

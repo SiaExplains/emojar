@@ -646,4 +646,299 @@ export const PDF_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'delete-pdf-pages',
+    category: 'pdf-tools',
+    name: 'Delete PDF Pages',
+    icon: '🗑️',
+    shortDescription: 'Remove unwanted pages from a PDF.',
+    description:
+      'Delete pages from a PDF in seconds: click the pages you don’t want — or type numbers like 2, 5-7 or “even” — and download a new PDF without them. The remaining pages keep their order and quality, and your file never leaves your device.',
+    title: 'Delete PDF Pages – Remove Pages From a PDF Online, Free',
+    metaDescription:
+      'Remove pages from a PDF online. Click thumbnails or type page numbers to delete blank, duplicate or unwanted pages. Free, private — no upload.',
+    keywords: [
+      'delete pdf pages',
+      'remove pages from pdf',
+      'delete page from pdf',
+      'pdf page remover',
+      'remove blank pages pdf',
+    ],
+    relatedTools: [
+      'extract-pdf-pages',
+      'reorder-pdf-pages',
+      'split-pdf',
+      'merge-pdf',
+      'crop-pdf',
+    ],
+    component: 'pdf-pages',
+    config: { mode: 'delete' },
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose a PDF file.',
+      'Click the page thumbnails you want to remove, or type pages like “2, 5-7” or “even”.',
+      'Click “Delete pages” and download the new PDF.',
+    ],
+    about: [
+      'Deleting creates a new PDF from the pages you keep, in their original order and at their original quality. Text, links, form fields and document details on the remaining pages are preserved (fields that were only on deleted pages are removed); the original file is not changed.',
+      'Typed page lists and clicked thumbnails stay in sync, so you can mix both — for example type “even” and then click a few more pages. A PDF must keep at least one page.',
+    ],
+    faqs: [
+      {
+        q: 'Does deleting pages reduce quality?',
+        a: 'No. The kept pages are copied as they are, without re-compressing images or converting text.',
+      },
+      {
+        q: 'Can I delete pages from a password-protected PDF?',
+        a: 'Remove the password first with Unlock PDF (you need to know it), then delete the pages.',
+      },
+    ],
+  },
+  {
+    slug: 'crop-pdf',
+    category: 'pdf-tools',
+    name: 'Crop PDF',
+    icon: '✂️',
+    shortDescription: 'Trim margins and crop PDF pages.',
+    description:
+      'Crop PDF pages to remove white margins, scanner borders or unwanted areas. Drag the crop box on a page preview or enter margins in millimetres, trim white space automatically, and apply it to all pages, odd or even pages, or just one — right in your browser.',
+    title: 'Crop PDF Online – Trim Margins & White Space, Free',
+    metaDescription:
+      'Crop PDF pages online: drag a crop box, trim white margins automatically or set exact margins in mm. Apply to all or selected pages. Free, no upload.',
+    keywords: [
+      'crop pdf',
+      'trim pdf margins',
+      'remove white margins pdf',
+      'crop pdf pages',
+      'pdf cropper',
+    ],
+    relatedTools: [
+      'delete-pdf-pages',
+      'rotate-pdf',
+      'edit-pdf',
+      'compress-pdf',
+      'pdf-to-jpg',
+    ],
+    component: 'pdf-crop',
+    handlesFiles: true,
+    howTo: [
+      'Choose a PDF file and go to the page you want to use as a guide.',
+      'Drag the crop box (or its handles), type margins in millimetres, or click “Trim white margins”.',
+      'Choose which pages to crop — all, this page, odd, even or a custom list.',
+      'Click “Crop PDF” and download the result.',
+    ],
+    about: [
+      'Cropping sets the PDF’s crop box, which tells viewers and printers which part of each page to show. “Trim white margins” measures the page you are viewing. It is lossless and instant: text stays selectable and nothing is re-compressed.',
+      'Because the trimmed area is only hidden, the content outside the crop box is still inside the file. Don’t use cropping to remove confidential information — if it must be gone for good, convert it to images with PDF to JPG and turn those back into a PDF with the Image Converter. Margins set on one page are applied proportionally to pages of other sizes, and cropping an already-cropped PDF trims it further.',
+    ],
+    faqs: [
+      {
+        q: 'Can I crop just one page?',
+        a: 'Yes. Set the crop box on that page and choose “This page only”, or list several pages under “Custom pages”.',
+      },
+      {
+        q: 'Does cropping make the file smaller?',
+        a: 'Usually not, because the hidden content stays in the file. To reduce the size, use Compress PDF afterwards.',
+      },
+    ],
+  },
+  {
+    slug: 'edit-pdf',
+    category: 'pdf-tools',
+    name: 'Edit PDF',
+    icon: '📝',
+    shortDescription: 'Add text, images, white-out and highlights to a PDF.',
+    description:
+      'Edit a PDF online for free: click anywhere to add text, place images or a logo, cover mistakes with white-out boxes, and highlight important lines. Move and resize everything on the page preview, then download the edited PDF — processed entirely in your browser.',
+    title: 'Edit PDF Online – Add Text, Images & White-Out, Free',
+    metaDescription:
+      'Edit PDF files online: add text, images, white-out boxes and highlights, move and resize them, and download. Free, no sign-up — your PDF is never uploaded.',
+    keywords: [
+      'edit pdf',
+      'pdf editor',
+      'add text to pdf',
+      'write on pdf',
+      'white out pdf',
+      'add image to pdf',
+    ],
+    relatedTools: [
+      'fill-pdf-form',
+      'sign-pdf',
+      'watermark-pdf',
+      'add-page-numbers-to-pdf',
+      'crop-pdf',
+    ],
+    component: 'pdf-edit',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose a PDF file.',
+      'Pick “Add text” and click on the page, or draw a white-out, highlight or box; use “Add image” for pictures and logos.',
+      'Select an item to change its text, font, size or colour; drag to move it and use the corner handle to resize boxes and images.',
+      'Click “Save PDF” and download the edited file.',
+    ],
+    about: [
+      'Your edits are added as a new layer on top of each page, in the order you add them — just as the preview shows — so the original text, images and layout stay exactly as they were. Text uses the standard PDF fonts Helvetica, Times and Courier, which support English and other Latin-alphabet languages.',
+      'To change existing wording, cover it with a white-out box and type the new text on top. The covered text is hidden but still inside the file; if it must be removed completely, convert it to images with PDF to JPG and turn those back into a PDF with the Image Converter.',
+    ],
+    faqs: [
+      {
+        q: 'Can I edit the existing text in a PDF?',
+        a: 'Not directly — PDFs store text as positioned glyphs, not editable paragraphs. Cover the old text with white-out and add new text in its place; for most forms and letters the result looks the same.',
+      },
+      {
+        q: 'Which languages can I type?',
+        a: 'English and other languages written with Latin letters, including accents like é, ü and ñ. Cyrillic, Greek, Arabic, Asian scripts and emoji aren’t supported by the built-in PDF fonts.',
+      },
+    ],
+  },
+  {
+    slug: 'fill-pdf-form',
+    category: 'pdf-tools',
+    name: 'Fill PDF Form',
+    icon: '🧾',
+    shortDescription: 'Fill in fillable PDF forms without Acrobat.',
+    description:
+      'Fill out PDF forms online without Adobe Acrobat. The tool finds every fillable field — text boxes, checkboxes, radio buttons and drop-down lists — and shows them as a simple form; type your answers, optionally flatten the result, and download the completed PDF. Nothing is uploaded.',
+    title: 'Fill PDF Form Online – Fillable Fields, No Acrobat, Free',
+    metaDescription:
+      'Fill out fillable PDF forms online: text fields, checkboxes, radio buttons and drop-downs. Optionally flatten, then download. Free, private, no upload.',
+    keywords: [
+      'fill pdf form',
+      'fill out pdf',
+      'pdf form filler',
+      'fillable pdf',
+      'flatten pdf form',
+    ],
+    relatedTools: [
+      'edit-pdf',
+      'sign-pdf',
+      'merge-pdf',
+      'protect-pdf',
+      'compress-pdf',
+    ],
+    component: 'pdf-form',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose a PDF form.',
+      'Fill in the fields listed next to the page preview — required fields are marked with *.',
+      'Tick “Flatten the form” if the answers should no longer be editable.',
+      'Click “Save filled PDF” and download it.',
+    ],
+    about: [
+      'Fillable PDFs contain interactive form fields (AcroForms). The tool reads them in your browser, lists them with readable names (based on the field names the form’s author chose) and writes your answers back into the same fields, so the form still works in Acrobat, Preview and other readers.',
+      'Flattening turns the answers into ordinary page content, which is useful before sending a form by email or printing it. Signature and button fields are skipped. Forms built only with Adobe XFA, and scanned forms without fields, can’t be filled this way — use Edit PDF to type onto them instead.',
+    ],
+    faqs: [
+      {
+        q: 'Why can’t I see any fields?',
+        a: 'The PDF probably has no fillable fields — for example a scanned form or a flattened file. Open it in Edit PDF and add your text on top of the page.',
+      },
+      {
+        q: 'Should I flatten the form?',
+        a: 'Flatten when you’re finished and want to prevent changes, or when a recipient’s viewer doesn’t show form values. Keep it unflattened if you or someone else needs to edit it later.',
+      },
+    ],
+  },
+  {
+    slug: 'grayscale-pdf',
+    category: 'pdf-tools',
+    name: 'Grayscale PDF',
+    icon: '🌓',
+    shortDescription:
+      'Convert a PDF to grayscale, black & white or a scanned look.',
+    description:
+      'Convert a colour PDF to grayscale while keeping text selectable — ideal for printing, saving ink or meeting “black and white only” submission rules. You can also turn it into pure black & white, or make it look scanned with a slight tilt, grain and paper tone. Everything runs in your browser.',
+    title: 'Grayscale PDF – Convert PDF to Black & White or Scanned Look',
+    metaDescription:
+      'Convert PDF to grayscale or black and white online, keeping text selectable, or make a PDF look scanned. Free, private, processed in your browser.',
+    keywords: [
+      'grayscale pdf',
+      'pdf to black and white',
+      'convert pdf to grayscale',
+      'make pdf look scanned',
+      'black and white pdf',
+    ],
+    relatedTools: [
+      'compress-pdf',
+      'pdf-to-jpg',
+      'watermark-pdf',
+      'crop-pdf',
+      'merge-pdf',
+    ],
+    component: 'pdf-grayscale',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose a PDF file.',
+      'Pick Grayscale (keeps text), Black & white, or Scanned look.',
+      'For black & white and scanned look, choose the resolution and effect options.',
+      'Click convert and download the new PDF.',
+    ],
+    about: [
+      'Grayscale mode rewrites the colours inside the PDF — text, shapes and images — to shades of gray, so text stays sharp, selectable and searchable and the file stays small. If a page uses something that can’t be converted exactly — such as a colour gradient, a pattern, a spot colour or a CMYK photo — only that page is flattened into a 200 DPI gray image (links on it stop working) and the result tells you which pages.',
+      'Black & white and scanned look render every page as an image: pure black-and-white suits faxes, copies and strict upload portals, while the scanned look adds a slight tilt, grain and paper tone for documents that should look printed and scanned. In both modes text is no longer selectable.',
+    ],
+    faqs: [
+      {
+        q: 'Will the text stay selectable?',
+        a: 'In Grayscale mode, yes — text and vectors are kept. Black & white and Scanned look turn pages into images, so text can no longer be selected or searched.',
+      },
+      {
+        q: 'Why would I make a PDF look scanned?',
+        a: 'Some offices and portals expect documents that were printed, signed and scanned. Only use it for documents you’re entitled to submit — the effect changes how a file looks, not what it says.',
+      },
+    ],
+  },
+  {
+    slug: 'word-to-pdf',
+    category: 'pdf-tools',
+    name: 'Word to PDF',
+    icon: '📃',
+    shortDescription: 'Convert Word (DOCX) documents to PDF.',
+    description:
+      'Convert Word documents (.docx) to PDF without uploading them. Headings, paragraphs, bold and italic text, lists, tables and images are turned into a PDF with selectable text, on A4 or US Letter pages — or use your browser’s print engine for the closest match to the original layout.',
+    title: 'Word to PDF Converter – DOCX to PDF Online, No Upload',
+    metaDescription:
+      'Convert Word DOCX to PDF in your browser: text, headings, lists, tables and images, A4 or Letter. Free, private — your document is never uploaded.',
+    keywords: [
+      'word to pdf',
+      'docx to pdf',
+      'convert word to pdf',
+      'word document to pdf',
+      'doc to pdf',
+    ],
+    relatedTools: [
+      'merge-pdf',
+      'compress-pdf',
+      'protect-pdf',
+      'add-page-numbers-to-pdf',
+      'pdf-to-text',
+    ],
+    component: 'word-to-pdf',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose a .docx file (save older .doc files as .docx first).',
+      'Pick the page size and margins and check the content preview.',
+      'Click “Convert to PDF” — or “Print / Save as PDF” to use your browser’s print engine.',
+      'Download the PDF.',
+    ],
+    about: [
+      'The document is read in your browser: text, headings, bold and italic, lists, tables, links and images are converted into a PDF with selectable text in the Roboto font, which covers Latin, Greek and Cyrillic.',
+      'Word layouts can be complex. The converter keeps the structure but uses one consistent style: Word fonts, sizes, colours and alignment, manual page breaks, multiple columns, headers and footers are not reproduced, text-box contents flow into the body, footnotes move to the end, comments are skipped and tracked changes appear as accepted. Images in PNG or JPEG are kept, other formats are converted where the browser can read them, and EMF/WMF drawings are left out. “Print / Save as PDF” prints the same content through your browser, with your system fonts and every language supported.',
+    ],
+    faqs: [
+      {
+        q: 'Can I convert .doc files?',
+        a: 'Not directly. Open the .doc in Word, LibreOffice or Google Docs, save it as .docx, then convert it here.',
+      },
+      {
+        q: 'Will the PDF look exactly like my Word document?',
+        a: 'Simple documents come out very close. Complex layouts are simplified; for the best match, use “Print / Save as PDF” or export to PDF from Word itself.',
+      },
+    ],
+  },
 ];

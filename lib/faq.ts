@@ -199,6 +199,39 @@ export const FAQ_GROUPS: FaqGroup[] = [
     icon: '📄',
     items: [
       {
+        q: 'Can I edit the existing text in a PDF?',
+        a: 'Not directly — PDFs store text as positioned characters, not editable paragraphs. With Edit PDF you cover the old words with a white-out box and type new text on top, and you can add images and highlights. The covered text is hidden but still in the file.',
+        links: [{ href: '/online-tool/pdf-tools/edit-pdf', label: 'Edit PDF' }],
+      },
+      {
+        q: 'How do I fill in a PDF form without Adobe Acrobat?',
+        a: 'Open it in Fill PDF Form: every fillable field — text boxes, checkboxes, radio buttons and drop-downs — appears as a normal web form. Type your answers, optionally flatten the form so they can’t be changed, and download the completed PDF.',
+        links: [
+          {
+            href: '/online-tool/pdf-tools/fill-pdf-form',
+            label: 'Fill PDF Form',
+          },
+        ],
+      },
+      {
+        q: 'What is the difference between cropping and deleting PDF pages?',
+        a: 'Deleting removes whole pages from the document. Cropping keeps every page but hides its edges — useful for trimming margins or scanner borders. Cropped-off content stays inside the file, so don’t use cropping to remove confidential information.',
+        links: [
+          {
+            href: '/online-tool/pdf-tools/delete-pdf-pages',
+            label: 'Delete PDF Pages',
+          },
+          { href: '/online-tool/pdf-tools/crop-pdf', label: 'Crop PDF' },
+        ],
+      },
+      {
+        q: 'How accurate is the Word to PDF converter?',
+        a: 'Text, headings, lists, tables, links and images convert well. Complex Word layouts — text boxes, columns, headers and footers, exact fonts — are simplified. For the closest match, use “Print / Save as PDF”, which uses your browser’s own layout engine.',
+        links: [
+          { href: '/online-tool/pdf-tools/word-to-pdf', label: 'Word to PDF' },
+        ],
+      },
+      {
         q: 'Can I edit password-protected PDFs?',
         a: 'Only after unlocking them with the password. Unlock PDF removes the password from a document you are allowed to open; it does not crack or guess passwords.',
         links: [

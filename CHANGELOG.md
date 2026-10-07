@@ -4,6 +4,22 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.9.0] — 2026-10-08
+
+### Added
+
+- Sixteen new developer tools: HTML Entity Encoder / Decoder, Number Base
+  Converter (with Binary to Decimal, Hex to Decimal and Decimal to Binary
+  pages), JSON to XML (with an XML to JSON page), JSON Diff, String Escape /
+  Unescape, URL Parser & Query String Builder, User Agent Parser (with bot
+  detection), Subnet Calculator (IPv4 and IPv6, with a CIDR Calculator
+  page), Chmod Calculator, SVG Optimizer (SVGO), Meta Tag & Open Graph
+  Generator with previews, Robots.txt Generator with a URL tester and an
+  AI-crawler preset, HTTP Status Code Lookup, Code to Image, Bcrypt Hash
+  Generator and TOTP / 2FA Code Generator.
+- A guide on the blog for each, published one per day from 23 November to
+  8 December, and four new developer questions on the FAQ page.
+
 ## [0.8.0] — 2026-10-07
 
 ### Added

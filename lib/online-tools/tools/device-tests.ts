@@ -262,6 +262,7 @@ export const DEVICE_TESTS: ToolDefinition[] = [
       'what version of chrome do i have',
     ],
     relatedTools: [
+      'user-agent-parser',
       'screen-resolution-checker',
       'keyboard-tester',
       'webcam-test',

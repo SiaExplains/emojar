@@ -18,6 +18,7 @@ import {
   validateJson,
 } from './data';
 import { jsonToTypeScript } from './json-to-ts';
+import { DEV_TRANSFORMS } from './transforms-dev';
 import { TEXT_TRANSFORMS } from './transforms-text';
 import {
   convertCase,
@@ -66,6 +67,10 @@ export type TransformDefinition = {
   prose?: boolean;
   /** Run even when the input is only whitespace (e.g. repeating a space). */
   keepWhitespace?: boolean;
+  /** Sample that depends on the options (e.g. the input base). */
+  sampleFor?: (opts: TransformValues) => string;
+  /** Download extension that depends on the options (e.g. conversion direction). */
+  outputExtFor?: (opts: TransformValues) => string;
   run: (input: string, opts: TransformValues) => string | Promise<string>;
 };
 
@@ -756,4 +761,4 @@ export const TRANSFORMS: Record<string, TransformDefinition> = {
   },
 };
 
-Object.assign(TRANSFORMS, TEXT_TRANSFORMS);
+Object.assign(TRANSFORMS, TEXT_TRANSFORMS, DEV_TRANSFORMS);

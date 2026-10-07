@@ -561,6 +561,7 @@ export const IMAGE_TOOLS: ToolDefinition[] = [
       'export svg png',
     ],
     relatedTools: [
+      'svg-optimizer',
       'image-converter',
       'image-resizer',
       'image-to-base64',

@@ -116,6 +116,18 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
   'screen-info': load(() => import('./tools/ScreenInfoTool')),
   'dead-pixel': load(() => import('./tools/DeadPixelTool')),
   'browser-info': load(() => import('./tools/BrowserInfoTool')),
+  'svg-optimizer': load(() => import('./tools/SvgOptimizerTool')),
+  bcrypt: load(() => import('./tools/BcryptTool')),
+  'json-diff': load(() => import('./tools/JsonDiffTool')),
+  'url-parser': load(() => import('./tools/UrlParserTool')),
+  'ua-parser': load(() => import('./tools/UserAgentParserTool')),
+  'subnet-calculator': load(() => import('./tools/SubnetCalculatorTool')),
+  'chmod-calculator': load(() => import('./tools/ChmodCalculatorTool')),
+  'meta-tag-generator': load(() => import('./tools/MetaTagGeneratorTool')),
+  'robots-txt': load(() => import('./tools/RobotsTxtTool')),
+  'http-status': load(() => import('./tools/HttpStatusTool')),
+  'code-to-image': load(() => import('./tools/CodeToImageTool')),
+  totp: load(() => import('./tools/TotpTool')),
 };
 
 export function ToolRenderer({

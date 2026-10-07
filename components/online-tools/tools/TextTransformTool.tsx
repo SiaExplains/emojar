@@ -84,6 +84,7 @@ export default function TextTransformTool({ config }: ToolProps) {
   }, [input, opts, def, run]);
 
   if (!def) return <ErrorMessage>This tool is not available.</ErrorMessage>;
+  const ext = def.outputExtFor?.(opts) ?? def.outputExt;
 
   const setOpt = (id: string, v: string | boolean) => {
     const next = { ...opts, [id]: v };
@@ -108,7 +109,7 @@ export default function TextTransformTool({ config }: ToolProps) {
             <button
               type="button"
               className={btnSecondary}
-              onClick={() => setInput(def.sample)}
+              onClick={() => setInput(def.sampleFor?.(opts) ?? def.sample)}
             >
               Load sample
             </button>
@@ -176,8 +177,8 @@ export default function TextTransformTool({ config }: ToolProps) {
         <ToolOutput
           label={def.outputLabel}
           value={output}
-          filename={`output.${def.outputExt}`}
-          mime={MIME[def.outputExt] ?? 'text/plain'}
+          filename={`output.${ext}`}
+          mime={MIME[ext] ?? 'text/plain'}
           mono={!def.prose}
           status={
             busy && def.live ? (

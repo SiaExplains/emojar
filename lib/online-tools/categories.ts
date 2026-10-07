@@ -32,9 +32,9 @@ export const CATEGORIES: CategoryDefinition[] = [
     icon: '🧑‍💻',
     title: 'Free Online Developer Tools – JSON, Base64, JWT & More',
     metaDescription:
-      'Format JSON, decode JWTs, encode Base64 and URLs, test regular expressions, generate UUIDs and convert JSON, YAML and CSV — all in your browser.',
+      'Format and diff JSON, decode JWTs, convert number bases, calculate subnets and chmod, generate bcrypt hashes, meta tags and robots.txt — all in your browser.',
     intro:
-      'Everyday developer utilities: formatters, encoders, decoders and converters. Input is processed locally in your browser, so API keys, tokens and payloads are never sent to a server.',
+      'Everyday developer utilities: formatters, encoders, decoders and converters, JSON diff, subnet and chmod calculators, bcrypt and TOTP, meta tags and robots.txt, and pretty code screenshots. Input is processed locally in your browser, so API keys, tokens, secrets and payloads are never sent to a server.',
     accent: 'bg-slate-50 border-slate-200 text-slate-900',
   },
   {

@@ -244,7 +244,7 @@ const SPECS: Spec[] = [
   },
 ];
 
-export const UNIT_CONVERTERS: ToolDefinition[] = SPECS.map((s) => ({
+const MEASUREMENT_CONVERTERS: ToolDefinition[] = SPECS.map((s) => ({
   slug: `${s.quantity}-converter`,
   category: 'unit-converters',
   name: `${s.name} Converter`,
@@ -269,3 +269,103 @@ export const UNIT_CONVERTERS: ToolDefinition[] = SPECS.map((s) => ({
   ],
   faqs: [s.faq],
 }));
+
+const NUMBER_CONVERTERS: ToolDefinition[] = [
+  {
+    slug: 'number-to-words',
+    category: 'unit-converters',
+    name: 'Number to Words',
+    icon: '🔡',
+    shortDescription: 'Write numbers in words, for cheques and documents.',
+    description:
+      'Convert numbers into English words — “1,250.50” becomes “one thousand two hundred fifty point five zero” — or into ordinal words (twenty-first) and cheque wording (One thousand two hundred fifty dollars and 50/100).',
+    title: 'Number to Words Converter – Spell Out Numbers & Cheque Amounts',
+    metaDescription:
+      'Convert numbers to words in English: cardinal, ordinal and cheque format with any currency. Handles decimals and numbers up to sextillions. Free.',
+    keywords: [
+      'number to words',
+      'numbers in words',
+      'cheque amount in words',
+      'spell number',
+      'number to text converter',
+    ],
+    relatedTools: [
+      'roman-numeral-converter',
+      'scientific-calculator',
+      'text-case-converter',
+      'percentage-calculator',
+    ],
+    component: 'number-to-words',
+    popular: true,
+    howTo: [
+      'Type a number (commas are fine).',
+      'Choose cardinal, ordinal or cheque wording, and US or UK style.',
+      'Copy the words — in lowercase, Sentence case or UPPERCASE.',
+    ],
+    about: [
+      'Writing amounts in words is required on cheques and many contracts because words are harder to alter than digits. The cheque format writes the whole amount in words and the cents as a fraction (50/100), the convention banks expect.',
+      'British English inserts “and” after hundreds (“one hundred and five”); American English usually leaves it out. Hyphens join tens and units from twenty-one to ninety-nine.',
+    ],
+    faqs: [
+      {
+        q: 'How do I write $1,250.50 on a cheque?',
+        a: '“One thousand two hundred fifty dollars and 50/100 (50 cents)” — use any currency name you choose, and drop the currency word if it is preprinted on the cheque.',
+      },
+      {
+        q: 'How large a number can it convert?',
+        a: 'Whole numbers up to 24 digits (hundreds of sextillions), with any number of decimal places.',
+      },
+    ],
+  },
+  {
+    slug: 'roman-numeral-converter',
+    category: 'unit-converters',
+    name: 'Roman Numeral Converter',
+    icon: '🏛️',
+    shortDescription: 'Numbers to Roman numerals and back.',
+    description:
+      'Convert numbers to Roman numerals (2026 → MMXXVI) and Roman numerals back to numbers, with validation that catches non-standard forms like IIII. Also converts dates for tattoos and inscriptions.',
+    title: 'Roman Numeral Converter – Numbers to Roman Numerals & Back',
+    metaDescription:
+      'Convert numbers to Roman numerals and Roman numerals to numbers from 1 to 3999. Validates input and converts dates (e.g. for tattoos). Free and instant.',
+    keywords: [
+      'roman numeral converter',
+      'roman numerals',
+      'number to roman numerals',
+      'roman numeral date converter',
+      'mmxxvi',
+    ],
+    relatedTools: [
+      'number-to-words',
+      'date-calculator',
+      'scientific-calculator',
+      'fancy-text-generator',
+    ],
+    component: 'roman-numerals',
+    popular: true,
+    howTo: [
+      'Type a number (1–3999) or a Roman numeral — the direction is detected automatically.',
+      'Or pick a date to get it in Roman numerals (e.g. for a tattoo).',
+      'Copy the result.',
+    ],
+    about: [
+      'Roman numerals combine I (1), V (5), X (10), L (50), C (100), D (500) and M (1000). A smaller symbol before a larger one is subtracted: IV = 4, XC = 90, CM = 900.',
+      'Standard Roman numerals go up to 3999 (MMMCMXCIX). Only six subtractive pairs are valid — IV, IX, XL, XC, CD and CM — so 99 is XCIX, not IC.',
+    ],
+    faqs: [
+      {
+        q: 'Why does a clock show IIII instead of IV?',
+        a: 'Many clock faces use IIII for visual balance — it is a long-standing design tradition, not the standard form.',
+      },
+      {
+        q: 'How do I write a date in Roman numerals?',
+        a: 'Convert day, month and year separately and separate them with dots, e.g. 7 October 2026 → VII.X.MMXXVI.',
+      },
+    ],
+  },
+];
+
+export const UNIT_CONVERTERS: ToolDefinition[] = [
+  ...MEASUREMENT_CONVERTERS,
+  ...NUMBER_CONVERTERS,
+];

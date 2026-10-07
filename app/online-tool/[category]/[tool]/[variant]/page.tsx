@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ToolPage } from '@/components/online-tools/ToolPage';
+import { guideForTool } from '@/lib/blog/guides';
 import {
   TOOLS,
   getToolInCategory,
@@ -11,6 +12,8 @@ import { variantMetadata } from '@/lib/online-tools/seo';
 type Params = { category: string; tool: string; variant: string };
 
 export const dynamicParams = false;
+// Picks up newly published guides daily.
+export const revalidate = 86400;
 
 export function generateStaticParams(): Params[] {
   return TOOLS.flatMap((t) =>
@@ -44,5 +47,12 @@ export default async function OnlineToolVariantPage({
 }) {
   const r = resolve(await params);
   if (!r) notFound();
-  return <ToolPage tool={r.def} variant={r.v} />;
+  const guide = guideForTool(r.def.slug);
+  return (
+    <ToolPage
+      tool={r.def}
+      variant={r.v}
+      guide={guide && { slug: guide.slug, title: guide.title }}
+    />
+  );
 }

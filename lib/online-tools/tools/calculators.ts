@@ -551,4 +551,259 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+
+  {
+    slug: 'scientific-calculator',
+    category: 'calculators',
+    name: 'Scientific Calculator',
+    icon: '🧮',
+    shortDescription: 'Trig, logs, powers, roots and factorials.',
+    description:
+      'A full scientific calculator in your browser: trigonometry in degrees or radians, logarithms, powers, roots, factorials, constants π and e, parentheses and calculation history. Type with your keyboard or tap the buttons.',
+    title: 'Scientific Calculator Online – Free, With History & Keyboard',
+    metaDescription:
+      'Free online scientific calculator with sin, cos, tan, log, ln, powers, roots, factorials, π and e. Degrees or radians, keyboard input and history.',
+    keywords: [
+      'scientific calculator',
+      'online calculator',
+      'calculator with sin cos tan',
+      'log calculator',
+      'free calculator',
+    ],
+    relatedTools: [
+      'percentage-calculator',
+      'average-calculator',
+      'angle-converter',
+      'number-to-words',
+      'roman-numeral-converter',
+    ],
+    component: 'scientific-calculator',
+    popular: true,
+    howTo: [
+      'Type an expression such as 2^10 or sin(30) + log(100), or use the buttons.',
+      'Choose degrees or radians for trigonometry.',
+      'Press = or Enter. Use “Ans” to reuse the last result; earlier results stay in the history.',
+    ],
+    about: [
+      'Operator precedence follows standard maths rules: powers before multiplication and division, then addition and subtraction; powers are right-associative, so 2^3^2 = 2^9 = 512. Implicit multiplication like 2π or 3(4+1) is supported.',
+      'Expressions are evaluated by a small built-in parser — not by running code — and the calculator works offline once loaded.',
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between log and ln?',
+        a: 'log is the base-10 logarithm (log(1000) = 3); ln is the natural logarithm with base e (ln(e) = 1).',
+      },
+      {
+        q: 'Why does tan(90) show an error?',
+        a: 'In degrees, tan(90°) is undefined because cos(90°) is zero, so the calculator reports it instead of showing a huge rounding artefact.',
+      },
+    ],
+  },
+  {
+    slug: 'gpa-calculator',
+    category: 'calculators',
+    name: 'GPA Calculator',
+    icon: '🎓',
+    shortDescription: 'Semester and cumulative GPA on a 4.0 scale.',
+    description:
+      'Calculate your semester GPA from letter grades and credit hours, and your new cumulative GPA by adding your previous GPA and credits. Uses the common 4.0 scale (A = 4.0, A- = 3.7, B+ = 3.3 …).',
+    title: 'GPA Calculator – Semester & Cumulative GPA (4.0 Scale)',
+    metaDescription:
+      'Calculate semester and cumulative GPA on a 4.0 scale from letter grades and credit hours. Add as many courses as you need. Free and instant.',
+    keywords: [
+      'gpa calculator',
+      'college gpa calculator',
+      'cumulative gpa calculator',
+      'semester gpa',
+      'grade point average',
+    ],
+    relatedTools: [
+      'grade-calculator',
+      'average-calculator',
+      'percentage-calculator',
+      'scientific-calculator',
+    ],
+    component: 'gpa-calculator',
+    popular: true,
+    howTo: [
+      'Add each course with its letter grade and credit hours.',
+      'Optionally enter your current cumulative GPA and completed credits.',
+      'Read your semester GPA and new cumulative GPA instantly.',
+    ],
+    about: [
+      'GPA is a credit-weighted average: each course’s grade points (e.g. B+ = 3.3) are multiplied by its credits, added up, and divided by the total credits. A 4-credit course therefore counts twice as much as a 2-credit one.',
+      'Scales differ between schools — some give A+ = 4.3, others don’t use plus/minus at all. Check your school’s scale and pick the matching letter grades.',
+    ],
+    faqs: [
+      {
+        q: 'How do I raise my cumulative GPA?',
+        a: 'The more credits you have completed, the harder it is to move. Use the cumulative fields to see exactly what semester GPA you need.',
+      },
+    ],
+  },
+  {
+    slug: 'grade-calculator',
+    category: 'calculators',
+    name: 'Grade Calculator',
+    icon: '📝',
+    shortDescription: 'Weighted grade and what you need on the final.',
+    description:
+      'Work out your current course grade from weighted assignments, quizzes and exams — and find the score you need on the final exam to reach your target grade.',
+    title: 'Grade Calculator – Weighted Grade & Final Exam Score Needed',
+    metaDescription:
+      'Calculate your weighted course grade and the final exam score you need to reach a target. Add assignments with weights. Free grade calculator.',
+    keywords: [
+      'grade calculator',
+      'final grade calculator',
+      'what do i need on my final',
+      'weighted grade calculator',
+    ],
+    relatedTools: [
+      'gpa-calculator',
+      'average-calculator',
+      'percentage-calculator',
+    ],
+    component: 'grade-calculator',
+    howTo: [
+      'Add each graded item with your score (%) and its weight (%).',
+      'Enter your target grade and the weight of the final exam.',
+      'See your current grade, letter grade and the score needed on the final.',
+    ],
+    about: [
+      'A weighted grade multiplies each score by its weight and divides by the total weight. If homework is 20% and you scored 90, it contributes 18 points of the final grade.',
+      'The final-exam formula is: needed = (target − current × (1 − final weight)) ÷ final weight. A result above 100% means the target is out of reach unless there is extra credit.',
+    ],
+    faqs: [
+      {
+        q: 'What if my weights don’t add up to 100%?',
+        a: 'The current grade is calculated from the weights you have entered so far, which is how most gradebooks show a running grade.',
+      },
+    ],
+  },
+  {
+    slug: 'calorie-calculator',
+    category: 'calculators',
+    name: 'Calorie Calculator',
+    icon: '🥗',
+    shortDescription: 'Daily calories and macros for your goal.',
+    description:
+      'Find out how many calories you need per day to lose, maintain or gain weight, plus a protein, carbohydrate and fat breakdown. Based on the Mifflin-St Jeor equation and your activity level.',
+    title: 'Calorie Calculator – Daily Calories & Macros for Weight Goals',
+    metaDescription:
+      'Calculate daily calories to lose, maintain or gain weight, with protein, carb and fat targets. Mifflin-St Jeor equation and activity level. Free.',
+    keywords: [
+      'calorie calculator',
+      'how many calories should i eat',
+      'calorie deficit calculator',
+      'macro calculator',
+      'tdee calculator',
+    ],
+    relatedTools: [
+      'bmr-calculator',
+      'bmi-calculator',
+      'weight-converter',
+      'energy-converter',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'calorie' },
+    popular: true,
+    howTo: [
+      'Enter sex, age, weight and height.',
+      'Choose your activity level and goal.',
+      'Read your daily calorie target and macro grams.',
+    ],
+    about: [
+      'Your maintenance calories (TDEE) are your basal metabolic rate multiplied by an activity factor. A deficit of about 550 kcal per day corresponds to roughly 0.5 kg of weight loss per week, since 1 kg of body fat holds about 7,700 kcal.',
+      'Targets are not lowered below 1,200 kcal (women) or 1,500 kcal (men), common minimums without medical supervision.',
+    ],
+    faqs: [
+      {
+        q: 'Is the BMR calculator the same thing?',
+        a: 'The BMR calculator focuses on energy use at rest and maintenance; this tool turns that into a goal-based daily target with macros.',
+      },
+    ],
+  },
+  {
+    slug: 'due-date-calculator',
+    category: 'calculators',
+    name: 'Pregnancy Due Date Calculator',
+    icon: '🤰',
+    shortDescription: 'Due date, weeks pregnant and milestones.',
+    description:
+      'Estimate your due date from the first day of your last period, your conception date or an IVF transfer date — and see how many weeks pregnant you are, your trimester and key milestones.',
+    title: 'Pregnancy Due Date Calculator – How Many Weeks Pregnant Am I?',
+    metaDescription:
+      'Calculate your pregnancy due date from your last period, conception or IVF transfer. See weeks pregnant, trimester and key milestone dates.',
+    keywords: [
+      'due date calculator',
+      'pregnancy calculator',
+      'how many weeks pregnant am i',
+      'conception calculator',
+      'ivf due date calculator',
+    ],
+    relatedTools: [
+      'ovulation-calculator',
+      'date-difference-calculator',
+      'week-number-calculator',
+      'date-add-subtract',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'due-date' },
+    popular: true,
+    howTo: [
+      'Choose what you know: last period, conception date or IVF transfer.',
+      'Enter the date (and your usual cycle length for the last-period method).',
+      'Read your estimated due date, weeks pregnant and milestones.',
+    ],
+    about: [
+      'Pregnancy is dated from the first day of the last menstrual period (LMP), about two weeks before conception. Naegele’s rule adds 280 days (40 weeks) to the LMP, adjusted for cycles longer or shorter than 28 days.',
+      'From a known conception date, the due date is 266 days later; for IVF, 263 days after a 3-day embryo transfer or 261 days after a 5-day transfer.',
+    ],
+    faqs: [
+      {
+        q: 'How accurate is a due date?',
+        a: 'It is an estimate — most babies arrive within two weeks either side. An early ultrasound is the most accurate way to date a pregnancy.',
+      },
+    ],
+  },
+  {
+    slug: 'ovulation-calculator',
+    category: 'calculators',
+    name: 'Ovulation Calculator',
+    icon: '🌸',
+    shortDescription: 'Fertile window and ovulation date.',
+    description:
+      'Estimate your ovulation date and fertile window from your last period and cycle length, with predictions for the next three cycles.',
+    title: 'Ovulation Calculator – Fertile Window & Ovulation Date',
+    metaDescription:
+      'Estimate your ovulation day and fertile window from your last period and cycle length, with the next three cycles. Free ovulation calculator.',
+    keywords: [
+      'ovulation calculator',
+      'fertile window calculator',
+      'when do i ovulate',
+      'ovulation tracker',
+    ],
+    relatedTools: [
+      'due-date-calculator',
+      'date-add-subtract',
+      'date-difference-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'ovulation' },
+    howTo: [
+      'Enter the first day of your last period.',
+      'Enter your average cycle length (and luteal phase if you know it).',
+      'See your estimated ovulation day, fertile window and next period.',
+    ],
+    about: [
+      'Ovulation usually happens about 14 days before the next period (the luteal phase), not necessarily on day 14 of the cycle. In a 32-day cycle it is about 18 days after the period starts.',
+      'The fertile window is the five days before ovulation plus the day after, because sperm can survive up to five days. The two days before ovulation and ovulation day itself are the most fertile.',
+    ],
+    faqs: [
+      {
+        q: 'Can I use this for contraception?',
+        a: 'No. Cycles vary and ovulation can shift, so calendar estimates are not reliable contraception.',
+      },
+    ],
+  },
 ];

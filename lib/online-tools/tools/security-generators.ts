@@ -358,4 +358,124 @@ export const SECURITY_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+
+  {
+    slug: 'wheel-spinner',
+    category: 'security-generators',
+    name: 'Wheel Spinner',
+    icon: '🎡',
+    shortDescription: 'Spin a wheel to pick a random name.',
+    description:
+      'Add names or options, spin the wheel and let it pick a winner fairly. Remove winners between spins, shuffle the order, and run giveaways, classroom picks or team decisions. Every spin uses a cryptographically secure random number.',
+    title: 'Wheel Spinner – Random Name Picker Wheel, Free',
+    metaDescription:
+      'Spin a wheel to pick a random name or option. Add entries, remove winners, run giveaways and classroom draws. Fair, secure randomness, no sign-up.',
+    keywords: [
+      'wheel spinner',
+      'random name picker',
+      'spin the wheel',
+      'name wheel',
+      'random picker wheel',
+    ],
+    relatedTools: [
+      'random-number-generator',
+      'dice-roller',
+      'coin-flip',
+      'sort-lines',
+      'random-string-generator',
+    ],
+    component: 'wheel-spinner',
+    popular: true,
+    howTo: [
+      'Type one entry per line (names, prizes, choices).',
+      'Click Spin or press the space bar.',
+      'Remove the winner for the next spin, or spin again.',
+    ],
+    about: [
+      'The winner is chosen with crypto.getRandomValues before the wheel starts turning; the animation simply lands on that segment. Every entry has exactly the same chance, regardless of its position or text length.',
+      'Your list is remembered in this browser only, so you can come back to the same wheel later.',
+    ],
+    faqs: [
+      {
+        q: 'Can I give an entry more chances?',
+        a: 'Yes — add it more than once. Each line is one segment.',
+      },
+      {
+        q: 'Is the wheel really random?',
+        a: 'Yes. The result comes from your browser’s cryptographic random generator with unbiased sampling; nothing is predetermined.',
+      },
+    ],
+  },
+  {
+    slug: 'dice-roller',
+    category: 'security-generators',
+    name: 'Dice Roller',
+    icon: '🎲',
+    shortDescription: 'Roll d4–d100 dice or notation like 2d6+3.',
+    description:
+      'Roll virtual dice for board games and tabletop RPGs: one or many d4, d6, d8, d10, d12, d20 or d100, or type notation like 2d6+3 or 4d6kh3. Every roll is fair and shows the individual dice.',
+    title: 'Dice Roller – Roll D20, D6 & Custom Dice Online',
+    metaDescription:
+      'Roll virtual dice online: d4, d6, d8, d10, d12, d20, d100 or RPG notation like 2d6+3 and 4d6kh3. Fair, secure randomness with roll history.',
+    keywords: [
+      'dice roller',
+      'roll a dice',
+      'd20 roller',
+      'virtual dice',
+      'rpg dice roller',
+    ],
+    relatedTools: ['coin-flip', 'wheel-spinner', 'random-number-generator'],
+    component: 'dice-roller',
+    howTo: [
+      'Tap a die to roll it, or type notation such as 3d6 or 2d20+5 to roll several at once.',
+      'Or type dice notation such as 3d8+2 or 4d6kh3 (roll four, keep the highest three).',
+      'See every die, the total and your recent rolls.',
+    ],
+    about: [
+      'Dice notation writes a roll as NdS±M: N dice with S sides plus a modifier M. “kh” keeps the highest dice and “kl” the lowest, which is how ability scores (4d6kh3) and advantage/disadvantage (2d20kh1 / 2d20kl1) work.',
+      'Each die face is drawn with unbiased sampling from your browser’s cryptographic random generator, so every face is equally likely.',
+    ],
+    faqs: [
+      {
+        q: 'What is the average of 2d6?',
+        a: '7 — it is also the most likely total (1 in 6 chance).',
+      },
+    ],
+  },
+  {
+    slug: 'coin-flip',
+    category: 'security-generators',
+    name: 'Coin Flip',
+    icon: '🪙',
+    shortDescription: 'Flip a fair coin — heads or tails.',
+    description:
+      'Flip a virtual coin to settle a decision: heads or tails, with a running tally and the option to flip many coins at once. Fair 50/50 odds every time.',
+    title: 'Coin Flip – Heads or Tails Online, Fair 50/50',
+    metaDescription:
+      'Flip a coin online — heads or tails with a fair 50/50 result. Keep a tally, flip many coins at once and see the streaks. Free coin toss.',
+    keywords: [
+      'coin flip',
+      'flip a coin',
+      'heads or tails',
+      'coin toss',
+      'virtual coin',
+    ],
+    relatedTools: ['dice-roller', 'wheel-spinner', 'random-number-generator'],
+    component: 'coin-flip',
+    howTo: [
+      'Click Flip (or press the space bar).',
+      'Optionally flip 10 or 100 coins at once.',
+      'Watch the tally of heads and tails.',
+    ],
+    about: [
+      'Each flip is independent: after five heads in a row, the next flip is still exactly 50/50. Streaks are far more common than most people expect — in 100 flips a run of six or more is likely.',
+      'Results come from your browser’s cryptographic random generator rather than a physics simulation, so there is no hidden bias.',
+    ],
+    faqs: [
+      {
+        q: 'Is a real coin fair?',
+        a: 'Nearly. Studies of human flips found a slight bias (about 51%) towards the side that started facing up; a virtual coin has no such bias.',
+      },
+    ],
+  },
 ];

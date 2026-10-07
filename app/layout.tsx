@@ -143,6 +143,7 @@ export default function RootLayout({
                 <Link href="/online-tool">Online Tools</Link>
                 <Link href="/emoji">Emoji</Link>
                 <Link href="/blog">Blog</Link>
+                <Link href="/faq">FAQ</Link>
                 <Link href="/about">About</Link>
                 <Link href="/contact">Contact</Link>
                 <Link href="/privacy">Privacy</Link>

@@ -357,4 +357,133 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+
+  {
+    slug: 'stopwatch',
+    category: 'date-time-tools',
+    name: 'Online Stopwatch',
+    icon: '⏱️',
+    shortDescription: 'Precise stopwatch with lap times.',
+    description:
+      'A precise online stopwatch with lap and split times, keyboard shortcuts and a full-screen view. Keeps accurate time even when you switch tabs.',
+    title: 'Online Stopwatch – With Laps, Full Screen & Keyboard Shortcuts',
+    metaDescription:
+      'Free online stopwatch with lap times, splits, full-screen mode and keyboard shortcuts. Accurate to the hundredth of a second, even in background tabs.',
+    keywords: [
+      'online stopwatch',
+      'stopwatch',
+      'stopwatch with laps',
+      'timer online',
+      'lap timer',
+    ],
+    relatedTools: [
+      'online-timer',
+      'pomodoro-timer',
+      'time-duration-calculator',
+      'world-clock',
+    ],
+    component: 'stopwatch',
+    popular: true,
+    howTo: [
+      'Press Start (or the space bar).',
+      'Press Lap (or L) to record a lap; the fastest and slowest laps are highlighted.',
+      'Press Stop, then Reset (or R) to start over.',
+    ],
+    about: [
+      'The stopwatch measures elapsed time from your device’s high-resolution clock instead of counting ticks, so it stays accurate when the tab is in the background or the device is busy.',
+      'A lap time is the time since the previous lap; a split is the total time since the start. Both are shown for every lap.',
+    ],
+    faqs: [
+      {
+        q: 'Does it keep running if I close the tab?',
+        a: 'No — closing the page stops it. Switching to another tab or app is fine; the time keeps counting.',
+      },
+    ],
+  },
+  {
+    slug: 'online-timer',
+    category: 'date-time-tools',
+    name: 'Online Timer',
+    icon: '⏲️',
+    shortDescription: 'Countdown timer with alarm.',
+    description:
+      'Set a countdown timer for any length — 1 minute, 5 minutes, 1 hour — and get an alarm sound and notification when time is up. Works in the background and in full screen.',
+    title: 'Online Timer – Countdown Timer With Alarm, Free',
+    metaDescription:
+      'Set an online countdown timer for minutes or hours with an alarm sound and notification. Quick presets, full-screen mode, works in background tabs.',
+    keywords: [
+      'online timer',
+      'countdown timer',
+      'timer with alarm',
+      '5 minute timer',
+      '10 minute timer',
+    ],
+    relatedTools: [
+      'pomodoro-timer',
+      'stopwatch',
+      'countdown-generator',
+      'world-clock',
+    ],
+    component: 'timer',
+    config: { mode: 'timer' },
+    popular: true,
+    howTo: [
+      'Pick a preset or enter hours, minutes and seconds.',
+      'Press Start; pause or add a minute at any time.',
+      'When the timer ends, an alarm beeps and the display flashes until you dismiss it.',
+    ],
+    about: [
+      'The timer counts down to a fixed end time, so it stays accurate even if the browser throttles background tabs. Allow notifications to get an alert when the page is hidden.',
+      'The remaining time is also shown in the browser tab title, so you can keep an eye on it while working in another tab.',
+    ],
+    faqs: [
+      {
+        q: 'Why didn’t I hear the alarm?',
+        a: 'Browsers only play sound after you have interacted with the page — pressing Start counts. Check that your device is not muted.',
+      },
+    ],
+  },
+  {
+    slug: 'pomodoro-timer',
+    category: 'date-time-tools',
+    name: 'Pomodoro Timer',
+    icon: '🍅',
+    shortDescription: '25-minute focus sessions with breaks.',
+    description:
+      'Work in focused 25-minute sessions with 5-minute breaks and a longer break after every four rounds — the Pomodoro Technique. Customise the lengths and get a sound when each phase ends.',
+    title: 'Pomodoro Timer Online – 25/5 Focus Timer With Breaks',
+    metaDescription:
+      'Free Pomodoro timer: 25-minute focus sessions, 5-minute breaks and a long break every 4 rounds. Custom lengths, alarm sound and round counter.',
+    keywords: [
+      'pomodoro timer',
+      'pomodoro technique',
+      'focus timer',
+      'study timer',
+      '25 minute timer',
+    ],
+    relatedTools: [
+      'online-timer',
+      'stopwatch',
+      'world-clock',
+      'working-days-calculator',
+    ],
+    component: 'timer',
+    config: { mode: 'pomodoro' },
+    popular: true,
+    howTo: [
+      'Press Start to begin a 25-minute focus session.',
+      'Take a 5-minute break when the alarm sounds; the timer moves to the next phase, and you press Start when you are ready.',
+      'After four focus sessions, enjoy a longer 15-minute break.',
+    ],
+    about: [
+      'The Pomodoro Technique, created by Francesco Cirillo in the late 1980s, breaks work into short, timed intervals. The fixed end time makes it easier to start difficult tasks and to protect focus from interruptions.',
+      'You can change the focus, short-break and long-break lengths; many people prefer 50/10 for deep work.',
+    ],
+    faqs: [
+      {
+        q: 'What should I do during a break?',
+        a: 'Step away from the screen — stand up, stretch or get water. Checking messages tends to pull your attention back into work mode.',
+      },
+    ],
+  },
 ];

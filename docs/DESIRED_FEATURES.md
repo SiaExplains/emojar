@@ -253,22 +253,28 @@
 **Implementation:** optional in-browser segmentation model (permissively licensed, e.g. MediaPipe), downloaded only when the user opts in; keep the current fast mode as default.
 **Acceptance Criteria:** people/objects can be cut out of photos without uploading them; page states the model download size.
 
-### [ ] OCR for scanned PDFs and images
-**Description:** PDF to Text cannot read scanned PDFs (no text layer).
+### [ ] OCR for scanned PDFs
+**Description:** Image OCR shipped in v0.3.0 (`image-to-text`, Tesseract.js). PDF to Text still cannot read scanned PDFs (no text layer) — reuse the OCR engine on rendered pages.
 **Implementation:** in-browser OCR (e.g. Tesseract.js, lazy-loaded with language packs).
 **Acceptance Criteria:** text extracted from a scanned page, processed locally.
 
-### [ ] Audio & video tools
-**Description:** The original spec mentions audio/video utilities (convert, trim, extract audio).
+### [ ] More audio & video tools
+**Description:** v0.3.0 shipped MP4 to MP3 and Video to GIF with native browser APIs. Still missing: general video conversion, trimming, compression and formats the browser can't decode.
 **Implementation:** FFmpeg.wasm in a worker, loaded only on those pages.
 **Acceptance Criteria:** conversions run locally; large files show progress and do not freeze the UI.
 
 ### [ ] More conversion landing pages
-**Description:** Variant pages (e.g. `jpg-to-png-converter`) rank for specific queries. Candidates: HEIC to JPG (needs a decoder), AVIF to JPG, GIF to PNG, unit-specific pages (km to miles, kg to lbs, °C to °F).
+**Description:** Variant pages (e.g. `jpg-to-png-converter`) rank for specific queries. Candidates (HEIC to JPG and exact-size compression shipped in v0.3.0): AVIF to JPG, GIF to PNG, unit-specific pages (km to miles, kg to lbs, °C to °F).
 **Acceptance Criteria:** each page has a unique title, description and intro; no duplicate pages for the same query.
 
-### [ ] Blog post announcing the Online Tools platform
-**Description:** A draft was written during the v0.2.0 work but not published. Review, adapt and publish under `app/blog/`.
+### [x] Blog post announcing the Online Tools platform
+**Description:** Shipped in v0.3.0 as the guide `emojar-free-online-tools-that-run-in-your-browser` (published 2026-10-07).
+
+### [ ] Timer alarms in background tabs
+**Description:** Countdown maths is drift-free, but the finish is detected on a 1 s interval that browsers throttle in hidden tabs, so the alarm can sound late. Also schedule a `setTimeout` for the end time (or use a worker).
+
+### [ ] Mic/webcam tests: verify on real devices
+**Description:** Capture was only verified on the permission-denied path in the dev browser; check the level meter, recording and camera stats on macOS, Windows, Android and iOS.
 
 ---
 

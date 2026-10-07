@@ -221,7 +221,7 @@ export const COLOR_TOOLS: ToolDefinition[] = [
       'Check the contrast ratio between a text color and a background color and see whether it passes WCAG 2.2 AA and AAA for normal and large text.',
     title: 'Color Contrast Checker – WCAG AA & AAA Online',
     metaDescription:
-      'Check color contrast ratios against WCAG 2.2 AA and AAA for text and UI components. Live preview and suggestions. Free.',
+      'Check color contrast ratios against WCAG 2.2 AA and AAA for text and UI components. Live preview and pass/fail results. Free.',
     keywords: [
       'contrast checker',
       'wcag contrast',

@@ -65,7 +65,7 @@ describe('tool registry', () => {
 
   it('every category has tools and resolves only canonical URLs', () => {
     for (const c of CATEGORIES)
-      expect(toolsInCategory(c.slug).length, c.slug).toBeGreaterThan(3);
+      expect(toolsInCategory(c.slug).length, c.slug).toBeGreaterThanOrEqual(2);
     expect(getToolInCategory('developer-tools', 'json-formatter')?.name).toBe(
       'JSON Formatter',
     );

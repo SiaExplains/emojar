@@ -11,6 +11,26 @@ const withMDX = createMDX({
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  // Tool guides are read from disk when pages (re)render — including daily
+  // ISR revalidations on Vercel — so ship the Markdown with every function.
+  outputFileTracingIncludes: {
+    '/**/*': ['./content/guides/**/*.md'],
+  },
+  // qpdf-wasm's Emscripten glue references Node built-ins it only uses under
+  // Node; stub them in browser bundles.
+  webpack: (
+    config: { resolve: { fallback?: Record<string, false> } },
+    { isServer }: { isServer: boolean },
+  ) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+      };
+    }
+    return config;
+  },
   async redirects() {
     return [
       // NOTE: www → non-www redirect must be configured in the Vercel dashboard

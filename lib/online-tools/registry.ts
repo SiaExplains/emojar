@@ -11,6 +11,8 @@ import { PDF_TOOLS } from './tools/pdf-tools';
 import { SECURITY_TOOLS } from './tools/security-generators';
 import { TEXT_TOOLS } from './tools/text-tools';
 import { UNIT_CONVERTERS } from './tools/unit-converters';
+import { AUDIO_VIDEO_TOOLS } from './tools/audio-video-tools';
+import { DEVICE_TESTS } from './tools/device-tests';
 import type {
   CategoryDefinition,
   CategorySlug,
@@ -33,6 +35,8 @@ export const TOOLS: ToolDefinition[] = [
   ...UNIT_CONVERTERS,
   ...SECURITY_TOOLS,
   ...DATE_TIME_TOOLS,
+  ...AUDIO_VIDEO_TOOLS,
+  ...DEVICE_TESTS,
 ];
 
 export { CATEGORIES };

@@ -584,4 +584,217 @@ export const IMAGE_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+
+  {
+    slug: 'heic-to-jpg',
+    category: 'image-tools',
+    name: 'HEIC to JPG',
+    icon: '📱',
+    shortDescription: 'Convert iPhone HEIC photos to JPG, PNG or WebP.',
+    description:
+      'Convert HEIC and HEIF photos from iPhones and iPads to JPG, PNG or WebP so they open on Windows, Android and any website. Batch convert as many photos as you like — they are converted in your browser and never uploaded.',
+    title: 'HEIC to JPG Converter – Convert iPhone Photos Online, No Upload',
+    metaDescription:
+      'Convert HEIC to JPG or PNG online for free. Batch convert iPhone photos in your browser — your pictures are never uploaded to a server.',
+    keywords: [
+      'heic to jpg',
+      'heic converter',
+      'convert heic to jpg',
+      'iphone photo to jpg',
+      'heif to jpg',
+    ],
+    relatedTools: [
+      'image-converter',
+      'image-compressor',
+      'image-exif-viewer',
+      'image-resizer',
+      'compress-image-to-size',
+    ],
+    component: 'heic-to-jpg',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Drop your .heic or .heif photos into the box (or click to choose them).',
+      'Pick JPG, PNG or WebP and, for JPG and WebP, the quality.',
+      'Click Convert and download each photo, or all at once.',
+    ],
+    about: [
+      'HEIC (High Efficiency Image Container) is the default photo format on iPhones since iOS 11. It stores photos at roughly half the size of JPG, but Windows, many Android apps and lots of websites still cannot open it.',
+      'Safari can decode HEIC natively; in other browsers this tool loads a small HEIC decoder on demand. Either way the decoding happens on your device. Converting to JPG re-encodes the photo; choose 90%+ quality to keep it visually identical.',
+    ],
+    faqs: [
+      {
+        q: 'Why can’t I open HEIC files on Windows?',
+        a: 'Windows needs an extra codec from the Microsoft Store to read HEIC. Converting to JPG avoids the codec entirely and works in every app.',
+      },
+      {
+        q: 'Does converting HEIC to JPG keep the photo location data?',
+        a: 'No. The browser re-encodes the pixels, so EXIF metadata such as GPS location is not copied into the JPG — handy before sharing.',
+      },
+      {
+        q: 'Can I stop my iPhone from saving HEIC?',
+        a: 'Yes: Settings → Camera → Formats → “Most Compatible” makes the camera save JPG instead.',
+      },
+    ],
+  },
+  {
+    slug: 'image-to-text',
+    category: 'image-tools',
+    name: 'Image to Text (OCR)',
+    icon: '🔤',
+    shortDescription: 'Extract text from images and screenshots.',
+    description:
+      'Extract text from photos, screenshots and scanned documents with OCR (optical character recognition). Recognition runs in your browser: the OCR engine is downloaded once, and your image is never uploaded.',
+    title: 'Image to Text Converter (OCR) – Extract Text From Images Free',
+    metaDescription:
+      'Extract text from images, screenshots and scans with free online OCR. Supports 10+ languages and runs in your browser — your image is never uploaded.',
+    keywords: [
+      'image to text',
+      'ocr online',
+      'extract text from image',
+      'picture to text',
+      'screenshot to text',
+    ],
+    relatedTools: [
+      'pdf-to-text',
+      'word-counter',
+      'find-and-replace',
+      'image-cropper',
+      'heic-to-jpg',
+    ],
+    component: 'image-to-text',
+    handlesFiles: true,
+    popular: true,
+    limitation:
+      'The first run downloads the open-source Tesseract OCR engine and the selected language model (about 5–15 MB) from a public CDN; your image itself stays on your device. Handwriting and very stylised fonts are recognised poorly.',
+    howTo: [
+      'Choose an image, screenshot or photo of a document (or paste one with Ctrl/⌘ + V).',
+      'Select the language of the text.',
+      'Click “Extract text”, then copy or download the result.',
+    ],
+    about: [
+      'OCR turns the pixels of letters into editable text. This tool uses Tesseract, a widely used open-source OCR engine, compiled to WebAssembly so it runs in the browser.',
+      'Accuracy depends mostly on the image: sharp, well-lit, straight text at 300 DPI or higher gives the best results. Crop the image to the text area and increase contrast for difficult photos.',
+    ],
+    faqs: [
+      {
+        q: 'Which languages are supported?',
+        a: 'English, German, French, Spanish, Italian, Portuguese, Dutch, Turkish, Persian, Arabic, Russian, Chinese (simplified), Japanese and Hindi. Each language model is downloaded the first time you use it.',
+      },
+      {
+        q: 'Can it read handwriting?',
+        a: 'Only neat block capitals. Tesseract is designed for printed text, so cursive handwriting is usually not recognised.',
+      },
+    ],
+  },
+  {
+    slug: 'compress-image-to-size',
+    category: 'image-tools',
+    name: 'Compress Image to Exact Size',
+    icon: '🎯',
+    shortDescription: 'Shrink a photo to 20 KB, 50 KB, 100 KB or any size.',
+    description:
+      'Compress an image to an exact file size such as 20 KB, 50 KB or 100 KB — the limit many application forms, exam portals and ID uploads require. The tool finds the best quality that fits under your limit, entirely in your browser.',
+    title: 'Compress Image to 20KB, 50KB, 100KB – Exact Size Compressor',
+    metaDescription:
+      'Compress JPG or PNG images to an exact size like 20 KB, 50 KB or 100 KB for online forms. Best quality under your limit, processed in your browser.',
+    keywords: [
+      'compress image to 20kb',
+      'compress image to 50kb',
+      'compress jpeg to 100kb',
+      'reduce image size in kb',
+      'resize image to kb',
+    ],
+    relatedTools: [
+      'image-compressor',
+      'image-resizer',
+      'image-cropper',
+      'heic-to-jpg',
+      'image-converter',
+    ],
+    component: 'compress-to-size',
+    config: { target: 50 },
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Choose a photo, signature or document scan.',
+      'Pick a preset (20, 30, 50, 100, 200 or 500 KB) or type your own limit.',
+      'Click Compress — the result is guaranteed to be at or below the limit — and download it.',
+    ],
+    about: [
+      'Government, university and job portals often reject uploads above a fixed size. This tool searches for the highest JPG quality that fits under your limit and, only if that is not enough, reduces the dimensions step by step.',
+      'Sizes use 1 KB = 1,024 bytes, the definition most upload forms use. The output is a JPG (or WebP if you choose it), and photo metadata is removed whenever the image is re-encoded. A JPG or WebP that is already under the limit is returned unchanged.',
+    ],
+    faqs: [
+      {
+        q: 'Why is my 20 KB photo so small in pixels?',
+        a: 'A 20 KB limit is very tight. When the lowest acceptable quality still does not fit, the tool reduces the width and height until it does. Crop to the face or document first to keep more detail.',
+      },
+      {
+        q: 'Will the result be exactly 20 KB?',
+        a: 'It will be at or just below the limit — never above — because forms reject files that are even one byte too large.',
+      },
+    ],
+    variants: [20, 50, 100, 200].map((kb) => ({
+      slug: `compress-image-to-${kb}kb`,
+      name: `Compress Image to ${kb}KB`,
+      title: `Compress Image to ${kb}KB Online – JPG Under ${kb} KB, Free`,
+      metaDescription: `Compress any JPG, PNG or WebP photo to under ${kb} KB for online forms and uploads. Best possible quality, processed privately in your browser.`,
+      description: `Reduce a photo to ${kb} KB or less in one click. Upload forms for ${kb <= 50 ? 'passport photos, signatures and exam applications' : 'job portals, visas and email attachments'} often set a ${kb} KB limit; this tool finds the best quality that fits — without uploading your image anywhere.`,
+      config: { target: kb },
+      keywords: [
+        `compress image to ${kb}kb`,
+        `reduce image size to ${kb}kb`,
+        `jpg to ${kb}kb`,
+      ],
+    })),
+  },
+  {
+    slug: 'meme-generator',
+    category: 'image-tools',
+    name: 'Meme Generator',
+    icon: '😂',
+    shortDescription: 'Add classic meme captions to any image.',
+    description:
+      'Make a meme from your own image: add bold top and bottom captions in the classic outlined style, drag them anywhere, and download a PNG. No watermark, no sign-up, and your image never leaves your device.',
+    title: 'Meme Generator – Add Text to Images, No Watermark',
+    metaDescription:
+      'Create memes online from your own images. Add classic top and bottom text, drag captions anywhere, and download without a watermark. Free and private.',
+    keywords: [
+      'meme generator',
+      'meme maker',
+      'add text to image',
+      'make a meme',
+      'caption image',
+    ],
+    relatedTools: [
+      'image-cropper',
+      'image-resizer',
+      'image-converter',
+      'fancy-text-generator',
+      'image-compressor',
+    ],
+    component: 'meme-generator',
+    handlesFiles: true,
+    popular: true,
+    howTo: [
+      'Upload an image (or paste one with Ctrl/⌘ + V).',
+      'Type the top and bottom text; add extra captions if you need them and drag them into place.',
+      'Adjust font size, colour and outline, then download the PNG.',
+    ],
+    about: [
+      'The classic meme style is white Impact-style capitals with a black outline, so the text stays readable on any background. You can change the colour and size of every caption and drag it anywhere; the ALL CAPS and outline switches apply to all captions.',
+      'Use images you have the rights to share. The generator does not include copyrighted meme templates — upload your own photo, screenshot or a template you are allowed to use.',
+    ],
+    faqs: [
+      {
+        q: 'Does the meme have a watermark?',
+        a: 'No. The downloaded PNG contains only your image and your captions.',
+      },
+      {
+        q: 'What image size should I use?',
+        a: 'Anything from 500 to 1,500 pixels wide works well for social media. Larger images are scaled down to 2,000 pixels on the longest side.',
+      },
+    ],
+  },
 ];

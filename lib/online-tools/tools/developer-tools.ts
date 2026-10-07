@@ -159,7 +159,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
     faqs: [
       {
         q: 'Are strings quoted in the output?',
-        a: 'Only when needed — for example strings that look like numbers, booleans or contain special characters keep their quotes so the YAML parses back to the same values.',
+        a: 'Only when needed: strings that look like numbers, true/false or null, or that contain special characters, keep their quotes. Words like yes, no, on and off are written unquoted, and older YAML 1.1 parsers may read them as booleans.',
       },
     ],
   },
@@ -194,12 +194,12 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'Copy or download the JSON.',
     ],
     about: [
-      'YAML features like anchors, aliases and multi-line strings are resolved into plain JSON values.',
+      'Aliases (*name) and multi-line strings are resolved into plain JSON values. Merge keys (<<:) are not expanded and appear as a literal "<<" key.',
     ],
     faqs: [
       {
         q: 'Does it support multiple YAML documents?',
-        a: 'Only the first document (before the first ---) is converted.',
+        a: 'No. Input with several documents separated by --- is rejected; convert one document at a time.',
       },
     ],
   },
@@ -269,7 +269,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
     faqs: [
       {
         q: 'Can I keep numbers as strings?',
-        a: 'Yes — turn off “Detect numbers & booleans”, useful for IDs with leading zeros or postcodes.',
+        a: 'Values with leading zeros (like 02134) already stay strings. Turn off “Detect numbers & booleans” when a column must have one type — otherwise an ID column can mix strings and numbers.',
       },
     ],
   },
@@ -882,6 +882,98 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       {
         q: 'Are tables converted?',
         a: 'Simple tables are converted to text; complex layouts may need manual tidying.',
+      },
+    ],
+  },
+
+  {
+    slug: 'sql-formatter',
+    category: 'developer-tools',
+    name: 'SQL Formatter',
+    icon: '🗄️',
+    shortDescription: 'Beautify SQL queries for 10 dialects.',
+    description:
+      'Format messy or one-line SQL into readable, consistently indented queries. Supports PostgreSQL, MySQL, SQL Server, SQLite, Oracle, BigQuery, Snowflake and more, with uppercase or lowercase keywords.',
+    title: 'SQL Formatter – Beautify SQL Queries Online (Postgres, MySQL)',
+    metaDescription:
+      'Format and beautify SQL online for PostgreSQL, MySQL, SQL Server, SQLite, Oracle, BigQuery and Snowflake. Choose keyword case and indent. Runs in your browser.',
+    keywords: [
+      'sql formatter',
+      'format sql',
+      'sql beautifier',
+      'pretty print sql',
+      'sql query formatter',
+    ],
+    relatedTools: [
+      'json-formatter',
+      'javascript-formatter',
+      'xml-formatter',
+      'csv-to-json',
+      'text-diff',
+    ],
+    component: 'text-transform',
+    config: { transform: 'sql-format' },
+    popular: true,
+    howTo: [
+      'Paste your SQL.',
+      'Pick the dialect, keyword case and indentation.',
+      'Click “Format SQL” and copy the result.',
+    ],
+    about: [
+      'Formatting puts each clause (SELECT, FROM, JOIN, WHERE, GROUP BY…) on its own line and indents nested queries, which makes long queries much easier to review in code reviews and pull requests.',
+      'The formatter is the open-source sql-formatter library running in your browser, so queries containing table names or customer data are never sent anywhere.',
+    ],
+    faqs: [
+      {
+        q: 'Does formatting change what the query does?',
+        a: 'No. Only whitespace and, if you choose, the case of keywords and literals such as TRUE and NULL change. String literals and identifiers stay exactly as written.',
+      },
+      {
+        q: 'Why does my query fail to format?',
+        a: 'Dialect-specific syntax (for example T-SQL brackets or BigQuery backticks) needs the matching dialect. Switch the dialect and try again.',
+      },
+    ],
+  },
+  {
+    slug: 'json-to-typescript',
+    category: 'developer-tools',
+    name: 'JSON to TypeScript',
+    icon: '🟦',
+    shortDescription: 'Generate TypeScript interfaces from JSON.',
+    description:
+      'Paste a JSON sample — an API response, a config file, a database record — and get ready-to-use TypeScript interfaces, with nested types, arrays, unions and optional fields inferred automatically.',
+    title: 'JSON to TypeScript – Generate Interfaces From JSON Online',
+    metaDescription:
+      'Convert JSON to TypeScript interfaces or types online. Nested objects, arrays, unions and optional fields are inferred. Free and private — runs in your browser.',
+    keywords: [
+      'json to typescript',
+      'json to ts',
+      'generate typescript interface from json',
+      'json to interface',
+      'typescript type generator',
+    ],
+    relatedTools: [
+      'json-formatter',
+      'json-validator',
+      'json-to-yaml',
+      'jwt-decoder',
+      'sql-formatter',
+    ],
+    component: 'text-transform',
+    config: { transform: 'json-to-ts' },
+    howTo: [
+      'Paste a JSON sample.',
+      'Set the root type name and choose interface or type alias.',
+      'Copy the generated TypeScript.',
+    ],
+    about: [
+      'Each JSON object becomes an interface named after its key (an array called “orders” produces an “Order” interface). When an array contains objects with different keys, the keys that are missing in some items become optional (`?`).',
+      'Types can only be as good as the sample: a field that is null in your sample is typed as null. Paste a representative response, then refine the generated types by hand.',
+    ],
+    faqs: [
+      {
+        q: 'Should I use interface or type?',
+        a: 'Both work for object shapes. Interfaces can be extended and merged; type aliases can also express unions. Many teams pick one for consistency.',
       },
     ],
   },

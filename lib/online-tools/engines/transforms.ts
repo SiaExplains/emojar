@@ -17,6 +17,7 @@ import {
   utf8ToBase64,
   validateJson,
 } from './data';
+import { jsonToTypeScript } from './json-to-ts';
 import {
   convertCase,
   isMorse,
@@ -36,7 +37,14 @@ export type TransformOption =
       choices: { value: string; label: string }[];
       default: string;
     }
-  | { id: string; label: string; type: 'checkbox'; default: boolean };
+  | { id: string; label: string; type: 'checkbox'; default: boolean }
+  | {
+      id: string;
+      label: string;
+      type: 'text';
+      default: string;
+      placeholder?: string;
+    };
 
 export type TransformValues = Record<string, string | boolean>;
 
@@ -641,5 +649,104 @@ export const TRANSFORMS: Record<string, TransformDefinition> = {
         (o.direction !== 'encode' && isMorse(input));
       return decode ? morseToText(input) : textToMorse(input);
     },
+  },
+  'sql-format': {
+    inputLabel: 'SQL input',
+    outputLabel: 'Formatted SQL',
+    actionLabel: 'Format SQL',
+    placeholder: 'Paste SQL here…',
+    sample:
+      "select u.id, u.name, count(o.id) as orders from users u left join orders o on o.user_id = u.id where u.created_at > '2026-01-01' and u.active = true group by u.id, u.name having count(o.id) > 5 order by orders desc limit 20;",
+    outputExt: 'sql',
+    live: false,
+    options: [
+      {
+        id: 'language',
+        label: 'Dialect',
+        type: 'select',
+        choices: [
+          { value: 'sql', label: 'Standard SQL' },
+          { value: 'postgresql', label: 'PostgreSQL' },
+          { value: 'mysql', label: 'MySQL' },
+          { value: 'mariadb', label: 'MariaDB' },
+          { value: 'sqlite', label: 'SQLite' },
+          { value: 'transactsql', label: 'SQL Server (T-SQL)' },
+          { value: 'plsql', label: 'Oracle PL/SQL' },
+          { value: 'bigquery', label: 'BigQuery' },
+          { value: 'snowflake', label: 'Snowflake' },
+          { value: 'redshift', label: 'Redshift' },
+        ],
+        default: 'sql',
+      },
+      {
+        id: 'keywordCase',
+        label: 'Keywords',
+        type: 'select',
+        choices: [
+          { value: 'upper', label: 'UPPERCASE' },
+          { value: 'lower', label: 'lowercase' },
+          { value: 'preserve', label: 'Keep as typed' },
+        ],
+        default: 'upper',
+      },
+      indentOption,
+    ],
+    run: async (input, o) => {
+      if (!input.trim()) throw new ToolInputError('Please enter some SQL.');
+      const { format } = await import('sql-formatter');
+      try {
+        return format(input, {
+          language: String(o.language ?? 'sql') as 'sql',
+          keywordCase:
+            (o.keywordCase as 'upper' | 'lower' | 'preserve') ?? 'upper',
+          tabWidth: o.indent === '4' ? 4 : 2,
+          useTabs: o.indent === 'tab',
+        });
+      } catch (e) {
+        const msg = e instanceof Error ? e.message.split('\n')[0] : '';
+        throw new ToolInputError(`The SQL could not be parsed. ${msg}`.trim());
+      }
+    },
+  },
+  'json-to-ts': {
+    inputLabel: 'JSON input',
+    outputLabel: 'TypeScript',
+    actionLabel: 'Generate types',
+    placeholder: 'Paste a JSON sample…',
+    sample:
+      '{"id":42,"name":"Ada","email":null,"roles":["admin","editor"],"address":{"city":"Berlin","zip":"10115"},"orders":[{"id":1,"total":19.9,"paid":true},{"id":2,"total":5,"coupon":"WELCOME"}]}',
+    outputExt: 'ts',
+    live: true,
+    options: [
+      {
+        id: 'rootName',
+        label: 'Root type name',
+        type: 'text',
+        default: 'Root',
+        placeholder: 'Root',
+      },
+      {
+        id: 'style',
+        label: 'Declare as',
+        type: 'select',
+        choices: [
+          { value: 'interface', label: 'interface' },
+          { value: 'type', label: 'type alias' },
+        ],
+        default: 'interface',
+      },
+      {
+        id: 'readonly',
+        label: 'readonly properties',
+        type: 'checkbox',
+        default: false,
+      },
+    ],
+    run: (input, o) =>
+      jsonToTypeScript(input, {
+        rootName: String(o.rootName || 'Root'),
+        useType: o.style === 'type',
+        readonly: !!o.readonly,
+      }),
   },
 };

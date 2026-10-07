@@ -52,7 +52,12 @@ export default function ImageCompressorTool(_: ToolProps) {
           quality: fmt === 'png' ? undefined : quality / 100,
           resize:
             mw > 0
-              ? { mode: 'pixels', width: mw, keepAspect: true }
+              ? {
+                  mode: 'pixels',
+                  width: mw,
+                  keepAspect: true,
+                  onlyShrink: true,
+                }
               : undefined,
         });
         // Never hand back a bigger file than the original in the same format.

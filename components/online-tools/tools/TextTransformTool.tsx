@@ -11,6 +11,7 @@ import {
   ErrorMessage,
   Notice,
   SelectField,
+  TextField,
   ToolInput,
   ToolOutput,
   btnPrimary,
@@ -28,6 +29,8 @@ const MIME: Record<string, string> = {
   js: 'text/javascript',
   'min.js': 'text/javascript',
   md: 'text/markdown',
+  sql: 'application/sql',
+  ts: 'text/typescript',
 };
 
 export default function TextTransformTool({ config }: ToolProps) {
@@ -124,6 +127,15 @@ export default function TextTransformTool({ config }: ToolProps) {
                 onChange={(v) => setOpt(o.id, v)}
                 options={o.choices}
                 className="min-w-[180px]"
+              />
+            ) : o.type === 'text' ? (
+              <TextField
+                key={o.id}
+                label={o.label}
+                value={String(opts[o.id] ?? '')}
+                onChange={(v) => setOpt(o.id, v)}
+                placeholder={o.placeholder}
+                className="min-w-[160px]"
               />
             ) : (
               <div key={o.id} className="pb-2">

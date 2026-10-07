@@ -139,6 +139,8 @@ const APP_CATEGORY: Record<string, string> = {
   'unit-converters': 'UtilitiesApplication',
   'security-generators': 'SecurityApplication',
   'date-time-tools': 'UtilitiesApplication',
+  'audio-video-tools': 'MultimediaApplication',
+  'device-tests': 'UtilitiesApplication',
 };
 
 export function webApplicationJsonLd(t: ToolDefinition, v?: ToolVariant) {

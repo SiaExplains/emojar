@@ -109,4 +109,28 @@ export const CATEGORIES: CategoryDefinition[] = [
       'Convert timestamps and time zones, add and subtract dates, and count working days. Calculations use your browser’s built-in time zone database.',
     accent: 'bg-sky-50 border-sky-100 text-sky-900',
   },
+  {
+    slug: 'audio-video-tools',
+    name: 'Audio & Video Tools',
+    shortName: 'Audio & Video',
+    icon: '🎬',
+    title: 'Free Online Audio & Video Tools – MP4 to MP3, Video to GIF',
+    metaDescription:
+      'Extract MP3 audio from MP4 videos and turn video clips into GIFs online. Everything is processed in your browser — your videos are never uploaded.',
+    intro:
+      'Convert videos to MP3 audio and animated GIFs without installing software. Your video files are processed on your own device and never uploaded.',
+    accent: 'bg-orange-50 border-orange-100 text-orange-900',
+  },
+  {
+    slug: 'device-tests',
+    name: 'Device Tests',
+    shortName: 'Device Tests',
+    icon: '🎥',
+    title: 'Online Webcam & Microphone Test – Check Your Devices',
+    metaDescription:
+      'Test your webcam and microphone online before a video call. See resolution, frame rate and input level instantly — nothing is recorded or sent.',
+    intro:
+      'Check that your camera and microphone work before an important call. The tests run locally in your browser; nothing is recorded or uploaded.',
+    accent: 'bg-teal-50 border-teal-100 text-teal-900',
+  },
 ];

@@ -1,3 +1,4 @@
+import { publishedGuides } from '@/lib/blog/guides';
 import {
   CATEGORIES,
   SITE_URL,
@@ -8,7 +9,7 @@ import {
 
 // Markdown index of the site for AI assistants (llms.txt convention),
 // generated from the tool registry so it never goes stale.
-export const dynamic = 'force-static';
+export const revalidate = 86400;
 
 export function GET() {
   const sections = CATEGORIES.map((c) => {
@@ -25,9 +26,16 @@ export function GET() {
 - [All online tools](${SITE_URL}/online-tool)
 - [Emoji search & copy](${SITE_URL}/emoji)
 - [Blog](${SITE_URL}/blog)
+- [FAQ](${SITE_URL}/faq)
 - [About](${SITE_URL}/about)
 
 ${sections.join('\n\n')}
+
+## Guides
+
+${publishedGuides()
+  .map((g) => `- [${g.title}](${SITE_URL}/blog/${g.slug}): ${g.description}`)
+  .join('\n')}
 `;
 
   return new Response(body, {

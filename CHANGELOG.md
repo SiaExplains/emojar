@@ -4,6 +4,20 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.8.0] — 2026-10-07
+
+### Added
+
+- Four new device tests: Keyboard Tester (full on-screen keyboard, key
+  codes, rollover and ghosting check), Screen Resolution Checker (physical
+  pixels, pixel ratio, viewport, aspect ratio, estimated refresh rate, HDR
+  and colour gamut), Dead Pixel Test (full-screen colours plus an opt-in
+  stuck-pixel fixer with a photosensitivity warning) and What Is My Browser
+  (browser, OS, device, GPU and feature support, with a What Is My User
+  Agent page).
+- A guide on the blog for each, published one per day from 19 to 22
+  November, and three new device-test questions on the FAQ page.
+
 ## [0.7.0] — 2026-10-07
 
 ### Added

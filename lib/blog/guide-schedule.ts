@@ -193,4 +193,9 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'text-repeater': '2026-11-16',
   'add-prefix-suffix-to-lines': '2026-11-17',
   'reverse-text': '2026-11-18',
+  // v0.8.0 device tests: one extra guide per day after the text-tool guides.
+  'keyboard-tester': '2026-11-19',
+  'screen-resolution-checker': '2026-11-20',
+  'what-is-my-browser': '2026-11-21',
+  'dead-pixel-test': '2026-11-22',
 };

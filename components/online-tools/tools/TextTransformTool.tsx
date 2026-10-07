@@ -39,16 +39,23 @@ export default function TextTransformTool({ config }: ToolProps) {
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
-  const [opts, setOpts] = useState<TransformValues>(() =>
-    Object.fromEntries((def?.options ?? []).map((o) => [o.id, o.default])),
-  );
+  const [opts, setOpts] = useState<TransformValues>(() => {
+    const init: TransformValues = Object.fromEntries(
+      (def?.options ?? []).map((o) => [o.id, o.default]),
+    );
+    // Variant pages preset options with `init_<option>` config keys.
+    for (const [k, val] of Object.entries(config))
+      if (k.startsWith('init_') && k.slice(5) in init)
+        init[k.slice(5)] = typeof val === 'boolean' ? val : String(val);
+    return init;
+  });
   const runId = useRef(0);
 
   const run = useCallback(
     async (value: string, values: TransformValues) => {
       if (!def) return;
       const id = ++runId.current;
-      if (!value.trim()) {
+      if (def.keepWhitespace ? !value : !value.trim()) {
         setOutput('');
         setError('');
         return;
@@ -91,6 +98,7 @@ export default function TextTransformTool({ config }: ToolProps) {
         value={input}
         onChange={setInput}
         placeholder={def.placeholder}
+        mono={!def.prose}
         onKeyDown={(e) => {
           if ((e.metaKey || e.ctrlKey) && e.key === 'Enter')
             void run(input, opts);
@@ -152,7 +160,7 @@ export default function TextTransformTool({ config }: ToolProps) {
               type="button"
               className={btnPrimary}
               onClick={() => void run(input, opts)}
-              disabled={!input.trim() || busy}
+              disabled={(def.keepWhitespace ? !input : !input.trim()) || busy}
             >
               {busy ? 'Working…' : def.actionLabel}
             </button>
@@ -170,6 +178,7 @@ export default function TextTransformTool({ config }: ToolProps) {
           value={output}
           filename={`output.${def.outputExt}`}
           mime={MIME[def.outputExt] ?? 'text/plain'}
+          mono={!def.prose}
           status={
             busy && def.live ? (
               <p className="text-xs text-gray-400">Working…</p>

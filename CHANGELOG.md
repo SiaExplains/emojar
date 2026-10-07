@@ -4,6 +4,29 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.7.0] — 2026-10-07
+
+### Added
+
+- Ten new text tools: Upside Down Text (with a Mirror Text page),
+  Strikethrough Text (with an Underline Text page — strike, slash, underline,
+  double underline, overline, or remove the marks), Reverse Text, Text
+  Repeater, Remove Line Breaks (keeps paragraphs and rejoins hyphenated
+  words from PDFs), Add Prefix / Suffix to Lines (with `{n}` line numbers),
+  Readability Score (Flesch Reading Ease, Flesch–Kincaid, Gunning Fog, SMOG,
+  Coleman–Liau, ARI and the longest sentences), Invisible Character (blank
+  characters to copy, a Blank Text Generator page, and a detector that finds
+  and removes hidden characters), Special Characters & Symbols (about 590
+  symbols with search, plus Arrow, Check Mark and Currency pages) and Slug
+  Generator.
+- A guide on the blog for each, published one per day from 9 to 18
+  November, and three new text-tool questions on the FAQ page.
+
+### Changed
+
+- Docs refreshed: feature reference, README, backlog and project context now
+  match the current tool count, libraries and release history.
+
 ## [0.6.0] — 2026-10-07
 
 ### Added

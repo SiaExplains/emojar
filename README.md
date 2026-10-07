@@ -4,10 +4,10 @@ Free, privacy-first **online tools** that run entirely in the browser — plus
 3,790 emojis to search and copy, 18 emoji games and 8 emoji tools.
 Live at [emojar.com](https://emojar.com).
 
-- **Online tools** (`/online-tool`) — 176 tools in 11 categories: image, PDF,
+- **Online tools** (`/online-tool`) — 186 tools in 11 categories: image, PDF,
   developer, text, color, calculators, unit converters, security & generators,
   date & time, audio & video, and device tests. Each tool has an in-depth guide
-  on the blog (`content/guides/`, drip-published 5 per day), and `/faq`
+  on the blog (`content/guides/`, drip-published on a schedule), and `/faq`
   answers common questions by category. Files and text are processed on the user's device; there are
   no upload APIs and nothing is stored.
 - **Emoji** (`/emoji`, `/emoji/[slug]`, `/categories`, `/games`,
@@ -21,8 +21,11 @@ Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 3 · Fuse.js �
 MDX · Vitest · ESLint + Prettier · deployed on Vercel.
 
 Browser-side libraries used by the tools (each loaded only on the tool that
-needs it): `pdf-lib`, `pdfjs-dist`, `qrcode`, `jsqr`, `jsbarcode`, `yaml`,
-`marked`, `turndown`, `dompurify`, `exifr`, `terser`, `prettier/standalone`.
+needs it): `pdf-lib`, `pdfjs-dist`, `@neslinesli93/qpdf-wasm` (PDF
+encryption), `mammoth` + `html-to-pdfmake` + `pdfmake` (Word to PDF),
+`heic2any`, `tesseract.js` (OCR), `gifenc`, `@breezystack/lamejs` (MP3),
+`fflate` (ZIP), `qrcode`, `jsqr`, `jsbarcode`, `yaml`, `marked`, `turndown`,
+`dompurify`, `exifr`, `terser`, `sql-formatter`, `prettier/standalone`.
 
 ## Getting started
 
@@ -84,7 +87,8 @@ sitemap, search and `llms.txt` are all generated from it.
    `relatedTools`, `component`, optional `config` and `variants`).
 2. If an existing generic component fits, point `component` at it and pass
    `config`:
-   - `text-transform` + a transform id from `engines/transforms.ts`
+   - `text-transform` + a transform id from `engines/transforms.ts` (text
+     tools added in v0.7.0 live in `engines/transforms-text.ts`)
    - `form-calculator` + a calculator id from `engines/calculators.ts`
    - `unit-converter` + a quantity from `engines/units.ts`
    - `color-convert`, `hash-generator`, `image-converter`, `pdf-pages`, …
@@ -94,6 +98,12 @@ sitemap, search and `llms.txt` are all generated from it.
 4. Put the logic in `lib/online-tools/engines/` and cover it with tests;
    `lib/online-tools/registry.test.ts` checks slugs, titles, related links and
    engine references for every tool.
+5. Variant landing pages share the tool's UI; `form-calculator` and
+   `text-transform` variants can preset fields with `init_<field>` config keys
+   (e.g. `{ calculator: 'margin', init_mode: 'cost-markup' }`).
+6. Write the tool's guide in `content/guides/<tool-slug>.md` and give it a
+   publish date in `lib/blog/guide-schedule.ts` — `lib/blog/guides.test.ts`
+   fails for a tool without one.
 
 Rules for tools: process data in the browser, never upload or store user
 files, show friendly error messages (`ToolInputError`), and release object

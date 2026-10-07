@@ -345,6 +345,36 @@ export const FAQ_GROUPS: FaqGroup[] = [
         ],
       },
       {
+        q: 'What is an invisible character and why do apps accept it?',
+        a: 'It is a real Unicode character that draws nothing, such as Hangul Filler (U+3164) or Braille Pattern Blank (U+2800). Apps that reject an empty name or message usually accept it because it is not an ordinary space. The same page can also find hidden zero-width characters in text you paste.',
+        links: [
+          {
+            href: '/online-tool/text-tools/invisible-character',
+            label: 'Invisible Character',
+          },
+        ],
+      },
+      {
+        q: 'What is a good readability score?',
+        a: 'For general web content, aim for a Flesch Reading Ease of 60–70, roughly US grade 8–9. Shorter sentences and shorter everyday words raise the score; the formulas are designed for English.',
+        links: [
+          {
+            href: '/online-tool/text-tools/readability-score',
+            label: 'Readability Score Checker',
+          },
+        ],
+      },
+      {
+        q: 'Does strikethrough or underlined text work on every platform?',
+        a: 'It works in most modern apps because the line is a Unicode combining mark added after each letter, not formatting. Some fonts draw it slightly off, some sites strip it, and each mark counts towards character limits.',
+        links: [
+          {
+            href: '/online-tool/text-tools/strikethrough-text',
+            label: 'Strikethrough Text Generator',
+          },
+        ],
+      },
+      {
         q: 'Can I download Text to Speech audio as MP3?',
         a: 'No — browsers play synthesized speech but do not let web pages record it. You can listen, pause and change voices freely.',
       },

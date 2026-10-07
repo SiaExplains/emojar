@@ -44,9 +44,9 @@ export const CATEGORIES: CategoryDefinition[] = [
     icon: '📝',
     title: 'Free Online Text Tools – Word Counter, Case Converter & More',
     metaDescription:
-      'Count words and characters, change text case, remove duplicate lines, compare text and find and replace — free online text tools that run in your browser.',
+      'Count words, check readability, change case, remove line breaks, make slugs, flip or strike through text and copy symbols — free text tools that run in your browser.',
     intro:
-      'Count, clean, compare and transform text instantly. Paste your text and get the result as you type — nothing is stored or uploaded.',
+      'Count, clean, compare and transform text instantly: word counts and readability scores, line-break and duplicate removal, slugs, upside-down and strikethrough text, invisible characters and symbols to copy. Results appear as you type — nothing is stored or uploaded.',
     accent: 'bg-amber-50 border-amber-100 text-amber-900',
   },
   {

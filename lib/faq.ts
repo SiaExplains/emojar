@@ -529,6 +529,36 @@ export const FAQ_GROUPS: FaqGroup[] = [
         q: 'My camera shows a black picture — what can I do?',
         a: 'Another app (Zoom, Teams, OBS) may be using it, or camera access may be blocked in your browser or operating system privacy settings. Close other apps, allow access via the icon in the address bar, and reload.',
       },
+      {
+        q: 'What is the difference between a dead pixel and a stuck pixel?',
+        a: 'A dead pixel never lights up and shows as a black dot on bright colours. A stuck pixel is stuck on one colour (red, green, blue or white) and shows on black. Stuck pixels sometimes recover with a flashing fixer; dead pixels usually need a warranty repair.',
+        links: [
+          {
+            href: '/online-tool/device-tests/dead-pixel-test',
+            label: 'Dead Pixel Test',
+          },
+        ],
+      },
+      {
+        q: 'Why doesn’t the keyboard tester detect the Fn key?',
+        a: 'Fn is handled inside the keyboard and never reaches the computer, and the operating system keeps some shortcuts (such as Win + L or ⌘ + Tab) for itself. Those keys can work fine even though no website can see them.',
+        links: [
+          {
+            href: '/online-tool/device-tests/keyboard-tester',
+            label: 'Keyboard Tester',
+          },
+        ],
+      },
+      {
+        q: 'Why does my screen resolution look lower than my monitor’s?',
+        a: 'Browsers report CSS pixels, which are scaled by display scaling and browser zoom. A 4K screen at 200 % scaling reports 1920 × 1080; multiply by the device pixel ratio to get the physical pixels.',
+        links: [
+          {
+            href: '/online-tool/device-tests/screen-resolution-checker',
+            label: 'Screen Resolution Checker',
+          },
+        ],
+      },
     ],
   },
   {

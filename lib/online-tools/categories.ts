@@ -126,11 +126,11 @@ export const CATEGORIES: CategoryDefinition[] = [
     name: 'Device Tests',
     shortName: 'Device Tests',
     icon: '🎥',
-    title: 'Online Webcam & Microphone Test – Check Your Devices',
+    title: 'Online Device Tests – Keyboard, Screen, Webcam & Mic Tests',
     metaDescription:
-      'Test your webcam and microphone online before a video call. See resolution, frame rate and input level instantly — nothing is recorded or sent.',
+      'Test your keyboard, screen, webcam and microphone online: find dead pixels, check screen resolution and refresh rate, see your browser version. Nothing is recorded.',
     intro:
-      'Check that your camera and microphone work before an important call. The tests run locally in your browser; nothing is recorded or uploaded.',
+      'Check that your keyboard, screen, camera and microphone work, find dead pixels, and see exactly which browser, resolution and refresh rate you have. The tests run locally in your browser; nothing is recorded or uploaded.',
     accent: 'bg-teal-50 border-teal-100 text-teal-900',
   },
 ];

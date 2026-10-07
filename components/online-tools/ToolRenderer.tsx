@@ -112,6 +112,10 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
   readability: load(() => import('./tools/ReadabilityTool')),
   'invisible-text': load(() => import('./tools/InvisibleTextTool')),
   'symbol-picker': load(() => import('./tools/SymbolPickerTool')),
+  'keyboard-tester': load(() => import('./tools/KeyboardTesterTool')),
+  'screen-info': load(() => import('./tools/ScreenInfoTool')),
+  'dead-pixel': load(() => import('./tools/DeadPixelTool')),
+  'browser-info': load(() => import('./tools/BrowserInfoTool')),
 };
 
 export function ToolRenderer({

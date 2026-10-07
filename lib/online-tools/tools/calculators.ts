@@ -1019,6 +1019,7 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       'screen ratio',
     ],
     relatedTools: [
+      'screen-resolution-checker',
       'ratio-calculator',
       'image-resizer',
       'social-media-image-resizer',

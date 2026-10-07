@@ -105,7 +105,11 @@ export type ToolComponentKey =
   | 'word-to-pdf'
   | 'readability'
   | 'invisible-text'
-  | 'symbol-picker';
+  | 'symbol-picker'
+  | 'keyboard-tester'
+  | 'screen-info'
+  | 'dead-pixel'
+  | 'browser-info';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

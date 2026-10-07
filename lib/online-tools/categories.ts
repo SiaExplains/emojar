@@ -20,9 +20,9 @@ export const CATEGORIES: CategoryDefinition[] = [
     icon: '📄',
     title: 'Free Online PDF Tools – Merge, Split & Convert PDF',
     metaDescription:
-      'Merge, split, rotate, reorder, compress and convert PDF files online for free. Your PDFs are processed in your browser and never leave your device.',
+      'Merge, split, edit, sign, fill, crop, compress and convert PDF files online for free — including Word to PDF. Processed in your browser, never uploaded.',
     intro:
-      'Merge, split, rotate and convert PDF files without uploading them anywhere. These PDF tools run entirely in your browser, so confidential documents stay on your device.',
+      'Merge, split, edit, fill, crop and convert PDF files — and turn Word documents into PDFs — without uploading them anywhere. These PDF tools run entirely in your browser, so confidential documents stay on your device.',
     accent: 'bg-rose-50 border-rose-100 text-rose-900',
   },
   {

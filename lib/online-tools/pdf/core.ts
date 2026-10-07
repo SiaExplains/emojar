@@ -295,8 +295,10 @@ export function pageLabel(
 }
 
 /** Visible page box after rotation, plus a mapper from visual to PDF user space. */
-function visualFrame(page: import('pdf-lib').PDFPage) {
-  const { width, height } = page.getSize();
+export function visualFrame(page: import('pdf-lib').PDFPage) {
+  // Viewers show the CropBox (MediaBox when there is none), so positions are
+  // relative to that box.
+  const { x: ox, y: oy, width, height } = page.getCropBox();
   const angle = (((page.getRotation().angle % 360) + 360) % 360) as
     | 0
     | 90
@@ -308,13 +310,13 @@ function visualFrame(page: import('pdf-lib').PDFPage) {
   const map = (x: number, y: number) => {
     switch (angle) {
       case 90:
-        return { x: width - y, y: x };
+        return { x: ox + width - y, y: oy + x };
       case 180:
-        return { x: width - x, y: height - y };
+        return { x: ox + width - x, y: oy + height - y };
       case 270:
-        return { x: y, y: height - x };
+        return { x: ox + y, y: oy + height - x };
       default:
-        return { x, y };
+        return { x: ox + x, y: oy + y };
     }
   };
   return { vw, vh, angle, map };
@@ -367,7 +369,7 @@ export async function addPageNumbers(
   return doc.save();
 }
 
-function hexToRgb01(hex: string): [number, number, number] {
+export function hexToRgb01(hex: string): [number, number, number] {
   const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
   const n = m ? parseInt(m[1], 16) : 0x999999;
   return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];

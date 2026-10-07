@@ -4,6 +4,25 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.5.0] — 2026-10-07
+
+### Added
+
+- Six more PDF tools, all running in the browser: Delete PDF Pages (click
+  thumbnails or type pages), Crop PDF (drag a crop box, trim white margins,
+  millimetre margins), Edit PDF (text, images, white-out, highlights and
+  boxes), Fill PDF Form (text fields, checkboxes, radio buttons, drop-downs,
+  optional flattening), Grayscale PDF (keeps text selectable, plus black &
+  white and scanned-look modes) and Word to PDF (DOCX with headings, lists,
+  tables and images, or print to PDF).
+- A guide on the blog for each new tool, published one per day from
+  19 to 24 October, and new PDF questions on the FAQ page.
+
+### Fixed
+
+- Signatures, page numbers and other stamps are now placed correctly on PDFs
+  that have a crop box.
+
 ## [0.4.0] — 2026-10-07
 
 ### Added

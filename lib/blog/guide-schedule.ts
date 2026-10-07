@@ -159,4 +159,11 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'image-grid-splitter': '2026-10-16',
   'gif-maker': '2026-10-17',
   'image-to-ascii-art': '2026-10-18',
+  // v0.5.0 PDF tools: one extra guide per day after the image-tool guides.
+  'edit-pdf': '2026-10-19',
+  'word-to-pdf': '2026-10-20',
+  'fill-pdf-form': '2026-10-21',
+  'delete-pdf-pages': '2026-10-22',
+  'grayscale-pdf': '2026-10-23',
+  'crop-pdf': '2026-10-24',
 };

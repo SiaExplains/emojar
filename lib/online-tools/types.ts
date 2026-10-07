@@ -97,7 +97,12 @@ export type ToolComponentKey =
   | 'gif-maker'
   | 'favicon-generator'
   | 'social-resizer'
-  | 'ascii-art';
+  | 'ascii-art'
+  | 'pdf-crop'
+  | 'pdf-edit'
+  | 'pdf-form'
+  | 'pdf-grayscale'
+  | 'word-to-pdf';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

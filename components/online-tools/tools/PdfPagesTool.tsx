@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { outputName } from '@/lib/online-tools/image/core';
+import { ToolInputError } from '@/lib/online-tools/engines/data';
+import { deletePages } from '@/lib/online-tools/pdf/edit';
 import {
   pageCount,
   parsePageRanges,
@@ -22,22 +24,13 @@ import {
   friendlyError,
 } from '../ui';
 
-type Mode = 'split' | 'rotate' | 'extract' | 'reorder';
+type Mode = 'split' | 'rotate' | 'extract' | 'reorder' | 'delete';
 
 const pdfBlob = (bytes: Uint8Array) =>
   new Blob([new Uint8Array(bytes)], { type: 'application/pdf' });
 
-function Thumbnails({
-  buffer,
-  order,
-  onMove,
-  onRemove,
-}: {
-  buffer: ArrayBuffer;
-  order: number[];
-  onMove: (i: number, d: -1 | 1) => void;
-  onRemove: (i: number) => void;
-}) {
+/** Page thumbnails as data URLs, rendered one by one (first 200 pages). */
+function usePdfThumbs(buffer: ArrayBuffer): Record<number, string> {
   const [thumbs, setThumbs] = useState<Record<number, string>>({});
   useEffect(() => {
     let cancelled = false;
@@ -72,6 +65,21 @@ function Thumbnails({
     };
   }, [buffer]);
 
+  return thumbs;
+}
+
+function Thumbnails({
+  buffer,
+  order,
+  onMove,
+  onRemove,
+}: {
+  buffer: ArrayBuffer;
+  order: number[];
+  onMove: (i: number, d: -1 | 1) => void;
+  onRemove: (i: number) => void;
+}) {
+  const thumbs = usePdfThumbs(buffer);
   return (
     <ol className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
       {order.map((p, i) => (
@@ -128,6 +136,77 @@ function Thumbnails({
   );
 }
 
+/** "1-3, 5" style text for a set of 0-based page indexes. */
+function toRangeText(pages: number[]): string {
+  const sorted = [...new Set(pages)].sort((a, b) => a - b);
+  const parts: string[] = [];
+  for (let i = 0; i < sorted.length; i++) {
+    const start = sorted[i];
+    while (i + 1 < sorted.length && sorted[i + 1] === sorted[i] + 1) i++;
+    parts.push(
+      start === sorted[i] ? `${start + 1}` : `${start + 1}-${sorted[i] + 1}`,
+    );
+  }
+  return parts.join(', ');
+}
+
+function DeleteGrid({
+  buffer,
+  total,
+  selected,
+  onToggle,
+}: {
+  buffer: ArrayBuffer;
+  total: number;
+  selected: Set<number>;
+  onToggle: (page: number) => void;
+}) {
+  const thumbs = usePdfThumbs(buffer);
+  return (
+    <ol className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+      {Array.from({ length: Math.min(total, 200) }, (_, p) => {
+        const on = selected.has(p);
+        return (
+          <li key={p}>
+            <button
+              type="button"
+              aria-pressed={on}
+              aria-label={`${on ? 'Keep' : 'Delete'} page ${p + 1}`}
+              onClick={() => onToggle(p)}
+              className={`relative flex w-full flex-col items-center gap-1 rounded-xl border-2 p-2 transition ${on ? 'border-red-500 bg-red-50' : 'border-gray-100 hover:border-gray-300'}`}
+            >
+              <div className="flex h-32 w-full items-center justify-center overflow-hidden rounded bg-gray-50">
+                {thumbs[p] ? (
+                  <img
+                    src={thumbs[p]}
+                    alt=""
+                    className={`max-h-full max-w-full shadow-sm ${on ? 'opacity-40' : ''}`}
+                  />
+                ) : (
+                  <span className="text-xs text-gray-400">Page {p + 1}</span>
+                )}
+              </div>
+              {on && (
+                <span
+                  aria-hidden
+                  className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-red-600"
+                >
+                  ✕
+                </span>
+              )}
+              <span
+                className={`text-xs ${on ? 'font-semibold text-red-700' : 'text-gray-600'}`}
+              >
+                Page {p + 1}
+              </span>
+            </button>
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
 export default function PdfPagesTool({ config }: ToolProps) {
   const mode = String(config.mode) as Mode;
   const [file, setFile] = useState<File | null>(null);
@@ -157,7 +236,7 @@ export default function PdfPagesTool({ config }: ToolProps) {
           ? n > 1
             ? `1-${Math.min(n, 3)}`
             : '1'
-          : mode === 'split'
+          : mode === 'split' || mode === 'delete'
             ? ''
             : 'all',
       );
@@ -210,6 +289,19 @@ export default function PdfPagesTool({ config }: ToolProps) {
             note: `${pages.length} page${pages.length === 1 ? '' : 's'}`,
           },
         ]);
+      } else if (mode === 'delete') {
+        if (!ranges.trim())
+          throw new ToolInputError('Select at least one page to delete.');
+        const pages = parsePageRanges(ranges, total);
+        const bytes = await deletePages(buffer, pages, total);
+        const left = total - pages.length;
+        setResults([
+          {
+            name: outputName(file.name, 'pdf', '-pages-deleted'),
+            blob: pdfBlob(bytes),
+            note: `${pages.length} deleted · ${left} page${left === 1 ? '' : 's'} left`,
+          },
+        ]);
       } else {
         const bytes = await selectPages(buffer, order);
         setResults([
@@ -239,11 +331,20 @@ export default function PdfPagesTool({ config }: ToolProps) {
       </div>
     );
 
+  const selectedSet = (() => {
+    try {
+      return new Set(ranges.trim() ? parsePageRanges(ranges, total) : []);
+    } catch {
+      return new Set<number>();
+    }
+  })();
+
   const action = {
     split: 'Split PDF',
     rotate: 'Rotate pages',
     extract: 'Extract pages',
     reorder: 'Save new order',
+    delete: 'Delete pages',
   }[mode];
 
   return (
@@ -318,6 +419,34 @@ export default function PdfPagesTool({ config }: ToolProps) {
           )}
         </div>
       )}
+      {mode === 'delete' && (
+        <div className="space-y-3">
+          <TextField
+            label="Pages to delete (or click the pages below)"
+            value={ranges}
+            onChange={setRanges}
+            mono
+            placeholder="e.g. 2, 5-7, even"
+          />
+          <DeleteGrid
+            buffer={buffer}
+            total={total}
+            selected={selectedSet}
+            onToggle={(p) => {
+              const next = new Set(selectedSet);
+              if (next.has(p)) next.delete(p);
+              else next.add(p);
+              setRanges(toRangeText([...next]));
+            }}
+          />
+          {total > 200 && (
+            <p className="text-xs text-gray-500">
+              Previews show the first 200 pages; type page numbers to delete
+              later pages.
+            </p>
+          )}
+        </div>
+      )}
       {mode === 'reorder' && (
         <div className="space-y-2">
           <Thumbnails
@@ -348,7 +477,7 @@ export default function PdfPagesTool({ config }: ToolProps) {
         type="button"
         className={btnPrimary}
         onClick={run}
-        disabled={busy}
+        disabled={busy || (mode === 'delete' && selectedSet.size === 0)}
       >
         {busy ? 'Working…' : action}
       </button>

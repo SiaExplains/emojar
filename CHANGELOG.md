@@ -4,6 +4,23 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.6.0] — 2026-10-07
+
+### Added
+
+- Fifteen new calculators: Mortgage (taxes, insurance, PMI, HOA, extra
+  payments), Salary to Hourly, Fraction (mixed numbers, step-by-step),
+  Ratio, Aspect Ratio, Body Fat (U.S. Navy method), Ideal Weight, Profit
+  Margin (with a Markup Calculator page), ROI with annualized return,
+  Savings Goal, Retirement, Unit Price comparison, Probability (events,
+  binomial, nCr/nPr), Square Root (simplified radicals) and Exponent.
+- A guide on the blog for each, published one per day from 25 October to
+  8 November, and new calculator questions on the FAQ page.
+
+### Changed
+
+- The Loan Calculator now points to the Mortgage Calculator for home loans.
+
 ## [0.5.0] — 2026-10-07
 
 ### Added

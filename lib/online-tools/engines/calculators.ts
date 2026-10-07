@@ -15,20 +15,34 @@ import {
   toDateInput,
   todayUtc,
 } from './dates';
+import { fail, money, num, pct, plural } from './calc-helpers';
+import { MORE_CALCULATORS } from './calculators-more';
 import { formatNumber } from './units';
+
+export type ShowIf = { field: string; values: string[] };
+
+/** True when every showIf condition of the field matches the current values. */
+export function isFieldVisible(
+  field: { showIf?: ShowIf | ShowIf[] },
+  values: Record<string, string>,
+): boolean {
+  if (!field.showIf) return true;
+  const conds = Array.isArray(field.showIf) ? field.showIf : [field.showIf];
+  return conds.every((c) => c.values.includes(values[c.field]));
+}
 
 export type CalcField = {
   id: string;
   label: string;
-  type: 'number' | 'date' | 'time' | 'select' | 'textarea';
+  type: 'number' | 'date' | 'time' | 'select' | 'textarea' | 'text';
   default: string | ((now: Date) => string);
   choices?: { value: string; label: string }[];
   suffix?: string;
   min?: number;
   step?: number | 'any';
   placeholder?: string;
-  /** Only show the field when another field has one of these values. */
-  showIf?: { field: string; values: string[] };
+  /** Only show the field when other fields have one of these values (all must match). */
+  showIf?: ShowIf | ShowIf[];
   help?: string;
 };
 
@@ -50,26 +64,6 @@ export type CalculatorDefinition = {
 };
 
 const today = (now: Date) => toDateInput(todayUtc(now));
-
-const fail = (error: string): CalcOutput => ({ ok: false, error });
-
-function num(v: Record<string, string>, id: string): number {
-  const raw = (v[id] ?? '').toString().replace(/,/g, '').trim();
-  return raw === '' ? NaN : Number(raw);
-}
-
-const money = (n: number) =>
-  Number.isFinite(n)
-    ? n.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      })
-    : '—';
-
-const pct = (n: number) => `${formatNumber(n, 6)}%`;
-
-const plural = (n: number, word: string) =>
-  `${n.toLocaleString('en-US')} ${word}${n === 1 ? '' : 's'}`;
 
 function needDates(v: Record<string, string>, ...ids: string[]): Date[] | null {
   const dates = ids.map((id) => parseDateInput(v[id] ?? ''));
@@ -1688,3 +1682,5 @@ export function initialValues(
     ]),
   );
 }
+
+Object.assign(CALCULATORS, MORE_CALCULATORS);

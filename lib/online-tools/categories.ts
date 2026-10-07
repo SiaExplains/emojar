@@ -68,9 +68,9 @@ export const CATEGORIES: CategoryDefinition[] = [
     icon: '🧮',
     title: 'Free Online Calculators – Percentage, Age, Loan, BMI & More',
     metaDescription:
-      'Free online calculators for percentages, age, dates, BMI, BMR, loans, EMI, tips, discounts, VAT, compound interest and averages. Instant results, no sign-up.',
+      'Free online calculators: mortgage, loan, salary, ROI, margin, retirement, fractions, ratios, probability, BMI, body fat, percentages and more. No sign-up.',
     intro:
-      'Quick, accurate calculators for everyday maths, money and health questions. Results update as you type and every formula is explained on the page.',
+      'Quick, accurate calculators for everyday maths, money and health questions — from mortgages, salaries and retirement savings to fractions, probability and body fat. Results update as you type and every formula is explained on the page.',
     accent: 'bg-emerald-50 border-emerald-100 text-emerald-900',
   },
   {

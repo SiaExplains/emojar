@@ -4,6 +4,7 @@ import { useId, useMemo, useState } from 'react';
 import {
   CALCULATORS,
   initialValues,
+  isFieldVisible,
   type CalcField,
 } from '@/lib/online-tools/engines/calculators';
 import type { ToolProps } from '../ToolRenderer';
@@ -72,26 +73,43 @@ function Field({
         id={id}
         type={field.type}
         value={value}
+        placeholder={field.placeholder}
         onChange={(e) => onChange(e.target.value)}
         className={inputBase}
+        {...(field.type === 'text'
+          ? {
+              autoComplete: 'off',
+              spellCheck: false,
+              inputMode: 'text' as const,
+            }
+          : {})}
+        aria-describedby={field.help ? `${id}-help` : undefined}
       />
+      {field.help && (
+        <p id={`${id}-help`} className="text-xs text-gray-500">
+          {field.help}
+        </p>
+      )}
     </div>
   );
 }
 
 export default function FormCalculatorTool({ config }: ToolProps) {
   const def = CALCULATORS[String(config.calculator)];
-  const [values, setValues] = useState<Record<string, string>>(() =>
-    def ? initialValues(def) : {},
-  );
+  // Variant pages can preset fields with `init_<fieldId>` config keys.
+  const [values, setValues] = useState<Record<string, string>>(() => {
+    if (!def) return {};
+    const init = initialValues(def);
+    for (const [k, val] of Object.entries(config))
+      if (k.startsWith('init_')) init[k.slice(5)] = String(val);
+    return init;
+  });
   const out = useMemo(() => (def ? def.compute(values) : null), [def, values]);
 
   if (!def || !out)
     return <ErrorMessage>This calculator is not available.</ErrorMessage>;
 
-  const visible = def.fields.filter(
-    (f) => !f.showIf || f.showIf.values.includes(values[f.showIf.field]),
-  );
+  const visible = def.fields.filter((f) => isFieldVisible(f, values));
   const primary = out.ok ? out.results.find((r) => r.primary) : undefined;
 
   return (

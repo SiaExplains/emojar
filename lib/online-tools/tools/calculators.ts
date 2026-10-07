@@ -247,17 +247,18 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
     icon: '🏦',
     shortDescription: 'Monthly payment and total interest for a loan.',
     description:
-      'Calculate the monthly payment, total interest and total cost of a loan or mortgage, with a yearly amortization table.',
+      'Calculate the monthly payment, total interest and total cost of a loan, with a yearly amortization table. For home loans with taxes, insurance and PMI, use the mortgage calculator.',
     title: 'Loan Calculator – Monthly Payment, Interest & Amortization',
     metaDescription:
       'Calculate loan and mortgage payments online: monthly payment, total interest and yearly amortization schedule. Free.',
     keywords: [
       'loan calculator',
-      'mortgage calculator',
       'monthly payment calculator',
       'amortization calculator',
+      'personal loan calculator',
     ],
     relatedTools: [
+      'mortgage-calculator',
       'emi-calculator',
       'compound-interest-calculator',
       'percentage-calculator',
@@ -803,6 +804,738 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       {
         q: 'Can I use this for contraception?',
         a: 'No. Cycles vary and ovulation can shift, so calendar estimates are not reliable contraception.',
+      },
+    ],
+  },
+  {
+    slug: 'mortgage-calculator',
+    category: 'calculators',
+    name: 'Mortgage Calculator',
+    icon: '🏠',
+    shortDescription: 'Monthly mortgage payment with taxes, insurance and PMI.',
+    description:
+      'Estimate your full monthly mortgage payment — principal and interest plus property tax, home insurance, PMI and HOA fees. Enter the home price, down payment, rate and term, add extra payments to see how much interest and time you save, and review the yearly amortization schedule.',
+    title: 'Mortgage Calculator – Payment With Taxes, Insurance & PMI',
+    metaDescription:
+      'Free mortgage calculator: monthly payment with property tax, insurance, PMI and HOA, extra payments, payoff date and amortization schedule.',
+    keywords: [
+      'mortgage calculator',
+      'mortgage payment calculator',
+      'house payment calculator',
+      'mortgage calculator with taxes and insurance',
+      'pmi calculator',
+    ],
+    relatedTools: [
+      'loan-calculator',
+      'savings-goal-calculator',
+      'compound-interest-calculator',
+      'salary-to-hourly-calculator',
+      'percentage-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'mortgage' },
+    popular: true,
+    howTo: [
+      'Enter the home price and your down payment (as a percentage or an amount).',
+      'Set the interest rate and loan term.',
+      'Add property tax, insurance, PMI and HOA costs — or leave the defaults as estimates.',
+      'Optionally add an extra monthly principal payment, then read the monthly total and amortization table.',
+    ],
+    about: [
+      'The principal-and-interest part uses the standard formula M = P × r ÷ (1 − (1 + r)^−n), with the monthly rate r and n monthly payments. Property tax, insurance and HOA fees are added on top, because lenders usually collect them in the same monthly payment.',
+      'With less than 20 % down, most conventional US loans add private mortgage insurance (PMI). The calculator charges PMI until the balance reaches 80 % of the home price and shows how many months that takes. Extra principal payments shorten the loan and cut total interest.',
+    ],
+    faqs: [
+      {
+        q: 'How much of my payment is interest?',
+        a: 'Early on, most of it. In a 30-year loan at 6.5 %, about 85 % of the first payment is interest; the share falls every month as the balance shrinks. The amortization table shows the split year by year.',
+      },
+      {
+        q: 'Are the tax and insurance figures exact?',
+        a: 'No — they are estimates you can change. Use your county’s property tax rate and a real insurance quote for an accurate figure.',
+      },
+    ],
+  },
+  {
+    slug: 'salary-to-hourly-calculator',
+    category: 'calculators',
+    name: 'Salary to Hourly Calculator',
+    icon: '💼',
+    shortDescription: 'Convert a yearly salary to an hourly wage and back.',
+    description:
+      'Convert pay between yearly, monthly, bi-weekly, weekly, daily and hourly amounts. Enter your salary or hourly rate, your hours per week and paid weeks per year, and see what you earn for every pay period — before tax.',
+    title: 'Salary to Hourly Calculator – Hourly, Weekly, Monthly Pay',
+    metaDescription:
+      'Convert salary to hourly wage and hourly to annual salary. Adjust hours per week and paid weeks to see yearly, monthly, weekly, daily and hourly pay.',
+    keywords: [
+      'salary to hourly',
+      'hourly to salary',
+      'salary calculator',
+      'hourly wage calculator',
+      'annual salary calculator',
+    ],
+    relatedTools: [
+      'percentage-increase-calculator',
+      'time-duration-calculator',
+      'mortgage-calculator',
+      'savings-goal-calculator',
+      'vat-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'salary' },
+    popular: true,
+    howTo: [
+      'Enter your pay and choose how often you receive it (per year, month, week, hour…).',
+      'Adjust hours per week, days per week and paid weeks per year.',
+      'Read your hourly rate or yearly salary and the full table of pay periods.',
+    ],
+    about: [
+      'Hourly rate = yearly salary ÷ (hours per week × paid weeks per year). With the usual 40 hours and 52 weeks that is 2,080 hours, so $60,000 a year is about $28.85 an hour.',
+      'If some weeks off are unpaid, lower the weeks per year: a contractor who takes six unpaid weeks earns over 46 weeks, which raises the hourly rate needed to match a salary.',
+    ],
+    faqs: [
+      {
+        q: 'Is the result before or after tax?',
+        a: 'Before tax (gross). Taxes and deductions depend on your country and situation.',
+      },
+      {
+        q: 'What is the difference between bi-weekly and semi-monthly?',
+        a: 'Bi-weekly means every two weeks — 26 paychecks a year. Semi-monthly means twice a month — 24 paychecks — so each one is slightly larger.',
+      },
+    ],
+  },
+  {
+    slug: 'fraction-calculator',
+    category: 'calculators',
+    name: 'Fraction Calculator',
+    icon: '➗',
+    shortDescription:
+      'Add, subtract, multiply and divide fractions with steps.',
+    description:
+      'Add, subtract, multiply and divide fractions and mixed numbers like 1 1/2 and 3/4. The result is simplified automatically and shown as a fraction, mixed number, decimal and percent, with each step of the working explained.',
+    title: 'Fraction Calculator – Add, Subtract, Multiply & Divide, With Steps',
+    metaDescription:
+      'Free fraction calculator for fractions and mixed numbers. Get simplified results as fractions, mixed numbers and decimals, with step-by-step working.',
+    keywords: [
+      'fraction calculator',
+      'adding fractions',
+      'mixed number calculator',
+      'simplify fractions',
+      'dividing fractions',
+    ],
+    relatedTools: [
+      'ratio-calculator',
+      'percentage-calculator',
+      'scientific-calculator',
+      'square-root-calculator',
+      'average-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'fraction' },
+    popular: true,
+    howTo: [
+      'Type the first fraction — 3/4, a mixed number like 1 1/2, a whole number or a decimal.',
+      'Choose add, subtract, multiply or divide.',
+      'Type the second fraction and read the simplified result and steps.',
+    ],
+    about: [
+      'To add or subtract, the fractions are rewritten over their least common denominator; to multiply, tops and bottoms are multiplied; to divide, you multiply by the reciprocal. Every result is reduced by the greatest common divisor, so 6/8 becomes 3/4.',
+      'Decimals are converted exactly (0.75 → 3/4), and the arithmetic uses whole-number maths without rounding, so even large fractions stay exact.',
+    ],
+    faqs: [
+      {
+        q: 'How do I enter a mixed number?',
+        a: 'Put a space between the whole number and the fraction: 2 3/8. A minus sign in front makes the whole value negative: -2 3/8.',
+      },
+      {
+        q: 'Can I enter decimals?',
+        a: 'Yes. 0.25 is read as 1/4 and 1.5 as 3/2, so you can mix decimals and fractions.',
+      },
+    ],
+  },
+  {
+    slug: 'ratio-calculator',
+    category: 'calculators',
+    name: 'Ratio Calculator',
+    icon: '⚖️',
+    shortDescription: 'Solve proportions, simplify ratios and split totals.',
+    description:
+      'Solve ratio problems in three ways: find the missing value in A : B = C : D, simplify a ratio to its lowest terms (also with decimals), or split a total in a given ratio. Results include the 1 : n form and percentage split.',
+    title: 'Ratio Calculator – Solve Proportions & Simplify Ratios',
+    metaDescription:
+      'Solve A:B = C:D for the missing value, simplify ratios like 1.5:2 to 3:4 and split a total in a ratio. Free online ratio and proportion calculator.',
+    keywords: [
+      'ratio calculator',
+      'proportion calculator',
+      'simplify ratio',
+      'ratio solver',
+      'split in ratio',
+    ],
+    relatedTools: [
+      'aspect-ratio-calculator',
+      'fraction-calculator',
+      'percentage-calculator',
+      'unit-price-calculator',
+      'average-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'ratio' },
+    howTo: [
+      'Choose what to calculate: a missing value, a simplified ratio or a split.',
+      'Enter the known numbers — for a proportion, leave exactly one of A, B, C, D empty.',
+      'Read the answer and the other forms of the ratio.',
+    ],
+    about: [
+      'A proportion A : B = C : D is solved by cross-multiplication: A × D = B × C. For example 3 : 4 = 9 : ? gives ? = 4 × 9 ÷ 3 = 12.',
+      'To simplify, decimals are first scaled to whole numbers and then divided by their greatest common divisor, so 1.5 : 2 becomes 3 : 4. Splitting 700 in the ratio 3 : 4 gives 300 and 400.',
+    ],
+    faqs: [
+      {
+        q: 'What is the 1 : n form?',
+        a: 'It rescales the ratio so the first part is 1 — handy for maps and model scales. 3 : 4 is 1 : 1.333…',
+      },
+      {
+        q: 'Can I use it for recipes?',
+        a: 'Yes. To scale 250 g flour for 4 people to 6 people, solve 4 : 250 = 6 : ? — the answer is 375 g.',
+      },
+    ],
+  },
+  {
+    slug: 'aspect-ratio-calculator',
+    category: 'calculators',
+    name: 'Aspect Ratio Calculator',
+    icon: '📐',
+    shortDescription: 'Find the aspect ratio and resize width or height.',
+    description:
+      'Find the aspect ratio of any width and height — 1920 × 1080 is 16:9 — see the closest standard ratio, and calculate a new width or height that keeps the proportions. Includes common sizes for the ratio, from 320 px to 4K.',
+    title: 'Aspect Ratio Calculator – 16:9, 4:3, 21:9 & Resize',
+    metaDescription:
+      'Calculate aspect ratio from width and height, find the nearest standard (16:9, 4:3, 21:9) and resize while keeping proportions. Free for video, photos and screens.',
+    keywords: [
+      'aspect ratio calculator',
+      '16:9 calculator',
+      'resolution calculator',
+      'aspect ratio resize',
+      'screen ratio',
+    ],
+    relatedTools: [
+      'ratio-calculator',
+      'image-resizer',
+      'social-media-image-resizer',
+      'image-cropper',
+      'fraction-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'aspect' },
+    howTo: [
+      'Enter the width and height in pixels — the maths works the same for any unit.',
+      'Read the simplified ratio, the decimal ratio and the closest standard.',
+      'To resize, enter a new width or a new height (if you fill both, the new width is used) and get the matching other side.',
+    ],
+    about: [
+      'The aspect ratio is width ÷ height reduced to whole numbers by their greatest common divisor: 1920 and 1080 share 120, giving 16:9. Screens sold as 21:9 are really 64:27 (2.37:1) and cinema formats like 2.39:1 are given as decimals.',
+      'When resizing, the new height is new width × height ÷ width (or the new width is new height × width ÷ height), rounded to whole pixels. The table shows which common widths divide evenly for the ratio, which avoids blurry half-pixel scaling.',
+    ],
+    faqs: [
+      {
+        q: 'What aspect ratio is 1080 × 1920?',
+        a: '9:16 — the same as 16:9 turned to portrait, used for phone videos, Stories and Reels.',
+      },
+      {
+        q: 'Why does my monitor say 21:9 but the calculator says 64:27?',
+        a: '“21:9” is a marketing name. 2560 × 1080 is exactly 64:27 (2.37:1), which is close to 21:9 (2.33:1).',
+      },
+    ],
+  },
+  {
+    slug: 'body-fat-calculator',
+    category: 'calculators',
+    name: 'Body Fat Calculator',
+    icon: '📏',
+    shortDescription: 'Estimate body fat % with the U.S. Navy tape method.',
+    description:
+      'Estimate your body fat percentage from a few tape-measure readings using the U.S. Navy method: height, neck and waist (plus hips for women). See your category, and add your weight to get fat mass and lean mass — metric or imperial.',
+    title: 'Body Fat Calculator – U.S. Navy Method, Metric & Imperial',
+    metaDescription:
+      'Estimate body fat percentage with the U.S. Navy tape method: neck, waist and hip measurements. Get your category plus fat and lean mass. Free.',
+    keywords: [
+      'body fat calculator',
+      'body fat percentage',
+      'navy body fat calculator',
+      'lean body mass calculator',
+      'body fat estimate',
+    ],
+    relatedTools: [
+      'bmi-calculator',
+      'ideal-weight-calculator',
+      'bmr-calculator',
+      'calorie-calculator',
+      'age-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'body-fat' },
+    howTo: [
+      'Choose metric or imperial units and your sex.',
+      'Measure your height, neck (just below the larynx) and waist — at the navel for men, the narrowest point for women — and hips for women.',
+      'Optionally enter your weight, then read your body fat percentage and category.',
+    ],
+    about: [
+      'The U.S. Navy method estimates body density from circumferences using the Hodgdon–Beckett equations; it was developed to assess personnel without lab equipment. It is typically within about 3–4 percentage points of methods like DEXA, and less accurate for very muscular or very lean people.',
+      'Categories follow the American Council on Exercise (ACE): for men, 14–17 % is “fitness” and 25 % or more “obese”; for women the ranges are about 7–8 points higher. This is an estimate, not medical advice.',
+    ],
+    faqs: [
+      {
+        q: 'How should I measure?',
+        a: 'Use a flexible tape, keep it level and snug without compressing the skin, measure relaxed (not sucking in), and take the average of two or three readings.',
+      },
+      {
+        q: 'Is body fat better than BMI?',
+        a: 'It tells you more about composition: two people with the same BMI can have very different body fat. Both are screening tools, not diagnoses.',
+      },
+    ],
+  },
+  {
+    slug: 'ideal-weight-calculator',
+    category: 'calculators',
+    name: 'Ideal Weight Calculator',
+    icon: '⚖️',
+    shortDescription:
+      'Ideal body weight by Devine, Robinson, Miller and Hamwi.',
+    description:
+      'Find your ideal body weight from your height and sex using four classic formulas — Devine, Robinson, Miller and Hamwi — and compare it with the healthy weight range for a BMI of 18.5 to 24.9, in kilograms or pounds.',
+    title: 'Ideal Weight Calculator – Devine, Robinson, Miller & BMI Range',
+    metaDescription:
+      'Calculate ideal body weight by height and sex with the Devine, Robinson, Miller and Hamwi formulas plus the healthy BMI weight range. Metric or imperial.',
+    keywords: [
+      'ideal weight calculator',
+      'ideal body weight',
+      'healthy weight for my height',
+      'devine formula',
+      'weight for height',
+    ],
+    relatedTools: [
+      'bmi-calculator',
+      'body-fat-calculator',
+      'calorie-calculator',
+      'bmr-calculator',
+      'percentage-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'ideal-weight' },
+    howTo: [
+      'Choose metric or imperial units and your sex.',
+      'Enter your height (in inches for imperial — 5 ft 10 in is 70).',
+      'Compare the four formula results with the healthy BMI weight range.',
+    ],
+    about: [
+      'Each formula starts from a base weight at 5 feet and adds a fixed amount per extra inch. Devine (1974), still used in medicine to dose drugs, gives men 50 kg + 2.3 kg per inch over 5 ft and women 45.5 kg + 2.3 kg; Robinson, Miller and Hamwi use slightly different constants, which is why the results form a range.',
+      'The healthy BMI range shows the weights at which BMI is between 18.5 and 24.9 for your height — usually a wider, more forgiving band. None of these formulas account for muscle mass or frame size; they are estimates, not medical advice.',
+    ],
+    faqs: [
+      {
+        q: 'Why do the formulas give different answers?',
+        a: 'They were fitted to different populations and purposes (drug dosing, insurance tables). Treat the spread as a rough target range rather than one exact number.',
+      },
+      {
+        q: 'Do they work for children?',
+        a: 'No. They are meant for adults; children’s healthy weight is judged with age-specific growth charts.',
+      },
+    ],
+  },
+  {
+    slug: 'profit-margin-calculator',
+    category: 'calculators',
+    name: 'Profit Margin Calculator',
+    icon: '📈',
+    shortDescription: 'Calculate margin, markup, profit and selling price.',
+    description:
+      'Calculate profit margin and markup from cost and selling price — or work backwards to the price you need for a target margin or markup, or the cost a price and margin allow. Results always show profit, margin and markup side by side.',
+    title: 'Profit Margin Calculator – Margin, Markup & Selling Price',
+    metaDescription:
+      'Calculate profit margin and markup from cost and price, or find the selling price for a target margin or markup. Free margin vs markup calculator.',
+    keywords: [
+      'profit margin calculator',
+      'margin calculator',
+      'gross margin calculator',
+      'selling price calculator',
+      'margin vs markup',
+    ],
+    relatedTools: [
+      'roi-calculator',
+      'discount-calculator',
+      'vat-calculator',
+      'percentage-calculator',
+      'unit-price-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'margin' },
+    popular: true,
+    howTo: [
+      'Choose what you know: cost and price, cost and margin, cost and markup, or price and margin.',
+      'Enter the two values.',
+      'Read the missing figure plus profit, margin and markup.',
+    ],
+    about: [
+      'Margin is profit as a percentage of the selling price; markup is profit as a percentage of the cost. Buying at 60 and selling at 100 is a 40 % margin but a 66.7 % markup — mixing the two up is one of the most common pricing mistakes.',
+      'To hit a target margin, price = cost ÷ (1 − margin); for a target markup, price = cost × (1 + markup). A 40 % margin on a 60 cost needs a price of 100.',
+    ],
+    faqs: [
+      {
+        q: 'Can a margin be more than 100 %?',
+        a: 'No — margin is a share of the price, so it is always below 100 %. Markup has no upper limit: selling for three times the cost is a 200 % markup.',
+      },
+      {
+        q: 'Should I include VAT or sales tax?',
+        a: 'Usually no. Calculate margins on net prices (excluding VAT); use the VAT calculator to add tax afterwards.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'markup-calculator',
+        name: 'Markup Calculator',
+        title: 'Markup Calculator – Selling Price From Cost & Markup %',
+        metaDescription:
+          'Calculate selling price from cost and markup percentage, and see the resulting profit margin. Free online markup calculator for retail and resale.',
+        description:
+          'Enter your cost and markup percentage to get the selling price, profit and the profit margin it equals — for example a 50 % markup on a cost of 60 gives a price of 90 and a 33.3 % margin.',
+        config: { calculator: 'margin', init_mode: 'cost-markup' },
+        keywords: [
+          'markup calculator',
+          'markup percentage',
+          'cost plus pricing',
+          'markup to margin',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'roi-calculator',
+    category: 'calculators',
+    name: 'ROI Calculator',
+    icon: '💹',
+    shortDescription: 'Return on investment and annualized ROI (CAGR).',
+    description:
+      'Calculate return on investment from what you put in and what you got back, plus the annualized return (CAGR) over a number of years or between two dates — so investments held for different lengths of time can be compared fairly.',
+    title: 'ROI Calculator – Return on Investment & Annualized ROI',
+    metaDescription:
+      'Free ROI calculator: return on investment percentage, gain or loss, multiple and annualized return (CAGR) by years or dates.',
+    keywords: [
+      'roi calculator',
+      'return on investment',
+      'annualized return calculator',
+      'cagr calculator',
+      'investment return',
+    ],
+    relatedTools: [
+      'compound-interest-calculator',
+      'profit-margin-calculator',
+      'retirement-calculator',
+      'savings-goal-calculator',
+      'percentage-increase-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'roi' },
+    howTo: [
+      'Enter the amount invested and the final value (including any income received).',
+      'Choose a period in years, start and end dates, or no annualizing.',
+      'Read the ROI, the gain or loss and the annualized return.',
+    ],
+    about: [
+      'ROI = (final value − amount invested) ÷ amount invested. Turning 10,000 into 14,500 is a 45 % ROI.',
+      'Annualized ROI (compound annual growth rate) spreads the gain evenly over the years: (final ÷ invested)^(1 ÷ years) − 1. A 45 % gain over 3 years is about 13.2 % a year — much less impressive than 45 % in one year. Include fees and taxes for a realistic figure.',
+    ],
+    faqs: [
+      {
+        q: 'What is a good ROI?',
+        a: 'It depends on risk and time. Compare the annualized figure with alternatives such as a savings account or a broad stock index over the same period.',
+      },
+      {
+        q: 'Can ROI be negative?',
+        a: 'Yes — if the final value is below what you invested. The calculator then shows a loss and a negative annualized return.',
+      },
+    ],
+  },
+  {
+    slug: 'savings-goal-calculator',
+    category: 'calculators',
+    name: 'Savings Goal Calculator',
+    icon: '🎯',
+    shortDescription: 'How much to save each month to reach a goal.',
+    description:
+      'Work out how much to save each month to reach a savings goal by a deadline — or how long it will take with a fixed monthly amount. Interest is compounded monthly, and a year-by-year table shows deposits, interest and balance.',
+    title: 'Savings Goal Calculator – Monthly Saving Needed & Time to Goal',
+    metaDescription:
+      'Calculate the monthly savings needed to reach a goal, or how long your savings will take, with interest. Year-by-year table. Free savings calculator.',
+    keywords: [
+      'savings goal calculator',
+      'savings calculator',
+      'how much to save per month',
+      'time to save',
+      'savings plan calculator',
+    ],
+    relatedTools: [
+      'compound-interest-calculator',
+      'retirement-calculator',
+      'mortgage-calculator',
+      'roi-calculator',
+      'salary-to-hourly-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'savings-goal' },
+    howTo: [
+      'Enter your goal, what you have saved already and the expected interest rate.',
+      'Choose “monthly saving needed” and a deadline in years — or “time to reach the goal” and your monthly saving.',
+      'Read the answer and the year-by-year table.',
+    ],
+    about: [
+      'The calculator assumes you deposit at the end of each month and that interest compounds monthly. With interest, the required deposit is (goal − current × (1 + r)^n) × r ÷ ((1 + r)^n − 1), where r is the monthly rate and n the number of months.',
+      'Even a modest rate helps: saving for 20,000 over 3 years from 2,000 needs about 465 a month at 4 % instead of 500 with no interest.',
+    ],
+    faqs: [
+      {
+        q: 'What interest rate should I use?',
+        a: 'Use your savings account’s current rate for cash goals. For invested money, use a conservative long-term average and remember returns are not guaranteed.',
+      },
+      {
+        q: 'Does it include inflation?',
+        a: 'No. For long-term goals, raise the goal by expected inflation — or use the retirement calculator, which accounts for it.',
+      },
+    ],
+  },
+  {
+    slug: 'retirement-calculator',
+    category: 'calculators',
+    name: 'Retirement Calculator',
+    icon: '🏖️',
+    shortDescription: 'Project retirement savings and how long they last.',
+    description:
+      'Estimate how much you will have saved by retirement, what that is worth in today’s money, how much yearly income it supports at a safe withdrawal rate, and whether your desired income lasts as long as you need — with a year-by-year balance table by age.',
+    title: 'Retirement Calculator – Savings, Income & How Long It Lasts',
+    metaDescription:
+      'Free retirement calculator: projected nest egg, value in today’s money, income at a 4% withdrawal rate and how long your savings last. Inflation included.',
+    keywords: [
+      'retirement calculator',
+      'retirement savings calculator',
+      'how much do i need to retire',
+      '4 percent rule calculator',
+      'retirement planner',
+    ],
+    relatedTools: [
+      'savings-goal-calculator',
+      'compound-interest-calculator',
+      'roi-calculator',
+      'age-calculator',
+      'salary-to-hourly-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'retirement' },
+    popular: true,
+    howTo: [
+      'Enter your age, planned retirement age and the age to plan until.',
+      'Add your current savings, monthly contribution and expected returns before and during retirement.',
+      'Set inflation, the yearly income you want (in today’s money) and a withdrawal rate.',
+      'Read your projected savings, sustainable income and whether the money lasts.',
+    ],
+    about: [
+      'Savings grow with monthly contributions and compound returns until retirement; the result is shown both in future money and deflated to today’s purchasing power. The 4 % rule suggests withdrawing about 4 % of the balance in the first year is likely to last around 30 years.',
+      'The withdrawal rate sets the “income at X %” figure; the separate drawdown check takes your desired income, raises it with inflation every year and withdraws it while the rest keeps earning the retirement return. Real markets fluctuate and taxes, fees and pensions are not included — treat the result as an estimate, not financial advice.',
+    ],
+    faqs: [
+      {
+        q: 'What return should I assume?',
+        a: 'Long-term stock market averages are often quoted around 6–7 % before inflation, but they come with large ups and downs. Using a lower rate gives a more cautious plan.',
+      },
+      {
+        q: 'Are pensions or Social Security included?',
+        a: 'No. Lower the income you need from savings by the amount you expect from pensions or state benefits.',
+      },
+    ],
+  },
+  {
+    slug: 'unit-price-calculator',
+    category: 'calculators',
+    name: 'Unit Price Calculator',
+    icon: '🛒',
+    shortDescription: 'Compare prices per kg, litre or item.',
+    description:
+      'Find the best value when shopping: enter the price and size of up to four products and see the price per 100 g, kilogram, pound, ounce, 100 ml, litre, fluid ounce or item — even when the packs use different units — with the best value shown first.',
+    title: 'Unit Price Calculator – Compare Price per kg, oz or Litre',
+    metaDescription:
+      'Compare unit prices of up to four products — price per 100 g, kg, lb, oz, litre or item — even across different units. Find the best deal. Free.',
+    keywords: [
+      'unit price calculator',
+      'price per kg calculator',
+      'price per ounce',
+      'compare prices',
+      'best value calculator',
+    ],
+    relatedTools: [
+      'discount-calculator',
+      'percentage-calculator',
+      'weight-converter',
+      'volume-converter',
+      'tip-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'unit-price' },
+    howTo: [
+      'Enter the price and size of each product and pick its unit (g, kg, oz, lb, ml, l, fl oz or items).',
+      'Fill in at least two products — up to four.',
+      'Read the best value and the price per unit for each product.',
+    ],
+    about: [
+      'Unit price = price ÷ size, after converting sizes to a common base (grams, millilitres or items). That way a 500 g pack at 3.49 and a 1 kg pack at 5.99 compare directly: 0.698 versus 0.599 per 100 g.',
+      'Weight and volume can’t be compared with each other without the product’s density, so all products must use weight units, volume units or item counts.',
+    ],
+    faqs: [
+      {
+        q: 'Is the bigger pack always cheaper?',
+        a: 'Not always — promotions on small packs often beat bulk prices. That is exactly what comparing unit prices reveals.',
+      },
+      {
+        q: 'Which currency does it use?',
+        a: 'Any. Prices are shown without a currency symbol, so use whatever currency you shop in.',
+      },
+    ],
+  },
+  {
+    slug: 'probability-calculator',
+    category: 'calculators',
+    name: 'Probability Calculator',
+    icon: '🎲',
+    shortDescription: 'Odds, independent events, binomial and combinations.',
+    description:
+      'Calculate probabilities for single events, two independent events (A and B, A or B, exactly one), the chance of something happening at least once in several tries, binomial “exactly k of n” questions, and exact combinations and permutations (nCr, nPr).',
+    title: 'Probability Calculator – Events, Binomial, nCr & nPr',
+    metaDescription:
+      'Free probability calculator: single events, A and B, A or B, at least once, binomial probability and exact combinations/permutations (nCr, nPr).',
+    keywords: [
+      'probability calculator',
+      'binomial probability calculator',
+      'combination calculator',
+      'permutation calculator',
+      'odds calculator',
+    ],
+    relatedTools: [
+      'dice-roller',
+      'coin-flip',
+      'random-number-generator',
+      'percentage-calculator',
+      'average-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'probability' },
+    howTo: [
+      'Choose the kind of question: one event, two events, at least once, k successes, or combinations.',
+      'Enter the probabilities (in %) or counts.',
+      'Read the probability, its decimal and percentage forms, and — for binomials with up to 200 tries — the full distribution table.',
+    ],
+    about: [
+      'For independent events, P(A and B) = P(A) × P(B) and P(A or B) = P(A) + P(B) − P(A and B). The chance of at least one success in n tries is 1 − (1 − p)^n: with a 10 % chance each time, ten tries give about 65 %, not 100 %.',
+      'The binomial distribution gives the probability of exactly k successes in n independent tries: C(n, k) × p^k × (1 − p)^(n − k). Combinations count choices where order doesn’t matter — there are 2,598,960 five-card poker hands — and are computed exactly even for large numbers (very long results are shortened on screen).',
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between combinations and permutations?',
+        a: 'Combinations ignore order (which 3 people get picked); permutations count each order separately (who comes first, second and third). P(n, k) = C(n, k) × k!.',
+      },
+      {
+        q: 'Does a coin “owe” me heads after several tails?',
+        a: 'No — independent tries have no memory. The chance stays 50 % each flip; that mistaken belief is the gambler’s fallacy.',
+      },
+    ],
+  },
+  {
+    slug: 'square-root-calculator',
+    category: 'calculators',
+    name: 'Square Root Calculator',
+    icon: '√',
+    shortDescription: 'Square, cube and nth roots with simplified radicals.',
+    description:
+      'Calculate square roots, cube roots and any nth root to 14 significant digits, check whether a number is a perfect square or cube, and see the simplified radical form — for example √72 = 6√2. Negative numbers get the real answer for odd roots and the imaginary answer for square roots.',
+    title: 'Square Root Calculator – Cube & nth Roots, Simplify Radicals',
+    metaDescription:
+      'Free square root calculator: square, cube and nth roots, perfect-square check and simplified radicals like √72 = 6√2. Handles negative numbers.',
+    keywords: [
+      'square root calculator',
+      'cube root calculator',
+      'nth root calculator',
+      'simplify radicals',
+      'perfect square',
+    ],
+    relatedTools: [
+      'exponent-calculator',
+      'scientific-calculator',
+      'fraction-calculator',
+      'percentage-calculator',
+      'average-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'square-root' },
+    howTo: [
+      'Enter a number.',
+      'Choose square root, cube root or nth root (and n).',
+      'Read the root, whether it is a perfect power and the simplified radical.',
+    ],
+    about: [
+      'A radical is simplified by pulling out every factor that is a perfect power: 72 = 36 × 2, and √36 = 6, so √72 = 6√2. The same works for cube roots: ∛54 = 3∛2 because 54 = 27 × 2.',
+      'Even roots of negative numbers are not real; the square root of −9 is 3i in complex numbers. Odd roots of negatives are real: ∛−8 = −2. Simplified radicals are shown for whole numbers up to one trillion.',
+    ],
+    faqs: [
+      {
+        q: 'How do I know if a number is a perfect square?',
+        a: 'Its square root is a whole number — 144 is (12²), 150 is not. The calculator tells you either way.',
+      },
+      {
+        q: 'Why do some roots look rounded?',
+        a: 'Most roots are irrational and never end, so they are shown to 14 significant digits; the simplified radical form is exact.',
+      },
+    ],
+  },
+  {
+    slug: 'exponent-calculator',
+    category: 'calculators',
+    name: 'Exponent Calculator',
+    icon: 'xⁿ',
+    shortDescription: 'Powers, logarithms and roots — solve aⁿ for any part.',
+    description:
+      'Raise any number to a power — including negative and fractional exponents — and see huge or tiny results in scientific notation (up to about 10³⁰⁸), with exact digits for whole-number powers. You can also solve for the exponent (a logarithm) or the base.',
+    title: 'Exponent Calculator – Powers, Scientific Notation & Logs',
+    metaDescription:
+      'Free exponent calculator: compute aⁿ with negative and fractional exponents, exact big powers and scientific notation, or solve for the exponent or base.',
+    keywords: [
+      'exponent calculator',
+      'power calculator',
+      'raise to the power',
+      'scientific notation calculator',
+      'solve for exponent',
+    ],
+    relatedTools: [
+      'square-root-calculator',
+      'scientific-calculator',
+      'compound-interest-calculator',
+      'fraction-calculator',
+      'percentage-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'exponent' },
+    howTo: [
+      'Choose what to solve for: the result, the exponent or the base.',
+      'Enter the two known values.',
+      'Read the answer, its scientific notation and a check.',
+    ],
+    about: [
+      'aⁿ multiplies a by itself n times; a negative exponent means the reciprocal (2⁻³ = 1/8) and a fractional exponent means a root (8^(1/3) = 2). Whole-number powers are calculated exactly, so 2¹⁰⁰ shows all 31 digits (very long results show the first and last digits).',
+      'Solving for the exponent uses logarithms: n = log(result) ÷ log(base), so 2ⁿ = 1024 gives n = 10. Solving for the base takes the nth root of the result.',
+    ],
+    faqs: [
+      {
+        q: 'What is anything to the power of 0?',
+        a: '1, for any non-zero base. 0⁰ is usually defined as 1 in algebra and combinatorics.',
+      },
+      {
+        q: 'Why can’t I raise a negative number to 0.5?',
+        a: 'That is the square root of a negative number, which has no real value. Use the square root calculator to see the imaginary result.',
       },
     ],
   },

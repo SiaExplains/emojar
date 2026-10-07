@@ -43,7 +43,7 @@ homepage and main navigation lead with the tools.
 |---|---|
 | `/online-tool` | Hub: search, popular tools, all 11 categories with every tool, FAQ |
 | `/online-tool/[category]` | Category page: intro, search, tool grid, popular conversions, other categories |
-| `/online-tool/[category]/[tool]` | Tool page (161 tools) |
+| `/online-tool/[category]/[tool]` | Tool page (176 tools) |
 | `/online-tool/image-tools/image-converter/[pair]-converter` | 11 conversion landing pages |
 | `/online-tool/image-tools/compress-image-to-size/compress-image-to-[20,50,100,200]kb` | 4 exact-size landing pages |
 | `/online-tool/image-tools/social-media-image-resizer/[platform]-…` | 5 platform landing pages (Instagram, Facebook, X, LinkedIn, YouTube thumbnail) |
@@ -61,7 +61,7 @@ relevant) · “How to use” steps · “What is …?” · FAQ (plus an automa
 privacy FAQ) · related tools · sibling conversions · “In-depth guide” link once
 the tool's blog guide is published (pages revalidate daily).
 
-### Categories and tools (161)
+### Categories and tools (176)
 
 | Category                                       | Tools                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -70,7 +70,7 @@ the tool's blog guide is published (pages revalidate daily).
 | 🧑‍💻 Developer Tools (25 + 2 cross-listed)       | JSON Formatter, JSON Validator, JSON Minifier, JSON↔YAML, JSON↔CSV, XML/HTML/CSS/JavaScript Formatter, JavaScript Minifier, Base64 Encoder/Decoder, URL Encoder/Decoder, JWT Decoder, UUID Generator (v4/v7), Hash Generator (MD5/SHA-1/256/384/512 + HMAC), Regex Tester, Cron Expression Generator, Markdown↔HTML, SQL Formatter (dialects), JSON to TypeScript                                                    |
 | 📝 Text Tools (17)                             | Word, Character and Sentence Counter, Text Case Converter (12 cases), Uppercase, Lowercase, Title Case, Remove Duplicate Lines, Remove Empty Lines, Sort Lines, Text Diff, Find and Replace (regex), Lorem Ipsum, Markdown Previewer, Morse Code, Fancy Text Generator (20+ Unicode styles), Text to Speech (device voices)                                                                                             |
 | 🎨 Color Tools (10)                            | Color Picker (eyedropper + pick from image), HEX→RGB, RGB→HEX, HEX→HSL, RGB→HSL, HSL→RGB, Color Converter (HEX/RGB/HSL/HSV/CMYK), Palette Generator, CSS Gradient Generator, WCAG Contrast Checker                                                                                                                                                                                                                      |
-| 🧮 Calculators (20)                            | Percentage, Percentage Increase, Age, Date, BMI, BMR/TDEE, Loan (amortisation), EMI (monthly schedule), Tip, Discount, Compound Interest, VAT, Time Duration, Average (mean/median/mode/std dev), Scientific (own parser, no `eval`), GPA, Grade (weighted + final needed), Calorie, Pregnancy Due Date, Ovulation                                                                                                      |
+| 🧮 Calculators (35)                            | Percentage, Percentage Increase, Age, Date, BMI, BMR/TDEE, Loan (amortisation), EMI (monthly schedule), Tip, Discount, Compound Interest, VAT, Time Duration, Average (mean/median/mode/std dev), Scientific (own parser, no `eval`), GPA, Grade (weighted + final needed), Calorie, Pregnancy Due Date, Ovulation                                                                                                     , Mortgage (tax, insurance, PMI, HOA, extra payments), Salary to Hourly, Fraction, Ratio, Aspect Ratio, Body Fat (U.S. Navy), Ideal Weight, Profit Margin (+ Markup page), ROI (CAGR), Savings Goal, Retirement, Unit Price, Probability (binomial, nCr/nPr), Square Root, Exponent |
 | 📏 Unit Converters (14)                        | Length, Weight, Temperature, Area, Volume, Speed, Time, Data Storage, Energy, Pressure, Frequency, Angle, Number to Words (cardinal/ordinal/cheque), Roman Numerals (1–3999)                                                                                                                                                                                                                                            |
 | 🔐 Security & Generators (12 + 2 cross-listed) | Password, Passphrase, Random Number, Random String, SHA-256, SHA-512, QR Code Generator (URL/text/Wi-Fi/email/phone/SMS, PNG/SVG), QR Code Scanner (camera or image), Barcode Generator, Wheel Spinner, Dice Roller (notation like 4d6kh3), Coin Flip                                                                                                                                                                   |
 | 🕒 Date & Time Tools (12)                      | Unix Timestamp Converter, Timestamp Converter, Time Zone Converter, Date Difference, Add/Subtract Days, Working Days (with holidays), Week Number (ISO), Countdown Generator (shareable link), World Clock, Stopwatch (laps, full screen), Online Timer, Pomodoro Timer                                                                                                                                                 |
@@ -97,9 +97,9 @@ Each tool has one canonical URL.
 ### Tool guides (blog)
 
 - One Markdown guide per tool in `content/guides/<tool-slug>.md` plus a launch
-  post (162 total); format documented in `content/guides/README.md`.
+  post (177 total); format documented in `content/guides/README.md`.
 - Publish dates live in `lib/blog/guide-schedule.ts` (5 per day from
-  2026-10-07 to 2026-11-04, plus one extra guide per day 10-08 → 10-24 for the image and PDF tools). Unpublished guides 404 and stay out of the
+  2026-10-07 to 2026-11-04, plus one extra guide per day 10-08 → 11-08 for the image, PDF and calculator tools). Unpublished guides 404 and stay out of the
   sitemap, blog index and `llms.txt`; pages revalidate daily (ISR).
 - `lib/blog/guides.test.ts` enforces: one guide per tool, unique slugs and
   titles, title ≤ 70 and description 100–170 characters, ≥ 600 words, no H1,

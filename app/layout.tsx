@@ -8,24 +8,25 @@ import MainMenu from '@/components/MainMenu/MainMenu.compontent';
 import { SiteChrome, PageMain } from '@/components/ChromeGate';
 import { AdSenseScript } from '@/components/AdSenseScript';
 
+const title = 'Emojar — Free Online Tools That Run in Your Browser';
 const description =
-  'Your emoji playground — search and copy 3,790 emojis, play 18 emoji games, and use 8 free emoji tools. No sign-up, no ads on tools, free forever.';
+  'Free, privacy-friendly online tools: image and PDF converters, JSON formatter, word counter, calculators, unit converters, password and QR generators — plus 3,790 emojis to copy. No sign-up, no uploads.';
 
 export const metadata: Metadata = {
-  title: 'Emojar — Emoji Search, Games & Tools',
+  title,
   description,
   keywords: [
+    'online tools',
+    'free online tools',
+    'image converter',
+    'pdf tools',
+    'json formatter',
+    'word counter',
     'emoji',
-    'emoji search',
-    'copy emoji',
-    'emoji games',
-    'emoji tools',
-    'emoji to png',
-    'emoji keyboard',
     'emojar',
   ],
   openGraph: {
-    title: 'Emojar — Emoji Search, Games & Tools',
+    title,
     description,
     url: 'https://emojar.com',
     siteName: 'Emojar',
@@ -33,14 +34,26 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Emojar — Emoji Search, Games & Tools',
+    title,
     description,
   },
-  icons: { icon: 'favicon.ico', apple: 'apple-icon.png' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/android-icon-192x192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-icon-180x180.png', sizes: '180x180' }],
+  },
   manifest: 'manifest.webmanifest',
   robots: { index: true, follow: true },
   metadataBase: new URL('https://emojar.com'),
   other: {
+    'msapplication-TileColor': '#ffffff',
+    'msapplication-TileImage': '/ms-icon-144x144.png',
+    'msapplication-config': '/browserconfig.xml',
     'google-adsense-account':
       process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? 'ca-pub-4461604896559377',
   },
@@ -55,11 +68,12 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: 'Emojar',
   url: 'https://emojar.com',
+  description,
   potentialAction: {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://emojar.com/?q={search_term_string}',
+      urlTemplate: 'https://emojar.com/online-tool?q={search_term_string}',
     },
     'query-input': 'required name=search_term_string',
   },
@@ -70,7 +84,9 @@ const orgSchema = {
   '@type': 'Organization',
   name: 'Emojar',
   url: 'https://emojar.com',
-  logo: 'https://emojar.com/logo-64.png',
+  logo: 'https://emojar.com/logo.png',
+  description:
+    'Emojar makes free, privacy-friendly online tools that run entirely in the browser.',
 };
 
 export default function RootLayout({
@@ -124,6 +140,8 @@ export default function RootLayout({
             <div className="max-w-5xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
               <p>© {new Date().getFullYear()} Emojar</p>
               <div className="flex flex-wrap gap-4">
+                <Link href="/online-tool">Online Tools</Link>
+                <Link href="/emoji">Emoji</Link>
                 <Link href="/blog">Blog</Link>
                 <Link href="/about">About</Link>
                 <Link href="/contact">Contact</Link>

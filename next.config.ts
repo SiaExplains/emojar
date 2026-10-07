@@ -18,6 +18,33 @@ const nextConfig = {
       // Do NOT handle it here — Next.js host-based redirects cause redirect loops
       // on Vercel.
 
+      // Online tools: common misspellings and shortcuts → canonical URLs.
+      {
+        source: '/online-tool/image-convertor',
+        destination: '/online-tool/image-tools/image-converter',
+        permanent: true,
+      },
+      {
+        source: '/online-tool/image-converter',
+        destination: '/online-tool/image-tools/image-converter',
+        permanent: true,
+      },
+      {
+        source: '/online-tool/image-tools/image-convertor',
+        destination: '/online-tool/image-tools/image-converter',
+        permanent: true,
+      },
+      {
+        source: '/online-tool/image-tools/image-converter/:pair(.+)-convertor',
+        destination: '/online-tool/image-tools/image-converter/:pair-converter',
+        permanent: true,
+      },
+      {
+        source: '/online-tools/:path*',
+        destination: '/online-tool/:path*',
+        permanent: true,
+      },
+
       { source: '/collections', destination: '/collection', permanent: true },
       {
         source: '/collections/alphabet',

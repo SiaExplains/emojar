@@ -9,6 +9,55 @@ export async function GET(request: NextRequest) {
   const emoji = searchParams.get('emoji') ?? '😀';
   const name = searchParams.get('name') ?? 'Emoji';
 
+  if (type === 'tool') {
+    const desc = (searchParams.get('desc') ?? '').slice(0, 140);
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            background: 'linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%)',
+            fontFamily: 'system-ui, sans-serif',
+            padding: '72px',
+          }}
+        >
+          <div style={{ fontSize: 110, lineHeight: 1, marginBottom: 28 }}>
+            {emoji}
+          </div>
+          <div
+            style={{
+              fontSize: 68,
+              fontWeight: 800,
+              color: '#0f172a',
+              lineHeight: 1.1,
+              marginBottom: 20,
+            }}
+          >
+            {name.slice(0, 60)}
+          </div>
+          <div
+            style={{
+              fontSize: 30,
+              color: '#475569',
+              lineHeight: 1.35,
+              marginBottom: 36,
+            }}
+          >
+            {desc}
+          </div>
+          <div style={{ fontSize: 26, color: '#4f46e5', fontWeight: 600 }}>
+            Free · runs in your browser · emojar.com
+          </div>
+        </div>
+      ),
+      { width: 1200, height: 630 },
+    );
+  }
+
   if (type === 'category') {
     return new ImageResponse(
       (

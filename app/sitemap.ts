@@ -1,5 +1,13 @@
 import type { MetadataRoute } from 'next';
 import data from '@/data/emojis.json';
+import {
+  CATEGORIES,
+  TOOLS,
+  TOOLS_UPDATED,
+  categoryPath,
+  toolPath,
+  variantPath,
+} from '@/lib/online-tools/registry';
 
 // Stable build date — emoji/static content doesn't change at runtime.
 // Using a fixed date avoids Google treating every deploy as a full content refresh.
@@ -12,9 +20,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: `${base}`,
-      lastModified: LAST_UPDATED,
+      lastModified: new Date(TOOLS_UPDATED),
       changeFrequency: 'daily',
       priority: 1.0,
+    },
+    {
+      url: `${base}/emoji`,
+      lastModified: new Date(TOOLS_UPDATED),
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
       url: `${base}/categories`,
@@ -388,5 +402,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...emojiRoutes];
+  const toolsUpdated = new Date(TOOLS_UPDATED);
+  const onlineToolRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/online-tool`,
+      lastModified: toolsUpdated,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    ...CATEGORIES.map((c) => ({
+      url: `${base}${categoryPath(c.slug)}`,
+      lastModified: toolsUpdated,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    })),
+    ...TOOLS.map((t) => ({
+      url: `${base}${toolPath(t)}`,
+      lastModified: toolsUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: t.popular ? 0.9 : 0.8,
+    })),
+    ...TOOLS.flatMap((t) =>
+      (t.variants ?? []).map((v) => ({
+        url: `${base}${variantPath(t, v)}`,
+        lastModified: toolsUpdated,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      })),
+    ),
+  ];
+
+  return [
+    ...staticRoutes,
+    ...onlineToolRoutes,
+    ...categoryRoutes,
+    ...emojiRoutes,
+  ];
 }

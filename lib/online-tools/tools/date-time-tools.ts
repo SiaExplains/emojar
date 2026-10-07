@@ -1,0 +1,360 @@
+import type { ToolDefinition } from '../types';
+
+export const DATE_TIME_TOOLS: ToolDefinition[] = [
+  {
+    slug: 'unix-timestamp-converter',
+    category: 'date-time-tools',
+    alsoIn: ['developer-tools'],
+    name: 'Unix Timestamp Converter',
+    icon: '🕰️',
+    shortDescription: 'Convert Unix epoch time to dates and back.',
+    description:
+      'Convert Unix timestamps (seconds or milliseconds since 1 January 1970 UTC) to human-readable dates, and dates back to timestamps. The current epoch time ticks live.',
+    title: 'Unix Timestamp Converter – Epoch to Date & Date to Epoch',
+    metaDescription:
+      'Convert Unix timestamps to dates and dates to epoch time. Seconds and milliseconds detected automatically; live current timestamp.',
+    keywords: [
+      'unix timestamp converter',
+      'epoch converter',
+      'timestamp to date',
+      'date to timestamp',
+      'epoch time',
+    ],
+    relatedTools: [
+      'timestamp-converter',
+      'timezone-converter',
+      'cron-expression-generator',
+      'jwt-decoder',
+    ],
+    component: 'timestamp',
+    config: { mode: 'unix' },
+    howTo: [
+      'Paste a timestamp — seconds (10 digits) and milliseconds (13 digits) are detected automatically.',
+      'Or pick a date and time to get its timestamp.',
+      'Copy the format you need.',
+    ],
+    about: [
+      'Unix time counts seconds since 00:00:00 UTC on 1 January 1970, ignoring leap seconds. JavaScript and many APIs use milliseconds instead. 32-bit signed timestamps overflow on 19 January 2038.',
+    ],
+    faqs: [
+      {
+        q: 'Is a Unix timestamp affected by time zones?',
+        a: 'No — it is always UTC. Only its display as a local date depends on the time zone.',
+      },
+    ],
+  },
+  {
+    slug: 'timestamp-converter',
+    category: 'date-time-tools',
+    alsoIn: ['developer-tools'],
+    name: 'Timestamp Converter',
+    icon: '🗓️',
+    shortDescription: 'Convert dates between ISO 8601, RFC 2822 and more.',
+    description:
+      'Paste a date in almost any format — ISO 8601, RFC 2822, a Unix timestamp or plain text — and see it as ISO, UTC, local time, Unix seconds, milliseconds and relative time.',
+    title: 'Timestamp Converter – ISO 8601, RFC 2822, Unix & Local Time',
+    metaDescription:
+      'Convert timestamps between ISO 8601, RFC 2822, UTC, local time and Unix epoch. Paste any date format and copy the one you need.',
+    keywords: [
+      'timestamp converter',
+      'iso 8601 converter',
+      'date format converter',
+      'rfc 2822',
+    ],
+    relatedTools: [
+      'unix-timestamp-converter',
+      'timezone-converter',
+      'date-difference-calculator',
+    ],
+    component: 'timestamp',
+    config: { mode: 'any' },
+    howTo: [
+      'Paste or type a date/time in any common format.',
+      'See it converted to every format, in your time zone and UTC.',
+      'Copy the format you need.',
+    ],
+    about: [
+      'ISO 8601 (2026-10-07T14:30:00Z) is the standard for data exchange and sorts correctly as text. RFC 2822 (Wed, 07 Oct 2026 14:30:00 +0000) is used in email headers.',
+    ],
+    faqs: [
+      {
+        q: 'What does the Z at the end of an ISO date mean?',
+        a: 'Z (“Zulu”) means UTC, equivalent to +00:00.',
+      },
+    ],
+  },
+  {
+    slug: 'timezone-converter',
+    category: 'date-time-tools',
+    name: 'Time Zone Converter',
+    icon: '🌍',
+    shortDescription: 'Convert a time between time zones.',
+    description:
+      'Convert a date and time from one time zone to several others at once, with daylight saving time handled automatically. Ideal for scheduling meetings across countries.',
+    title: 'Time Zone Converter – Convert Time Between Cities',
+    metaDescription:
+      'Convert time between time zones and cities with automatic daylight saving. Compare several zones at once for meeting planning. Free.',
+    keywords: [
+      'time zone converter',
+      'timezone converter',
+      'convert time zones',
+      'meeting planner',
+      'utc converter',
+    ],
+    relatedTools: [
+      'world-clock',
+      'unix-timestamp-converter',
+      'timestamp-converter',
+    ],
+    component: 'timezone-converter',
+    howTo: [
+      'Pick a date, time and the source time zone.',
+      'Add the time zones you want to compare.',
+      'Read the converted times; the day changes are highlighted.',
+    ],
+    about: [
+      'Conversions use the IANA time zone database built into your browser, which includes historical and future daylight saving rules.',
+    ],
+    faqs: [
+      {
+        q: 'Why is the difference between two cities not always the same?',
+        a: 'Countries switch to daylight saving time on different dates (or not at all), so the offset can change by an hour during parts of the year.',
+      },
+    ],
+  },
+  {
+    slug: 'date-difference-calculator',
+    category: 'date-time-tools',
+    name: 'Date Difference Calculator',
+    icon: '↔️',
+    shortDescription: 'Exact time between two dates.',
+    description:
+      'Calculate the exact time between two dates in days, weeks, months and years — plus working days, hours and minutes — with the option to include the end date.',
+    title: 'Date Difference Calculator – Days, Weeks & Months Between Dates',
+    metaDescription:
+      'Calculate the difference between two dates in years, months, weeks and days, plus working days and hours. Include the end date or not.',
+    keywords: [
+      'date difference calculator',
+      'days between dates',
+      'how many days until',
+      'date duration calculator',
+    ],
+    relatedTools: [
+      'date-calculator',
+      'working-days-calculator',
+      'age-calculator',
+      'date-add-subtract',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'date-difference' },
+    howTo: [
+      'Enter the start and end dates.',
+      'Choose whether to include the end date.',
+      'Read the difference in several units.',
+    ],
+    about: [
+      '“Include end date” adds one day, which is what you want when counting days of an event (Monday to Friday is 5 days), but not for durations like nights in a hotel (4 nights).',
+    ],
+    faqs: [
+      {
+        q: 'Does it account for leap years?',
+        a: 'Yes. Calculations use the real calendar, including 29 February in leap years.',
+      },
+    ],
+  },
+  {
+    slug: 'date-add-subtract',
+    category: 'date-time-tools',
+    name: 'Add or Subtract Days from a Date',
+    icon: '➕',
+    shortDescription: 'Add or subtract days, weeks, months or business days.',
+    description:
+      'Add or subtract days, business days, weeks, months or years from a date to find a deadline, due date or anniversary.',
+    title: 'Add or Subtract Days to a Date – Date Calculator',
+    metaDescription:
+      'Add or subtract days, business days, weeks, months or years from any date. Find deadlines and due dates instantly. Free.',
+    keywords: [
+      'add days to date',
+      'subtract days from date',
+      'date plus days',
+      'business days calculator',
+      'deadline calculator',
+    ],
+    relatedTools: [
+      'date-difference-calculator',
+      'working-days-calculator',
+      'date-calculator',
+      'week-number-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'date-add-subtract' },
+    howTo: [
+      'Enter the start date.',
+      'Choose add or subtract, the amount and the unit.',
+      'Read the resulting date.',
+    ],
+    about: [
+      'Business days skip Saturdays and Sundays. Public holidays are not excluded here — use the Working Days Calculator to account for them.',
+    ],
+    faqs: [
+      {
+        q: 'What is 90 days from today?',
+        a: 'Enter today’s date (the default), choose Add, 90, Days — the tool shows the exact date and weekday.',
+      },
+    ],
+  },
+  {
+    slug: 'working-days-calculator',
+    category: 'date-time-tools',
+    name: 'Working Days Calculator',
+    icon: '💼',
+    shortDescription: 'Count business days, excluding holidays.',
+    description:
+      'Count the working days between two dates, excluding weekends and any public holidays you list. Supports Friday–Saturday weekends.',
+    title: 'Working Days Calculator – Business Days Between Dates',
+    metaDescription:
+      'Count working days between two dates, excluding weekends and public holidays. Custom weekend days supported. Free and private.',
+    keywords: [
+      'working days calculator',
+      'business days calculator',
+      'workdays between dates',
+      'exclude holidays',
+    ],
+    relatedTools: [
+      'date-add-subtract',
+      'date-difference-calculator',
+      'time-duration-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'working-days' },
+    howTo: [
+      'Enter the start and end dates (both are included).',
+      'Choose the weekend days and paste any holidays, one date per line.',
+      'Read the number of working days.',
+    ],
+    about: [
+      'Holidays that fall on a weekend are not subtracted twice. Working hours assume an 8-hour day.',
+    ],
+    faqs: [
+      {
+        q: 'Does it know my country’s holidays?',
+        a: 'No — paste your country’s or state’s public holidays so the count matches your calendar exactly.',
+      },
+    ],
+  },
+  {
+    slug: 'week-number-calculator',
+    category: 'date-time-tools',
+    name: 'Week Number Calculator',
+    icon: '📆',
+    shortDescription: 'Find the ISO week number of any date.',
+    description:
+      'Find the ISO 8601 week number for any date, the dates that week runs from Monday to Sunday, and the day of the year.',
+    title: 'Week Number Calculator – What Week Is It? (ISO 8601)',
+    metaDescription:
+      'Find the ISO week number for any date, plus the week’s start and end dates and day of the year. Free week number calculator.',
+    keywords: [
+      'week number',
+      'what week is it',
+      'iso week number',
+      'calendar week',
+      'kw calculator',
+    ],
+    relatedTools: [
+      'date-add-subtract',
+      'date-difference-calculator',
+      'working-days-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'week-number' },
+    howTo: [
+      'Pick a date (today by default).',
+      'Read the ISO week number and week dates.',
+    ],
+    about: [
+      'ISO weeks start on Monday, and week 1 is the week containing the year’s first Thursday. Because of this, 1 January can belong to week 52 or 53 of the previous year.',
+    ],
+    faqs: [
+      {
+        q: 'Do the US and Europe number weeks differently?',
+        a: 'Often, yes. Europe uses ISO weeks (Monday start); many US calendars start weeks on Sunday and count 1 January as week 1.',
+      },
+    ],
+  },
+  {
+    slug: 'countdown-generator',
+    category: 'date-time-tools',
+    name: 'Countdown Timer Generator',
+    icon: '⏳',
+    shortDescription: 'Create a shareable countdown to any date.',
+    description:
+      'Create a live countdown to an event — a launch, birthday or holiday — and share it with a link. The countdown runs in the viewer’s browser.',
+    title: 'Countdown Timer Generator – Shareable Event Countdown',
+    metaDescription:
+      'Create a live countdown timer to any date and share it with a link. No sign-up, no app — runs in the browser.',
+    keywords: [
+      'countdown timer',
+      'countdown generator',
+      'event countdown',
+      'days until',
+    ],
+    relatedTools: [
+      'date-difference-calculator',
+      'world-clock',
+      'age-calculator',
+    ],
+    component: 'countdown',
+    howTo: [
+      'Enter a title and the target date and time.',
+      'Watch the live countdown.',
+      'Copy the share link — anyone who opens it sees the same countdown.',
+    ],
+    about: [
+      'The event details are stored in the link itself (not on a server), so the link works as long as this page exists.',
+    ],
+    faqs: [
+      {
+        q: 'Which time zone does the countdown use?',
+        a: 'The target time is saved in UTC, so everyone counts down to the same moment wherever they are.',
+      },
+    ],
+  },
+  {
+    slug: 'world-clock',
+    category: 'date-time-tools',
+    name: 'World Clock',
+    icon: '🕐',
+    shortDescription: 'Current time in cities around the world.',
+    description:
+      'See the current local time in major cities around the world side by side, with UTC offsets and day/night indicators. Add or remove cities.',
+    title: 'World Clock – Current Local Time in Cities Worldwide',
+    metaDescription:
+      'See the current time in cities around the world with UTC offsets and day/night indicators. Add your own cities. Free world clock.',
+    keywords: [
+      'world clock',
+      'current time',
+      'time in other countries',
+      'time around the world',
+    ],
+    relatedTools: [
+      'timezone-converter',
+      'unix-timestamp-converter',
+      'countdown-generator',
+    ],
+    component: 'world-clock',
+    howTo: [
+      'Check the times for the default cities.',
+      'Add a city or time zone from the list, or remove ones you do not need.',
+      'Your selection is remembered in this browser.',
+    ],
+    about: [
+      'Times update every second using your device clock and the IANA time zone database, including daylight saving time.',
+    ],
+    faqs: [
+      {
+        q: 'Is the time accurate?',
+        a: 'It is as accurate as your device clock, which is usually synchronised over the internet automatically.',
+      },
+    ],
+  },
+];

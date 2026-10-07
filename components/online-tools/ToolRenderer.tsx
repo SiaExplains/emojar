@@ -109,6 +109,9 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
   'video-to-gif': load(() => import('./tools/VideoToGifTool')),
   'webcam-test': load(() => import('./tools/DeviceTests')),
   'microphone-test': load(() => import('./tools/MicrophoneTestTool')),
+  readability: load(() => import('./tools/ReadabilityTool')),
+  'invisible-text': load(() => import('./tools/InvisibleTextTool')),
+  'symbol-picker': load(() => import('./tools/SymbolPickerTool')),
 };
 
 export function ToolRenderer({

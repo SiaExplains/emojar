@@ -243,9 +243,9 @@
 **Implementation:** pass the remark plugin by name/string (Turbopack-compatible form) or drop `--turbopack` from the `dev` script.
 **Acceptance Criteria:** `npm run dev` starts and blog MDX pages render.
 
-### [ ] “Download all as ZIP” for batch outputs
-**Description:** Image converter/compressor/resizer and Split PDF produce several files; today “Download all” triggers one download per file.
-**Implementation:** small client-side ZIP writer (e.g. `fflate`), lazy-loaded.
+### [ ] “Download all as ZIP” for the remaining batch outputs
+**Description:** v0.4.0 added a lazy-loaded `fflate` ZIP helper (`zipFiles` in `components/online-tools/tools/image-shared.tsx`), used by Image Grid Splitter, Favicon Generator, Social Media Image Resizer and Watermark Image. Image Converter, Compressor and Resizer (`components/online-tools/image-results.tsx`) and Split PDF still trigger one download per file.
+**Implementation:** reuse `zipFiles` in `image-results.tsx` and the Split PDF result list.
 **Acceptance Criteria:** one ZIP download containing all results; nothing uploaded.
 
 ### [ ] AI background removal (opt-in)
@@ -269,6 +269,10 @@
 
 ### [x] Blog post announcing the Online Tools platform
 **Description:** Shipped in v0.3.0 as the guide `emojar-free-online-tools-that-run-in-your-browser` (published 2026-10-07).
+
+### [ ] Readability scores for other languages
+**Description:** The Readability Score Checker (v0.7.0) uses English formulas and an English syllable heuristic. German (Amstad / Wiener Sachtextformel), Spanish (Fernández Huerta) and French (Kandel–Moles) have their own adapted formulas.
+**Acceptance Criteria:** a language selector switches formula and syllable rules; English stays the default.
 
 ### [ ] Timer alarms in background tabs
 **Description:** Countdown maths is drift-free, but the finish is detected on a 1 s interval that browsers throttle in hidden tabs, so the alarm can sound late. Also schedule a `setTimeout` for the end time (or use a worker).

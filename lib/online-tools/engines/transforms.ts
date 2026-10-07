@@ -18,6 +18,7 @@ import {
   validateJson,
 } from './data';
 import { jsonToTypeScript } from './json-to-ts';
+import { TEXT_TRANSFORMS } from './transforms-text';
 import {
   convertCase,
   isMorse,
@@ -61,6 +62,10 @@ export type TransformDefinition = {
   options?: TransformOption[];
   /** Output is a status message rather than data (validators). */
   statusOnly?: boolean;
+  /** Use the normal text font instead of monospace (prose, not code). */
+  prose?: boolean;
+  /** Run even when the input is only whitespace (e.g. repeating a space). */
+  keepWhitespace?: boolean;
   run: (input: string, opts: TransformValues) => string | Promise<string>;
 };
 
@@ -750,3 +755,5 @@ export const TRANSFORMS: Record<string, TransformDefinition> = {
       }),
   },
 };
+
+Object.assign(TRANSFORMS, TEXT_TRANSFORMS);

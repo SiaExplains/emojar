@@ -102,7 +102,10 @@ export type ToolComponentKey =
   | 'pdf-edit'
   | 'pdf-form'
   | 'pdf-grayscale'
-  | 'word-to-pdf';
+  | 'word-to-pdf'
+  | 'readability'
+  | 'invisible-text'
+  | 'symbol-picker';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

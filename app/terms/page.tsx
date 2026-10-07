@@ -46,7 +46,7 @@ export default function TermsPage() {
         </p>
         <ul className="list-disc pl-6 space-y-2 leading-7">
           <li>
-            <strong>Online tools</strong> — 170+ utilities at{' '}
+            <strong>Online tools</strong> — 180+ utilities at{' '}
             <Link href="/online-tool" className="underline">
               /online-tool
             </Link>

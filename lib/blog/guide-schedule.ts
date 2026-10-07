@@ -182,4 +182,15 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'unit-price-calculator': '2026-11-06',
   'square-root-calculator': '2026-11-07',
   'exponent-calculator': '2026-11-08',
+  // v0.7.0 text tools: one extra guide per day after the calculator guides.
+  'special-characters': '2026-11-09',
+  'invisible-character': '2026-11-10',
+  'upside-down-text': '2026-11-11',
+  'strikethrough-text': '2026-11-12',
+  'readability-score': '2026-11-13',
+  'remove-line-breaks': '2026-11-14',
+  'slug-generator': '2026-11-15',
+  'text-repeater': '2026-11-16',
+  'add-prefix-suffix-to-lines': '2026-11-17',
+  'reverse-text': '2026-11-18',
 };

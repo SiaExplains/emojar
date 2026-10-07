@@ -553,7 +553,12 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'percent encoding',
       'encodeuricomponent',
     ],
-    relatedTools: ['url-decoder', 'base64-encoder', 'html-formatter'],
+    relatedTools: [
+      'url-decoder',
+      'slug-generator',
+      'base64-encoder',
+      'html-formatter',
+    ],
     component: 'text-transform',
     config: { transform: 'url-encode' },
     howTo: [

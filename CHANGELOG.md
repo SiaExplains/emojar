@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.15.0] — 2026-10-08
+
+### Added
+
+- MYLPER (mylper.com), a free online image editor with layers, masks and
+  adjustment layers, is listed under Image Tools as an external link that
+  opens in a new tab.
+
 ## [0.14.1] — 2026-10-08
 
 ### Changed

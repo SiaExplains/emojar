@@ -10,11 +10,20 @@ import {
   wheelRotation,
   type DiceRoll,
 } from '@/lib/online-tools/engines/games';
+import {
+  addToSession,
+  diceRange,
+  expectedValue,
+  formatStat,
+  rollStats,
+  type SessionStats,
+} from '@/lib/online-tools/engines/dice-stats';
 import { shuffle } from '@/lib/online-tools/engines/random';
 import type { ToolProps } from '../ToolRenderer';
 import {
   ErrorMessage,
   Notice,
+  NumberField,
   TextField,
   ToolInput,
   btnPrimary,
@@ -258,12 +267,24 @@ export function WheelSpinnerTool(_: ToolProps) {
 
 const FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
 
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl bg-gray-50 p-2.5 text-center">
+      <dt className="text-xs text-gray-500">{label}</dt>
+      <dd className="text-lg font-bold tabular-nums text-gray-900">{value}</dd>
+    </div>
+  );
+}
+
 export function DiceRollerTool(_: ToolProps) {
   const [notation, setNotation] = useState('2d6');
   const [roll, setRoll] = useState<DiceRoll | null>(null);
   const [history, setHistory] = useState<DiceRoll[]>([]);
   const [error, setError] = useState('');
   const [shaking, setShaking] = useState(false);
+  const [session, setSession] = useState<SessionStats>({ rolls: 0, sum: 0 });
+  const [customCount, setCustomCount] = useState('1');
+  const [customSides, setCustomSides] = useState('7');
 
   const doRoll = useCallback(
     (n = notation) => {
@@ -274,6 +295,7 @@ export function DiceRollerTool(_: ToolProps) {
         window.setTimeout(() => setShaking(false), 350);
         setRoll(r);
         setHistory((h) => [r, ...h].slice(0, 12));
+        setSession((s) => addToSession(s, r));
       } catch (e) {
         setError(friendlyError(e));
       }
@@ -285,6 +307,9 @@ export function DiceRollerTool(_: ToolProps) {
   const sides = roll
     ? Number(/d(\d+|%)/i.exec(roll.notation)?.[1].replace('%', '100'))
     : 6;
+  const stats = roll ? rollStats(roll) : null;
+  const range = roll ? diceRange(roll.notation) : null;
+  const expected = roll ? expectedValue(roll.notation) : null;
 
   return (
     <div className="space-y-5">
@@ -321,6 +346,37 @@ export function DiceRollerTool(_: ToolProps) {
         />
         <button type="submit" className={btnPrimary}>
           🎲 Roll
+        </button>
+      </form>
+      <form
+        className="flex flex-wrap items-end gap-2"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const n = `${customCount || 1}d${customSides}`;
+          setNotation(n);
+          doRoll(n);
+        }}
+      >
+        <NumberField
+          label="Dice"
+          value={customCount}
+          onChange={setCustomCount}
+          min={1}
+          max={100}
+          step={1}
+          className="w-24"
+        />
+        <NumberField
+          label="Custom sides (2–1000)"
+          value={customSides}
+          onChange={setCustomSides}
+          min={2}
+          max={1000}
+          step={1}
+          className="w-44"
+        />
+        <button type="submit" className={btnSecondary}>
+          Roll {customCount || 1}d{customSides || '?'}
         </button>
       </form>
       <ErrorMessage>{error}</ErrorMessage>
@@ -366,6 +422,38 @@ export function DiceRollerTool(_: ToolProps) {
               : ''}{' '}
             = {roll.total}
           </p>
+          {stats && range && expected !== null && (
+            <dl className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+              <Stat label="Lowest die" value={String(stats.lowest)} />
+              <Stat label="Highest die" value={String(stats.highest)} />
+              <Stat label="Average die" value={formatStat(stats.average)} />
+              <Stat
+                label="Possible total"
+                value={`${range.min}–${range.max}`}
+              />
+              <Stat label="Expected total" value={formatStat(expected)} />
+            </dl>
+          )}
+        </div>
+      )}
+      {session.rolls > 0 && (
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600">
+          <span>
+            This session: <strong>{session.rolls}</strong> roll
+            {session.rolls === 1 ? '' : 's'}, average total{' '}
+            <strong>{formatStat(session.sum / session.rolls)}</strong>
+          </span>
+          <button
+            type="button"
+            className="text-xs text-gray-500 underline"
+            onClick={() => {
+              setSession({ rolls: 0, sum: 0 });
+              setHistory([]);
+              setRoll(null);
+            }}
+          >
+            Reset session
+          </button>
         </div>
       )}
       {history.length > 1 && (

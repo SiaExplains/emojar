@@ -167,6 +167,21 @@
 **Description:** Trimming was verified in Chromium (MP4 and recorded WebM). Safari 17+ and Firefox 130+ have WebCodecs but haven't been tried with real phone videos (HEVC MOV from iPhone, long 4K clips).
 **Acceptance Criteria:** run §10 of `docs/qa/device-checklist.md` on those browsers and record the results; unsupported formats show the friendly error, never a blank result.
 
+### [ ] Interactive tools (v0.14.0): checks on real touch devices
+
+**Description:** The 18 tools from v0.14.0 were checked at 375 px in a desktop browser, with keyboard alternatives to every drag. Still to do on real phones and tablets: dragging cards in the Kanban Board and Eisenhower Matrix, drawing in the Pixel Art Editor, dragging points in the SVG Path Editor, Clip-Path Generator and Mesh Gradient Generator, and the PNG/GIF/SVG downloads on iOS Safari.
+**Acceptance Criteria:** add a section to `docs/qa/device-checklist.md` and record the results.
+
+### [ ] Color Blindness Simulator: exact anomaly severities
+
+**Description:** Protanomaly, deuteranomaly and tritanomaly currently interpolate linearly between normal vision and the full Machado 2009 matrix. Machado publishes a matrix for each severity step (0.1–1.0).
+**Implementation:** add the published tables to `lib/online-tools/engines/color-blindness.ts` and interpolate between neighbouring steps.
+
+### [ ] Shared drag helper for HTML elements
+
+**Description:** `useSvgDrag` (in `components/online-tools/tools/playground-shared.tsx`) covers SVG handles; the Kanban/Eisenhower card drag (`productivity-shared.tsx`), the transform box and the chess board each have their own pointer code for HTML elements.
+**Implementation:** one `usePointerDrag` hook for HTML elements with drop targets, used by all four; no behaviour change.
+
 ### [ ] Refresh bundled reference data
 
 **Description:** Generators now live in `scripts/reference-data/` (see its README). Run `npm run data:reference` once a year and when Unicode ships a new major version, then review the diff and run the tests. Last run: October 2026 (discovery years corrected).

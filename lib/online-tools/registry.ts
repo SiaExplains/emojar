@@ -14,6 +14,7 @@ import { UNIT_CONVERTERS } from './tools/unit-converters';
 import { AUDIO_VIDEO_TOOLS } from './tools/audio-video-tools';
 import { DEVICE_TESTS } from './tools/device-tests';
 import { REFERENCE_TOOLS } from './tools/reference-tools';
+import { PRODUCTIVITY_TOOLS } from './tools/productivity-tools';
 import type {
   CategoryDefinition,
   CategorySlug,
@@ -39,6 +40,7 @@ export const TOOLS: ToolDefinition[] = [
   ...AUDIO_VIDEO_TOOLS,
   ...DEVICE_TESTS,
   ...REFERENCE_TOOLS,
+  ...PRODUCTIVITY_TOOLS,
 ];
 
 export { CATEGORIES };

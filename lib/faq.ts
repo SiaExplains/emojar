@@ -733,6 +733,33 @@ export const FAQ_GROUPS: FaqGroup[] = [
     ],
   },
   {
+    id: 'productivity',
+    title: 'Productivity',
+    icon: '📋',
+    items: [
+      {
+        q: 'Where are my Kanban cards, tasks and timelines saved?',
+        a: 'Only in this browser, in its local storage. Nothing is sent to Emojar or anyone else, so there is no account and no sync between devices. Clearing your browsing data (or using a private window) removes them — use Export JSON to keep a backup and Import JSON to load it on another device.',
+        links: [
+          {
+            href: '/online-tool/productivity-tools',
+            label: 'Productivity tools',
+          },
+        ],
+      },
+      {
+        q: 'How does the Decision Matrix calculate the winner?',
+        a: 'Each score is multiplied by its criterion’s weight (as a share of all weights) and the results are added up per option; “lower is better” criteria are inverted first. With Price 30%, Quality 40% and Location 30%, scores of 8, 7 and 9 give 7.9 and scores of 6, 9 and 7 give 7.5.',
+        links: [
+          {
+            href: '/online-tool/productivity-tools/decision-matrix',
+            label: 'Decision Matrix',
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: 'emoji',
     title: 'Emoji & games',
     icon: '😀',

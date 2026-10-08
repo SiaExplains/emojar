@@ -206,6 +206,7 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
   {
     slug: 'working-days-calculator',
     category: 'date-time-tools',
+    alsoIn: ['productivity-tools'],
     name: 'Working Days Calculator',
     icon: '💼',
     shortDescription: 'Count business days, excluding holidays.',
@@ -449,6 +450,7 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
   {
     slug: 'pomodoro-timer',
     category: 'date-time-tools',
+    alsoIn: ['productivity-tools'],
     name: 'Pomodoro Timer',
     icon: '🍅',
     shortDescription: '25-minute focus sessions with breaks.',
@@ -587,6 +589,7 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
   {
     slug: 'printable-calendar',
     category: 'date-time-tools',
+    alsoIn: ['productivity-tools'],
     name: 'Printable Calendar Generator',
     icon: '🗓️',
     shortDescription: 'Make a printable monthly or yearly calendar PDF.',
@@ -634,7 +637,7 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
   {
     slug: 'time-card-calculator',
     category: 'date-time-tools',
-    alsoIn: ['calculators'],
+    alsoIn: ['calculators', 'productivity-tools'],
     name: 'Time Card Calculator',
     icon: '🕘',
     shortDescription: 'Add up weekly hours, breaks, overtime and pay.',

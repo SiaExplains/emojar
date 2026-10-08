@@ -412,4 +412,115 @@ export const REFERENCE_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'bezier-curve-visualizer',
+    category: 'reference-tools',
+    alsoIn: ['developer-tools'],
+    name: 'Bézier Curve Visualizer',
+    icon: '〰️',
+    shortDescription: 'See how linear, quadratic and cubic Béziers work.',
+    description:
+      'Drag the control points of a linear, quadratic or cubic Bézier curve and watch it change. Move the t slider or press Play to see de Casteljau’s construction find each point on the curve, with the Bernstein formula, the current numbers substituted, B(t) and the matching SVG path.',
+    title: 'Bézier Curve Visualizer – Interactive de Casteljau Demo',
+    metaDescription:
+      'Interactive Bézier curve visualizer: drag control points, animate t with de Casteljau’s construction and see the Bernstein formula, B(t) and SVG path for each degree.',
+    keywords: [
+      'bezier curve',
+      'bezier curve visualizer',
+      'de casteljau algorithm',
+      'cubic bezier',
+      'quadratic bezier',
+      'bernstein polynomial',
+      'bezier curve formula',
+    ],
+    relatedTools: [
+      'svg-path-editor',
+      'gradient-generator',
+      'css-unit-visualizer',
+      'scientific-calculator',
+      'flexbox-playground',
+    ],
+    component: 'bezier-curve',
+    howTo: [
+      'Choose Linear, Quadratic or Cubic to set how many control points the curve has.',
+      'Drag the points on the canvas, Tab to one and use the arrow keys, or type exact coordinates on the right.',
+      'Move the t slider (or press Play) to see the de Casteljau construction lines and the point B(t) travel along the curve.',
+      'Read the Bernstein formula with your numbers filled in, and copy the SVG path — and, for valid cubics, a CSS cubic-bezier() timing function.',
+    ],
+    about: [
+      'A Bézier curve of degree n is defined by n + 1 control points. It always starts at the first point and ends at the last; the points in between pull the curve towards themselves without usually touching it. At each end, the curve leaves in the direction of the neighbouring control point, which is why aligned handles give smooth joins in vector drawings and fonts.',
+      'There are two equivalent ways to compute a point. The Bernstein form is a weighted average: for a cubic, B(t) = (1−t)³P₀ + 3(1−t)²tP₁ + 3(1−t)t²P₂ + t³P₃, and the weights always sum to 1. de Casteljau’s algorithm gets the same point geometrically by repeatedly splitting the control polygon’s edges at the ratio t — the final segment is also the tangent of the curve at that point.',
+    ],
+    faqs: [
+      {
+        q: 'What does t mean on a Bézier curve?',
+        a: 't is the curve parameter from 0 to 1. At t = 0 you are at the first point, at t = 1 at the last. Equal steps in t are not equal distances along the curve — points bunch up where the curve bends sharply.',
+      },
+      {
+        q: 'Is CSS cubic-bezier() the same thing?',
+        a: 'Yes, it is a cubic Bézier whose end points are fixed at (0, 0) and (1, 1), used as a timing curve. The tool shows the equivalent cubic-bezier() when your cubic can be mapped that way (control points must sit between the ends horizontally).',
+      },
+      {
+        q: 'Why are the control points not on the curve?',
+        a: 'Only the end points are guaranteed to lie on a Bézier curve. Inner control points act like magnets: they shape the curve, but it only passes through them in special cases, such as when all points are on one straight line.',
+      },
+    ],
+  },
+  {
+    slug: 'fen-chessboard-editor',
+    category: 'reference-tools',
+    name: 'Chess Board Editor (FEN)',
+    icon: '♟️',
+    shortDescription: 'Set up a chess position and get its FEN.',
+    description:
+      'Set up any chess position by placing, dragging and removing pieces, set side to move, castling rights and en passant, and copy the FEN — or paste a FEN to see it on the board with clear explanations of anything invalid.',
+    title: 'Chess Board Editor – Set Up Positions & Copy FEN Online',
+    metaDescription:
+      'Free chess board editor: place and move pieces, set castling, en passant and move counters, then copy the FEN. Paste a FEN to load it and spot errors.',
+    keywords: [
+      'fen editor',
+      'chess board editor',
+      'chess position editor',
+      'fen to board',
+      'board to fen',
+      'chess fen generator',
+      'chess diagram',
+    ],
+    relatedTools: [
+      'unicode-character-explorer',
+      'dice-roller',
+      'coin-flip',
+      'random-team-generator',
+    ],
+    component: 'fen-chessboard',
+    howTo: [
+      'Start from the standard position or an empty board.',
+      'Pick a piece from the palette and click squares to place it; use Move to drag pieces (or click a piece, then its new square) and Delete to remove them.',
+      'Set the side to move, castling rights, en-passant square and move counters.',
+      'Copy the FEN, or paste a FEN into the box and press Load to show it on the board.',
+    ],
+    about: [
+      'FEN (Forsyth–Edwards Notation) describes a chess position in one line. The first field lists the ranks from 8 down to 1, using letters for pieces — uppercase for White (KQRBNP), lowercase for Black — and digits for runs of empty squares. The rest give the side to move (w or b), castling rights (KQkq or -), the en-passant target square, the halfmove clock for the 50-move rule and the fullmove number.',
+      'The editor checks that the position could exist: one king each, no pawns on the first or last rank, castling rights only where king and rook are still on their starting squares, and an en-passant square only right behind a pawn that just moved two squares. It doesn’t check move legality or whether a king is in check.',
+      'Keyboard users can move around the board with the arrow keys, press Enter to pick up and drop a piece, and Delete to remove one.',
+    ],
+    faqs: [
+      {
+        q: 'What is the FEN of the starting position?',
+        a: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 — Black’s pieces on ranks 8 and 7, White’s on 2 and 1, White to move, all castling rights, no en passant, halfmove clock 0 and move 1.',
+      },
+      {
+        q: 'How do I use the FEN?',
+        a: 'Paste it into a chess app or site (Lichess, Chess.com, a chess engine’s “set up position” option) to analyse or play from that position, or into a chess diagram tool for books and worksheets.',
+      },
+      {
+        q: 'When should I set an en-passant square?',
+        a: 'Only right after a pawn moved two squares forward: it’s the square the pawn skipped. The menu lists only squares that fit the current board and side to move.',
+      },
+      {
+        q: 'Why are my castling rights flagged?',
+        a: 'A castling right needs the king on its original square (e1 or e8) and the rook on its corner. If either has moved, remove that right — K and Q are White’s kingside and queenside, k and q Black’s.',
+      },
+    ],
+  },
 ];

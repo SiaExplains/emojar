@@ -1,10 +1,14 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   createRegexWorker,
   type RegexMatch,
 } from '@/lib/online-tools/engines/regex-client';
+import {
+  explainRegex,
+  type RegexToken,
+} from '@/lib/online-tools/engines/regex-explain';
 import type { ToolProps } from '../ToolRenderer';
 import { ErrorMessage, TextField, ToolInput, inputBase } from '../ui';
 
@@ -17,6 +21,74 @@ const FLAGS = [
 ];
 
 const TIMEOUT_MS = 1500;
+
+const KIND_STYLE: Partial<Record<RegexToken['kind'], string>> = {
+  group: 'bg-indigo-50 text-indigo-800',
+  lookaround: 'bg-purple-50 text-purple-800',
+  class: 'bg-emerald-50 text-emerald-800',
+  range: 'bg-emerald-50 text-emerald-800',
+  'class-escape': 'bg-emerald-50 text-emerald-800',
+  'unicode-property': 'bg-emerald-50 text-emerald-800',
+  quantifier: 'bg-amber-50 text-amber-900',
+  anchor: 'bg-rose-50 text-rose-800',
+  alternation: 'bg-sky-50 text-sky-800',
+  alternative: 'bg-sky-50 text-sky-800',
+  backreference: 'bg-orange-50 text-orange-800',
+};
+
+const KIND_LABEL: Record<RegexToken['kind'], string> = {
+  literal: 'text',
+  any: 'any char',
+  'class-escape': 'shorthand',
+  'unicode-property': 'unicode',
+  escape: 'escape',
+  anchor: 'anchor',
+  class: 'class',
+  range: 'range',
+  group: 'group',
+  lookaround: 'lookaround',
+  backreference: 'backref',
+  quantifier: 'quantifier',
+  alternation: 'or',
+  alternative: 'option',
+};
+
+function TokenList({
+  tokens,
+  depth = 0,
+}: {
+  tokens: RegexToken[];
+  depth?: number;
+}) {
+  return (
+    <ul
+      className={
+        depth
+          ? 'mt-1.5 space-y-1.5 border-l-2 border-gray-100 pl-3'
+          : 'space-y-1.5'
+      }
+    >
+      {tokens.map((t) => (
+        <li key={`${t.start}-${t.end}-${t.kind}`}>
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <code
+              className={`max-w-full break-all rounded px-1.5 py-0.5 font-mono text-[13px] ${KIND_STYLE[t.kind] ?? 'bg-gray-100 text-gray-800'}`}
+            >
+              {t.raw || '(empty)'}
+            </code>
+            <span className="text-[10px] font-medium uppercase tracking-wide text-gray-400">
+              {KIND_LABEL[t.kind]}
+            </span>
+            <span className="text-sm text-gray-700">{t.description}</span>
+          </div>
+          {t.children && t.children.length > 0 && (
+            <TokenList tokens={t.children} depth={depth + 1} />
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 type Result = {
   matches: RegexMatch[];
@@ -88,6 +160,19 @@ export default function RegexTesterTool(_: ToolProps) {
     }, 120);
     return () => window.clearTimeout(handle);
   }, [pattern, flags, text, replacement]);
+
+  const explanation = useMemo(
+    () => (pattern ? explainRegex(pattern, flags) : null),
+    [pattern, flags],
+  );
+  // Column headers for the match table: group number plus name when it has one.
+  const groupCols =
+    explanation?.ok && explanation.groups.length
+      ? explanation.groups
+      : (result?.matches[0]?.groups ?? []).map((_, i) => ({
+          number: i + 1,
+          name: null,
+        }));
 
   const toggleFlag = (f: string) =>
     setFlags((cur) => (cur.includes(f) ? cur.replace(f, '') : cur + f));
@@ -163,38 +248,116 @@ export default function RegexTesterTool(_: ToolProps) {
             )}
           </div>
           {result.matches.length > 0 && (
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-xl border border-gray-100">
               <table className="w-full text-left text-xs">
-                <thead className="text-gray-500">
+                <caption className="sr-only">
+                  Matches with their positions and capture groups
+                </caption>
+                <thead className="bg-gray-50 text-gray-500">
                   <tr>
-                    <th className="py-1 pr-3 font-medium">#</th>
-                    <th className="py-1 pr-3 font-medium">Index</th>
-                    <th className="py-1 pr-3 font-medium">Match</th>
-                    <th className="py-1 font-medium">Groups</th>
+                    <th scope="col" className="px-2 py-1.5 font-medium">
+                      #
+                    </th>
+                    <th scope="col" className="px-2 py-1.5 font-medium">
+                      Index (start–end)
+                    </th>
+                    <th scope="col" className="px-2 py-1.5 font-medium">
+                      Match
+                    </th>
+                    {groupCols.map((g) => (
+                      <th
+                        key={g.number}
+                        scope="col"
+                        className="whitespace-nowrap px-2 py-1.5 font-medium"
+                      >
+                        ${g.number}
+                        {g.name ? ` ${g.name}` : ''}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody className="font-mono">
                   {result.matches.slice(0, 100).map((m, i) => (
                     <tr key={i} className="border-t border-gray-100 align-top">
-                      <td className="py-1 pr-3">{i + 1}</td>
-                      <td className="py-1 pr-3">{m.index}</td>
-                      <td className="py-1 pr-3 break-all">{m.match}</td>
-                      <td className="py-1 break-all">
-                        {m.named
-                          ? Object.entries(m.named)
-                              .map(([k, v]) => `${k}: ${v ?? '—'}`)
-                              .join(', ')
-                          : m.groups
-                              .map((g, gi) => `$${gi + 1}: ${g ?? '—'}`)
-                              .join(', ') || '—'}
+                      <td className="px-2 py-1">{i + 1}</td>
+                      <td className="whitespace-nowrap px-2 py-1 tabular-nums">
+                        {m.index}–{m.index + m.match.length}
                       </td>
+                      <td className="break-all px-2 py-1">
+                        {m.match === '' ? (
+                          <span className="text-gray-400">(empty)</span>
+                        ) : (
+                          m.match
+                        )}
+                      </td>
+                      {groupCols.map((g) => {
+                        const v = m.groups[g.number - 1];
+                        return (
+                          <td key={g.number} className="break-all px-2 py-1">
+                            {v === undefined ? (
+                              <span
+                                className="text-gray-400"
+                                aria-label="not matched"
+                              >
+                                —
+                              </span>
+                            ) : (
+                              v
+                            )}
+                          </td>
+                        );
+                      })}
                     </tr>
                   ))}
                 </tbody>
               </table>
+              {result.matches.length > 100 && (
+                <p className="border-t border-gray-100 px-2 py-1.5 text-xs text-gray-500">
+                  Showing the first 100 matches.
+                </p>
+              )}
             </div>
           )}
         </div>
+      )}
+
+      {explanation && (
+        <section
+          aria-labelledby="regex-breakdown"
+          className="space-y-3 rounded-2xl border border-gray-100 p-4"
+        >
+          <h2
+            id="regex-breakdown"
+            className="text-sm font-semibold text-gray-900"
+          >
+            Pattern breakdown
+          </h2>
+          {explanation.ok ? (
+            <>
+              {explanation.tokens.length ? (
+                <TokenList tokens={explanation.tokens} />
+              ) : (
+                <p className="text-sm text-gray-500">
+                  The empty pattern matches at every position.
+                </p>
+              )}
+              {explanation.flags.length > 0 && (
+                <ul className="space-y-0.5 border-t border-gray-100 pt-2 text-xs text-gray-600">
+                  {explanation.flags.map((f) => (
+                    <li key={f}>
+                      <span className="font-mono">{f.slice(0, 1)}</span>
+                      {f.slice(1)}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
+          ) : (
+            <p className="text-sm text-red-700">
+              Can’t break down an invalid pattern: {explanation.error}
+            </p>
+          )}
+        </section>
       )}
 
       <TextField

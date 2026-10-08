@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.12.1] — 2026-10-08
+
+### Changed
+
+- Docs refreshed after the 0.12.0 release: backlog items for real-device
+  checks of the reference tools, overlapping map labels, whole-word Unicode
+  search, contracted braille and yearly data refreshes.
+
 ## [0.12.0] — 2026-10-08
 
 ### Added

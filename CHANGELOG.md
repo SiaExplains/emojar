@@ -4,6 +4,13 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.14.1] — 2026-10-08
+
+### Changed
+
+- Docs refreshed after the 0.14.0 release: the device checklist now covers
+  touch dragging and downloads in the new interactive tools.
+
 ## [0.14.0] — 2026-10-08
 
 ### Added

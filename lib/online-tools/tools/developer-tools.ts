@@ -760,15 +760,17 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
     category: 'developer-tools',
     name: 'Regex Tester',
     icon: '🧪',
-    shortDescription: 'Test regular expressions with live highlighting.',
+    shortDescription: 'Test, explain and visualize regular expressions.',
     description:
-      'Test JavaScript regular expressions against your text with live match highlighting, capture groups and a replace preview. A safety timeout stops runaway patterns.',
-    title: 'Regex Tester – Test JavaScript Regular Expressions Online',
+      'Test JavaScript regular expressions against your text with live match highlighting, a match table with positions and every capture group, a plain-English breakdown of the pattern and a replace preview. A safety timeout stops runaway patterns.',
+    title: 'Regex Tester & Explainer – Test and Visualize JavaScript Regex',
     metaDescription:
-      'Test regular expressions online with live highlighting, capture groups, flags and replace preview. JavaScript regex, runs in your browser.',
+      'Test regular expressions online with live highlighting, a match table of indexes and groups, and a plain-English pattern breakdown. JavaScript regex, runs locally.',
     keywords: [
       'regex tester',
       'regular expression tester',
+      'regex explainer',
+      'regex visualizer',
       'regex online',
       'javascript regex',
       'regex debugger',
@@ -783,15 +785,29 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
     howTo: [
       'Enter a pattern and choose flags (g, i, m, s, u).',
       'Type or paste the test text — matches are highlighted as you type.',
-      'Inspect capture groups, or enter a replacement to preview the result.',
+      'Check the match table for each match’s start and end index and the value of every numbered or named group.',
+      'Read the pattern breakdown to see what each group, class, quantifier and anchor does, or enter a replacement to preview the result.',
     ],
     about: [
       'The tester uses your browser’s JavaScript regex engine, so behaviour matches Node.js and browsers exactly. Matching runs in a background worker with a timeout, so catastrophic backtracking cannot freeze the page.',
+      'The pattern breakdown splits the expression into a tree — capturing, named and non-capturing groups, lookahead and lookbehind, character classes and ranges, shorthand escapes like \\d and \\w, Unicode properties such as \\p{L}, quantifiers (greedy or lazy), anchors, alternation and backreferences — and explains each part in plain English. It is a quick way to understand a regex you found in someone else’s code.',
     ],
     faqs: [
       {
         q: 'Does it support lookbehind and named groups?',
         a: 'Yes — all modern JavaScript features including (?<name>…), lookbehind (?<=…) and the s (dotAll) and u (Unicode) flags.',
+      },
+      {
+        q: 'What is the difference between greedy and lazy quantifiers?',
+        a: 'A greedy quantifier like .* takes as much text as it can and gives back only if the rest of the pattern fails; a lazy one like .*? takes as little as possible. On “<b>x</b>”, <.*> matches the whole string while <.*?> matches just “<b>”. The breakdown labels each quantifier as greedy or lazy.',
+      },
+      {
+        q: 'Why does a group show “—” in the match table?',
+        a: 'The group didn’t take part in that match — for example the unused side of an alternation like (a)|(b), or an optional group (x)? that was skipped. JavaScript reports such groups as undefined.',
+      },
+      {
+        q: 'Is my pattern or text sent anywhere?',
+        a: 'No. Matching and the breakdown both run in your browser; nothing is uploaded.',
       },
     ],
   },
@@ -2201,6 +2217,517 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
           'crlf',
           'escape character',
         ],
+      },
+    ],
+  },
+  {
+    slug: 'box-shadow-generator',
+    category: 'developer-tools',
+    name: 'CSS Box Shadow Generator',
+    icon: '🔲',
+    shortDescription: 'Layer CSS box-shadows visually and copy the code.',
+    description:
+      'Build CSS box-shadow values by eye: set the X and Y offset, blur, spread, colour, opacity and inset for each layer, stack several shadows and reorder them, try presets like soft, layered or neumorphic, and copy the finished box-shadow declaration.',
+    title: 'CSS Box Shadow Generator – Layered Shadows with Live Preview',
+    metaDescription:
+      'Free CSS box-shadow generator: tune offset, blur, spread, colour and opacity, stack and reorder layers, add inset shadows, preview on any background and copy CSS.',
+    keywords: [
+      'box shadow generator',
+      'css box shadow',
+      'box-shadow',
+      'css shadow generator',
+      'inset shadow',
+      'neumorphism css',
+      'layered shadow',
+    ],
+    relatedTools: [
+      'border-radius-generator',
+      'gradient-generator',
+      'css-transform-playground',
+      'color-picker',
+      'css-formatter',
+    ],
+    component: 'box-shadow',
+    howTo: [
+      'Pick a preset or start from the default soft shadow.',
+      'Adjust the offsets, blur, spread, colour and opacity with the sliders or type exact pixel values.',
+      'Add more layers with “Add shadow”, choose one with the number buttons and move it up or down — layer 1 is drawn on top.',
+      'Change the preview background and card colour to check the shadow in context, then copy the CSS.',
+    ],
+    about: [
+      'box-shadow takes one or more comma-separated shadows, each written as x-offset y-offset blur spread colour, with an optional inset keyword. Positive offsets move the shadow right and down; blur softens its edge and spread grows or shrinks it before blurring. The first shadow in the list is painted on top.',
+      'Realistic shadows usually combine several layers with low opacity — a tight, darker one for contact and wider, fainter ones for distance. The generator writes colours as rgba() so opacity is kept separate from the colour, and omits zero spread and blur so the output stays short.',
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between blur and spread?',
+        a: 'Spread changes the size of the shadow shape before it is blurred: positive values grow it, negative values shrink it. Blur only softens the edge. A negative spread with a large blur gives a shadow that only shows below the element.',
+      },
+      {
+        q: 'How do I put a shadow on only one side?',
+        a: 'Offset the shadow towards that side and use a negative spread about the size of the blur, for example box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4) for the bottom edge.',
+      },
+      {
+        q: 'Does box-shadow affect layout or performance?',
+        a: 'It never changes layout — the shadow takes no space and isn’t part of the box size. Very large blurs on many elements, or animating box-shadow directly, can be slow; animate the opacity of a pseudo-element that carries the shadow instead.',
+      },
+      {
+        q: 'Why doesn’t my shadow follow a transparent PNG’s shape?',
+        a: 'box-shadow always follows the element’s box and border-radius. For the outline of an image’s visible pixels use filter: drop-shadow() instead.',
+      },
+    ],
+  },
+  {
+    slug: 'border-radius-generator',
+    category: 'developer-tools',
+    name: 'CSS Border Radius Generator',
+    icon: '⬭',
+    shortDescription: 'Shape corners with draggable handles and copy CSS.',
+    description:
+      'Create any border-radius visually: drag the corner handles or set each corner exactly, link or unlink the four corners, switch to elliptical radii for blob and egg shapes, work in px or %, and copy the shortest valid border-radius CSS.',
+    title: 'CSS Border Radius Generator – Drag Corners, Blobs & Ellipses',
+    metaDescription:
+      'Visual CSS border-radius generator: drag corner handles, link or unlink corners, set elliptical radii for blob shapes, use px or %, and copy the shortest CSS.',
+    keywords: [
+      'border radius generator',
+      'css border radius',
+      'border-radius',
+      'rounded corners css',
+      'css blob shape',
+      'elliptical border radius',
+      'fancy border radius',
+    ],
+    relatedTools: [
+      'box-shadow-generator',
+      'clip-path-generator',
+      'gradient-generator',
+      'css-unit-visualizer',
+      'flexbox-playground',
+    ],
+    component: 'border-radius',
+    howTo: [
+      'Drag a white handle along the edge of the preview to round that corner, or use the sliders and number boxes.',
+      'Untick “Link all corners” to set each corner separately.',
+      'Turn on elliptical corners to set horizontal and vertical radii independently — handles appear on both edges of each corner.',
+      'Pick px or %, try a preset like Blob or Leaf, then copy the CSS.',
+    ],
+    about: [
+      'border-radius sets the curve of each corner in the order top-left, top-right, bottom-right, bottom-left. One value rounds all four; two values set the diagonals; three or four set corners individually. A slash separates horizontal radii from vertical ones, so border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% gives each corner an elliptical curve — the trick behind organic blob shapes.',
+      'Percentages are relative to the box: horizontal radii to its width and vertical radii to its height, which is why 50% makes a circle from a square and an ellipse from a rectangle. When adjacent radii add up to more than the side length, the browser scales all of them down proportionally; that’s why a huge value like 9999px makes a perfect pill.',
+    ],
+    faqs: [
+      {
+        q: 'How do I make a pill-shaped button?',
+        a: 'Use a length larger than half the button’s height, such as border-radius: 9999px. Unlike 50%, it keeps the sides straight and the ends perfectly round at any width.',
+      },
+      {
+        q: 'What does the slash in border-radius mean?',
+        a: 'Values before the slash are the horizontal radii and values after it the vertical radii of each corner, so every corner can be a quarter-ellipse rather than a quarter-circle.',
+      },
+      {
+        q: 'Why does the generated CSS have fewer values than corners?',
+        a: 'The tool writes the shortest equivalent form: four equal corners become one value, matching diagonals become two, and a matching top-right and bottom-left become three — exactly how the shorthand expands back.',
+      },
+    ],
+  },
+  {
+    slug: 'clip-path-generator',
+    category: 'developer-tools',
+    name: 'CSS Clip-Path Generator',
+    icon: '✂️',
+    shortDescription: 'Draw clip-path polygons, circles and insets.',
+    description:
+      'Make CSS clip-path shapes visually: click to add polygon points, drag them into place, snap to a grid and fine-tune coordinates, or switch to circle, ellipse and inset. Start from presets like a star, arrow or message bubble and copy clean clip-path CSS.',
+    title: 'CSS Clip-Path Generator – Polygon Editor, Circle & Inset',
+    metaDescription:
+      'Free CSS clip-path maker: click to add polygon points, drag and snap them to a grid, or use circle, ellipse and inset shapes. Star, arrow and hexagon presets included.',
+    keywords: [
+      'clip path generator',
+      'css clip-path',
+      'clip-path polygon',
+      'css polygon generator',
+      'css shapes',
+      'clippy',
+      'clip-path circle',
+    ],
+    relatedTools: [
+      'border-radius-generator',
+      'css-transform-playground',
+      'gradient-generator',
+      'image-cropper',
+      'box-shadow-generator',
+    ],
+    component: 'clip-path',
+    howTo: [
+      'Choose a shape: polygon, circle, ellipse or inset.',
+      'For polygons, pick a preset or click empty space on the preview to add a point on the nearest edge; drag points to move them.',
+      'Turn on grid snapping for tidy values, or type exact x and y percentages in the point list. Select a point and press Delete to remove it.',
+      'For circle, ellipse and inset, use the sliders (or drag the centre handle), then copy the CSS.',
+    ],
+    about: [
+      'clip-path hides every part of an element outside a shape, without changing its layout box. polygon() takes a list of x y points — percentages of the element’s width and height — joined in order and closed automatically. circle() and ellipse() take radii and a centre after the at keyword; inset() cuts in from each edge like margins and can round the corners.',
+      'Because the coordinates are percentages, the same clip-path works at any element size. Shapes with the same number of points can be animated smoothly with a CSS transition on clip-path, which is how many hover reveals are built.',
+    ],
+    faqs: [
+      {
+        q: 'Does clip-path work in all browsers?',
+        a: 'Basic shapes — polygon, circle, ellipse and inset — work unprefixed in all current browsers. Very old Safari versions needed -webkit-clip-path.',
+      },
+      {
+        q: 'Can I animate a clip-path?',
+        a: 'Yes, between two shapes of the same type; polygons must have the same number of points. Add duplicate points to the simpler shape if needed.',
+      },
+      {
+        q: 'Why is my box-shadow gone after clipping?',
+        a: 'clip-path also clips the shadow, because it sits outside the shape. Put the clip-path on an inner element and use filter: drop-shadow() on a wrapper instead.',
+      },
+      {
+        q: 'Does clip-path change what is clickable?',
+        a: 'Yes. The clipped-away area no longer receives clicks or hover, so the interactive area matches the visible shape.',
+      },
+    ],
+  },
+  {
+    slug: 'css-transform-playground',
+    category: 'developer-tools',
+    name: 'CSS Transform Playground',
+    icon: '🔄',
+    shortDescription: 'Translate, rotate, scale and skew a box, copy CSS.',
+    description:
+      'Experiment with CSS transforms on a live box: drag it to translate, spin the handle to rotate, scale and skew it, move the transform-origin and try 3D rotation with perspective. The tool writes only the functions you changed, plus the equivalent matrix().',
+    title: 'CSS Transform Playground – Rotate, Scale, Skew & Matrix',
+    metaDescription:
+      'Interactive CSS transform generator: drag to translate, rotate with a handle, scale, skew, set transform-origin and 3D perspective, then copy the CSS and matrix().',
+    keywords: [
+      'css transform generator',
+      'css transform',
+      'transform rotate',
+      'transform-origin',
+      'css skew',
+      'css matrix',
+      'css 3d transform',
+    ],
+    relatedTools: [
+      'box-shadow-generator',
+      'border-radius-generator',
+      'clip-path-generator',
+      'flexbox-playground',
+      'css-unit-visualizer',
+    ],
+    component: 'css-transform',
+    howTo: [
+      'Drag the box to move it, or use the Translate sliders. Tab to the box and use the arrow keys for keyboard moves.',
+      'Drag the ↻ handle to rotate (or focus it and press the arrow keys), and set scale and skew with the sliders.',
+      'Pick a transform-origin from the 3 × 3 grid or type custom percentages; the red dot shows where it is.',
+      'Tick 3D rotation for rotateX, rotateY and perspective, then copy the CSS — Randomize gives an example to study.',
+    ],
+    about: [
+      'transform changes how an element is drawn without affecting the layout around it: translate() moves it, rotate() turns it, scale() resizes it and skew() slants it. Functions are applied from left to right, so translate(50px) rotate(45deg) moves first and then rotates in place, while rotate(45deg) translate(50px) moves along the rotated axis.',
+      'Every 2D transform list collapses to one matrix(a, b, c, d, e, f), and 3D ones to matrix3d() with 16 numbers. The playground shows that equivalent so you can see what the browser actually computes. transform-origin sets the fixed point for rotation, scaling and skewing; it defaults to the centre.',
+    ],
+    faqs: [
+      {
+        q: 'Does the order of transform functions matter?',
+        a: 'Yes. Each function works in the coordinate system left by the previous one, so rotating before translating moves the element along a rotated direction. This tool writes translate, rotate, scale, skew in that order.',
+      },
+      {
+        q: 'Why use transform instead of top and left to move things?',
+        a: 'Transforms don’t trigger layout, and browsers can composite them on the GPU, so animations stay smooth. Changing top or left reflows the page on every frame.',
+      },
+      {
+        q: 'Why doesn’t my 3D rotation look 3D?',
+        a: 'Without perspective a 3D rotation is drawn flat and just looks squashed. Add perspective() at the start of the transform, as this tool does, or set perspective on the parent element.',
+      },
+    ],
+  },
+  {
+    slug: 'css-specificity-calculator',
+    category: 'developer-tools',
+    name: 'CSS Specificity Calculator',
+    icon: '🎯',
+    shortDescription: 'Calculate and compare CSS selector specificity.',
+    description:
+      'Paste CSS selectors to see their specificity as (a, b, c): IDs, then classes, attributes and pseudo-classes, then elements and pseudo-elements. Each part is highlighted and explained, :is(), :not(), :has(), :where() and :nth-child(… of S) follow Selectors Level 4, and a ranking shows which rule wins.',
+    title: 'CSS Specificity Calculator – Compare Selectors (a, b, c)',
+    metaDescription:
+      'Calculate CSS specificity for any selector: see the (a, b, c) score, which parts count, Level 4 rules for :is(), :not(), :has() and :where(), and which selector wins.',
+    keywords: [
+      'css specificity calculator',
+      'specificity calculator',
+      'css specificity',
+      'selector specificity',
+      'css selector weight',
+      'specificity :is :where',
+      'which css rule wins',
+    ],
+    relatedTools: [
+      'css-formatter',
+      'flexbox-playground',
+      'grid-playground',
+      'regex-tester',
+      'css-unit-visualizer',
+    ],
+    component: 'css-specificity',
+    howTo: [
+      'Type or paste selectors, one per line. Selector lists separated by commas are split into separate entries, and pasted { declarations } are ignored.',
+      'Read each selector’s (a, b, c) score and the parts that count in each column, colour-coded and labelled.',
+      'Use the ranking to see which selector is most specific; equal scores are broken by source order.',
+      'Load the Level 4 example to see how :is(), :not(), :has() and :where() are counted.',
+    ],
+    about: [
+      'When several rules set the same property on an element, the browser picks the one with the highest specificity, compared column by column. Column A counts ID selectors; column B counts classes, attribute selectors and pseudo-classes; column C counts type selectors and pseudo-elements. The universal selector * and combinators (space, >, +, ~) count nothing. A single ID beats any number of classes.',
+      'Selectors Level 4 added rules for functional pseudo-classes: :is(), :not() and :has() take the specificity of their most specific argument, :where() always counts zero, and :nth-child(2n of .item) counts as one pseudo-class plus its most specific selector. Old single-colon pseudo-elements like :before still count as elements. Inline style attributes and !important sit above all selector specificity.',
+    ],
+    faqs: [
+      {
+        q: 'What is the specificity of #app .card:hover > button?',
+        a: '(1, 2, 1): one ID (#app), one class plus one pseudo-class (.card and :hover), and one element (button). The > combinator adds nothing.',
+      },
+      {
+        q: 'What happens when two selectors have the same specificity?',
+        a: 'The one that appears later in the stylesheet (or in a later stylesheet) wins. Cascade layers and !important are checked before specificity.',
+      },
+      {
+        q: 'Why use :where()?',
+        a: 'It always has zero specificity, so styles inside it are easy to override. That makes it ideal for resets and library defaults.',
+      },
+      {
+        q: 'Does :not() add specificity?',
+        a: 'The :not() itself adds nothing, but its most specific argument does: :not(#nav) counts as an ID and :not(.a, p) counts as one class.',
+      },
+    ],
+  },
+  {
+    slug: 'typography-playground',
+    category: 'developer-tools',
+    alsoIn: ['text-tools'],
+    name: 'Typography Playground',
+    icon: '🔤',
+    shortDescription: 'Tune font, size, spacing and line length, copy CSS.',
+    description:
+      'Test typography on your own text: choose a system font stack, then adjust size, weight, line height, letter and word spacing, alignment, case, colours and line length. Preview at phone, tablet and desktop widths, check the contrast ratio and copy the CSS.',
+    title: 'Typography Playground – Test Font Size, Line Height & Spacing',
+    metaDescription:
+      'Try font size, weight, line height, letter spacing and line length on your own text with system font stacks, preview mobile to desktop, check contrast and copy CSS.',
+    keywords: [
+      'typography playground',
+      'font tester',
+      'line height calculator',
+      'letter spacing css',
+      'font size preview',
+      'web safe fonts',
+      'css typography generator',
+    ],
+    relatedTools: [
+      'contrast-checker',
+      'css-unit-visualizer',
+      'word-counter',
+      'css-formatter',
+      'color-picker',
+    ],
+    component: 'typography',
+    howTo: [
+      'Type your own text or load a sample: heading and paragraph, a long article paragraph or UI labels.',
+      'Pick a font stack and adjust size (px or rem), weight, line height, letter spacing, word spacing, alignment and text transform.',
+      'Set the text and background colours and watch the contrast ratio and its pass or fail label.',
+      'Set the container width in ch or px, switch between 375, 768 and 1200 px previews, then copy the CSS.',
+    ],
+    about: [
+      'Readable body text depends on a few settings working together. Sizes of 16–20px suit most screens; line height around 1.5 gives lines room without breaking the paragraph apart; and a line length of about 45–75 characters — roughly 60–70ch — keeps the eye from getting lost. Letter spacing is best kept at normal for body text, with small positive values for all-caps labels.',
+      'Every font here is a system stack: a list of fonts already installed on most devices, ending in a generic family like sans-serif. Nothing is downloaded, so pages load fast and the preview shows exactly what your visitors’ devices will render. The contrast ratio uses the WCAG formula; normal text needs 4.5:1 for AA and large text 3:1.',
+    ],
+    faqs: [
+      {
+        q: 'Should I use px or rem for font size?',
+        a: 'rem respects the reader’s browser font-size setting, so it is the better default for text. 1rem is 16px unless the user or your CSS changes the root size.',
+      },
+      {
+        q: 'What line height should body text use?',
+        a: 'Usually 1.4 to 1.7, written without a unit so it scales with the font size. Headings can be tighter, around 1.1 to 1.3.',
+      },
+      {
+        q: 'What does the ch unit mean for max-width?',
+        a: '1ch is the width of the digit 0 in the current font, so max-width: 65ch keeps lines at roughly 65 characters whatever the font size.',
+      },
+      {
+        q: 'Why doesn’t a weight like 300 change anything?',
+        a: 'Many system fonts only include regular and bold. If a weight isn’t installed, the browser uses the nearest available one.',
+      },
+    ],
+  },
+  {
+    slug: 'svg-path-editor',
+    category: 'developer-tools',
+    alsoIn: ['image-tools'],
+    name: 'SVG Path Editor',
+    icon: '✒️',
+    shortDescription: 'Draw and edit SVG paths visually, copy the d code.',
+    description:
+      'Edit SVG paths by dragging points on a grid: add lines, quadratic and cubic Bézier curves, move their control handles, close the path and style the stroke and fill. Paste any existing path d attribute to load it, then copy the cleaned-up absolute path data or download a complete SVG file.',
+    title: 'SVG Path Editor – Draw & Edit SVG Path d Visually',
+    metaDescription:
+      'Free visual SVG path editor: drag points and Bézier handles, paste a d attribute to edit, convert relative commands to absolute and copy the path or download the SVG.',
+    keywords: [
+      'svg path editor',
+      'svg path builder',
+      'svg path d',
+      'svg path visualizer',
+      'bezier path editor',
+      'svg path generator',
+      'edit svg path online',
+    ],
+    relatedTools: [
+      'bezier-curve-visualizer',
+      'svg-optimizer',
+      'svg-to-png',
+      'pixel-art-editor',
+      'favicon-generator',
+    ],
+    component: 'svg-path',
+    howTo: [
+      'Start from the heart example, or paste your own path data into “Paste path data” and press Load path.',
+      'Drag the circles (end points) and diamonds (Bézier control points). Tab to a point and use the arrow keys for precise moves, or type exact x and y values.',
+      'Pick a segment type and press Add at end or Insert after selected; Delete selected removes a segment. Tick Close path to add Z.',
+      'Set the viewBox size, grid and snapping, stroke and fill, then copy the path d value or the full SVG, or download it as a file.',
+    ],
+    about: [
+      'An SVG path is described by its d attribute: a list of commands such as M (move to), L (line to), Q (quadratic Bézier), C (cubic Bézier), A (arc) and Z (close). Capital letters use absolute coordinates and lower-case letters are relative to the previous point; H and V draw horizontal and vertical lines, and S and T continue a curve by mirroring the previous control point.',
+      'This editor parses every command and turns the path into explicit absolute segments, so each point can be dragged. Arcs are kept as arcs with editable radii and flags. The output is rounded to the number of decimals you choose, which also makes it a quick way to tidy or normalise path data copied from a design tool. Everything happens in your browser.',
+    ],
+    faqs: [
+      {
+        q: 'Can I edit a path from an existing SVG file?',
+        a: 'Yes. Copy the value of the path’s d attribute (the text inside d="…"), paste it into the paste box and press Load path. Relative commands and H, V, S and T shorthands are converted to absolute L, C and Q segments.',
+      },
+      {
+        q: 'What is the difference between quadratic and cubic Bézier curves?',
+        a: 'A quadratic curve (Q) has one control point that both ends bend towards; a cubic curve (C) has two, one for each end, so it can form S-shapes and gives finer control. Most design tools export cubic curves.',
+      },
+      {
+        q: 'Why does my pasted path look different after loading?',
+        a: 'It shouldn’t look different, but the code will: shorthand and relative commands become absolute ones and numbers are rounded to the decimals you chose. If a command can’t be read, an error tells you where.',
+      },
+      {
+        q: 'How do I make the path fit my icon size?',
+        a: 'Set the viewBox width and height to your artboard size (for example 24 × 24 for icons), choose a grid size such as 1 and enable snapping so points land on whole units.',
+      },
+    ],
+  },
+  {
+    slug: 'json-viewer',
+    category: 'developer-tools',
+    name: 'JSON Viewer & Tree Explorer',
+    icon: '🌳',
+    shortDescription: 'Explore JSON as a collapsible tree and copy paths.',
+    description:
+      'Paste JSON or open a .json file to explore it as a collapsible tree: see each value’s type, array lengths and key counts, search keys and values, and copy any node’s value, JSON path (like users[0].profile.name) or pretty-printed subtree.',
+    title: 'JSON Viewer – Explore JSON as a Tree & Copy JSON Paths',
+    metaDescription:
+      'Free online JSON viewer: explore JSON as an expandable tree, search keys and values, see types and sizes, and copy values, JSON paths or subtrees. Runs locally.',
+    keywords: [
+      'json viewer',
+      'json tree viewer',
+      'json explorer',
+      'json path finder',
+      'json tree',
+      'view json online',
+      'jsonpath',
+    ],
+    relatedTools: [
+      'json-formatter',
+      'json-validator',
+      'json-diff',
+      'json-to-typescript',
+      'json-to-yaml',
+    ],
+    component: 'json-viewer',
+    handlesFiles: true,
+    howTo: [
+      'Paste JSON into the box, open a .json file, or press Sample to try it.',
+      'Click the arrows (or use the arrow keys) to open objects and arrays; Expand all, Collapse all and Expand to depth open many levels at once.',
+      'Type in Search to highlight matching keys and values; Next and Prev jump between matches and open their parents.',
+      'Select a node and copy its value, its JSON path or the whole subtree as formatted JSON.',
+    ],
+    about: [
+      'A JSON viewer shows a document as a tree instead of a wall of text, so you can see its shape at a glance: every object shows how many keys it has, every array how many items, and every value is labelled as a string, number, boolean or null.',
+      'Paths are written the way you would type them in JavaScript — users[0].profile.name — with keys that aren’t valid identifiers in brackets, like ["first name"]. Turn on the $ option for JSONPath style ($.users[0].profile.name) used by tools such as jq-like filters, Postman tests and JSONPath libraries.',
+      'Big files stay responsive because only the rows you can see are drawn and children are built only when their parent is opened. Invalid JSON is reported with the line and column of the first error, and everything — including files you open — stays in your browser.',
+    ],
+    faqs: [
+      {
+        q: 'How do I get the path to a value in JSON?',
+        a: 'Click the value in the tree (or search for it), then press Copy JSON path. You get a path like orders[2].items[0].sku that you can paste into code, or $.orders[2].items[0].sku with the JSONPath option on.',
+      },
+      {
+        q: 'Can it open large JSON files?',
+        a: 'Yes — files of several megabytes work because the tree only renders the rows on screen. Expand all stops after the first 2,000 objects and arrays on huge documents; use search or open branches one by one to go deeper.',
+      },
+      {
+        q: 'Why does it say my JSON is invalid?',
+        a: 'Common causes are trailing commas, single quotes, comments or unquoted keys — all allowed in JavaScript but not in JSON. The error shows the line and column where parsing stopped, which is usually right after the real mistake.',
+      },
+      {
+        q: 'Is my JSON uploaded anywhere?',
+        a: 'No. Parsing, searching and copying all happen in your browser; opened files are read locally and never sent to a server.',
+      },
+    ],
+  },
+  {
+    slug: 'http-request-builder',
+    category: 'developer-tools',
+    name: 'HTTP Request Builder',
+    icon: '📮',
+    shortDescription: 'Build HTTP requests and get cURL, fetch & Python code.',
+    description:
+      'Build an HTTP request visually — method, URL, query parameters, headers, JSON or form body and auth — and get ready-to-run code for cURL, JavaScript fetch, Axios, Python requests, Node.js, HTTPie and PowerShell, with correct quoting for each.',
+    title: 'HTTP Request Builder – Generate cURL, Fetch, Axios & Python Code',
+    metaDescription:
+      'Build HTTP requests visually and copy code for cURL, fetch, Axios, Python requests, Node.js, HTTPie and PowerShell. Query params, headers, JSON and auth.',
+    keywords: [
+      'http request builder',
+      'curl generator',
+      'curl command builder',
+      'fetch code generator',
+      'convert request to python requests',
+      'axios generator',
+      'api request builder',
+      'httpie',
+    ],
+    relatedTools: [
+      'url-parser',
+      'url-encoder',
+      'http-status-codes',
+      'json-formatter',
+      'base64-encoder',
+      'jwt-decoder',
+    ],
+    component: 'http-request',
+    howTo: [
+      'Pick the method and enter the URL — its query string fills the parameters table, and editing the table updates the URL.',
+      'Add headers, choose a body type (JSON, form, raw text or multipart text fields) and optionally a Bearer token or Basic login.',
+      'Choose a language tab — cURL, fetch, Axios, Python, Node.js, HTTPie or PowerShell — and copy the code.',
+      'Run the code in your terminal or project. The builder itself never sends the request.',
+    ],
+    about: [
+      "The request builder turns a form into code. Content-Type is set for you from the body type (unless you set one), Basic auth is base64-encoded into an Authorization header, and query parameters are percent-encoded. Each language gets its own escaping: single quotes in shell commands become '\\'', JavaScript and Python strings escape quotes, backslashes and line breaks, so values containing quotes, $ signs, newlines or emoji paste safely.",
+      'It deliberately doesn’t send requests. Browsers enforce CORS: a page on one site can only call another site’s API if that API explicitly allows it, so a browser-based sender either fails for most APIs or needs a proxy server that would see your data and tokens. Generating code keeps everything on your device.',
+    ],
+    faqs: [
+      {
+        q: 'Why can’t this tool send the request for me?',
+        a: 'Browsers block cross-origin requests unless the target API allows them via CORS headers, and most APIs don’t. Getting around that would need a proxy server that sees your data and tokens, so the builder only writes the code for you to run.',
+      },
+      {
+        q: 'Are my tokens and passwords saved?',
+        a: 'No. Nothing is stored or sent anywhere — values live only in this tab’s memory and disappear when you close it. Remember that the generated code contains them, so be careful where you paste it.',
+      },
+      {
+        q: 'How do I send JSON with cURL?',
+        a: "Choose the JSON body type: the cURL tab adds -H 'Content-Type: application/json' and --data-raw with your JSON, quoted so it survives the shell. --data-raw also makes cURL use POST unless you choose another method.",
+      },
+      {
+        q: 'Can I upload a file with multipart?',
+        a: 'The builder writes text fields only, because a web page can’t embed your local files into code. Add a file part by hand, for example -F \'file=@photo.jpg\' in cURL or files={"file": open("photo.jpg", "rb")} in Python.',
       },
     ],
   },

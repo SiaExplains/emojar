@@ -71,6 +71,16 @@ Each face is drawn from your browser's cryptographic random number generator, us
 
 That independence cuts both ways. Three natural 1s in a row don't make a 20 "due". Each roll is a fresh 1-in-20 chance.
 
+## What do the roll stats tell you?
+
+Every roll now comes with a row of five numbers under the total. **Lowest die**, **Highest die** and **Average die** describe the dice you just rolled, counting every die shown, including any a keep rule dropped. **Possible total** is the full range the notation can produce, and **Expected total** is its exact long-run average.
+
+Roll `2d6+3` and the possible total reads 5–15: two 1s plus 3 at the bottom, two 6s plus 3 at the top. The expected total is 10, since each d6 averages 3.5 and 2 × 3.5 + 3 = 10. For keep rolls, the expected value is worked out exactly from the odds of each kept die, so `4d6kh3` shows 3–18 and 12.24.
+
+Below the result, a session line counts your rolls and shows the average total, such as "This session: 12 rolls, average total 9.83". Over many rolls it should drift toward the expected total. **Reset session** clears the count and the recent rolls. Nothing is saved after you close the tab.
+
+For odd dice, use the **Dice** and **Custom sides (2–1000)** fields. Enter 3 and 7, then press **Roll 3d7**.
+
 ## FAQ
 
 ### What does "d%" mean?

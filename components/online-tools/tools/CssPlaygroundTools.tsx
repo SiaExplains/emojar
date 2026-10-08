@@ -3,13 +3,8 @@
 import Link from 'next/link';
 import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import type { ToolProps } from '../ToolRenderer';
-import {
-  CopyButton,
-  RangeField,
-  SelectField,
-  TextField,
-  btnSecondary,
-} from '../ui';
+import { RangeField, SelectField, TextField, btnSecondary } from '../ui';
+import { CodePanel, ItemTabs } from './playground-shared';
 
 const COLORS = [
   'bg-indigo-400',
@@ -31,54 +26,6 @@ const pick = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
 function cssBlock(selector: string, rules: [string, string][]) {
   if (!rules.length) return '';
   return `${selector} {\n${rules.map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}`;
-}
-
-function ItemTabs({
-  count,
-  selected,
-  onSelect,
-}: {
-  count: number;
-  selected: number;
-  onSelect: (i: number) => void;
-}) {
-  return (
-    <div
-      className="flex flex-wrap gap-1.5"
-      role="group"
-      aria-label="Choose an item to edit"
-    >
-      {Array.from({ length: count }, (_, i) => (
-        <button
-          key={i}
-          type="button"
-          aria-pressed={selected === i}
-          onClick={() => onSelect(i)}
-          className={`h-8 w-8 rounded-lg border text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
-            selected === i
-              ? 'border-gray-900 bg-gray-900 text-white'
-              : 'border-gray-200 text-gray-700 hover:bg-gray-50'
-          }`}
-        >
-          {i + 1}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function CodePanel({ css }: { css: string }) {
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-gray-900">Generated CSS</h2>
-        <CopyButton text={css} label="Copy CSS" />
-      </div>
-      <pre className="max-h-80 overflow-auto rounded-2xl bg-gray-900 p-4 text-xs leading-relaxed text-gray-100">
-        <code>{css}</code>
-      </pre>
-    </div>
-  );
 }
 
 // ── Flexbox ────────────────────────────────────────────────────────────────

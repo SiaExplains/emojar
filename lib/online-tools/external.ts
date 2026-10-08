@@ -10,6 +10,8 @@ export type ExternalTool = {
   icon: string;
   description: string;
   category: CategorySlug;
+  /** Extra categories that list this link too. */
+  alsoIn?: CategorySlug[];
 };
 
 export const EXTERNAL_TOOLS: ExternalTool[] = [
@@ -20,8 +22,9 @@ export const EXTERNAL_TOOLS: ExternalTool[] = [
     description:
       'A free Pomodoro timer you run with a small crew, focusing at the same time — no video calls.',
     category: 'date-time-tools',
+    alsoIn: ['productivity-tools'],
   },
 ];
 
 export const externalToolsIn = (slug: CategorySlug) =>
-  EXTERNAL_TOOLS.filter((t) => t.category === slug);
+  EXTERNAL_TOOLS.filter((t) => t.category === slug || t.alsoIn?.includes(slug));

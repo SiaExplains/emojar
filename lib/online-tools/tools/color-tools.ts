@@ -344,4 +344,119 @@ export const COLOR_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'gradient-mesh-generator',
+    category: 'color-tools',
+    alsoIn: ['image-tools'],
+    name: 'Mesh Gradient Generator',
+    icon: '🌈',
+    shortDescription: 'Make soft multi-colour mesh gradients for CSS & PNG.',
+    description:
+      'Create soft, multi-point mesh gradients: drag 3 to 8 colour points, set each one’s opacity and radius and pick a background. Copy the result as pure CSS (layered radial gradients that work in every browser), as an SVG with a smoothing blur, or download a PNG at wallpaper or social sizes.',
+    title: 'Mesh Gradient Generator – CSS, SVG & PNG Backgrounds',
+    metaDescription:
+      'Create mesh gradients online: drag colour points, tune opacity and softness, then copy CSS radial gradients or SVG, or download a PNG at 1920×1080 and more. Free.',
+    keywords: [
+      'mesh gradient generator',
+      'gradient mesh',
+      'css mesh gradient',
+      'blurry gradient background',
+      'aurora gradient',
+      'multi color gradient',
+      'gradient wallpaper',
+    ],
+    relatedTools: [
+      'gradient-generator',
+      'color-palette-generator',
+      'color-picker',
+      'random-color-generator',
+      'svg-to-png',
+    ],
+    component: 'gradient-mesh',
+    howTo: [
+      'Start from a preset or press Randomize.',
+      'Drag the numbered points on the preview, or select a point and type its position, change its colour, opacity and radius.',
+      'Add up to 8 points, remove extras, change the background colour and optionally add film grain.',
+      'Copy the CSS or SVG, or choose a size and download a PNG.',
+    ],
+    about: [
+      'A mesh gradient blends several colours from points spread across an area rather than along one line. CSS has no native mesh gradient, but stacking several radial-gradient() layers — each a colour fading to transparent from its own position — over a background colour gives the same soft, “aurora” look, and it works in every modern browser without any image file.',
+      'The SVG output draws the same gradients and adds a Gaussian blur so the colours melt together more smoothly; the PNG is rendered from that SVG at the size you pick. Use CSS for responsive page backgrounds and the SVG or PNG for wallpapers, slides and social images.',
+    ],
+    faqs: [
+      {
+        q: 'Why do the CSS and SVG previews look slightly different?',
+        a: 'The SVG and PNG add a blur filter for smoother blending, which plain CSS gradients can’t do without filters. The CSS preview shows exactly what the copied CSS produces.',
+      },
+      {
+        q: 'Will the CSS work in all browsers?',
+        a: 'Yes. Layered radial-gradient() backgrounds with positions are supported by all current browsers, including Safari and mobile browsers.',
+      },
+      {
+        q: 'How do I make the gradient softer?',
+        a: 'Increase each point’s radius so the colours overlap more, lower the opacity of strong colours, or use the SVG/PNG output, which adds a blur.',
+      },
+    ],
+  },
+  {
+    slug: 'color-blindness-simulator',
+    category: 'color-tools',
+    alsoIn: ['image-tools'],
+    name: 'Color Blindness Simulator',
+    icon: '👁️',
+    shortDescription: 'Preview images & palettes as colour-blind people see.',
+    description:
+      'See how charts, interfaces and photos may look with protanopia, deuteranopia, tritanopia, achromatopsia and the milder anomalous forms. Compare original and simulated views side by side, use the built-in demo or your own image, and check a palette for colour pairs that become hard to tell apart.',
+    title: 'Color Blindness Simulator – Check Images & Palettes',
+    metaDescription:
+      'Simulate protanopia, deuteranopia, tritanopia and achromatopsia on images, charts and palettes. Side-by-side view, confusable colour pairs, private and in-browser.',
+    keywords: [
+      'color blindness simulator',
+      'colorblind simulator',
+      'deuteranopia simulator',
+      'protanopia',
+      'tritanopia',
+      'color blind palette checker',
+      'accessible colors',
+    ],
+    relatedTools: [
+      'contrast-checker',
+      'color-palette-generator',
+      'color-picker',
+      'color-converter',
+      'gradient-mesh-generator',
+    ],
+    component: 'color-blindness',
+    handlesFiles: true,
+    limitation:
+      'An approximation based on a published model, not a medical test. Real colour vision varies between people.',
+    howTo: [
+      'Pick a vision type. For the -anomaly types, set the severity.',
+      'Switch between Original, Simulated and Side by side, or turn the simulation off and on to compare.',
+      'Choose your own image (it is processed on your device, never uploaded), or use the demo dashboard.',
+      'Enter your brand or chart colours in the palette checker to find pairs that become hard to tell apart, and download the simulated image as PNG.',
+    ],
+    about: [
+      'Around 1 in 12 men and 1 in 200 women have some form of colour vision deficiency. In the red–green types (protan and deutan), one kind of cone is missing or shifted, so reds, greens, browns and oranges can look alike; in the rare tritan type, blues and greens and yellows and pinks are confused. Achromatopsia means seeing almost no colour at all.',
+      'This simulator applies the matrices published by Machado, Oliveira and Fernandes (2009) in linear RGB, which is the physically correct space for the model; anomalous forms blend between normal vision and the full deficiency by the severity you choose. The palette checker compares colours with the CIEDE2000 difference formula and flags pairs whose difference drops below about 10 after simulation.',
+    ],
+    faqs: [
+      {
+        q: 'Is this a colour blindness test?',
+        a: 'No. It shows an approximation of how colours may appear to people with colour vision deficiencies. To find out about your own vision, see an optometrist or use a clinical test such as Ishihara plates under proper conditions.',
+      },
+      {
+        q: 'Which type should I design for?',
+        a: 'Deuteranomaly and protanomaly (the red–green types) are by far the most common, so check those first. Don’t rely on colour alone: add labels, patterns, icons or text so information survives any colour vision.',
+      },
+      {
+        q: 'Are my images uploaded?',
+        a: 'No. Images are decoded and processed on a canvas in your browser and never leave your device. Very large images are scaled down to keep things fast.',
+      },
+      {
+        q: 'What do the ΔE numbers mean?',
+        a: 'ΔE is a perceptual colour difference (CIEDE2000). Around 2 is barely noticeable; below about 10, two colours used side by side in a chart can easily be mistaken for each other.',
+      },
+    ],
+  },
 ];

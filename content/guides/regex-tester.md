@@ -48,7 +48,7 @@ Extend it piece by piece, checking the highlight after each addition:
 
 Notes on the pieces:
 
-- `(?<name>…)` is a **named capture group**. In the results table, the Groups column shows `date: 2026-10-07, time: 09:14:03, level: ERROR, …` instead of `$1, $2, …`.
+- `(?<name>…)` is a **named capture group**. In the results table, each group gets its own column headed with its number and name, such as `$1 date` and `$3 level`, so the first row reads `2026-10-07`, `09:14:03`, `ERROR` and so on.
 - `ERROR|WARN` inside a group is an alternation, and that's what excludes the INFO line. The table now shows **2 matches**, at index 0 and 114.
 - `\[` escapes the bracket. An unescaped `[` would start a character class.
 - `.*` grabs the rest of the line. Without the **s** (dotAll) flag, `.` doesn't match newlines, so the match stops at the end of the line. That's exactly what we want here.
@@ -110,6 +110,12 @@ The fixes: make the pieces mutually exclusive (use `[^\]]+` instead of `.*` befo
 | m    | multiline   | `^` and `$` match at line breaks                                 |
 | s    | dotAll      | `.` also matches newlines                                        |
 | u    | unicode     | Full Unicode handling, `\p{…}` property escapes, stricter syntax |
+
+## Reading the pattern breakdown and match table
+
+Below the results, the **Pattern breakdown** panel explains your regex piece by piece in plain English. Try the tester's default pattern, `(\w+)@(\w+)\.com`, with the **g** flag. The breakdown lists "Capturing group 1 — saves what it matches as $1". Nested under it is the quantifier, "Repeat the item below one or more times — as many as possible (greedy)", and under that `\w`, a word character. Then come the literal "@", group 2, and "Matches the text “.com” literally". Each line is tagged with its kind, such as group, quantifier, anchor or class, and the active flags are explained at the bottom. If the pattern is invalid, the panel shows the engine's error instead.
+
+The match table gives each match a row with its number, its **Index (start–end)** and the matched text. Every capture group gets its own column. On the default text, row 1 is `8–23`, `ada@example.com`, `ada`, `example`, and row 2 is `27–40`, `alan@test.com`, `alan`, `test`. A group that didn't take part in a match shows a dash.
 
 ## FAQ
 

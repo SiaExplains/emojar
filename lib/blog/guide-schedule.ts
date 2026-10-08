@@ -259,4 +259,23 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'braille-translator': '2027-01-16',
   // v0.13.0 follow-ups.
   'video-trimmer': '2027-01-17',
+  // v0.14.0 interactive tools.
+  'svg-path-editor': '2027-01-18',
+  'css-specificity-calculator': '2027-01-19',
+  'clip-path-generator': '2027-01-20',
+  'css-transform-playground': '2027-01-21',
+  'box-shadow-generator': '2027-01-22',
+  'border-radius-generator': '2027-01-23',
+  'json-viewer': '2027-01-24',
+  'bezier-curve-visualizer': '2027-01-25',
+  'typography-playground': '2027-01-26',
+  'color-blindness-simulator': '2027-01-27',
+  'gradient-mesh-generator': '2027-01-28',
+  'decision-matrix': '2027-01-29',
+  'eisenhower-matrix': '2027-01-30',
+  'kanban-board': '2027-01-31',
+  'timeline-maker': '2027-02-01',
+  'http-request-builder': '2027-02-02',
+  'fen-chessboard-editor': '2027-02-03',
+  'pixel-art-editor': '2027-02-04',
 };

@@ -10,7 +10,8 @@ export type CategorySlug =
   | 'date-time-tools'
   | 'audio-video-tools'
   | 'device-tests'
-  | 'reference-tools';
+  | 'reference-tools'
+  | 'productivity-tools';
 
 export type FAQItem = { q: string; a: string };
 
@@ -148,6 +149,24 @@ export type ToolComponentKey =
   | 'css-units'
   | 'flexbox-playground'
   | 'grid-playground'
+  | 'box-shadow'
+  | 'border-radius'
+  | 'clip-path'
+  | 'css-transform'
+  | 'css-specificity'
+  | 'typography'
+  | 'svg-path'
+  | 'bezier-curve'
+  | 'gradient-mesh'
+  | 'color-blindness'
+  | 'pixel-art'
+  | 'json-viewer'
+  | 'http-request'
+  | 'fen-chessboard'
+  | 'decision-matrix'
+  | 'eisenhower-matrix'
+  | 'kanban-board'
+  | 'timeline-maker'
   | 'keyboard-shortcuts'
   | 'unicode-explorer'
   | 'math-symbols'

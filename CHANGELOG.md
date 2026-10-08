@@ -4,6 +4,34 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.14.0] — 2026-10-08
+
+### Added
+
+- 18 interactive tools, all running in the browser with nothing uploaded:
+  - Developer: SVG Path Editor, CSS Specificity Calculator, Box Shadow
+    Generator, Border Radius Generator, Clip-Path Generator, CSS Transform
+    Playground, Typography Playground, JSON Viewer & Tree Explorer and HTTP
+    Request Builder (writes cURL, fetch, Axios, Python, Node, HTTPie and
+    PowerShell code; it never sends the request).
+  - Color: Mesh Gradient Generator and Color Blindness Simulator.
+  - Reference: Bézier Curve Visualizer and Chess Board Editor (FEN).
+  - Image: Pixel Art Editor with frames and animated GIF export.
+- A new Productivity category with a Decision Matrix, Eisenhower Matrix,
+  Kanban Board and Timeline Maker. Your data stays in this browser and can be
+  exported and imported as JSON. Pomodoro, the printable calendar, other
+  planners and FocusCrew (a shared Pomodoro timer) are listed there too.
+- An in-depth guide for each new tool, published one a day from 18 January 2027.
+- Productivity questions on the FAQ page.
+
+### Changed
+
+- Regex Tester explains your pattern piece by piece and lists every match
+  with its position and groups.
+- Dice Roller shows the lowest, highest and average die, the possible range
+  and the expected total, plus session stats, and rolls any die from d2 to
+  d1000.
+
 ## [0.13.1] — 2026-10-08
 
 ### Changed

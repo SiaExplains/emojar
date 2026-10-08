@@ -145,4 +145,16 @@ export const CATEGORIES: CategoryDefinition[] = [
       'Quick, searchable references for the things you look up again and again: an interactive periodic table, country codes and flags, Unicode characters, HTML entities and ASCII codes, math symbols with LaTeX, keyboard shortcuts for every platform, and paper sizes and aspect ratios. All the data is built into the pages, so lookups are instant and private.',
     accent: 'bg-lime-50 border-lime-100 text-lime-900',
   },
+  {
+    slug: 'productivity-tools',
+    name: 'Productivity',
+    shortName: 'Productivity',
+    icon: '📋',
+    title: 'Free Productivity Tools – Kanban, Eisenhower Matrix & More',
+    metaDescription:
+      'Private planning tools that run in your browser: Kanban board, Eisenhower matrix, decision matrix, timeline maker, Pomodoro timer and more. No sign-up, saved on your device.',
+    intro:
+      'Plan, prioritise and decide without signing up: a Kanban board, an Eisenhower matrix for sorting tasks by urgency and importance, a weighted decision matrix, a timeline maker, and timers and calendars for getting through the day. Everything you type is saved only in this browser — nothing is sent to a server — and you can export it as JSON, CSV or an image.',
+    accent: 'bg-orange-50 border-orange-100 text-orange-900',
+  },
 ];

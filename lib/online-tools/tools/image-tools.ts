@@ -1443,4 +1443,61 @@ export const IMAGE_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'pixel-art-editor',
+    category: 'image-tools',
+    name: 'Pixel Art Editor',
+    icon: '👾',
+    shortDescription: 'Draw pixel art & sprites, export PNG, SVG or GIF.',
+    description:
+      'Draw pixel art on an 8×8 to 64×64 grid with a pencil, eraser, flood fill and eyedropper, mirror drawing and undo. Add animation frames with onion skinning and a live preview, then export a crisp PNG at up to 32×, an SVG, a sprite sheet or an animated GIF — all with transparent backgrounds.',
+    title: 'Pixel Art Editor – Draw Sprites, Export PNG & Animated GIF',
+    metaDescription:
+      'Free online pixel art editor: draw on 8×8 to 64×64 grids with fill, mirror and undo, animate frames, then export PNG, SVG, sprite sheets or animated GIFs.',
+    keywords: [
+      'pixel art editor',
+      'pixel art maker',
+      'sprite editor',
+      'pixel art online',
+      '8 bit art maker',
+      'pixel art gif',
+      'sprite sheet maker',
+    ],
+    relatedTools: [
+      'gif-maker',
+      'favicon-generator',
+      'image-to-ascii-art',
+      'color-palette-generator',
+      'svg-path-editor',
+    ],
+    component: 'pixel-art',
+    howTo: [
+      'Pick a grid size and a colour from the picker, the palette or your recent colours.',
+      'Draw with the pencil, erase, flood-fill areas or pick a colour with the eyedropper. Turn on mirroring for symmetrical sprites.',
+      'For animation, add or duplicate frames, reorder them, turn on onion skin and preview at your chosen frames per second.',
+      'Choose an export scale and download a PNG, an SVG, a sprite sheet or an animated GIF. Your drawing is saved in this browser automatically.',
+    ],
+    about: [
+      'Pixel art is drawn one square at a time on a small grid, the style of classic 8- and 16-bit games. Because every pixel is deliberate, it needs tools that never blur: this editor scales images up with exact nearest-neighbour blocks, so a 16×16 sprite exported at 32× stays perfectly sharp at 512×512.',
+      'The SVG export merges each row’s same-coloured pixels into single rectangles, so files stay small and scale to any size. Animated GIFs use an exact colour palette with true transparency. Drawings, frames and recent colours are stored only in your browser’s local storage — nothing is uploaded.',
+    ],
+    faqs: [
+      {
+        q: 'Can I draw without a mouse?',
+        a: 'Yes. Focus the canvas, move the cursor with the arrow keys and press Space or Enter to use the current tool. Touch drawing works on phones and tablets too.',
+      },
+      {
+        q: 'How do I make an animated sprite?',
+        a: 'Duplicate the current frame, change it, and repeat. Turn on onion skin to see the previous frame faintly, play the preview, then export an animated GIF or a sprite sheet for game engines.',
+      },
+      {
+        q: 'Will my drawing be lost if I close the page?',
+        a: 'No — it is autosaved in this browser’s local storage and restored next time. Private browsing or clearing site data removes it, so export a PNG to keep a copy.',
+      },
+      {
+        q: 'What size should a favicon or game sprite be?',
+        a: 'Favicons are usually drawn at 16×16 or 32×32; many retro-style game sprites use 16×16, 24×24 or 32×32. Export at a higher scale for sharp previews and social posts.',
+      },
+    ],
+  },
 ];

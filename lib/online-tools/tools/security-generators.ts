@@ -415,32 +415,44 @@ export const SECURITY_TOOLS: ToolDefinition[] = [
     icon: '🎲',
     shortDescription: 'Roll d4–d100 dice or notation like 2d6+3.',
     description:
-      'Roll virtual dice for board games and tabletop RPGs: one or many d4, d6, d8, d10, d12, d20 or d100, or type notation like 2d6+3 or 4d6kh3. Every roll is fair and shows the individual dice.',
+      'Roll virtual dice for board games and tabletop RPGs: one or many d4, d6, d8, d10, d12, d20, d100 or custom dice with up to 1,000 sides, or type notation like 2d6+3 or 4d6kh3. Every roll is fair and shows the individual dice, the possible range, the expected total and your session average.',
     title: 'Dice Roller – Roll D20, D6 & Custom Dice Online',
     metaDescription:
-      'Roll virtual dice online: d4, d6, d8, d10, d12, d20, d100 or RPG notation like 2d6+3 and 4d6kh3. Fair, secure randomness with roll history.',
+      'Roll virtual dice online: d4, d6, d8, d10, d12, d20, d100, custom dice or RPG notation like 2d6+3 and 4d6kh3. Fair rolls with stats, expected value and history.',
     keywords: [
       'dice roller',
       'roll a dice',
       'd20 roller',
       'virtual dice',
       'rpg dice roller',
+      'dice probability',
+      'custom dice roller',
     ],
     relatedTools: ['coin-flip', 'wheel-spinner', 'random-number-generator'],
     component: 'dice-roller',
     howTo: [
       'Tap a die to roll it, or type notation such as 3d6 or 2d20+5 to roll several at once.',
-      'Or type dice notation such as 3d8+2 or 4d6kh3 (roll four, keep the highest three).',
-      'See every die, the total and your recent rolls.',
+      'Or type dice notation such as 3d8+2 or 4d6kh3 (roll four, keep the highest three), or set any number of sides from 2 to 1,000 under Custom.',
+      'See every die, the total, the lowest, highest and average die, the possible range and the expected total.',
+      'Recent rolls and the session’s average total build up below; Reset session clears them.',
     ],
     about: [
       'Dice notation writes a roll as NdS±M: N dice with S sides plus a modifier M. “kh” keeps the highest dice and “kl” the lowest, which is how ability scores (4d6kh3) and advantage/disadvantage (2d20kh1 / 2d20kl1) work.',
       'Each die face is drawn with unbiased sampling from your browser’s cryptographic random generator, so every face is equally likely.',
+      'The expected total is the long-run average: (S + 1) ÷ 2 per die plus the modifier, so 2d6+3 averages 10 with a range of 5–15. For keep-highest and keep-lowest it is calculated exactly from the order statistics of the dice — 4d6kh3 averages about 12.24, and advantage (2d20kh1) about 13.83.',
     ],
     faqs: [
       {
         q: 'What is the average of 2d6?',
         a: '7 — it is also the most likely total (1 in 6 chance).',
+      },
+      {
+        q: 'How much does advantage help on a d20?',
+        a: 'Rolling 2d20 and keeping the highest raises the average from 10.5 to 13.825 — roughly +3.3 — and disadvantage (2d20kl1) lowers it to 7.175.',
+      },
+      {
+        q: 'Can I roll a die with an unusual number of sides?',
+        a: 'Yes. Use the Custom fields for any die from d2 to d1000, or type it in the notation box, for example 3d7 or d30.',
       },
     ],
   },
@@ -662,6 +674,7 @@ export const SECURITY_TOOLS: ToolDefinition[] = [
   {
     slug: 'invoice-generator',
     category: 'security-generators',
+    alsoIn: ['productivity-tools'],
     name: 'Invoice Generator (PDF)',
     icon: '🧾',
     shortDescription: 'Create a professional PDF invoice for free.',

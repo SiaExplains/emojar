@@ -203,7 +203,7 @@ export function fromRoman(input: string): number {
   const s = input.trim().toUpperCase();
   if (!/^[MDCLXVI]+$/.test(s))
     throw new ToolInputError(
-      'Roman numerals use only the letters I, V, X, L, C, D and M.',
+      'Invalid Roman numeral: use only the letters I, V, X, L, C, D and M (or type a number from 1 to 3999).',
     );
   const val: Record<string, number> = {
     I: 1,
@@ -223,7 +223,7 @@ export function fromRoman(input: string): number {
   // Only accept the canonical form (rejects IIII, VX, IC …).
   if (total < 1 || total > 3999 || toRoman(total) !== s) {
     throw new ToolInputError(
-      `“${input.trim()}” is not a valid Roman numeral${total >= 1 && total <= 3999 ? ` — did you mean ${toRoman(total)}?` : '.'}`,
+      `Invalid Roman numeral: “${input.trim()}” is not written the standard way${total >= 1 && total <= 3999 ? ` — did you mean ${toRoman(total)} (${total})?` : '.'}`,
     );
   }
   return total;

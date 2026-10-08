@@ -4,9 +4,9 @@ Free, privacy-first **online tools** that run entirely in the browser — plus
 3,790 emojis to search and copy, 18 emoji games and 8 emoji tools.
 Live at [emojar.com](https://emojar.com).
 
-- **Online tools** (`/online-tool`) — 229 tools in 11 categories: image, PDF,
+- **Online tools** (`/online-tool`) — 245 tools in 12 categories: image, PDF,
   developer, text, color, calculators, unit converters, security & generators,
-  date & time, audio & video, and device tests. Each tool has an in-depth guide
+  date & time, audio & video, device tests, and reference & learning. Each tool has an in-depth guide
   on the blog (`content/guides/`, drip-published on a schedule), and `/faq`
   answers common questions by category. Files and text are processed on the user's device; there are
   no upload APIs and nothing is stored.
@@ -28,6 +28,14 @@ encryption), `mammoth` + `html-to-pdfmake` + `pdfmake` (Word to PDF),
 `dompurify`, `exifr`, `terser`, `sql-formatter`, `prettier/standalone`,
 `svgo` (SVG optimizer), `bcryptjs` (in a worker), `highlight.js` (code to image)
 and `mediabunny` (WebCodecs video compression and AAC/Opus audio, MPL-2.0).
+
+Reference data is bundled in `lib/online-tools/data/` (and
+`public/data/unicode-names-18.txt`) and generated from open sources: PubChem
+periodic table (public domain) with IUPAC/CIAAW standard atomic weights,
+the Unicode Character Database (Unicode License v3), the WHATWG HTML entity
+list, GeoNames country and city data (CC BY 4.0), Natural Earth (public
+domain), the IANA time-zone database (public domain), CSS named colours and
+the xkcd colour survey (CC0).
 
 ## Getting started
 

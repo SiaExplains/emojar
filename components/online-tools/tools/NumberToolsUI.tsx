@@ -213,35 +213,85 @@ export function RomanNumeralTool(_: ToolProps) {
           </div>
         )}
       </div>
-      <details className="rounded-2xl border border-gray-100 p-4 text-sm">
-        <summary className="cursor-pointer font-semibold text-gray-900">
-          Roman numeral chart
-        </summary>
-        <table className="mt-3 w-full text-left">
-          <tbody>
-            {[
-              ['I', 1],
-              ['V', 5],
-              ['X', 10],
-              ['L', 50],
-              ['C', 100],
-              ['D', 500],
-              ['M', 1000],
-              ['IV', 4],
-              ['IX', 9],
-              ['XL', 40],
-              ['XC', 90],
-              ['CD', 400],
-              ['CM', 900],
-            ].map(([r, n]) => (
-              <tr key={r} className="border-t border-gray-50">
-                <td className="py-1 font-serif">{r}</td>
-                <td className="py-1 tabular-nums">{n}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </details>
+      <section aria-labelledby="roman-ref" className="space-y-3">
+        <h2 id="roman-ref" className="text-sm font-semibold text-gray-900">
+          Roman numeral reference
+        </h2>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {[
+            {
+              title: 'Symbols',
+              rows: [
+                ['I', 1],
+                ['V', 5],
+                ['X', 10],
+                ['L', 50],
+                ['C', 100],
+                ['D', 500],
+                ['M', 1000],
+              ],
+            },
+            {
+              title: 'Subtractive pairs',
+              rows: [
+                ['IV', 4],
+                ['IX', 9],
+                ['XL', 40],
+                ['XC', 90],
+                ['CD', 400],
+                ['CM', 900],
+              ],
+            },
+            {
+              title: 'Common numbers',
+              rows: [12, 14, 19, 24, 49, 99, 100, 500, 1999, 2000, 2026].map(
+                (n) => [toRoman(n), n] as [string, number],
+              ),
+            },
+          ].map((t) => (
+            <table
+              key={t.title}
+              className="w-full rounded-2xl border border-gray-100 text-left text-sm"
+            >
+              <caption className="px-3 pt-2 text-left text-xs font-medium text-gray-500">
+                {t.title}
+              </caption>
+              <thead className="sr-only">
+                <tr>
+                  <th scope="col">Number</th>
+                  <th scope="col">Roman numeral</th>
+                </tr>
+              </thead>
+              <tbody>
+                {t.rows.map(([r, n]) => (
+                  <tr key={String(r)} className="border-t border-gray-50">
+                    <td className="px-3 py-1 tabular-nums text-gray-600">
+                      {Number(n).toLocaleString('en-US')}
+                    </td>
+                    <td className="px-3 py-1 text-right">
+                      <button
+                        type="button"
+                        onClick={() => setInput(String(r))}
+                        aria-label={`Convert ${r}`}
+                        className="rounded-md px-1.5 font-serif text-base font-semibold text-gray-900 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                      >
+                        {r}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ))}
+        </div>
+        <p className="text-xs text-gray-500">
+          Rules: write the largest values first and add them up (XVI = 10 + 5 +
+          1). A smaller symbol before a larger one is subtracted, but only I, X
+          and C, and only before the next two symbols up (IV, IX, XL, XC, CD,
+          CM). I, X, C and M repeat at most three times in a row, so IIII and VV
+          are invalid.
+        </p>
+      </section>
     </div>
   );
 }

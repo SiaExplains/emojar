@@ -294,4 +294,54 @@ export const COLOR_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'color-name-explorer',
+    category: 'color-tools',
+    alsoIn: ['reference-tools'],
+    name: 'Color Name Explorer',
+    icon: '🏷️',
+    shortDescription:
+      'Find the name of any colour and browse 1,000+ named colours.',
+    description:
+      'Find the closest named colour to any HEX, RGB or HSL value — or pick one — and see it in HEX, RGB, HSL and HSB with the colour distance and similar names. Browse and search all 148 CSS colour keywords and the 949 names from the xkcd colour survey, sorted by hue, brightness, saturation or name.',
+    title: 'Color Name Finder – What Is the Name of This Color?',
+    metaDescription:
+      'Find the name of any colour: enter HEX, RGB or HSL to get the closest CSS or common colour name, its distance and similar colours. Browse 1,097 named colours.',
+    keywords: [
+      'color name finder',
+      'name that color',
+      'hex to color name',
+      'css color names',
+      'color names list',
+      'what color is this',
+    ],
+    relatedTools: [
+      'color-converter',
+      'color-picker',
+      'random-color-generator',
+      'color-palette-generator',
+      'contrast-checker',
+    ],
+    component: 'color-names',
+    howTo: [
+      'Type a colour as HEX, RGB, HSL or a name — or use the picker.',
+      'Read the closest named colour, its distance and the HEX, RGB, HSL and HSB values.',
+      'Check the similar colours, or search and sort the full list below.',
+      'Click any swatch to copy its HEX code and inspect it.',
+    ],
+    about: [
+      'Matching uses CIEDE2000 (ΔE), the colour-difference formula designed to follow human vision rather than raw RGB numbers. A ΔE below 1 is indistinguishable, under 3 is very close, under 6 close, and above 12 the colours are only loosely similar — so the page tells you how good the “closest” name really is.',
+      'The 148 CSS keywords (like rebeccapurple and cornflowerblue) can be used directly in stylesheets. The other names come from the xkcd colour survey, in which hundreds of thousands of people named random colours; its 949 most-agreed names (CC0) describe colours the way people actually talk about them, like “dusty rose” or “sage”.',
+    ],
+    faqs: [
+      {
+        q: 'How many CSS colour names are there?',
+        a: '148, including aliases such as gray/grey and aqua/cyan. The newest is rebeccapurple (#663399), added in CSS Color Level 4.',
+      },
+      {
+        q: 'Why doesn’t my colour have an exact name?',
+        a: 'There are 16.7 million RGB colours and only about a thousand names, so most colours fall between names. The ΔE value shows how close the nearest one is.',
+      },
+    ],
+  },
 ];

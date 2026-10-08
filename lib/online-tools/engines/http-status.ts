@@ -7,7 +7,15 @@ export type HttpStatus = {
   meaning: string;
   seo?: string;
   ref: string;
+  /** Codes people actually meet day to day (browsers, APIs, CDNs). */
+  common: boolean;
+  /** One plain-English sentence on typical usage. */
+  usage: string;
+  /** Related codes; every one exists in HTTP_STATUSES. */
+  related: number[];
 };
+
+type BaseStatus = Omit<HttpStatus, 'common' | 'usage' | 'related'>;
 
 const s = (
   code: number,
@@ -15,9 +23,9 @@ const s = (
   meaning: string,
   ref = 'RFC 9110',
   seo?: string,
-): HttpStatus => ({ code, name, meaning, ref, seo });
+): BaseStatus => ({ code, name, meaning, ref, seo });
 
-export const HTTP_STATUSES: HttpStatus[] = [
+const BASE: BaseStatus[] = [
   s(
     100,
     'Continue',
@@ -329,6 +337,377 @@ export const HTTP_STATUSES: HttpStatus[] = [
   ),
 ];
 
+type StatusExtra = { common?: boolean; usage: string; related: number[] };
+
+const EXTRA: Record<number, StatusExtra> = {
+  100: {
+    usage:
+      'Sent before a large upload so the client knows it can send the body; rarely seen outside HTTP client libraries.',
+    related: [417, 413],
+  },
+  101: {
+    common: true,
+    usage:
+      'Returned when a connection upgrades, most often from HTTP/1.1 to WebSocket.',
+    related: [426],
+  },
+  102: {
+    usage:
+      'Old WebDAV keep-alive for slow requests; deprecated and rarely sent today.',
+    related: [202, 103],
+  },
+  103: {
+    usage:
+      'Sent before the final response so browsers can preload CSS and fonts; supported by some CDNs.',
+    related: [200, 100],
+  },
+  200: {
+    common: true,
+    usage:
+      'The default for a successful GET, or a POST/PUT that returns a body.',
+    related: [201, 204, 304],
+  },
+  201: {
+    common: true,
+    usage:
+      'Return after a POST creates a resource, with a Location header pointing to it.',
+    related: [200, 202, 303],
+  },
+  202: {
+    common: true,
+    usage:
+      'Return when work is queued (jobs, webhooks, batch imports) and include a way to check its status.',
+    related: [201, 200, 303],
+  },
+  203: {
+    usage:
+      'Rarely used; a transforming proxy may send it instead of 200 when it changed the payload.',
+    related: [200],
+  },
+  204: {
+    common: true,
+    usage:
+      'Return for a successful DELETE, PUT or save that has nothing to send back; the body must be empty.',
+    related: [200, 205, 304],
+  },
+  205: {
+    usage:
+      'Rarely used; tells the client to clear the form or view after a successful submit.',
+    related: [204, 200],
+  },
+  206: {
+    common: true,
+    usage:
+      'Sent when serving a byte range for video seeking, audio streaming or resumable downloads.',
+    related: [416, 200],
+  },
+  207: {
+    usage:
+      'WebDAV responses that report a separate status for each of several resources.',
+    related: [208, 424],
+  },
+  208: {
+    usage:
+      'WebDAV bindings: skips members already listed earlier in the same 207 response.',
+    related: [207, 508],
+  },
+  226: {
+    usage: 'Delta encoding (A-IM header); almost never seen in practice.',
+    related: [200],
+  },
+  300: {
+    usage:
+      'Rarely used; would list alternative representations (e.g. languages) for the client to pick from.',
+    related: [301, 302, 406],
+  },
+  301: {
+    common: true,
+    usage:
+      'Use for permanent URL changes: domain moves, HTTPS migrations, renamed slugs.',
+    related: [302, 308, 307],
+  },
+  302: {
+    common: true,
+    usage:
+      'Use for short-term redirects such as login flows or A/B tests; the original URL stays canonical.',
+    related: [301, 307, 303],
+  },
+  303: {
+    common: true,
+    usage:
+      'Use after a form POST to send the browser to a result page with GET (Post/Redirect/Get).',
+    related: [302, 307, 201],
+  },
+  304: {
+    common: true,
+    usage:
+      'Returned for conditional GETs when the ETag or Last-Modified still matches the cached copy.',
+    related: [200, 412],
+  },
+  305: {
+    usage: 'Deprecated for security reasons; do not use. Browsers ignore it.',
+    related: [407, 307],
+  },
+  307: {
+    common: true,
+    usage:
+      'Use for temporary redirects of POST/PUT requests where the method and body must be kept.',
+    related: [302, 308, 303],
+  },
+  308: {
+    common: true,
+    usage:
+      'Use for permanent redirects where the method must be kept, e.g. moved API endpoints.',
+    related: [301, 307],
+  },
+  400: {
+    common: true,
+    usage:
+      'Return for malformed requests: invalid JSON, missing required parameters, bad query syntax.',
+    related: [422, 415, 431],
+  },
+  401: {
+    common: true,
+    usage:
+      'Return when credentials are missing, expired or invalid, with a WWW-Authenticate header.',
+    related: [403, 407, 511],
+  },
+  402: {
+    usage:
+      'Non-standard in practice; some APIs and SaaS products use it for unpaid plans or exhausted credits.',
+    related: [403, 429],
+  },
+  403: {
+    common: true,
+    usage:
+      'Return when the user is authenticated but lacks permission, or a WAF blocks the request.',
+    related: [401, 404, 451],
+  },
+  404: {
+    common: true,
+    usage:
+      'Return for URLs with no resource; also used to hide private resources instead of a 403.',
+    related: [410, 403, 405],
+  },
+  405: {
+    common: true,
+    usage:
+      'Return when the route exists but not for this method; list allowed methods in the Allow header.',
+    related: [404, 501],
+  },
+  406: {
+    usage:
+      'Return when content negotiation fails, e.g. the client only accepts XML and the API only serves JSON.',
+    related: [415, 300],
+  },
+  407: {
+    usage:
+      'Sent by a proxy that requires credentials, with a Proxy-Authenticate header.',
+    related: [401, 511],
+  },
+  408: {
+    common: true,
+    usage:
+      'Sent when the client opens a connection but sends the request too slowly; servers then close it.',
+    related: [504, 400],
+  },
+  409: {
+    common: true,
+    usage:
+      'Return for duplicate records, version conflicts or edits clashing with the current state.',
+    related: [412, 422, 423],
+  },
+  410: {
+    common: true,
+    usage:
+      'Use for content removed on purpose and never coming back, such as expired listings.',
+    related: [404, 301],
+  },
+  411: {
+    usage:
+      'Return when the server refuses a body sent without a Content-Length header.',
+    related: [413, 400],
+  },
+  412: {
+    usage:
+      'Return when If-Match or If-Unmodified-Since fails, to stop a lost update.',
+    related: [428, 409, 304],
+  },
+  413: {
+    common: true,
+    usage:
+      'Return when an upload or request body exceeds the size limit (formerly “Payload Too Large”).',
+    related: [414, 431, 411],
+  },
+  414: {
+    usage:
+      'Return when the URL is too long, often from huge query strings or redirect loops.',
+    related: [413, 431, 400],
+  },
+  415: {
+    common: true,
+    usage:
+      'Return when the Content-Type or Content-Encoding of the body is not accepted.',
+    related: [406, 400, 422],
+  },
+  416: {
+    usage:
+      'Return when a Range header asks for bytes beyond the end of the file.',
+    related: [206],
+  },
+  417: {
+    usage:
+      'Return when the server cannot meet the Expect header, usually “Expect: 100-continue”.',
+    related: [100],
+  },
+  418: {
+    usage:
+      'A joke code; some sites send it to refuse bots or scrapers. Not part of HTTP proper.',
+    related: [403, 429],
+  },
+  421: {
+    usage:
+      'Sent when a reused HTTP/2 connection reaches a server not configured for the requested host.',
+    related: [400, 502],
+  },
+  422: {
+    common: true,
+    usage:
+      'Return for validation errors on well-formed requests (formerly “Unprocessable Entity”).',
+    related: [400, 409, 415],
+  },
+  423: {
+    usage: 'WebDAV: return when the resource is locked by another client.',
+    related: [409, 424],
+  },
+  424: {
+    usage:
+      'WebDAV: return when an action failed because an earlier action it depended on failed.',
+    related: [207, 423],
+  },
+  425: {
+    usage:
+      'Sent to reject TLS 1.3 early-data (0-RTT) requests that are unsafe to replay.',
+    related: [400, 429],
+  },
+  426: {
+    usage:
+      'Return when the client must switch protocol, e.g. to TLS or a newer HTTP version, via Upgrade.',
+    related: [101, 505],
+  },
+  428: {
+    usage:
+      'Return when an API demands If-Match on updates to prevent lost updates.',
+    related: [412, 409],
+  },
+  429: {
+    common: true,
+    usage:
+      'Return when a client exceeds a rate limit, with a Retry-After header saying when to retry.',
+    related: [503, 403],
+  },
+  431: {
+    usage:
+      'Return when request headers are too large, often from oversized or accumulated cookies.',
+    related: [400, 413, 414],
+  },
+  451: {
+    usage:
+      'Return when content is blocked by law, such as a court order or regional restriction.',
+    related: [403, 404],
+  },
+  500: {
+    common: true,
+    usage:
+      'The catch-all for unhandled exceptions and server bugs; log the cause and never leak stack traces.',
+    related: [502, 503, 501],
+  },
+  501: {
+    common: true,
+    usage:
+      'Return when the server does not support the request method or a feature at all.',
+    related: [405, 500],
+  },
+  502: {
+    common: true,
+    usage:
+      'Sent by a proxy, CDN or load balancer when the upstream app crashed or sent a bad response.',
+    related: [503, 504, 500],
+  },
+  503: {
+    common: true,
+    usage:
+      'Return during maintenance or overload, ideally with Retry-After so clients and crawlers come back.',
+    related: [429, 502, 504],
+  },
+  504: {
+    common: true,
+    usage:
+      'Sent by a proxy or CDN when the upstream server took too long to respond.',
+    related: [502, 503, 408],
+  },
+  505: {
+    usage:
+      'Return when the server refuses the HTTP major version in the request.',
+    related: [426, 400],
+  },
+  506: {
+    usage:
+      'Indicates a server misconfiguration in transparent content negotiation; very rare.',
+    related: [500, 300],
+  },
+  507: {
+    usage:
+      'WebDAV: return when the server has no space to store the representation.',
+    related: [413, 500],
+  },
+  508: {
+    usage:
+      'WebDAV: return when the server finds an infinite loop while processing a Depth: infinity request.',
+    related: [208, 500],
+  },
+  510: {
+    usage:
+      'Historic HTTP Extension Framework code; obsolete and essentially unused.',
+    related: [501],
+  },
+  511: {
+    usage:
+      'Sent by captive portals (hotel, airport Wi-Fi) that need you to log in before browsing.',
+    related: [401, 407],
+  },
+};
+
+/**
+ * Data-integrity problems: statuses without an EXTRA entry, and related
+ * codes that are not in the list. Should always be empty (checked in tests).
+ */
+export const HTTP_STATUS_ISSUES: string[] = (() => {
+  const codes = new Set(BASE.map((st) => st.code));
+  const issues: string[] = [];
+  for (const st of BASE) {
+    const ex = EXTRA[st.code];
+    if (!ex) {
+      issues.push(`${st.code}: missing usage/related`);
+      continue;
+    }
+    for (const r of ex.related)
+      if (!codes.has(r) || r === st.code)
+        issues.push(`${st.code}: bad related code ${r}`);
+  }
+  for (const c of Object.keys(EXTRA))
+    if (!codes.has(Number(c)))
+      issues.push(`${c}: EXTRA entry for unknown code`);
+  return issues;
+})();
+
+export const HTTP_STATUSES: HttpStatus[] = BASE.map((st) => ({
+  ...st,
+  common: EXTRA[st.code]?.common ?? false,
+  usage: EXTRA[st.code]?.usage ?? '',
+  related: EXTRA[st.code]?.related ?? [],
+}));
+
 export const STATUS_CLASSES: Record<number, string> = {
   1: '1xx Informational',
   2: '2xx Success',
@@ -337,15 +716,21 @@ export const STATUS_CLASSES: Record<number, string> = {
   5: '5xx Server error',
 };
 
-export function searchStatuses(query: string, cls = 0): HttpStatus[] {
+export function searchStatuses(
+  query: string,
+  cls = 0,
+  commonOnly = false,
+): HttpStatus[] {
   const q = query.trim().toLowerCase();
   return HTTP_STATUSES.filter(
     (st) =>
       (!cls || Math.floor(st.code / 100) === cls) &&
+      (!commonOnly || st.common) &&
       (!q ||
         String(st.code).startsWith(q) ||
         st.name.toLowerCase().includes(q) ||
         STATUS_CLASSES[Math.floor(st.code / 100)].toLowerCase().includes(q) ||
-        st.meaning.toLowerCase().includes(q)),
+        st.meaning.toLowerCase().includes(q) ||
+        st.usage.toLowerCase().includes(q)),
   );
 }

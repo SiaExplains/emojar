@@ -666,6 +666,7 @@ const NUMBER_CONVERTERS: ToolDefinition[] = [
   {
     slug: 'roman-numeral-converter',
     category: 'unit-converters',
+    alsoIn: ['reference-tools'],
     name: 'Roman Numeral Converter',
     icon: '🏛️',
     shortDescription: 'Numbers to Roman numerals and back.',

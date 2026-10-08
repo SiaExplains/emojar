@@ -4,14 +4,14 @@ Run this on real hardware before a release that touches these tools. Use the pro
 
 ## Results
 
-| Device / browser | Webcam | Mic test | Voice rec | Screen rec | Video comp | Morse | Alarm | Timer / Countdown / Pomodoro | Flags | Video trim |
-| ---------------- | ------ | -------- | --------- | ---------- | ---------- | ----- | ----- | ---------------------------- | ----- | ---------- |
-| macOS Safari     |        |          |           |            |            |       |       |                              |       |            |
-| macOS Chrome     |        |          |           |            |            |       |       |                              |       |            |
-| Windows Edge     |        |          |           |            |            |       |       |                              |       |            |
-| Windows Chrome   |        |          |           |            |            |       |       |                              |       |            |
-| Android Chrome   |        |          |           |            |            |       |       |                              |       |            |
-| iOS Safari       |        |          |           |            |            |       |       |                              |       |            |
+| Device / browser | Webcam | Mic test | Voice rec | Screen rec | Video comp | Morse | Alarm | Timer / Countdown / Pomodoro | Flags | Video trim | Touch & export |
+| ---------------- | ------ | -------- | --------- | ---------- | ---------- | ----- | ----- | ---------------------------- | ----- | ---------- | -------------- |
+| macOS Safari     |        |          |           |            |            |       |       |                              |       |            |                |
+| macOS Chrome     |        |          |           |            |            |       |       |                              |       |            |                |
+| Windows Edge     |        |          |           |            |            |       |       |                              |       |            |                |
+| Windows Chrome   |        |          |           |            |            |       |       |                              |       |            |                |
+| Android Chrome   |        |          |           |            |            |       |       |                              |       |            |                |
+| iOS Safari       |        |          |           |            |            |       |       |                              |       |            |                |
 
 Browser versions tested: \_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_
 
@@ -183,6 +183,23 @@ Countdown to a date:
 - [ ] Trim the iPhone MOV. Expected: works on Safari and on devices that decode HEVC; otherwise a readable error, never a blank result or frozen tab.
 - [ ] Start a long precise trim and click "Cancel". Expected: progress stops with no error message.
 - [ ] Click "⬇ Download clip". Expected: `<name>-trimmed.<ext>` downloads and plays in the OS player (WebM may only play in a browser — that's normal).
+
+---
+
+## 11. Interactive tools: touch and exports
+
+**URLs:** `/online-tool/productivity-tools/kanban-board`, `/online-tool/productivity-tools/eisenhower-matrix`, `/online-tool/image-tools/pixel-art-editor`, `/online-tool/developer-tools/svg-path-editor`, `/online-tool/developer-tools/clip-path-generator`, `/online-tool/color-tools/gradient-mesh-generator`, `/online-tool/color-tools/color-blindness-simulator`, `/online-tool/productivity-tools/timeline-maker`
+**Prerequisites:** phones and tablets for the touch steps; any device for the downloads.
+
+- [ ] Kanban Board: drag a card by its ⠿ handle to another column with a finger. Expected: the card moves and the board scrolls sideways near the edge; the page doesn't scroll instead.
+- [ ] Kanban Board: use the card's "Move to…" menu and ↑ ↓ buttons. Expected: same result without dragging. Reload: the card is still there.
+- [ ] Eisenhower Matrix: drag a task between quadrants with a finger, then with "Move to…". Expected: both work; quadrants stack on a phone.
+- [ ] Pixel Art Editor: draw a fast diagonal stroke with a finger. Expected: no gaps, and the page doesn't scroll while drawing.
+- [ ] Pixel Art Editor: export "⬇ PNG", "⬇ SVG", "⬇ Sprite sheet" and "⬇ Animated GIF" with two frames. Expected: each file downloads (iOS: opens the share sheet or Files) and opens; the GIF animates with a transparent background.
+- [ ] SVG Path Editor and Clip-Path Generator: drag points with a finger. Expected: points follow the finger; the page doesn't scroll. Pinch on the SVG Path Editor canvas zooms it.
+- [ ] Mesh Gradient Generator: drag a point, then "Download SVG" and "⬇ Download PNG" at 1920×1080. Expected: both download; the PNG matches the preview.
+- [ ] Color Blindness Simulator: choose a photo from the camera roll, switch Vision type, then "⬇ Download simulated PNG". Expected: the photo is processed (no upload), and the PNG downloads.
+- [ ] Timeline Maker: "⬇ Download SVG" and "⬇ Download PNG". Expected: both open and match the preview; text uses the system font.
 
 ---
 

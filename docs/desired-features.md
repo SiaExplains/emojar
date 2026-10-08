@@ -170,7 +170,7 @@
 ### [ ] Interactive tools (v0.14.0): checks on real touch devices
 
 **Description:** The 18 tools from v0.14.0 were checked at 375 px in a desktop browser, with keyboard alternatives to every drag. Still to do on real phones and tablets: dragging cards in the Kanban Board and Eisenhower Matrix, drawing in the Pixel Art Editor, dragging points in the SVG Path Editor, Clip-Path Generator and Mesh Gradient Generator, and the PNG/GIF/SVG downloads on iOS Safari.
-**Acceptance Criteria:** add a section to `docs/qa/device-checklist.md` and record the results.
+**Acceptance Criteria:** run §11 of [`docs/qa/device-checklist.md`](qa/device-checklist.md) on those devices and record the results there.
 
 ### [ ] Color Blindness Simulator: exact anomaly severities
 

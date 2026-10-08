@@ -156,6 +156,17 @@
 
 **Description:** Shipped in v0.13.0: Grade 2 (contracted UEB) both ways via liblouis 3.39 compiled to WebAssembly (`public/vendor/liblouis/`, LGPL-2.1+, rebuild with `npm run build:liblouis`); Grade 1 decoding now reads ⠦ at the start of a word as an opening quote.
 
+### [ ] Header search: guides and emojis in the results
+
+**Description:** The header search (v0.13.0) matches tools and landing pages only, and links out to the tools hub and the emoji search for more.
+**Implementation:** add the published guides (title, description, `/blog/<slug>`) to `searchIndex()` with a “Guide” label, and optionally the top emoji matches from a small name index, keeping everything lazy-loaded.
+**Acceptance Criteria:** typing “merge pdf” also shows the Merge PDF guide; the index stays under ~100 KB gzipped and still loads only on first use.
+
+### [ ] Video Trimmer: check on Safari and Firefox
+
+**Description:** Trimming was verified in Chromium (MP4 and recorded WebM). Safari 17+ and Firefox 130+ have WebCodecs but haven't been tried with real phone videos (HEVC MOV from iPhone, long 4K clips).
+**Acceptance Criteria:** run §10 of `docs/qa/device-checklist.md` on those browsers and record the results; unsupported formats show the friendly error, never a blank result.
+
 ### [ ] Refresh bundled reference data
 
 **Description:** Generators now live in `scripts/reference-data/` (see its README). Run `npm run data:reference` once a year and when Unicode ships a new major version, then review the diff and run the tests. Last run: October 2026 (discovery years corrected).

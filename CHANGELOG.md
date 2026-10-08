@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.13.1] — 2026-10-08
+
+### Changed
+
+- Docs refreshed after the 0.13.0 release: the device checklist covers the
+  Video Trimmer and the new Flag Explorer behaviour, and its notes reflect
+  the fixes; backlog items for guides in the header search and Video Trimmer
+  checks on Safari and Firefox.
+
 ## [0.13.0] — 2026-10-08
 
 ### Added

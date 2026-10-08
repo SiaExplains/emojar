@@ -4,14 +4,14 @@ Run this on real hardware before a release that touches these tools. Use the pro
 
 ## Results
 
-| Device / browser | Webcam | Mic test | Voice rec | Screen rec | Video comp | Morse | Alarm | Timer / Countdown / Pomodoro | Flags |
-| ---------------- | ------ | -------- | --------- | ---------- | ---------- | ----- | ----- | ---------------------------- | ----- |
-| macOS Safari     |        |          |           |            |            |       |       |                              |       |
-| macOS Chrome     |        |          |           |            |            |       |       |                              |       |
-| Windows Edge     |        |          |           |            |            |       |       |                              |       |
-| Windows Chrome   |        |          |           |            |            |       |       |                              |       |
-| Android Chrome   |        |          |           |            |            |       |       |                              |       |
-| iOS Safari       |        |          |           |            |            |       |       |                              |       |
+| Device / browser | Webcam | Mic test | Voice rec | Screen rec | Video comp | Morse | Alarm | Timer / Countdown / Pomodoro | Flags | Video trim |
+| ---------------- | ------ | -------- | --------- | ---------- | ---------- | ----- | ----- | ---------------------------- | ----- | ---------- |
+| macOS Safari     |        |          |           |            |            |       |       |                              |       |            |
+| macOS Chrome     |        |          |           |            |            |       |       |                              |       |            |
+| Windows Edge     |        |          |           |            |            |       |       |                              |       |            |
+| Windows Chrome   |        |          |           |            |            |       |       |                              |       |            |
+| Android Chrome   |        |          |           |            |            |       |       |                              |       |            |
+| iOS Safari       |        |          |           |            |            |       |       |                              |       |            |
 
 Browser versions tested: \_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_
 
@@ -160,12 +160,29 @@ Countdown to a date:
 **Prerequisites:** none.
 
 - [ ] macOS, iOS, Android: load the page. Expected: grid of flag emoji with country name and ISO code.
-- [ ] Windows Edge and Chrome: load the page. Expected: each flag tile shows two letters (e.g. "DE") instead of a flag, with the ISO code below; footer note "Windows doesn't draw flag emoji and shows the two-letter country code instead…". Layout must not break (letters fit the tile, no tofu boxes).
+- [ ] Windows Edge and Chrome: load the page. Expected: tiles show the ISO code instead of a flag; an amber note says the system shows flag emoji as two letters, so the quiz is turned off. Layout must not break (codes fit the tile, no tofu boxes).
 - [ ] Search "Oslo", "KR" and "Brazil". Expected: Norway, South Korea, Brazil respectively; result count updates.
 - [ ] Switch View to "☰ Compact list". Expected: table with Flag (letters on Windows), Country, Capital, ISO-2, ISO-3, Calling, Continent; scrolls horizontally on phones.
 - [ ] Click a country. Expected: detail dialog opens; closes with Esc or the close button.
-- [ ] Click "🎯 Quiz me" on Windows. Expected: quiz runs; note that the "flag" is shown as its two-letter code, which gives away the answer (see Notes).
+- [ ] Windows: hover "🎯 Quiz me". Expected: the button is disabled with the tooltip "Your system can’t display flag emoji".
+- [ ] macOS, iOS, Android: click "🎯 Quiz me". Expected: 10 questions with four options each, score shown, "Back to the flags" at the end.
 - [ ] Filter Continent then Region. Expected: Region options narrow to that continent; grid filters.
+
+---
+
+## 10. Video Trimmer
+
+**URL:** `/online-tool/audio-video-tools/video-trimmer`
+**Prerequisites:** a short MP4 (H.264, with audio), an iPhone MOV/HEVC clip, and a WebM made with the Screen Recorder.
+
+- [ ] Load the page. Expected: no amber WebCodecs notice on current Chrome, Edge, Safari 17+ or Firefox 130+.
+- [ ] Choose the MP4. Expected: the video preview plus Start and End sliders, time fields and "Clip: 0:00.0 → … " line.
+- [ ] Set Start ≈ 2 s and End ≈ 6 s, Cut mode "Fast", click "✂️ Trim video". Expected: progress, then "Trimmed clip ready" with a player; the clip plays with sound and is about 4 s (it may start a little earlier, at a keyframe).
+- [ ] Switch to "Precise" and trim again. Expected: the clip is 4.0 s and starts exactly at the start time.
+- [ ] Trim the Screen Recorder WebM in Fast mode. Expected: the sliders appear (its length is read from the file), and an amber note explains if the cut starts more than 0.5 s early.
+- [ ] Trim the iPhone MOV. Expected: works on Safari and on devices that decode HEVC; otherwise a readable error, never a blank result or frozen tab.
+- [ ] Start a long precise trim and click "Cancel". Expected: progress stops with no error message.
+- [ ] Click "⬇ Download clip". Expected: `<name>-trimmed.<ext>` downloads and plays in the OS player (WebM may only play in a browser — that's normal).
 
 ---
 
@@ -182,7 +199,9 @@ For each Fail, note:
 
 ## Notes from the code (things to watch)
 
-- The Screen Recorder's microphone mixing creates its `AudioContext` after the share picker closes and never calls `resume()`, so Safari may start it suspended and record a silent mic.
-- Timer/Pomodoro `beep()` creates a fresh `AudioContext` at finish time, outside a click, so Safari/iOS may play nothing.
-- The Alarm Clock calls `new Notification()` without a try/catch. Android Chrome throws on that constructor, which gives an uncaught error and no notification.
-- No tool uses the Wake Lock API, so a phone that sleeps will pause alarms and timers.
+Fixed in v0.13.0, but worth re-checking on real devices:
+
+- The Screen Recorder resumes its mic-mixing `AudioContext` after the share picker closes and shows a warning when the microphone can't be added (Safari could otherwise record a silent mic).
+- Timer/Pomodoro unlock their `AudioContext` on the Start click, so the finish beep should play on Safari/iOS.
+- The Alarm Clock wraps `new Notification()` in a try/catch (Android Chrome throws on that constructor); the on-page alarm still rings.
+- Still open: no tool uses the Wake Lock API, so a phone that sleeps will pause alarms and timers.

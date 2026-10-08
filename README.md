@@ -10,6 +10,9 @@ Live at [emojar.com](https://emojar.com).
   on the blog (`content/guides/`, drip-published on a schedule), and `/faq`
   answers common questions by category. Files and text are processed on the user's device; there are
   no upload APIs and nothing is stored.
+  Category pages can also list a few related free tools on other sites (FocusCrew under Date & Time
+  and Productivity, MYLPER under Image Tools), from `lib/online-tools/external.ts`. They are marked
+  “External site”, open in a new tab and are not counted as Emojar tools.
 - **Emoji** (`/emoji`, `/emoji/[slug]`, `/categories`, `/games`,
   `/emoji-tools`) — search, browse and copy emojis, holiday collections, games
   and emoji-specific tools.

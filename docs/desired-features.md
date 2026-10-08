@@ -111,6 +111,7 @@
 **Description:** The current Background Remover handles plain/solid backgrounds only.
 **Implementation:** optional in-browser segmentation model (permissively licensed, e.g. MediaPipe), downloaded only when the user opts in; keep the current fast mode as default.
 **Acceptance Criteria:** people/objects can be cut out of photos without uploading them; page states the model download size.
+**Meanwhile:** for manual cut-outs with layers and masks, Image Tools links to MYLPER (external, browser-based) since v0.15.0.
 
 ### [x] OCR for scanned PDFs
 

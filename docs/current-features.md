@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** 8 October 2026 (v0.15.0 — 264 online tools; platform since v0.2.0)
+> **Last updated:** 9 October 2026 (v0.15.1 — 264 online tools; platform since v0.2.0)
 
 ---
 
@@ -569,6 +569,7 @@ All 18 games at `/games` are:
 
 - **Google AdSense** — display advertising via `AdSlot` component placed on pages
 - `data-ad-client` configured globally in site layout
+- **External tool links** — FocusCrew and MYLPER are listed on category pages as plain, clearly marked links (no tracking parameters); see `lib/online-tools/external.ts`
 - **Future:** potential affiliate links (disclosed in Terms of Service)
 - No subscription, no paywall — all features are free
 

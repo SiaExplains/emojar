@@ -70,6 +70,23 @@ const PAIRS: { from: string; to: string; why: string; keywords: string[] }[] = [
     why: 'BMP files are uncompressed and very large. Converting to JPG typically shrinks them by 90% or more with no visible difference.',
     keywords: ['bmp to jpg', 'bmp to jpeg', 'convert bmp to jpg'],
   },
+  {
+    from: 'avif',
+    to: 'jpg',
+    why: 'AVIF is a modern, very efficient format, but many apps, email clients and older devices still can’t open it. JPG opens everywhere.',
+    keywords: [
+      'avif to jpg',
+      'avif to jpeg',
+      'convert avif to jpg',
+      'open avif file',
+    ],
+  },
+  {
+    from: 'gif',
+    to: 'png',
+    why: 'PNG keeps the sharp edges and flat colours of GIF graphics without the 256-colour limit, and supports smooth transparency. Animated GIFs are converted from their first frame.',
+    keywords: ['gif to png', 'convert gif to png', 'gif to png transparent'],
+  },
 ];
 
 const converterVariants: ToolVariant[] = PAIRS.map(

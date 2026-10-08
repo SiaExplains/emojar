@@ -12,23 +12,9 @@ import {
   btnSecondary,
   useObjectUrl,
 } from '../ui';
+import { OCR_LANGUAGES } from './ocr-shared';
 
-const LANGUAGES = [
-  { value: 'eng', label: 'English' },
-  { value: 'deu', label: 'German' },
-  { value: 'fra', label: 'French' },
-  { value: 'spa', label: 'Spanish' },
-  { value: 'ita', label: 'Italian' },
-  { value: 'por', label: 'Portuguese' },
-  { value: 'nld', label: 'Dutch' },
-  { value: 'tur', label: 'Turkish' },
-  { value: 'fas', label: 'Persian' },
-  { value: 'ara', label: 'Arabic' },
-  { value: 'rus', label: 'Russian' },
-  { value: 'chi_sim', label: 'Chinese (simplified)' },
-  { value: 'jpn', label: 'Japanese' },
-  { value: 'hin', label: 'Hindi' },
-];
+const LANGUAGES = OCR_LANGUAGES;
 
 export default function ImageToTextTool(_: ToolProps) {
   const [file, setFile] = useState<File | null>(null);

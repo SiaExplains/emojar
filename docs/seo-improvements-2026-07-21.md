@@ -4,7 +4,7 @@
 > Each task lists exact files, the change to make, and why it matters.
 > Sources: live Google Search Console pull (sc-domain:emojar.com, Jul 5 2026), a full static-code
 > audit of `emojar-src`, and a live browser check of `www.emojar.com`.
-> Supersedes `docs/SEO_IMPROVEMENTS.md` (May 2026) — several tasks marked ✅ there were re-checked
+> Supersedes `docs/seo-improvements.md` (May 2026) — several tasks marked ✅ there were re-checked
 > live and found still broken. Where this file corrects that record, it says so explicitly.
 
 ---
@@ -110,7 +110,7 @@ proper canonical tag" (77) and "Duplicate, Google chose different canonical" ent
 4. In GSC → Sitemaps: delete the `https://www.emojar.com/sitemap.xml` entry entirely once the
    redirect is confirmed live server-side (not just DNS-level).
 5. In GSC → Settings, confirm the canonical domain preference is `emojar.com` (no www).
-6. Update `docs/SEO_IMPROVEMENTS.md` Task 0.2 and `docs/CURRENT_FEATURES.md` once this is
+6. Update `docs/seo-improvements.md` Task 0.2 and `docs/current-features.md` once this is
    actually verified live — both currently document this as already fixed, which this audit
    disproved.
 

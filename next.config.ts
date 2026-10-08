@@ -1,9 +1,10 @@
 import createMDX from '@next/mdx';
-import remarkGfm from 'remark-gfm';
 
+// Plugins are referenced by package name so the options stay serialisable,
+// which Turbopack (`next dev --turbopack`) requires.
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [['remark-gfm', {}]],
   },
 });
 
@@ -17,7 +18,14 @@ const nextConfig = {
     '/**/*': ['./content/guides/**/*.md'],
   },
   // qpdf-wasm's Emscripten glue references Node built-ins it only uses under
-  // Node; stub them in browser bundles.
+  // Node; stub them in browser bundles — for Turbopack (`next dev`) here and
+  // for webpack (`next build`) below.
+  turbopack: {
+    resolveAlias: {
+      fs: { browser: './lib/stubs/empty.ts' },
+      path: { browser: './lib/stubs/empty.ts' },
+    },
+  },
   webpack: (
     config: { resolve: { fallback?: Record<string, false> } },
     { isServer }: { isServer: boolean },

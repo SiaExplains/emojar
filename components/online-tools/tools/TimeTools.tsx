@@ -50,31 +50,68 @@ function useKeys(map: Record<string, () => void>) {
   }, [map]);
 }
 
+// One AudioContext, created and resumed on the user's Start click: Safari
+// and iOS only allow sound from a context unlocked by a gesture, and a
+// context created later in a background tab may stay silent.
+let sharedCtx: AudioContext | null = null;
+
+function audioContext(): AudioContext | null {
+  try {
+    if (!sharedCtx || sharedCtx.state === 'closed') {
+      const AC =
+        window.AudioContext ??
+        (window as unknown as { webkitAudioContext: typeof AudioContext })
+          .webkitAudioContext;
+      sharedCtx = new AC();
+    }
+    return sharedCtx;
+  } catch {
+    return null;
+  }
+}
+
+/** Call from a click handler so the finish beep is allowed to play. */
+function unlockAudio() {
+  void audioContext()?.resume();
+}
+
 /** A short three-tone alarm via WebAudio (no audio files). */
 function beep(times = 3) {
-  try {
-    const AC =
-      window.AudioContext ??
-      (window as unknown as { webkitAudioContext: typeof AudioContext })
-        .webkitAudioContext;
-    const ctx = new AC();
-    for (let i = 0; i < times; i++) {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.frequency.value = 880;
-      osc.type = 'sine';
-      const t = ctx.currentTime + i * 0.45;
-      gain.gain.setValueAtTime(0.0001, t);
-      gain.gain.exponentialRampToValueAtTime(0.4, t + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
-      osc.connect(gain).connect(ctx.destination);
-      osc.start(t);
-      osc.stop(t + 0.4);
-    }
-    window.setTimeout(() => void ctx.close(), times * 450 + 200);
-  } catch {
-    // Audio unavailable; the visual alert still shows.
+  const ctx = audioContext();
+  if (!ctx) return; // Audio unavailable; the visual alert still shows.
+  void ctx.resume();
+  for (let i = 0; i < times; i++) {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.frequency.value = 880;
+    osc.type = 'sine';
+    const t = ctx.currentTime + i * 0.45;
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(0.4, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.4);
   }
+}
+
+/**
+ * Forces a re-render exactly when `at` is reached and whenever the tab
+ * becomes visible again. Browsers throttle intervals in background tabs to
+ * once a minute or less, but a single timeout aimed at the end fires on time.
+ */
+function useWakeAt(at: number | null) {
+  const [, setWake] = useState(0);
+  useEffect(() => {
+    if (at === null) return;
+    const wake = () => setWake((x) => x + 1);
+    const t = window.setTimeout(wake, Math.max(0, at - Date.now()) + 5);
+    document.addEventListener('visibilitychange', wake);
+    return () => {
+      window.clearTimeout(t);
+      document.removeEventListener('visibilitychange', wake);
+    };
+  }, [at]);
 }
 
 function notify(title: string, body: string) {
@@ -285,6 +322,7 @@ export function TimerTool({ config }: ToolProps) {
   const [ringing, setRinging] = useState(false);
   const running = endAt !== null;
   useTicker(running, 10);
+  useWakeAt(endAt);
   const phaseMs = useCallback(
     (p: Phase) => Math.max(1, Number(lengths[p]) || 1) * 60_000,
     [lengths],
@@ -322,6 +360,7 @@ export function TimerTool({ config }: ToolProps) {
 
   const start = () => {
     requestNotifications();
+    unlockAudio();
     setRinging(false);
     const base =
       remaining > 0 ? remaining : pomodoro ? phaseMs(phase) : customMs();

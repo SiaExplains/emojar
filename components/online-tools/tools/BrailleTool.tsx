@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   BRAILLE_DIGITS,
   BRAILLE_LETTERS,
@@ -24,6 +24,8 @@ import {
 } from '../ui';
 
 type Direction = 'auto' | 'encode' | 'decode';
+type Grade = 'g1' | 'g2';
+type G2 = { key: string; output: string; error?: string };
 
 /** A braille cell drawn as six dots, so the pattern is readable even without a braille font. */
 function Cell({ cell, size = 'md' }: { cell: string; size?: 'sm' | 'md' }) {
@@ -52,13 +54,49 @@ export default function BrailleTool(_: ToolProps) {
   const [direction, setDirection] = useState<Direction>('auto');
   const decode =
     direction === 'decode' || (direction === 'auto' && isBraille(input));
-  const result = useMemo(
+  const [grade, setGrade] = useState<Grade>('g1');
+  const [g2, setG2] = useState<G2 | null>(null);
+  const g1 = useMemo(
     () =>
       decode
         ? { output: brailleToText(input), unsupported: [] as string[] }
         : textToBraille(input),
     [input, decode],
   );
+  // Grade 2 runs in liblouis (WebAssembly, ~400 KB), loaded on first use.
+  const g2Key = `${decode ? 'd' : 'e'}|${input}`;
+  useEffect(() => {
+    if (grade !== 'g2') return;
+    let alive = true;
+    const t = window.setTimeout(async () => {
+      try {
+        const { uebBackTranslate, uebTranslate } = await import(
+          '@/lib/online-tools/engines/liblouis'
+        );
+        const output = decode
+          ? await uebBackTranslate(input)
+          : await uebTranslate(input);
+        if (alive) setG2({ key: g2Key, output });
+      } catch {
+        if (alive)
+          setG2({
+            key: g2Key,
+            output: '',
+            error:
+              'The Grade 2 engine could not be loaded. Check your connection and reload the page.',
+          });
+      }
+    }, 150);
+    return () => {
+      alive = false;
+      window.clearTimeout(t);
+    };
+  }, [grade, input, decode, g2Key]);
+  const g2Ready = g2?.key === g2Key ? g2 : null;
+  const result =
+    grade === 'g1'
+      ? g1
+      : { output: g2Ready?.output ?? '', unsupported: [] as string[] };
 
   return (
     <div className="space-y-6">
@@ -91,6 +129,15 @@ export default function BrailleTool(_: ToolProps) {
       </div>
       <div className="flex flex-wrap items-end gap-3">
         <SelectField
+          label="Braille"
+          value={grade}
+          onChange={(v) => setGrade(v as Grade)}
+          options={[
+            { value: 'g1', label: 'Grade 1 (uncontracted)' },
+            { value: 'g2', label: 'Grade 2 (contracted UEB)' },
+          ]}
+        />
+        <SelectField
           label="Direction"
           value={direction}
           onChange={(v) => setDirection(v as Direction)}
@@ -121,16 +168,27 @@ export default function BrailleTool(_: ToolProps) {
           Clear
         </button>
       </div>
+      {grade === 'g2' && input.trim() && !g2Ready && (
+        <p className="text-xs text-gray-500" role="status">
+          Loading the Grade 2 engine…
+        </p>
+      )}
+      {g2Ready?.error && (
+        <p className="text-sm text-red-700" role="alert">
+          {g2Ready.error}
+        </p>
+      )}
       {result.unsupported.length > 0 && (
         <p className="text-xs text-amber-800">
           Kept as-is (not in the Grade 1 table): {result.unsupported.join(' ')}
         </p>
       )}
       <Notice tone="amber">
-        This converts to uncontracted (Grade 1) English braille using Unicode
-        braille patterns. It is a learning and reference aid — it does not
-        replace formal braille transcription, which usually uses contracted
-        Unified English Braille (UEB) and careful formatting.
+        Grade 1 spells every letter; Grade 2 uses contracted Unified English
+        Braille (UEB), translated by liblouis — the open-source engine used by
+        screen readers. Both produce Unicode braille patterns. This is a
+        learning and reference aid: it does not replace formal braille
+        transcription, which also follows careful layout and formatting rules.
       </Notice>
 
       <section aria-labelledby="braille-ref" className="space-y-3">

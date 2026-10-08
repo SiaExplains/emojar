@@ -1020,16 +1020,19 @@ export const TEXT_TOOLS: ToolDefinition[] = [
     icon: '📖',
     shortDescription: 'Flesch reading ease and grade level for any text.',
     description:
-      'Paste your text to get its Flesch Reading Ease score, Flesch–Kincaid grade level, Gunning Fog, SMOG, Coleman–Liau and ARI scores, plus the longest sentences to shorten first. Everything is calculated in your browser.',
+      'Paste your text to get its Flesch Reading Ease score, Flesch–Kincaid grade level, Gunning Fog, SMOG, Coleman–Liau and ARI scores, plus the longest sentences to shorten first. German, Spanish and French text gets the formulas made for those languages. Everything is calculated in your browser.',
     title: 'Readability Score Checker – Flesch Reading Ease & Grade Level',
     metaDescription:
-      'Check readability online: Flesch Reading Ease, Flesch–Kincaid grade, Gunning Fog, SMOG, Coleman–Liau and ARI, with the longest sentences highlighted. Free and private.',
+      'Check readability online: Flesch Reading Ease, Flesch–Kincaid, Gunning Fog, SMOG and more — plus German, Spanish and French formulas. Longest sentences highlighted.',
     keywords: [
       'readability score',
       'readability checker',
       'flesch reading ease',
       'flesch kincaid grade level',
       'gunning fog index',
+      'lesbarkeitsindex',
+      'wiener sachtextformel',
+      'fernandez huerta',
     ],
     relatedTools: [
       'word-counter',
@@ -1040,13 +1043,13 @@ export const TEXT_TOOLS: ToolDefinition[] = [
     ],
     component: 'readability',
     howTo: [
-      'Paste your text — a few paragraphs give the most reliable result.',
+      'Pick the language of your text and paste it — a few paragraphs give the most reliable result.',
       'Read the Flesch Reading Ease score and the average grade level.',
       'Shorten the longest sentences listed below the scores and check again.',
     ],
     about: [
       'Readability formulas estimate how hard a text is from sentence length and word length. Flesch Reading Ease (0–100, higher is easier) uses words per sentence and syllables per word; most web content aims for 60 or above. The grade-level formulas — Flesch–Kincaid, Gunning Fog, SMOG, Coleman–Liau and ARI — translate the same signals into a US school grade.',
-      'The formulas were built for English. Syllables are estimated from vowel groups, as in most checkers, so scores can differ by a point or so from other tools. They measure structure, not clarity: a short sentence can still be confusing, so read your text aloud too.',
+      'Those formulas were built for English, so other languages use their own adaptations: German gets Flesch-Amstad and the Wiener Sachtextformel (a German school year), Spanish gets Fernández Huerta and Szigriszt-Pazos on the INFLESZ scale, and French gets Kandel–Moles. Syllables are estimated from vowel groups with rules for each language, so scores can differ by a point or so from other tools. They measure structure, not clarity: a short sentence can still be confusing, so read your text aloud too.',
     ],
     faqs: [
       {
@@ -1287,10 +1290,10 @@ export const TEXT_TOOLS: ToolDefinition[] = [
     icon: '⠃',
     shortDescription: 'Convert text to braille and braille back to text.',
     description:
-      'Translate English text to braille and braille back to text, using uncontracted (Grade 1) braille with capital and number signs and basic punctuation. Copy the Unicode braille output, swap direction, and see every letter, number and sign as a dot chart.',
+      'Translate English text to braille and braille back to text, in uncontracted Grade 1 or contracted Grade 2 (Unified English Braille), with capital and number signs and punctuation. Copy the Unicode braille output, swap direction, and see every letter, number and sign as a dot chart.',
     title: 'Braille Translator – Text to Braille & Braille to Text',
     metaDescription:
-      'Translate text to braille or braille to English: Grade 1 braille with capitals, numbers and punctuation, a dot chart for every letter, and copyable Unicode output.',
+      'Translate text to braille or braille to English in Grade 1 or contracted Grade 2 (UEB), with capitals, numbers and punctuation, a dot chart and copyable Unicode output.',
     keywords: [
       'braille translator',
       'text to braille',
@@ -1313,7 +1316,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
     ],
     about: [
       'Each braille cell has six dot positions in two columns, numbered 1–3 on the left and 4–6 on the right. Letters a–j use only the top four dots; k–t add dot 3, and u, v, x, y, z add dots 3 and 6 (w came later, from French braille). A capital sign (dot 6) goes before a capital letter, and the number sign (dots 3-4-5-6) turns a–j into the digits 1–0.',
-      'This tool uses uncontracted Grade 1 braille, where each letter is spelled out. Most published English braille is contracted Unified English Braille (UEB), which uses shortcuts for common words and letter groups, and formal transcription follows detailed layout rules. Use this as a learning and reference aid, not as a substitute for a qualified transcriber.',
+      'Grade 1 spells out each letter. Most published English braille is contracted Unified English Braille (UEB), which uses shortcuts for common words and letter groups; the Grade 2 option translates it with liblouis, the open-source engine used by screen readers, loaded from this site when you pick it. Formal transcription also follows detailed layout rules, so use this as a learning and reference aid, not as a substitute for a qualified transcriber.',
     ],
     faqs: [
       {

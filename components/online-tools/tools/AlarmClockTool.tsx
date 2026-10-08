@@ -153,10 +153,15 @@ export default function AlarmClockTool(_: ToolProps) {
         'Notification' in window &&
         Notification.permission === 'granted'
       )
-        new Notification(a.label || 'Alarm', {
-          body: `It’s ${a.time}`,
-          tag: `alarm-${a.id}`,
-        });
+        try {
+          new Notification(a.label || 'Alarm', {
+            body: `It’s ${a.time}`,
+            tag: `alarm-${a.id}`,
+          });
+        } catch {
+          // Android Chrome only allows notifications from a service worker;
+          // the sound and the on-page banner still work.
+        }
     },
     [notify],
   );
@@ -408,8 +413,8 @@ export default function AlarmClockTool(_: ToolProps) {
                   <span className="min-w-0 flex-1 text-sm text-gray-600">
                     {a.label || 'Alarm'} ·{' '}
                     {a.days.length
-                      ? a.days
-                          .sort()
+                      ? [...a.days]
+                          .sort((x, y) => x - y)
                           .map((d) => DAY_NAMES[d])
                           .join(', ')
                       : 'Once'}{' '}

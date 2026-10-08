@@ -33,6 +33,8 @@ const ACCEPT: Record<string, string> = {
   webp: 'image/webp,.webp',
   svg: 'image/svg+xml,.svg',
   bmp: 'image/bmp,.bmp',
+  gif: 'image/gif,.gif',
+  avif: 'image/avif,.avif',
   pdf: 'application/pdf,.pdf',
   any: 'image/*,application/pdf,.svg,.bmp,.pdf',
 };

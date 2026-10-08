@@ -153,6 +153,14 @@ export function brailleToText(input: string): string {
       capNext = false;
       continue;
     }
+    // ⠦ is both “?” and an opening double quote: it opens a quote at the
+    // start of a word when more text follows, otherwise it is a question mark.
+    if (c === '⠦') {
+      const next = cells[i + 1];
+      const atWordStart = !out || /[\s(“"]$/.test(out);
+      out += atWordStart && next && !/[\s\u2800]/.test(next) ? '"' : '?';
+      continue;
+    }
     out += PUNCT_OF[c] ?? c;
   }
   return out;

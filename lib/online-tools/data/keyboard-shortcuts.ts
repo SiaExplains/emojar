@@ -290,6 +290,7 @@ export const SHORTCUTS: Shortcut[] = [
     app: 'system',
     keys: { macos: 'Cmd + Shift + Q', linux: 'Ctrl + Alt + Delete' },
     keywords: ['log out', 'sign out', 'logout'],
+    note: 'On GNOME this opens the log out / power off dialog.',
   },
   {
     action: 'Search the computer',
@@ -1516,7 +1517,7 @@ export const SHORTCUTS: Shortcut[] = [
     action: 'Open downloads',
     category: 'browser',
     app: 'edge',
-    keys: { windows: 'Ctrl + J', macos: 'Cmd + Shift + J', linux: 'Ctrl + J' },
+    keys: { windows: 'Ctrl + J', macos: 'Cmd + Option + L', linux: 'Ctrl + J' },
     keywords: ['downloads'],
   },
   {
@@ -1580,7 +1581,7 @@ export const SHORTCUTS: Shortcut[] = [
     action: 'Toggle Immersive Reader',
     category: 'browser',
     app: 'edge',
-    keys: { windows: 'F9' },
+    keys: { windows: 'F9', macos: 'F9' },
     keywords: ['reader', 'reader mode', 'immersive reader', 'reading'],
   },
   {

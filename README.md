@@ -4,7 +4,7 @@ Free, privacy-first **online tools** that run entirely in the browser — plus
 3,790 emojis to search and copy, 18 emoji games and 8 emoji tools.
 Live at [emojar.com](https://emojar.com).
 
-- **Online tools** (`/online-tool`) — 245 tools in 12 categories: image, PDF,
+- **Online tools** (`/online-tool`) — 246 tools in 12 categories: image, PDF,
   developer, text, color, calculators, unit converters, security & generators,
   date & time, audio & video, device tests, and reference & learning. Each tool has an in-depth guide
   on the blog (`content/guides/`, drip-published on a schedule), and `/faq`
@@ -35,7 +35,12 @@ periodic table (public domain) with IUPAC/CIAAW standard atomic weights,
 the Unicode Character Database (Unicode License v3), the WHATWG HTML entity
 list, GeoNames country and city data (CC BY 4.0), Natural Earth (public
 domain), the IANA time-zone database (public domain), CSS named colours and
-the xkcd colour survey (CC0).
+the xkcd colour survey (CC0). Regenerate it with `npm run data:reference`
+(see `scripts/reference-data/README.md`).
+
+Braille Grade 2 uses liblouis 3.39 (LGPL-2.1+) compiled to WebAssembly in
+`public/vendor/liblouis/`; rebuild it with `npm run build:liblouis` (needs
+Emscripten).
 
 ## Getting started
 
@@ -129,9 +134,11 @@ routes must get a permanent redirect in `next.config.ts`.
 ## Docs
 
 - `CHANGELOG.md` — release notes
-- `docs/CURRENT_FEATURES.md` — full feature reference
-- `docs/DESIRED_FEATURES.md` — backlog
-- `docs/SEO-Improvements-21-07-2026.md`, `docs/adsense-tasks.md` — SEO and
+- `docs/current-features.md` — full feature reference
+- `docs/desired-features.md` — backlog
+- `docs/qa/device-checklist.md` — manual checks on real devices (camera, mic,
+  recorders, timers, flags)
+- `docs/seo-improvements-2026-07-21.md`, `docs/adsense-tasks.md` — SEO and
   AdSense work
 
 ## Monetization notes

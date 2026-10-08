@@ -65,7 +65,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: 'Do any tools download something?',
-        a: 'Yes, a few download a processing engine — never your data. Image to Text downloads the open-source Tesseract OCR engine and a language model the first time you use it. Text to Speech can use “online” voices from your browser vendor; those send the text to the vendor’s speech service, and they are labelled so you can choose an on-device voice instead.',
+        a: 'Yes, a few download a processing engine — never your data. Image to Text and the OCR option in PDF to Text download the open-source Tesseract OCR engine and a language model the first time you use them. The Braille Translator loads the liblouis engine from emojar.com when you pick Grade 2. Text to Speech can use “online” voices from your browser vendor; those send the text to the vendor’s speech service, and they are labelled so you can choose an on-device voice instead.',
         links: [
           {
             href: '/online-tool/image-tools/image-to-text',
@@ -262,7 +262,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: 'Can I extract text from a scanned PDF?',
-        a: 'PDF to Text reads the text layer, which scanned PDFs don’t have. Convert the page to an image with PDF to PNG, then use Image to Text (OCR).',
+        a: 'Yes. PDF to Text reads the text layer first, and pages without one — scans — can be read with OCR (Tesseract) right in your browser, in 14 languages. The OCR engine downloads on first use; the PDF itself is never uploaded.',
         links: [
           {
             href: '/online-tool/image-tools/image-to-text',
@@ -582,6 +582,16 @@ export const FAQ_GROUPS: FaqGroup[] = [
     icon: '🎬',
     items: [
       {
+        q: 'How do I trim a video without losing quality?',
+        a: 'Use the Video Trimmer in Fast mode: it copies the encoded video instead of re-compressing it, so quality is unchanged and long files finish in seconds. The cut starts at the nearest keyframe before your start time; choose Precise for a frame-exact cut (it re-encodes).',
+        links: [
+          {
+            href: '/online-tool/audio-video-tools/video-trimmer',
+            label: 'Video Trimmer',
+          },
+        ],
+      },
+      {
         q: 'Which video formats can be converted to MP3 or GIF?',
         a: 'Any format your browser can play: MP4 (H.264/AAC) and WebM everywhere, and MOV in Safari. Keep GIF clips short and narrow — GIFs grow large quickly.',
         links: [
@@ -712,7 +722,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: 'Can the Braille Translator produce braille for printing?',
-        a: 'It produces uncontracted (Grade 1) braille as Unicode characters, which is useful for learning and short labels. Printed Unicode braille is flat, and most readers expect contracted Unified English Braille, so use a braille embosser or transcription service for anything a reader will rely on.',
+        a: 'It produces Unicode braille in uncontracted Grade 1 or contracted Grade 2 (Unified English Braille, via the liblouis engine), which is useful for learning and short labels. Printed Unicode braille is flat, so use a braille embosser or a transcription service for anything a reader will rely on.',
         links: [
           {
             href: '/online-tool/text-tools/braille-translator',

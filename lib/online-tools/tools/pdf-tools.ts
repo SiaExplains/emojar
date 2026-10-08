@@ -337,19 +337,22 @@ export const PDF_TOOLS: ToolDefinition[] = [
     category: 'pdf-tools',
     name: 'PDF to Text',
     icon: '📃',
-    shortDescription: 'Extract text from a PDF.',
+    shortDescription: 'Extract text from a PDF — scanned pages too, with OCR.',
     description:
-      'Extract all text from a PDF, page by page, and copy it or download it as a .txt file. Text extraction runs in your browser, so documents stay private.',
-    title: 'PDF to Text – Extract Text from PDF Online',
+      'Extract all text from a PDF, page by page, and copy it or download it as a .txt file. Scanned pages without a text layer can be read with OCR in 14 languages. Everything runs in your browser, so documents stay private.',
+    title: 'PDF to Text – Extract Text from PDF Online (with OCR)',
     metaDescription:
-      'Extract text from PDF files online. Copy or download the text page by page. Private and free — your PDF never leaves your device.',
+      'Extract text from PDF files online, including scanned PDFs with built-in OCR. Copy or download the text page by page. Free and private — nothing is uploaded.',
     keywords: [
       'pdf to text',
       'extract text from pdf',
       'pdf text extractor',
       'copy text from pdf',
+      'ocr pdf',
+      'scanned pdf to text',
     ],
     relatedTools: [
+      'image-to-text',
       'pdf-to-jpg',
       'word-counter',
       'pdf-metadata-viewer',
@@ -358,19 +361,24 @@ export const PDF_TOOLS: ToolDefinition[] = [
     component: 'pdf-to-text',
     handlesFiles: true,
     limitation:
-      'Scanned PDFs contain pictures of text rather than text, so there is nothing to extract without OCR (optical character recognition), which this tool does not perform.',
+      'OCR downloads the Tesseract engine and language data (a few MB) on first use, takes a few seconds per page and reads up to 60 pages per run. Handwriting and low-quality scans give poor results.',
     howTo: [
-      'Choose a PDF file.',
-      'Wait a moment while each page is read.',
+      'Choose a PDF file — its text layer is read instantly.',
+      'If some pages are scans, pick the text language and press “Read … pages with OCR”.',
       'Copy the text or download it as a .txt file.',
     ],
     about: [
-      'The tool reads the text layer stored in the PDF. Line breaks follow the PDF’s layout, so text from multi-column documents may need light clean-up.',
+      'The tool first reads the text layer stored in the PDF. Line breaks follow the PDF’s layout, so text from multi-column documents may need light clean-up.',
+      'Scanned PDFs contain pictures of text rather than text. For those pages the tool renders each page at 200 dpi and runs OCR (optical character recognition) with Tesseract — the same open-source engine as Image to Text — right in your browser. Pages read this way are marked “(OCR)” in the output.',
     ],
     faqs: [
       {
         q: 'Why is the extracted text empty?',
-        a: 'The PDF is probably a scan (an image). Only PDFs with a real text layer can be extracted.',
+        a: 'The PDF is probably a scan (an image). Use the OCR button that appears below the file to read those pages, choosing the language of the text.',
+      },
+      {
+        q: 'How accurate is the OCR?',
+        a: 'Very good for clean, printed scans at a normal size; weaker for handwriting, low-resolution photos, tables and decorative fonts. Always proofread important text.',
       },
     ],
   },

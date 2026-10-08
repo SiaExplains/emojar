@@ -208,11 +208,29 @@ export function searchUnicode(query: string, db: NameDb | null): SearchResult {
   if (block)
     return { kind: 'block', first: block[0], last: block[1], name: block[2] };
   if (chars.length === 1) out.push(q.codePointAt(0)!);
-  const words = lower.split(/\s+/).filter(Boolean);
-  if (db) {
-    for (let i = 0; i < db.names.length && out.length < MAX_RESULTS; i++) {
+  const words = lower.split(/[\s,]+/).filter(Boolean);
+  if (db && words.length) {
+    // Every word must appear; single letters (“e”, “a”) must be whole words.
+    // Matches with more whole-word hits, then shorter names, rank first, so
+    // “latin small e acute” puts é ahead of every other small acute letter.
+    const hits: { cp: number; whole: number; len: number }[] = [];
+    for (let i = 0; i < db.names.length; i++) {
       const n = db.names[i];
-      if (words.every((w) => n.includes(w))) out.push(db.cps[i]);
+      if (!words.every((w) => n.includes(w))) continue;
+      const tokens = n.split(/[\s-]+/);
+      let whole = 0;
+      let ok = true;
+      for (const w of words) {
+        const isWhole = tokens.includes(w);
+        if (isWhole) whole++;
+        else if (w.length === 1) ok = false;
+      }
+      if (ok) hits.push({ cp: db.cps[i], whole, len: n.length });
+    }
+    hits.sort((a, b) => b.whole - a.whole || a.len - b.len || a.cp - b.cp);
+    for (const h of hits) {
+      if (out.length >= MAX_RESULTS) break;
+      out.push(h.cp);
     }
   }
   const unique = [...new Set(out)];

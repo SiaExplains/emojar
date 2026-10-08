@@ -31,6 +31,8 @@ module.exports = [
   globalIgnores([
     '**/.next/**',
     '**/scripts/**',
+    // Vendored, generated builds (e.g. liblouis WebAssembly glue).
+    'public/vendor/**',
     'node_modules/**',
     'dist/**',
     '.claude/**',

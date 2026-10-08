@@ -4,6 +4,50 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.13.0] — 2026-10-08
+
+### Added
+
+- Video Trimmer: cut a clip out of a video in the browser, either fast with
+  no quality loss (cuts at keyframes) or frame-exact (re-encodes).
+- PDF to Text can now read scanned pages with OCR, in 14 languages.
+- Braille Translator: contracted Grade 2 (UEB) in both directions, powered by
+  liblouis.
+- Readability Score checks German, Spanish and French text with formulas made
+  for each language.
+- “Download ZIP” on every tool that produces several files, including Image
+  Converter, Compressor, Resizer and Split PDF.
+- Landing pages: AVIF to JPG, GIF to PNG, km to miles, kg to lbs and Celsius
+  to Fahrenheit.
+- A search box in the header on every page except the homepage: find any
+  tool from anywhere (press / to focus), or jump to the emoji search.
+- A device checklist for testing the camera, microphone, recorders, timers
+  and flag display on real phones and computers.
+
+### Changed
+
+- Timers and the Pomodoro timer finish on time in background tabs, and their
+  beep plays on iPhone and Safari.
+- World Time Zone Map labels no longer overlap; Unicode search ranks whole
+  words first (“latin small e acute” finds é first).
+- Flag Explorer shows ISO codes and turns the quiz off on systems that can't
+  display flag emoji (Windows), instead of giving the answers away.
+- Reference data can be regenerated with `npm run data:reference`; element
+  discovery years were corrected, and one Edge keyboard shortcut was fixed.
+- `npm run dev` (Turbopack) works again: `@next/mdx` now matches Next 15.5,
+  and Node built-ins used by the PDF password tool are stubbed for Turbopack.
+- Docs use kebab-case file names (`docs/current-features.md`,
+  `docs/desired-features.md`, …), and ten emoji ideas were dropped from the
+  backlog.
+
+### Fixed
+
+- Screen Recorder: the microphone could record as silence in Safari, the
+  “recording without microphone” message disappeared, and stopping sharing
+  during the countdown left the capture running.
+- Voice Recorder level meter moved while paused; Alarm Clock notifications
+  could fail on Android and the repeat days were re-sorted on every render.
+
 ## [0.12.1] — 2026-10-08
 
 ### Changed

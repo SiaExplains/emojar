@@ -157,7 +157,8 @@ export type ToolComponentKey =
   | 'number-system'
   | 'morse-code'
   | 'braille'
-  | 'measurement-reference';
+  | 'measurement-reference'
+  | 'video-trimmer';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

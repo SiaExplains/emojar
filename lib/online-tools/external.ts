@@ -24,6 +24,14 @@ export const EXTERNAL_TOOLS: ExternalTool[] = [
     category: 'date-time-tools',
     alsoIn: ['productivity-tools'],
   },
+  {
+    name: 'MYLPER',
+    url: 'https://www.mylper.com/',
+    icon: '🖌️',
+    description:
+      'A free online image editor with layers, masks, adjustment layers and undo history, running in your browser.',
+    category: 'image-tools',
+  },
 ];
 
 export const externalToolsIn = (slug: CategorySlug) =>

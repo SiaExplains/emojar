@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** 8 October 2026 (v0.14.1 — 264 online tools; platform since v0.2.0)
+> **Last updated:** 8 October 2026 (v0.15.0 — 264 online tools; platform since v0.2.0)
 
 ---
 
@@ -86,7 +86,7 @@ UUID Generator and Hash Generator are also listed under Security & Generators;
 Unix Timestamp, Timestamp Converter, Slug Generator and What Is My Browser are also listed under Developer Tools; Number Base Converter under Unit Converters; Bcrypt and TOTP under Security & Generators; SVG Optimizer under Image Tools.
 Each tool has one canonical URL.
 
-External links: `lib/online-tools/external.ts` lists third-party tools shown on a category page and the hub (currently FocusCrew under Date & Time and Productivity; `alsoIn` cross-lists a link like it does for tools). They open in a new tab, are marked “External site”, have no tool page or sitemap entry and are not counted in tool totals. The homepage H1 shows the live count of Emojar tools (`TOOLS.length`).
+External links: `lib/online-tools/external.ts` lists third-party tools shown on a category page and the hub (currently FocusCrew under Date & Time and Productivity, and MYLPER — a layered image editor — under Image Tools; `alsoIn` cross-lists a link like it does for tools). They open in a new tab, are marked “External site”, have no tool page or sitemap entry and are not counted in tool totals. The homepage H1 shows the live count of Emojar tools (`TOOLS.length`).
 
 Header search (`components/HeaderSearch.tsx`): on every page except the homepage; loads `/search-index.json` (static, from `searchIndex()`) and Fuse.js on first focus; ↑/↓/Enter/Esc and `/` to focus; links to all results (`/online-tool?q=`) and the emoji search (`/emoji?q=`).
 

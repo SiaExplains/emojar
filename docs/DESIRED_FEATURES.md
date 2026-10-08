@@ -280,6 +280,21 @@
 ### [ ] Mic/webcam tests and recorders: verify on real devices
 **Description:** Capture was only verified on the permission-denied path in the dev browser; check the level meter, recording and camera stats on macOS, Windows, Android and iOS. The same applies to the Voice Recorder and Screen Recorder (v0.11.0): recording, pause/resume, mic mixing in screen recordings, and the MP3/WAV exports.
 
+
+### [ ] Reference tools: checks on real devices
+**Description:** v0.12.0 was verified in the dev browser only. Listen to the Morse Code audio (speed, pause, stop) on desktop and phone, check the Flag Explorer's two-letter fallback on Windows, and spot-check the hand-curated keyboard shortcuts (the GNOME Files, Explorer "Copy as path" and Edge-on-macOS entries were marked "moderately confident") and the element discoverer list.
+
+### [ ] World Time Zone Map: avoid overlapping city labels
+**Description:** Labels for cities that sit close together on the map (London and Berlin, for example) overlap. Offset or hide colliding labels, or show only the focused city's label at small sizes.
+
+### [ ] Unicode explorer: whole-word name search
+**Description:** Name search matches word fragments, so “latin small e acute” returns every small letter with an acute. Rank whole-word matches first, and treat a single-letter word as an exact token.
+
+### [ ] Braille: contracted (Grade 2 / UEB) mode and quotes
+**Description:** The translator is uncontracted Grade 1 only, and when decoding it reads ⠦ as “?” even when it is an opening quote. A UEB Grade 2 mode (with contractions) would make it useful for real-world text; quote handling could use context (start of a word vs. end of a sentence).
+
+### [ ] Refresh bundled reference data
+**Description:** Country populations (GeoNames), the Unicode names file (`public/data/unicode-names-18.txt`), IANA zones in `countries.json` and the city list are snapshots from October 2026. Re-run the generators in a yearly chore, and when Unicode 19 ships, bump `UNICODE_VERSION` and the file name together.
 ---
 
 ## ⚠️ NEEDS CLARIFICATION

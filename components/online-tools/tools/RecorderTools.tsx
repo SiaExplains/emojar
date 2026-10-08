@@ -447,7 +447,9 @@ export function VoiceRecorderTool(_: ToolProps) {
         >
           <div
             className={`h-full transition-[width] duration-75 ${level > 0.9 ? 'bg-rose-500' : 'bg-emerald-500'}`}
-            style={{ width: `${Math.min(100, level * 100)}%` }}
+            style={{
+              width: `${r.state === 'recording' ? Math.min(100, level * 100) : 0}%`,
+            }}
           />
         </div>
         <div className="mt-5 flex flex-wrap justify-center gap-2">
@@ -548,6 +550,7 @@ export function ScreenRecorderTool(_: ToolProps) {
       const extra: MediaStream[] = [];
       let stream = display;
       let mixCtx: AudioContext | null = null;
+      let micWarning = '';
       if (mic) {
         try {
           const m = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -555,6 +558,9 @@ export function ScreenRecorderTool(_: ToolProps) {
           // Mix screen audio and microphone into one track.
           const ctx = new AudioContext();
           mixCtx = ctx;
+          // Safari starts contexts suspended outside a click; resume it or
+          // the microphone would be recorded as silence.
+          await ctx.resume();
           const dest = ctx.createMediaStreamDestination();
           if (display.getAudioTracks().length)
             ctx.createMediaStreamSource(display).connect(dest);
@@ -564,9 +570,8 @@ export function ScreenRecorderTool(_: ToolProps) {
             ...dest.stream.getAudioTracks(),
           ]);
         } catch (e) {
-          r.setError(
-            permissionError(e, 'microphone') + ' Recording without it.',
-          );
+          micWarning =
+            permissionError(e, 'microphone') + ' Recording without it.';
         }
       }
       for (let i = 3; i > 0; i--) {
@@ -574,7 +579,17 @@ export function ScreenRecorderTool(_: ToolProps) {
         await new Promise((res) => setTimeout(res, 1000));
       }
       setCountdown(0);
+      // Sharing can be stopped from the browser bar during the countdown.
+      if (display.getVideoTracks().every((t) => t.readyState === 'ended')) {
+        [display, ...extra].forEach((st) =>
+          st.getTracks().forEach((t) => t.stop()),
+        );
+        void mixCtx?.close();
+        return r.setError('Screen sharing was stopped before recording began.');
+      }
       r.start(stream, [display, ...extra], () => void mixCtx?.close());
+      // start() clears messages, so show the microphone warning afterwards.
+      if (micWarning) r.setError(micWarning);
     } catch (e) {
       if ((e as { name?: string })?.name !== 'NotAllowedError')
         r.setError(permissionError(e, 'screen capture'));

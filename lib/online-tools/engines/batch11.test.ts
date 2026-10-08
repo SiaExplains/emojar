@@ -266,3 +266,10 @@ describe('braille capitals after numbers', () => {
     expect(brailleToText(output)).toBe('2B');
   });
 });
+
+describe('braille quotes', () => {
+  it('reads ⠦ as an opening quote at the start of a word', () => {
+    const { output } = textToBraille('"Hi" she said. Why?');
+    expect(brailleToText(output)).toBe('"Hi" she said. Why?');
+  });
+});

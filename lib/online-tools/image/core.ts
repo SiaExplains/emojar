@@ -55,6 +55,21 @@ export function extensionOf(name: string): string {
   return m ? m[1].toLowerCase() : '';
 }
 
+/** “a.png”, “a.png” → “a.png”, “a (2).png”, so ZIP entries don't overwrite each other. */
+export function uniqueNames(names: string[]): string[] {
+  const seen = new Map<string, number>();
+  return names.map((n) => {
+    const key = n.toLowerCase();
+    const count = (seen.get(key) ?? 0) + 1;
+    seen.set(key, count);
+    if (count === 1) return n;
+    const dot = n.lastIndexOf('.');
+    return dot > 0
+      ? `${n.slice(0, dot)} (${count})${n.slice(dot)}`
+      : `${n} (${count})`;
+  });
+}
+
 export function outputName(original: string, ext: string, suffix = ''): string {
   const base = original.replace(/\.[a-z0-9]+$/i, '') || 'image';
   return `${base}${suffix}.${ext}`;

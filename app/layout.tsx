@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/next';
 import { HeaderLogo } from '@/components/HeaderLogo/HeaderLogo.component';
 import BackToTopButton from '@/components/BackToTopButton';
+import HeaderSearch from '@/components/HeaderSearch';
 import MainMenu from '@/components/MainMenu/MainMenu.compontent';
 import { SiteChrome, PageMain } from '@/components/ChromeGate';
 import { AdSenseScript } from '@/components/AdSenseScript';
@@ -123,7 +124,9 @@ export default function RootLayout({
                   <HeaderLogo />
                 </Link>
               </div>
-              <div className="flex-1" />
+              <div className="flex flex-1 items-center justify-end md:justify-center">
+                <HeaderSearch />
+              </div>
               <div className="flex-shrink-0">
                 <MainMenu />
               </div>

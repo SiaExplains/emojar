@@ -6,7 +6,7 @@ description: How the six-dot braille cell encodes letters, numbers and punctuati
 tags: [Braille, Accessibility, Writing Systems, Unicode]
 ---
 
-Braille writes each character as a pattern of raised dots in a cell of six positions, arranged as two columns of three. Letters, digits and punctuation all share those 63 possible patterns, so a few special cells, such as the capital sign and the number sign, change how the cells after them are read. Uncontracted braille, often called Grade 1, spells out every letter. Most braille that blind readers use day to day is contracted, so a letter-by-letter translation is a learning tool, not a finished transcription.
+Braille writes each character as a pattern of raised dots in a cell of six positions, arranged as two columns of three. Letters, digits and punctuation all share those 63 possible patterns, so a few special cells, such as the capital sign and the number sign, change how the cells after them are read. Uncontracted braille, often called Grade 1, spells out every letter. Most braille that blind readers use day to day is contracted, Grade 2, where common words and letter groups shrink to one or two cells.
 
 ## How is a braille cell numbered?
 
@@ -46,20 +46,41 @@ Reading it cell by cell:
 
 That is 21 cells for 18 characters. The extra cells are the two capital signs and the number sign. Now try `Room 4b`. The output is ⠠⠗⠕⠕⠍⠀⠼⠙⠰⠃. Without the letter sign ⠰, a reader would take ⠃ as the digit 2 and see "Room 42".
 
+## How does Grade 2 contracted braille work?
+
+Contracted braille saves space and reading time by giving frequent words and letter groups their own short forms. Unified English Braille, which the Braille Authority of North America adopted for the US in 2016 and which most other English-speaking countries also use, has about 180 of them. They come in a few kinds:
+
+- **Wordsigns.** Some cells stand for a whole word when they appear alone. The cell for "the" is ⠮ (dots 2-3-4-6), and "and" is ⠯ (dots 1-2-3-4-6).
+- **Alphabetic wordsigns.** A single letter, written on its own, means a common word: ⠅ alone is "knowledge", ⠃ is "but", and ⠉ is "can".
+- **Groupsigns.** Letter groups such as "ch", "sh", "th", "ing" and "ed" each have one cell, and they also work inside longer words.
+- **Shortforms.** A few longer words are abbreviated to a fixed letter sequence, such as "children" as ch-n.
+
+The rules about when each one may be used are intricate. A contraction can't straddle the parts of a compound word in some cases, and some shortforms only count when they stand alone. Writing that logic by hand would be error-prone, so for Grade 2 the translator uses liblouis 3.39, the open-source braille engine behind many screen readers and braille display drivers. It runs as a WebAssembly build of the unmodified library, with the official English UEB tables. It is about 400 KB and loads from emojar.com only when you pick **Grade 2 (contracted UEB)**, so the page shows "Loading the Grade 2 engine…" for a moment the first time.
+
+Two examples show the difference. In Grade 2, "the cat and the dog" becomes:
+
+⠮⠀⠉⠁⠞⠀⠯⠀⠮⠀⠙⠕⠛
+
+Here ⠮ is "the" and ⠯ is "and", while "cat" and "dog" are spelled out because no contraction applies. That is 13 cells, where Grade 1 needs 19. And "knowledge for children" shrinks to just six cells, spaces included:
+
+⠅⠀⠿⠀⠡⠝
+
+That's ⠅ for "knowledge", ⠿ (all six dots) for "for", and ⠡⠝, the ch groupsign plus n, as the shortform for "children". Grade 2 also works in reverse: with **Braille → Text** selected, liblouis expands the contractions back into words.
+
 ## How do I use the translator?
 
-Type or paste into the input box. The **Direction** menu is set to **Detect automatically**, which switches to braille-to-text as soon as the input contains any braille cell. You can force **Text → Braille** or **Braille → Text** instead. **⇄ Swap** moves the output into the input and flips the direction, which is a quick way to check a round trip. **Copy output** copies the result and **Clear** empties the box.
+Type or paste into the input box. The **Braille** menu chooses between **Grade 1 (uncontracted)**, the default, and **Grade 2 (contracted UEB)**. The **Direction** menu is set to **Detect automatically**, which switches to braille-to-text as soon as the input contains any braille cell. You can force **Text → Braille** or **Braille → Text** instead. **⇄ Swap** moves the output into the input and flips the direction, which is a quick way to check a round trip. **Copy output** copies the result and **Clear** empties the box.
 
 Below the converter, the **Braille alphabet** chart draws every cell as six dots, so you can read the pattern even if your font renders Unicode braille poorly. It also covers numbers (shown with the number sign in front), punctuation and the three signs. Clicking a letter in the chart adds it to your text, or, in braille mode, replaces the input with that cell.
 
-## What are the limits of a Grade 1 translator?
+## What are the limits of the translator?
 
 These limits matter if anyone will actually read the result by touch.
 
-- **No contractions.** English braille in the United States, the United Kingdom and most other English-speaking countries now uses Unified English Braille, which the Braille Authority of North America adopted for the US in 2016. Its contracted form (Grade 2) uses about 180 contractions, such as single cells for "and", "the" and "ing". Experienced readers expect them, and uncontracted text is longer and slower to read.
-- **Capitals one letter at a time.** When translating text to braille, each capital gets its own sign, so "NASA" becomes ⠠⠝⠠⠁⠠⠎⠠⠁. UEB writes a whole capitalized word with a double capital sign, ⠠⠠⠝⠁⠎⠁. When reading braille back into text, the tool does understand the double sign.
-- **Limited character set.** Only a to z, digits, spaces, line breaks and the listed punctuation are converted. Anything else, such as accented letters like "é", is kept as it is, and a line under the buttons lists those characters as "Kept as-is (not in the Grade 1 table)".
-- **Some cells have two meanings.** In UEB the opening double quote and the question mark are the same cell, ⠦. When decoding, the tool always reads ⠦ as "?", so check quotes by context.
+- **Grade 1 is for learning.** Experienced readers expect contractions, and uncontracted text is longer and slower to read. Use Grade 2 when the output is meant for a braille reader, and Grade 1 when you want to study the letters cell by cell.
+- **Grade 1 marks capitals one letter at a time.** In Grade 1 mode, each capital gets its own sign when translating text to braille, so "NASA" becomes ⠠⠝⠠⠁⠠⠎⠠⠁. UEB writes a whole capitalized word with a double capital sign, ⠠⠠⠝⠁⠎⠁. When reading braille back into text, the tool does understand the double sign.
+- **Limited Grade 1 character set.** In Grade 1 mode, only a to z, digits, spaces, line breaks and the listed punctuation are converted. Anything else, such as accented letters like "é", is kept as it is, and a line under the buttons lists those characters as "Kept as-is (not in the Grade 1 table)".
+- **Some cells have two meanings.** In UEB the opening double quote and the question mark are the same cell, ⠦. When decoding in Grade 1, the tool reads ⠦ as an opening quote when it starts a word and more text follows, as in ⠦⠓⠊⠖⠴, which decodes to "hi!" in quotes, and as "?" otherwise, such as at the end of a word. That guess is right in ordinary text, but an unusual layout can still fool it, so check by context.
 - **No formatting rules.** Real transcription also handles line length, page numbers, headings, typeforms such as bold and italics, and, in the US, Nemeth Code for math. None of that is done here.
 - **Print is flat.** Unicode braille on screen or on paper cannot be felt. Tactile braille needs an embosser, and refreshable braille displays normally get their braille from a screen reader translating ordinary text.
 
@@ -77,6 +98,6 @@ Screen readers often announce Unicode braille characters by their dot numbers ra
 
 ### Is my text sent anywhere?
 
-No. The translation runs entirely in your browser.
+No. Both grades translate entirely in your browser. For Grade 2, the page downloads the liblouis engine from emojar.com, but your text never leaves your device.
 
 If you like encoding systems, the [Morse code converter](/online-tool/text-tools/morse-code-converter) and the [Unicode character explorer](/online-tool/reference-tools/unicode-character-explorer) make good next stops. Otherwise, open the [braille translator](/online-tool/text-tools/braille-translator) and spell your name in dots.

@@ -99,6 +99,59 @@ export const AUDIO_VIDEO_TOOLS: ToolDefinition[] = [
     ],
   },
   {
+    slug: 'video-trimmer',
+    category: 'audio-video-tools',
+    name: 'Video Trimmer',
+    icon: '✂️',
+    shortDescription: 'Cut a clip out of a video without uploading it.',
+    description:
+      'Trim the start and end off a video, or cut out just the part you need, right in your browser. Fast mode copies the video without re-encoding, so quality is untouched and long files finish in seconds; precise mode re-encodes for a frame-exact cut. MP4 and WebM out, nothing uploaded.',
+    title: 'Video Trimmer – Cut Videos Online Without Uploading',
+    metaDescription:
+      'Trim and cut videos online for free: set start and end, export MP4 or WebM with no quality loss (fast mode) or a frame-exact cut. Runs in your browser, no upload.',
+    keywords: [
+      'video trimmer',
+      'trim video',
+      'cut video',
+      'video cutter',
+      'shorten video',
+      'clip video online',
+    ],
+    relatedTools: [
+      'video-compressor',
+      'video-to-gif',
+      'mp4-to-mp3',
+      'audio-trimmer',
+      'screen-recorder',
+    ],
+    component: 'video-trimmer',
+    handlesFiles: true,
+    howTo: [
+      'Choose a video (MP4, WebM, MOV or MKV).',
+      'Drag the Start and End sliders, type exact times, or play the video and use “Start/End = current frame”.',
+      'Pick Fast (no quality loss) or Precise (frame-exact, re-encodes).',
+      'Press Trim video, check the preview and download the clip.',
+    ],
+    about: [
+      'Video is stored as keyframes — complete pictures — with the frames in between saved as changes from them. That is why the fast mode, which copies the encoded video without decoding it, can only start a clip at a keyframe: your clip may begin up to a couple of seconds earlier than the start you set. It is lossless and very quick because nothing is re-compressed.',
+      'Precise mode decodes and re-encodes the clip with your browser’s built-in encoder (WebCodecs), so the cut lands on the exact frame, at the cost of time and a small quality change. Both modes keep MP4 as MP4 and WebM as WebM; other inputs such as MOV are saved as MP4. Formats your browser can’t decode — some HEVC, AVI or WMV files — can’t be trimmed here.',
+    ],
+    faqs: [
+      {
+        q: 'Why does my clip start a little early?',
+        a: 'Fast mode cuts at the keyframe before your start time so it can copy the video without re-encoding. Switch to Precise for an exact start.',
+      },
+      {
+        q: 'Is there a file size limit?',
+        a: 'There is no upload, so no server limit — the browser keeps the video in memory. Files of a few hundred MB work on most computers; phones may struggle with very large videos.',
+      },
+      {
+        q: 'Does it work on iPhone?',
+        a: 'Yes in Safari 17 or later, which supports WebCodecs. Older iOS versions show a message instead.',
+      },
+    ],
+  },
+  {
     slug: 'video-compressor',
     category: 'audio-video-tools',
     name: 'Video Compressor',

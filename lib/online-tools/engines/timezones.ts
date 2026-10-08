@@ -92,3 +92,76 @@ export function searchCities(q: string, limit = 12): City[] {
 export function hourDifference(a: string, b: string, at: Date): number {
   return (timeZoneOffset(at, b) - timeZoneOffset(at, a)) / 60;
 }
+
+/** A dot with its label; `width` (px) overrides the character estimate. */
+export type LabelBox = { x: number; y: number; text: string; width?: number };
+export type LabelPlacement = {
+  x: number;
+  y: number;
+  anchor: 'start' | 'end' | 'middle';
+} | null;
+
+/**
+ * Greedy label placement: each label tries right, left, above and below
+ * its dot and takes the first spot that overlaps nothing placed so far and
+ * stays inside the map. Labels that fit nowhere are hidden (null). Labels
+ * are placed in order, so put the focused one first.
+ */
+export function placeLabels(
+  points: LabelBox[],
+  w: number,
+  h: number,
+  charWidth = 6.2,
+): LabelPlacement[] {
+  type Rect = { l: number; t: number; r: number; b: number };
+  const taken: Rect[] = points.map((p) => ({
+    // Reserve each dot so labels don't cover other cities.
+    l: p.x - 5,
+    t: p.y - 5,
+    r: p.x + 5,
+    b: p.y + 5,
+  }));
+  const overlaps = (a: Rect, b: Rect) =>
+    a.l < b.r && a.r > b.l && a.t < b.b && a.b > b.t;
+  return points.map((p, i) => {
+    // 4 px of breathing room so neighbouring labels don't touch.
+    const tw = (p.width ?? p.text.length * charWidth) + 4;
+    // Boxes match the rendered text (11 px font: ~9 px above the baseline,
+    // ~3 px below) plus the 3 px white halo, so neighbours never touch.
+    const pad = 2;
+    const box = (l: number, base: number): Rect => ({
+      l: l - pad,
+      t: base - 9 - pad,
+      r: l + tw + pad,
+      b: base + 3 + pad,
+    });
+    const candidates: { rect: Rect; place: NonNullable<LabelPlacement> }[] = [
+      {
+        rect: box(p.x + 7, p.y + 4),
+        place: { x: p.x + 7, y: p.y + 4, anchor: 'start' },
+      },
+      {
+        rect: box(p.x - 7 - tw, p.y + 4),
+        place: { x: p.x - 7, y: p.y + 4, anchor: 'end' },
+      },
+      {
+        rect: box(p.x - tw / 2, p.y - 9),
+        place: { x: p.x, y: p.y - 9, anchor: 'middle' },
+      },
+      {
+        rect: box(p.x - tw / 2, p.y + 18),
+        place: { x: p.x, y: p.y + 18, anchor: 'middle' },
+      },
+    ];
+    const others = taken.filter((_, j) => j !== i);
+    for (const c of candidates) {
+      const inside =
+        c.rect.l >= 0 && c.rect.r <= w && c.rect.t >= 0 && c.rect.b <= h;
+      if (inside && !others.some((o) => overlaps(o, c.rect))) {
+        taken.push(c.rect);
+        return c.place;
+      }
+    }
+    return null;
+  });
+}

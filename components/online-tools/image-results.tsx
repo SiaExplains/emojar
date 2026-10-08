@@ -1,7 +1,45 @@
 'use client';
 
-import { formatBytes, savingsPercent } from '@/lib/online-tools/image/core';
+import { useState } from 'react';
+import {
+  formatBytes,
+  savingsPercent,
+  uniqueNames,
+} from '@/lib/online-tools/image/core';
+import { zipFiles } from './tools/image-shared';
 import { btnSecondary, downloadBlob, useObjectUrl } from './ui';
+
+/** One-click ZIP of several results, built in the browser. */
+export function ZipButton({
+  files,
+  zipName,
+}: {
+  files: { name: string; blob: Blob }[];
+  zipName: string;
+}) {
+  const [busy, setBusy] = useState(false);
+  return (
+    <button
+      type="button"
+      className={btnSecondary}
+      disabled={busy || files.length < 2}
+      onClick={async () => {
+        setBusy(true);
+        try {
+          const names = uniqueNames(files.map((f) => f.name));
+          const zip = await zipFiles(
+            files.map((f, i) => ({ name: names[i], data: f.blob })),
+          );
+          downloadBlob(zip, zipName);
+        } finally {
+          setBusy(false);
+        }
+      }}
+    >
+      {busy ? 'Zipping…' : '🗜️ Download ZIP'}
+    </button>
+  );
+}
 
 export type OutputItem = {
   name: string;
@@ -58,7 +96,13 @@ function ResultCard({ item }: { item: OutputItem }) {
   );
 }
 
-export function OutputList({ items }: { items: OutputItem[] }) {
+export function OutputList({
+  items,
+  zipName = 'emojar-files.zip',
+}: {
+  items: OutputItem[];
+  zipName?: string;
+}) {
   if (!items.length) return null;
   return (
     <div className="space-y-2" aria-live="polite">
@@ -67,20 +111,23 @@ export function OutputList({ items }: { items: OutputItem[] }) {
           {items.length} file{items.length === 1 ? '' : 's'} ready
         </h3>
         {items.length > 1 && (
-          <button
-            type="button"
-            className={btnSecondary}
-            onClick={() =>
-              items.forEach((it, i) =>
-                window.setTimeout(
-                  () => downloadBlob(it.blob, it.name),
-                  i * 250,
-                ),
-              )
-            }
-          >
-            ⬇ Download all
-          </button>
+          <div className="flex flex-wrap gap-2">
+            <ZipButton files={items} zipName={zipName} />
+            <button
+              type="button"
+              className={btnSecondary}
+              onClick={() =>
+                items.forEach((it, i) =>
+                  window.setTimeout(
+                    () => downloadBlob(it.blob, it.name),
+                    i * 250,
+                  ),
+                )
+              }
+            >
+              ⬇ Download each
+            </button>
+          </div>
         )}
       </div>
       <ul className="space-y-2">

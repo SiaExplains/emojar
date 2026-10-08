@@ -482,7 +482,12 @@ export default function PdfPagesTool({ config }: ToolProps) {
         {busy ? 'Working…' : action}
       </button>
       <ErrorMessage>{error}</ErrorMessage>
-      <OutputList items={results} />
+      <OutputList
+        items={results}
+        zipName={
+          file ? outputName(file.name, 'zip', '-split') : 'split-pdf.zip'
+        }
+      />
     </div>
   );
 }

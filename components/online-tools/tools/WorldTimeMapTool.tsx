@@ -7,6 +7,7 @@ import { formatOffset, timeZoneOffset } from '@/lib/online-tools/engines/dates';
 import {
   MAP_CITIES,
   isDst,
+  placeLabels,
   observesDst,
   project,
   searchCities,
@@ -81,6 +82,19 @@ function isPlace(p: unknown): p is Place {
     return true;
   } catch {
     return false;
+  }
+}
+
+// Measures label text with the page font so placement uses real widths.
+let measureCtx: CanvasRenderingContext2D | null = null;
+function textWidth(text: string): number | undefined {
+  try {
+    measureCtx ??= document.createElement('canvas').getContext('2d');
+    if (!measureCtx) return undefined;
+    measureCtx.font = `600 11px ${getComputedStyle(document.body).fontFamily}`;
+    return measureCtx.measureText(text).width;
+  } catch {
+    return undefined;
   }
 }
 
@@ -221,39 +235,58 @@ export default function WorldTimeMapTool(_: ToolProps) {
                 </circle>
               );
             })}
-            {places.map((pl, i) => {
-              if (pl.lat === undefined || pl.lon === undefined) return null;
-              const p = project(pl.lat, pl.lon, W, H);
-              const label = `${pl.label} ${timeIn(pl.tz, now, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })}`;
-              const right = p.x > W - 120;
-              return (
-                <g key={`${pl.label}-${i}`}>
-                  <circle
-                    cx={p.x}
-                    cy={p.y}
-                    r={4.5}
-                    className={
-                      focus === pl ? 'fill-rose-500' : 'fill-indigo-700'
-                    }
-                    stroke="white"
-                    strokeWidth={1.5}
-                  />
-                  <text
-                    x={p.x + (right ? -7 : 7)}
-                    y={p.y + 4}
-                    textAnchor={right ? 'end' : 'start'}
-                    className="fill-gray-900 text-[11px] font-semibold"
-                    style={{
-                      paintOrder: 'stroke',
-                      stroke: 'white',
-                      strokeWidth: 3,
-                    }}
-                  >
-                    {label}
-                  </text>
-                </g>
-              );
-            })}
+            {(() => {
+              // Focused city first so it always gets its label.
+              const shown = places
+                .map((pl, i) => ({ pl, i }))
+                .filter(
+                  ({ pl }) => pl.lat !== undefined && pl.lon !== undefined,
+                )
+                .sort(
+                  (a, b) => Number(b.pl === focus) - Number(a.pl === focus),
+                );
+              const pts = shown.map(({ pl }) => {
+                const p = project(pl.lat!, pl.lon!, W, H);
+                const text = `${pl.label} ${timeIn(pl.tz, now, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })}`;
+                return { ...p, text, width: textWidth(text) };
+              });
+              const placed = placeLabels(pts, W, H);
+              return shown.map(({ pl, i }, k) => {
+                const p = pts[k];
+                const lab = placed[k];
+                return (
+                  <g key={`${pl.label}-${i}`}>
+                    <circle
+                      cx={p.x}
+                      cy={p.y}
+                      r={4.5}
+                      className={
+                        focus === pl ? 'fill-rose-500' : 'fill-indigo-700'
+                      }
+                      stroke="white"
+                      strokeWidth={1.5}
+                    >
+                      <title>{p.text}</title>
+                    </circle>
+                    {lab && (
+                      <text
+                        x={lab.x}
+                        y={lab.y}
+                        textAnchor={lab.anchor}
+                        className="fill-gray-900 text-[11px] font-semibold"
+                        style={{
+                          paintOrder: 'stroke',
+                          stroke: 'white',
+                          strokeWidth: 3,
+                        }}
+                      >
+                        {p.text}
+                      </text>
+                    )}
+                  </g>
+                );
+              });
+            })()}
             {(() => {
               const p = project(sun.lat, sun.lon, W, H);
               return (

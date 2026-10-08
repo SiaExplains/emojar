@@ -46,6 +46,24 @@ const SPECS: Spec[] = [
       'volume-converter',
       'bmi-calculator',
     ],
+    variants: [
+      {
+        slug: 'km-to-miles',
+        name: 'Kilometers to Miles Converter',
+        title: 'Kilometers to Miles – km to mi Converter (and Miles to km)',
+        metaDescription:
+          'Convert kilometers to miles: 1 km = 0.621371 mi and 1 mile = 1.609344 km exactly. A 5K run is 3.11 miles, a marathon 42.195 km = 26.22 mi.',
+        description:
+          'Enter kilometers to get miles instantly. One kilometer is 0.621371 miles — so 10 km is about 6.2 miles — and a mile is exactly 1.609344 km.',
+        config: { quantity: 'length', init_from: 'km', init_to: 'mi' },
+        keywords: [
+          'km to miles',
+          'kilometers to miles',
+          'km to mi',
+          'convert km to miles',
+        ],
+      },
+    ],
   },
   {
     quantity: 'weight',
@@ -64,6 +82,24 @@ const SPECS: Spec[] = [
       'bmi-calculator',
       'length-converter',
       'energy-converter',
+    ],
+    variants: [
+      {
+        slug: 'kg-to-lbs',
+        name: 'Kilograms to Pounds Converter',
+        title: 'Kilograms to Pounds – kg to lbs Converter (and lbs to kg)',
+        metaDescription:
+          'Convert kg to lbs: 1 kg = 2.20462 lb and 1 lb = 0.45359237 kg exactly. 70 kg is 154.3 lb. Pounds and ounces shown too. Instant and exact.',
+        description:
+          'Enter kilograms to get pounds. One kilogram is about 2.2046 pounds — so 70 kg is 154.3 lb — because a pound is defined as exactly 0.45359237 kg.',
+        config: { quantity: 'weight', init_from: 'kg', init_to: 'lb' },
+        keywords: [
+          'kg to lbs',
+          'kilograms to pounds',
+          'kg to lb',
+          'convert kg to pounds',
+        ],
+      },
     ],
   },
   {
@@ -90,6 +126,24 @@ const SPECS: Spec[] = [
       'energy-converter',
       'pressure-converter',
       'length-converter',
+    ],
+    variants: [
+      {
+        slug: 'celsius-to-fahrenheit',
+        name: 'Celsius to Fahrenheit Converter',
+        title: 'Celsius to Fahrenheit – °C to °F Converter with Formula',
+        metaDescription:
+          'Convert Celsius to Fahrenheit: °F = °C × 9/5 + 32. 0 °C = 32 °F, 20 °C = 68 °F, 37 °C = 98.6 °F, 100 °C = 212 °F. Instant results.',
+        description:
+          'Enter a temperature in Celsius to get Fahrenheit. Multiply by 9/5 and add 32: 20 °C is 68 °F, body temperature 37 °C is 98.6 °F and water boils at 212 °F.',
+        config: { quantity: 'temperature', init_from: 'c', init_to: 'f' },
+        keywords: [
+          'celsius to fahrenheit',
+          'c to f',
+          '°c to °f',
+          'convert celsius to fahrenheit',
+        ],
+      },
     ],
   },
   {

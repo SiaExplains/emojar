@@ -257,4 +257,6 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'color-name-explorer': '2027-01-14',
   'measurement-reference': '2027-01-15',
   'braille-translator': '2027-01-16',
+  // v0.13.0 follow-ups.
+  'video-trimmer': '2027-01-17',
 };

@@ -1,7 +1,7 @@
 {
   "name": "emojar",
   "private": true,
-  "version": "0.12.1",
+  "version": "0.13.0",
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
@@ -13,14 +13,16 @@
     "test:watch": "vitest",
     "format": "prettier --write .",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "gen": "cd scripts && node generate2.js"
+    "gen": "cd scripts && node generate2.js",
+    "data:reference": "node scripts/reference-data/index.mjs",
+    "build:liblouis": "scripts/build-liblouis.sh"
   },
   "dependencies": {
     "@breezystack/lamejs": "^1.2.7",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@neslinesli93/qpdf-wasm": "^0.3.0",
-    "@next/mdx": "^16.2.6",
+    "@next/mdx": "^15.5.9",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@tailwindcss/typography": "^0.5.19",

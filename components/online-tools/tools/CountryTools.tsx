@@ -40,6 +40,34 @@ export const ALL_COUNTRIES = (COUNTRIES as Country[])
   .slice()
   .sort((a, b) => a.n.localeCompare(b.n));
 
+/**
+ * True when this device draws flag emoji. Windows has no flag glyphs and
+ * shows the two regional-indicator letters in plain text colour instead, so
+ * we draw one flag and look for coloured pixels.
+ */
+export function supportsFlagEmoji(): boolean {
+  try {
+    const c = document.createElement('canvas');
+    c.width = c.height = 32;
+    const ctx = c.getContext('2d', { willReadFrequently: true });
+    if (!ctx) return true;
+    ctx.fillStyle = '#000';
+    ctx.textBaseline = 'top';
+    ctx.font = '28px sans-serif';
+    ctx.fillText('\u{1F1E9}\u{1F1EA}', 0, 0);
+    const d = ctx.getImageData(0, 0, 32, 32).data;
+    for (let i = 0; i < d.length; i += 4)
+      if (
+        d[i + 3] > 0 &&
+        (Math.abs(d[i] - d[i + 1]) > 30 || Math.abs(d[i + 1] - d[i + 2]) > 30)
+      )
+        return true;
+    return false;
+  } catch {
+    return true;
+  }
+}
+
 /** Flag emoji from regional-indicator letters (shows as letters on Windows). */
 export const flagOf = (a2: string) =>
   String.fromCodePoint(
@@ -319,6 +347,7 @@ export function FlagExplorerTool(_: ToolProps) {
   const [view, setView] = useState<'grid' | 'list'>('grid');
   const [selected, setSelected] = useState<Country | null>(null);
   const [quiz, setQuiz] = useState<Quiz | null>(null);
+  const [flags] = useState(supportsFlagEmoji);
   const q = useDeferredValue(query);
 
   const pool = useMemo(
@@ -509,10 +538,23 @@ export function FlagExplorerTool(_: ToolProps) {
             { value: 'list', label: '☰ Compact list' },
           ]}
         />
-        <button type="button" className={btnSecondary} onClick={startQuiz}>
+        <button
+          type="button"
+          className={btnSecondary}
+          onClick={startQuiz}
+          disabled={!flags}
+          title={flags ? undefined : 'Your system can’t display flag emoji'}
+        >
           🎯 Quiz me
         </button>
       </div>
+      {!flags && (
+        <p className="text-sm text-amber-800">
+          Your system shows flag emoji as two letters (Windows does this), so
+          the quiz is turned off — the letters would give the answers away. The
+          ISO codes are shown below instead.
+        </p>
+      )}
       {list.length === 0 ? (
         <EmptyState>No flag matches “{q}”.</EmptyState>
       ) : view === 'grid' ? (
@@ -524,15 +566,26 @@ export function FlagExplorerTool(_: ToolProps) {
                 onClick={() => setSelected(c)}
                 className="flex w-full flex-col items-center gap-1 rounded-2xl border border-gray-100 p-3 text-center transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
               >
-                <span className="text-5xl leading-none" aria-hidden>
-                  {flagOf(c.a2)}
-                </span>
+                {flags ? (
+                  <span className="text-5xl leading-none" aria-hidden>
+                    {flagOf(c.a2)}
+                  </span>
+                ) : (
+                  <span
+                    className="flex h-12 w-16 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 font-mono text-lg font-semibold text-gray-700"
+                    aria-hidden
+                  >
+                    {c.a2}
+                  </span>
+                )}
                 <span className="line-clamp-2 text-xs font-medium text-gray-900">
                   {c.n}
                 </span>
-                <span className="font-mono text-[10px] text-gray-500">
-                  {c.a2}
-                </span>
+                {flags && (
+                  <span className="font-mono text-[10px] text-gray-500">
+                    {c.a2}
+                  </span>
+                )}
               </button>
             </li>
           ))}

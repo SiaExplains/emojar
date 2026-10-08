@@ -210,6 +210,7 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
   'number-system': load(() => import('./tools/NumberSystemTool')),
   'morse-code': load(() => import('./tools/MorseCodeTool')),
   braille: load(() => import('./tools/BrailleTool')),
+  'video-trimmer': load(() => import('./tools/VideoTrimmerTool')),
   'measurement-reference': load(
     () => import('./tools/MeasurementReferenceTool'),
   ),

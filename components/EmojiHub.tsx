@@ -254,6 +254,12 @@ const LATEST_POSTS = [
 export default function EmojiHub() {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Emoji[]>([]);
+
+  // The header search links here as /emoji?q=…; start with that query.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (q) setQuery(q);
+  }, []);
   const [copied, setCopied] = useState<string | null>(null);
 
   const fuse = useMemo(

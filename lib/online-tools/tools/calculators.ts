@@ -1541,4 +1541,58 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'molar-mass-calculator',
+    category: 'calculators',
+    alsoIn: ['reference-tools'],
+    name: 'Molar Mass Calculator',
+    icon: '🧪',
+    shortDescription:
+      'Molar mass and percent composition of any chemical formula.',
+    description:
+      'Calculate the molar mass of a chemical formula — H2O, Ca(OH)2, C6H12O6, CuSO4·5H2O — with a breakdown of each element’s count, mass contribution and percentage by mass. Brackets, hydrates and charges are understood, and grams convert to moles.',
+    title: 'Molar Mass Calculator – Molecular Weight of Any Formula',
+    metaDescription:
+      'Free molar mass calculator: enter a chemical formula like H2SO4 or Ca(OH)2 to get g/mol, element breakdown and percent composition. Handles brackets and hydrates.',
+    keywords: [
+      'molar mass calculator',
+      'molecular weight calculator',
+      'chemical formula',
+      'chemistry calculator',
+      'percent composition',
+      'grams to moles',
+      'chemical',
+    ],
+    relatedTools: [
+      'periodic-table',
+      'scientific-calculator',
+      'percentage-calculator',
+      'weight-converter',
+    ],
+    component: 'molar-mass',
+    howTo: [
+      'Type a formula with correct capitals: Co is cobalt, CO is carbon monoxide.',
+      'Use brackets for groups, Ca(OH)2, and · or * for hydrates, CuSO4·5H2O.',
+      'Read the molar mass and each element’s share by mass.',
+      'Optionally enter a mass in grams to convert it to moles.',
+    ],
+    about: [
+      'Molar mass is the mass of one mole (6.022 × 10²³ formula units) of a substance in grams per mole. It is the sum of the atomic weights of every atom in the formula: water, H₂O, is 2 × 1.008 + 15.999 = 18.015 g/mol. The calculator uses IUPAC standard atomic weights and shows each element’s contribution and percentage by mass.',
+      'The parser handles nested brackets like K4[Fe(CN)6], Unicode subscripts, hydrate dots and a trailing ionic charge (SO4^2-, which is ignored because electrons weigh almost nothing). It also checks whether the formula can balance with the elements’ common oxidation states, and warns when something looks incomplete — such as H2SO instead of H2SO4.',
+    ],
+    faqs: [
+      {
+        q: 'What is the molar mass of water?',
+        a: '18.015 g/mol: two hydrogens (2 × 1.008) plus one oxygen (15.999).',
+      },
+      {
+        q: 'Is molar mass the same as molecular weight?',
+        a: 'Numerically yes — molecular weight (in daltons, u) and molar mass (in g/mol) have the same number. Molar mass is the term for a mole of the substance.',
+      },
+      {
+        q: 'How do I convert grams to moles?',
+        a: 'Divide the mass by the molar mass: 36 g of water ÷ 18.015 g/mol ≈ 2.0 mol. Enter the grams below the result to do it automatically.',
+      },
+    ],
+  },
 ];

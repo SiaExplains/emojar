@@ -557,10 +557,10 @@ export const TEXT_TOOLS: ToolDefinition[] = [
     icon: '📡',
     shortDescription: 'Translate text to Morse code and back.',
     description:
-      'Translate text to International Morse code and decode Morse back into text. The direction is detected automatically.',
+      'Translate text to International Morse code and decode Morse back into text — the direction is detected automatically. Hear it played at the speed you choose (5–40 WPM), see the dots and dashes drawn out, and learn from the clickable Morse alphabet.',
     title: 'Morse Code Translator – Text to Morse & Morse to Text',
     metaDescription:
-      'Translate text to Morse code and Morse code to text online. Automatic direction detection. Free.',
+      'Translate text to Morse code and Morse to text, play it as sound at adjustable WPM, and learn with an interactive Morse alphabet. Free, works offline.',
     keywords: [
       'morse code translator',
       'morse code converter',
@@ -573,7 +573,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'base64-encoder',
       'url-encoder',
     ],
-    component: 'text-transform',
+    component: 'morse-code',
     config: { transform: 'morse' },
     howTo: [
       'Type text or paste Morse code (dots and dashes).',
@@ -1276,6 +1276,53 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       {
         q: 'Should I change the slug of a published page?',
         a: 'Only with a 301 redirect from the old URL, or you lose links and search rankings that point to it.',
+      },
+    ],
+  },
+  {
+    slug: 'braille-translator',
+    category: 'text-tools',
+    alsoIn: ['reference-tools'],
+    name: 'Braille Translator',
+    icon: '⠃',
+    shortDescription: 'Convert text to braille and braille back to text.',
+    description:
+      'Translate English text to braille and braille back to text, using uncontracted (Grade 1) braille with capital and number signs and basic punctuation. Copy the Unicode braille output, swap direction, and see every letter, number and sign as a dot chart.',
+    title: 'Braille Translator – Text to Braille & Braille to Text',
+    metaDescription:
+      'Translate text to braille or braille to English: Grade 1 braille with capitals, numbers and punctuation, a dot chart for every letter, and copyable Unicode output.',
+    keywords: [
+      'braille translator',
+      'text to braille',
+      'braille alphabet',
+      'braille to english',
+      'braille converter',
+      'braille chart',
+    ],
+    relatedTools: [
+      'morse-code-converter',
+      'unicode-character-explorer',
+      'text-to-speech',
+      'fancy-text-generator',
+    ],
+    component: 'braille',
+    howTo: [
+      'Type text — or paste braille characters — in the input box.',
+      'The direction is detected automatically; switch it or press Swap if needed.',
+      'Copy the result, or use the chart to learn each letter’s dots.',
+    ],
+    about: [
+      'Each braille cell has six dot positions in two columns, numbered 1–3 on the left and 4–6 on the right. Letters a–j use only the top four dots; k–t add dot 3, and u, v, x, y, z add dots 3 and 6 (w came later, from French braille). A capital sign (dot 6) goes before a capital letter, and the number sign (dots 3-4-5-6) turns a–j into the digits 1–0.',
+      'This tool uses uncontracted Grade 1 braille, where each letter is spelled out. Most published English braille is contracted Unified English Braille (UEB), which uses shortcuts for common words and letter groups, and formal transcription follows detailed layout rules. Use this as a learning and reference aid, not as a substitute for a qualified transcriber.',
+    ],
+    faqs: [
+      {
+        q: 'Can I print this for a blind reader?',
+        a: 'Printed Unicode braille is flat, so it can’t be read by touch. Embossed braille needs a braille embosser or a transcription service — and most readers expect contracted UEB.',
+      },
+      {
+        q: 'What is the difference between Grade 1 and Grade 2 braille?',
+        a: 'Grade 1 spells every letter. Grade 2 (contracted) uses about 180 contractions, such as single cells for “and”, “the” and “ing”, making text shorter and faster to read.',
       },
     ],
   },

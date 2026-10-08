@@ -181,7 +181,9 @@ describe('tool guides', () => {
     ).toBe(false);
     const launch = publishedGuides(new Date('2026-10-07T12:00:00Z'));
     expect(launch.length).toBe(5);
-    expect(publishedGuides(new Date('2027-01-01T00:00:00Z')).length).toBe(
+    // Everything is live once the last scheduled date has passed.
+    const last = Object.values(GUIDE_SCHEDULE).sort().at(-1)!;
+    expect(publishedGuides(new Date(`${last}T00:00:00Z`)).length).toBe(
       guides.length,
     );
   });

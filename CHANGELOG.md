@@ -4,6 +4,32 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.12.0] — 2026-10-08
+
+### Added
+
+- A new **Reference & Learning** category with an Interactive Periodic Table
+  (all 118 elements with properties and filters), Country Explorer (capitals,
+  ISO codes, currencies, calling codes, time zones), Flag Explorer with a
+  quiz, Keyboard Shortcut Reference for Windows, macOS, Linux and the major
+  browsers, Unicode Character Explorer, Math Symbols with LaTeX, and a
+  Measurement Reference for paper sizes, aspect ratios and resolutions.
+- Developer tools: CSS Unit Visualizer, HTML Entity Reference, CSS Flexbox
+  Playground, CSS Grid Playground and an ASCII Table.
+- Color Name Explorer, Molar Mass Calculator, Braille Translator and a live
+  World Time Zone Map with day and night shading.
+- Four landing pages (Greek Letters, A4 Paper Size, HTML Arrow Entities, ASCII
+  Control Characters), 16 scheduled guides and a reference FAQ section.
+
+### Changed
+
+- Number Base Converter now explains each digit's place value, shows every
+  base at once and swaps bases in one click (batch conversion is still there).
+- Morse Code Translator can play Morse as sound at adjustable speed and has a
+  clickable Morse alphabet.
+- HTTP Status Codes marks the codes you commonly see, explains typical usage
+  and links related codes; Roman Numeral Converter shows a full reference.
+
 ## [0.11.1] — 2026-10-08
 
 ### Changed

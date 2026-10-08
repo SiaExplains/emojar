@@ -1060,12 +1060,12 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
   {
     slug: 'number-base-converter',
     category: 'developer-tools',
-    alsoIn: ['unit-converters'],
+    alsoIn: ['unit-converters', 'reference-tools'],
     name: 'Number Base Converter',
     icon: '🔢',
     shortDescription: 'Binary, octal, decimal and hex — any base 2–36.',
     description:
-      'Convert numbers between binary, octal, decimal, hexadecimal and any base from 2 to 36. Paste one number per line, use prefixes like 0x and 0b, and convert numbers of any size — 64-bit values and beyond are exact.',
+      'Convert numbers between binary, octal, decimal, hexadecimal and any base from 2 to 36, and see why the answer is right: each digit’s place value is broken down (255 = 15×16¹ + 15×16⁰). Use prefixes like 0x and 0b, swap bases in one click, convert huge numbers exactly, or paste a list to convert many at once.',
     title: 'Number Base Converter – Binary, Hex, Decimal & Octal',
     metaDescription:
       'Convert between binary, decimal, hexadecimal, octal and any base 2–36. Exact for huge numbers, accepts 0x/0b prefixes, converts many numbers at once. Free.',
@@ -1084,7 +1084,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'color-converter',
       'scientific-calculator',
     ],
-    component: 'text-transform',
+    component: 'number-system',
     config: { transform: 'number-base' },
     popular: true,
     howTo: [
@@ -1659,6 +1659,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
   {
     slug: 'http-status-codes',
     category: 'developer-tools',
+    alsoIn: ['reference-tools'],
     name: 'HTTP Status Code Lookup',
     icon: '🚦',
     shortDescription: 'Every HTTP status code explained, with SEO notes.',
@@ -1906,6 +1907,299 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
           'binary to english',
           'binary decoder',
           'translate binary',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'css-unit-visualizer',
+    category: 'developer-tools',
+    name: 'CSS Unit Visualizer',
+    icon: '📏',
+    shortDescription: 'See px, %, em, rem, vw, vh, ch and ex side by side.',
+    description:
+      'See how CSS length units resolve to pixels: set the root and parent font size, parent width and viewport size, and every unit — px, %, em, rem, vw, vh, vmin, vmax, ch, ex, pt, cm, mm and in — converts live, with bars and a to-scale box so you can see the difference.',
+    title: 'CSS Unit Converter & Visualizer – px, rem, em, vw, vh',
+    metaDescription:
+      'Convert and compare CSS units visually: px, rem, em, %, vw, vh, vmin, vmax, ch and ex. Set font size and viewport and see 10rem = 160px update live.',
+    keywords: [
+      'css units',
+      'px to rem',
+      'rem to px',
+      'em vs rem',
+      'vw to px',
+      'css unit converter',
+      'css',
+    ],
+    relatedTools: [
+      'flexbox-playground',
+      'grid-playground',
+      'measurement-reference',
+      'css-formatter',
+      'color-converter',
+    ],
+    component: 'css-units',
+    howTo: [
+      'Set the context: root font size (for rem), parent font size (for em), parent width (for %) and viewport size.',
+      'Enter a value and unit, such as 10 rem, to see it in pixels and every other unit.',
+      'Compare one of each unit in the bar chart.',
+      'Size a box in any units to see it drawn inside the viewport to scale.',
+    ],
+    about: [
+      'CSS units fall into four families. Absolute units (px, pt, cm, in) are fixed: 1in is always 96px in CSS. Font-relative units scale with text: rem follows the root font size, em follows the parent’s font size, ch is the width of the digit 0 and ex the height of the letter x. Viewport units are percentages of the browser window — 1vw is 1% of its width. Percentages refer to the parent element.',
+      'rem is the usual choice for font sizes and spacing because it respects the reader’s browser font-size setting without compounding like em does in nested elements. The ch and ex ratios on this page are measured in your browser for its default font, so they match what your CSS would actually produce.',
+    ],
+    faqs: [
+      {
+        q: 'How many pixels is 1rem?',
+        a: '16px by default, because browsers set the root font size to 16px. If a user raises their default font size, or your CSS sets html { font-size }, 1rem changes with it.',
+      },
+      {
+        q: 'What is the difference between em and rem?',
+        a: 'rem is relative to the root (html) font size and is the same everywhere on the page. em is relative to the current element’s parent font size, so 1.2em inside 1.2em becomes 1.44 times the base.',
+      },
+      {
+        q: 'Why does 100vh look too tall on phones?',
+        a: 'Mobile browsers count the area behind the address bar. Use 100dvh (dynamic) or 100svh (small viewport) instead.',
+      },
+    ],
+  },
+  {
+    slug: 'html-entity-reference',
+    category: 'developer-tools',
+    alsoIn: ['reference-tools'],
+    name: 'HTML Entity Reference',
+    icon: '&',
+    shortDescription: 'Search all 2,000+ named HTML entities and copy them.',
+    description:
+      'Search every named character reference in the HTML standard — &copy;, &nbsp;, &rarr;, &euro; and 1,500 more characters — by name, character or Unicode code point. Each one shows the named entity, decimal and hex references and the code point, all ready to copy.',
+    title: 'HTML Entities List – Search & Copy Named, Decimal & Hex Codes',
+    metaDescription:
+      'Complete list of HTML entities: search by name, character or code point and copy &copy; &nbsp; &rarr; &euro; with decimal and hex codes. Arrows, math, currency, Greek.',
+    keywords: [
+      'html entities',
+      'html entity list',
+      'html symbols',
+      'character entity reference',
+      'nbsp',
+      'html special characters',
+      'unicode',
+    ],
+    relatedTools: [
+      'html-entity-encoder',
+      'unicode-character-explorer',
+      'math-symbols',
+      'special-characters',
+      'ascii-table',
+    ],
+    component: 'html-entity-reference',
+    howTo: [
+      'Search by entity name (copy, rarr), the character itself (©) or its code point (U+00A9).',
+      'Filter by category: symbols, currency, arrows, mathematical, punctuation, Latin, Greek or Cyrillic.',
+      'Click an entity to see and copy the named, decimal and hexadecimal forms.',
+    ],
+    about: [
+      'An HTML entity is a way to write a character using only ASCII: the named reference &copy;, the decimal reference &#169; and the hexadecimal reference &#xA9; all produce ©. The list here is the official set of 2,231 names from the WHATWG HTML standard, grouped by the character they produce (many characters have several names, such as &rarr; and &rightarrow;).',
+      'In a UTF-8 page you can type most characters directly. Entities are still needed for the characters HTML itself uses — &lt; for <, &gt; for >, &amp; for & and &quot; inside attribute values — and they help for invisible characters like the non-breaking space (&nbsp;). To escape a whole block of text at once, use the HTML Entity Encoder.',
+    ],
+    faqs: [
+      {
+        q: 'What is &nbsp;?',
+        a: 'A non-breaking space (U+00A0): it looks like a space but stops the browser from breaking the line there, so “10 kg” or “Mr. Smith” stay together.',
+      },
+      {
+        q: 'Should I use named or numeric entities?',
+        a: 'Both work in every modern browser. Named ones are easier to read; numeric ones work for any character, including those without a name.',
+      },
+      {
+        q: 'Do entities need the semicolon?',
+        a: 'Always include it. A few legacy names work without it, but omitting it can make the browser misread text that follows.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'html-arrow-entities',
+        name: 'HTML Arrow Entities',
+        title: 'HTML Arrow Entities – &rarr; &larr; &uarr; &darr; and More',
+        metaDescription:
+          'All HTML arrow entities with codes to copy: &rarr; → &larr; ← &uarr; ↑ &darr; ↓ &harr; ↔ &rArr; ⇒ and more, with decimal, hex and Unicode.',
+        description:
+          'Every arrow that has a named HTML entity — from &rarr; (→) and &larr; (←) to double arrows like &rArr; (⇒) and long arrows like &xrarr; (⟶) — with its decimal and hex references.',
+        config: { init_category: 'arrows' },
+        keywords: [
+          'html arrow entity',
+          'rarr',
+          'html arrow code',
+          'arrow symbol html',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'flexbox-playground',
+    category: 'developer-tools',
+    name: 'CSS Flexbox Playground',
+    icon: '↔️',
+    shortDescription: 'Build flexbox layouts visually and copy the CSS.',
+    description:
+      'Learn and build CSS flexbox layouts by clicking: change flex-direction, wrap, justify-content, align-items, align-content and gaps, tune each item’s flex-grow, flex-shrink, flex-basis, align-self and order, and copy the generated CSS.',
+    title: 'CSS Flexbox Playground – Visual Flexbox Generator',
+    metaDescription:
+      'Interactive CSS flexbox playground: try justify-content, align-items, flex-wrap, gap and flex-grow on live boxes, resize the preview and copy clean CSS.',
+    keywords: [
+      'flexbox playground',
+      'css flexbox',
+      'flexbox generator',
+      'justify-content',
+      'align-items',
+      'flexbox cheat sheet',
+      'css',
+    ],
+    relatedTools: [
+      'grid-playground',
+      'css-unit-visualizer',
+      'gradient-generator',
+      'css-formatter',
+      'color-palette-generator',
+    ],
+    component: 'flexbox-playground',
+    howTo: [
+      'Set the container properties on the left — direction, wrap, alignment and gaps.',
+      'Click an item (or its number) to edit its flex-grow, flex-shrink, flex-basis, align-self and order.',
+      'Drag “Preview width” to see how the layout responds to narrower screens.',
+      'Copy the generated CSS, or press Randomize for an example to study.',
+    ],
+    about: [
+      'Flexbox lays items out along one axis. flex-direction sets that main axis (row or column); justify-content spaces items along it, and align-items positions them on the cross axis. With flex-wrap: wrap, items move onto new lines when they run out of room, and align-content then spaces those lines.',
+      'Each item’s flex shorthand — grow, shrink, basis — decides how it shares space: flex: 1 1 0 makes items equal widths, flex: 0 0 200px fixes a width. The generated CSS only includes properties that differ from the defaults, so it stays short.',
+    ],
+    faqs: [
+      {
+        q: 'How do I centre something with flexbox?',
+        a: 'On the container: display: flex; justify-content: center; align-items: center; — and give it a height if you want vertical centring.',
+      },
+      {
+        q: 'Flexbox or grid?',
+        a: 'Flexbox for one dimension — a row of buttons, a navigation bar. Grid when you need rows and columns at the same time.',
+      },
+    ],
+  },
+  {
+    slug: 'grid-playground',
+    category: 'developer-tools',
+    name: 'CSS Grid Playground',
+    icon: '▦',
+    shortDescription:
+      'Build CSS grid layouts with numbered lines and copy the CSS.',
+    description:
+      'Build CSS grid layouts visually: set grid-template-columns and rows, gaps, alignment and auto-flow, place items with grid-column and grid-row using the numbered grid lines, start from examples like a dashboard or holy-grail page, and copy the CSS.',
+    title: 'CSS Grid Playground – Visual Grid Layout Generator',
+    metaDescription:
+      'Interactive CSS grid generator: set grid-template-columns, rows and gaps, place items by line number or span, see numbered grid lines and copy the CSS.',
+    keywords: [
+      'css grid generator',
+      'css grid playground',
+      'grid-template-columns',
+      'grid layout',
+      'css grid',
+      'css',
+    ],
+    relatedTools: [
+      'flexbox-playground',
+      'css-unit-visualizer',
+      'css-formatter',
+      'gradient-generator',
+    ],
+    component: 'grid-playground',
+    howTo: [
+      'Type the column and row templates, e.g. repeat(3, 1fr) or 200px 1fr.',
+      'Set gaps, alignment and auto-flow.',
+      'Click an item and set its grid-column and grid-row start and end — use the small line numbers, or values like span 2.',
+      'Load an example layout, then copy the generated CSS.',
+    ],
+    about: [
+      'CSS grid places items on rows and columns at once. grid-template-columns: repeat(3, 1fr) makes three equal columns; fr means a fraction of the free space, and minmax(120px, 1fr) with auto-fill makes as many columns as fit — a responsive gallery without media queries.',
+      'Grid lines are numbered from 1 at the start edge. grid-column: 1 / 3 spans from line 1 to line 3 (two columns); span 2 does the same from wherever the item lands. The line numbers in the preview are read back from your browser, so they match exactly what the CSS produces.',
+    ],
+    faqs: [
+      {
+        q: 'What does 1fr mean?',
+        a: 'One fraction of the remaining space. In 1fr 2fr, the second column gets twice the leftover width of the first.',
+      },
+      {
+        q: 'What is the difference between auto-fill and auto-fit?',
+        a: 'Both create as many tracks as fit. auto-fill keeps empty tracks; auto-fit collapses them so the items stretch to fill the row.',
+      },
+    ],
+  },
+  {
+    slug: 'ascii-table',
+    category: 'developer-tools',
+    alsoIn: ['reference-tools'],
+    name: 'ASCII Table',
+    icon: '🔡',
+    shortDescription:
+      'All 128 ASCII codes in decimal, hex, octal, binary and HTML.',
+    description:
+      'The complete ASCII table: all 128 characters with decimal, hexadecimal, octal and binary values, HTML codes and names, with the 33 control characters such as NUL, TAB, LF, CR, ESC and DEL clearly labelled. Search by character, number or name and click any value to copy it.',
+    title: 'ASCII Table – Codes in Decimal, Hex, Binary & HTML',
+    metaDescription:
+      'Full ASCII table of all 128 characters: decimal, hex, octal, binary and HTML codes, control characters (NUL, TAB, LF, CR, ESC, DEL) explained. Search and copy.',
+    keywords: [
+      'ascii table',
+      'ascii code',
+      'ascii chart',
+      'ascii to hex',
+      'ascii control characters',
+      'ascii values',
+    ],
+    relatedTools: [
+      'unicode-character-explorer',
+      'number-base-converter',
+      'text-to-binary',
+      'html-entity-reference',
+      'base64-encoder',
+    ],
+    component: 'ascii-table',
+    howTo: [
+      'Search for a character (A), a decimal (65), a hex value (0x41) or a name (escape, tab).',
+      'Switch between all 128 codes, the control characters and the printable ones.',
+      'Click any value in the table to copy it, or click a name for every representation.',
+    ],
+    about: [
+      'ASCII (American Standard Code for Information Interchange) assigns the numbers 0–127 to English letters, digits, punctuation and 33 control codes. It fits in 7 bits, and the first 128 Unicode code points are identical to it, which is why ASCII text is also valid UTF-8.',
+      'Codes 0–31 and 127 are control characters from the teleprinter era. A few still matter: 9 is TAB, 10 is LF (the line ending on Linux and macOS), 13 is CR (Windows ends lines with CR + LF), 27 is ESC (start of terminal colour codes) and 0 is NUL, the string terminator in C. Handy patterns: uppercase letters start at 65 and lowercase at 97, exactly 32 apart.',
+    ],
+    faqs: [
+      {
+        q: 'What is the ASCII code for A?',
+        a: '65 in decimal, 0x41 in hex, 101 in octal and 1000001 in binary. Lowercase a is 97 (0x61).',
+      },
+      {
+        q: 'Is ASCII the same as Unicode?',
+        a: 'ASCII is the first 128 code points of Unicode. Unicode extends it to over 150,000 characters, including accented letters, other scripts and emoji.',
+      },
+      {
+        q: 'What is “extended ASCII”?',
+        a: 'Several different 8-bit code pages (such as Windows-1252 and ISO-8859-1) that use 128–255 for extra characters. They are not part of ASCII itself and disagree with each other, which is why UTF-8 replaced them.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'ascii-control-characters',
+        name: 'ASCII Control Characters',
+        title: 'ASCII Control Characters – NUL, TAB, LF, CR, ESC & DEL',
+        metaDescription:
+          'All 33 ASCII control characters (0–31 and 127) with names, decimal, hex, caret notation and escape sequences: NUL, BEL, TAB, LF, CR, ESC, DEL.',
+        description:
+          'The 33 non-printing ASCII control codes — 0 to 31 and 127 — with their abbreviations, names, hex values, caret notation (^M) and escape sequences such as \\n, \\r and \\t.',
+        config: { init_section: 'control' },
+        keywords: [
+          'ascii control characters',
+          'control codes',
+          'nul character',
+          'crlf',
+          'escape character',
         ],
       },
     ],

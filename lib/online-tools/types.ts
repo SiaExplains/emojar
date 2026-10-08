@@ -9,7 +9,8 @@ export type CategorySlug =
   | 'security-generators'
   | 'date-time-tools'
   | 'audio-video-tools'
-  | 'device-tests';
+  | 'device-tests'
+  | 'reference-tools';
 
 export type FAQItem = { q: string; a: string };
 
@@ -138,7 +139,25 @@ export type ToolComponentKey =
   | 'audio-converter'
   | 'video-compressor'
   | 'voice-recorder'
-  | 'screen-recorder';
+  | 'screen-recorder'
+  | 'periodic-table'
+  | 'world-time-map'
+  | 'country-explorer'
+  | 'flag-explorer'
+  | 'color-names'
+  | 'css-units'
+  | 'flexbox-playground'
+  | 'grid-playground'
+  | 'keyboard-shortcuts'
+  | 'unicode-explorer'
+  | 'math-symbols'
+  | 'html-entity-reference'
+  | 'ascii-table'
+  | 'molar-mass'
+  | 'number-system'
+  | 'morse-code'
+  | 'braille'
+  | 'measurement-reference';
 
 /** Serializable settings handed from the server page to the tool component. */
 export type ToolConfig = Record<string, string | number | boolean>;

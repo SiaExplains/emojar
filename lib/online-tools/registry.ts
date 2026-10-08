@@ -13,6 +13,7 @@ import { TEXT_TOOLS } from './tools/text-tools';
 import { UNIT_CONVERTERS } from './tools/unit-converters';
 import { AUDIO_VIDEO_TOOLS } from './tools/audio-video-tools';
 import { DEVICE_TESTS } from './tools/device-tests';
+import { REFERENCE_TOOLS } from './tools/reference-tools';
 import type {
   CategoryDefinition,
   CategorySlug,
@@ -23,7 +24,7 @@ import type {
 export const SITE_URL = 'https://emojar.com';
 export const TOOLS_BASE = '/online-tool';
 /** Bump when tool content changes meaningfully; used for sitemap lastModified. */
-export const TOOLS_UPDATED = '2026-10-07';
+export const TOOLS_UPDATED = '2026-10-08';
 
 export const TOOLS: ToolDefinition[] = [
   ...IMAGE_TOOLS,
@@ -37,6 +38,7 @@ export const TOOLS: ToolDefinition[] = [
   ...DATE_TIME_TOOLS,
   ...AUDIO_VIDEO_TOOLS,
   ...DEVICE_TESTS,
+  ...REFERENCE_TOOLS,
 ];
 
 export { CATEGORIES };

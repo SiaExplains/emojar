@@ -358,7 +358,7 @@ export function findAndReplace(
 
 // ── Morse code ─────────────────────────────────────────────────────────────
 
-const MORSE: Record<string, string> = {
+export const MORSE: Record<string, string> = {
   A: '.-',
   B: '-...',
   C: '-.-.',

@@ -679,4 +679,57 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'world-time-zone-map',
+    category: 'date-time-tools',
+    name: 'World Time Zone Map',
+    icon: '🗺️',
+    shortDescription: 'See day, night and local times on a live world map.',
+    description:
+      'A live world map with day and night shading and the local time in cities around the globe. Search 500 cities or any IANA time zone, add them to a comparison table with local time, date, UTC offset, daylight saving status and the difference from your own time.',
+    title: 'World Time Zone Map – Live Day & Night Map with Local Times',
+    metaDescription:
+      'Live world time zone map with day and night shading. Compare local time, UTC offset and daylight saving in Berlin, London, New York, Tokyo and any city or time zone.',
+    keywords: [
+      'world time zone map',
+      'time zone map',
+      'world clock map',
+      'day and night map',
+      'utc offset',
+      'current time around the world',
+    ],
+    relatedTools: [
+      'world-clock',
+      'timezone-converter',
+      'country-explorer',
+      'unix-timestamp-converter',
+      'countdown-generator',
+    ],
+    component: 'world-time-map',
+    popular: true,
+    howTo: [
+      'The map shows where it is day and night right now, with your own time zone listed first.',
+      'Search for a city or time zone (Berlin, Asia/Kolkata) and add it.',
+      'Click a blue dot on the map to add a capital city.',
+      'Compare local times, dates, UTC offsets and daylight saving in the table, then copy it.',
+    ],
+    about: [
+      'Time zones are offsets from Coordinated Universal Time (UTC). In theory each covers 15° of longitude — one hour — and the map’s stripes show those nominal bands, but real borders follow countries: China uses a single zone across five bands, and India and parts of Australia use half-hour offsets.',
+      'Local times come from your browser’s built-in IANA time-zone database (zones like Europe/Berlin and America/New_York), so daylight-saving changes are always applied correctly. The night shading is calculated from the sun’s position for the current minute; nothing is fetched from a server.',
+    ],
+    faqs: [
+      {
+        q: 'What time zone is UTC+0?',
+        a: 'UTC itself. London (GMT) is UTC+0 in winter and UTC+1 (BST) in summer; Iceland, Ghana and Senegal stay at UTC+0 all year.',
+      },
+      {
+        q: 'Which countries use daylight saving time?',
+        a: 'Most of Europe and North America, plus parts of South America, Australia and New Zealand. Most of Asia and Africa do not. The table shows whether DST is active for each place right now.',
+      },
+      {
+        q: 'Why do some places have 30- or 45-minute offsets?',
+        a: 'Countries choose their offsets: India is UTC+5:30, Nepal UTC+5:45 and Newfoundland UTC−3:30 (UTC−2:30 in summer).',
+      },
+    ],
+  },
 ];

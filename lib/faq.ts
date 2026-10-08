@@ -676,6 +676,53 @@ export const FAQ_GROUPS: FaqGroup[] = [
     ],
   },
   {
+    id: 'reference',
+    title: 'Reference & learning',
+    icon: '📚',
+    items: [
+      {
+        q: 'Where does the reference data come from?',
+        a: 'From open, citable sources built into each page: the PubChem periodic table and IUPAC atomic weights, the Unicode Character Database, the WHATWG list of HTML entities, GeoNames (CC BY 4.0) and Natural Earth for countries, and the IANA time-zone database. Lookups happen in your browser and nothing you search for is sent anywhere.',
+        links: [
+          {
+            href: '/online-tool/reference-tools',
+            label: 'Reference & Learning tools',
+          },
+        ],
+      },
+      {
+        q: 'Does the Unicode Character Explorer work offline?',
+        a: 'Browsing blocks, pasting characters and looking up code points work right away. Searching by name needs a one-off download of the official names list (about 170 KB compressed) from emojar.com itself; after that, searches stay on your device.',
+        links: [
+          {
+            href: '/online-tool/reference-tools/unicode-character-explorer',
+            label: 'Unicode Character Explorer',
+          },
+        ],
+      },
+      {
+        q: 'Why do flags show as two letters on Windows?',
+        a: 'Flag emoji are made of two regional-indicator letters (🇩🇪 is D + E). Windows has no flag images for them, so it shows the letters. The Flag Explorer always prints the ISO code next to each flag for that reason.',
+        links: [
+          {
+            href: '/online-tool/reference-tools/flag-explorer',
+            label: 'Flag Explorer',
+          },
+        ],
+      },
+      {
+        q: 'Can the Braille Translator produce braille for printing?',
+        a: 'It produces uncontracted (Grade 1) braille as Unicode characters, which is useful for learning and short labels. Printed Unicode braille is flat, and most readers expect contracted Unified English Braille, so use a braille embosser or transcription service for anything a reader will rely on.',
+        links: [
+          {
+            href: '/online-tool/text-tools/braille-translator',
+            label: 'Braille Translator',
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: 'emoji',
     title: 'Emoji & games',
     icon: '😀',

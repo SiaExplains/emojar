@@ -34,7 +34,7 @@ export const CATEGORIES: CategoryDefinition[] = [
     metaDescription:
       'Format and diff JSON, decode JWTs, convert number bases, calculate subnets and chmod, generate bcrypt hashes, meta tags and robots.txt — all in your browser.',
     intro:
-      'Everyday developer utilities: formatters, encoders, decoders and converters, JSON diff, subnet and chmod calculators, bcrypt and TOTP, meta tags and robots.txt, and pretty code screenshots. Input is processed locally in your browser, so API keys, tokens, secrets and payloads are never sent to a server.',
+      'Everyday developer utilities: formatters, encoders, decoders and converters, JSON diff, subnet and chmod calculators, bcrypt and TOTP, meta tags and robots.txt, and pretty code screenshots — plus visual Flexbox and CSS Grid playgrounds, a CSS unit visualizer, and ASCII, HTML entity and HTTP status references. Input is processed locally in your browser, so API keys, tokens, secrets and payloads are never sent to a server.',
     accent: 'bg-slate-50 border-slate-200 text-slate-900',
   },
   {
@@ -46,7 +46,7 @@ export const CATEGORIES: CategoryDefinition[] = [
     metaDescription:
       'Count words, check readability, change case, remove line breaks, make slugs, flip or strike through text and copy symbols — free text tools that run in your browser.',
     intro:
-      'Count, clean, compare and transform text instantly: word counts and readability scores, line-break and duplicate removal, slugs, upside-down and strikethrough text, invisible characters and symbols to copy. Results appear as you type — nothing is stored or uploaded.',
+      'Count, clean, compare and transform text instantly: word counts and readability scores, line-break and duplicate removal, slugs, upside-down and strikethrough text, invisible characters and symbols to copy, and Morse code and braille translators. Results appear as you type — nothing is stored or uploaded.',
     accent: 'bg-amber-50 border-amber-100 text-amber-900',
   },
   {
@@ -58,7 +58,7 @@ export const CATEGORIES: CategoryDefinition[] = [
     metaDescription:
       'Convert HEX, RGB and HSL colors, pick colors, generate palettes and CSS gradients, and check WCAG contrast ratios with free online color tools.',
     intro:
-      'Convert color codes, build palettes and gradients, and check accessibility contrast. Every result comes with ready-to-copy CSS values.',
+      'Convert color codes, build palettes and gradients, check accessibility contrast, and find the name of any colour among 1,000+ CSS and common colour names. Every result comes with ready-to-copy CSS values.',
     accent: 'bg-pink-50 border-pink-100 text-pink-900',
   },
   {
@@ -70,7 +70,7 @@ export const CATEGORIES: CategoryDefinition[] = [
     metaDescription:
       'Free online calculators: mortgage, loan, salary, ROI, margin, retirement, fractions, ratios, probability, BMI, body fat, percentages and more. No sign-up.',
     intro:
-      'Quick, accurate calculators for everyday maths, money and health questions — from mortgages, salaries and retirement savings to fractions, probability and body fat. Results update as you type and every formula is explained on the page.',
+      'Quick, accurate calculators for everyday maths, money and health questions — from mortgages, salaries and retirement savings to fractions, probability, body fat and the molar mass of chemical formulas. Results update as you type and every formula is explained on the page.',
     accent: 'bg-emerald-50 border-emerald-100 text-emerald-900',
   },
   {
@@ -106,7 +106,7 @@ export const CATEGORIES: CategoryDefinition[] = [
     metaDescription:
       'Convert timestamps and time zones, count days, find the day of the week, add up time cards, make printable calendars and set alarms, timers and Pomodoros — free, in your browser.',
     intro:
-      'Everyday date and time tools: timestamps, time zones, date maths, day of the week, week numbers, time cards, printable calendars, plus an alarm clock, timers, a stopwatch and a Pomodoro timer. Everything runs in your browser.',
+      'Everyday date and time tools: timestamps, time zones and a live world time-zone map, date maths, day of the week, week numbers, time cards, printable calendars, plus an alarm clock, timers, a stopwatch and a Pomodoro timer. Everything runs in your browser.',
     accent: 'bg-sky-50 border-sky-100 text-sky-900',
   },
   {
@@ -132,5 +132,17 @@ export const CATEGORIES: CategoryDefinition[] = [
     intro:
       'Check that your keyboard, screen, camera and microphone work, find dead pixels, and see exactly which browser, resolution and refresh rate you have. The tests run locally in your browser; nothing is recorded or uploaded.',
     accent: 'bg-teal-50 border-teal-100 text-teal-900',
+  },
+  {
+    slug: 'reference-tools',
+    name: 'Reference & Learning',
+    shortName: 'Reference',
+    icon: '📚',
+    title: 'Free Online Reference Tools – Periodic Table, Unicode & More',
+    metaDescription:
+      'Interactive references: periodic table, country and flag explorers, Unicode, HTML entities, ASCII, math symbols, keyboard shortcuts, paper sizes and more.',
+    intro:
+      'Quick, searchable references for the things you look up again and again: an interactive periodic table, country codes and flags, Unicode characters, HTML entities and ASCII codes, math symbols with LaTeX, keyboard shortcuts for every platform, and paper sizes and aspect ratios. All the data is built into the pages, so lookups are instant and private.',
+    accent: 'bg-lime-50 border-lime-100 text-lime-900',
   },
 ];

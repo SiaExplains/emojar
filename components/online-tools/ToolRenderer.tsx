@@ -177,6 +177,42 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
       default: m.ScreenRecorderTool,
     })),
   ),
+  'periodic-table': load(() => import('./tools/PeriodicTableTool')),
+  'world-time-map': load(() => import('./tools/WorldTimeMapTool')),
+  'country-explorer': load(() =>
+    import('./tools/CountryTools').then((m) => ({
+      default: m.CountryExplorerTool,
+    })),
+  ),
+  'flag-explorer': load(() =>
+    import('./tools/CountryTools').then((m) => ({
+      default: m.FlagExplorerTool,
+    })),
+  ),
+  'color-names': load(() => import('./tools/ColorNameTool')),
+  'css-units': load(() => import('./tools/CssUnitTool')),
+  'flexbox-playground': load(() =>
+    import('./tools/CssPlaygroundTools').then((m) => ({
+      default: m.FlexboxPlaygroundTool,
+    })),
+  ),
+  'grid-playground': load(() =>
+    import('./tools/CssPlaygroundTools').then((m) => ({
+      default: m.GridPlaygroundTool,
+    })),
+  ),
+  'keyboard-shortcuts': load(() => import('./tools/KeyboardShortcutsTool')),
+  'unicode-explorer': load(() => import('./tools/UnicodeExplorerTool')),
+  'math-symbols': load(() => import('./tools/MathSymbolsTool')),
+  'html-entity-reference': load(() => import('./tools/HtmlEntityTool')),
+  'ascii-table': load(() => import('./tools/AsciiTableTool')),
+  'molar-mass': load(() => import('./tools/MolarMassTool')),
+  'number-system': load(() => import('./tools/NumberSystemTool')),
+  'morse-code': load(() => import('./tools/MorseCodeTool')),
+  braille: load(() => import('./tools/BrailleTool')),
+  'measurement-reference': load(
+    () => import('./tools/MeasurementReferenceTool'),
+  ),
 };
 
 export function ToolRenderer({

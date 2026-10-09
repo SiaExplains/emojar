@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.16.1] — 2026-10-09
+
+### Changed
+
+- Docs refreshed after the 0.16.0 release: the README's project map lists the
+  shared styles and navigation, and explains the design tokens to use for new
+  pages and tools.
+
 ## [0.16.0] — 2026-10-09
 
 ### Added

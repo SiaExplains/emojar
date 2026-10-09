@@ -4,7 +4,24 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.16.1] — 2026-10-09
+## [0.17.0] — 2026-10-09
+
+### Added
+
+- The homepage now has "Start here" (12 tools we recommend, labelled as our
+  picks), an "Emoji, games & collections" section and the latest guides.
+- The tool search shows how many tools match, has a Clear button (or press
+  Esc), and when nothing matches it suggests other words, all tools or an
+  emoji search.
+- Category chips on the tools page show how many tools each category has.
+
+### Changed
+
+- The homepage and the tools page lead with 12 picks instead of a long list
+  of 77 "popular" tools; every tool is still listed by category.
+- Category cards share one calm style instead of 13 different colours.
+- The tools page FAQ no longer says every tool works offline: most do once
+  loaded, but OCR downloads its engine first.
 
 ### Changed
 

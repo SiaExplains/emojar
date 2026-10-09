@@ -4,6 +4,8 @@ import { QUANTITIES } from './engines/units';
 import { TRANSFORMS } from './engines/transforms';
 import {
   CATEGORIES,
+  FEATURED_TOOLS,
+  featuredTools,
   TOOLS,
   getToolInCategory,
   relatedTools,
@@ -15,6 +17,11 @@ import {
 import { faqJsonLd, toolMetadata, webApplicationJsonLd } from './seo';
 
 describe('tool registry', () => {
+  it('features only existing tools, once each', () => {
+    expect(new Set(FEATURED_TOOLS).size).toBe(FEATURED_TOOLS.length);
+    expect(featuredTools().map((t) => t.slug)).toEqual(FEATURED_TOOLS);
+  });
+
   it('has unique tool slugs and URLs', () => {
     const slugs = TOOLS.map((t) => t.slug);
     expect(new Set(slugs).size).toBe(slugs.length);

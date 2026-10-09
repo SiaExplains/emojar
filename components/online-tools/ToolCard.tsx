@@ -7,6 +7,8 @@ export type ToolCardData = {
   icon: string;
   /** Third-party site: opens in a new tab and is marked as external. */
   external?: boolean;
+  /** Category label, shown on mixed lists so the kind of tool is clear. */
+  category?: string;
 };
 
 const CARD =
@@ -52,6 +54,11 @@ export function ToolCard({ tool }: { tool: ToolCardData }) {
         <span className="mt-0.5 block text-xs leading-snug text-gray-500">
           {tool.description}
         </span>
+        {tool.category && (
+          <span className="mt-1.5 inline-block rounded-full bg-gray-50 px-2 py-0.5 text-xs text-gray-500">
+            {tool.category}
+          </span>
+        )}
       </span>
     </Link>
   );

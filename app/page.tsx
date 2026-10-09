@@ -7,13 +7,19 @@ import {
   CATEGORIES,
   TOOLS,
   categoryPath,
-  popularTools,
+  featuredTools,
+  getCategory,
   searchIndex,
   toolPath,
   toolsInCategory,
 } from '@/lib/online-tools/registry';
 import { itemListJsonLd } from '@/lib/online-tools/seo';
+import { publishedGuides } from '@/lib/blog/guides';
 import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
+import { textLink } from '@/components/ui/styles';
+
+// The "Latest guides" list changes as guides are drip-published.
+export const revalidate = 86400;
 
 const title = 'Emojar — Free Online Tools That Run in Your Browser';
 const description = `${Math.floor(TOOLS.length / 10) * 10}+ free online tools: image converter, PDF merger, JSON formatter, word counter, calculators, unit converters and more. Private by design — your files never leave your device.`;
@@ -46,23 +52,56 @@ const PRINCIPLES = [
   {
     icon: '💚',
     title: 'Free, no account',
-    text: 'Every tool is free to use without signing up, with no watermarks and no usage limits.',
+    text: 'Every tool is free to use without signing up — no watermarks, no quotas and no paywalled features.',
   },
 ];
 
-const EMOJI_LINKS = [
-  { href: '/emoji', icon: '😀', label: 'Emoji search & copy' },
-  { href: '/categories', icon: '📂', label: 'Emoji categories' },
+const MORE_SECTIONS = [
+  {
+    href: '/emoji',
+    icon: '😀',
+    title: 'Emoji search & copy',
+    text: `Search and copy ${EMOJI_COUNT_LABEL} emojis with their meanings, browse 10 categories and the A–Z lists.`,
+    links: [
+      { href: '/categories', label: 'Categories' },
+      { href: '/collection/alphabet', label: 'Emojis A–Z' },
+      { href: '/emoji-tools', label: 'Emoji tools' },
+    ],
+  },
+  {
+    href: '/games',
+    icon: '🎮',
+    title: 'Emoji games',
+    text: '18 quick browser games — Wordle, 2048, Snake, Minesweeper, Hangman, Guess the Flag and more.',
+    links: [
+      { href: '/games/emoji-wordle', label: 'Emoji Wordle' },
+      { href: '/games/emoji-2048', label: 'Emoji 2048' },
+      { href: '/games/snake', label: 'Snake' },
+    ],
+  },
   {
     href: '/emoji-collections/events',
     icon: '🎉',
-    label: 'Holiday collections',
+    title: 'Holiday & themed collections',
+    text: 'Ready-made emoji sets for holidays and events, plus letter-shaped and detailed emoji tables.',
+    links: [
+      { href: '/table/emoji-alphabet-shaped', label: 'Letter-shaped emojis' },
+      { href: '/collection/detail', label: 'Emojis with details' },
+    ],
   },
-  { href: '/emoji-tools', icon: '🛠️', label: 'Emoji tools' },
-  { href: '/games', icon: '🎮', label: 'Emoji games' },
 ];
 
+const dateLabel = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
 export default function Home() {
+  const latestGuides = [...publishedGuides()]
+    .sort((a, b) => b.publishDate.localeCompare(a.publishDate))
+    .slice(0, 3);
   return (
     <div className="space-y-14">
       <JsonLd
@@ -91,27 +130,27 @@ export default function Home() {
         </ul>
       </header>
 
-      <section aria-labelledby="popular-tools" className="space-y-3">
-        <div className="flex items-baseline justify-between">
-          <h2
-            id="popular-tools"
-            className="text-xl font-semibold text-gray-900"
-          >
-            Popular tools
-          </h2>
-          <Link
-            href="/online-tool"
-            className="text-sm text-brand-700 hover:underline"
-          >
-            All {TOOLS.length} tools →
+      <section aria-labelledby="start-here" className="space-y-3">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <div>
+            <h2 id="start-here" className="text-xl font-semibold text-gray-900">
+              Start here
+            </h2>
+            <p className="text-sm text-gray-500">
+              Our picks of the tools people reach for most often.
+            </p>
+          </div>
+          <Link href="/online-tool" className={textLink}>
+            Browse all {TOOLS.length} tools →
           </Link>
         </div>
         <ToolGrid
-          tools={popularTools().map((t) => ({
+          tools={featuredTools().map((t) => ({
             href: toolPath(t),
             name: t.name,
             description: t.shortDescription,
             icon: t.icon,
+            category: getCategory(t.category)?.shortName,
           }))}
         />
       </section>
@@ -124,16 +163,22 @@ export default function Home() {
           {CATEGORIES.map((c) => {
             const tools = toolsInCategory(c.slug);
             return (
-              <li key={c.slug} className={`rounded-2xl border p-4 ${c.accent}`}>
+              <li
+                key={c.slug}
+                className="rounded-2xl border border-gray-100 bg-white p-4 transition hover:border-gray-200 hover:shadow-sm"
+              >
                 <Link
                   href={categoryPath(c.slug)}
-                  className="group flex items-center gap-2 font-semibold hover:underline"
+                  className="group flex items-center gap-3 rounded-lg font-semibold text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                 >
-                  <span aria-hidden className="text-2xl">
+                  <span
+                    aria-hidden
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-xl"
+                  >
                     {c.icon}
                   </span>
-                  {c.name}
-                  <span className="ml-auto text-xs font-normal opacity-70">
+                  <span className="group-hover:text-brand-700">{c.name}</span>
+                  <span className="ml-auto text-xs font-normal text-gray-500">
                     {tools.length} tools
                   </span>
                 </Link>
@@ -142,7 +187,7 @@ export default function Home() {
                     <li key={t.slug}>
                       <Link
                         href={toolPath(t)}
-                        className="inline-block rounded-full bg-white/80 px-2.5 py-1 text-xs text-gray-700 hover:bg-white"
+                        className="inline-block rounded-full border border-gray-100 bg-gray-50 px-2.5 py-1 text-xs text-gray-700 hover:border-gray-200 hover:bg-white"
                       >
                         {t.name}
                       </Link>
@@ -154,6 +199,81 @@ export default function Home() {
           })}
         </ul>
       </section>
+
+      <section aria-labelledby="more" className="space-y-3">
+        <h2 id="more" className="text-xl font-semibold text-gray-900">
+          Emoji, games & collections
+        </h2>
+        <ul className="grid gap-3 md:grid-cols-3">
+          {MORE_SECTIONS.map((m) => (
+            <li
+              key={m.href}
+              className="flex flex-col rounded-2xl border border-gray-100 bg-white p-5"
+            >
+              <Link
+                href={m.href}
+                className="group flex items-center gap-3 rounded-lg font-semibold text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              >
+                <span
+                  aria-hidden
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-xl"
+                >
+                  {m.icon}
+                </span>
+                <span className="group-hover:text-brand-700">{m.title}</span>
+              </Link>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600">
+                {m.text}
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                {m.links.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className={textLink}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {latestGuides.length > 0 && (
+        <section aria-labelledby="guides" className="space-y-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="guides" className="text-xl font-semibold text-gray-900">
+              Latest guides
+            </h2>
+            <Link href="/blog" className={textLink}>
+              All guides →
+            </Link>
+          </div>
+          <ul className="grid gap-3 md:grid-cols-3">
+            {latestGuides.map((g) => (
+              <li key={g.slug}>
+                <Link
+                  href={`/blog/${g.slug}`}
+                  className="group block h-full rounded-2xl border border-gray-100 bg-white p-5 transition hover:border-gray-200 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                >
+                  <time
+                    dateTime={g.publishDate}
+                    className="text-xs text-gray-500"
+                  >
+                    {dateLabel(g.publishDate)}
+                  </time>
+                  <span className="mt-1 block font-semibold leading-snug text-gray-900 group-hover:text-brand-700">
+                    {g.title}
+                  </span>
+                  <span className="mt-1 block text-sm leading-relaxed text-gray-600">
+                    {g.description}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section aria-labelledby="why" className="space-y-4">
         <h2 id="why" className="text-xl font-semibold text-gray-900">
@@ -182,30 +302,6 @@ export default function Home() {
           keys and anything else you would rather not share.
         </p>
       </section>
-
-      <aside
-        aria-labelledby="emoji-corner"
-        className="rounded-2xl border border-gray-100 px-4 py-4"
-      >
-        <h2 id="emoji-corner" className="text-sm font-semibold text-gray-700">
-          Looking for emojis?{' '}
-          <span className="font-normal text-gray-500">
-            Emojar still has {EMOJI_COUNT_LABEL} emojis to copy and paste.
-          </span>
-        </h2>
-        <ul className="mt-3 flex flex-wrap gap-2">
-          {EMOJI_LINKS.map((l) => (
-            <li key={l.href}>
-              <Link
-                href={l.href}
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50"
-              >
-                <span aria-hidden>{l.icon}</span> {l.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </aside>
     </div>
   );
 }

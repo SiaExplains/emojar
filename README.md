@@ -103,6 +103,23 @@ danger. Buttons and inputs use the classes in `components/ui/styles.ts`. Keep
 text at 12 px (`text-xs`) or larger, and give every interactive element a
 visible `focus-visible` style.
 
+## Environment variables
+
+All optional; none are secrets.
+
+| Variable                        | Purpose                                                                                                    |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_ADSENSE_CLIENT`    | AdSense publisher id (defaults to Emojar's)                                                                |
+| `NEXT_PUBLIC_ADSENSE_SLOT_TOOL` | Ad unit id for the slot below the tool on tool pages. Unset = no slot is rendered and no space is reserved |
+
+## Tool heights (layout shift)
+
+Tools render in the browser, so `ToolPage` reserves each tool's first-render
+height from `lib/online-tools/data/tool-heights.json` to stop the page from
+jumping. After adding tools or changing a tool's first screen, start the site
+and run `npm run measure:tool-heights -- http://localhost:3000` (needs a local
+Chrome; set `CHROME=/path/to/chrome` elsewhere than macOS).
+
 ## Adding an online tool
 
 The registry in `lib/online-tools/` is the single source of truth: routes,

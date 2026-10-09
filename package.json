@@ -1,7 +1,7 @@
 {
   "name": "emojar",
   "private": true,
-  "version": "0.17.1",
+  "version": "0.18.0",
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
@@ -15,7 +15,8 @@
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "gen": "cd scripts && node generate2.js",
     "data:reference": "node scripts/reference-data/index.mjs",
-    "build:liblouis": "scripts/build-liblouis.sh"
+    "build:liblouis": "scripts/build-liblouis.sh",
+    "measure:tool-heights": "node scripts/measure-tool-heights.mjs"
   },
   "dependencies": {
     "@breezystack/lamejs": "^1.2.7",

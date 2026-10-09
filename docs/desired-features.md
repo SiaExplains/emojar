@@ -108,9 +108,9 @@
 
 **Description:** Shipped in v0.17.0. Calmer homepage hierarchy (search → editorial picks labelled as such → categories → emoji/games/collections → guides → trust strip); hub category chips with counts and an empty-search reset; every tool stays a crawlable link.
 
-### [ ] D — Tool-page shell
+### [x] D — Tool-page shell
 
-**Description:** Back-links to category and directory, guide link, reserved space for one ad below the tool, fix the Word Counter layout shift (CLS 0.053).
+**Description:** Shipped in v0.18.0 (CLS ≈ 0 on measured tools; ad slot off until a real slot id is set). Back-links to category and directory, guide link, reserved space for one ad below the tool, fix the Word Counter layout shift (CLS 0.053).
 
 ### [ ] E — Technical SEO
 

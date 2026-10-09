@@ -79,12 +79,14 @@ app/
   page.tsx                       Homepage (tools-first)
   online-tool/                   Online tools hub, category, tool and variant routes
   emoji/page.tsx                 Emoji search hub (former homepage)
-  emoji/[slug]/                  3,790 emoji detail pages
+  emoji/[slug]/                  Emoji detail pages (one per emoji)
   games/, emoji-*/, blog/        Emoji games, emoji tools, blog
   sitemap.ts, robots.txt/, llms.txt/, manifest.ts, api/og/
 components/
   online-tools/                  ToolPage, ToolCard, ToolSearch, shared UI, tool components
-  EmojiHub.tsx, MainMenu/, …     Emoji UI and site chrome
+  ui/styles.ts                   Shared button, input, card and link class names
+  MainMenu/                      Header navigation (routes in Menu.routes.ts)
+  EmojiHub.tsx, …                Emoji UI and site chrome
 lib/
   online-tools/                  Tool registry, categories, SEO helpers
     tools/                       One data file per category (copy, FAQ, metadata)
@@ -92,7 +94,14 @@ lib/
     image/, pdf/                 Browser image pipeline (Web Worker) and PDF helpers
 data/                            Emoji dataset and static page content
 public/                          Logo, favicons and app icons
+tailwind.config.ts               Design tokens: `brand` accent (logo magenta), gray neutrals
 ```
+
+**Design tokens.** Use `brand-*` for the accent (links, active states, focus
+rings), `gray-*` for neutrals and emerald / amber / red for success / warning /
+danger. Buttons and inputs use the classes in `components/ui/styles.ts`. Keep
+text at 12 px (`text-xs`) or larger, and give every interactive element a
+visible `focus-visible` style.
 
 ## Adding an online tool
 

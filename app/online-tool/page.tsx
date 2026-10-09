@@ -8,7 +8,8 @@ import {
   CATEGORIES,
   TOOLS,
   categoryPath,
-  popularTools,
+  featuredTools,
+  getCategory,
   searchIndex,
   toolPath,
   toolsInCategory,
@@ -25,7 +26,7 @@ const HUB_FAQS = [
   },
   {
     q: 'Are my files uploaded to a server?',
-    a: 'No. The tools run entirely in your web browser using built-in browser features such as the File API, Canvas, Web Workers and the Web Crypto API. Your files and text never leave your device.',
+    a: 'No. The tools run in your web browser using built-in browser features such as the File API, Canvas, Web Workers and the Web Crypto API, so your files and text stay on your device. The few optional features that contact another service — for example downloading the OCR engine — say so on the tool page.',
   },
   {
     q: 'Do the tools work on my phone?',
@@ -33,7 +34,7 @@ const HUB_FAQS = [
   },
   {
     q: 'Do the tools work offline?',
-    a: 'Once a tool page has loaded, the processing itself needs no internet connection, because nothing is sent to a server.',
+    a: 'Most tools keep working without a connection once the page has loaded, because nothing is sent to a server. A few need a one-time download first — for example the OCR engine in Image to Text and PDF to Text.',
   },
 ];
 
@@ -70,25 +71,34 @@ export default function OnlineToolsHub() {
               <a
                 key={c.slug}
                 href={`#${c.slug}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-700 hover:border-gray-300 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 <span aria-hidden>{c.icon}</span> {c.name}
+                <span className="text-xs text-gray-500">
+                  {toolsInCategory(c.slug).length}
+                </span>
               </a>
             ))}
           </nav>
         </header>
       </div>
 
-      <section aria-labelledby="popular" className="space-y-3">
-        <h2 id="popular" className="text-xl font-semibold text-gray-900">
-          ⭐ Most popular
-        </h2>
+      <section aria-labelledby="start-here" className="space-y-3">
+        <div>
+          <h2 id="start-here" className="text-xl font-semibold text-gray-900">
+            Start here
+          </h2>
+          <p className="text-sm text-gray-500">
+            Our picks — every tool is listed by category below.
+          </p>
+        </div>
         <ToolGrid
-          tools={popularTools().map((t) => ({
+          tools={featuredTools().map((t) => ({
             href: toolPath(t),
             name: t.name,
             description: t.shortDescription,
             icon: t.icon,
+            category: getCategory(t.category)?.shortName,
           }))}
         />
       </section>

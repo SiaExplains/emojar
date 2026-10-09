@@ -93,8 +93,30 @@ export function relatedTools(
   return [...explicit, ...fill].slice(0, limit);
 }
 
-export function popularTools(): ToolDefinition[] {
-  return TOOLS.filter((t) => t.popular);
+/**
+ * Editorial "start here" picks for the homepage and the tools hub: a short,
+ * hand-chosen set of widely useful tools across categories. This is not a
+ * usage ranking — the pages label it as our picks.
+ */
+export const FEATURED_TOOLS = [
+  'image-converter',
+  'compress-pdf',
+  'merge-pdf',
+  'image-compressor',
+  'json-formatter',
+  'word-counter',
+  'password-generator',
+  'qr-code-generator',
+  'percentage-calculator',
+  'length-converter',
+  'color-picker',
+  'kanban-board',
+];
+
+export function featuredTools(): ToolDefinition[] {
+  return FEATURED_TOOLS.map((slug) => toolBySlug.get(slug)).filter(
+    (t): t is ToolDefinition => !!t,
+  );
 }
 
 export const categoryPath = (slug: string) => `${TOOLS_BASE}/${slug}`;

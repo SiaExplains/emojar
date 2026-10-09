@@ -104,9 +104,9 @@
 
 **Description:** Shipped in v0.16.0 (game buttons left for a later pass). Tailwind tokens (one accent, neutrals, semantic colours, radii, type scale), global focus ring, skip link, reduced-motion rule, no text under 12 px, shared Button/Card/Input beyond the tools, header nav (Tools · Emoji · Games · Guides · Help), accessible mobile menu, footer `<nav>`, fix nested `<main>`.
 
-### [ ] C — Homepage and tools directory
+### [x] C — Homepage and tools directory
 
-**Description:** Calmer homepage hierarchy (search → editorial picks labelled as such → categories → emoji/games/collections → guides → trust strip); hub category chips with counts and an empty-search reset; every tool stays a crawlable link.
+**Description:** Shipped in v0.17.0. Calmer homepage hierarchy (search → editorial picks labelled as such → categories → emoji/games/collections → guides → trust strip); hub category chips with counts and an empty-search reset; every tool stays a crawlable link.
 
 ### [ ] D — Tool-page shell
 

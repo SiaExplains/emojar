@@ -232,6 +232,4 @@ export type CategoryDefinition = {
   title: string;
   metaDescription: string;
   intro: string;
-  /** Tailwind classes for the category accent, matching the site palette. */
-  accent: string;
 };

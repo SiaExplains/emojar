@@ -180,6 +180,16 @@ Tasks are ordered by impact × effort. Fix in this sequence before re-submitting
 
 ---
 
+## After approval
+
+- [ ] Create a display ad unit in AdSense and set its id as
+      `NEXT_PUBLIC_ADSENSE_SLOT_TOOL` in Vercel (Production). The labelled slot
+      then appears below the tool on tool pages, 40 px from the tool, with its
+      space reserved (`components/AdSlot.tsx`, v0.18.0). Until it is set, no
+      manual ad renders.
+- [ ] Decide whether Auto Ads stays off: if it is turned on, Google may place
+      ads anywhere, including above tools.
+
 ## Re-submission Checklist
 
 Before clicking "Request review" in AdSense:

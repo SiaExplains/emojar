@@ -154,6 +154,9 @@ sitemap, search and `llms.txt` are all generated from it.
    `lib/online-tools/registry.ts` puts it in the "Start here" picks on the
    homepage and the tools hub (keep that list short — it is labelled as our
    picks, not a usage ranking).
+8. Run `npm run measure:tool-heights` against a running build so the new
+   tool's first-render height is reserved (see "Tool heights" above); until
+   then it uses a generic height and may shift the page slightly on load.
 
 Rules for tools: process data in the browser, never upload or store user
 files, show friendly error messages (`ToolInputError`), and release object

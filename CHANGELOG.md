@@ -4,7 +4,22 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.15.1] — 2026-10-09
+## [0.15.2] — 2026-10-09
+
+### Fixed
+
+- The privacy policy now matches how the site works: analytics is Vercel
+  Web Analytics (cookieless), not Google Analytics; visitors in the EEA, UK
+  and Switzerland see Google's consent message before personalised ads; the
+  optional features that contact another service (OCR engine download,
+  breach check, Emoji Kitchen images, online speech voices) are listed; and
+  data saved in your browser is explained.
+- About, Terms, FAQ and the emoji page no longer claim "no ads on tools" or
+  name Google Analytics; ad wording now says ads are never placed inside a
+  tool or made to look like part of it.
+- Emoji counts come from the data (3,789) instead of a hard-coded 3,790, the
+  homepage headline reads "264 free online tools" instead of "+264", and the
+  share image shows the tool count first.
 
 ### Changed
 

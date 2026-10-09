@@ -436,7 +436,7 @@ export default function EmojiToPngPage() {
           {[
             [
               '🔍 Search or pick',
-              'Type in the search box to filter all 3,790 emojis and click one to select it. Or paste any emoji or text directly into the top input.',
+              'Type in the search box to filter every emoji and click one to select it. Or paste any emoji or text directly into the top input.',
             ],
             [
               '⚙️ Configure',

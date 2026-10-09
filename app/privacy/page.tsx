@@ -26,7 +26,7 @@ export default function PrivacyPage() {
     <main className="mx-auto w-full max-w-3xl px-5 py-10">
       <h1 className="text-3xl font-semibold tracking-tight">Privacy Policy</h1>
       <p className="mt-2 text-sm text-gray-500">
-        Last updated: <time dateTime="2026-10-07">7 October 2026</time>
+        Last updated: <time dateTime="2026-10-09">9 October 2026</time>
       </p>
 
       <section className="mt-8 space-y-8 text-gray-800 leading-7">
@@ -68,11 +68,12 @@ export default function PrivacyPage() {
         <div>
           <h2 className="text-xl font-semibold">2. What We Collect</h2>
           <p className="mt-2">
-            Emojar is an emoji reference and online-tools website. You do not
-            create an account or submit personal data directly. Files and text
-            you use with our online tools are processed entirely in your browser
-            — they are not uploaded to, stored on, or logged by our servers. We
-            may receive:
+            Emojar is an online-tools and emoji website. You do not create an
+            account or submit personal data directly. Files and text you use
+            with our online tools are processed in your browser — they are not
+            uploaded to, stored on, or logged by our servers. A few optional
+            features contact a third party; they are listed in section 4 and
+            labelled on the tool page. We may receive:
           </p>
           <ul className="list-disc pl-6 mt-2 space-y-2">
             <li>
@@ -81,13 +82,16 @@ export default function PrivacyPage() {
               automatically by our hosting infrastructure.
             </li>
             <li>
-              <strong>Analytics data:</strong> aggregated usage metrics (page
-              views, session duration, country) via Google Analytics.
+              <strong>Analytics data:</strong> aggregated page views (page URL,
+              referrer, country, device and browser type) via Vercel Web
+              Analytics. It sets no cookies and does not identify you across
+              sites or days.
             </li>
             <li>
-              <strong>Advertising data:</strong> if you consent, Google AdSense
-              and Google Funding Choices may set cookies to serve and measure
-              personalised advertisements.
+              <strong>Advertising data:</strong> Google AdSense serves ads on
+              this site. Visitors in the EEA, the UK and Switzerland see
+              Google&apos;s consent message first; Google sets advertising
+              cookies for personalised ads only if you agree there.
             </li>
           </ul>
         </div>
@@ -100,12 +104,13 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-6 mt-2 space-y-2">
             <li>
               <strong>Consent (Art. 6(1)(a)):</strong> personalised advertising
-              and analytics cookies — only placed after you click
-              &quot;Accept&quot; in the consent manager.
+              and the cookies Google sets for it — only after you agree in
+              Google&apos;s consent message.
             </li>
             <li>
               <strong>Legitimate interest (Art. 6(1)(f)):</strong> server
-              security logs, fraud prevention, and basic site functionality.
+              security logs, fraud prevention, basic site functionality, and
+              cookieless, aggregated usage statistics (Vercel Web Analytics).
             </li>
           </ul>
         </div>
@@ -115,9 +120,9 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold">4. Recipients of Data</h2>
           <ul className="list-disc pl-6 mt-2 space-y-2">
             <li>
-              <strong>Google LLC</strong> — Google AdSense (ad serving), Google
-              Analytics (usage measurement), Google Funding Choices (consent
-              management). Privacy policy:{' '}
+              <strong>Google LLC</strong> — Google AdSense (ad serving) and
+              Google&apos;s consent management (Privacy &amp; messaging).
+              Privacy policy:{' '}
               <a
                 href="https://policies.google.com/privacy"
                 target="_blank"
@@ -129,8 +134,33 @@ export default function PrivacyPage() {
               .
             </li>
             <li>
-              <strong>Vercel Inc. / hosting infrastructure</strong> — server
-              logs and CDN processing for site delivery.
+              <strong>Vercel Inc.</strong> — hosting, CDN and server logs for
+              site delivery, and Vercel Web Analytics (cookieless page-view
+              statistics).
+            </li>
+          </ul>
+          <p className="mt-4">Only when you use these optional features:</p>
+          <ul className="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              <strong>jsDelivr (CDN)</strong> — Image to Text and the OCR option
+              in PDF to Text download the open-source Tesseract engine and
+              language data. Your image or PDF stays on your device.
+            </li>
+            <li>
+              <strong>Have I Been Pwned</strong> — the opt-in breach check in
+              the Password Strength Checker sends only the first five characters
+              of your password&apos;s SHA-1 hash, never the password.
+            </li>
+            <li>
+              <strong>Google (gstatic.com)</strong> — Emoji Kitchen loads the
+              combined emoji images from Google; the request contains the two
+              emoji you picked.
+            </li>
+            <li>
+              <strong>Your browser&apos;s speech service</strong> — in Text to
+              Speech, voices marked &quot;online&quot; send the text to your
+              browser vendor (for example Google, Apple or Microsoft); local
+              voices do not.
             </li>
           </ul>
         </div>
@@ -163,14 +193,30 @@ export default function PrivacyPage() {
               security and operational purposes.
             </li>
             <li>
-              <strong>Analytics data:</strong> retained for 14 months in Google
-              Analytics, then automatically deleted.
+              <strong>Analytics data:</strong> stored only in aggregate in
+              Vercel Web Analytics; no profile of you is kept.
             </li>
             <li>
               <strong>Advertising cookies:</strong> lifespan as set by Google
               (typically up to 13 months); see Google&apos;s cookie policy.
             </li>
           </ul>
+        </div>
+
+        {/* 6a. Storage on your device */}
+        <div>
+          <h2 className="text-xl font-semibold">
+            6a. Data Stored in Your Browser
+          </h2>
+          <p className="mt-2">
+            Some tools and games save your work or settings in your
+            browser&apos;s local storage — for example Kanban boards, timelines,
+            pixel art, alarms, world clocks, invoices, how often you copied each
+            emoji, and game high scores. This data never leaves your device, we
+            cannot see it, and it is needed for the feature you use (§ 25(2)
+            TDDDG). You can delete it with the tool&apos;s &quot;Clear&quot;
+            button or by clearing this site&apos;s data in your browser.
+          </p>
         </div>
 
         {/* 7. Your Rights */}
@@ -201,8 +247,11 @@ export default function PrivacyPage() {
               (Art. 21).
             </li>
             <li>
-              <strong>Withdraw consent</strong> at any time via the consent
-              banner without affecting the lawfulness of prior processing.
+              <strong>Withdraw consent</strong> at any time without affecting
+              the lawfulness of prior processing: use the privacy and cookie
+              settings button from Google&apos;s consent message, or clear this
+              site&apos;s cookies in your browser and reload the page to be
+              asked again.
             </li>
           </ul>
           <p className="mt-3">

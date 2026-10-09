@@ -1,6 +1,8 @@
 // Site-wide FAQ, grouped by category. Rendered at /faq with FAQPage JSON-LD.
 // Answers are plain text; `links` render as "Related:" links under the answer.
 
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
+
 export type FaqItem = {
   q: string;
   a: string;
@@ -21,7 +23,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
     items: [
       {
         q: 'What is Emojar?',
-        a: 'Emojar is a collection of free online tools that run in your web browser — image and PDF converters, developer utilities, text tools, calculators, unit converters, generators, timers and more — plus a searchable library of 3,790 emojis and emoji games.',
+        a: `Emojar is a collection of free online tools that run in your web browser — image and PDF converters, developer utilities, text tools, calculators, unit converters, generators, timers and more — plus a searchable library of ${EMOJI_COUNT_LABEL} emojis and emoji games.`,
         links: [
           { href: '/online-tool', label: 'All online tools' },
           { href: '/emoji', label: 'Emoji search' },
@@ -97,7 +99,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: 'Does Emojar use cookies?',
-        a: 'Emojar itself only stores small preferences in your browser (for example your World Clock cities). Advertising and analytics partners may set cookies as described in the privacy policy.',
+        a: 'Emojar itself sets no cookies. Some tools save your settings or work in your browser’s local storage (for example World Clock cities or a Kanban board), and it never leaves your device. Our analytics is cookieless. Google’s advertising may set cookies — in the EEA, UK and Switzerland only after you agree in Google’s consent message.',
         links: [{ href: '/privacy', label: 'Privacy policy' }],
       },
     ],
@@ -766,7 +768,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
     items: [
       {
         q: 'Where is the emoji search?',
-        a: 'Emoji search and copy now lives at /emoji. All 3,790 emojis, categories, holiday collections, emoji tools and games are still available.',
+        a: `Emoji search and copy now lives at /emoji. All ${EMOJI_COUNT_LABEL} emojis, categories, holiday collections, emoji tools and games are still available.`,
         links: [
           { href: '/emoji', label: 'Emoji search' },
           { href: '/games', label: 'Emoji games' },

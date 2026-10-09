@@ -360,7 +360,7 @@ export default function EmojiHub() {
 
         {/* Free badge */}
         <p className="text-xs text-gray-400 font-medium">
-          💚 Free forever · No account required · No ads on tools
+          💚 Free forever · No account required · Works in your browser
         </p>
       </div>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 import Link from 'next/link';
 import { publishedGuides } from '@/lib/blog/guides';
 import { getCategory, getTool } from '@/lib/online-tools/registry';
@@ -83,8 +84,7 @@ const posts = [
     slug: 'emoji-favicon-generator',
     title: 'Turn Any Emoji into a Browser Favicon — Free Download',
     date: '2026-04-14',
-    description:
-      'Generate a favicon from any of the 3,790 emojis in seconds. Download as ICO or PNG. No design tools needed.',
+    description: `Generate a favicon from any of the ${EMOJI_COUNT_LABEL} emojis in seconds. Download as ICO or PNG. No design tools needed.`,
     emoji: '⭐',
     tags: ['Tool Guide', 'Web Development', 'Design'],
   },
@@ -192,8 +192,7 @@ const posts = [
     slug: 'emoji-to-png-download',
     title: 'Download Any Emoji as a PNG Image — Free, Instant, No Sign-up',
     date: '2026-06-19',
-    description:
-      'The Emojar Emoji to PNG tool lets you convert any of the 3,790 emojis to a high-quality image. Choose your size, background, and padding — then download in one click.',
+    description: `The Emojar Emoji to PNG tool lets you convert any of the ${EMOJI_COUNT_LABEL} emojis to a high-quality image. Choose your size, background, and padding — then download in one click.`,
     emoji: '🖼️',
     tags: ['New Tool', 'Download', 'PNG'],
   },

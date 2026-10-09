@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** 9 October 2026 (v0.15.1 — 264 online tools; platform since v0.2.0)
+> **Last updated:** 9 October 2026 (v0.15.2 — 264 online tools; platform since v0.2.0)
 
 ---
 
@@ -487,13 +487,13 @@ All 18 games at `/games` are:
 
 ## 7. Legal & About Pages
 
-| Page         | Contents                                                                                                                                    |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/about`     | What Emojar is, core features, creator (Siavash Ghanbari Hamzehkolaei, Berlin), data sources, funding model                                 |
-| `/contact`   | Three-category contact form (General, Press, Legal/GDPR/DMCA); email: emojar.info@gmail.com                                                 |
-| `/privacy`   | GDPR-compliant privacy policy: data controller, what's collected (server logs, Google Analytics, AdSense cookies), legal basis, user rights |
-| `/terms`     | Terms of Service: permitted use, IP ownership, ads disclosure, warranty disclaimer, liability limitation                                    |
-| `/impressum` | German legal notice (TMG/MStV): owner name and Berlin address, DSA single point of contact, EU dispute resolution                           |
+| Page         | Contents                                                                                                                                                                                                                                |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/about`     | What Emojar is, core features, creator (Siavash Ghanbari Hamzehkolaei, Berlin), data sources, funding model                                                                                                                             |
+| `/contact`   | Three-category contact form (General, Press, Legal/GDPR/DMCA); email: emojar.info@gmail.com                                                                                                                                             |
+| `/privacy`   | GDPR-compliant privacy policy: data controller, what's collected (server logs, cookieless Vercel Web Analytics, AdSense cookies after Google's consent message), optional third-party features, local storage, legal basis, user rights |
+| `/terms`     | Terms of Service: permitted use, IP ownership, ads disclosure, warranty disclaimer, liability limitation                                                                                                                                |
+| `/impressum` | German legal notice (TMG/MStV): owner name and Berlin address, DSA single point of contact, EU dispute resolution                                                                                                                       |
 
 ---
 

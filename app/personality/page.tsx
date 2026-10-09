@@ -1118,7 +1118,7 @@ export default function PersonalityPage() {
         <p className="text-xs text-gray-400">
           Discover{' '}
           <Link href="/collection/alphabet" className="underline">
-            all 3,790+ emojis
+            all 3,700+ emojis
           </Link>{' '}
           on Emojar
         </p>

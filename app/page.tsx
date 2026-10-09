@@ -13,6 +13,7 @@ import {
   toolsInCategory,
 } from '@/lib/online-tools/registry';
 import { itemListJsonLd } from '@/lib/online-tools/seo';
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 
 const title = 'Emojar — Free Online Tools That Run in Your Browser';
 const description = `${Math.floor(TOOLS.length / 10) * 10}+ free online tools: image converter, PDF merger, JSON formatter, word counter, calculators, unit converters and more. Private by design — your files never leave your device.`;
@@ -74,7 +75,7 @@ export default function Home() {
 
       <header className="space-y-5 pt-2 text-center">
         <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl">
-          +{TOOLS.length} Free online tools that
+          {TOOLS.length} free online tools that
           <br className="hidden sm:block" /> run in your browser
         </h1>
         <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
@@ -189,7 +190,7 @@ export default function Home() {
         <h2 id="emoji-corner" className="text-sm font-semibold text-gray-700">
           Looking for emojis?{' '}
           <span className="font-normal text-gray-500">
-            Emojar still has 3,790 emojis to copy and paste.
+            Emojar still has {EMOJI_COUNT_LABEL} emojis to copy and paste.
           </span>
         </h2>
         <ul className="mt-3 flex flex-wrap gap-2">

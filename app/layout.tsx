@@ -8,10 +8,10 @@ import HeaderSearch from '@/components/HeaderSearch';
 import MainMenu from '@/components/MainMenu/MainMenu.compontent';
 import { SiteChrome, PageMain } from '@/components/ChromeGate';
 import { AdSenseScript } from '@/components/AdSenseScript';
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 
 const title = 'Emojar — Free Online Tools That Run in Your Browser';
-const description =
-  'Free, privacy-friendly online tools: image and PDF converters, JSON formatter, word counter, calculators, unit converters, password and QR generators — plus 3,790 emojis to copy. No sign-up, no uploads.';
+const description = `Free, privacy-friendly online tools: image and PDF converters, JSON formatter, word counter, calculators, unit converters, password and QR generators — plus ${EMOJI_COUNT_LABEL} emojis to copy. No sign-up, no uploads.`;
 
 export const metadata: Metadata = {
   title,

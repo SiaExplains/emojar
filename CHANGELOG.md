@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.17.1] — 2026-10-09
+
+### Changed
+
+- Docs refreshed after the 0.17.0 release: the README's "Adding an online
+  tool" steps explain cross-listing, the sitemap priority flag and the
+  "Start here" picks.
+
 ## [0.17.0] — 2026-10-09
 
 ### Added

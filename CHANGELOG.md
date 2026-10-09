@@ -4,7 +4,23 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.17.1] — 2026-10-09
+## [0.18.0] — 2026-10-09
+
+### Changed
+
+- Tool pages no longer jump when the tool finishes loading: each tool's
+  starting height is measured (phone, tablet and desktop) and reserved in
+  advance. On the measured pages layout shift dropped to about zero (the
+  Pixel Art Editor went from 0.14 to 0.02, the JSON Formatter from 0.07 to 0).
+- Tool pages end with "Keep exploring" links to the category, all tools and
+  the guides.
+
+### Added
+
+- A single ad space below the tool, labelled "Advertisement", kept 40 px
+  away from the tool and with its space reserved. It stays switched off
+  until an AdSense ad unit is configured (`NEXT_PUBLIC_ADSENSE_SLOT_TOOL`).
+- `npm run measure:tool-heights` re-measures the tools after changes.
 
 ### Changed
 

@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb';
+import type { CSSProperties } from 'react';
+import AdSlot from '@/components/AdSlot';
+import { textLink } from '@/components/ui/styles';
+import TOOL_HEIGHTS from '@/lib/online-tools/data/tool-heights.json';
 import {
+  TOOLS,
   categoryPath,
   getCategory,
   relatedTools,
@@ -145,6 +150,23 @@ export function ToolHeader({
 }
 
 /**
+ * Height each tool has when it first renders, measured at 375 / 800 / 1280 px
+ * wide by `npm run measure:tool-heights`. Tools render client-side, so
+ * reserving this space stops the page below from jumping when the tool
+ * appears; unmeasured tools fall back to a generic height.
+ */
+function reservedHeight(slug: string): CSSProperties | undefined {
+  const h = (TOOL_HEIGHTS as Record<string, number[] | undefined>)[slug];
+  if (!h) return undefined;
+  const [sm, md, lg] = h;
+  return {
+    '--tool-h': `${sm}px`,
+    '--tool-h-md': `${md}px`,
+    '--tool-h-lg': `${lg}px`,
+  } as CSSProperties;
+}
+
+/**
  * Shared layout for every tool and tool variant page. Everything except the
  * interactive widget is server-rendered so crawlers and AI assistants can
  * read the explanation, steps and FAQ without running JavaScript.
@@ -198,7 +220,8 @@ export function ToolPage({
 
       <section
         aria-label={`${name} tool`}
-        className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-6"
+        style={reservedHeight(tool.slug)}
+        className="min-h-[var(--tool-h,300px)] rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:min-h-[var(--tool-h-md,360px)] sm:p-6 lg:min-h-[var(--tool-h-lg,360px)]"
       >
         <ToolRenderer
           component={tool.component}
@@ -212,6 +235,8 @@ export function ToolPage({
           </p>
         )}
       </section>
+
+      <AdSlot placement="tool" />
 
       {siblings && siblings.length > 0 && (
         <nav aria-labelledby="variants-heading" className="space-y-3">
@@ -308,6 +333,21 @@ export function ToolPage({
 
       <FAQ faqs={faqs} />
       <RelatedTools tool={tool} />
+
+      <nav
+        aria-label="Keep exploring"
+        className="flex flex-wrap gap-x-6 gap-y-2 border-t border-gray-100 pt-6 text-sm"
+      >
+        <Link href={categoryPath(category.slug)} className={textLink}>
+          All {category.name.toLowerCase()}
+        </Link>
+        <Link href="/online-tool" className={textLink}>
+          All {TOOLS.length} online tools
+        </Link>
+        <Link href="/blog" className={textLink}>
+          Guides
+        </Link>
+      </nav>
     </article>
   );
 }

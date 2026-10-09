@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** 9 October 2026 (v0.17.1 — 264 online tools; platform since v0.2.0)
+> **Last updated:** 9 October 2026 (v0.18.0 — 264 online tools; platform since v0.2.0)
 
 ---
 
@@ -59,10 +59,15 @@ Unknown slugs return a real 404.
 
 ### Tool page layout
 
-H1 + answer-first intro · privacy badge · the tool · limitation note (where
-relevant) · “How to use” steps · “What is …?” · FAQ (plus an automatic
-privacy FAQ) · related tools · sibling conversions · “In-depth guide” link once
-the tool's blog guide is published (pages revalidate daily).
+Breadcrumb · H1 + answer-first intro · privacy badge · the tool (its
+first-render height is reserved from `lib/online-tools/data/tool-heights.json`,
+measured at 375/800/1280 px by `npm run measure:tool-heights`, so the page
+doesn't shift when it loads) · limitation note (where relevant) · one ad slot
+(`components/AdSlot.tsx`, only when `NEXT_PUBLIC_ADSENSE_SLOT_TOOL` is set;
+labelled, 40 px below the tool, space reserved) · sibling conversions · “How to
+use” steps · “What is …?” · “In-depth guide” link once the guide is published ·
+FAQ (plus an automatic privacy FAQ) · related tools · “Keep exploring” links
+(category, all tools, guides). Pages revalidate daily.
 
 ### Categories and tools (264)
 

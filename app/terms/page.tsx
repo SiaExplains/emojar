@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function TermsPage() {
     <main className="mx-auto max-w-3xl px-6 py-12 text-gray-800">
       <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
       <p className="text-sm text-gray-500 mb-10">
-        Last updated: October 7, 2026
+        Last updated: October 9, 2026
       </p>
 
       <p className="mb-8 leading-7">
@@ -58,8 +59,8 @@ export default function TermsPage() {
           </li>
           <li>
             <strong>Emoji search &amp; copy</strong> — search, browse, and
-            copy-paste any of 3,790 Unicode-standard emojis across 10
-            categories.
+            copy-paste any of {EMOJI_COUNT_LABEL} Unicode-standard emojis across
+            10 categories.
           </li>
           <li>
             <strong>18 emoji games</strong> — Emoji Wordle, Emoji 2048,
@@ -82,7 +83,8 @@ export default function TermsPage() {
           </li>
           <li>
             <strong>Emoji detail pages</strong> — Unicode metadata, codepoints,
-            version history, keywords, and related emojis for each of the 3,790
+            version history, keywords, and related emojis for each of the{' '}
+            {EMOJI_COUNT_LABEL}
             emojis.
           </li>
           <li>
@@ -176,14 +178,12 @@ export default function TermsPage() {
         <ul className="list-disc pl-6 space-y-2 leading-7">
           <li>
             Emojar is supported by <strong>Google AdSense</strong> display
-            advertising. Ads may appear on some pages. Tool pages
-            (/emoji-to-png, /emoji-favicon, /emoji-color-palette,
-            /emoji-watermark, /emoji-card, /emoji-inspector, /emoji-kitchen,
-            /personality) are currently ad-free.
+            advertising. Ads may appear on any page, but never inside a tool or
+            styled to look like part of it.
           </li>
           <li>
-            Emojar uses <strong>Vercel Analytics</strong> to collect anonymised
-            page-view data for site improvement.
+            Emojar uses <strong>Vercel Web Analytics</strong> (cookieless) to
+            collect anonymised page-view data for site improvement.
           </li>
           <li>
             Clicking on third-party ads will direct you to websites we do not
@@ -191,8 +191,9 @@ export default function TermsPage() {
             practices of third-party advertisers or websites.
           </li>
           <li>
-            Emojar may contain affiliate links in the future. Any such links
-            will be clearly disclosed.
+            Some category pages link to related free tools on other websites
+            (marked &ldquo;External site&rdquo;). Emojar may contain affiliate
+            links in the future; any such links will be clearly disclosed.
           </li>
         </ul>
       </section>
@@ -200,13 +201,15 @@ export default function TermsPage() {
       {/* 5 */}
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-3">
-          5. Game Scores &amp; Local Storage
+          5. Saved Work, Game Scores &amp; Local Storage
         </h2>
         <p className="leading-7">
-          Game scores, high scores, and user preferences are stored exclusively
-          in your browser&rsquo;s <code>localStorage</code>. This data never
-          leaves your device. Clearing your browser data will erase your stored
-          scores. Emojar has no ability to recover lost local scores.
+          Game scores, user preferences and work saved by some tools (for
+          example Kanban boards, timelines, pixel art and invoices) are stored
+          exclusively in your browser&rsquo;s <code>localStorage</code>. This
+          data never leaves your device. Clearing your browser data will erase
+          it, and Emojar has no ability to recover it — use a tool&rsquo;s
+          export option to keep a copy.
         </p>
       </section>
 

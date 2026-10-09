@@ -1,4 +1,5 @@
 import { publishedGuides } from '@/lib/blog/guides';
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 import {
   CATEGORIES,
   SITE_URL,
@@ -21,7 +22,7 @@ export function GET() {
 
   const body = `# Emojar
 
-> Emojar is a collection of free, privacy-friendly online tools that run entirely in the web browser — image and PDF converters, developer utilities, text tools, color tools, calculators, unit converters, generators and date/time tools. Files and text are processed on the user's device and are never uploaded. Emojar also offers 3,790 emojis to search, copy and paste.
+> Emojar is a collection of free, privacy-friendly online tools that run entirely in the web browser — image and PDF converters, developer utilities, text tools, color tools, calculators, unit converters, generators and date/time tools. Files and text are processed on the user's device and are never uploaded. Emojar also offers ${EMOJI_COUNT_LABEL} emojis to search, copy and paste.
 
 - [All online tools](${SITE_URL}/online-tool)
 - [Emoji search & copy](${SITE_URL}/emoji)

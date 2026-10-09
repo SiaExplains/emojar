@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'About Emojar — Free Online Tools & Emoji Search by Siavash Ghanbari',
-  description:
-    'Emojar is a collection of free, privacy-first online tools built by Siavash Ghanbari in Berlin — 200+ browser-based utilities, plus 3,790 emojis to copy and 18 emoji games. No account needed.',
+  description: `Emojar is a collection of free, privacy-first online tools built by Siavash Ghanbari in Berlin — 200+ browser-based utilities, plus ${EMOJI_COUNT_LABEL} emojis to copy and 18 emoji games. No account needed.`,
   alternates: { canonical: 'https://emojar.com/about' },
   openGraph: {
     title: 'About Emojar — Free Online Tools & Emoji Search',
-    description:
-      'Built by Siavash Ghanbari in Berlin. 200+ private online tools, 3,790 emojis and 18 games. Free, no sign-up.',
+    description: `Built by Siavash Ghanbari in Berlin. 200+ private online tools, ${EMOJI_COUNT_LABEL} emojis and 18 games. Free, no sign-up.`,
     url: 'https://emojar.com/about',
     siteName: 'Emojar',
     type: 'profile',
@@ -17,8 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'About Emojar',
-    description:
-      'Built by Siavash Ghanbari in Berlin. 200+ online tools, 3,790 emojis, 18 games.',
+    description: `Built by Siavash Ghanbari in Berlin. 200+ online tools, ${EMOJI_COUNT_LABEL} emojis, 18 games.`,
   },
   robots: { index: true, follow: true },
 };
@@ -69,7 +67,7 @@ export default function AboutPage() {
           and PDF converters, developer utilities, text tools, calculators, unit
           converters and generators — that run entirely in your browser, so your
           files never leave your device. The emoji side is still here too: a
-          complete index of <strong>3,790 Unicode emojis</strong>,{' '}
+          complete index of <strong>{EMOJI_COUNT_LABEL} Unicode emojis</strong>,{' '}
           <strong>18 browser games</strong> and <strong>8 emoji tools</strong>,
           all free and all working without a login.
         </p>
@@ -131,10 +129,10 @@ export default function AboutPage() {
               🔍 Search &amp; copy emojis
             </h3>
             <p className="text-sm text-gray-600 mt-1">
-              Fuzzy-search all 3,790 Unicode emojis by name, keyword, or
-              character. Click any result to copy it to your clipboard. Each
-              emoji page shows its Unicode codepoint, version, category,
-              keywords, and Slack/GitHub shortcodes.
+              Fuzzy-search all {EMOJI_COUNT_LABEL} Unicode emojis by name,
+              keyword, or character. Click any result to copy it to your
+              clipboard. Each emoji page shows its Unicode codepoint, version,
+              category, keywords, and Slack/GitHub shortcodes.
             </p>
           </div>
 
@@ -301,27 +299,34 @@ export default function AboutPage() {
             to use with no account required
           </li>
           <li>
-            <strong>No ads on tools</strong> — the tools run ad-free; ads only
-            appear on content pages where they don&apos;t interfere with
-            functionality
+            <strong>Ads stay out of the way</strong> — ads are never placed
+            inside a tool or made to look like a button or download link
           </li>
           <li>
-            <strong>Privacy-first</strong> — every online tool, plus the
-            watermark and photo tools, processes your files locally in the
-            browser; nothing is uploaded to any server
+            <strong>Privacy-first</strong> — the online tools, plus the
+            watermark and photo tools, process your files locally in the
+            browser; nothing is uploaded to our servers. The few optional
+            features that contact another service (such as downloading the OCR
+            engine) say so on the page
           </li>
           <li>
-            <strong>No tracking beyond analytics</strong> — we use Google
-            Analytics for aggregate traffic data only; no personal profiling
+            <strong>No tracking beyond analytics</strong> — we use cookieless
+            Vercel Web Analytics for aggregate page views only; no personal
+            profiling
           </li>
         </ul>
 
         <h2 className="text-xl font-semibold mt-8">How Emojar is funded</h2>
         <p>
-          Emojar runs on <strong>Google AdSense display ads</strong> on content
-          pages, and may in future include clearly labelled affiliate links. The
-          goal is a clean, unobtrusive ad experience — no interstitials, no
-          autoplay video, no pop-ups. A clean, fast page is better for everyone.
+          Emojar is funded through <strong>display advertising</strong> and may
+          in future include clearly labelled affiliate links or partner
+          listings. The goal is a clean, unobtrusive ad experience that never
+          gets in the way of a tool — a clean, fast page is better for everyone.
+          See the{' '}
+          <Link href="/privacy" className="underline">
+            Privacy Policy
+          </Link>{' '}
+          for how ads and consent work.
         </p>
 
         <h2 className="text-xl font-semibold mt-8">Get in touch</h2>

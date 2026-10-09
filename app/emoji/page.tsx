@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 import EmojiHub from '@/components/EmojiHub';
 
-const title = 'Emoji Search — Copy & Paste 3,790 Emojis | Emojar';
-const description =
-  'Search and copy any of 3,790 Unicode emojis with one click. Browse by category, holiday collections and A–Z lists. Free, no sign-up.';
+const title = `Emoji Search — Copy & Paste ${EMOJI_COUNT_LABEL} Emojis | Emojar`;
+const description = `Search and copy any of ${EMOJI_COUNT_LABEL} Unicode emojis with one click. Browse by category, holiday collections and A–Z lists. Free, no sign-up.`;
 
 export const metadata: Metadata = {
   title: { absolute: title },

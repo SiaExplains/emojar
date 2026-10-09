@@ -1,8 +1,10 @@
 import { ImageResponse } from 'next/og';
+import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
+import { TOOLS } from '@/lib/online-tools/registry';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'Emojar — Emoji Search, Games & Tools';
+export const alt = 'Emojar — Free Online Tools, Emoji Search & Games';
 
 export default function OgImage() {
   return new ImageResponse(
@@ -21,7 +23,7 @@ export default function OgImage() {
           gap: '24px',
         }}
       >
-        <div style={{ fontSize: 96, lineHeight: 1 }}>😊🎮🛠️</div>
+        <div style={{ fontSize: 96, lineHeight: 1 }}>🛠️😊🎮</div>
         <div
           style={{
             fontSize: 64,
@@ -41,7 +43,7 @@ export default function OgImage() {
             lineHeight: 1.4,
           }}
         >
-          3,790 emojis · 18 games · 8 tools
+          {`${TOOLS.length} free online tools · ${EMOJI_COUNT_LABEL} emojis · 18 games`}
         </div>
         <div
           style={{

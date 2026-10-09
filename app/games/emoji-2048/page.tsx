@@ -26,7 +26,7 @@ const TILE_COLORS: Record<number, string> = {
   64: 'bg-yellow-200',
   128: 'bg-orange-300',
   256: 'bg-green-400',
-  512: 'bg-indigo-300',
+  512: 'bg-brand-300',
   1024: 'bg-yellow-400',
   2048: 'bg-amber-500',
 };

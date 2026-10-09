@@ -303,7 +303,7 @@ export function DropLine({ show }: { show: boolean }) {
   return (
     <div
       aria-hidden
-      className="my-1 h-1 rounded-full bg-indigo-500 motion-safe:animate-pulse"
+      className="my-1 h-1 rounded-full bg-brand-500 motion-safe:animate-pulse"
     />
   );
 }

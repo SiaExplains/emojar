@@ -171,7 +171,7 @@ export default function TotpTool(_: ToolProps) {
 
       {codes && (
         <div
-          className="flex flex-wrap items-center gap-6 rounded-2xl border border-indigo-100 bg-indigo-50 p-5"
+          className="flex flex-wrap items-center gap-6 rounded-2xl border border-brand-100 bg-brand-50 p-5"
           aria-live="polite"
         >
           <svg
@@ -202,7 +202,7 @@ export default function TotpTool(_: ToolProps) {
           </svg>
           <div className="min-w-0 flex-1">
             {label && (
-              <p className="text-xs font-medium text-indigo-700">{label}</p>
+              <p className="text-xs font-medium text-brand-700">{label}</p>
             )}
             <p className="font-mono text-4xl font-semibold tracking-wider text-gray-900">
               {group(codes.now)}

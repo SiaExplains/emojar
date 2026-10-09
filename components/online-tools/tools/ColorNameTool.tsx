@@ -67,13 +67,13 @@ export default function ColorNameTool(_: ToolProps) {
       }}
       aria-label={`${c.name} ${c.hex} — copy and inspect`}
       title={`${c.name} ${c.hex}`}
-      className="group flex w-full flex-col overflow-hidden rounded-xl border border-gray-100 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+      className="group flex w-full flex-col overflow-hidden rounded-xl border border-gray-100 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
     >
       <span className={`block w-full ${size}`} style={{ background: c.hex }} />
       <span className="block truncate px-2 pt-1 text-xs font-medium text-gray-900">
         {c.name}
       </span>
-      <span className="block px-2 pb-1 font-mono text-[10px] text-gray-500">
+      <span className="block px-2 pb-1 font-mono text-xs text-gray-500">
         {c.hex}
         {c.source === 'css' && ' · CSS'}
       </span>
@@ -176,7 +176,7 @@ export default function ColorNameTool(_: ToolProps) {
             {matches.slice(1).map((m) => (
               <li key={`${m.source}-${m.name}`}>
                 {swatch(m)}
-                <span className="block px-1 text-[10px] text-gray-500">
+                <span className="block px-1 text-xs text-gray-500">
                   ΔE {m.distance.toFixed(1)}
                 </span>
               </li>

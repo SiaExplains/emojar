@@ -50,7 +50,7 @@ function ContactCard({
 
 export default function ContactPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-5 py-10">
+    <div className="mx-auto w-full max-w-3xl px-5 py-10">
       <h1 className="text-3xl font-semibold tracking-tight">Contact</h1>
       <p className="mt-3 text-gray-600">
         We typically respond within <strong>2–5 business days</strong>. Please
@@ -84,6 +84,6 @@ export default function ContactPage() {
         </a>
         .
       </p>
-    </main>
+    </div>
   );
 }

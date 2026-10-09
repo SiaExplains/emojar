@@ -36,13 +36,13 @@ export default function TimestampTool({ config }: ToolProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-indigo-100 bg-indigo-50 px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-brand-100 bg-brand-50 px-4 py-3">
         <div>
-          <p className="text-xs font-medium text-indigo-700">
+          <p className="text-xs font-medium text-brand-700">
             Current Unix time
           </p>
           <p
-            className="font-mono text-2xl font-bold tabular-nums text-indigo-900"
+            className="font-mono text-2xl font-bold tabular-nums text-brand-900"
             aria-live="off"
           >
             {Math.floor(now / 1000)}

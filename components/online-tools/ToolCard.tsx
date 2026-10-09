@@ -10,7 +10,7 @@ export type ToolCardData = {
 };
 
 const CARD =
-  'group flex items-start gap-3 rounded-2xl border border-gray-100 bg-white px-4 py-3.5 transition hover:border-gray-200 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500';
+  'group flex items-start gap-3 rounded-2xl border border-gray-100 bg-white px-4 py-3.5 transition hover:border-gray-200 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500';
 
 export function ToolCard({ tool }: { tool: ToolCardData }) {
   if (tool.external)
@@ -25,7 +25,7 @@ export function ToolCard({ tool }: { tool: ToolCardData }) {
           {tool.icon}
         </span>
         <span className="min-w-0">
-          <span className="block text-sm font-semibold text-gray-900 group-hover:text-indigo-700">
+          <span className="block text-sm font-semibold text-gray-900 group-hover:text-brand-700">
             {tool.name}{' '}
             <span aria-hidden className="text-xs font-normal text-gray-400">
               ↗
@@ -34,7 +34,7 @@ export function ToolCard({ tool }: { tool: ToolCardData }) {
           <span className="mt-0.5 block text-xs leading-snug text-gray-500">
             {tool.description}
           </span>
-          <span className="mt-1 block text-[11px] text-gray-400">
+          <span className="mt-1 block text-xs text-gray-400">
             External site · opens in a new tab
           </span>
         </span>
@@ -46,7 +46,7 @@ export function ToolCard({ tool }: { tool: ToolCardData }) {
         {tool.icon}
       </span>
       <span className="min-w-0">
-        <span className="block text-sm font-semibold text-gray-900 group-hover:text-indigo-700">
+        <span className="block text-sm font-semibold text-gray-900 group-hover:text-brand-700">
           {tool.name}
         </span>
         <span className="mt-0.5 block text-xs leading-snug text-gray-500">

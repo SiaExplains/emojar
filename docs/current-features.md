@@ -2,7 +2,7 @@
 
 > **Live site:** [emojar.com](https://emojar.com)  
 > **Stack:** Next.js 15 · React 19 · TypeScript · Tailwind CSS  
-> **Last updated:** 9 October 2026 (v0.15.3 — 264 online tools; platform since v0.2.0)
+> **Last updated:** 9 October 2026 (v0.16.0 — 264 online tools; platform since v0.2.0)
 
 ---
 
@@ -561,7 +561,10 @@ All 18 games at `/games` are:
 - **Mobile-first responsive design** — works on all screen sizes
 - **Keyboard accessibility** — detail pages explain how to type emojis with Win/Mac/mobile keyboard shortcuts
 - **Back-to-top button** — sticky button on long pages
-- **Desktop & mobile menus** — separate components for each viewport; two top-level entries: **Online Tools** (all 13 categories) and **Emoji** (search, categories, collections, emoji tools, games)
+- **Navigation** — five top-level entries: **Tools** (all 13 categories), **Emoji** (search, categories, collections, emoji tools), **Games**, **Guides** and **Help** (FAQ, About, Contact, Privacy), defined in `components/MainMenu/Menu.routes.ts`. Desktop (≥ lg) and mobile menus use the disclosure pattern: parents are real links with a separate named toggle, Esc closes and returns focus, and all links are server-rendered.
+- **Footer** — `<nav aria-label="Footer">` with every tool category, emoji & games, guides & help, and legal links.
+- **Accessibility basics** — "Skip to content" link, one `<main id="main">` per page, a global `:focus-visible` outline, `prefers-reduced-motion` honoured site-wide, text at least 12 px except dense data labels (periodic-table tiles, grid line numbers, map labels, chessboard coordinates on phones, keyboard-tester keys, Unicode grid code points).
+- **Design tokens** — `tailwind.config.ts`: one accent, `brand` (the logo's magenta; brand-600 5.3:1 on white), gray neutrals, emerald/amber/red for success/warning/danger; shared class names (`btnPrimary`, `btnSecondary`, `inputBase`, `labelBase`, `card`, `textLink`) in `components/ui/styles.ts`, re-exported by the tool UI kit.
 
 ---
 

@@ -35,7 +35,7 @@ import {
 const KEY = 'emojar:decision-matrix:v1';
 const PRINT_ID = 'decision-matrix-print';
 const iconBtn =
-  'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:opacity-30';
+  'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 disabled:opacity-30';
 // Distinct colours plus dash patterns, so radar lines differ without colour.
 const SERIES = [
   { color: '#4f46e5', dash: '' },
@@ -444,7 +444,7 @@ export default function DecisionMatrixTool(_: ToolProps) {
                               lowerIsBetter: e.target.checked,
                             })
                           }
-                          className="h-3.5 w-3.5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                          className="h-3.5 w-3.5 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
                         />
                         Lower is better
                       </label>
@@ -619,7 +619,7 @@ export default function DecisionMatrixTool(_: ToolProps) {
           </h2>
           <p
             aria-live="polite"
-            className="rounded-xl bg-indigo-50 px-4 py-3 text-sm font-medium text-indigo-900"
+            className="rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-900"
           >
             {summary}
             {res.missingCells > 0 &&
@@ -643,7 +643,7 @@ export default function DecisionMatrixTool(_: ToolProps) {
                 </div>
                 <div className="h-3 overflow-hidden rounded-full bg-gray-100">
                   <div
-                    className={`h-full rounded-full ${r.rank === 1 ? 'bg-indigo-600' : 'bg-indigo-300'}`}
+                    className={`h-full rounded-full ${r.rank === 1 ? 'bg-brand-600' : 'bg-brand-300'}`}
                     style={{
                       width: `${Math.max(0, Math.min(100, (r.total / state.scale) * 100))}%`,
                     }}

@@ -162,7 +162,7 @@ export default function JsonDiffTool(_: ToolProps) {
                 key={i}
                 className={`rounded-lg border px-3 py-2 font-mono text-xs ${STYLE[c.type][0]}`}
               >
-                <span className="mr-2 font-sans text-[11px] font-semibold uppercase tracking-wide text-gray-600">
+                <span className="mr-2 font-sans text-xs font-semibold uppercase tracking-wide text-gray-600">
                   {STYLE[c.type][1]}
                 </span>
                 <span className="font-semibold text-gray-900">{c.path}</span>

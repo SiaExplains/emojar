@@ -59,11 +59,11 @@ export default function TextStatsTool({ config }: ToolProps) {
         {primary.map((p, i) => (
           <div
             key={p.label}
-            className={`rounded-2xl border px-4 py-3 ${i === 0 ? 'border-indigo-100 bg-indigo-50' : 'border-gray-100 bg-gray-50'}`}
+            className={`rounded-2xl border px-4 py-3 ${i === 0 ? 'border-brand-100 bg-brand-50' : 'border-gray-100 bg-gray-50'}`}
           >
             <dt className="text-xs font-medium text-gray-500">{p.label}</dt>
             <dd
-              className={`text-2xl font-bold tabular-nums ${i === 0 ? 'text-indigo-900' : 'text-gray-900'}`}
+              className={`text-2xl font-bold tabular-nums ${i === 0 ? 'text-brand-900' : 'text-gray-900'}`}
             >
               {p.value.toLocaleString('en-US')}
             </dd>

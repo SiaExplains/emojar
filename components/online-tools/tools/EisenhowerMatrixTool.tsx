@@ -24,7 +24,7 @@ import {
 
 const KEY = 'emojar:eisenhower-matrix:v1';
 const iconBtn =
-  'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:opacity-30';
+  'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 disabled:opacity-30';
 const TONE: Record<QuadrantId, string> = {
   do: 'border-red-200 bg-red-50/40',
   schedule: 'border-emerald-200 bg-emerald-50/40',
@@ -89,7 +89,7 @@ export default function EisenhowerMatrixTool(_: ToolProps) {
           <button
             type="button"
             {...drag.handleProps(t.id)}
-            className="mt-0.5 cursor-grab select-none rounded px-1 text-gray-400 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            className="mt-0.5 cursor-grab select-none rounded px-1 text-gray-400 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             aria-label={`Drag “${t.text}” (or use “Move to”)`}
             tabIndex={-1}
           >
@@ -102,7 +102,7 @@ export default function EisenhowerMatrixTool(_: ToolProps) {
               apply((s) => updateItem(s, t.id, { done: e.target.checked }))
             }
             aria-label={`Mark “${t.text}” as done`}
-            className="mt-1 h-4 w-4 shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="mt-1 h-4 w-4 shrink-0 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
           />
           {isEditing ? (
             <input
@@ -122,12 +122,12 @@ export default function EisenhowerMatrixTool(_: ToolProps) {
             <button
               type="button"
               onClick={() => setEditing({ id: t.id, text: t.text })}
-              className={`min-w-0 flex-1 break-words rounded text-left text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${t.done ? 'text-gray-400 line-through' : 'text-gray-900'}`}
+              className={`min-w-0 flex-1 break-words rounded text-left text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${t.done ? 'text-gray-400 line-through' : 'text-gray-900'}`}
               aria-label={`Edit “${t.text}”`}
             >
               {t.text}
               {t.done && (
-                <span className="ml-2 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] font-medium text-gray-600 no-underline">
+                <span className="ml-2 rounded-full bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600 no-underline">
                   done
                 </span>
               )}
@@ -141,7 +141,7 @@ export default function EisenhowerMatrixTool(_: ToolProps) {
             onChange={(e) =>
               apply((s) => moveItem(s, t.id, e.target.value, null))
             }
-            className="h-7 rounded-lg border border-gray-200 bg-white px-1.5 text-xs text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            className="h-7 rounded-lg border border-gray-200 bg-white px-1.5 text-xs text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           >
             {QUADRANTS.map((x) => (
               <option key={x.id} value={x.id}>
@@ -230,7 +230,7 @@ export default function EisenhowerMatrixTool(_: ToolProps) {
             <section
               key={col.id}
               aria-labelledby={`em-${col.id}`}
-              className={`flex min-h-[180px] flex-col rounded-2xl border-2 p-3 ${TONE[q.id]} ${over ? 'ring-2 ring-indigo-400' : ''}`}
+              className={`flex min-h-[180px] flex-col rounded-2xl border-2 p-3 ${TONE[q.id]} ${over ? 'ring-2 ring-brand-400' : ''}`}
             >
               <header className="mb-2">
                 <div className="flex items-baseline justify-between gap-2">

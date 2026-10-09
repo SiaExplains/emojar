@@ -1,49 +1,51 @@
 import { CATEGORIES } from '@/lib/online-tools/categories';
 
-// Online Tools lead the navigation; the emoji features live under one entry.
-export const MENU_ROUTES = [
+export type MenuLink = { href: string; label: string };
+export type MenuEntry = MenuLink & {
+  /** Links shown in the entry's panel; the entry itself is always a link too. */
+  children?: MenuLink[];
+};
+
+// Top-level navigation. Every item is a plain link so crawlers and
+// no-JavaScript visitors reach the same pages as the dropdowns.
+export const MENU_ROUTES: MenuEntry[] = [
   {
     href: '/online-tool',
-    label: 'Online Tools',
-    target: '_self',
+    label: 'Tools',
     children: [
-      { href: '/online-tool', label: '🧰 All tools', target: '_self' },
+      { href: '/online-tool', label: '🧰 All tools' },
       ...CATEGORIES.map((c) => ({
         href: `/online-tool/${c.slug}`,
         label: `${c.icon} ${c.name}`,
-        target: '_self',
       })),
     ],
   },
   {
     href: '/emoji',
     label: 'Emoji',
-    target: '_self',
     children: [
-      { href: '/emoji', label: '😀 Emoji search & copy', target: '_self' },
-      { href: '/categories', label: '📂 Emoji categories', target: '_self' },
-      {
-        href: '/emoji-collections/events',
-        label: '🎉 Events & holidays',
-        target: '_self',
-      },
-      {
-        href: '/collection/alphabet',
-        label: '🔤 Emojis A–Z',
-        target: '_self',
-      },
-      {
-        href: '/collection/detail',
-        label: '📋 Emojis with details',
-        target: '_self',
-      },
+      { href: '/emoji', label: '😀 Emoji search & copy' },
+      { href: '/categories', label: '📂 Emoji categories' },
+      { href: '/emoji-collections/events', label: '🎉 Events & holidays' },
+      { href: '/collection/alphabet', label: '🔤 Emojis A–Z' },
+      { href: '/collection/detail', label: '📋 Emojis with details' },
       {
         href: '/table/emoji-alphabet-shaped',
         label: '🅰️ Letter-shaped emojis',
-        target: '_self',
       },
-      { href: '/emoji-tools', label: '🛠️ Emoji tools', target: '_self' },
-      { href: '/games', label: '🎮 Emoji games', target: '_self' },
+      { href: '/emoji-tools', label: '🛠️ Emoji tools' },
+    ],
+  },
+  { href: '/games', label: 'Games' },
+  { href: '/blog', label: 'Guides' },
+  {
+    href: '/faq',
+    label: 'Help',
+    children: [
+      { href: '/faq', label: 'FAQ' },
+      { href: '/about', label: 'About Emojar' },
+      { href: '/contact', label: 'Contact' },
+      { href: '/privacy', label: 'Privacy' },
     ],
   },
 ];

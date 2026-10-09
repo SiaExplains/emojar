@@ -653,7 +653,7 @@ export default function JsonViewerTool(_: ToolProps) {
                 const top = index * ROW_H;
                 const isSel = row.id === selected;
                 const tab = row.id === tabId ? 0 : -1;
-                const base = `absolute left-0 right-0 flex items-center gap-1.5 whitespace-nowrap pr-3 font-mono text-[13px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-500 ${isSel ? 'bg-indigo-50' : 'hover:bg-gray-50'}`;
+                const base = `absolute left-0 right-0 flex items-center gap-1.5 whitespace-nowrap pr-3 font-mono text-[13px] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500 ${isSel ? 'bg-brand-50' : 'hover:bg-gray-50'}`;
                 const pad = 8 + Math.min(row.depth, 40) * 16;
                 if (row.kind === 'more')
                   return (
@@ -668,7 +668,7 @@ export default function JsonViewerTool(_: ToolProps) {
                       aria-level={row.depth + 1}
                       aria-selected={isSel}
                       tabIndex={tab}
-                      className={`${base} cursor-pointer text-indigo-700 underline`}
+                      className={`${base} cursor-pointer text-brand-700 underline`}
                       style={{ top, height: ROW_H, paddingLeft: pad + 20 }}
                       onClick={() => {
                         setSelected(row.id);
@@ -741,7 +741,7 @@ export default function JsonViewerTool(_: ToolProps) {
                     >
                       {container ? pv : <Highlight text={pv} query={query} />}
                     </span>
-                    <span className="ml-auto shrink-0 rounded bg-gray-100 px-1.5 py-0.5 font-sans text-[10px] uppercase tracking-wide text-gray-500">
+                    <span className="ml-auto shrink-0 rounded bg-gray-100 px-1.5 py-0.5 font-sans text-xs uppercase tracking-wide text-gray-500">
                       {type}
                     </span>
                     {isMatch && <span className="sr-only">(match)</span>}

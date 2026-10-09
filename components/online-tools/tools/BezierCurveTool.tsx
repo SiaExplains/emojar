@@ -156,7 +156,7 @@ export default function BezierCurveTool(_: ToolProps) {
               setDegree(g);
               setSel(0);
             }}
-            className={`rounded-xl border px-3.5 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+            className={`rounded-xl border px-3.5 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
               degree === g
                 ? 'border-gray-900 bg-gray-900 text-white'
                 : 'border-gray-200 bg-white text-gray-800 hover:bg-gray-50'

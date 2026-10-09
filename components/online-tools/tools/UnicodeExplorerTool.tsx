@@ -176,7 +176,7 @@ export default function UnicodeExplorerTool({ config }: ToolProps) {
                 <button
                   type="button"
                   onClick={() => showBlock(blockHit.first)}
-                  className="ml-2 text-xs font-normal text-indigo-600 underline underline-offset-2"
+                  className="ml-2 text-xs font-normal text-brand-600 underline underline-offset-2"
                 >
                   Browse this block
                 </button>
@@ -193,7 +193,7 @@ export default function UnicodeExplorerTool({ config }: ToolProps) {
                     onClick={() => setSelected(cp)}
                     title={`${uPlus(cp)} ${info.name}`}
                     aria-label={`${uPlus(cp)} ${info.name || 'character'}`}
-                    className={`flex h-14 w-full flex-col items-center justify-center rounded-lg border text-xl transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                    className={`flex h-14 w-full flex-col items-center justify-center rounded-lg border text-xl transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                       info.gc === 'Cn' && db
                         ? 'border-dashed border-gray-200 text-gray-300'
                         : 'border-gray-100 text-gray-900'
@@ -299,7 +299,7 @@ function CharDetails({
             <button
               type="button"
               onClick={onBlock}
-              className="text-indigo-600 underline underline-offset-2"
+              className="text-brand-600 underline underline-offset-2"
             >
               {info.block}
             </button>

@@ -163,7 +163,7 @@ export default function RobotsTxtTool(_: ToolProps) {
         mime="text/plain"
       />
 
-      <div className="space-y-3 rounded-2xl border border-indigo-100 bg-indigo-50/50 p-4">
+      <div className="space-y-3 rounded-2xl border border-brand-100 bg-brand-50/50 p-4">
         <h2 className="text-sm font-semibold text-gray-900">
           Test a URL against these rules
         </h2>

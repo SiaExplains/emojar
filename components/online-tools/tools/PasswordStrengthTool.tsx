@@ -192,7 +192,7 @@ export default function PasswordStrengthTool(_: ToolProps) {
         a strong one? Use the{' '}
         <Link
           href="/online-tool/security-generators/password-generator"
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
         >
           Password Generator
         </Link>

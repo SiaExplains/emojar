@@ -210,7 +210,7 @@ export function VideoCompressorTool(_: ToolProps) {
               aria-valuemax={100}
             >
               <div
-                className="h-full bg-indigo-600 transition-[width]"
+                className="h-full bg-brand-600 transition-[width]"
                 style={{ width: `${progress * 100}%` }}
               />
             </div>

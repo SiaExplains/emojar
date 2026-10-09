@@ -189,7 +189,7 @@ export default function PdfFormTool(_: ToolProps) {
             {!f.readOnly && v !== '' && (
               <button
                 type="button"
-                className="text-xs text-indigo-700 hover:underline"
+                className="text-xs text-brand-700 hover:underline"
                 onClick={() => set(f.name, '')}
               >
                 Clear

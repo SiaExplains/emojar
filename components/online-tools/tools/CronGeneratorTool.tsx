@@ -79,10 +79,10 @@ export default function CronGeneratorTool(_: ToolProps) {
               id={`cron-${i}`}
               value={parts.length === 5 ? parts[i] : ''}
               onChange={(e) => setPart(i, e.target.value)}
-              className="w-full rounded-lg border border-gray-200 px-2 py-1.5 text-center font-mono text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+              className="w-full rounded-lg border border-gray-200 px-2 py-1.5 text-center font-mono text-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
               aria-describedby={`cron-${i}-hint`}
             />
-            <p id={`cron-${i}-hint`} className="text-[11px] text-gray-400">
+            <p id={`cron-${i}-hint`} className="text-xs text-gray-400">
               {f.hint}
             </p>
           </div>

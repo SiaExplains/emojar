@@ -101,7 +101,7 @@ export default function Home() {
           </h2>
           <Link
             href="/online-tool"
-            className="text-sm text-indigo-700 hover:underline"
+            className="text-sm text-brand-700 hover:underline"
           >
             All {TOOLS.length} tools →
           </Link>

@@ -7,7 +7,7 @@ import { RangeField, SelectField, TextField, btnSecondary } from '../ui';
 import { CodePanel, ItemTabs } from './playground-shared';
 
 const COLORS = [
-  'bg-indigo-400',
+  'bg-brand-400',
   'bg-emerald-400',
   'bg-amber-400',
   'bg-rose-400',
@@ -345,14 +345,14 @@ export function FlexboxPlaygroundTool(_: ToolProps) {
       <p className="text-xs text-gray-500">
         Need two dimensions? Try the{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/developer-tools/grid-playground"
         >
           CSS Grid playground
         </Link>
         . Sizing with rem, % or vw? See the{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/developer-tools/css-unit-visualizer"
         >
           CSS unit visualizer
@@ -790,7 +790,7 @@ export function GridPlaygroundTool(_: ToolProps) {
       <p className="text-xs text-gray-500">
         One-dimensional rows or columns are often simpler with the{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/developer-tools/flexbox-playground"
         >
           Flexbox playground

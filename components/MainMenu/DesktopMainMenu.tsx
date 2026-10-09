@@ -1,92 +1,165 @@
 'use client';
 
+// Desktop navigation, using the disclosure pattern: each parent is a real link
+// plus a separate toggle button for its panel. Panels open on hover (mouse)
+// or with the toggle (keyboard, touch); Esc closes and returns focus.
+
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useId, useRef, useState } from 'react';
 import { MENU_ROUTES } from './Menu.routes';
 
-type MenuItem = {
-  href: string;
-  label: string;
-  target?: '_self' | '_blank';
-  // some items came in as "chilren" by typo, support both
-  children?: MenuItem[] | null;
-  chilren?: MenuItem[] | null;
-};
+const itemBase =
+  'rounded-lg px-3 py-2 text-sm font-medium transition hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500';
 
-function getChildren(item: MenuItem): MenuItem[] | null {
-  // prefer correct "children", fallback to the typo
-  return item.children ?? item.chilren ?? null;
-}
+export const isActive = (pathname: string, href: string) =>
+  href === '/'
+    ? pathname === '/'
+    : pathname === href || pathname.startsWith(`${href}/`);
 
-const DesktopMainMenu = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+export default function DesktopMainMenu() {
+  const pathname = usePathname() ?? '/';
+  const [open, setOpen] = useState<number | null>(null);
   const hoverTimer = useRef<number | null>(null);
+  // A panel opened by hovering stays open when its toggle is then clicked;
+  // only a second click (or Esc, or leaving) closes it.
+  const openedByHover = useRef(false);
+  const root = useRef<HTMLDivElement>(null);
+  const toggles = useRef<(HTMLButtonElement | null)[]>([]);
+  const id = useId();
 
-  // Close on ESC
+  // Close when navigating, clicking elsewhere or pressing Esc.
+  useEffect(() => setOpen(null), [pathname]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpenIndex(null);
+      if (e.key !== 'Escape' || open === null) return;
+      toggles.current[open]?.focus();
+      setOpen(null);
+    };
+    const onDown = (e: MouseEvent) => {
+      if (!root.current?.contains(e.target as Node)) setOpen(null);
     };
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
+    document.addEventListener('mousedown', onDown);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onDown);
+    };
+  }, [open]);
 
-  const handleEnter = (idx: number) => {
+  const enter = (i: number) => {
     if (hoverTimer.current) window.clearTimeout(hoverTimer.current);
-    setOpenIndex(idx);
+    if (open !== i) openedByHover.current = true;
+    setOpen(i);
   };
-
-  const handleLeave = () => {
-    // small delay so users can move into the panel without flicker
-    hoverTimer.current = window.setTimeout(() => setOpenIndex(null), 120);
+  const toggle = (i: number) => {
+    if (hoverTimer.current) window.clearTimeout(hoverTimer.current);
+    const close = open === i && !openedByHover.current;
+    openedByHover.current = false;
+    setOpen(close ? null : i);
+  };
+  // A short delay so the pointer can travel into the panel.
+  const leave = () => {
+    hoverTimer.current = window.setTimeout(() => setOpen(null), 150);
   };
 
   return (
-    <div className="relative">
-      <ul className="flex items-center gap-2">
-        {(MENU_ROUTES as MenuItem[]).map((item, idx) => {
-          const kids = getChildren(item);
-          const isOpen = openIndex === idx && kids && kids.length > 0;
-
+    <div ref={root} className="relative">
+      <ul className="flex items-center gap-1">
+        {MENU_ROUTES.map((item, i) => {
+          const kids = item.children ?? [];
+          const panelId = `${id}-panel-${i}`;
+          const active = isActive(pathname, item.href);
           return (
             <li
               key={item.href}
-              className="relative"
-              onMouseEnter={() => handleEnter(idx)}
-              onMouseLeave={handleLeave}
-              onFocus={() => handleEnter(idx)}
-              onBlur={handleLeave}
+              className="flex items-center"
+              onMouseEnter={kids.length ? () => enter(i) : undefined}
+              onMouseLeave={kids.length ? leave : undefined}
+              onBlur={(e) => {
+                if (
+                  open === i &&
+                  !e.currentTarget.contains(e.relatedTarget as Node | null)
+                )
+                  setOpen(null);
+              }}
             >
               <Link
                 href={item.href}
-                target={item.target || '_self'}
-                className="px-3 py-2 rounded-md hover:bg-neutral-100 focus:bg-neutral-100 focus:outline-none transition"
-                aria-haspopup={kids ? 'true' : undefined}
-                aria-expanded={isOpen ? 'true' : 'false'}
+                aria-current={pathname === item.href ? 'page' : undefined}
+                className={`${itemBase} ${active ? 'text-brand-700' : 'text-gray-700'}`}
               >
                 {item.label}
               </Link>
-
-              {/* Mega dropdown */}
-              {isOpen && (
-                <div
-                  className="absolute right-0 mt-2 w-[640px] max-w-[90vw] rounded-2xl border border-neutral-200 bg-white shadow-xl p-4 z-40"
-                  role="menu"
-                >
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {kids!.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        target={child.target || '_self'}
-                        className="block rounded-lg px-3 py-2 hover:bg-neutral-50 focus:bg-neutral-50 focus:outline-none"
-                        role="menuitem"
-                      >
-                        <span className="text-sm">{child.label}</span>
-                      </Link>
-                    ))}
+              {kids.length > 0 && (
+                <>
+                  <button
+                    ref={(el) => {
+                      toggles.current[i] = el;
+                    }}
+                    type="button"
+                    aria-expanded={open === i}
+                    aria-controls={panelId}
+                    aria-label={`${open === i ? 'Hide' : 'Show'} ${item.label} links`}
+                    onClick={() => toggle(i)}
+                    className="-ml-1 rounded-md p-1 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      className={`transition-transform ${open === i ? 'rotate-180' : ''}`}
+                    >
+                      <path
+                        d="M6 9l6 6 6-6"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        fill="none"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    id={panelId}
+                    hidden={open !== i}
+                    className={`absolute right-0 top-full z-40 mt-2 rounded-2xl border border-gray-200 bg-white p-3 shadow-xl ${
+                      kids.length > 8
+                        ? 'w-[640px] max-w-[90vw]'
+                        : kids.length > 4
+                          ? 'w-[440px]'
+                          : 'w-56'
+                    }`}
+                  >
+                    <ul
+                      className={`grid gap-1 ${
+                        kids.length > 8
+                          ? 'grid-cols-3'
+                          : kids.length > 4
+                            ? 'grid-cols-2'
+                            : 'grid-cols-1'
+                      }`}
+                    >
+                      {kids.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            aria-current={
+                              pathname === child.href ? 'page' : undefined
+                            }
+                            className={`block rounded-lg px-3 py-2 text-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
+                              pathname === child.href
+                                ? 'bg-brand-50 text-brand-800'
+                                : 'text-gray-800'
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
+                </>
               )}
             </li>
           );
@@ -94,6 +167,4 @@ const DesktopMainMenu = () => {
       </ul>
     </div>
   );
-};
-
-export default DesktopMainMenu;
+}

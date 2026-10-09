@@ -282,7 +282,7 @@ export default function GridSplitterTool(_: ToolProps) {
                 />
                 <button
                   type="button"
-                  className="w-full text-xs text-indigo-700 hover:underline"
+                  className="w-full text-xs text-brand-700 hover:underline"
                   onClick={() => downloadBlob(t.blob, fileName(t.tile))}
                 >
                   Post {t.tile.post} ⬇

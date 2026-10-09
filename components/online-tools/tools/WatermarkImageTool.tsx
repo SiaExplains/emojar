@@ -438,7 +438,7 @@ export default function WatermarkImageTool({ config }: ToolProps) {
                       aria-checked={o.anchor === a}
                       aria-label={a.replace('-', ' ')}
                       onClick={() => set('anchor', a)}
-                      className={`h-9 rounded-md border ${o.anchor === a ? 'border-indigo-600 bg-indigo-600' : 'border-gray-200 bg-white hover:bg-gray-50'}`}
+                      className={`h-9 rounded-md border ${o.anchor === a ? 'border-brand-600 bg-brand-600' : 'border-gray-200 bg-white hover:bg-gray-50'}`}
                     />
                   ))}
                 </div>

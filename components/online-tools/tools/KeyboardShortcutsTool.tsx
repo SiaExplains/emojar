@@ -173,7 +173,7 @@ export default function KeyboardShortcutsTool(_: ToolProps) {
                       <p className="text-sm text-gray-900">
                         {s.action}
                         {s.app !== 'system' && (
-                          <span className="ml-2 rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">
+                          <span className="ml-2 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600">
                             {APP_NAME[s.app]}
                           </span>
                         )}
@@ -186,7 +186,7 @@ export default function KeyboardShortcutsTool(_: ToolProps) {
                       type="button"
                       onClick={() => void copy(combo)}
                       aria-label={`${s.action}: ${combo}. Copy`}
-                      className="shrink-0 rounded-lg p-1 text-left hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                      className="shrink-0 rounded-lg p-1 text-left hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                     >
                       <Keys combo={combo} />
                     </button>

@@ -184,7 +184,7 @@ export default function BlurImageTool(_: ToolProps) {
             {regions.map((r, i) => (
               <div
                 key={i}
-                className="pointer-events-none absolute border-2 border-indigo-500/80"
+                className="pointer-events-none absolute border-2 border-brand-500/80"
                 style={{
                   left: pct(r.x, bw),
                   top: pct(r.y, bh),
@@ -192,14 +192,14 @@ export default function BlurImageTool(_: ToolProps) {
                   height: pct(r.h, bh),
                 }}
               >
-                <span className="absolute -left-0.5 -top-5 rounded bg-indigo-600 px-1 text-[10px] font-semibold text-white">
+                <span className="absolute -left-0.5 -top-5 rounded bg-brand-600 px-1 text-xs font-semibold text-white">
                   {i + 1}
                 </span>
               </div>
             ))}
             {draft && (
               <div
-                className="pointer-events-none absolute border-2 border-dashed border-indigo-600 bg-indigo-500/10"
+                className="pointer-events-none absolute border-2 border-dashed border-brand-600 bg-brand-500/10"
                 style={{
                   left: pct(draft.x, bw),
                   top: pct(draft.y, bh),

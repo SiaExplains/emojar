@@ -406,8 +406,8 @@ export default function PdfEditTool(_: ToolProps) {
               {pageItems.map((it) => {
                 const active = it.id === selected;
                 const ring = active
-                  ? 'outline outline-2 outline-indigo-600'
-                  : 'hover:outline hover:outline-1 hover:outline-indigo-300';
+                  ? 'outline outline-2 outline-brand-600'
+                  : 'hover:outline hover:outline-1 hover:outline-brand-300';
                 if (it.kind === 'text')
                   return (
                     <div
@@ -461,7 +461,7 @@ export default function PdfEditTool(_: ToolProps) {
                       <span
                         onPointerDown={startResize(it)}
                         aria-hidden
-                        className="absolute -bottom-2 -right-2 h-4 w-4 cursor-nwse-resize rounded-sm border-2 border-indigo-600 bg-white"
+                        className="absolute -bottom-2 -right-2 h-4 w-4 cursor-nwse-resize rounded-sm border-2 border-brand-600 bg-white"
                       />
                     )}
                   </div>

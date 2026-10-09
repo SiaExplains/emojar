@@ -566,7 +566,7 @@ export default function PixelArtTool(_: ToolProps) {
     commitDoc(withFrame(doc, frameIdx, blank(size)), 'Frame cleared.');
 
   const toolBtn = (activeTool: boolean) =>
-    `inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+    `inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
       activeTool
         ? 'border-gray-900 bg-gray-900 text-white'
         : 'border-gray-200 bg-white text-gray-800 hover:bg-gray-50'
@@ -629,7 +629,7 @@ export default function PixelArtTool(_: ToolProps) {
               onPointerCancel={onUp}
               onKeyDown={onCanvasKey}
               onBlur={() => setCursor(null)}
-              className="mx-auto block cursor-crosshair focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              className="mx-auto block cursor-crosshair focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               style={{ width: dim, height: dim, touchAction: 'none' }}
             />
           </div>
@@ -651,7 +651,7 @@ export default function PixelArtTool(_: ToolProps) {
                 type="color"
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
-                className="h-9 w-14 cursor-pointer rounded-lg border border-gray-200 bg-white p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="h-9 w-14 cursor-pointer rounded-lg border border-gray-200 bg-white p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               />
               <span className="font-mono">{color}</span>
             </label>
@@ -775,12 +775,12 @@ export default function PixelArtTool(_: ToolProps) {
               aria-pressed={i === frameIdx}
               aria-label={`Frame ${i + 1}`}
               onClick={() => setCur(i)}
-              className={`shrink-0 rounded-lg border-2 p-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
-                i === frameIdx ? 'border-indigo-600' : 'border-gray-200'
+              className={`shrink-0 rounded-lg border-2 p-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
+                i === frameIdx ? 'border-brand-600' : 'border-gray-200'
               }`}
             >
               <FrameThumb px={f} size={size} />
-              <span className="block text-center text-[10px] text-gray-600">
+              <span className="block text-center text-xs text-gray-600">
                 {i + 1}
               </span>
             </button>
@@ -892,7 +892,7 @@ function Swatches({
             aria-pressed={current === c}
             title={c}
             onClick={() => onPick(c)}
-            className={`h-7 w-7 rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+            className={`h-7 w-7 rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
               current === c
                 ? 'border-gray-900 ring-2 ring-gray-900 ring-offset-1'
                 : 'border-gray-300'

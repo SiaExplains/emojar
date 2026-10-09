@@ -211,7 +211,7 @@ export default function VideoTrimmerTool(_: ToolProps) {
                       setStart(v);
                       if (video.current) video.current.currentTime = v;
                     }}
-                    className="flex-1 accent-indigo-600"
+                    className="flex-1 accent-brand-600"
                     aria-valuetext={fmtTime(start)}
                   />
                 </label>
@@ -228,7 +228,7 @@ export default function VideoTrimmerTool(_: ToolProps) {
                       setEnd(v);
                       if (video.current) video.current.currentTime = v;
                     }}
-                    className="flex-1 accent-indigo-600"
+                    className="flex-1 accent-brand-600"
                     aria-valuetext={fmtTime(end)}
                   />
                 </label>
@@ -320,7 +320,7 @@ export default function VideoTrimmerTool(_: ToolProps) {
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-gray-100">
             <div
-              className="h-full rounded-full bg-indigo-500 transition-all"
+              className="h-full rounded-full bg-brand-500 transition-all"
               style={{ width: `${progress * 100}%` }}
             />
           </div>

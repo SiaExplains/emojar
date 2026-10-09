@@ -138,7 +138,7 @@ export default function KeyboardTesterTool(_: ToolProps) {
                 style={{ flex: `${item.w ?? 1} 0 0` }}
                 className={`flex h-9 min-w-0 items-center justify-center truncate rounded-md border px-1 text-[11px] font-medium transition-colors ${
                   down.has(item.code)
-                    ? 'border-indigo-600 bg-indigo-600 text-white'
+                    ? 'border-brand-600 bg-brand-600 text-white'
                     : tested.has(item.code)
                       ? 'border-emerald-200 bg-emerald-100 text-emerald-900'
                       : 'border-gray-200 bg-white text-gray-700'
@@ -169,7 +169,7 @@ export default function KeyboardTesterTool(_: ToolProps) {
         }}
         className={`cursor-pointer rounded-2xl border-2 p-3 outline-none transition sm:p-4 ${
           focused
-            ? 'border-indigo-400 bg-indigo-50/40'
+            ? 'border-brand-400 bg-brand-50/40'
             : 'border-dashed border-gray-300 bg-gray-50'
         }`}
       >

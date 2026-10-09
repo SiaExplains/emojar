@@ -219,7 +219,7 @@ export default function WorldTimeMapTool(_: ToolProps) {
                   cx={p.x}
                   cy={p.y}
                   r={2.5}
-                  className="cursor-pointer fill-indigo-400 stroke-white"
+                  className="cursor-pointer fill-brand-400 stroke-white"
                   strokeWidth={0.8}
                   onClick={() =>
                     add({
@@ -261,7 +261,7 @@ export default function WorldTimeMapTool(_: ToolProps) {
                       cy={p.y}
                       r={4.5}
                       className={
-                        focus === pl ? 'fill-rose-500' : 'fill-indigo-700'
+                        focus === pl ? 'fill-amber-500' : 'fill-brand-700'
                       }
                       stroke="white"
                       strokeWidth={1.5}
@@ -350,7 +350,7 @@ export default function WorldTimeMapTool(_: ToolProps) {
                       tz: c[4],
                     })
                   }
-                  className="flex w-full justify-between gap-3 px-3 py-2 text-left text-sm hover:bg-indigo-50 focus:bg-indigo-50 focus:outline-none"
+                  className="flex w-full justify-between gap-3 px-3 py-2 text-left text-sm hover:bg-brand-50 focus:bg-brand-50 focus:outline-none"
                 >
                   <span>
                     {c[0]} <span className="text-gray-500">{c[1]}</span>
@@ -376,7 +376,7 @@ export default function WorldTimeMapTool(_: ToolProps) {
                       tz: z,
                     })
                   }
-                  className="flex w-full justify-between gap-3 px-3 py-2 text-left text-sm hover:bg-indigo-50 focus:bg-indigo-50 focus:outline-none"
+                  className="flex w-full justify-between gap-3 px-3 py-2 text-left text-sm hover:bg-brand-50 focus:bg-brand-50 focus:outline-none"
                 >
                   <span className="font-mono text-xs">{z}</span>
                   <span className="tabular-nums text-gray-500">
@@ -437,7 +437,7 @@ export default function WorldTimeMapTool(_: ToolProps) {
                     <button
                       type="button"
                       onClick={() => setFocus(p)}
-                      className="text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                      className="text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                     >
                       <span aria-hidden>
                         {hour >= 6 && hour < 18 ? '☀️' : '🌙'}{' '}
@@ -449,7 +449,7 @@ export default function WorldTimeMapTool(_: ToolProps) {
                         </span>
                       )}
                     </button>
-                    <span className="block font-mono text-[11px] font-normal text-gray-400">
+                    <span className="block font-mono text-xs font-normal text-gray-400">
                       {p.tz}
                     </span>
                   </th>
@@ -492,7 +492,7 @@ export default function WorldTimeMapTool(_: ToolProps) {
                         type="button"
                         onClick={() => remove(p)}
                         aria-label={`Remove ${p.label}`}
-                        className="rounded-md px-2 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                        className="rounded-md px-2 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                       >
                         ✕
                       </button>
@@ -519,14 +519,14 @@ export default function WorldTimeMapTool(_: ToolProps) {
         changes are applied automatically. Need to convert a meeting time? Use
         the{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/date-time-tools/timezone-converter"
         >
           time zone converter
         </Link>{' '}
         or the{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/date-time-tools/world-clock"
         >
           world clock

@@ -78,7 +78,7 @@ export default function GradientGeneratorTool(_: ToolProps) {
               value={s.pos}
               aria-label={`Stop ${i + 1} position`}
               onChange={(e) => update(s.id, { pos: Number(e.target.value) })}
-              className="min-w-[140px] flex-1 accent-indigo-600"
+              className="min-w-[140px] flex-1 accent-brand-600"
             />
             <span className="w-10 text-right text-sm tabular-nums text-gray-600">
               {s.pos}%

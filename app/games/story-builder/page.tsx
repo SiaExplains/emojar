@@ -122,9 +122,9 @@ export default function StoryBuilderPage() {
             key={i}
             className={`w-10 h-10 rounded-xl border-2 flex items-center justify-center text-xl transition-all ${
               pick
-                ? 'border-indigo-400 bg-indigo-50'
+                ? 'border-brand-400 bg-brand-50'
                 : i === currentChapter && !done
-                  ? 'border-dashed border-indigo-300 bg-indigo-50 animate-pulse'
+                  ? 'border-dashed border-brand-300 bg-brand-50 animate-pulse'
                   : 'border-gray-200 bg-gray-50'
             }`}
           >
@@ -147,7 +147,7 @@ export default function StoryBuilderPage() {
                 key={ci}
                 className={`rounded-xl border-2 p-3 transition-all ${
                   isCurrent
-                    ? 'border-indigo-400 bg-indigo-50'
+                    ? 'border-brand-400 bg-brand-50'
                     : isPast
                       ? 'border-green-200 bg-green-50'
                       : 'border-gray-100 bg-gray-50 opacity-50'
@@ -171,7 +171,7 @@ export default function StoryBuilderPage() {
                         picked?.char === opt.char
                           ? 'border-green-400 bg-green-100'
                           : isCurrent
-                            ? 'border-gray-200 bg-white hover:border-indigo-400 hover:bg-indigo-50 cursor-pointer active:scale-95'
+                            ? 'border-gray-200 bg-white hover:border-brand-400 hover:bg-brand-50 cursor-pointer active:scale-95'
                             : 'border-gray-100 bg-white cursor-default'
                       }`}
                       title={opt.name}
@@ -191,7 +191,7 @@ export default function StoryBuilderPage() {
         <div className="text-center">
           <button
             onClick={finish}
-            className="px-8 py-3 bg-indigo-500 text-white rounded-xl font-bold text-lg hover:bg-indigo-600"
+            className="px-8 py-3 bg-brand-500 text-white rounded-xl font-bold text-lg hover:bg-brand-600"
           >
             Finish My Story!
           </button>
@@ -205,8 +205,8 @@ export default function StoryBuilderPage() {
             {picks.map((p) => p?.char ?? '').join('')}
           </div>
 
-          <div className="border rounded-2xl p-4 space-y-3 bg-gradient-to-br from-indigo-50 to-violet-50">
-            <h2 className="font-bold text-lg text-indigo-900">
+          <div className="border rounded-2xl p-4 space-y-3 bg-gradient-to-br from-brand-50 to-violet-50">
+            <h2 className="font-bold text-lg text-brand-900">
               Your Emoji Story
             </h2>
             {picks.map((pick, i) => (
@@ -225,7 +225,7 @@ export default function StoryBuilderPage() {
               className={`px-5 py-2 rounded-xl font-semibold transition-all ${
                 copied
                   ? 'bg-green-500 text-white'
-                  : 'bg-indigo-500 text-white hover:bg-indigo-600'
+                  : 'bg-brand-500 text-white hover:bg-brand-600'
               }`}
             >
               {copied ? '✓ Copied!' : 'Share Story (Copy)'}

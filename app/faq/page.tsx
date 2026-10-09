@@ -103,7 +103,7 @@ export default function FaqPage() {
                       <Link
                         key={l.href}
                         href={l.href}
-                        className="text-indigo-700 hover:underline"
+                        className="text-brand-700 hover:underline"
                       >
                         {l.label}
                       </Link>
@@ -118,11 +118,11 @@ export default function FaqPage() {
 
       <p className="text-sm text-gray-600">
         Still have a question?{' '}
-        <Link href="/contact" className="text-indigo-700 hover:underline">
+        <Link href="/contact" className="text-brand-700 hover:underline">
           Contact us
         </Link>{' '}
         or browse{' '}
-        <Link href="/online-tool" className="text-indigo-700 hover:underline">
+        <Link href="/online-tool" className="text-brand-700 hover:underline">
           all online tools
         </Link>
         .

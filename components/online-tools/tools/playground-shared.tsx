@@ -34,7 +34,7 @@ export function ItemTabs({
           type="button"
           aria-pressed={selected === i}
           onClick={() => onSelect(i)}
-          className={`h-8 w-8 rounded-lg border text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+          className={`h-8 w-8 rounded-lg border text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
             selected === i
               ? 'border-gray-900 bg-gray-900 text-white'
               : 'border-gray-200 text-gray-700 hover:bg-gray-50'
@@ -276,7 +276,7 @@ export function ColorInput({
           value={value}
           disabled={disabled}
           onChange={(e) => onChange(e.target.value)}
-          className="h-9 w-14 cursor-pointer rounded-lg border border-gray-200 bg-white p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:opacity-40"
+          className="h-9 w-14 cursor-pointer rounded-lg border border-gray-200 bg-white p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 disabled:opacity-40"
         />
         <span className="font-mono text-xs text-gray-600">
           {disabled ? 'none' : value}

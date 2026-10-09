@@ -391,7 +391,7 @@ export default function CollageMakerTool(_: ToolProps) {
                     vs.map((v, i) => (i === selected ? CENTERED : v)),
                   );
                 }}
-                className={`h-16 w-16 overflow-hidden rounded-lg border-2 ${assign[selected] === p.id ? 'border-indigo-600' : 'border-transparent'}`}
+                className={`h-16 w-16 overflow-hidden rounded-lg border-2 ${assign[selected] === p.id ? 'border-brand-600' : 'border-transparent'}`}
               >
                 <Thumb bitmap={p.bitmap} />
               </button>

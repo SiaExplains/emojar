@@ -69,7 +69,7 @@ const KEYS: Key[][] = [
 
 const STYLE: Record<string, string> = {
   fn: 'bg-gray-100 text-gray-800 hover:bg-gray-200',
-  op: 'bg-indigo-50 text-indigo-900 hover:bg-indigo-100',
+  op: 'bg-brand-50 text-brand-900 hover:bg-brand-100',
   num: 'bg-white text-gray-900 border border-gray-200 hover:bg-gray-50',
   eq: 'bg-gray-900 text-white hover:bg-gray-700',
 };
@@ -186,7 +186,7 @@ export default function ScientificCalculatorTool(_: ToolProps) {
               key={k.label}
               type="button"
               onClick={() => press(k)}
-              className={`h-11 rounded-xl text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${STYLE[k.kind ?? 'num']}`}
+              className={`h-11 rounded-xl text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${STYLE[k.kind ?? 'num']}`}
               aria-label={
                 k.label === '⌫'
                   ? 'Backspace'

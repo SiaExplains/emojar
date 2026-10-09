@@ -114,7 +114,7 @@ export default function HtmlEntityTool({ config }: ToolProps) {
                 type="button"
                 onClick={() => setSelected(e)}
                 aria-label={`${e.char.trim() ? e.char : 'space character'}: &${e.names[0]};`}
-                className="flex w-full items-center gap-3 rounded-xl border border-gray-100 px-3 py-2 text-left transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="flex w-full items-center gap-3 rounded-xl border border-gray-100 px-3 py-2 text-left transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 <span className="w-8 shrink-0 text-center text-2xl text-gray-900">
                   {shown(e)}

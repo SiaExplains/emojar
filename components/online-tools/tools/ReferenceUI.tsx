@@ -47,7 +47,7 @@ export function SearchBox({
             type="button"
             onClick={() => onChange('')}
             aria-label="Clear search"
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md px-1.5 text-gray-400 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md px-1.5 text-gray-400 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           >
             ✕
           </button>
@@ -82,7 +82,7 @@ export function Chips<T extends string>({
           type="button"
           aria-pressed={value === o.value}
           onClick={() => onChange(o.value)}
-          className={`rounded-full border px-3 py-1 text-xs transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+          className={`rounded-full border px-3 py-1 text-xs transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
             value === o.value
               ? 'border-gray-900 bg-gray-900 text-white'
               : 'border-gray-200 text-gray-700 hover:bg-gray-50'
@@ -115,7 +115,7 @@ export function CopyChip({
   return (
     <div className="flex min-w-0 items-center justify-between gap-2 rounded-xl border border-gray-100 bg-gray-50 px-3 py-2">
       <div className="min-w-0">
-        <div className="text-[11px] uppercase tracking-wide text-gray-500">
+        <div className="text-xs uppercase tracking-wide text-gray-500">
           {label}
         </div>
         <div
@@ -138,7 +138,7 @@ export function CopyChip({
           }
         }}
         aria-label={`Copy ${label}: ${value}`}
-        className="shrink-0 rounded-lg border border-gray-200 bg-white px-2 py-1 text-xs font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+        className="shrink-0 rounded-lg border border-gray-200 bg-white px-2 py-1 text-xs font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
       >
         <span aria-live="polite">{copied ? '✓ Copied!' : 'Copy'}</span>
       </button>
@@ -225,7 +225,7 @@ export function DetailDialog({
               type="button"
               onClick={() => ref.current?.close()}
               aria-label="Close"
-              className="rounded-lg px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              className="rounded-lg px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             >
               ✕
             </button>

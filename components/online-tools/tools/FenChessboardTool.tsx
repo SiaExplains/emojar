@@ -390,7 +390,7 @@ export default function FenChessboardTool(_: ToolProps) {
                     setCursor(index);
                     activate(index);
                   }}
-                  className={`relative flex items-center justify-center focus:outline-none focus-visible:z-10 focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-indigo-500 ${dark ? 'bg-[#b58863]' : 'bg-[#f0d9b5]'}`}
+                  className={`relative flex items-center justify-center focus:outline-none focus-visible:z-10 focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-500 ${dark ? 'bg-[#b58863]' : 'bg-[#f0d9b5]'}`}
                   style={{
                     touchAction:
                       tool === 'move' && piece ? 'none' : 'manipulation',
@@ -493,7 +493,7 @@ export default function FenChessboardTool(_: ToolProps) {
                     setTool(t);
                     setPicked(null);
                   }}
-                  className={`rounded-lg border px-3 py-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${tool === t ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'}`}
+                  className={`rounded-lg border px-3 py-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${tool === t ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'}`}
                 >
                   {t === 'move' ? '✥ Move' : '✕ Delete'}
                 </button>
@@ -515,7 +515,7 @@ export default function FenChessboardTool(_: ToolProps) {
                     setTool(p);
                     setPicked(null);
                   }}
-                  className={`flex aspect-square items-center justify-center rounded-lg border focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${tool === p ? 'border-indigo-500 bg-indigo-100 ring-2 ring-indigo-400' : 'border-gray-200 bg-[#f0d9b5] hover:brightness-95'}`}
+                  className={`flex aspect-square items-center justify-center rounded-lg border focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${tool === p ? 'border-brand-500 bg-brand-100 ring-2 ring-brand-400' : 'border-gray-200 bg-[#f0d9b5] hover:brightness-95'}`}
                 >
                   <PieceGlyph piece={p} className="text-3xl" />
                 </button>
@@ -591,7 +591,7 @@ export default function FenChessboardTool(_: ToolProps) {
                         castling: { ...p.castling, [key]: e.target.checked },
                       }))
                     }
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
                   />
                   {label}
                   {!possible[key] && (

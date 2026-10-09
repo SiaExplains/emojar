@@ -4,7 +4,28 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.15.3] — 2026-10-09
+## [0.16.0] — 2026-10-09
+
+### Added
+
+- A clearer menu: Tools, Emoji, Games, Guides and Help, on desktop and
+  phones. Every section is a normal link, with a separate button to show its
+  links; Esc closes the menu and puts you back where you were.
+- A fuller footer with every tool category, emoji and games, guides and
+  help, and the legal pages.
+- A "Skip to content" link for keyboard and screen-reader users.
+
+### Changed
+
+- One accent colour across the site: the magenta from the Emojar logo
+  (replacing indigo in the tools).
+- Every focusable control shows a visible focus ring, and the site respects
+  your device's "reduce motion" setting, including the back-to-top button.
+- Small 10–11 px labels are now at least 12 px, except inside dense grids
+  such as periodic-table tiles and map labels.
+- Buttons on the emoji tool pages share the tools' button styles.
+- Pages no longer nest a second main landmark, and the holiday collections
+  card on the emoji page no longer overflows on phones.
 
 ### Changed
 

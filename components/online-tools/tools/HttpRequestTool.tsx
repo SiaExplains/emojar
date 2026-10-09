@@ -98,7 +98,7 @@ function KvTable({
             checked={r.enabled}
             onChange={(e) => update(i, { enabled: e.target.checked })}
             aria-label={`Include ${label.toLowerCase()} row ${i + 1}`}
-            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
           />
           <input
             value={r.key}
@@ -120,7 +120,7 @@ function KvTable({
           <button
             type="button"
             onClick={() => onChange(rows.filter((_, j) => j !== i))}
-            className="rounded-lg px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            className="rounded-lg px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             aria-label={`Remove ${label.toLowerCase()} row ${i + 1}`}
           >
             ✕
@@ -292,7 +292,7 @@ export default function HttpRequestTool(_: ToolProps) {
                   value={b.value}
                   checked={spec.bodyType === b.value}
                   onChange={() => set({ bodyType: b.value })}
-                  className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500"
                 />
                 {b.label}
               </label>
@@ -398,7 +398,7 @@ export default function HttpRequestTool(_: ToolProps) {
                 type="checkbox"
                 checked={showSecret}
                 onChange={(e) => setShowSecret(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
               />
               Show {spec.auth.type === 'bearer' ? 'token' : 'password'}
             </label>
@@ -433,7 +433,7 @@ export default function HttpRequestTool(_: ToolProps) {
               type="button"
               aria-pressed={target === t.id}
               onClick={() => setTarget(t.id)}
-              className={`rounded-lg border px-2.5 py-1 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${target === t.id ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'}`}
+              className={`rounded-lg border px-2.5 py-1 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${target === t.id ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'}`}
             >
               {t.label}
             </button>

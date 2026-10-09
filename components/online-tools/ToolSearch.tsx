@@ -74,7 +74,7 @@ export function ToolSearch({
           onChange={(e) => setQuery(e.target.value)}
           placeholder={placeholder}
           aria-controls={`${id}-results`}
-          className="w-full rounded-2xl border border-gray-200 bg-white py-3 pl-11 pr-4 text-sm shadow-sm outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100"
+          className="w-full rounded-2xl border border-gray-200 bg-white py-3 pl-11 pr-4 text-sm shadow-sm outline-none focus:border-brand-300 focus:ring-2 focus:ring-brand-100"
         />
       </div>
       <div id={`${id}-results`} aria-live="polite">

@@ -111,7 +111,7 @@ export default function OnlineToolsHub() {
               </h2>
               <Link
                 href={categoryPath(c.slug)}
-                className="text-sm text-indigo-700 hover:underline"
+                className="text-sm text-brand-700 hover:underline"
               >
                 All {tools.length} {c.name.toLowerCase()} →
               </Link>

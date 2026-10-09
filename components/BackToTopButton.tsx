@@ -1,17 +1,19 @@
 'use client';
-const BackToTopButton = () => {
-  return (
-    <div
-      className="fixed bottom-8 text-xl right-8 border border-gray-300 bg-white rounded-full p-4 shadow-md hover:cursor-pointer hover:shadow-lg hover:scale-105 transition-transform duration-200"
-      onClick={() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
-      }}
-    >
-      <button className="w-[28px] h-[28px]">⬆️</button>
-    </div>
-  );
-};
+
+const BackToTopButton = () => (
+  <button
+    type="button"
+    aria-label="Back to top"
+    onClick={() => {
+      const reduce = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+      ).matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    }}
+    className="fixed bottom-8 right-8 flex h-14 w-14 items-center justify-center rounded-full border border-gray-300 bg-white text-xl shadow-md transition-transform duration-200 hover:scale-105 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+  >
+    <span aria-hidden>⬆️</span>
+  </button>
+);
+
 export default BackToTopButton;

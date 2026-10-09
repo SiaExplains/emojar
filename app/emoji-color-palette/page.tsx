@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import data from '@/data/emojis.json';
+import { btnPrimary, btnSecondary } from '@/components/ui/styles';
 
 type Emoji = {
   slug: string;
@@ -201,7 +202,7 @@ export default function EmojiColorPalettePage() {
                       </span>
                       <button
                         onClick={() => handleCopy(hex, i)}
-                        className="text-xs px-3 py-1.5 rounded-lg border hover:bg-gray-50 transition-colors font-medium"
+                        className={`${btnSecondary} px-3 py-1.5 text-xs`}
                       >
                         {copiedIdx === i ? '✓ Copied' : 'Copy'}
                       </button>
@@ -211,7 +212,7 @@ export default function EmojiColorPalettePage() {
 
                 <button
                   onClick={handleDownloadPalette}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl font-semibold text-sm bg-gray-900 text-white hover:bg-gray-700 active:scale-95 transition-all shadow-sm mt-2"
+                  className={`${btnPrimary} mt-2 w-full py-3`}
                 >
                   ⬇️ Download Palette PNG
                 </button>

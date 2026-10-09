@@ -56,7 +56,7 @@ export default function InvisibleTextTool({ config }: ToolProps) {
             >
               <span
                 aria-hidden
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 font-mono text-[10px] text-gray-400"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 font-mono text-xs text-gray-400"
               >
                 {c.short}
               </span>
@@ -175,7 +175,7 @@ export default function InvisibleTextTool({ config }: ToolProps) {
                       <mark
                         key={i}
                         title={`${s.char.name} (${codeLabel(s.char.cp)})`}
-                        className="mx-0.5 rounded bg-rose-200 px-1 font-mono text-[10px] text-rose-900"
+                        className="mx-0.5 rounded bg-rose-200 px-1 font-mono text-xs text-rose-900"
                       >
                         {s.char.short}
                       </mark>

@@ -11,7 +11,7 @@ export const CATEGORIES: CategoryDefinition[] = [
       'Convert, compress, resize and edit images online: passport photos, collages, watermarks, blur, favicons, GIFs and more. Processed in your browser, never uploaded.',
     intro:
       'Convert, compress, resize and edit images directly in your browser — from passport photos, collages and social media sizes to watermarks, blurring, favicons and GIFs. Every image tool on this page works locally: your photos are never uploaded to a server.',
-    accent: 'bg-indigo-50 border-indigo-100 text-indigo-900',
+    accent: 'bg-brand-50 border-brand-100 text-brand-900',
   },
   {
     slug: 'pdf-tools',

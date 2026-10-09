@@ -117,7 +117,7 @@ export default function SymbolPickerTool({ config }: ToolProps) {
           No symbols match “{q}”. Try a shorter word, or the{' '}
           <Link
             href="/emoji"
-            className="text-indigo-600 underline underline-offset-2"
+            className="text-brand-600 underline underline-offset-2"
           >
             emoji search
           </Link>
@@ -143,7 +143,7 @@ export default function SymbolPickerTool({ config }: ToolProps) {
                     onClick={() => void pick(s)}
                     title={`${s.name} (${codePointLabel(s.char)})`}
                     aria-label={`Copy ${s.name}`}
-                    className="flex h-11 w-full items-center justify-center rounded-lg border border-gray-100 bg-white text-xl text-gray-900 transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                    className="flex h-11 w-full items-center justify-center rounded-lg border border-gray-100 bg-white text-xl text-gray-900 transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                   >
                     {s.char}
                   </button>

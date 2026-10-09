@@ -259,10 +259,10 @@ export default function PeriodicTableTool(_: ToolProps) {
                   onClick={() => setSelected(e)}
                   style={{ gridRow: row, gridColumn: col }}
                   aria-label={`${e.n}, ${e.s}, atomic number ${e.z}, ${e.c}`}
-                  className={`relative flex aspect-square min-w-0 flex-col items-center justify-center rounded-md border p-0.5 text-center leading-tight transition hover:z-10 hover:scale-110 hover:shadow-md focus:z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 ${style.tile} ${
+                  className={`relative flex aspect-square min-w-0 flex-col items-center justify-center rounded-md border p-0.5 text-center leading-tight transition hover:z-10 hover:scale-110 hover:shadow-md focus:z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 ${style.tile} ${
                     dim ? 'opacity-25' : ''
                   } ${hit ? 'ring-2 ring-gray-900' : ''} ${
-                    selected?.z === e.z ? 'ring-2 ring-indigo-600' : ''
+                    selected?.z === e.z ? 'ring-2 ring-brand-600' : ''
                   }`}
                 >
                   <span className="absolute left-1 top-0.5 text-[9px] text-gray-600">
@@ -295,7 +295,7 @@ export default function PeriodicTableTool(_: ToolProps) {
               <button
                 type="button"
                 onClick={() => setSelected(e)}
-                className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left transition hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 ${CATEGORIES[e.c].tile}`}
+                className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left transition hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 ${CATEGORIES[e.c].tile}`}
               >
                 <span className="w-12 text-center text-2xl font-bold">
                   {e.s}
@@ -331,7 +331,7 @@ export default function PeriodicTableTool(_: ToolProps) {
                 onClick={() =>
                   set('category')(filters.category === name ? '' : name)
                 }
-                className={`rounded-full border px-2.5 py-1 text-xs text-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 ${s.tile} ${
+                className={`rounded-full border px-2.5 py-1 text-xs text-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 ${s.tile} ${
                   filters.category === name ? 'ring-2 ring-gray-900' : ''
                 }`}
               >
@@ -345,7 +345,7 @@ export default function PeriodicTableTool(_: ToolProps) {
           Masses are standard atomic weights; values in [brackets] are the mass
           number of the longest-lived isotope. Need a compound’s mass? Use the{' '}
           <Link
-            className="text-indigo-600 underline underline-offset-2"
+            className="text-brand-600 underline underline-offset-2"
             href="/online-tool/calculators/molar-mass-calculator"
           >
             molar mass calculator

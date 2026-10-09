@@ -30,7 +30,7 @@ import { isIsoDate, todayIso } from '@/lib/online-tools/engines/local-data';
 
 const KEY = 'emojar:kanban-board:v1';
 const iconBtn =
-  'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:opacity-30';
+  'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 disabled:opacity-30';
 const LABEL_CLASS: Record<LabelColor, string> = {
   gray: 'bg-gray-100 text-gray-800 border-gray-300',
   red: 'bg-red-100 text-red-800 border-red-300',
@@ -381,7 +381,7 @@ export default function KanbanBoardTool(_: ToolProps) {
             <section
               key={col.id}
               aria-labelledby={`kb-col-${col.id}`}
-              className={`flex w-[82vw] max-w-[18rem] shrink-0 snap-start flex-col rounded-2xl border border-gray-200 bg-gray-50 p-2.5 sm:w-72 ${over ? 'ring-2 ring-indigo-400' : ''}`}
+              className={`flex w-[82vw] max-w-[18rem] shrink-0 snap-start flex-col rounded-2xl border border-gray-200 bg-gray-50 p-2.5 sm:w-72 ${over ? 'ring-2 ring-brand-400' : ''}`}
             >
               <header className="mb-2 flex items-center gap-1">
                 {renaming?.id === col.id ? (
@@ -407,7 +407,7 @@ export default function KanbanBoardTool(_: ToolProps) {
                   >
                     <button
                       type="button"
-                      className="max-w-full truncate rounded text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                      className="max-w-full truncate rounded text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                       title="Rename column"
                       aria-label={`${col.title} — rename column`}
                       onClick={() =>
@@ -493,7 +493,7 @@ export default function KanbanBoardTool(_: ToolProps) {
                           <button
                             type="button"
                             onClick={() => setEditingCard(card.id)}
-                            className="min-w-0 flex-1 break-words rounded text-left text-sm font-medium text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                            className="min-w-0 flex-1 break-words rounded text-left text-sm font-medium text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                             aria-label={`Edit “${card.title}”`}
                           >
                             {card.title}
@@ -504,7 +504,7 @@ export default function KanbanBoardTool(_: ToolProps) {
                             {card.labels.map((l, li) => (
                               <li
                                 key={li}
-                                className={`rounded-full border px-2 py-0.5 text-[11px] font-medium ${LABEL_CLASS[l.color]}`}
+                                className={`rounded-full border px-2 py-0.5 text-xs font-medium ${LABEL_CLASS[l.color]}`}
                               >
                                 {l.text}
                               </li>
@@ -535,7 +535,7 @@ export default function KanbanBoardTool(_: ToolProps) {
                                 `Moved “${card.title}” to ${state.columns.find((c) => c.id === to)?.title ?? ''}.`,
                               );
                             }}
-                            className="h-7 max-w-[9rem] rounded-lg border border-gray-200 bg-white px-1.5 text-xs text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                            className="h-7 max-w-[9rem] rounded-lg border border-gray-200 bg-white px-1.5 text-xs text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                           >
                             {state.columns.map((c) => (
                               <option key={c.id} value={c.id}>

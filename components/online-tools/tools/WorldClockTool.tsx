@@ -64,13 +64,13 @@ export default function WorldClockTool(_: ToolProps) {
           return (
             <li
               key={tz}
-              className={`flex items-center justify-between rounded-2xl border px-4 py-3 ${tz === here ? 'border-indigo-100 bg-indigo-50' : 'border-gray-100'}`}
+              className={`flex items-center justify-between rounded-2xl border px-4 py-3 ${tz === here ? 'border-brand-100 bg-brand-50' : 'border-gray-100'}`}
             >
               <div>
                 <p className="text-sm font-semibold text-gray-900">
                   <span aria-hidden>{day ? '☀️' : '🌙'}</span> {cityName(tz)}
                   {tz === here && (
-                    <span className="ml-1 text-xs font-normal text-indigo-700">
+                    <span className="ml-1 text-xs font-normal text-brand-700">
                       (your time)
                     </span>
                   )}

@@ -41,7 +41,7 @@ const tools = [
     path: '/emoji-card',
     description: 'Create a shareable 1080×1080 social media card with emoji.',
     emoji: '🃏',
-    color: 'from-indigo-100 to-blue-200',
+    color: 'from-brand-100 to-blue-200',
   },
   {
     name: 'Unicode Inspector',

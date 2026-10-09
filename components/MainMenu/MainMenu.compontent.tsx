@@ -4,13 +4,13 @@ import MobileMainMenu from './MobileMainMenu.component';
 const MainMenu = () => {
   return (
     <nav aria-label="Main" className="w-full">
-      {/* Mobile (<= md) */}
-      <div className="md:hidden">
+      {/* Phones and tablets (< lg): five entries plus search don't fit */}
+      <div className="lg:hidden">
         <MobileMainMenu />
       </div>
 
-      {/* Desktop (>= md) */}
-      <div className="hidden md:block">
+      {/* Desktop (>= lg) */}
+      <div className="hidden lg:block">
         <DesktopMainMenu />
       </div>
     </nav>

@@ -52,7 +52,7 @@ export default function MathSymbolsTool({ config }: ToolProps) {
   const { copy, region } = useCopyFlash();
 
   const small =
-    'rounded-md border border-gray-200 bg-white px-1.5 py-0.5 font-mono text-[11px] text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500';
+    'rounded-md border border-gray-200 bg-white px-1.5 py-0.5 font-mono text-xs text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500';
 
   return (
     <div className="space-y-4">
@@ -98,7 +98,7 @@ export default function MathSymbolsTool({ config }: ToolProps) {
                   onClick={() => void copy(m.char, m.char)}
                   aria-label={`Copy ${m.name} symbol ${m.char}`}
                   title="Copy symbol"
-                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-gray-100 bg-gray-50 font-serif text-3xl text-gray-900 hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-gray-100 bg-gray-50 font-serif text-3xl text-gray-900 hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                 >
                   {m.char}
                 </button>

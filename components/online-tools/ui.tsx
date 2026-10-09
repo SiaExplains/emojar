@@ -1,7 +1,7 @@
 'use client';
 
 // Shared, accessible building blocks for tool UIs. Kept deliberately small
-// and styled like the rest of the site (rounded cards, gray + indigo).
+// and styled like the rest of the site (rounded cards, gray + brand accent).
 
 import {
   useCallback,
@@ -15,13 +15,15 @@ import {
 } from 'react';
 import { formatBytes } from '@/lib/online-tools/image/core';
 
-export const btnPrimary =
-  'inline-flex items-center justify-center gap-2 rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50';
-export const btnSecondary =
-  'inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-3.5 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:cursor-not-allowed disabled:opacity-50';
-export const inputBase =
-  'w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100';
-export const labelBase = 'block text-sm font-medium text-gray-700';
+import {
+  btnPrimary,
+  btnSecondary,
+  inputBase,
+  labelBase,
+} from '@/components/ui/styles';
+
+// Re-exported so existing tool imports keep working.
+export { btnPrimary, btnSecondary, inputBase, labelBase };
 
 export function CopyButton({
   text,
@@ -380,7 +382,7 @@ export function Checkbox({
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+        className="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
       />
       {label}
     </label>
@@ -423,7 +425,7 @@ export function RangeField({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-indigo-600"
+        className="w-full accent-brand-600"
       />
     </div>
   );
@@ -469,7 +471,7 @@ export function FileDropzone({
       }}
       className={`relative rounded-2xl border-2 border-dashed px-4 py-8 text-center transition ${
         dragging
-          ? 'border-indigo-400 bg-indigo-50'
+          ? 'border-brand-400 bg-brand-50'
           : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
       }`}
     >
@@ -533,7 +535,7 @@ export function ConversionProgress({
         aria-valuemax={100}
       >
         <div
-          className="h-full rounded-full bg-indigo-500 transition-all"
+          className="h-full rounded-full bg-brand-500 transition-all"
           style={{ width: `${pct}%` }}
         />
       </div>

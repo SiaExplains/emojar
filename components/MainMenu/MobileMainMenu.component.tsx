@@ -1,159 +1,149 @@
 'use client';
 
+// Mobile navigation drawer (disclosure pattern). Opening moves focus to the
+// first link; Esc or a tap outside closes it and returns focus to the button.
+// Sections expand with a named toggle; every row is a real link.
+
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useId, useRef, useState } from 'react';
+import { isActive } from './DesktopMainMenu';
 import { MENU_ROUTES } from './Menu.routes';
 
-type MenuItem = {
-  href: string;
-  label: string;
-  target?: '_self' | '_blank';
-  children?: MenuItem[] | null;
-  chilren?: MenuItem[] | null; // tolerate the typo
-};
+const row =
+  'flex min-h-11 w-full items-center rounded-lg px-3 text-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500';
 
-function getChildren(item: MenuItem): MenuItem[] | null {
-  return item.children ?? item.chilren ?? null;
-}
+export default function MobileMainMenu() {
+  const pathname = usePathname() ?? '/';
+  const [open, setOpen] = useState(false);
+  const [sections, setSections] = useState<Record<number, boolean>>({});
+  const trigger = useRef<HTMLButtonElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+  const id = useId();
+  const panelId = `${id}-drawer`;
 
-const MobileMainMenu = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [openIndices, setOpenIndices] = useState<Record<number, boolean>>({});
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const panelRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => setOpen(false), [pathname]);
 
-  // Close on ESC or click outside
   useEffect(() => {
+    if (!open) return;
+    panel.current?.querySelector<HTMLElement>('a, button')?.focus();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDrawerOpen(false);
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      trigger.current?.focus();
     };
-    const onClick = (e: MouseEvent) => {
-      if (!drawerOpen) return;
+    const onDown = (e: MouseEvent) => {
       const t = e.target as Node;
-      if (panelRef.current?.contains(t)) return;
-      if (triggerRef.current?.contains(t)) return;
-      setDrawerOpen(false);
+      if (panel.current?.contains(t) || trigger.current?.contains(t)) return;
+      setOpen(false);
     };
     window.addEventListener('keydown', onKey);
-    window.addEventListener('click', onClick);
+    document.addEventListener('mousedown', onDown);
     return () => {
       window.removeEventListener('keydown', onKey);
-      window.removeEventListener('click', onClick);
+      document.removeEventListener('mousedown', onDown);
     };
-  }, [drawerOpen]);
-
-  const toggleSection = (idx: number) =>
-    setOpenIndices((prev) => ({ ...prev, [idx]: !prev[idx] }));
+  }, [open]);
 
   return (
-    // Important: relative so the absolute panel anchors to this box, not the page.
     <div className="relative">
-      {/* Trigger */}
       <button
-        ref={triggerRef}
-        aria-label="Toggle menu"
-        aria-expanded={drawerOpen ? 'true' : 'false'}
-        onClick={() => setDrawerOpen((v) => !v)}
-        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-neutral-300"
+        ref={trigger}
+        type="button"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpen((v) => !v)}
+        className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-gray-300 px-3 text-sm font-medium text-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
           <path
-            d="M3 6h18M3 12h18M3 18h18"
+            d={open ? 'M6 6l12 12M18 6L6 18' : 'M3 6h18M3 12h18M3 18h18'}
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
           />
         </svg>
-        <span className="text-sm">Menu</span>
+        Menu
       </button>
 
-      {/* Floating panel (absolute, does NOT change header height) */}
-      {drawerOpen && (
-        <div
-          ref={panelRef}
-          className="
-            absolute right-0 top-full mt-2 z-50
-            w-[88vw] max-w-sm
-            rounded-2xl border border-neutral-200 bg-white shadow-xl
-            overflow-hidden
-          "
-          role="menu"
-        >
-          <ul className="max-h-[70vh] overflow-auto divide-y divide-neutral-100">
-            {(MENU_ROUTES as MenuItem[]).map((item, idx) => {
-              const kids = getChildren(item);
-              const hasKids = !!(kids && kids.length > 0);
-              const open = !!openIndices[idx];
-
-              return (
-                <li key={item.href} className="py-1">
-                  <div className="flex items-center justify-between">
-                    {hasKids ? (
-                      <span className="px-3 py-3 text-sm">{item.label}</span>
-                    ) : (
-                      <Link
-                        href={item.href}
-                        target={item.target || '_self'}
-                        className="px-3 py-3 text-sm rounded-md hover:bg-neutral-50 w-full block"
-                        role="menuitem"
-                        onClick={() => setDrawerOpen(false)}
+      <div
+        ref={panel}
+        id={panelId}
+        hidden={!open}
+        className="absolute right-0 top-full z-50 mt-2 w-[88vw] max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
+      >
+        <ul className="max-h-[70vh] divide-y divide-gray-100 overflow-auto p-2">
+          {MENU_ROUTES.map((item, i) => {
+            const kids = item.children ?? [];
+            const sectionId = `${id}-section-${i}`;
+            const expanded = !!sections[i];
+            return (
+              <li key={item.href} className="py-1">
+                <div className="flex items-center gap-1">
+                  <Link
+                    href={item.href}
+                    aria-current={pathname === item.href ? 'page' : undefined}
+                    className={`${row} font-medium ${
+                      isActive(pathname, item.href)
+                        ? 'text-brand-700'
+                        : 'text-gray-900'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                  {kids.length > 0 && (
+                    <button
+                      type="button"
+                      aria-expanded={expanded}
+                      aria-controls={sectionId}
+                      aria-label={`${expanded ? 'Hide' : 'Show'} ${item.label} links`}
+                      onClick={() => setSections((s) => ({ ...s, [i]: !s[i] }))}
+                      className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-gray-600 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        className={`transition-transform ${expanded ? 'rotate-180' : ''}`}
                       >
-                        {item.label}
-                      </Link>
-                    )}
-
-                    {hasKids && (
-                      <button
-                        onClick={() => toggleSection(idx)}
-                        aria-expanded={open ? 'true' : 'false'}
-                        aria-controls={`mobile-section-${idx}`}
-                        className="p-3 rounded-md hover:bg-neutral-50 focus:outline-none"
-                      >
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 24 24"
-                          className={`transition-transform ${open ? 'rotate-180' : ''}`}
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M6 9l6 6 6-6"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-
-                  {hasKids && open && (
-                    <div id={`mobile-section-${idx}`} className="mt-1">
-                      <ul className="py-1">
-                        {kids!.map((child) => (
-                          <li key={child.href}>
-                            <Link
-                              href={child.href}
-                              target={child.target || '_self'}
-                              className="block px-5 py-2 text-sm rounded-md hover:bg-neutral-50"
-                              onClick={() => setDrawerOpen(false)}
-                            >
-                              {child.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                        <path
+                          d="M6 9l6 6 6-6"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="none"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </button>
                   )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
+                </div>
+                {kids.length > 0 && (
+                  <ul id={sectionId} hidden={!expanded} className="pb-1 pl-3">
+                    {kids.map((child) => (
+                      <li key={child.href}>
+                        <Link
+                          href={child.href}
+                          aria-current={
+                            pathname === child.href ? 'page' : undefined
+                          }
+                          className={`${row} ${
+                            pathname === child.href
+                              ? 'bg-brand-50 text-brand-800'
+                              : 'text-gray-700'
+                          }`}
+                        >
+                          {child.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
-};
-
-export default MobileMainMenu;
+}

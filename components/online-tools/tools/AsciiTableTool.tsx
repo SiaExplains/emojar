@@ -29,7 +29,7 @@ export default function AsciiTableTool({ config }: ToolProps) {
     <button
       type="button"
       onClick={() => void copy(text, label)}
-      className={`rounded px-1 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${mono ? 'font-mono' : ''}`}
+      className={`rounded px-1 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${mono ? 'font-mono' : ''}`}
       aria-label={`Copy ${label}`}
     >
       {text}
@@ -119,7 +119,7 @@ export default function AsciiTableTool({ config }: ToolProps) {
                     <button
                       type="button"
                       onClick={() => setSelected(r)}
-                      className="text-left text-gray-700 underline decoration-gray-300 underline-offset-2 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                      className="text-left text-gray-700 underline decoration-gray-300 underline-offset-2 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                     >
                       {r.control || r.dec === 32
                         ? `${r.abbr} — ${r.name}`

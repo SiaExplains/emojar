@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import data from '@/data/emojis.json';
+import { btnSecondary } from '@/components/ui/styles';
 
 // ---------------------------------------------------------------------------
 // Types & constants
@@ -174,7 +175,7 @@ export default function EmojiToPngPage() {
               {customInput && (
                 <button
                   onClick={() => setCustomInput('')}
-                  className="px-3 py-2 rounded-xl border text-sm text-gray-500 hover:bg-gray-50"
+                  className={btnSecondary}
                 >
                   Clear
                 </button>

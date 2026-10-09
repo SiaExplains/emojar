@@ -112,7 +112,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
       type="button"
       onClick={() => void copy(text)}
       aria-label={`Copy ${text}`}
-      className="whitespace-nowrap rounded-md px-1 font-mono tabular-nums hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+      className="whitespace-nowrap rounded-md px-1 font-mono tabular-nums hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
     >
       {text}
     </button>
@@ -162,7 +162,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
                       height={p.h * s}
                       className={
                         p.name === sel.name
-                          ? 'fill-indigo-200 stroke-indigo-600'
+                          ? 'fill-brand-200 stroke-brand-600'
                           : 'fill-white stroke-gray-400'
                       }
                       strokeWidth={p.name === sel.name ? 2 : 1}
@@ -196,7 +196,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
                       height={p.h * s}
                       className={
                         p.name === sel.name
-                          ? 'fill-indigo-200 stroke-indigo-600'
+                          ? 'fill-brand-200 stroke-brand-600'
                           : 'fill-white stroke-gray-400'
                       }
                       strokeWidth={p.name === sel.name ? 2 : 1}
@@ -274,7 +274,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
                 {PAPER.map((p) => (
                   <tr
                     key={p.name}
-                    className={`border-t border-gray-100 ${p.name === sel.name ? 'bg-indigo-50/60' : ''}`}
+                    className={`border-t border-gray-100 ${p.name === sel.name ? 'bg-brand-50/60' : ''}`}
                   >
                     <th scope="row" className="px-3 py-1.5">
                       <button
@@ -324,7 +324,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
                 >
                   <div className="flex h-[124px] items-center justify-center">
                     <div
-                      className="rounded-md border-2 border-indigo-500 bg-indigo-50"
+                      className="rounded-md border-2 border-brand-500 bg-brand-50"
                       style={{ width: a.w * k, height: a.h * k }}
                       aria-hidden
                     />
@@ -343,7 +343,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
           <p className="text-xs text-gray-500">
             Work out a missing width or height with the{' '}
             <Link
-              className="text-indigo-600 underline underline-offset-2"
+              className="text-brand-600 underline underline-offset-2"
               href="/online-tool/calculators/aspect-ratio-calculator"
             >
               aspect ratio calculator
@@ -373,7 +373,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
                     y={12}
                     width={r.w * s}
                     height={r.h * s}
-                    className="stroke-indigo-500"
+                    className="stroke-brand-500"
                     fill={`rgba(99,102,241,${0.06 + i * 0.03})`}
                     strokeWidth={1}
                   />
@@ -381,7 +381,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
                     x={12 + r.w * s - 4}
                     y={12 + r.h * s - 4}
                     textAnchor="end"
-                    className="fill-gray-700 text-[11px]"
+                    className="fill-gray-700 text-xs"
                   >
                     {r.name}
                   </text>
@@ -464,7 +464,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
                 {TYPE_SIZES.map((px) => (
                   <tr
                     key={px}
-                    className={`border-t border-gray-100 ${px === base ? 'bg-indigo-50/60' : ''}`}
+                    className={`border-t border-gray-100 ${px === base ? 'bg-brand-50/60' : ''}`}
                   >
                     <td className="px-2 py-1.5">{copyBtn(`${px}px`)}</td>
                     <td className="px-2 py-1.5">
@@ -489,7 +489,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
             parent’s font size; rem to the root (html) font size. See every unit
             side by side in the{' '}
             <Link
-              className="text-indigo-600 underline underline-offset-2"
+              className="text-brand-600 underline underline-offset-2"
               href="/online-tool/developer-tools/css-unit-visualizer"
             >
               CSS unit visualizer
@@ -523,7 +523,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
                           aria-hidden
                         >
                           <span
-                            className="block rounded-sm border border-indigo-500 bg-indigo-50"
+                            className="block rounded-sm border border-brand-500 bg-brand-50"
                             style={{ width: s.w * k, height: s.h * k }}
                           />
                         </span>
@@ -542,7 +542,7 @@ export default function MeasurementReferenceTool({ config }: ToolProps) {
             Platforms change their recommendations from time to time — these are
             the sizes our{' '}
             <Link
-              className="text-indigo-600 underline underline-offset-2"
+              className="text-brand-600 underline underline-offset-2"
               href="/online-tool/image-tools/social-media-image-resizer"
             >
               social media image resizer

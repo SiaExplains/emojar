@@ -269,7 +269,7 @@ export default function PdfGrayscaleTool(_: ToolProps) {
             role="radio"
             aria-checked={mode === m}
             onClick={() => setMode(m)}
-            className={`rounded-xl border-2 p-3 text-left transition ${mode === m ? 'border-indigo-600 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'}`}
+            className={`rounded-xl border-2 p-3 text-left transition ${mode === m ? 'border-brand-600 bg-brand-50' : 'border-gray-200 hover:border-gray-300'}`}
           >
             <span className="block text-sm font-semibold text-gray-900">
               {label}

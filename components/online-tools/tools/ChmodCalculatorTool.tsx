@@ -94,7 +94,7 @@ export default function ChmodCalculatorTool(_: ToolProps) {
                       aria-label={`${label} ${name}`}
                       checked={!!(perms[who] & bit)}
                       onChange={() => toggle(who, bit)}
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600"
+                      className="h-4 w-4 rounded border-gray-300 text-brand-600"
                     />
                   </td>
                 ))}
@@ -121,7 +121,7 @@ export default function ChmodCalculatorTool(_: ToolProps) {
               type="checkbox"
               checked={!!(perms.special & bit)}
               onChange={() => apply({ ...perms, special: perms.special ^ bit })}
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600"
+              className="h-4 w-4 rounded border-gray-300 text-brand-600"
             />
             {name} <span className="text-xs text-gray-400">({help})</span>
           </label>

@@ -5,6 +5,11 @@
 :root {
   --bg: 255 255 255;
   --fg: 17 24 39;
+  /* Accent (tailwind `brand`), shared with the focus ring below. */
+  --accent: 209 16 90;
+  --focus-ring: 230 62 133;
+  /* Sticky header height, so in-page anchors aren't hidden under it. */
+  --header-h: 4rem;
 }
 
 html,
@@ -13,9 +18,35 @@ body,
   height: 100%;
 }
 
+html {
+  scroll-padding-top: var(--header-h);
+}
+
 body {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
+}
+
+/* A visible keyboard focus indicator everywhere. Components that draw their
+   own ring use `focus:outline-none focus-visible:ring-…`, which overrides
+   this. */
+:focus-visible {
+  outline: 2px solid rgb(var(--focus-ring));
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .logo-container {

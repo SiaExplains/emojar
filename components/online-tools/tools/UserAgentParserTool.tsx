@@ -140,7 +140,7 @@ export default function UserAgentParserTool(_: ToolProps) {
             Want the exact details of this device, including Client Hints? Use{' '}
             <Link
               href="/online-tool/device-tests/what-is-my-browser"
-              className="text-indigo-600 underline underline-offset-2"
+              className="text-brand-600 underline underline-offset-2"
             >
               What Is My Browser
             </Link>

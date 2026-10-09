@@ -222,7 +222,7 @@ export default function ClipPathTool(_: ToolProps) {
                   {points.map((p, i) => (
                     <li
                       key={i}
-                      className={`grid grid-cols-[1.5rem_1fr_1fr_auto] items-end gap-2 rounded-lg p-1 ${sel === i ? 'bg-indigo-50' : ''}`}
+                      className={`grid grid-cols-[1.5rem_1fr_1fr_auto] items-end gap-2 rounded-lg p-1 ${sel === i ? 'bg-brand-50' : ''}`}
                     >
                       <button
                         type="button"
@@ -230,7 +230,7 @@ export default function ClipPathTool(_: ToolProps) {
                           setSel(i);
                           handleRefs.current[i]?.focus();
                         }}
-                        className="pb-2 text-left text-xs font-semibold text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                        className="pb-2 text-left text-xs font-semibold text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                         aria-label={`Select point ${i + 1}`}
                       >
                         {i + 1}
@@ -493,7 +493,7 @@ export default function ClipPathTool(_: ToolProps) {
                         cx={p.x}
                         cy={p.y}
                         r={sel === i ? 2.6 : 2}
-                        className={`${sel === i ? 'fill-indigo-600' : 'fill-white'} peer-focus-visible:[stroke-width:1.4] peer-focus-visible:[stroke:#4f46e5]`}
+                        className={`${sel === i ? 'fill-brand-600' : 'fill-white'} peer-focus-visible:[stroke-width:1.4] peer-focus-visible:[stroke:#4f46e5]`}
                         stroke="#111827"
                         strokeWidth={0.6}
                         pointerEvents="none"
@@ -520,7 +520,7 @@ export default function ClipPathTool(_: ToolProps) {
                     tabIndex={0}
                     role="button"
                     aria-label={`Centre at ${centre.cx}%, ${centre.cy}%. Arrow keys move it.`}
-                    className="cursor-grab fill-white outline-none focus-visible:fill-indigo-500"
+                    className="cursor-grab fill-white outline-none focus-visible:fill-brand-500"
                     stroke="#111827"
                     strokeWidth={0.6}
                     onPointerDown={start('center')}

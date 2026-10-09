@@ -39,7 +39,7 @@ const KIND_LABEL = {
 } as const;
 const KIND_STYLE = {
   absolute: 'bg-slate-500',
-  font: 'bg-indigo-500',
+  font: 'bg-brand-500',
   viewport: 'bg-emerald-500',
   percent: 'bg-amber-500',
 } as const;
@@ -196,7 +196,7 @@ export default function CssUnitTool(_: ToolProps) {
               >
                 <span className="font-mono text-sm text-gray-900">{text}</span>
                 <span className="flex items-center gap-2">
-                  <span className="text-[11px] text-gray-500">
+                  <span className="text-xs text-gray-500">
                     {KIND_LABEL[UNIT_KIND[u]]}
                   </span>
                   <CopyButton text={text} className="!px-2 !py-0.5 text-xs" />
@@ -285,12 +285,12 @@ export default function CssUnitTool(_: ToolProps) {
             aria-label={`Viewport ${ctx.viewportWidth} by ${ctx.viewportHeight} pixels, drawn at ${Math.round(scale * 100)}%`}
             role="img"
           >
-            <span className="absolute right-2 top-1 text-[10px] text-gray-400">
+            <span className="absolute right-2 top-1 text-xs text-gray-400">
               viewport {ctx.viewportWidth}×{ctx.viewportHeight}px ·{' '}
               {Math.round(scale * 100)}% scale
             </span>
             <div
-              className="absolute left-3 top-5 flex items-center justify-center rounded-lg bg-indigo-500/80 text-center text-xs font-medium text-white"
+              className="absolute left-3 top-5 flex items-center justify-center rounded-lg bg-brand-500/80 text-center text-xs font-medium text-white"
               style={{
                 width: Math.max(2, bw * scale),
                 height: Math.max(2, bh * scale),
@@ -341,14 +341,14 @@ export default function CssUnitTool(_: ToolProps) {
       <p className="text-xs text-gray-500">
         Lay out what you’ve sized with the{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/developer-tools/flexbox-playground"
         >
           Flexbox playground
         </Link>{' '}
         or{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/developer-tools/grid-playground"
         >
           CSS Grid playground

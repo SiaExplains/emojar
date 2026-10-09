@@ -132,7 +132,7 @@ export default async function GuidePage({
         />
       )}
       <div className="not-prose mb-8">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-indigo-600">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand-600">
           {category ? `${category.name} guide` : (g.tags[0] ?? 'Guide')}
         </p>
         <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">
@@ -162,13 +162,13 @@ export default async function GuidePage({
       <div dangerouslySetInnerHTML={{ __html: renderMarkdown(g.body) }} />
 
       {tool && (
-        <aside className="not-prose mt-10 flex flex-wrap items-center gap-4 rounded-2xl border border-indigo-100 bg-indigo-50 p-5">
+        <aside className="not-prose mt-10 flex flex-wrap items-center gap-4 rounded-2xl border border-brand-100 bg-brand-50 p-5">
           <span aria-hidden className="text-3xl">
             {tool.icon}
           </span>
           <div className="min-w-0 flex-1">
-            <p className="font-semibold text-indigo-950">Try the {tool.name}</p>
-            <p className="text-sm text-indigo-900/80">
+            <p className="font-semibold text-brand-950">Try the {tool.name}</p>
+            <p className="text-sm text-brand-900/80">
               {tool.shortDescription} Free, no sign-up, runs in your browser.
             </p>
           </div>

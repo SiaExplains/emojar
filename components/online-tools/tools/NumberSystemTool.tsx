@@ -126,7 +126,7 @@ export default function NumberSystemTool({ config }: ToolProps) {
                   key={b}
                   className={`flex flex-col gap-2 rounded-2xl border px-4 py-3 sm:flex-row sm:items-center ${
                     b === initTo
-                      ? 'border-indigo-200 bg-indigo-50'
+                      ? 'border-brand-200 bg-brand-50'
                       : 'border-gray-100'
                   }`}
                 >
@@ -136,7 +136,7 @@ export default function NumberSystemTool({ config }: ToolProps) {
                     </span>
                     <span className="text-gray-500"> · base {b}</span>
                     {isInput && (
-                      <span className="ml-1 rounded bg-gray-100 px-1 text-[11px] text-gray-600">
+                      <span className="ml-1 rounded bg-gray-100 px-1 text-xs text-gray-600">
                         input
                       </span>
                     )}
@@ -227,7 +227,7 @@ function Decomposition({ value, base }: { value: bigint; base: number }) {
               <span className="font-mono text-base font-semibold text-gray-900">
                 {t.digit}
               </span>
-              <span className="text-[10px] text-gray-500">
+              <span className="text-xs text-gray-500">
                 {base}
                 {superscript(t.power)}
               </span>

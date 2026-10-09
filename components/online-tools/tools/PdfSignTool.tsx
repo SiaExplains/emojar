@@ -416,7 +416,7 @@ export default function PdfSignTool(_: ToolProps) {
                       e.stopPropagation();
                       setPlacements((ps) => ps.filter((_, k) => k !== i));
                     }}
-                    className="absolute border border-dashed border-indigo-400 bg-indigo-50/20"
+                    className="absolute border border-dashed border-brand-400 bg-brand-50/20"
                     style={{
                       left: `${p.x * 100}%`,
                       top: `${p.y * 100}%`,

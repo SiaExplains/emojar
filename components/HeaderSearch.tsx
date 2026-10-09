@@ -150,7 +150,7 @@ export default function HeaderSearch() {
   const listId = `${id}-list`;
   const optionId = (i: number) => `${id}-opt-${i}`;
   const rowClass = (i: number) =>
-    `flex items-center gap-3 px-3 py-2 text-left text-sm ${active === i ? 'bg-indigo-50' : 'hover:bg-gray-50'}`;
+    `flex items-center gap-3 px-3 py-2 text-left text-sm ${active === i ? 'bg-brand-50' : 'hover:bg-gray-50'}`;
 
   return (
     <div
@@ -205,7 +205,7 @@ export default function HeaderSearch() {
               setOpen(true);
             }}
             onKeyDown={onKeyDown}
-            className="w-full rounded-xl border border-gray-200 bg-white/90 py-1.5 pl-9 pr-3 text-sm outline-none transition focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100"
+            className="w-full rounded-xl border border-gray-200 bg-white/90 py-1.5 pl-9 pr-3 text-sm outline-none transition focus:border-brand-300 focus:ring-2 focus:ring-brand-100"
           />
         </div>
         {open && q && (
@@ -264,7 +264,7 @@ export default function HeaderSearch() {
                     href={x.href}
                     onClick={() => setOpen(false)}
                     onMouseEnter={() => setActive(i)}
-                    className={`${rowClass(i)} text-indigo-700`}
+                    className={`${rowClass(i)} text-brand-700`}
                   >
                     <span aria-hidden>{k === 0 ? '🧰' : '😀'}</span>
                     {x.label}

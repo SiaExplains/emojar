@@ -205,7 +205,7 @@ export function CoverEditor({
           else return;
           e.preventDefault();
         }}
-        className="relative cursor-move touch-none select-none overflow-hidden rounded-xl border border-gray-200 bg-[repeating-conic-gradient(#f3f4f6_0_25%,#fff_0_50%)] bg-[length:16px_16px] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+        className="relative cursor-move touch-none select-none overflow-hidden rounded-xl border border-gray-200 bg-[repeating-conic-gradient(#f3f4f6_0_25%,#fff_0_50%)] bg-[length:16px_16px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
         style={{ width: w, height: h }}
       >
         <canvas

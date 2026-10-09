@@ -269,7 +269,7 @@ function RefItem({
           type="button"
           onClick={onPick}
           aria-label={`${label}: braille ${prefix + cell}, dots ${dotsOf(cell).join('-')}`}
-          className={`${cls} hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500`}
+          className={`${cls} hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500`}
         >
           {content}
         </button>

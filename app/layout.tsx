@@ -9,6 +9,37 @@ import MainMenu from '@/components/MainMenu/MainMenu.compontent';
 import { SiteChrome, PageMain } from '@/components/ChromeGate';
 import { AdSenseScript } from '@/components/AdSenseScript';
 import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
+import { CATEGORIES } from '@/lib/online-tools/categories';
+
+const FOOTER_GROUPS: { title: string; links: [string, string][] }[] = [
+  {
+    title: 'Emoji & games',
+    links: [
+      ['/emoji', 'Emoji search & copy'],
+      ['/categories', 'Emoji categories'],
+      ['/emoji-collections/events', 'Events & holidays'],
+      ['/emoji-tools', 'Emoji tools'],
+      ['/games', 'Games'],
+    ],
+  },
+  {
+    title: 'Guides & help',
+    links: [
+      ['/blog', 'Guides'],
+      ['/faq', 'FAQ'],
+      ['/about', 'About'],
+      ['/contact', 'Contact'],
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      ['/privacy', 'Privacy'],
+      ['/terms', 'Terms'],
+      ['/impressum', 'Impressum'],
+    ],
+  },
+];
 
 const title = 'Emojar — Free Online Tools That Run in Your Browser';
 const description = `Free, privacy-friendly online tools: image and PDF converters, JSON formatter, word counter, calculators, unit converters, password and QR generators — plus ${EMOJI_COUNT_LABEL} emojis to copy. No sign-up, no uploads.`;
@@ -117,7 +148,13 @@ export default function RootLayout({
         <AdSenseScript clientId={clientId} />
 
         <SiteChrome>
-          <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-gray-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+          >
+            Skip to content
+          </a>
+          <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/80 backdrop-blur">
             <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
               <div className="logo-container flex-shrink-0">
                 <Link href="/" className="font-semibold">
@@ -139,20 +176,50 @@ export default function RootLayout({
         <SiteChrome>
           <BackToTopButton />
 
-          <footer className="border-t py-8 text-sm">
-            <div className="max-w-5xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
-              <p>© {new Date().getFullYear()} Emojar</p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/online-tool">Online Tools</Link>
-                <Link href="/emoji">Emoji</Link>
-                <Link href="/blog">Blog</Link>
-                <Link href="/faq">FAQ</Link>
-                <Link href="/about">About</Link>
-                <Link href="/contact">Contact</Link>
-                <Link href="/privacy">Privacy</Link>
-                <Link href="/terms">Terms</Link>
-                <Link href="/impressum">Impressum</Link>
+          <footer className="mt-12 border-t border-gray-100 bg-gray-50 text-sm">
+            <nav
+              aria-label="Footer"
+              className="mx-auto grid max-w-5xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]"
+            >
+              <div>
+                <h2 className="font-semibold text-gray-900">
+                  <Link href="/online-tool" className="hover:text-brand-700">
+                    Online tools
+                  </Link>
+                </h2>
+                <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-gray-600">
+                  {CATEGORIES.map((c) => (
+                    <li key={c.slug}>
+                      <Link
+                        href={`/online-tool/${c.slug}`}
+                        className="hover:text-brand-700"
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
+              {FOOTER_GROUPS.map((g) => (
+                <div key={g.title}>
+                  <h2 className="font-semibold text-gray-900">{g.title}</h2>
+                  <ul className="mt-3 space-y-2 text-gray-600">
+                    {g.links.map(([href, label]) => (
+                      <li key={href}>
+                        <Link href={href} className="hover:text-brand-700">
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </nav>
+            <div className="border-t border-gray-100">
+              <p className="mx-auto max-w-5xl px-4 py-5 text-gray-500">
+                © {new Date().getFullYear()} Emojar · Free tools that run in
+                your browser
+              </p>
             </div>
           </footer>
         </SiteChrome>

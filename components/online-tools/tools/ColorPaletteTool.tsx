@@ -84,7 +84,7 @@ export default function ColorPaletteTool(_: ToolProps) {
               <button
                 type="button"
                 onClick={() => copy(hex)}
-                className="flex h-28 w-full flex-col items-center justify-end gap-1 pb-3 font-mono text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-500 sm:h-40"
+                className="flex h-28 w-full flex-col items-center justify-end gap-1 pb-3 font-mono text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500 sm:h-40"
                 style={{ background: hex, color: readableOn(c) }}
                 aria-label={`Copy ${hex}`}
               >

@@ -309,7 +309,7 @@ export default function MorseCodeTool(_: ToolProps) {
                   setInput((v) => (decode ? ch : v + ch));
                 }}
                 aria-label={`${ch}: ${code.replace(/\./g, 'dot ').replace(/-/g, 'dash ').trim()}`}
-                className="flex w-full items-center justify-between gap-2 rounded-lg border border-gray-100 px-2.5 py-1.5 text-left hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="flex w-full items-center justify-between gap-2 rounded-lg border border-gray-100 px-2.5 py-1.5 text-left hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 <span className="font-semibold text-gray-900">{ch}</span>
                 <span className="font-mono text-sm tracking-wider text-gray-700">

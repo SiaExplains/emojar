@@ -35,7 +35,7 @@ export default function TextCaseTool(_: ToolProps) {
               type="button"
               aria-pressed={style === c.id}
               onClick={() => setStyle(c.id)}
-              className={`rounded-xl border px-3 py-1.5 text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+              className={`rounded-xl border px-3 py-1.5 text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                 style === c.id
                   ? 'border-gray-900 bg-gray-900 text-white'
                   : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'

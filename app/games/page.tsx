@@ -85,7 +85,7 @@ const games = [
     path: '/games/older-or-newer',
     description: 'Guess which emoji was added to Unicode first.',
     emoji: '🕰️📅',
-    color: 'from-indigo-100 to-indigo-200',
+    color: 'from-brand-100 to-brand-200',
   },
   {
     name: 'Guess the Animal',
@@ -155,7 +155,7 @@ const games = [
     path: '/games/story-builder',
     description: 'Pick emojis for each chapter to build your story.',
     emoji: '📖✨',
-    color: 'from-indigo-100 to-blue-200',
+    color: 'from-brand-100 to-blue-200',
   },
 ];
 

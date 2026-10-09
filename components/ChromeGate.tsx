@@ -30,5 +30,14 @@ export function SiteChrome({ children }: { children: ReactNode }) {
  */
 export function PageMain({ children }: { children: ReactNode }) {
   if (useIsBare()) return <>{children}</>;
-  return <main className="max-w-5xl mx-auto px-4 py-6">{children}</main>;
+  return (
+    // tabIndex lets the skip link move focus here, not just scroll.
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto max-w-5xl px-4 py-6 focus:outline-none"
+    >
+      {children}
+    </main>
+  );
 }

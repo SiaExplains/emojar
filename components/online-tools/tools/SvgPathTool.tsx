@@ -541,9 +541,9 @@ export default function SvgPathTool(_: ToolProps) {
                       onClick={() => selectSeg(i)}
                       aria-pressed={sel?.seg === i}
                       disabled={s.type === 'Z'}
-                      className={`w-full rounded-lg px-2 py-1 text-left font-mono focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                      className={`w-full rounded-lg px-2 py-1 text-left font-mono focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                         sel?.seg === i
-                          ? 'bg-indigo-50 text-indigo-900'
+                          ? 'bg-brand-50 text-brand-900'
                           : 'text-gray-700 hover:bg-gray-50'
                       }`}
                     >

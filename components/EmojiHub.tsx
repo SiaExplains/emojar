@@ -146,7 +146,7 @@ const ALL_GAMES = [
     title: 'Story Builder',
     sub: 'Build your tale',
     href: '/games/story-builder',
-    bg: 'bg-indigo-50 border-indigo-100 hover:bg-indigo-100',
+    bg: 'bg-brand-50 border-brand-100 hover:bg-brand-100',
   },
 ];
 
@@ -198,9 +198,9 @@ const CATEGORY_META: Record<
   },
   Symbols: {
     icon: '♾️',
-    bg: 'bg-indigo-50',
-    border: 'border-indigo-200',
-    text: 'text-indigo-900',
+    bg: 'bg-brand-50',
+    border: 'border-brand-200',
+    text: 'text-brand-900',
   },
   Flags: {
     icon: '🚩',
@@ -222,7 +222,7 @@ const LATEST_POSTS = [
     title: 'Download Any Emoji as a PNG',
     date: '2026-06-19',
     tag: 'New Tool',
-    tagColor: 'bg-indigo-100 text-indigo-700',
+    tagColor: 'bg-brand-100 text-brand-700',
     emoji: '🖼️',
   },
   {
@@ -348,11 +348,11 @@ export default function EmojiHub() {
           </Link>
           <Link
             href="/emoji-tools"
-            className="group flex flex-col items-center gap-1.5 rounded-2xl border border-indigo-100 bg-indigo-50 px-3 py-4 hover:border-indigo-200 hover:shadow-sm transition-all"
+            className="group flex flex-col items-center gap-1.5 rounded-2xl border border-brand-100 bg-brand-50 px-3 py-4 hover:border-brand-200 hover:shadow-sm transition-all"
           >
             <span className="text-2xl">🛠️</span>
-            <span className="text-xs font-bold text-indigo-900">8 Tools</span>
-            <span className="text-xs text-indigo-700 leading-tight">
+            <span className="text-xs font-bold text-brand-900">8 Tools</span>
+            <span className="text-xs text-brand-700 leading-tight">
               PNG · Cards · Kitchen · more
             </span>
           </Link>
@@ -434,7 +434,7 @@ export default function EmojiHub() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
                 href="/emoji-to-png"
-                className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-violet-600 to-indigo-600 px-5 py-4 text-white shadow-sm transition-all hover:from-violet-500 hover:to-indigo-500"
+                className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-violet-600 to-brand-600 px-5 py-4 text-white shadow-sm transition-all hover:from-violet-500 hover:to-brand-500"
               >
                 <span className="text-3xl shrink-0">🖼️</span>
                 <div className="flex-1 min-w-0">
@@ -665,9 +665,9 @@ export default function EmojiHub() {
             </div>
             <Link
               href="/emoji-collections/events"
-              className="group flex items-center gap-5 rounded-2xl border border-purple-100 bg-gradient-to-r from-purple-50 to-fuchsia-50 px-6 py-5 transition-all hover:shadow-md"
+              className="group flex flex-col items-start gap-3 rounded-2xl border border-purple-100 bg-gradient-to-r from-purple-50 to-fuchsia-50 px-5 py-5 transition-all hover:shadow-md sm:flex-row sm:items-center sm:gap-5 sm:px-6"
             >
-              <div className="shrink-0 text-4xl sm:text-5xl tracking-wide select-none leading-none">
+              <div className="shrink-0 select-none text-3xl leading-none tracking-wide sm:text-5xl">
                 🌈❤️🧡💛💚💙💜
               </div>
               <div className="flex-1 min-w-0">
@@ -680,7 +680,7 @@ export default function EmojiHub() {
                   one tap.
                 </p>
               </div>
-              <span className="text-purple-300 transition-colors group-hover:text-purple-600 shrink-0 text-lg">
+              <span className="hidden shrink-0 text-lg text-purple-300 transition-colors group-hover:text-purple-600 sm:inline">
                 →
               </span>
             </Link>
@@ -746,7 +746,7 @@ export default function EmojiHub() {
             {LATEST_POSTS[0] && (
               <Link
                 href={`/blog/${LATEST_POSTS[0].slug}`}
-                className="group block rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-6 py-6 text-white hover:from-indigo-500 hover:to-violet-500 transition-all shadow-sm"
+                className="group block rounded-2xl bg-gradient-to-br from-brand-600 to-violet-600 px-6 py-6 text-white hover:from-brand-500 hover:to-violet-500 transition-all shadow-sm"
               >
                 <div className="flex items-start gap-4">
                   <span className="text-5xl leading-none shrink-0 mt-0.5">
@@ -761,7 +761,7 @@ export default function EmojiHub() {
                     <p className="font-bold text-lg leading-snug">
                       {LATEST_POSTS[0].title}
                     </p>
-                    <time className="text-indigo-200 text-xs mt-1 block">
+                    <time className="text-brand-200 text-xs mt-1 block">
                       {new Date(LATEST_POSTS[0].date).toLocaleDateString(
                         'en-GB',
                         {
@@ -772,7 +772,7 @@ export default function EmojiHub() {
                       )}
                     </time>
                   </div>
-                  <span className="text-indigo-300 group-hover:text-white transition-colors shrink-0 text-lg mt-1">
+                  <span className="text-brand-300 group-hover:text-white transition-colors shrink-0 text-lg mt-1">
                     →
                   </span>
                 </div>

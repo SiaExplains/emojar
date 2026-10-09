@@ -255,7 +255,7 @@ export default function CssTransformTool(_: ToolProps) {
                     onClick={() =>
                       setT((s) => ({ ...s, originX: x, originY: y }))
                     }
-                    className={`h-7 rounded border focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                    className={`h-7 rounded border focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                       t.originX === x && t.originY === y
                         ? 'border-gray-900 bg-gray-900'
                         : 'border-gray-200 bg-white hover:bg-gray-100'
@@ -349,7 +349,7 @@ export default function CssTransformTool(_: ToolProps) {
                 aria-label={`Transformed box, moved ${t.translateX}px, ${t.translateY}px. Drag it or use the arrow keys to move it.`}
                 onPointerDown={startMove}
                 onKeyDown={onBoxKey}
-                className="flex h-full w-full cursor-move items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 text-sm font-bold text-white shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-300"
+                className="flex h-full w-full cursor-move items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-pink-500 text-sm font-bold text-white shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-300"
                 style={{ touchAction: 'none' }}
               >
                 Box
@@ -359,7 +359,7 @@ export default function CssTransformTool(_: ToolProps) {
                 aria-label={`Rotation ${t.rotate}°. Drag to rotate, or use the arrow keys (Shift for 15°).`}
                 onPointerDown={startRotate}
                 onKeyDown={onRotateKey}
-                className="absolute -top-9 left-1/2 h-6 w-6 -translate-x-1/2 cursor-grab rounded-full border-2 border-gray-900 bg-white text-xs leading-none text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="absolute -top-9 left-1/2 h-6 w-6 -translate-x-1/2 cursor-grab rounded-full border-2 border-gray-900 bg-white text-xs leading-none text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                 style={{ touchAction: 'none' }}
               >
                 ↻

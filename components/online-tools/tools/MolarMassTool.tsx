@@ -69,7 +69,7 @@ export default function MolarMassTool(_: ToolProps) {
               key={ex}
               type="button"
               onClick={() => setFormula(ex)}
-              className="rounded-full border border-gray-200 px-2.5 py-1 font-mono text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              className="rounded-full border border-gray-200 px-2.5 py-1 font-mono text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             >
               {ex}
             </button>
@@ -202,7 +202,7 @@ export default function MolarMassTool(_: ToolProps) {
       <p className="text-xs text-gray-500">
         Uses IUPAC standard atomic weights. Look up any element in the{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/reference-tools/periodic-table"
         >
           interactive periodic table

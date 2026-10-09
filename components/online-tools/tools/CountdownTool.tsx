@@ -71,8 +71,8 @@ export default function CountdownTool(_: ToolProps) {
       </div>
 
       {valid && (
-        <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-4 py-8 text-center text-white">
-          <p className="text-sm font-medium text-indigo-100">
+        <div className="rounded-2xl bg-gradient-to-br from-brand-600 to-violet-600 px-4 py-8 text-center text-white">
+          <p className="text-sm font-medium text-brand-100">
             {diff >= 0
               ? `Countdown to ${title || 'your event'}`
               : `${title || 'The event'} started`}
@@ -87,13 +87,13 @@ export default function CountdownTool(_: ToolProps) {
                 <p className="text-3xl font-bold tabular-nums sm:text-5xl">
                   {String(u.value).padStart(2, '0')}
                 </p>
-                <p className="text-xs uppercase tracking-wide text-indigo-100">
+                <p className="text-xs uppercase tracking-wide text-brand-100">
                   {u.label}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-4 text-xs text-indigo-100">
+          <p className="mt-4 text-xs text-brand-100">
             {diff >= 0 ? '' : 'ago · '}
             {targetDate.toLocaleString(undefined, {
               dateStyle: 'full',

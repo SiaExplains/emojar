@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ImpressumPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-5 py-10">
+    <div className="mx-auto w-full max-w-3xl px-5 py-10">
       <h1 className="text-3xl font-semibold tracking-tight">Impressum</h1>
       <p className="mt-1 text-sm text-gray-500">
         Legal Notice pursuant to § 5 TMG and § 18 Abs. 2 MStV
@@ -110,6 +110,6 @@ export default function ImpressumPage() {
           </p>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

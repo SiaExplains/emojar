@@ -191,8 +191,8 @@ export default function ScreenInfoTool(_: ToolProps) {
 
   return (
     <div className="space-y-5">
-      <div className="rounded-2xl border border-indigo-100 bg-indigo-50 p-5 text-center">
-        <p className="text-xs font-medium uppercase tracking-wide text-indigo-700">
+      <div className="rounded-2xl border border-brand-100 bg-brand-50 p-5 text-center">
+        <p className="text-xs font-medium uppercase tracking-wide text-brand-700">
           Your screen resolution
         </p>
         <p className="mt-1 text-4xl font-semibold tabular-nums text-gray-900">

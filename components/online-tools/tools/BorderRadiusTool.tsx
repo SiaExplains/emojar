@@ -270,7 +270,7 @@ export default function BorderRadiusTool(_: ToolProps) {
           <div className="flex min-h-[20rem] items-center justify-center overflow-auto rounded-2xl border border-gray-200 bg-gray-50 p-8">
             <div className="relative shrink-0" style={{ width: W, height: H }}>
               <div
-                className="absolute inset-0 bg-gradient-to-br from-indigo-400 to-pink-400"
+                className="absolute inset-0 bg-gradient-to-br from-brand-400 to-pink-400"
                 style={{ borderRadius: value }}
                 role="img"
                 aria-label={`Preview with border-radius: ${value}`}
@@ -319,7 +319,7 @@ export default function BorderRadiusTool(_: ToolProps) {
                         const next = nudge(e, p);
                         if (next) moveHandle(k, next);
                       }}
-                      className="cursor-grab fill-white stroke-gray-900 outline-none focus-visible:stroke-indigo-600 focus-visible:[stroke-width:4]"
+                      className="cursor-grab fill-white stroke-gray-900 outline-none focus-visible:stroke-brand-600 focus-visible:[stroke-width:4]"
                       strokeWidth={2}
                     >
                       <title>{name}</title>

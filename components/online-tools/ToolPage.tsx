@@ -97,7 +97,7 @@ export function RelatedTools({ tool }: { tool: ToolDefinition }) {
         {cat && (
           <Link
             href={categoryPath(cat.slug)}
-            className="text-sm text-indigo-700 hover:underline"
+            className="text-sm text-brand-700 hover:underline"
           >
             All {cat.name.toLowerCase()} →
           </Link>
@@ -262,7 +262,7 @@ export function ToolPage({
                 key={step}
                 className="flex gap-3 text-sm leading-relaxed text-gray-700"
               >
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-700">
                   {i + 1}
                 </span>
                 <span>{step}</span>
@@ -299,7 +299,7 @@ export function ToolPage({
           </h2>
           <Link
             href={`/blog/${guide.slug}`}
-            className="mt-1 block text-lg font-semibold text-indigo-700 hover:underline"
+            className="mt-1 block text-lg font-semibold text-brand-700 hover:underline"
           >
             {guide.title} →
           </Link>

@@ -120,9 +120,9 @@ export default function ReadabilityTool(_: ToolProps) {
               {r.localScores.map((ls, i) => (
                 <div
                   key={ls.name}
-                  className={`rounded-2xl border p-4 ${i === 0 ? 'border-indigo-100 bg-indigo-50' : 'border-gray-100 bg-gray-50'}`}
+                  className={`rounded-2xl border p-4 ${i === 0 ? 'border-brand-100 bg-brand-50' : 'border-gray-100 bg-gray-50'}`}
                 >
-                  <p className="text-xs font-medium text-indigo-700">
+                  <p className="text-xs font-medium text-brand-700">
                     {ls.name}
                   </p>
                   <p className="mt-1 text-3xl font-semibold tabular-nums text-gray-900">
@@ -138,8 +138,8 @@ export default function ReadabilityTool(_: ToolProps) {
           {lang === 'en' && (
             <>
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-indigo-100 bg-indigo-50 p-4">
-                  <p className="text-xs font-medium text-indigo-700">
+                <div className="rounded-2xl border border-brand-100 bg-brand-50 p-4">
+                  <p className="text-xs font-medium text-brand-700">
                     Flesch Reading Ease
                   </p>
                   <p className="mt-1 text-3xl font-semibold tabular-nums text-gray-900">

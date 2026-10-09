@@ -296,7 +296,7 @@ export default function PdfCropTool(_: ToolProps) {
               <div
                 role="group"
                 aria-label="Crop area — drag to move, drag the handles to resize"
-                className="absolute cursor-move border-2 border-indigo-600"
+                className="absolute cursor-move border-2 border-brand-600"
                 style={{
                   left: pct(insets.left),
                   right: pct(insets.right),
@@ -310,7 +310,7 @@ export default function PdfCropTool(_: ToolProps) {
                     key={h.label}
                     aria-hidden
                     onPointerDown={onDown(h.edges)}
-                    className={`absolute h-4 w-4 rounded-sm border-2 border-indigo-600 bg-white ${h.cls}`}
+                    className={`absolute h-4 w-4 rounded-sm border-2 border-brand-600 bg-white ${h.cls}`}
                   />
                 ))}
               </div>

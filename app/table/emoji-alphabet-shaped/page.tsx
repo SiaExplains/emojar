@@ -2,7 +2,7 @@ import AlphabetTable from '@/components/AlphabetTable';
 
 const AlphabetShapedPage = () => {
   return (
-    <main className="p-8">
+    <div className="p-8">
       <h1 className="text-2xl font-semibold mb-4">Alphabet Table</h1>
       <p>
         Explore the alphabet represented with emojis in a fun and interactive
@@ -11,7 +11,7 @@ const AlphabetShapedPage = () => {
       </p>
       <br />
       <AlphabetTable />
-    </main>
+    </div>
   );
 };
 

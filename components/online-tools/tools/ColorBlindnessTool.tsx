@@ -294,7 +294,7 @@ export default function ColorBlindnessTool(_: ToolProps) {
   );
 
   const tab = (active: boolean) =>
-    `rounded-xl border px-3 py-1.5 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+    `rounded-xl border px-3 py-1.5 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
       active
         ? 'border-gray-900 bg-gray-900 text-white'
         : 'border-gray-200 bg-white text-gray-800 hover:bg-gray-50'

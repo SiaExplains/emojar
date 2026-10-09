@@ -149,7 +149,7 @@ export function CountryDetails({ c }: { c: Country }) {
       <p className="text-xs text-gray-500">
         See the time there on the{' '}
         <Link
-          className="text-indigo-600 underline underline-offset-2"
+          className="text-brand-600 underline underline-offset-2"
           href="/online-tool/date-time-tools/world-time-zone-map"
         >
           world time zone map
@@ -286,7 +286,7 @@ export function CountryExplorerTool(_: ToolProps) {
               <button
                 type="button"
                 onClick={() => setSelected(c)}
-                className="flex w-full items-center gap-3 rounded-2xl border border-gray-100 p-3 text-left transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="flex w-full items-center gap-3 rounded-2xl border border-gray-100 p-3 text-left transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 <span className="text-3xl leading-none" aria-hidden>
                   {flagOf(c.a2)}
@@ -409,7 +409,7 @@ export function FlagExplorerTool(_: ToolProps) {
             <p className="text-xs text-gray-500">
               Want more? Try the{' '}
               <Link
-                className="text-indigo-600 underline underline-offset-2"
+                className="text-brand-600 underline underline-offset-2"
                 href="/games/guess-the-flag"
               >
                 Guess the Flag game
@@ -448,7 +448,7 @@ export function FlagExplorerTool(_: ToolProps) {
                           score: quiz.score + (o.a2 === answer.a2 ? 1 : 0),
                         })
                       }
-                      className={`w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-medium text-gray-900 transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${state}`}
+                      className={`w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-medium text-gray-900 transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${state}`}
                     >
                       {o.n}
                       {quiz.picked !== null && o.a2 === answer.a2 && ' ✓'}
@@ -564,7 +564,7 @@ export function FlagExplorerTool(_: ToolProps) {
               <button
                 type="button"
                 onClick={() => setSelected(c)}
-                className="flex w-full flex-col items-center gap-1 rounded-2xl border border-gray-100 p-3 text-center transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="flex w-full flex-col items-center gap-1 rounded-2xl border border-gray-100 p-3 text-center transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 {flags ? (
                   <span className="text-5xl leading-none" aria-hidden>
@@ -582,7 +582,7 @@ export function FlagExplorerTool(_: ToolProps) {
                   {c.n}
                 </span>
                 {flags && (
-                  <span className="font-mono text-[10px] text-gray-500">
+                  <span className="font-mono text-xs text-gray-500">
                     {c.a2}
                   </span>
                 )}
@@ -623,7 +623,7 @@ export function FlagExplorerTool(_: ToolProps) {
                     <button
                       type="button"
                       onClick={() => setSelected(c)}
-                      className="text-left font-medium text-gray-900 underline decoration-gray-300 underline-offset-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                      className="text-left font-medium text-gray-900 underline decoration-gray-300 underline-offset-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                     >
                       {c.n}
                     </button>

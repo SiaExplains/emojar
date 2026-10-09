@@ -100,9 +100,9 @@
 
 **Description:** Shipped in v0.15.2: privacy policy, About, Terms and FAQ match real behaviour (Vercel Web Analytics, Google's consent message, optional third-party features, local storage); counts come from the data.
 
-### [ ] B — Design foundation
+### [x] B — Design foundation
 
-**Description:** Tailwind tokens (one accent, neutrals, semantic colours, radii, type scale), global focus ring, skip link, reduced-motion rule, no text under 12 px, shared Button/Card/Input beyond the tools, header nav (Tools · Emoji · Games · Guides · Help), accessible mobile menu, footer `<nav>`, fix nested `<main>`.
+**Description:** Shipped in v0.16.0 (game buttons left for a later pass). Tailwind tokens (one accent, neutrals, semantic colours, radii, type scale), global focus ring, skip link, reduced-motion rule, no text under 12 px, shared Button/Card/Input beyond the tools, header nav (Tools · Emoji · Games · Guides · Help), accessible mobile menu, footer `<nav>`, fix nested `<main>`.
 
 ### [ ] C — Homepage and tools directory
 

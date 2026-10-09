@@ -311,7 +311,7 @@ export default function GradientMeshTool(_: ToolProps) {
                 type="button"
                 aria-pressed={view === v}
                 onClick={() => setView(v)}
-                className={`rounded-xl border px-3 py-1.5 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                className={`rounded-xl border px-3 py-1.5 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                   view === v
                     ? 'border-gray-900 bg-gray-900 text-white'
                     : 'border-gray-200 bg-white text-gray-800 hover:bg-gray-50'
@@ -368,7 +368,7 @@ export default function GradientMeshTool(_: ToolProps) {
                 }}
                 onFocus={() => setSel(i)}
                 onKeyDown={onKey(i, p)}
-                className={`absolute flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 cursor-move items-center justify-center rounded-full border-2 text-[11px] font-bold shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 ${
+                className={`absolute flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 cursor-move items-center justify-center rounded-full border-2 text-xs font-bold shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 ${
                   selIdx === i
                     ? 'border-gray-900 ring-2 ring-white'
                     : 'border-white'
@@ -413,7 +413,7 @@ export default function GradientMeshTool(_: ToolProps) {
                     aria-pressed={selIdx === i}
                     aria-label={`Edit point ${i + 1}`}
                     onClick={() => setSel(i)}
-                    className={`h-7 w-7 rounded-lg border text-xs font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                    className={`h-7 w-7 rounded-lg border text-xs font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                       selIdx === i
                         ? 'border-gray-900 bg-gray-900 text-white'
                         : 'border-gray-200 text-gray-700'

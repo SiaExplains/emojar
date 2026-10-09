@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from 'react';
 import Link from 'next/link';
+import { btnSecondary } from '@/components/ui/styles';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -1092,10 +1093,7 @@ export default function PersonalityPage() {
             </button>
           )}
 
-          <button
-            onClick={handleCopyLink}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 bg-white text-sm font-medium hover:bg-gray-50 transition-colors"
-          >
+          <button onClick={handleCopyLink} className={btnSecondary}>
             {copied ? '✅ Copied!' : '🔗 Copy Link'}
           </button>
         </div>

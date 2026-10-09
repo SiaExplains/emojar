@@ -76,7 +76,7 @@ function TokenList({
             >
               {t.raw || '(empty)'}
             </code>
-            <span className="text-[10px] font-medium uppercase tracking-wide text-gray-400">
+            <span className="text-xs font-medium uppercase tracking-wide text-gray-400">
               {KIND_LABEL[t.kind]}
             </span>
             <span className="text-sm text-gray-700">{t.description}</span>

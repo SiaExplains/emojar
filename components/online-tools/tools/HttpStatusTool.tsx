@@ -12,7 +12,7 @@ import { useCopyFlash } from './ReferenceUI';
 const CLASS_STYLE: Record<number, string> = {
   1: 'bg-sky-100 text-sky-900',
   2: 'bg-emerald-100 text-emerald-900',
-  3: 'bg-indigo-100 text-indigo-900',
+  3: 'bg-brand-100 text-brand-900',
   4: 'bg-amber-100 text-amber-900',
   5: 'bg-rose-100 text-rose-900',
 };
@@ -88,7 +88,7 @@ export default function HttpStatusTool(_: ToolProps) {
             key={s.code}
             id={`status-${s.code}`}
             tabIndex={-1}
-            className="scroll-mt-24 rounded-2xl border border-gray-100 p-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            className="scroll-mt-24 rounded-2xl border border-gray-100 p-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           >
             <div className="flex flex-wrap items-baseline gap-2">
               <span
@@ -100,7 +100,7 @@ export default function HttpStatusTool(_: ToolProps) {
                 {s.name}
               </h2>
               {s.common && (
-                <span className="rounded-full border border-gray-200 px-2 py-0.5 text-[11px] text-gray-600">
+                <span className="rounded-full border border-gray-200 px-2 py-0.5 text-xs text-gray-600">
                   Commonly seen
                 </span>
               )}
@@ -109,7 +109,7 @@ export default function HttpStatusTool(_: ToolProps) {
                 type="button"
                 onClick={() => void copy(`${s.code} ${s.name}`)}
                 aria-label={`Copy ${s.code} ${s.name}`}
-                className="ml-auto rounded-lg border border-gray-200 px-2 py-0.5 text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="ml-auto rounded-lg border border-gray-200 px-2 py-0.5 text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 Copy
               </button>

@@ -33,7 +33,7 @@ import {
 const KEY = 'emojar:timeline-maker:v1';
 const PRINT_ID = 'timeline-print';
 const iconBtn =
-  'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:opacity-30';
+  'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 disabled:opacity-30';
 // Browsers cap canvas size (~16k px per side in Safari); larger timelines
 // are rendered at a lower scale instead of failing.
 const MAX_CANVAS = 16000;
@@ -194,7 +194,7 @@ export default function TimelineMakerTool(_: ToolProps) {
     return (
       <li
         key={ev.id}
-        className={`flex flex-wrap items-start gap-2 rounded-xl border p-2.5 ${err ? 'border-red-200 bg-red-50' : 'border-gray-200 bg-white'} ${editingId === ev.id ? 'ring-2 ring-indigo-400' : ''}`}
+        className={`flex flex-wrap items-start gap-2 rounded-xl border p-2.5 ${err ? 'border-red-200 bg-red-50' : 'border-gray-200 bg-white'} ${editingId === ev.id ? 'ring-2 ring-brand-400' : ''}`}
       >
         <span
           aria-hidden
@@ -443,7 +443,7 @@ export default function TimelineMakerTool(_: ToolProps) {
                   aria-label={`Colour ${c}`}
                   aria-pressed={draft.color === c}
                   onClick={() => setD({ color: c })}
-                  className={`h-7 w-7 rounded-full border-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-1 ${draft.color === c ? 'border-gray-900' : 'border-white'}`}
+                  className={`h-7 w-7 rounded-full border-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-1 ${draft.color === c ? 'border-gray-900' : 'border-white'}`}
                   style={{ background: c }}
                 />
               ))}

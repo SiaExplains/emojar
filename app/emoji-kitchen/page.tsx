@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import data from '@/data/emojis.json';
+import { btnSecondary } from '@/components/ui/styles';
 
 type Emoji = {
   slug: string;
@@ -268,7 +269,7 @@ export default function EmojiKitchenPage() {
                 <button
                   key={`${a}${b}`}
                   onClick={() => loadExample(a, b)}
-                  className="flex items-center gap-1 px-3 py-2 rounded-xl border text-sm hover:bg-gray-50 transition-colors"
+                  className={btnSecondary}
                 >
                   <span>{a}</span>
                   <span className="text-gray-400 text-xs">+</span>

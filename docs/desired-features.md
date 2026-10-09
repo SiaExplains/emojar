@@ -92,6 +92,40 @@
 
 ---
 
+## 🔎 SEO, design & ads plan (from the October 2026 audit)
+
+> Full findings and measurements: `emojar-docs/audit-2026-10/stage-a-audit.md` (outside the repo). Each stage is its own PR.
+
+### [x] B0 — Trust fixes
+
+**Description:** Shipped in v0.15.2: privacy policy, About, Terms and FAQ match real behaviour (Vercel Web Analytics, Google's consent message, optional third-party features, local storage); counts come from the data.
+
+### [ ] B — Design foundation
+
+**Description:** Tailwind tokens (one accent, neutrals, semantic colours, radii, type scale), global focus ring, skip link, reduced-motion rule, no text under 12 px, shared Button/Card/Input beyond the tools, header nav (Tools · Emoji · Games · Guides · Help), accessible mobile menu, footer `<nav>`, fix nested `<main>`.
+
+### [ ] C — Homepage and tools directory
+
+**Description:** Calmer homepage hierarchy (search → editorial picks labelled as such → categories → emoji/games/collections → guides → trust strip); hub category chips with counts and an empty-search reset; every tool stays a crawlable link.
+
+### [ ] D — Tool-page shell
+
+**Description:** Back-links to category and directory, guide link, reserved space for one ad below the tool, fix the Word Counter layout shift (CLS 0.053).
+
+### [ ] E — Technical SEO
+
+**Description:** Metadata and canonicals for `/emoji-collections/events`, `/collection/alphabet`, `/collection/detail` and `/table/emoji-alphabet-shaped`; self-canonical blog pages 2+ and `noindex,follow` tag views; shorter title templates (no slug changes); OG images for blog, games and info pages; fix the `/sorted/alphabet` link. Manual (Sia): make the www → apex redirect permanent in Vercel.
+
+### [ ] F — Performance and ads
+
+**Description:** Move the emoji dataset out of client bundles (emoji hub, emoji tools and 10 games are ~340 kB first load vs ~110 kB elsewhere); split or stream `/collection/alphabet` (3.5 MB HTML) and the largest emoji category pages; `AdSlot` with reserved height and placement rules; PageSpeed Insights before/after.
+
+### [ ] G — Content and AdSense resubmission
+
+**Description:** Visible guide bylines and Person author on the older posts, OG images for posts, RSS; improve the highest-traffic pages using Search Console data; then resubmit (see `docs/adsense-tasks.md`).
+
+---
+
 ## 🧰 Online Tools — Follow-ups
 
 > The Online Tools platform shipped in v0.2.0 (see `current-features.md` §0).

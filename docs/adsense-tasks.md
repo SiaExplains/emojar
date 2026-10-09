@@ -2,7 +2,9 @@
 
 **Rejection status:** Needs attention — Low value content  
 **Ads.txt status in AdSense dashboard:** Not found  
-**Reviewed:** 2026-06-24
+**Reviewed:** 2026-06-24 · **Status re-checked against the code and live site:** 2026-10-09 (v0.15.2)
+
+> **Since the review:** Emojar became a tools site (264 browser tools, v0.2.0 onwards), and every tool has its own in-depth guide (600+ words, Person author, visible date, FAQ, related guides), drip-published from 2026-10-07 (16 live on 2026-10-09). The privacy policy, About and Terms were corrected in v0.15.2. The site-wide audit with the next steps is `emojar-docs/audit-2026-10/stage-a-audit.md`.
 
 ---
 
@@ -52,36 +54,40 @@ Tasks are ordered by impact × effort. Fix in this sequence before re-submitting
 
 ### CRITICAL — Fix before anything else
 
-- [ ] **Rename `public/Ads.txt` → `public/ads.txt`** (all lowercase)  
-  The AdSense dashboard shows "Not found". AdSense crawls `yourdomain.com/ads.txt` in lowercase. The current file is `Ads.txt` with a capital A. Rename the file and verify it is reachable at `https://emojar.com/ads.txt` before resubmitting.  
-  _File: `public/Ads.txt`_
+- [x] **Rename `public/Ads.txt` → `public/ads.txt`** (all lowercase)  
+       ✅ _Done — `public/ads.txt` is lowercase and `https://emojar.com/ads.txt` returns the publisher line (checked 2026-10-09)._  
+       The AdSense dashboard shows "Not found". AdSense crawls `yourdomain.com/ads.txt` in lowercase. The current file is `Ads.txt` with a capital A. Rename the file and verify it is reachable at `https://emojar.com/ads.txt` before resubmitting.  
+       _File: `public/Ads.txt`_
 
-- [ ] **Update About page — remove pre-approval AdSense claim**  
-  Change "funded through display advertising (Google AdSense)" to something neutral like "funded through display advertising". Claiming an unapproved monetisation partner is a minor but avoidable policy red flag.  
-  _File: `app/about/page.tsx`_
+- [x] **Update About page — remove pre-approval AdSense claim**  
+       ✅ _Done in v0.15.2 — the About page now says "funded through display advertising"._  
+       Change "funded through display advertising (Google AdSense)" to something neutral like "funded through display advertising". Claiming an unapproved monetisation partner is a minor but avoidable policy red flag.  
+       _File: `app/about/page.tsx`_
 
 ---
 
 ### HIGH — E-E-A-T and trust signals
 
-- [ ] **Add author identity to About page**  
-  Replace "a single developer based in Berlin" with the developer's real name, brief bio (2–3 sentences), and at least one external profile link (GitHub, LinkedIn, Twitter/X). Google reviewers explicitly look for a named, identifiable human behind the site.  
-  _File: `app/about/page.tsx`_
+- [x] **Add author identity to About page**  
+       ✅ _Done — the About page names Siavash Ghanbari._  
+       Replace "a single developer based in Berlin" with the developer's real name, brief bio (2–3 sentences), and at least one external profile link (GitHub, LinkedIn, Twitter/X). Google reviewers explicitly look for a named, identifiable human behind the site.  
+       _File: `app/about/page.tsx`_
 
 - [ ] **Add author bylines to all blog posts**  
-  Every blog post needs an author line (name + date). Add a reusable `<PostAuthor name="…" date="…" />` component and place it below the `<h1>` on each post. Without bylines, there are zero authorship signals across the entire blog.  
-  _Component to create: `components/PostAuthor.tsx`_  
-  _Files to update: all `app/blog/*/page.mdx`_
+       ◻ _Still open — guides carry the author only in JSON-LD; no visible byline yet, and older MDX posts use an Organization author._  
+       Every blog post needs an author line (name + date). Add a reusable `<PostAuthor name="…" date="…" />` component and place it below the `<h1>` on each post. Without bylines, there are zero authorship signals across the entire blog.  
+       _Component to create: `components/PostAuthor.tsx`_  
+       _Files to update: all `app/blog/*/page.mdx`_
 
 - [ ] **Expand the About page content**  
-  The current About page is ~400 words. Expand to 700–900 words covering: the developer's background and why they built Emojar, a detailed description of the data sources (Unicode CLDR specifics), how emoji pages are generated, the editorial standards for blog content, and the site's stance on accuracy. This is the page Google reviewers read first.
+       The current About page is ~400 words. Expand to 700–900 words covering: the developer's background and why they built Emojar, a detailed description of the data sources (Unicode CLDR specifics), how emoji pages are generated, the editorial standards for blog content, and the site's stance on accuracy. This is the page Google reviewers read first.
 
 ---
 
 ### HIGH — Content depth and volume
 
 - [ ] **Expand thin blog posts to 800+ words of prose**  
-  The following posts are the thinnest (under 500 total words including metadata):
+       The following posts are the thinnest (under 500 total words including metadata):
   - `emojar-games-launched` (~449 words) — expand with launch story, what was built, technical context
   - `emojar-may-2026-updates` (~487 words) — expand each update with more explanation
   - `emoji-snake-game-guide` (~508 words) — add scoring system, level progression, mobile tips, common mistakes
@@ -91,73 +97,86 @@ Tasks are ordered by impact × effort. Fix in this sequence before re-submitting
   - `emoji-minesweeper-game-guide` (~570 words) — add opening theory, probability-based flag placement, board pattern analysis
   - `emoji-hangman-game-guide` (~591 words) — add letter frequency analysis, common emoji name patterns, strategy tree
 
-- [ ] **Write 5–8 new long-form topical posts (800–1,500+ words each)**  
-  All existing posts are about Emojar's own features. Google needs to see the site as an informational resource, not a product blog. Suggested topics:
-  - *What is Unicode? A plain-English guide to how emojis actually work* — explains code points, CLDR, platform rendering differences, version history
-  - *The history of the emoji: from Japan's first 176 characters to 3,790+ today* — evergreen timeline with facts
-  - *Why emojis look different on every platform (Apple vs Google vs Samsung vs Windows)* — comparison guide with examples
-  - *How to use emojis professionally without looking unprofessional* — workplace communication guide
-  - *The most misunderstood emojis and what they actually mean* — listicle with Unicode definitions vs common usage
-  - *Emoji and accessibility: what screen readers say when they encounter an emoji* — unique angle, high E-E-A-T value
-  - *How to type any emoji on Windows, Mac, iPhone, and Android* — high-search-volume, practical guide
+- [x] **Write 5–8 new long-form topical posts (800–1,500+ words each)**  
+       ✅ _Done in substance — the tool guides are educational explainers (most 800–1,200 words); 16 are live and one more publishes each day._  
+       All existing posts are about Emojar's own features. Google needs to see the site as an informational resource, not a product blog. Suggested topics:
+  - _What is Unicode? A plain-English guide to how emojis actually work_ — explains code points, CLDR, platform rendering differences, version history
+  - _The history of the emoji: from Japan's first 176 characters to 3,790+ today_ — evergreen timeline with facts
+  - _Why emojis look different on every platform (Apple vs Google vs Samsung vs Windows)_ — comparison guide with examples
+  - _How to use emojis professionally without looking unprofessional_ — workplace communication guide
+  - _The most misunderstood emojis and what they actually mean_ — listicle with Unicode definitions vs common usage
+  - _Emoji and accessibility: what screen readers say when they encounter an emoji_ — unique angle, high E-E-A-T value
+  - _How to type any emoji on Windows, Mac, iPhone, and Android_ — high-search-volume, practical guide
 
 ---
 
 ### MEDIUM — Structured data
 
-- [ ] **Add Article JSON-LD to all blog posts**  
-  Each blog post should include a `<script type="application/ld+json">` block with Article schema: `headline`, `author` (with name and URL), `datePublished`, `dateModified`, `publisher` (Emojar with logo), and `url`. This is a direct E-E-A-T signal.  
-  _Best implemented as a layout-level component in `app/blog/[slug]/layout.tsx` or per-post._
+- [x] **Add Article JSON-LD to all blog posts**  
+       ✅ _Done — guides emit `BlogPosting` with a Person author; the older MDX posts emit `BlogPosting` with an Organization author (see the byline task)._  
+       Each blog post should include a `<script type="application/ld+json">` block with Article schema: `headline`, `author` (with name and URL), `datePublished`, `dateModified`, `publisher` (Emojar with logo), and `url`. This is a direct E-E-A-T signal.  
+       _Best implemented as a layout-level component in `app/blog/[slug]/layout.tsx` or per-post._
 
-- [ ] **Add WebSite JSON-LD with SearchAction to homepage**  
-  Add a `WebSite` schema with a `SearchAction` pointing to `https://emojar.com/?q={search_term_string}`. This enables Google Sitelinks Search Box and signals that the site is a legitimate search tool.  
-  _File: `app/layout.tsx` or `app/page.tsx`_
+- [x] **Add WebSite JSON-LD with SearchAction to homepage**  
+       ✅ _Done — `app/layout.tsx`._  
+       Add a `WebSite` schema with a `SearchAction` pointing to `https://emojar.com/?q={search_term_string}`. This enables Google Sitelinks Search Box and signals that the site is a legitimate search tool.  
+       _File: `app/layout.tsx` or `app/page.tsx`_
 
-- [ ] **Add BreadcrumbList JSON-LD to emoji pages, category pages, and blog posts**  
-  Breadcrumb structured data on individual emoji pages (`Home > Smileys & Emotion > 😀 Grinning Face`) and category pages helps Google understand site hierarchy and confirms each page belongs to a structured, purposeful site.
+- [x] **Add BreadcrumbList JSON-LD to emoji pages, category pages, and blog posts**  
+       ✅ _Done — emoji, category, tool and blog pages._  
+       Breadcrumb structured data on individual emoji pages (`Home > Smileys & Emotion > 😀 Grinning Face`) and category pages helps Google understand site hierarchy and confirms each page belongs to a structured, purposeful site.
 
 ---
 
 ### MEDIUM — Technical hygiene
 
-- [ ] **Audit and fix robots.txt**  
-  Verify `public/robots.txt` does not block the `/blog` directory, individual emoji pages, or the sitemap. Confirm the sitemap URL in robots.txt matches the actual sitemap URL.  
-  _File: `public/robots.txt`_
+- [x] **Audit and fix robots.txt**  
+       ✅ _Done — `Allow: /` plus the sitemap; nothing blocked._  
+       Verify `public/robots.txt` does not block the `/blog` directory, individual emoji pages, or the sitemap. Confirm the sitemap URL in robots.txt matches the actual sitemap URL.  
+       _File: `public/robots.txt`_
 
 - [ ] **Submit updated sitemap to Google Search Console after content changes**  
-  After adding new blog posts and expanding existing ones, request a sitemap re-crawl in GSC. Also check the Coverage report for any pages marked "Discovered — currently not indexed" or "Crawled — currently not indexed".
+       ◻ _Manual — Sia, in Search Console._  
+       After adding new blog posts and expanding existing ones, request a sitemap re-crawl in GSC. Also check the Coverage report for any pages marked "Discovered — currently not indexed" or "Crawled — currently not indexed".
 
-- [ ] **Verify all blog post canonical URLs are self-referencing and correct**  
-  Check that every `app/blog/*/page.mdx` exports a `canonical` URL that matches the live URL exactly. Mismatched canonicals can dilute crawl signals.
+- [x] **Verify all blog post canonical URLs are self-referencing and correct**  
+       ✅ _Done for posts. Blog index pages 2+ point their canonical at `/blog` — fix tracked in the audit (S4)._  
+       Check that every `app/blog/*/page.mdx` exports a `canonical` URL that matches the live URL exactly. Mismatched canonicals can dilute crawl signals.
 
 - [ ] **Add `<link rel="author">` to blog pages**  
-  Point to the About page or a dedicated author profile page. This is a lightweight HTML signal of authorship that complements E-E-A-T.
+       Point to the About page or a dedicated author profile page. This is a lightweight HTML signal of authorship that complements E-E-A-T.
 
 ---
 
 ### MEDIUM — User experience signals
 
 - [ ] **Add a visible "Last updated" date to all blog posts**  
-  Google looks for freshness signals. Posts that show a visible `Last updated: DD Month YYYY` date alongside the published date signal ongoing editorial care.
+       ◐ _Partly — guides show their publish date; there is no separate "updated" date yet._  
+       Google looks for freshness signals. Posts that show a visible `Last updated: DD Month YYYY` date alongside the published date signal ongoing editorial care.
 
-- [ ] **Add FAQ sections to at least the top 5 blog posts**  
-  FAQs add word count, address real user questions, and support `FAQPage` JSON-LD schema. Each FAQ block should have 3–5 questions with 50–100 word answers.
+- [x] **Add FAQ sections to at least the top 5 blog posts**  
+       ✅ _Done — every tool guide ends with an FAQ._  
+       FAQs add word count, address real user questions, and support `FAQPage` JSON-LD schema. Each FAQ block should have 3–5 questions with 50–100 word answers.
 
-- [ ] **Add internal links between related blog posts**  
-  Game guide posts should link to each other and to the relevant game pages. The emoji tool posts should link to educational posts. Internal linking builds topical clusters and improves crawl depth.
+- [x] **Add internal links between related blog posts**  
+       ✅ _Done for guides ("Related guides" block); older MDX posts not yet._  
+       Game guide posts should link to each other and to the relevant game pages. The emoji tool posts should link to educational posts. Internal linking builds topical clusters and improves crawl depth.
 
 ---
 
 ### LOW — Polish and signals
 
 - [ ] **Add Open Graph images to blog posts**  
-  Blog posts currently have no `og:image`. A simple static or dynamically generated OG image improves link-preview appearance when shared, which signals real social engagement.
+       ◻ _Still open — 20 of 37 crawled blog pages had no `og:image` (audit S5)._  
+       Blog posts currently have no `og:image`. A simple static or dynamically generated OG image improves link-preview appearance when shared, which signals real social engagement.
 
-- [ ] **Add a Privacy Policy last-reviewed date**  
-  The Privacy Policy page should show when it was last reviewed. AdSense reviewers check that the policy is current, especially for GDPR (the site is based in Berlin).
+- [x] **Add a Privacy Policy last-reviewed date**  
+       ✅ _Done — "Last updated: 9 October 2026"._  
+       The Privacy Policy page should show when it was last reviewed. AdSense reviewers check that the policy is current, especially for GDPR (the site is based in Berlin).
 
 - [ ] **Consider adding a newsletter or RSS feed link**  
-  A visible RSS feed link signals that the blog is a real publishing operation, not a thin content farm.
+       ◻ _Still open — no RSS feed._  
+       A visible RSS feed link signals that the blog is a real publishing operation, not a thin content farm.
 
 ---
 
@@ -165,12 +184,12 @@ Tasks are ordered by impact × effort. Fix in this sequence before re-submitting
 
 Before clicking "Request review" in AdSense:
 
-- [ ] `ads.txt` accessible at `https://emojar.com/ads.txt` (verify with browser and `curl`)
-- [ ] At least 5 blog posts are 800+ words of actual prose
-- [ ] At least 3 new topical/educational posts published
-- [ ] Author name and bio visible on About page
+- [x] `ads.txt` accessible at `https://emojar.com/ads.txt` (verify with browser and `curl`) — verified 2026-10-09
+- [x] At least 5 blog posts are 800+ words of actual prose — 15 live guides on 2026-10-09
+- [x] At least 3 new topical/educational posts published — 16 tool guides live, one more per day
+- [x] Author name and bio visible on About page
 - [ ] Author bylines on all blog posts
-- [ ] Article JSON-LD on all blog posts
+- [x] Article JSON-LD on all blog posts
 - [ ] Updated sitemap submitted to Google Search Console
 - [ ] Wait at least 2–4 weeks after last content update before resubmitting (gives Google time to recrawl)
 

@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.15.3] — 2026-10-09
+
+### Changed
+
+- Docs refreshed after the 0.15.2 release: the AdSense task list now shows
+  what is done and what is still open, checked against the code and the live
+  site, and the desired-features list carries the staged SEO, design and ads
+  plan from the October audit.
+
 ## [0.15.2] — 2026-10-09
 
 ### Fixed

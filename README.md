@@ -131,6 +131,12 @@ sitemap, search and `llms.txt` are all generated from it.
 6. Write the tool's guide in `content/guides/<tool-slug>.md` and give it a
    publish date in `lib/blog/guide-schedule.ts` — `lib/blog/guides.test.ts`
    fails for a tool without one.
+7. Optional: `alsoIn: ['other-category']` lists the tool in more categories
+   (its URL stays under `category`); `popular: true` raises its sitemap
+   priority; adding its slug to `FEATURED_TOOLS` in
+   `lib/online-tools/registry.ts` puts it in the "Start here" picks on the
+   homepage and the tools hub (keep that list short — it is labelled as our
+   picks, not a usage ranking).
 
 Rules for tools: process data in the browser, never upload or store user
 files, show friendly error messages (`ToolInputError`), and release object

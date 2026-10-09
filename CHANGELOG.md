@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.18.1] — 2026-10-09
+
+### Changed
+
+- Docs refreshed after the 0.18.0 release: adding a tool now includes
+  re-measuring tool heights, and the AdSense checklist explains how to switch
+  on the ad slot after approval.
+
 ## [0.18.0] — 2026-10-09
 
 ### Changed

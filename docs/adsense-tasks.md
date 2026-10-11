@@ -140,7 +140,7 @@ Tasks are ordered by impact × effort. Fix in this sequence before re-submitting
        After adding new blog posts and expanding existing ones, request a sitemap re-crawl in GSC. Also check the Coverage report for any pages marked "Discovered — currently not indexed" or "Crawled — currently not indexed".
 
 - [x] **Verify all blog post canonical URLs are self-referencing and correct**  
-       ✅ _Done for posts. Blog index pages 2+ point their canonical at `/blog` — fix tracked in the audit (S4)._  
+       ✅ _Done — posts self-canonical; blog index pages 2+ self-canonical and tag views `noindex, follow` since v0.20.0._  
        Check that every `app/blog/*/page.mdx` exports a `canonical` URL that matches the live URL exactly. Mismatched canonicals can dilute crawl signals.
 
 - [ ] **Add `<link rel="author">` to blog pages**  
@@ -166,8 +166,8 @@ Tasks are ordered by impact × effort. Fix in this sequence before re-submitting
 
 ### LOW — Polish and signals
 
-- [ ] **Add Open Graph images to blog posts**  
-       ◻ _Still open — 20 of 37 crawled blog pages had no `og:image` (audit S5)._  
+- [x] **Add Open Graph images to blog posts**  
+       ✅ _Done in v0.20.0 — every post (and every page) has its own share image._  
        Blog posts currently have no `og:image`. A simple static or dynamically generated OG image improves link-preview appearance when shared, which signals real social engagement.
 
 - [x] **Add a Privacy Policy last-reviewed date**  

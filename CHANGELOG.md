@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.20.1] — 2026-10-11
+
+### Changed
+
+- Docs refreshed after the 0.20.0 release: the README explains how to give
+  new pages share images and titles, the AdSense checklist marks blog share
+  images and pagination canonicals as done, and the backlog tracks the
+  title change in Search Console.
+
 ## [0.20.0] — 2026-10-11
 
 ### Added

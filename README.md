@@ -172,6 +172,12 @@ canonical URL, Open Graph/Twitter tags with an image from `/api/og?type=tool`,
 and `WebApplication`, `FAQPage`, `HowTo` and `BreadcrumbList` JSON-LD. Renamed
 routes must get a permanent redirect in `next.config.ts`.
 
+Every other page that sets Open Graph tags must include a share image — use
+`ogImages(emoji, title, description)` from `lib/og.ts`, or `pageMeta()` for a
+simple page (title, canonical, Open Graph and Twitter in one call). Build
+titles with `brandedTitle()`, which adds " | Emojar" only while the title stays
+within 65 characters.
+
 ## Docs
 
 - `CHANGELOG.md` — release notes

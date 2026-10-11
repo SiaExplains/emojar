@@ -120,6 +120,10 @@
 
 **Description:** Shipped in v0.20.0 — still manual: Vercel www → apex redirect as permanent (308). Metadata and canonicals for `/emoji-collections/events`, `/collection/alphabet`, `/collection/detail` and `/table/emoji-alphabet-shaped`; self-canonical blog pages 2+ and `noindex,follow` tag views; shorter title templates (no slug changes); OG images for blog, games and info pages; fix the `/sorted/alphabet` link. Manual (Sia): make the www → apex redirect permanent in Vercel.
 
+### [ ] Watch the v0.20.0 title change in Search Console
+
+**Description:** v0.20.0 shortened the titles of all 3,789 emoji pages ("🍕 Pizza Emoji — Meaning & Copy | Emojar") and ~35 tool/blog titles. Compare impressions, clicks and CTR for `/emoji/*` for four weeks before and after the release; revert the template in `app/emoji/[slug]/page.tsx` if CTR drops noticeably. Also still manual: Vercel www → apex redirect as permanent (308).
+
 ### [ ] F — Performance and ads
 
 **Description:** Move the emoji dataset out of client bundles (emoji hub, emoji tools and 10 games are ~340 kB first load vs ~110 kB elsewhere); split or stream `/collection/alphabet` (3.5 MB HTML) and the largest emoji category pages; `AdSlot` with reserved height and placement rules; PageSpeed Insights before/after.

@@ -10,6 +10,7 @@ import {
 } from '@/lib/blog/guides';
 import { extractFaq, renderMarkdown } from '@/lib/blog/render';
 import { getCategory, getTool, toolPath } from '@/lib/online-tools/registry';
+import { brandedTitle } from '@/lib/og';
 
 type Params = { slug: string };
 
@@ -37,7 +38,7 @@ export async function generateMetadata({
   const url = `https://emojar.com/blog/${g.slug}`;
   const og = `https://emojar.com/api/og?${new URLSearchParams({ type: 'tool', emoji: tool?.icon ?? '🧰', name: g.title.slice(0, 60), desc: g.description.slice(0, 120) })}`;
   return {
-    title: { absolute: `${g.title} | Emojar Blog` },
+    title: { absolute: brandedTitle(g.title, 'Emojar Blog') },
     description: g.description,
     keywords: g.tags,
     alternates: { canonical: url },

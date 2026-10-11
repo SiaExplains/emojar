@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import data from '@/data/emojis.json';
+import { ogImages } from '@/lib/og';
 
 export const dynamic = 'force-static';
 
@@ -16,12 +17,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/categories',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '📂',
+      'Emoji Categories',
+      'Browse 3,700+ emojis by category — Smileys & Emotion, Animals & Nature, Food & Drink, and more.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Categories | Emojar',
     description:
       'Browse 3,700+ emojis by category — Smileys & Emotion, Animals & Nature, Food & Drink, and more.',
+    images: ogImages(
+      '📂',
+      'Emoji Categories',
+      'Browse 3,700+ emojis by category — Smileys & Emotion, Animals & Nature, Food & Drink, and more.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

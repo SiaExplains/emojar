@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'Add an Emoji Watermark to Any Photo — Free & Private | Emojar Blog',
+  title: 'Add an Emoji Watermark to Any Photo — Free & Private',
   description:
     'Upload a photo, place any emoji as a watermark, adjust size and opacity, then download. Everything runs in your browser — your photos never leave your device.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-watermark-tool' },
@@ -10,12 +11,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-watermark-tool',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "Add an Emoji Watermark to Any Photo — Free & Private", "Place any emoji on your photo as a watermark. Adjust size, position, opacity. Download instantly.").openGraph,
   },
   keywords: ['emoji watermark', 'photo watermark tool', 'add emoji to photo', 'free watermark', 'privacy photo tool'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Add an Emoji Watermark to Any Photo — Free & Private',
     description: 'Place any emoji on your photo as a watermark and download the result instantly.',
+    images: ogImages("📝", "Add an Emoji Watermark to Any Photo — Free & Private", "Place any emoji on your photo as a watermark. Adjust size, position, opacity. Download instantly.").twitter,
   },
   robots: { index: true, follow: true },
 };

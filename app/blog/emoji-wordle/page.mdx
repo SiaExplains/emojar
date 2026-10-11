@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How to Play Emoji Wordle — Guess the Emoji Name in 6 Tries | Emojar Blog',
+  title: 'How to Play Emoji Wordle — Guess the Emoji Name in 6 Tries',
   description:
     'Learn how to play Emoji Wordle on Emojar: guess a 5-letter emoji Unicode name in 6 tries using color-coded feedback. Strategy tips included.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-wordle' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-wordle',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "How to Play Emoji Wordle — Guess the Emoji Name in 6 Tries", "Green, yellow, gray — master the color feedback and crack the emoji Unicode name in 6 tries.").openGraph,
   },
   keywords: ['emoji wordle', 'emoji word game', 'wordle emoji', 'emoji games', 'emoji unicode name game'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji Wordle — Guess the Emoji Name in 6 Tries',
     description: 'Green, yellow, gray — master the color feedback and crack the emoji Unicode name.',
+    images: ogImages("📝", "How to Play Emoji Wordle — Guess the Emoji Name in 6 Tries", "Green, yellow, gray — master the color feedback and crack the emoji Unicode name in 6 tries.").twitter,
   },
   robots: { index: true, follow: true },
 };

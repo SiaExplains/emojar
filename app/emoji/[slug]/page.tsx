@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import CopyButton from '@/components/CopyButton';
+import { brandedTitle } from '@/lib/og';
 
 type EmojiEntry = (typeof data)[number];
 
@@ -44,7 +45,11 @@ export async function generateMetadata({
   const metaDescription = `${emoji.char} ${emoji.name} emoji — copy and paste instantly. Meaning, Unicode ${emoji.version}, category: ${emoji.category}. Works on iOS, Android, Windows, macOS.`;
 
   return {
-    title: `${emoji.char} ${emoji.name} Emoji — Copy, Meaning & Details | Emojar`,
+    title: {
+      absolute: brandedTitle(
+        `${emoji.char} ${emoji.name.charAt(0).toUpperCase()}${emoji.name.slice(1)} Emoji — Meaning & Copy`,
+      ),
+    },
     description: metaDescription,
     keywords: emoji.keywords,
     alternates: { canonical },

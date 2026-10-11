@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Wordle | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/emoji-wordle',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Emoji Wordle',
+      'Guess the 5-letter emoji name in 6 tries. A fun word puzzle powered by real emoji names.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Wordle | Emojar Games',
     description: 'Guess the emoji name in 6 tries — Wordle with emojis!',
+    images: ogImages(
+      '🎮',
+      'Emoji Wordle',
+      'Guess the 5-letter emoji name in 6 tries. A fun word puzzle powered by real emoji names.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

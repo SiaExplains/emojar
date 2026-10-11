@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How to Play Emoji Story Builder — Create a 6-Chapter Emoji Story | Emojar Blog',
+  title: 'How to Play Emoji Story Builder — Create a 6-Chapter Emoji Story',
   description:
     'A guide to Emoji Story Builder on Emojar: pick one emoji per chapter across 6 chapters, then share your unique emoji story. Creative, no wrong answers.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-story-builder' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-story-builder',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "How to Play Emoji Story Builder — Create a 6-Chapter Emoji Story", "Pick one emoji per chapter, build a 6-chapter story, and share it with the world. No wrong answers in Emoji Story Builde").openGraph,
   },
   keywords: ['emoji story builder', 'emoji story game', 'emoji creative game', 'build emoji story', 'emoji narrative'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji Story Builder — Create a 6-Chapter Emoji Story',
     description: 'Pick one emoji per chapter, build a 6-chapter story, share it. No wrong answers.',
+    images: ogImages("📝", "How to Play Emoji Story Builder — Create a 6-Chapter Emoji Story", "Pick one emoji per chapter, build a 6-chapter story, and share it with the world. No wrong answers in Emoji Story Builde").twitter,
   },
   robots: { index: true, follow: true },
 };

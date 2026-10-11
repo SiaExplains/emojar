@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Minesweeper | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/minesweeper',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Emoji Minesweeper',
+      'Uncover safe emoji tiles and flag hidden mines. Classic minesweeper with an emoji twist.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Minesweeper | Emojar Games',
     description: 'Uncover safe emoji tiles and flag the mines.',
+    images: ogImages(
+      '🎮',
+      'Emoji Minesweeper',
+      'Uncover safe emoji tiles and flag hidden mines. Classic minesweeper with an emoji twist.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

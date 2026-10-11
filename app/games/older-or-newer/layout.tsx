@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Older or Newer — Emoji Edition | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/older-or-newer',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Older or Newer — Emoji Edition',
+      'Pick which of two emojis was added to Unicode first. Test your knowledge of emoji history.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Older or Newer — Emoji Edition | Emojar Games',
     description: 'Which emoji is older? Guess and test your emoji history.',
+    images: ogImages(
+      '🎮',
+      'Older or Newer — Emoji Edition',
+      'Pick which of two emojis was added to Unicode first. Test your knowledge of emoji history.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

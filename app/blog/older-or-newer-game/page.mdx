@@ -1,3 +1,4 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
   title: 'Older or Newer — New Emoji History Game on Emojar | Emojar Blog',
@@ -11,13 +12,15 @@ export const metadata = {
     url: 'https://emojar.com/blog/older-or-newer-game',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "Older or Newer — New Emoji History Game on Emojar", "Do you know your emoji history? Play Older or Newer and find out which emojis came first.").openGraph,
   },
   keywords: ['emoji history', 'older or newer', 'emoji trivia', 'unicode emoji', 'emoji game'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Older or Newer — New Emoji History Game on Emojar',
     description:
       'Guess which emoji came first in the Unicode standard.',
+    images: ogImages("📝", "Older or Newer — New Emoji History Game on Emojar", "Do you know your emoji history? Play Older or Newer and find out which emojis came first.").twitter,
   },
   robots: { index: true, follow: true },
 };

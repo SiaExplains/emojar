@@ -11,6 +11,7 @@ import {
   variantPath,
   TOOLS_UPDATED,
 } from './registry';
+import { brandedTitle, ogImage } from '../og';
 import type {
   CategoryDefinition,
   FAQItem,
@@ -19,16 +20,6 @@ import type {
 } from './types';
 
 const SITE_NAME = 'Emojar';
-
-function ogImage(icon: string, name: string, desc: string) {
-  const qs = new URLSearchParams({
-    type: 'tool',
-    emoji: icon,
-    name,
-    desc: desc.slice(0, 120),
-  });
-  return absolute(`/api/og?${qs.toString()}`);
-}
 
 function pageMetadata(opts: {
   title: string;
@@ -41,7 +32,7 @@ function pageMetadata(opts: {
   const url = absolute(opts.path);
   const image = ogImage(opts.icon, opts.name, opts.description);
   return {
-    title: { absolute: `${opts.title} | ${SITE_NAME}` },
+    title: { absolute: brandedTitle(opts.title, SITE_NAME) },
     description: opts.description,
     keywords: opts.keywords,
     alternates: { canonical: url },

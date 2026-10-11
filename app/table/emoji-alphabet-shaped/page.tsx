@@ -1,4 +1,13 @@
 import AlphabetTable from '@/components/AlphabetTable';
+import { pageMeta } from '@/lib/og';
+
+export const metadata = pageMeta({
+  title: 'Letter-Shaped Emojis – The Alphabet in Emoji',
+  description:
+    'See the alphabet spelled with emojis that look like each letter, from 🅰️ to 💤. Jump to every emoji that starts with that letter and copy it in one click.',
+  path: '/table/emoji-alphabet-shaped',
+  emoji: '🅰️',
+});
 
 const AlphabetShapedPage = () => {
   return (

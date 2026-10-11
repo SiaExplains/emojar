@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Missing Piece | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/missing-piece',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Emoji Missing Piece',
+      'Find the missing emoji from a 3×3 category grid — 10 rounds of puzzle fun!',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Missing Piece | Emojar Games',
     description: 'Which emoji is missing from the grid? A 10-round emoji quiz!',
+    images: ogImages(
+      '🎮',
+      'Emoji Missing Piece',
+      'Find the missing emoji from a 3×3 category grid — 10 rounds of puzzle fun!',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

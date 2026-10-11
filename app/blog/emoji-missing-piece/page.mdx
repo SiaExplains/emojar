@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How to Play Emoji Missing Piece — Find the Hidden Emoji | Emojar Blog',
+  title: 'How to Play Emoji Missing Piece — Find the Hidden Emoji',
   description:
     'A guide to Emoji Missing Piece on Emojar: a 3×3 emoji grid with one hidden tile, four choices, 10 rounds. Tests pattern recognition and emoji knowledge.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-missing-piece' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-missing-piece',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("❓", "How to Play Emoji Missing Piece — Find the Hidden Emoji", "One emoji is hidden behind ❓ in a 3×3 grid. Four choices, 10 rounds — can you spot the missing piece?").openGraph,
   },
   keywords: ['emoji missing piece', 'emoji pattern game', 'find the emoji game', 'emoji puzzle', 'emoji quiz'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji Missing Piece — Find the Hidden Emoji',
     description: 'One emoji hidden in a 3×3 grid, four choices, 10 rounds of pattern recognition.',
+    images: ogImages("❓", "How to Play Emoji Missing Piece — Find the Hidden Emoji", "One emoji is hidden behind ❓ in a 3×3 grid. Four choices, 10 rounds — can you spot the missing piece?").twitter,
   },
   robots: { index: true, follow: true },
 };

@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'Emoji Unicode Inspector — See Every Codepoint Instantly | Emojar Blog',
+  title: 'Emoji Unicode Inspector — See Every Codepoint Instantly',
   description:
     'Paste any text and instantly see the Unicode codepoints, names, versions, and categories for every character. A free browser tool built for developers and emoji enthusiasts.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-unicode-inspector' },
@@ -10,12 +11,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-unicode-inspector',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "Emoji Unicode Inspector — See Every Codepoint Instantly", "Paste text, get Unicode codepoints, names, and versions for every character — free tool.").openGraph,
   },
   keywords: ['unicode inspector', 'emoji codepoints', 'unicode lookup', 'emoji unicode tool', 'character inspector'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Unicode Inspector — See Every Codepoint Instantly',
     description: 'Paste text and see the full Unicode breakdown for every character.',
+    images: ogImages("📝", "Emoji Unicode Inspector — See Every Codepoint Instantly", "Paste text, get Unicode codepoints, names, and versions for every character — free tool.").twitter,
   },
   robots: { index: true, follow: true },
 };

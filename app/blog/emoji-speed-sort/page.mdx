@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How to Play Emoji Speed Sort — Categorise Emojis in 3 Seconds | Emojar Blog',
+  title: 'How to Play Emoji Speed Sort — Categorise Emojis in 3 Seconds',
   description:
     'Master Emoji Speed Sort on Emojar: an emoji appears, tap the right category in 3 seconds. 10 rounds, multiple categories, pure cognitive speed.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-speed-sort' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-speed-sort',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "How to Play Emoji Speed Sort — Categorise Emojis in 3 Seconds", "An emoji flashes — tap the right category in 3 seconds. 10 rounds of pure cognitive speed in Emoji Speed Sort.").openGraph,
   },
   keywords: ['emoji speed sort', 'emoji category game', 'emoji sorting game', 'emoji quiz', 'emoji brain game'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji Speed Sort — Categorise Emojis in 3 Seconds',
     description: 'Flash an emoji, pick the right category in 3 seconds. 10 rounds of cognitive speed.',
+    images: ogImages("📝", "How to Play Emoji Speed Sort — Categorise Emojis in 3 Seconds", "An emoji flashes — tap the right category in 3 seconds. 10 rounds of pure cognitive speed in Emoji Speed Sort.").twitter,
   },
   robots: { index: true, follow: true },
 };

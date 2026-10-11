@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Tools — Free Online Emoji Utilities | Emojar',
@@ -12,12 +13,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/emoji-tools',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '😀',
+      'Emoji Tools — Free Online Emoji Utilities',
+      '8 free emoji tools: download emoji as PNG, generate favicons, extract color palettes, add watermarks, create social card',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Tools — Free Online Emoji Utilities | Emojar',
     description:
       '8 free emoji tools: PNG download, favicon generator, color palette, watermark, social card, Unicode inspector, and more.',
+    images: ogImages(
+      '😀',
+      'Emoji Tools — Free Online Emoji Utilities',
+      '8 free emoji tools: download emoji as PNG, generate favicons, extract color palettes, add watermarks, create social card',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

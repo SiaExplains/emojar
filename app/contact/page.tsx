@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Contact | Emojar',
@@ -12,12 +13,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/contact',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '✉️',
+      'Contact Emojar',
+      'Get in touch with Emojar for inquiries, press, or legal requests.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Contact Emojar',
     description:
       'Get in touch with Emojar for inquiries, press, or legal requests.',
+    images: ogImages(
+      '✉️',
+      'Contact Emojar',
+      'Get in touch with Emojar for inquiries, press, or legal requests.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji to PNG — Download Any Emoji as an Image | Emojar',
@@ -22,12 +23,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/emoji-to-png',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '😀',
+      'Emoji to PNG — Download Any Emoji as an Image',
+      'Convert any emoji to a PNG image. Pick size, background colour, and download in one click.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji to PNG — Download Any Emoji as an Image | Emojar',
     description:
       'Convert any emoji to a PNG image. Pick size, background colour, and download free.',
+    images: ogImages(
+      '😀',
+      'Emoji to PNG — Download Any Emoji as an Image',
+      'Convert any emoji to a PNG image. Pick size, background colour, and download in one click.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

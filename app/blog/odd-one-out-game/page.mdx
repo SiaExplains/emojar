@@ -1,3 +1,4 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
   title: 'Odd One Out — New Emoji Logic Game on Emojar | Emojar Blog',
@@ -11,13 +12,15 @@ export const metadata = {
     url: 'https://emojar.com/blog/odd-one-out-game',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "Odd One Out — New Emoji Logic Game on Emojar", "Four emojis share a theme and one doesn't. How quickly can you spot the odd one out?").openGraph,
   },
   keywords: ['odd one out', 'emoji logic game', 'emoji quiz', 'emoji pattern game', 'brain game'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Odd One Out — New Emoji Logic Game on Emojar',
     description:
       'Four emojis, one does not belong. Find the odd one out.',
+    images: ogImages("📝", "Odd One Out — New Emoji Logic Game on Emojar", "Four emojis share a theme and one doesn't. How quickly can you spot the odd one out?").twitter,
   },
   robots: { index: true, follow: true },
 };

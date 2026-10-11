@@ -1,3 +1,4 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
   title: 'How to Play Emoji XO (Tic-Tac-Toe) on Emojar | Emojar Blog',
@@ -11,13 +12,15 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-xo-game-guide',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "How to Play Emoji XO (Tic-Tac-Toe) on Emojar", "Everything you need to know about Emojar's emoji-powered Tic-Tac-Toe: rules, strategy tips, board sizes, and custom piec").openGraph,
   },
   keywords: ['emoji tic tac toe', 'emoji xo', 'tic tac toe game', 'browser game', 'emoji games'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji XO (Tic-Tac-Toe) on Emojar',
     description:
       'Rules, strategy tips, and board size options for the Emoji XO game.',
+    images: ogImages("📝", "How to Play Emoji XO (Tic-Tac-Toe) on Emojar", "Everything you need to know about Emojar's emoji-powered Tic-Tac-Toe: rules, strategy tips, board sizes, and custom piec").twitter,
   },
   robots: { index: true, follow: true },
 };

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Bubble Shooter | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/bubble-shooter',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Emoji Bubble Shooter',
+      'Aim and shoot emoji bubbles to clear the board. Match three or more to pop them.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Bubble Shooter | Emojar Games',
     description: 'Shoot emoji bubbles, match three or more to pop them.',
+    images: ogImages(
+      '🎮',
+      'Emoji Bubble Shooter',
+      'Aim and shoot emoji bubbles to clear the board. Match three or more to pop them.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

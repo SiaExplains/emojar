@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Kitchen — Mix Two Emoji Together | Emojar',
@@ -22,12 +23,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/emoji-kitchen',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '😀',
+      'Emoji Kitchen — Mix Two Emoji Together',
+      'Combine two emoji using Google Emoji Kitchen. Search, mix, and download the result.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Kitchen — Mix Two Emoji Together | Emojar',
     description:
       'Mix two emoji together with Google Emoji Kitchen. Free and fun.',
+    images: ogImages(
+      '😀',
+      'Emoji Kitchen — Mix Two Emoji Together',
+      'Combine two emoji using Google Emoji Kitchen. Search, mix, and download the result.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

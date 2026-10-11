@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How We Recovered Emojar From a Google Indexation Drop | Emojar Blog',
+  title: 'How We Recovered Emojar From a Google Indexation Drop',
   description:
     'Emojar lost most of its indexed pages in early 2026. Here is exactly what caused it — server errors, a www redirect conflict, dead sitemap URLs — and how we fixed everything.',
   alternates: { canonical: 'https://emojar.com/blog/seo-indexation-recovery' },
@@ -11,13 +12,15 @@ export const metadata = {
     url: 'https://emojar.com/blog/seo-indexation-recovery',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "How We Recovered Emojar From a Google Indexation Drop", "Server errors, www vs non-www conflicts, dead sitemap URLs — a transparent breakdown of what went wrong and how we fixed").openGraph,
   },
   keywords: ['google indexation', 'seo recovery', 'search console', 'sitemap fix', 'next.js seo', 'crawl budget'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How We Recovered Emojar From a Google Indexation Drop',
     description:
       'What caused our indexation drop and how we fixed server errors, redirect conflicts, and thin content.',
+    images: ogImages("📝", "How We Recovered Emojar From a Google Indexation Drop", "Server errors, www vs non-www conflicts, dead sitemap URLs — a transparent breakdown of what went wrong and how we fixed").twitter,
   },
   robots: { index: true, follow: true },
 };

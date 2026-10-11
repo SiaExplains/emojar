@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: "8 New Emoji Games: Wordle, 2048, Whack-a-Mole and More | Emojar Blog",
+  title: "8 New Emoji Games: Wordle, 2048, Whack-a-Mole and More",
   description: "We just launched 8 new emoji games — Emoji Wordle, Emoji 2048, Whack-a-Mole, Speed Sort, Timeline Challenge, Pictionary, Missing Piece, and Story Builder. All free, no sign-up.",
   alternates: { canonical: "https://emojar.com/blog/emoji-games-batch-2" },
   openGraph: {
@@ -9,12 +10,14 @@ export const metadata = {
     url: "https://emojar.com/blog/emoji-games-batch-2",
     siteName: "Emojar",
     type: "article",
+    images: ogImages("📝", "8 New Emoji Games on Emojar", "Play Emoji Wordle, 2048, Whack-a-Mole and 5 more brand new emoji games — all free in your browser.").openGraph,
   },
   keywords: ["emoji games", "emoji wordle", "emoji 2048", "whack a mole", "emoji speed sort", "emoji timeline", "emoji pictionary", "emoji story builder", "free browser games"],
   twitter: {
     card: "summary",
     title: "8 New Emoji Games on Emojar",
     description: "Emoji Wordle, 2048, Whack-a-Mole and 5 more — all free, no sign-up.",
+    images: ogImages("📝", "8 New Emoji Games on Emojar", "Play Emoji Wordle, 2048, Whack-a-Mole and 5 more brand new emoji games — all free in your browser.").twitter,
   },
   robots: { index: true, follow: true },
 };

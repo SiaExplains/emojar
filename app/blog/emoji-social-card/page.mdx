@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'Emoji Social Card Generator — Create Shareable Cards for Free | Emojar Blog',
+  title: 'Emoji Social Card Generator — Create Shareable Cards for Free',
   description:
     'Build a custom social media card with any emoji, your own text, and a gradient background. Download as PNG for Twitter, Instagram, or LinkedIn.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-social-card' },
@@ -10,12 +11,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-social-card',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "Emoji Social Card Generator — Create Shareable Cards for Free", "Pick an emoji, write your text, choose a gradient — download your social card as PNG.").openGraph,
   },
   keywords: ['emoji social card', 'social media card generator', 'custom social card', 'emoji card maker', 'free social card'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Social Card Generator — Create Shareable Cards for Free',
     description: 'Build a shareable social card with any emoji, custom text, and gradient. Download as PNG.',
+    images: ogImages("📝", "Emoji Social Card Generator — Create Shareable Cards for Free", "Pick an emoji, write your text, choose a gradient — download your social card as PNG.").twitter,
   },
   robots: { index: true, follow: true },
 };

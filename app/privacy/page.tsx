@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Emojar',
@@ -12,11 +13,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/privacy',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages(
+      '🔒',
+      'Privacy Policy',
+      'GDPR-compliant privacy policy for Emojar.com.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Privacy Policy | Emojar',
     description: 'GDPR-compliant privacy policy for Emojar.com.',
+    images: ogImages(
+      '🔒',
+      'Privacy Policy',
+      'GDPR-compliant privacy policy for Emojar.com.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

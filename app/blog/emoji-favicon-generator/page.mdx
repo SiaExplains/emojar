@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'Emoji Favicon Generator — Turn Any Emoji Into a Browser Tab Icon | Emojar Blog',
+  title: 'Emoji Favicon Generator — Turn Any Emoji Into a Browser Tab Icon',
   description:
     'Learn how to use the Emojar Emoji Favicon Generator: pick any emoji, download a browser favicon in ICO or PNG format. No design skills needed.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-favicon-generator' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-favicon-generator',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "Emoji Favicon Generator — Turn Any Emoji Into a Browser Tab Icon", "Pick any emoji, download a favicon in one click. No design tools, no accounts, just your emoji and a download button.").openGraph,
   },
   keywords: ['emoji favicon', 'favicon generator', 'emoji to favicon', 'browser tab icon', 'emoji ico download'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Favicon Generator — Turn Any Emoji Into a Browser Tab Icon',
     description: 'Pick any emoji, download a favicon in one click. No design skills needed.',
+    images: ogImages("📝", "Emoji Favicon Generator — Turn Any Emoji Into a Browser Tab Icon", "Pick any emoji, download a favicon in one click. No design tools, no accounts, just your emoji and a download button.").twitter,
   },
   robots: { index: true, follow: true },
 };

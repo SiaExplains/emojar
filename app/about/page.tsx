@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 import Link from 'next/link';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'About Emojar — Free Online Tools & Emoji Search by Siavash Ghanbari',
@@ -12,11 +13,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/about',
     siteName: 'Emojar',
     type: 'profile',
+    images: ogImages(
+      'ℹ️',
+      'About Emojar — Free Online Tools & Emoji Search',
+      '',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'About Emojar',
     description: `Built by Siavash Ghanbari in Berlin. 200+ online tools, ${EMOJI_COUNT_LABEL} emojis, 18 games.`,
+    images: ogImages(
+      'ℹ️',
+      'About Emojar — Free Online Tools & Emoji Search',
+      '',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

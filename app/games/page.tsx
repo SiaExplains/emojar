@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Games | Emojar',
@@ -13,12 +14,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Emoji Games',
+      'Play 18 free emoji-themed mini-games — Wordle, 2048, Whack-a-Mole, Hangman, Snake, and more. No download required.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Games | Emojar',
     description:
       'Play 18 free emoji-themed mini-games — Wordle, 2048, Whack-a-Mole, Hangman, Snake, and more.',
+    images: ogImages(
+      '🎮',
+      'Emoji Games',
+      'Play 18 free emoji-themed mini-games — Wordle, 2048, Whack-a-Mole, Hangman, Snake, and more. No download required.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How to Play Emoji 2048 — Merge Emojis to Reach the Trophy | Emojar Blog',
+  title: 'How to Play Emoji 2048 — Merge Emojis to Reach the Trophy',
   description:
     'A complete guide to Emoji 2048 on Emojar — slide tiles, merge matching emojis through 8 levels from seedling to trophy, and beat your best score.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-2048' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-2048',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("🌱", "How to Play Emoji 2048 — Merge Emojis to Reach the Trophy", "Slide tiles, merge matching emojis, and climb from 🌱 to 🏆 in this addictive emoji puzzle.").openGraph,
   },
   keywords: ['emoji 2048', '2048 emoji game', 'emoji merge game', 'emoji puzzle game', '2048 guide'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji 2048 — Merge Emojis to Reach the Trophy',
     description: 'Slide, merge, and climb from 🌱 to 🏆 in Emoji 2048.',
+    images: ogImages("🌱", "How to Play Emoji 2048 — Merge Emojis to Reach the Trophy", "Slide tiles, merge matching emojis, and climb from 🌱 to 🏆 in this addictive emoji puzzle.").twitter,
   },
   robots: { index: true, follow: true },
 };

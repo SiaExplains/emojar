@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Whack-a-Mole | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/whack-a-mole',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Emoji Whack-a-Mole',
+      'Tap emoji moles before they hide! Fast-paced emoji reflex game.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Whack-a-Mole | Emojar Games',
     description: 'Tap emojis as fast as you can — 30-second reflex challenge!',
+    images: ogImages(
+      '🎮',
+      'Emoji Whack-a-Mole',
+      'Tap emoji moles before they hide! Fast-paced emoji reflex game.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

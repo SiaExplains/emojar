@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Social Card Generator — Create 1080×1080 Share Cards | Emojar',
@@ -23,13 +24,23 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/emoji-card',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '😀',
+      'Emoji Social Card Generator — Create 1080×1080 Share Cards',
+      'Design a 1080×1080 social media card with emoji patterns and custom text.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title:
       'Emoji Social Card Generator — Create 1080×1080 Share Cards | Emojar',
     description:
       'Create 1080×1080 social cards with emoji backgrounds and custom text. Free.',
+    images: ogImages(
+      '😀',
+      'Emoji Social Card Generator — Create 1080×1080 Share Cards',
+      'Design a 1080×1080 social media card with emoji patterns and custom text.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

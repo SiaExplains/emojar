@@ -4,6 +4,13 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.19.1] — 2026-10-11
+
+### Changed
+
+- Docs refreshed after the 0.19.0 release: the backlog lists the open
+  full-width decisions (game boards, number of "Start here" picks).
+
 ## [0.19.0] — 2026-10-11
 
 ### Changed

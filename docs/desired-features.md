@@ -112,6 +112,10 @@
 
 **Description:** Shipped in v0.18.0 (CLS ≈ 0 on measured tools; ad slot off until a real slot id is set). Back-links to category and directory, guide link, reserved space for one ad below the tool, fix the Word Counter layout shift (CLS 0.053).
 
+### [ ] Full-width follow-ups (from v0.19.0)
+
+**Description:** Pages are full width since v0.19.0. Two small decisions are open: (1) game boards still play in a centred area — stretch them only if a game benefits (e.g. Minesweeper's grid), never by default; (2) the 12 "Start here" picks leave 2 cards on the last row at 5 columns — use 10 or 15 picks (`FEATURED_TOOLS` in `lib/online-tools/registry.ts`).
+
 ### [ ] E — Technical SEO
 
 **Description:** Metadata and canonicals for `/emoji-collections/events`, `/collection/alphabet`, `/collection/detail` and `/table/emoji-alphabet-shaped`; self-canonical blog pages 2+ and `noindex,follow` tag views; shorter title templates (no slug changes); OG images for blog, games and info pages; fix the `/sorted/alphabet` link. Manual (Sia): make the www → apex redirect permanent in Vercel.

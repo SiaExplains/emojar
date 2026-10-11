@@ -3,36 +3,62 @@ import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 import Link from 'next/link';
 import { publishedGuides } from '@/lib/blog/guides';
 import { getCategory, getTool } from '@/lib/online-tools/registry';
+import { ogImages } from '@/lib/og';
 
-export const metadata: Metadata = {
-  title: 'Blog | Emojar',
-  description:
-    'Practical guides to free online tools — images, PDFs, text, code, calculators and more — plus emoji game tips and updates from Emojar founder Siavash Ghanbari.',
-  alternates: { canonical: 'https://emojar.com/blog' },
-  openGraph: {
-    title: 'Emojar Blog',
-    description:
-      'Practical guides to free online tools — images, PDFs, text, code, calculators and more — plus emoji game tips and updates from Emojar founder Siavash Ghanbari.',
-    url: 'https://emojar.com/blog',
-    siteName: 'Emojar',
-    type: 'website',
-  },
-  keywords: [
-    'online tools guide',
-    'how to convert images',
-    'pdf tips',
-    'emoji blog',
-    'emoji games',
-    'emojar updates',
-    'emoji tools guide',
-  ],
-  twitter: {
-    card: 'summary',
-    title: 'Emojar Blog',
-    description: 'Guides, game tips, and updates from the Emojar founder.',
-  },
-  robots: { index: true, follow: true },
-};
+const BLOG_DESCRIPTION =
+  'Practical guides to free online tools — images, PDFs, text, code, calculators and more — plus emoji game tips and updates from Emojar founder Siavash Ghanbari.';
+const blogShare = ogImages('📝', 'Emojar Blog', BLOG_DESCRIPTION);
+
+// Page 2+ is its own canonical page (it lists different posts). Tag views
+// are filtered duplicates of the index: crawl their links, don't index them.
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ tag?: string; page?: string }>;
+}): Promise<Metadata> {
+  const sp = await searchParams;
+  const page = Math.max(1, Number.parseInt(sp.page ?? '1', 10) || 1);
+  const canonical =
+    !sp.tag && page > 1
+      ? `https://emojar.com/blog?page=${page}`
+      : 'https://emojar.com/blog';
+  const title = sp.tag
+    ? `${sp.tag} guides | Emojar Blog`
+    : page > 1
+      ? `Blog – page ${page} | Emojar`
+      : 'Blog | Emojar';
+  return {
+    title: { absolute: title },
+    description: BLOG_DESCRIPTION,
+    alternates: { canonical },
+    openGraph: {
+      title: 'Emojar Blog',
+      description: BLOG_DESCRIPTION,
+      url: canonical,
+      siteName: 'Emojar',
+      type: 'website',
+      images: blogShare.openGraph,
+    },
+    keywords: [
+      'online tools guide',
+      'how to convert images',
+      'pdf tips',
+      'emoji blog',
+      'emoji games',
+      'emojar updates',
+      'emoji tools guide',
+    ],
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Emojar Blog',
+      description: 'Guides, game tips, and updates from the Emojar founder.',
+      images: blogShare.twitter,
+    },
+    robots: sp.tag
+      ? { index: false, follow: true }
+      : { index: true, follow: true },
+  };
+}
 
 const posts = [
   {

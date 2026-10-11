@@ -1,6 +1,15 @@
 import Link from 'next/link';
 import AlphabetSorted from '@/components/AlphabetSorted';
 import data from '@/data/emojis.json';
+import { pageMeta } from '@/lib/og';
+
+export const metadata = pageMeta({
+  title: 'Emojis A–Z – Every Emoji Sorted by Name',
+  description:
+    'All emojis sorted alphabetically by name, with a jump bar from A to Z. Find any emoji by its first letter and copy it with one click — free, no sign-up.',
+  path: '/collection/alphabet',
+  emoji: '🔤',
+});
 
 const AlphabetPage = () => {
   const letters = Array.from({ length: 26 }, (_, i) =>

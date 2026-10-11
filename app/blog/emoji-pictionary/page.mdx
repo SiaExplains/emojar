@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How to Play Emoji Pictionary — Type the Emoji from the Clue | Emojar Blog',
+  title: 'How to Play Emoji Pictionary — Type the Emoji from the Clue',
   description:
     'A guide to Emoji Pictionary on Emojar: read a text clue and type the matching emoji. 40 clues, 60-second timer, skip option. Tips for the tricky ones.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-pictionary' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-pictionary',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "How to Play Emoji Pictionary — Type the Emoji from the Clue", "A text clue, one emoji answer, and 60 seconds on the clock. Can you type the right emoji for all 40 clues?").openGraph,
   },
   keywords: ['emoji pictionary', 'emoji clue game', 'guess the emoji', 'emoji quiz game', 'emoji word game'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji Pictionary — Type the Emoji from the Clue',
     description: 'A text clue, one emoji answer, 60 seconds. Can you get all 40 right?',
+    images: ogImages("📝", "How to Play Emoji Pictionary — Type the Emoji from the Clue", "A text clue, one emoji answer, and 60 seconds on the clock. Can you type the right emoji for all 40 clues?").twitter,
   },
   robots: { index: true, follow: true },
 };

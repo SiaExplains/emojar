@@ -1,3 +1,4 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
   title: 'Guess the Flag — New Emoji Quiz Game on Emojar | Emojar Blog',
@@ -11,13 +12,15 @@ export const metadata = {
     url: 'https://emojar.com/blog/guess-the-flag-game',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "Guess the Flag — New Emoji Quiz Game on Emojar", "How well do you know the world's flags? Play our new Guess the Flag emoji quiz and find out.").openGraph,
   },
   keywords: ['guess the flag', 'flag emoji quiz', 'geography quiz', 'country flag emoji', 'emoji games'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Guess the Flag — New Emoji Quiz Game on Emojar',
     description:
       "Test your world geography with Emojar's flag emoji quiz.",
+    images: ogImages("📝", "Guess the Flag — New Emoji Quiz Game on Emojar", "How well do you know the world's flags? Play our new Guess the Flag emoji quiz and find out.").twitter,
   },
   robots: { index: true, follow: true },
 };

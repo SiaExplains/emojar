@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Unicode Inspector — Analyze Codepoints & Bytes | Emojar',
@@ -22,12 +23,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/emoji-inspector',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '😀',
+      'Emoji Unicode Inspector — Analyze Codepoints & Bytes',
+      'Paste text or emoji to inspect Unicode codepoints, names, categories, and byte sizes.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Unicode Inspector — Analyze Codepoints & Bytes | Emojar',
     description:
       'Inspect Unicode codepoints, names, and byte sizes for any emoji or text.',
+    images: ogImages(
+      '😀',
+      'Emoji Unicode Inspector — Analyze Codepoints & Bytes',
+      'Paste text or emoji to inspect Unicode codepoints, names, categories, and byte sizes.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

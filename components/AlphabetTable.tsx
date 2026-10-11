@@ -60,7 +60,9 @@ export default function AlphabetTable() {
               className="odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition"
             >
               <td className="px-4 py-2 border font-semibold underline text-blue-600">
-                <Link href={`/sorted/alphabet#${letter.toLocaleLowerCase()}`}>
+                <Link
+                  href={`/collection/alphabet#${letter.toLocaleLowerCase()}`}
+                >
                   {letter}
                 </Link>
               </td>

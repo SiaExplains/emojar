@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How to Play Emoji Timeline — Sort Emojis by Unicode Release Order | Emojar Blog',
+  title: 'How to Play Emoji Timeline — Sort Emojis by Unicode Release Order',
   description:
     'A guide to Emoji Timeline on Emojar: arrange 5 emojis from oldest to newest Unicode release. 5 rounds testing your emoji history knowledge.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-timeline' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-timeline',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "How to Play Emoji Timeline — Sort Emojis by Unicode Release Order", "Do you know which emoji came first? Arrange 5 emojis oldest to newest in Emoji Timeline and test your Unicode history kn").openGraph,
   },
   keywords: ['emoji timeline game', 'emoji history game', 'unicode emoji order', 'emoji release date game', 'emoji knowledge quiz'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji Timeline — Sort Emojis by Unicode Release Order',
     description: 'Do you know which emoji came first? Test your Unicode history in Emoji Timeline.',
+    images: ogImages("📝", "How to Play Emoji Timeline — Sort Emojis by Unicode Release Order", "Do you know which emoji came first? Arrange 5 emojis oldest to newest in Emoji Timeline and test your Unicode history kn").twitter,
   },
   robots: { index: true, follow: true },
 };

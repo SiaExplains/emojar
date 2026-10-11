@@ -3,10 +3,13 @@ import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb';
 import { JsonLd } from '@/components/online-tools/ToolPage';
 import { FAQ_GROUPS, allFaqItems } from '@/lib/faq';
+import { ogImages } from '@/lib/og';
 
 const title = 'Emojar FAQ – Online Tools, Privacy, Emoji & More';
 const description =
   'Answers to common questions about Emojar: free browser-based tools, privacy and file handling, image, PDF and developer tools, calculators, generators, emoji and support.';
+
+const share = ogImages('❓', 'Emojar FAQ', description);
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -18,8 +21,14 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/faq',
     siteName: 'Emojar',
     type: 'website',
+    images: share.openGraph,
   },
-  twitter: { card: 'summary', title, description },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: share.twitter,
+  },
   robots: { index: true, follow: true },
 };
 

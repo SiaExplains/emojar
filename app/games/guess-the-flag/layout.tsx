@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Guess the Flag | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/guess-the-flag',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Guess the Flag',
+      'Pick the correct country for each flag emoji. Test your world geography with 250+ flags.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Guess the Flag | Emojar Games',
     description: 'Identify 250+ country flags from their emoji.',
+    images: ogImages(
+      '🎮',
+      'Guess the Flag',
+      'Pick the correct country for each flag emoji. Test your world geography with 250+ flags.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

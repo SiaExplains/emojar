@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji 2048 | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/emoji-2048',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🏆',
+      'Emoji 2048',
+      'Slide and merge emoji tiles — can you reach the 🏆 2048 tile?',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji 2048 | Emojar Games',
     description: 'Merge emoji tiles until you reach 🏆 — the emoji 2048 game!',
+    images: ogImages(
+      '🏆',
+      'Emoji 2048',
+      'Slide and merge emoji tiles — can you reach the 🏆 2048 tile?',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

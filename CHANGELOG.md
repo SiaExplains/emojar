@@ -4,7 +4,25 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.19.1] — 2026-10-11
+## [0.20.0] — 2026-10-11
+
+### Added
+
+- Every page now has its own share image for links posted on social media
+  and chat apps, including games, the older blog posts and the info pages.
+- The emoji A–Z list, the detailed emoji list, the letter-shaped emoji table
+  and the holiday collections have their own titles, descriptions and
+  canonical links instead of the site-wide defaults.
+
+### Changed
+
+- Shorter page titles in search results: emoji pages read "🍕 Pizza Emoji —
+  Meaning & Copy", and the "| Emojar" suffix is only added when the title
+  still fits.
+- Blog pages 2 and up are now treated as their own pages by search engines,
+  and filtered tag views are no longer indexed (their links still are).
+- The letter table links straight to the A–Z list instead of going through
+  a redirect.
 
 ### Changed
 

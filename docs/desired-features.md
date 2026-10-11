@@ -116,9 +116,9 @@
 
 **Description:** Pages are full width since v0.19.0. Two small decisions are open: (1) game boards still play in a centred area — stretch them only if a game benefits (e.g. Minesweeper's grid), never by default; (2) the 12 "Start here" picks leave 2 cards on the last row at 5 columns — use 10 or 15 picks (`FEATURED_TOOLS` in `lib/online-tools/registry.ts`).
 
-### [ ] E — Technical SEO
+### [x] E — Technical SEO
 
-**Description:** Metadata and canonicals for `/emoji-collections/events`, `/collection/alphabet`, `/collection/detail` and `/table/emoji-alphabet-shaped`; self-canonical blog pages 2+ and `noindex,follow` tag views; shorter title templates (no slug changes); OG images for blog, games and info pages; fix the `/sorted/alphabet` link. Manual (Sia): make the www → apex redirect permanent in Vercel.
+**Description:** Shipped in v0.20.0 — still manual: Vercel www → apex redirect as permanent (308). Metadata and canonicals for `/emoji-collections/events`, `/collection/alphabet`, `/collection/detail` and `/table/emoji-alphabet-shaped`; self-canonical blog pages 2+ and `noindex,follow` tag views; shorter title templates (no slug changes); OG images for blog, games and info pages; fix the `/sorted/alphabet` link. Manual (Sia): make the www → apex redirect permanent in Vercel.
 
 ### [ ] F — Performance and ads
 

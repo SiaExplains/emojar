@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: 'How to Play Emoji Whack-a-Mole — 30 Seconds of Emoji Madness | Emojar Blog',
+  title: 'How to Play Emoji Whack-a-Mole — 30 Seconds of Emoji Madness',
   description:
     'Everything you need to know about Emoji Whack-a-Mole on Emojar — click popping emojis in a 3×3 grid, beat the 30-second timer, and handle the speed ramp.',
   alternates: { canonical: 'https://emojar.com/blog/emoji-whack-a-mole' },
@@ -11,12 +12,14 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-whack-a-mole',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "How to Play Emoji Whack-a-Mole — 30 Seconds of Emoji Madness", "Click popping emojis in a 3×3 grid, race the 30-second clock, and survive the speed ramp in Emoji Whack-a-Mole.").openGraph,
   },
   keywords: ['emoji whack a mole', 'whack a mole emoji', 'emoji clicking game', 'emoji reaction game', 'emoji arcade game'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'How to Play Emoji Whack-a-Mole — 30 Seconds of Emoji Madness',
     description: 'Click popping emojis fast, survive the speed ramp, chase a high score.',
+    images: ogImages("📝", "How to Play Emoji Whack-a-Mole — 30 Seconds of Emoji Madness", "Click popping emojis in a 3×3 grid, race the 30-second clock, and survive the speed ramp in Emoji Whack-a-Mole.").twitter,
   },
   robots: { index: true, follow: true },
 };

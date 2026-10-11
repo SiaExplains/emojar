@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { EMOJI_COUNT_LABEL } from '@/lib/emoji-count';
 import Link from 'next/link';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Emojar',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/terms',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages(
+      '📜',
+      'Terms of Service',
+      'Terms of Service for Emojar.com.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Terms of Service | Emojar',
     description: 'Terms of Service for Emojar.com.',
+    images: ogImages(
+      '📜',
+      'Terms of Service',
+      'Terms of Service for Emojar.com.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

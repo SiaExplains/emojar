@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: "Download Any Emoji as a PNG Image — Free, Instant, No Sign-up | Emojar Blog",
+  title: "Download Any Emoji as a PNG Image — Free, Instant, No Sign-up",
   description:
     "The Emojar Emoji to PNG tool converts any of the 3,790 emojis to a crisp PNG image. Pick your size, background colour, and padding — then download in one click.",
   alternates: { canonical: "https://emojar.com/blog/emoji-to-png-download" },
@@ -11,6 +12,7 @@ export const metadata = {
     url: "https://emojar.com/blog/emoji-to-png-download",
     siteName: "Emojar",
     type: "article",
+    images: ogImages("📝", "Download Any Emoji as a PNG Image — Free, Instant, No Sign-up", "Convert any emoji to a high-quality PNG — up to 1024×1024 px, transparent or coloured background. Free with no account n").openGraph,
   },
   keywords: ["emoji to png", "emoji image download", "emoji png", "download emoji", "emoji transparent background", "emoji sticker download"],
   twitter: {
@@ -18,6 +20,7 @@ export const metadata = {
     title: "Download Any Emoji as a PNG Image — Free, Instant, No Sign-up",
     description:
       "Convert any emoji to a crisp PNG — up to 1024×1024 px, transparent background, no watermark.",
+    images: ogImages("📝", "Download Any Emoji as a PNG Image — Free, Instant, No Sign-up", "Convert any emoji to a high-quality PNG — up to 1024×1024 px, transparent or coloured background. Free with no account n").twitter,
   },
   robots: { index: true, follow: true },
 };

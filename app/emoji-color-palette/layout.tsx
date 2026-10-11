@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Color Palette Extractor — Get Colors from Any Emoji | Emojar',
@@ -22,11 +23,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/emoji-color-palette',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '😀',
+      'Emoji Color Palette Extractor — Get Colors from Any Emoji',
+      'Extract dominant colors from any emoji and copy hex codes instantly.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Color Palette Extractor — Get Colors from Any Emoji | Emojar',
     description: 'Get a hex color palette from any emoji. Free and instant.',
+    images: ogImages(
+      '😀',
+      'Emoji Color Palette Extractor — Get Colors from Any Emoji',
+      'Extract dominant colors from any emoji and copy hex codes instantly.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Timeline Challenge | Emojar Games',
@@ -13,11 +14,21 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/emoji-timeline',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Emoji Timeline Challenge',
+      'Sort emojis from oldest to newest Unicode version — test your emoji history knowledge!',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Timeline Challenge | Emojar Games',
     description: 'Can you sort emojis by their Unicode release date?',
+    images: ogImages(
+      '🎮',
+      'Emoji Timeline Challenge',
+      'Sort emojis from oldest to newest Unicode version — test your emoji history knowledge!',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

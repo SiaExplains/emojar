@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Favicon Generator — Create Tiny Emoji Icons | Emojar',
@@ -22,12 +23,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/emoji-favicon',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '😀',
+      'Emoji Favicon Generator — Create Tiny Emoji Icons',
+      'Generate a PNG favicon from any emoji in seconds. Pick a size and download.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Favicon Generator — Create Tiny Emoji Icons | Emojar',
     description:
       'Generate a PNG favicon from any emoji. Free, instant download.',
+    images: ogImages(
+      '😀',
+      'Emoji Favicon Generator — Create Tiny Emoji Icons',
+      'Generate a PNG favicon from any emoji in seconds. Pick a size and download.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

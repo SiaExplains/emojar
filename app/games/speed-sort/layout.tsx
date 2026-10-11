@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { StaticPageSection } from '@/components/StaticPageSection';
+import { ogImages } from '@/lib/og';
 
 export const metadata: Metadata = {
   title: 'Emoji Speed Sort | Emojar Games',
@@ -13,12 +14,22 @@ export const metadata: Metadata = {
     url: 'https://emojar.com/games/speed-sort',
     siteName: 'Emojar',
     type: 'website',
+    images: ogImages(
+      '🎮',
+      'Emoji Speed Sort',
+      'Categorize emojis fast! 3-second timer per round, 10 rounds total.',
+    ).openGraph,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Speed Sort | Emojar Games',
     description:
       'Sort emojis into categories before the timer runs out — 10 rounds!',
+    images: ogImages(
+      '🎮',
+      'Emoji Speed Sort',
+      'Categorize emojis fast! 3-second timer per round, 10 rounds total.',
+    ).twitter,
   },
   robots: { index: true, follow: true },
 };

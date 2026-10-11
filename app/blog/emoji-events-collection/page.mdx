@@ -1,3 +1,4 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
   title: 'Emoji Collections for Every Holiday & Event | Emojar Blog',
@@ -11,13 +12,15 @@ export const metadata = {
     url: 'https://emojar.com/blog/emoji-events-collection',
     siteName: 'Emojar',
     type: 'article',
+    images: ogImages("📝", "Emoji Collections for Every Holiday & Event", "Themed emoji packs for every major holiday — click to copy any emoji or grab the whole set at once.").openGraph,
   },
   keywords: ['holiday emoji', 'event emoji', 'emoji collection', 'christmas emoji', 'halloween emoji', 'copy emoji'],
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Emoji Collections for Every Holiday & Event',
     description:
       'Themed emoji packs for every major holiday — copy with one tap.',
+    images: ogImages("📝", "Emoji Collections for Every Holiday & Event", "Themed emoji packs for every major holiday — click to copy any emoji or grab the whole set at once.").twitter,
   },
   robots: { index: true, follow: true },
 };

@@ -1,6 +1,7 @@
+import { ogImages } from '@/lib/og';
 import PostTags from '@/components/PostTags';
 export const metadata = {
-  title: "6 New Free Emoji Tools on Emojar — Favicon, Palette, Watermark, Card, Inspector & Kitchen | Emojar Blog",
+  title: "6 Free Emoji Tools: Favicon, Palette, Watermark, Card & More",
   description: "Emojar just launched 6 new free browser-based emoji tools: Favicon Generator, Color Palette Extractor, Watermark Tool, Social Card Generator, Unicode Inspector, and Emoji Kitchen. No sign-up, no upload, all in your browser.",
   alternates: { canonical: "https://emojar.com/blog/emoji-tools-collection-2026" },
   openGraph: {
@@ -9,12 +10,14 @@ export const metadata = {
     url: "https://emojar.com/blog/emoji-tools-collection-2026",
     siteName: "Emojar",
     type: "article",
+    images: ogImages("📝", "6 New Free Emoji Tools on Emojar", "Favicon Generator, Color Palette, Watermark Tool, Social Card, Unicode Inspector, and Emoji Kitchen — all free, all in y").openGraph,
   },
   keywords: ["emoji tools", "emoji favicon generator", "emoji color palette", "emoji watermark", "emoji social card", "emoji unicode inspector", "emoji kitchen", "free emoji tools online"],
   twitter: {
     card: "summary",
     title: "6 New Free Emoji Tools on Emojar",
     description: "Favicon Generator, Color Palette, Watermark, Social Card, Unicode Inspector, and Emoji Kitchen — all free.",
+    images: ogImages("📝", "6 New Free Emoji Tools on Emojar", "Favicon Generator, Color Palette, Watermark Tool, Social Card, Unicode Inspector, and Emoji Kitchen — all free, all in y").twitter,
   },
   robots: { index: true, follow: true },
 };

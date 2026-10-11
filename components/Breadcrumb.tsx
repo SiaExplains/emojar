@@ -3,7 +3,9 @@ import Link from 'next/link';
 type Crumb = { label: string; href?: string };
 
 export default function Breadcrumb({ crumbs }: { crumbs: Crumb[] }) {
-  const allCrumbs = [{ label: 'Home', href: '/' }, ...crumbs];
+  // Home is always first; some pages pass it themselves, so don't repeat it.
+  const rest = crumbs[0]?.href === '/' ? crumbs.slice(1) : crumbs;
+  const allCrumbs = [{ label: 'Home', href: '/' }, ...rest];
 
   const schema = {
     '@context': 'https://schema.org',

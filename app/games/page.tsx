@@ -166,7 +166,7 @@ const GamesPage = () => {
         <h1 className="text-3xl font-semibold tracking-tight mb-2">
           Emoji Games
         </h1>
-        <p className="text-gray-500 max-w-2xl">
+        <p className="text-gray-500">
           19 free emoji-themed games, all playable right in your browser — no
           download, no sign-up. From memory puzzles and logic challenges to
           trivia and classic arcade games, there&apos;s something for every kind

@@ -56,7 +56,7 @@ export default function OnlineToolsHub() {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Online Tools
           </h1>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-600">
+          <p className="text-base leading-relaxed text-gray-600">
             {TOOLS.length} free, fast and privacy-friendly tools that run
             directly in your browser — image and PDF converters, developer
             utilities, text tools, calculators and more. No sign-up, and your
@@ -126,7 +126,7 @@ export default function OnlineToolsHub() {
                 All {tools.length} {c.name.toLowerCase()} →
               </Link>
             </div>
-            <p className="max-w-3xl text-sm text-gray-600">{c.intro}</p>
+            <p className="text-sm text-gray-600">{c.intro}</p>
             <ToolGrid
               tools={[
                 ...tools.map((t) => ({

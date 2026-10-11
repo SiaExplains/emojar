@@ -872,7 +872,7 @@ export default function PersonalityPage() {
 
   if (phase === 'intro') {
     return (
-      <div className="max-w-2xl mx-auto py-12 px-4 text-center space-y-8">
+      <div className="py-12 px-4 text-center space-y-8">
         <div className="space-y-3">
           <div className="text-7xl">🪞</div>
           <h1 className="text-3xl sm:text-4xl font-bold">
@@ -929,7 +929,7 @@ export default function PersonalityPage() {
     const progress = ((currentQ + 1) / QUESTIONS.length) * 100;
 
     return (
-      <div className="max-w-2xl mx-auto py-10 px-4 space-y-8">
+      <div className="py-10 px-4 space-y-8">
         {/* Progress */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm text-gray-500">
@@ -989,7 +989,7 @@ export default function PersonalityPage() {
   const primary = results[0];
 
   return (
-    <div className="max-w-2xl mx-auto py-10 px-4 space-y-10">
+    <div className="py-10 px-4 space-y-10">
       {/* Hero result */}
       <div className="text-center space-y-3">
         <p className="text-sm text-gray-400 uppercase tracking-widest font-medium">

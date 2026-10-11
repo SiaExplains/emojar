@@ -101,7 +101,7 @@ export default function CategoryPage({ params }: Props) {
           ]}
         />
         <h1 className="text-2xl font-semibold">{decoded}</h1>
-        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 xl:grid-cols-[repeat(16,minmax(0,1fr))] 2xl:grid-cols-[repeat(20,minmax(0,1fr))] gap-1">
           {items.map((e) => (
             <SmallEmojiCard key={e.slug} emoji={e} />
           ))}

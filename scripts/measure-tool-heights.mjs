@@ -1,5 +1,5 @@
 // Measures how tall each online tool is when it first renders, at phone
-// (375 px), tablet (800 px) and desktop (1280 px) widths, and writes
+// (375 px), tablet (800 px), desktop (1280 px) and wide (1920 px) widths, and writes
 // lib/online-tools/data/tool-heights.json. ToolPage reserves that height so
 // the page doesn't jump when the client-side tool appears (layout shift).
 //
@@ -22,7 +22,7 @@ const BASE = (process.argv[2] ?? 'http://localhost:3000').replace(/\/$/, '');
 const CHROME =
   process.env.CHROME ??
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const WIDTHS = [375, 800, 1280];
+const WIDTHS = [375, 800, 1280, 1920];
 const PARALLEL = 4;
 const PORT = 9333;
 const OUT = new URL(

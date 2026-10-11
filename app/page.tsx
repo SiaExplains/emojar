@@ -117,7 +117,7 @@ export default function Home() {
           {TOOLS.length} free online tools that
           <br className="hidden sm:block" /> run in your browser
         </h1>
-        <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
+        <p className="text-base leading-relaxed text-gray-600 sm:text-lg">
           Convert images and PDFs, format JSON, count words, generate passwords
           and QR codes, and calculate almost anything — {TOOLS.length} small,
           fast utilities that keep your files on your device.
@@ -159,7 +159,7 @@ export default function Home() {
         <h2 id="categories" className="text-xl font-semibold text-gray-900">
           Browse by category
         </h2>
-        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
           {CATEGORIES.map((c) => {
             const tools = toolsInCategory(c.slug);
             return (

@@ -76,7 +76,7 @@ export default function EmojiInspectorPage() {
   const totalBytes = chars.reduce((sum, c) => sum + c.bytes, 0);
 
   return (
-    <div className="max-w-5xl mx-auto py-10 px-4">
+    <div className="py-10 px-4">
       {/* Header */}
       <div className="mb-8 space-y-1">
         <h1 className="text-3xl font-bold">Emoji Unicode Inspector</h1>

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-5 py-10">
+    <div className="w-full px-5 py-10">
       <h1 className="text-3xl font-semibold tracking-tight">About Emojar</h1>
 
       <section className="mt-8 space-y-6 text-gray-800 leading-7">

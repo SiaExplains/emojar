@@ -18,7 +18,7 @@ export function StaticPageSection({ slug }: { slug: string }) {
   const isTool = TOOL_SLUGS.has(slug);
 
   return (
-    <section className="mt-16 border-t border-gray-100 pt-10 pb-12 max-w-5xl mx-auto px-4">
+    <section className="mt-16 border-t border-gray-100 pt-10 pb-12">
       <h2 className="text-xl font-semibold text-gray-900 mb-3">
         {content.heading}
       </h2>

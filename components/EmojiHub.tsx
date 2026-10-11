@@ -317,13 +317,13 @@ export default function EmojiHub() {
           Emoji Search — Copy &amp; Paste
           <br className="hidden sm:block" /> Any Emoji Instantly
         </h1>
-        <p className="text-gray-500 text-base max-w-lg mx-auto leading-relaxed">
+        <p className="text-gray-500 text-base leading-relaxed">
           {totalEmojis.toLocaleString()} Unicode emojis to search and copy, 18
           games to play, and 8 free tools to create — all in one place.
         </p>
 
         {/* Feature pillars — visible above the fold so every visitor sees the full platform */}
-        <div className="grid grid-cols-3 gap-3 max-w-xl mx-auto pt-1">
+        <div className="grid grid-cols-3 gap-3 pt-1">
           <Link
             href="/categories"
             className="group flex flex-col items-center gap-1.5 rounded-2xl border border-amber-100 bg-amber-50 px-3 py-4 hover:border-amber-200 hover:shadow-sm transition-all"
@@ -380,7 +380,7 @@ export default function EmojiHub() {
               ? `No results for "${query}"`
               : `${searchResults.length.toLocaleString()} result${searchResults.length === 1 ? '' : 's'} for "${query}"`}
           </p>
-          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 xl:grid-cols-[repeat(16,minmax(0,1fr))] 2xl:grid-cols-[repeat(20,minmax(0,1fr))] gap-1">
             {searchResults.map((e, i) => (
               <SmallEmojiCard
                 key={`${e.slug}-sr-${i}`}
@@ -403,7 +403,7 @@ export default function EmojiHub() {
                 Browse all {totalEmojis.toLocaleString()} →
               </Link>
             </div>
-            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 xl:grid-cols-[repeat(16,minmax(0,1fr))] 2xl:grid-cols-[repeat(20,minmax(0,1fr))] gap-1">
               {popularEmojis.map((e, i) => (
                 <SmallEmojiCard
                   key={`${e.slug}-pop-${i}`}

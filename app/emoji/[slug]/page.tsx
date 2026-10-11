@@ -142,7 +142,7 @@ export default async function EmojiPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(emojiSchema) }}
       />
 
-      <article className="mx-auto max-w-3xl space-y-10 py-6 px-2">
+      <article className="space-y-10 py-6 px-2">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"

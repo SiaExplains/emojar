@@ -67,7 +67,7 @@ const EmojiToolsPage = () => {
         <h1 className="text-3xl font-semibold tracking-tight mb-2">
           🛠️ Emoji Tools
         </h1>
-        <p className="text-gray-500 max-w-2xl">
+        <p className="text-gray-500">
           {tools.length} free emoji utilities — from converting emojis to PNG
           images and generating favicons, to extracting color palettes, creating
           social cards, and inspecting Unicode. No sign-up required.

@@ -4,7 +4,22 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.18.1] — 2026-10-09
+## [0.19.0] — 2026-10-11
+
+### Changed
+
+- Every page now uses the full width of the window instead of a centred
+  1,024 px column: the header, content, text and footer stretch to the
+  edges (with side padding), and tool, category and emoji grids show more
+  columns on wide screens. Game boards stay centred so they play the same.
+- Tool heights were re-measured for the wider layout (now also at 1,920 px),
+  so tool pages still don't jump while loading.
+
+### Fixed
+
+- Game pages, the detailed emoji list and the holiday collections showed
+  "Home › Home" in their breadcrumb (and in the breadcrumb data search
+  engines read); Home now appears once.
 
 ### Changed
 

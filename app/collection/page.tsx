@@ -51,7 +51,7 @@ const CollectionPage = () => {
         <h1 className="text-3xl font-semibold tracking-tight mb-2">
           Collections
         </h1>
-        <p className="text-gray-500 max-w-2xl">
+        <p className="text-gray-500">
           Four ways to explore the full emoji library — alphabetical order,
           detailed view, letter-shaped emojis, and curated holiday collections.
           Pick the view that fits what you need.

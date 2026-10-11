@@ -35,7 +35,7 @@ export function PageMain({ children }: { children: ReactNode }) {
     <main
       id="main"
       tabIndex={-1}
-      className="mx-auto max-w-5xl px-4 py-6 focus:outline-none"
+      className="w-full py-6 focus:outline-none px-4 sm:px-6 lg:px-8 2xl:px-12"
     >
       {children}
     </main>

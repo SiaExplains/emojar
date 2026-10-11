@@ -100,7 +100,7 @@ export default function CategoriesPage() {
         <h1 className="text-3xl font-semibold tracking-tight mb-2">
           Emoji Categories
         </h1>
-        <p className="text-gray-500 max-w-2xl">
+        <p className="text-gray-500">
           All {total.toLocaleString()} emojis organised into {categories.length}{' '}
           categories — from expressive faces and animal companions to flags from
           every nation. Tap a category to browse and copy the emojis inside.

@@ -141,16 +141,15 @@ export function ToolHeader({
           {name}
         </h1>
       </div>
-      <p className="max-w-3xl text-base leading-relaxed text-gray-600">
-        {description}
-      </p>
+      <p className="text-base leading-relaxed text-gray-600">{description}</p>
       <PrivacyNotice handlesFiles={handlesFiles} />
     </header>
   );
 }
 
 /**
- * Height each tool has when it first renders, measured at 375 / 800 / 1280 px
+ * Height each tool has when it first renders, measured at 375 / 800 / 1280 /
+ * 1920 px
  * wide by `npm run measure:tool-heights`. Tools render client-side, so
  * reserving this space stops the page below from jumping when the tool
  * appears; unmeasured tools fall back to a generic height.
@@ -158,11 +157,12 @@ export function ToolHeader({
 function reservedHeight(slug: string): CSSProperties | undefined {
   const h = (TOOL_HEIGHTS as Record<string, number[] | undefined>)[slug];
   if (!h) return undefined;
-  const [sm, md, lg] = h;
+  const [sm, md, lg, xl = lg] = h;
   return {
     '--tool-h': `${sm}px`,
     '--tool-h-md': `${md}px`,
     '--tool-h-lg': `${lg}px`,
+    '--tool-h-2xl': `${xl}px`,
   } as CSSProperties;
 }
 
@@ -221,7 +221,7 @@ export function ToolPage({
       <section
         aria-label={`${name} tool`}
         style={reservedHeight(tool.slug)}
-        className="min-h-[var(--tool-h,300px)] rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:min-h-[var(--tool-h-md,360px)] sm:p-6 lg:min-h-[var(--tool-h-lg,360px)]"
+        className="min-h-[var(--tool-h,300px)] rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:min-h-[var(--tool-h-md,360px)] sm:p-6 lg:min-h-[var(--tool-h-lg,360px)] 2xl:min-h-[var(--tool-h-2xl,360px)]"
       >
         <ToolRenderer
           component={tool.component}

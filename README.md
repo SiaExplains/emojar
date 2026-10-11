@@ -101,7 +101,10 @@ tailwind.config.ts               Design tokens: `brand` accent (logo magenta), g
 rings), `gray-*` for neutrals and emerald / amber / red for success / warning /
 danger. Buttons and inputs use the classes in `components/ui/styles.ts`. Keep
 text at 12 px (`text-xs`) or larger, and give every interactive element a
-visible `focus-visible` style.
+visible `focus-visible` style. Pages are full width: the site frame
+(`app/layout.tsx`, `PageMain` in `components/ChromeGate.tsx`) supplies the side
+padding, so don't wrap pages in `max-w-*` containers; give grids extra columns
+at `xl`/`2xl` instead. Game play areas are the exception and stay centred.
 
 ## Environment variables
 

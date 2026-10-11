@@ -65,9 +65,7 @@ export default async function CategoryPage({
               {c.name}
             </h1>
           </div>
-          <p className="max-w-3xl text-base leading-relaxed text-gray-600">
-            {c.intro}
-          </p>
+          <p className="text-base leading-relaxed text-gray-600">{c.intro}</p>
           <p className="text-sm text-gray-500">
             {tools.length} free tools · no sign-up · runs in your browser
           </p>

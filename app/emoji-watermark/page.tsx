@@ -170,7 +170,7 @@ export default function EmojiWatermarkPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-10 px-4">
+    <div className="py-10 px-4">
       {/* Header */}
       <div className="mb-8 space-y-1">
         <h1 className="text-3xl font-bold">Emoji Watermark Tool</h1>

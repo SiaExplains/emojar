@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   const items = allFaqItems();
   return (
-    <div className="mx-auto max-w-3xl space-y-10">
+    <div className="space-y-10">
       <JsonLd
         data={{
           '@context': 'https://schema.org',

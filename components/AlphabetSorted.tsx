@@ -19,7 +19,7 @@ const AlphabetSorted = ({ char, emojis }: AlphabetSortedProps) => {
         >
           Emojis start with '{char}'
         </h2>
-        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1">
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 xl:grid-cols-[repeat(16,minmax(0,1fr))] 2xl:grid-cols-[repeat(20,minmax(0,1fr))] gap-1">
           {emojis.map((emoji, index) => (
             <SmallEmojiCard
               key={`${emoji.slug}-${index}`}

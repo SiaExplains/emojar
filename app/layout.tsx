@@ -155,7 +155,7 @@ export default function RootLayout({
             Skip to content
           </a>
           <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/80 backdrop-blur">
-            <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div className="flex w-full items-center justify-between py-3 px-4 sm:px-6 lg:px-8 2xl:px-12">
               <div className="logo-container flex-shrink-0">
                 <Link href="/" className="font-semibold">
                   <HeaderLogo />
@@ -179,7 +179,7 @@ export default function RootLayout({
           <footer className="mt-12 border-t border-gray-100 bg-gray-50 text-sm">
             <nav
               aria-label="Footer"
-              className="mx-auto grid max-w-5xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]"
+              className="grid w-full gap-8 py-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] px-4 sm:px-6 lg:px-8 2xl:px-12"
             >
               <div>
                 <h2 className="font-semibold text-gray-900">
@@ -187,7 +187,7 @@ export default function RootLayout({
                     Online tools
                   </Link>
                 </h2>
-                <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-gray-600">
+                <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-gray-600 xl:grid-cols-3">
                   {CATEGORIES.map((c) => (
                     <li key={c.slug}>
                       <Link
@@ -216,7 +216,7 @@ export default function RootLayout({
               ))}
             </nav>
             <div className="border-t border-gray-100">
-              <p className="mx-auto max-w-5xl px-4 py-5 text-gray-500">
+              <p className="w-full py-5 text-gray-500 px-4 sm:px-6 lg:px-8 2xl:px-12">
                 © {new Date().getFullYear()} Emojar · Free tools that run in
                 your browser
               </p>

@@ -245,6 +245,10 @@
 
 **Description:** Typing Speed Test, Resume Builder, Online Notepad and Flashcard Maker were tested in a desktop browser at 1280 and 375 px. Still to do on real phones: typing with on-screen keyboards and autocorrect (iOS Safari, Android Chrome), the resume's Print → Save as PDF on iOS, and localStorage persistence in Safari after a week without visits (Safari can evict site data).
 
+### [ ] Batch of 20 tools (v0.24.0): follow-ups
+
+**Description:** Checked in a desktop browser at 1280 and 375 px. Still to do: tap-to-pick in the Image Color Picker and the magnifier on real phones (iOS Safari, Android Chrome); a 20 MB CSV in the CSV Viewer on a mid-range phone; Social Share Preview PNG export in Safari. Known heuristics to revisit if users report issues: sentence splitting (`splitSentences` in `engines/text-analysis.ts`), the HTML→JSX tokenizer (`engines/html-jsx.ts`), and `jsonErrorOffset` reporting column 1 for a truncated literal such as `tru`. The TOML converter intentionally supports a subset (no null; nulls in arrays refused).
+
 ### [ ] Resume PDF: fonts for non-Latin scripts
 
 **Description:** `resumePdf()` uses pdf-lib's standard Helvetica (WinAnsi), so Cyrillic, Greek, Arabic, Persian and CJK resumes get an error that points to Print → Save as PDF. Option: lazy-load a subset font (e.g. Noto Sans, OFL) with `@pdf-lib/fontkit` only when the text needs it, so Latin users don't pay the ~200 KB+ download.

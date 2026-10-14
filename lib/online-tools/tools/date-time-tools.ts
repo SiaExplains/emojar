@@ -472,6 +472,7 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       'stopwatch',
       'world-clock',
       'working-days-calculator',
+      'flashcard-maker',
     ],
     component: 'timer',
     config: { mode: 'pomodoro' },

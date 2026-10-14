@@ -138,6 +138,7 @@ export const PRODUCTIVITY_TOOLS: ToolDefinition[] = [
       'timeline-maker',
       'decision-matrix',
       'time-card-calculator',
+      'online-notepad',
     ],
     component: 'kanban-board',
     howTo: [
@@ -225,6 +226,185 @@ export const PRODUCTIVITY_TOOLS: ToolDefinition[] = [
       {
         q: 'Is my timeline uploaded anywhere?',
         a: 'No. Everything, including the SVG and PNG export, happens in your browser, and the timeline is saved only in this browser’s local storage.',
+      },
+    ],
+  },
+  {
+    slug: 'resume-builder',
+    category: 'productivity-tools',
+    name: 'Resume Builder',
+    icon: '📄',
+    shortDescription: 'Build a clean CV and download it as a PDF.',
+    description:
+      'Create a professional resume (CV) in your browser: fill in your details, work experience, education and skills, pick a Classic or Modern template and an accent colour, and download a text-based PDF that applicant tracking systems can read. Your resume autosaves in this browser — no sign-up, no watermark.',
+    title: 'Free Resume Builder – Make a CV and Download PDF',
+    metaDescription:
+      'Free resume builder with no sign-up: fill in your experience and skills, pick a template and download an ATS-friendly PDF CV. Autosaves privately in your browser.',
+    keywords: [
+      'resume builder',
+      'free resume builder',
+      'cv maker',
+      'cv builder',
+      'resume maker no sign up',
+      'resume pdf',
+      'ats resume',
+    ],
+    relatedTools: [
+      'email-signature-generator',
+      'profile-picture-maker',
+      'word-counter',
+      'invoice-generator',
+      'online-notepad',
+    ],
+    component: 'resume-builder',
+    handlesFiles: true,
+    howTo: [
+      'Fill in your personal details, a short profile summary and your work experience — one achievement per line. Or press “Load example” to start from a sample resume.',
+      'Add education, optional projects, skills and languages. Reorder entries with Move up and Move down; the live preview updates as you type.',
+      'Choose the Classic (one column) or Modern (sidebar) template, A4 or US Letter paper and an accent colour.',
+      'Press Download PDF. Export a JSON backup to keep your resume or move it to another device.',
+    ],
+    about: [
+      'A resume (or CV) works best when it is easy to scan: your name and contact details at the top, a two- to four-sentence profile, then experience in reverse order with achievements that start with a verb and include a number — “cut booking drop-off by 23%” says more than “responsible for the booking flow”. One page is enough for most people with under ten years of experience.',
+      'Many employers run resumes through an applicant tracking system (ATS) before a person reads them. The PDF this builder makes contains real, selectable text in a single reading order with standard headings, which those systems parse reliably — unlike resumes exported as images. The built-in PDF font covers Latin alphabets; for other scripts, use Print → Save as PDF. Everything stays in your browser.',
+    ],
+    faqs: [
+      {
+        q: 'Is this resume builder really free?',
+        a: 'Yes. There is no sign-up, no watermark and no paywall on the download. The resume is built and saved entirely in your browser.',
+      },
+      {
+        q: 'Is the PDF ATS-friendly?',
+        a: 'Yes. It uses real text (not an image), standard section headings such as Experience and Education, and a simple layout, so applicant tracking systems can read your name, jobs, dates and skills. The Classic template is the safest choice for very strict systems.',
+      },
+      {
+        q: 'Where is my resume stored?',
+        a: 'Only in this browser’s local storage, so it is still there when you come back on the same device. Use Export JSON to back it up or open it on another computer, and Import JSON to load it again.',
+      },
+      {
+        q: 'Should I use A4 or US Letter?',
+        a: 'Use US Letter for jobs in the United States and Canada and A4 almost everywhere else. The builder picks a default from your browser’s language, and you can change it at any time.',
+      },
+      {
+        q: 'Can I write my resume in another language?',
+        a: 'Yes, as long as it uses Latin letters (English, Spanish, German, French, Turkish and so on). For Cyrillic, Arabic, Persian, Chinese and other scripts, use “Print / Save as PDF”, which uses your system fonts.',
+      },
+    ],
+  },
+  {
+    slug: 'online-notepad',
+    category: 'productivity-tools',
+    alsoIn: ['text-tools'],
+    name: 'Online Notepad',
+    icon: '🗒️',
+    shortDescription: 'Write notes that save automatically in your browser.',
+    description:
+      'A simple online notepad: type and your notes save automatically in this browser. Keep many notes, search them, see word and character counts, switch to a distraction-free focus mode and download any note as .txt or .md. No account and nothing uploaded.',
+    title: 'Online Notepad – Free Notes That Save in Your Browser',
+    metaDescription:
+      'Free online notepad that autosaves in your browser: multiple notes, search, word count, focus mode and .txt or .md download. No sign-up, nothing is uploaded.',
+    keywords: [
+      'online notepad',
+      'notepad online',
+      'online notes',
+      'notepad',
+      'write notes online',
+      'text editor online',
+      'scratchpad',
+    ],
+    relatedTools: [
+      'word-counter',
+      'markdown-previewer',
+      'kanban-board',
+      'find-and-replace',
+      'text-diff',
+    ],
+    component: 'online-notepad',
+    howTo: [
+      'Start typing in the editor — every change saves automatically in this browser.',
+      'Press New note for another page. The first line becomes the note’s title in the list, and the search box finds notes by any word they contain.',
+      'Use Focus mode for a full-screen editor (Esc to leave), and switch on Monospace or a larger text size if you like.',
+      'Download a note as .txt or .md, print it, or export all notes as a JSON backup.',
+    ],
+    about: [
+      'An online notepad is the quickest place to park text: a phone number, a draft email, meeting notes or a list you will paste somewhere else later. This one keeps every note in your browser’s local storage, so it is there when you come back on the same device and browser, works offline once the page has loaded, and never sends your text to a server.',
+      'Because notes live in the browser, clearing site data or using a private window removes them. Export a JSON backup for anything you want to keep long-term, or download single notes as plain text (.txt) or Markdown (.md), which every editor can open. Browsers allow roughly 5 MB of storage per site — about a thousand pages of text — and the notepad warns you well before that fills up.',
+    ],
+    faqs: [
+      {
+        q: 'Are my notes saved?',
+        a: 'Yes, automatically, in this browser’s local storage. They stay when you close the tab or restart the computer, but not if you clear your browsing data or use a private window. Export a backup to be safe.',
+      },
+      {
+        q: 'Can anyone else see my notes?',
+        a: 'No. Notes never leave your device — there is no account, no server and no sync. Anyone using the same browser profile on your computer could open the page and see them, though.',
+      },
+      {
+        q: 'Can I use it on my phone?',
+        a: 'Yes. The notepad works in mobile browsers; notes are stored separately on each device and browser, so move them with Export and Import JSON.',
+      },
+      {
+        q: 'How many notes can I keep?',
+        a: 'Up to 200 notes. The practical limit is your browser’s storage, roughly 5 MB per site; the notepad shows a warning if you get close.',
+      },
+    ],
+  },
+  {
+    slug: 'flashcard-maker',
+    category: 'productivity-tools',
+    alsoIn: ['reference-tools'],
+    name: 'Flashcard Maker',
+    icon: '🃏',
+    shortDescription: 'Make flashcards, study them and quiz yourself.',
+    description:
+      'Create flashcard decks, study them with spaced repetition and test yourself with a multiple-choice or typed quiz. Add cards one by one or paste a whole list (Quizlet export or CSV), and see which cards you have mastered. Everything is saved in this browser — no account.',
+    title: 'Flashcard Maker – Free Online Flashcards & Quiz',
+    metaDescription:
+      'Free online flashcard maker: create decks, import from Quizlet or CSV, study with spaced repetition (Leitner boxes) and quiz yourself. Saved in your browser, no sign-up.',
+    keywords: [
+      'flashcard maker',
+      'online flashcards',
+      'flashcards',
+      'quiz maker',
+      'spaced repetition',
+      'study cards',
+      'quizlet alternative',
+    ],
+    relatedTools: [
+      'online-notepad',
+      'pomodoro-timer',
+      'typing-speed-test',
+      'periodic-table',
+      'wheel-spinner',
+    ],
+    component: 'flashcards',
+    handlesFiles: true,
+    howTo: [
+      'Name your deck and add cards with a front (question or term) and a back (answer or definition) — or paste many at once, one card per line as “term<Tab>definition” or CSV.',
+      'Open Study: read the front, flip the card with a click or Space, then choose Again or Got it. Known cards move up a box and come back less often.',
+      'Open Quiz for a multiple-choice or typed test of the whole deck, with a score and a review of your mistakes at the end.',
+      'Export a deck as CSV for spreadsheets or other apps, or all decks as a JSON backup.',
+    ],
+    about: [
+      'Flashcards work because of active recall: trying to remember the answer before you see it strengthens memory far more than re-reading notes. Spaced repetition adds timing — cards you know are shown less and less often, and cards you miss come straight back. This tool uses the Leitner system with five boxes: new and missed cards sit in box 1 and appear every session, box 2 every second session, box 3 every fourth, and so on up to box 5.',
+      'A short daily session beats a long one once a week. Keep each card to one fact, write the question the way an exam would ask it, and study both directions (term → definition and back) for vocabulary. Decks are stored in your browser only; you can import Quizlet’s tab-separated export or any CSV file with two columns.',
+    ],
+    faqs: [
+      {
+        q: 'How does the spaced repetition work?',
+        a: 'Each card is in one of five Leitner boxes. “Got it” moves it up a box; “Again” sends it back to box 1. Box 1 is reviewed every session, box 2 every second session, box 3 every fourth, box 4 every eighth and box 5 every sixteenth.',
+      },
+      {
+        q: 'Can I import my Quizlet sets?',
+        a: 'Yes. In Quizlet, choose Export, keep “Tab” between term and definition and “New line” between cards, copy the text and paste it into Import. CSV files with two columns (front, back) work too.',
+      },
+      {
+        q: 'How is a typed answer checked?',
+        a: 'Case, accents, extra spaces and trailing punctuation are ignored, so “Cafe.” matches “café”. Anything else must match exactly — use multiple choice if your answers are long.',
+      },
+      {
+        q: 'Where are my flashcards saved?',
+        a: 'In your browser’s local storage on this device. Nothing is uploaded. Export a JSON backup to keep your decks or move them to another device.',
       },
     ],
   },

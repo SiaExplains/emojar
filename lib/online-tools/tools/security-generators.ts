@@ -744,6 +744,7 @@ export const SECURITY_TOOLS: ToolDefinition[] = [
       'meta-tag-generator',
       'html-entity-encoder',
       'username-generator',
+      'resume-builder',
     ],
     component: 'email-signature',
     howTo: [

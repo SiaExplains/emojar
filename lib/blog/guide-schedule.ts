@@ -287,4 +287,9 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-plan-your-week': '2026-10-12',
   'topic-everyday-money-math': '2026-10-12',
   'topic-writing-and-design-helpers': '2026-10-12',
+  // v0.23.0 new tools (published with the tools).
+  'typing-speed-test': '2026-10-14',
+  'resume-builder': '2026-10-14',
+  'online-notepad': '2026-10-14',
+  'flashcard-maker': '2026-10-14',
 };

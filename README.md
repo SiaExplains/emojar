@@ -4,7 +4,7 @@ Free, privacy-first **online tools** that run entirely in the browser — plus
 3,790 emojis to search and copy, 18 emoji games and 8 emoji tools.
 Live at [emojar.com](https://emojar.com).
 
-- **Online tools** (`/online-tool`) — 264 tools in 13 categories: image, PDF,
+- **Online tools** (`/online-tool`) — 268 tools in 13 categories: image, PDF,
   developer, text, color, calculators, unit converters, security & generators,
   date & time, audio & video, device tests, reference & learning, and productivity. Each tool has an in-depth guide
   on the blog (`content/guides/`, drip-published on a schedule), and `/faq`
@@ -105,6 +105,16 @@ visible `focus-visible` style. Pages are full width: the site frame
 (`app/layout.tsx`, `PageMain` in `components/ChromeGate.tsx`) supplies the side
 padding, so don't wrap pages in `max-w-*` containers; give grids extra columns
 at `xl`/`2xl` instead. Game play areas are the exception and stay centred.
+
+**Look (since v0.22.0).** The page background is a soft grey (`--bg` in
+`app/globals.css`) and content sits on white surfaces. For a clickable card use
+`tile` with `tileIcon`, `tileTitle` and `tileDesc` from `components/ui/styles.ts`
+(the utilities live as `.tile*` component classes in `globals.css` so they
+aren't repeated in every tile's HTML); for a static surface use `card`; for
+filter or link chips use `pill` / `pillActive`. Tint an icon square with
+`tintFor(categorySlug)` from `lib/online-tools/category-style.ts` — a new
+category must get an entry in `CATEGORY_TINT`. Put JSON-LD `<script>`s outside
+`space-y-*` wrappers, otherwise the first visible child gets a top margin.
 
 ## Environment variables
 

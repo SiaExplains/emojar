@@ -572,6 +572,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'text-case-converter',
       'base64-encoder',
       'url-encoder',
+      'online-notepad',
     ],
     component: 'morse-code',
     config: { transform: 'morse' },
@@ -1328,5 +1329,95 @@ export const TEXT_TOOLS: ToolDefinition[] = [
         a: 'Grade 1 spells every letter. Grade 2 (contracted) uses about 180 contractions, such as single cells for “and”, “the” and “ing”, making text shorter and faster to read.',
       },
     ],
+  },
+  {
+    slug: 'typing-speed-test',
+    category: 'text-tools',
+    name: 'Typing Speed Test',
+    icon: '⌨️',
+    shortDescription: 'Measure your typing speed in WPM and accuracy.',
+    description:
+      'Test how fast you type in words per minute (WPM). Pick a 15-second to 5-minute test, type the words or sentences shown and get your net WPM, raw WPM, accuracy and a second-by-second chart. Your best score and last 10 results are saved in this browser — no sign-up.',
+    title: 'Typing Speed Test – Check Your WPM & Accuracy Free',
+    metaDescription:
+      'Free typing speed test: type for 15 s to 5 minutes and see your WPM, accuracy and errors with a live chart. Common words or sentences, punctuation and numbers. No sign-up.',
+    keywords: [
+      'typing speed test',
+      'typing test',
+      'wpm test',
+      'words per minute test',
+      'typing test 1 minute',
+      'keyboard speed test',
+      'typing practice',
+    ],
+    relatedTools: [
+      'keyboard-tester',
+      'word-counter',
+      'online-notepad',
+      'readability-score',
+      'stopwatch',
+    ],
+    component: 'typing-test',
+    config: { duration: 60 },
+    howTo: [
+      'Choose a test length (15 s, 30 s, 1, 2, 3 or 5 minutes) and the text: common words or full sentences, with optional punctuation and numbers.',
+      'Click the text box and start typing — the timer starts with your first key. Correct letters turn dark, mistakes turn red, and you can fix them with Backspace.',
+      'Keep going until the timer runs out. Tab or Esc restarts with a new text at any time.',
+      'Read your result: net WPM, accuracy, raw WPM, errors and a chart of your pace. Your best score for each length is kept in this browser.',
+    ],
+    about: [
+      'Typing speed is measured in words per minute, where one “word” is any 5 characters including spaces. That standard makes results comparable: 250 correct characters in one minute is 50 WPM whether you typed short or long words. Net WPM counts only correct characters; raw WPM counts everything you typed; accuracy is the share of key presses that were right, including mistakes you later corrected.',
+      'Most adults type about 35–45 WPM, office work is comfortable from around 50 WPM, and professional typists reach 70 or more. Accuracy matters more than speed while you practise: aim for 96% or better and the speed follows. The test runs entirely in your browser and nothing you type is sent anywhere.',
+    ],
+    faqs: [
+      {
+        q: 'How is WPM calculated?',
+        a: 'Correct characters are divided by 5 to get “words”, then by the minutes elapsed. In a 30-second test, 180 correct characters is 36 words in half a minute, so 72 WPM. Raw WPM uses every character typed, mistakes included.',
+      },
+      {
+        q: 'What is a good typing speed?',
+        a: 'Around 40 WPM is average for adults, 50–60 WPM is good for most jobs, and 70+ WPM is fast. Competitive typists exceed 100 WPM in short tests. Accuracy of 95% or higher matters as much as speed.',
+      },
+      {
+        q: 'Does the test work on a phone or tablet?',
+        a: 'Yes. Tap the text box to open your on-screen keyboard. Expect lower scores than on a physical keyboard, and turn off autocorrect suggestions if they insert words for you.',
+      },
+      {
+        q: 'Are my results saved?',
+        a: 'Your last 10 results and your best score for each test length are kept in this browser’s local storage only. Use “Clear history” to delete them. Nothing is uploaded.',
+      },
+      {
+        q: 'Which test length should I use?',
+        a: 'One minute is the usual benchmark and what most job applications mean by a typing test. Short 15–30 second tests show your burst speed; 3–5 minute tests show the pace you can sustain, which is usually a little lower.',
+      },
+    ],
+    variants: [
+      {
+        seconds: 60,
+        slug: '1-minute-typing-test',
+        name: '1 Minute Typing Test',
+      },
+      {
+        seconds: 180,
+        slug: '3-minute-typing-test',
+        name: '3 Minute Typing Test',
+      },
+      {
+        seconds: 300,
+        slug: '5-minute-typing-test',
+        name: '5 Minute Typing Test',
+      },
+    ].map((v) => ({
+      slug: v.slug,
+      name: v.name,
+      title: `${v.name} – Free WPM Test Online`,
+      metaDescription: `Take a free ${v.name.toLowerCase()} in your browser: type common words or sentences and get your words per minute, accuracy and errors. No sign-up, results stay private.`,
+      description: `A ${v.name.toLowerCase().replace(' typing test', '')} typing test: type the text shown until the timer ends to measure your words per minute (WPM) and accuracy. ${v.seconds === 60 ? 'One minute is the standard length employers and typing courses use.' : 'Longer tests show the speed you can keep up, which is usually a little lower than a short burst.'}`,
+      config: { duration: v.seconds },
+      keywords: [
+        v.name.toLowerCase(),
+        `${v.name.toLowerCase().replace(' typing test', '')} wpm test`,
+      ],
+    })),
   },
 ];

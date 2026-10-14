@@ -115,6 +115,7 @@ export const DEVICE_TESTS: ToolDefinition[] = [
       'webcam-test',
       'microphone-test',
       'what-is-my-browser',
+      'typing-speed-test',
     ],
     component: 'keyboard-tester',
     popular: true,

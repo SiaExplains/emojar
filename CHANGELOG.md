@@ -4,6 +4,33 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.23.0] — 2026-10-14
+
+### Added
+
+- **Typing Speed Test:** type common words or sentences for 15 seconds to
+  5 minutes and get your words per minute, accuracy and a pace chart. Your
+  best score and last 10 results stay in your browser. Separate 1-, 3- and
+  5-minute test pages.
+- **Resume Builder:** fill in your details, pick a Classic or Modern
+  template, A4 or US Letter and a colour, and download a text-based PDF that
+  job application systems can read. Autosaves in your browser; includes an
+  example resume to start from.
+- **Online Notepad:** notes that save as you type, with search, word counts,
+  a focus mode and .txt or .md downloads.
+- **Flashcard Maker:** make decks or import them from Quizlet or a CSV file,
+  study with spaced repetition (five Leitner boxes) and test yourself with a
+  multiple-choice or typed quiz.
+- A step-by-step guide for each of the four new tools.
+
+## [0.22.1] — 2026-10-14
+
+### Changed
+
+- Docs refreshed after the 0.22.0 release: the README explains the new tiles,
+  cards, pills and category colours, and the backlog records the redesign,
+  a lighter-homepage follow-up and two older hydration bugs to fix.
+
 ## [0.22.0] — 2026-10-14
 
 ### Changed

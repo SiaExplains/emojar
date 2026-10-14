@@ -1,4 +1,5 @@
-// PDF builders for the printable calendar and the invoice generator. They
+// PDF builders for the printable calendar, the invoice generator and the
+// resume builder. They
 // use pdf-lib's standard fonts (Latin / WinAnsi), so text outside that range
 // gets a clear error instead of a broken file.
 
@@ -16,6 +17,16 @@ import {
   weekdayNames,
 } from '../engines/timecard';
 import { hexToRgb01 } from './core';
+import {
+  bullets,
+  contactItems,
+  dateRange,
+  isBlankEntry,
+  resumeTexts,
+  splitList,
+  type ResumeData,
+  type ResumeEntry,
+} from '../engines/resume';
 
 const lib = () => import('pdf-lib');
 
@@ -470,6 +481,247 @@ export async function invoicePdf(d: InvoiceData): Promise<Uint8Array> {
       }
       page.drawText(l, { x: m, y, size: 9.5, font: reg, color: grey });
       y -= 12;
+    }
+  }
+  return doc.save();
+}
+
+/* ------------------------------------------------------------------ */
+/* Resume                                                               */
+/* ------------------------------------------------------------------ */
+
+/**
+ * A text-based resume PDF (selectable, readable by applicant tracking
+ * systems). "classic" is one column; "modern" adds a tinted sidebar for
+ * contact details, skills and languages. Long resumes flow onto new pages.
+ */
+export async function resumePdf(d: ResumeData): Promise<Uint8Array> {
+  const { PDFDocument, StandardFonts, rgb } = await lib();
+  const doc = await PDFDocument.create();
+  doc.setTitle(d.name.trim() ? `${d.name.trim()} – Resume` : 'Resume');
+  doc.setCreator('Emojar Resume Builder');
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+  const reg = await doc.embedFont(StandardFonts.Helvetica);
+  const ital = await doc.embedFont(StandardFonts.HelveticaOblique);
+  checkText(reg, resumeTexts(d));
+
+  const [ar, ag, ab] = hexToRgb01(d.accent);
+  const accent = rgb(ar, ag, ab);
+  const tint = rgb(
+    1 - (1 - ar) * 0.08,
+    1 - (1 - ag) * 0.08,
+    1 - (1 - ab) * 0.08,
+  );
+  const dark = rgb(0.1, 0.1, 0.12);
+  const grey = rgb(0.4, 0.4, 0.45);
+  const [pw, ph] = PAPER[d.paper];
+  const m = 46;
+  const modern = d.template === 'modern';
+  const sideW = modern ? 168 : 0;
+  const gap = modern ? 22 : 0;
+  const mainX = m + sideW + gap;
+  const mainW = pw - mainX - m;
+
+  const wrap = (text: string, size: number, width: number, font = reg) => {
+    const out: string[] = [];
+    for (const para of text.split(/\r?\n/)) {
+      let cur = '';
+      for (const word of para.split(/\s+/).filter(Boolean)) {
+        const next = cur ? `${cur} ${word}` : word;
+        if (font.widthOfTextAtSize(next, size) > width && cur) {
+          out.push(cur);
+          cur = word;
+        } else cur = next;
+      }
+      if (cur) out.push(cur);
+    }
+    return out;
+  };
+
+  let page = doc.addPage([pw, ph]);
+  const paintSidebar = () => {
+    if (modern)
+      page.drawRectangle({
+        x: 0,
+        y: 0,
+        width: m + sideW,
+        height: ph,
+        color: tint,
+      });
+  };
+  paintSidebar();
+  let y = ph - m;
+  const newPage = () => {
+    page = doc.addPage([pw, ph]);
+    paintSidebar();
+    y = ph - m;
+  };
+  const need = (h: number) => {
+    if (y - h < m) newPage();
+  };
+  const text = (t: string, x: number, size: number, font = reg, color = dark) =>
+    page.drawText(t, { x, y, size, font, color });
+  const lines = (
+    t: string,
+    x: number,
+    width: number,
+    size: number,
+    font = reg,
+    color = dark,
+    lead = size * 1.35,
+  ) => {
+    for (const l of wrap(t, size, width, font)) {
+      need(lead);
+      text(l, x, size, font, color);
+      y -= lead;
+    }
+  };
+
+  // Header: name and headline across the main column (classic: full width).
+  const headX = modern ? mainX : m;
+  const headW = modern ? mainW : pw - 2 * m;
+  if (d.name.trim()) {
+    for (const l of wrap(d.name.trim(), 24, headW, bold)) {
+      text(l, headX, 24, bold, dark);
+      y -= 28;
+    }
+  }
+  if (d.headline.trim()) {
+    y -= 2;
+    lines(d.headline.trim(), headX, headW, 12, reg, accent);
+  }
+  const contacts = contactItems(d);
+  if (!modern && contacts.length) {
+    y -= 2;
+    lines(contacts.join('  ·  '), m, pw - 2 * m, 9, reg, grey, 12);
+  }
+  y -= 6;
+  page.drawLine({
+    start: { x: headX, y },
+    end: { x: headX + headW, y },
+    thickness: 1.2,
+    color: accent,
+  });
+  y -= 18;
+
+  const heading = (label: string, x: number, width: number) => {
+    need(40);
+    text(label.toUpperCase(), x, 9.5, bold, accent);
+    y -= 5;
+    page.drawLine({
+      start: { x, y },
+      end: { x: x + width, y },
+      thickness: 0.5,
+      color: rgb(0.85, 0.85, 0.88),
+    });
+    y -= 13;
+  };
+
+  const entry = (e: ResumeEntry, x: number, width: number) => {
+    const dates = dateRange(e);
+    const dw = dates ? reg.widthOfTextAtSize(dates, 9) : 0;
+    need(30);
+    const titleLines = wrap(
+      e.title.trim() || e.org.trim(),
+      10.5,
+      width - dw - 12,
+      bold,
+    );
+    titleLines.forEach((l, i) => {
+      need(14);
+      text(l, x, 10.5, bold, dark);
+      if (i === 0 && dates)
+        page.drawText(dates, {
+          x: x + width - dw,
+          y,
+          size: 9,
+          font: reg,
+          color: grey,
+        });
+      y -= 14;
+    });
+    const sub = [e.title.trim() ? e.org.trim() : '', e.location.trim()]
+      .filter(Boolean)
+      .join(', ');
+    if (sub) lines(sub, x, width, 9.5, ital, grey, 13);
+    for (const b of bullets(e.details)) {
+      const w = wrap(b, 9.5, width - 12);
+      w.forEach((l, i) => {
+        need(13);
+        if (i === 0) text('•', x + 2, 9.5, reg, accent);
+        text(l, x + 12, 9.5, reg, dark);
+        y -= 13;
+      });
+    }
+    y -= 7;
+  };
+
+  const section = (
+    label: string,
+    list: ResumeEntry[],
+    x: number,
+    width: number,
+  ) => {
+    const items = list.filter((e) => !isBlankEntry(e));
+    if (!items.length) return;
+    heading(label, x, width);
+    items.forEach((e) => entry(e, x, width));
+    y -= 4;
+  };
+
+  const skills = splitList(d.skills);
+  const languages = splitList(d.languages);
+
+  if (modern) {
+    // Sidebar on the first page, then the main column from the top.
+    const mainTop = y;
+    y = ph - m;
+    const sx = m - 14;
+    const sw = sideW + 4;
+    // The sidebar stays on page 1: it never starts a page of its own, and
+    // anything that doesn't fit is left out rather than overlapping.
+    const sideBlock = (label: string, items: string[]) => {
+      if (!items.length || y < m + 30) return;
+      text(label.toUpperCase(), sx, 9.5, bold, accent);
+      y -= 15;
+      for (const it of items)
+        for (const l of wrap(it, 9, sw)) {
+          if (y < m) return;
+          text(l, sx, 9, reg, dark);
+          y -= 12;
+        }
+      y -= 12;
+    };
+    sideBlock('Contact', contacts);
+    sideBlock('Skills', skills);
+    sideBlock('Languages', languages);
+    y = mainTop;
+    if (d.summary.trim()) {
+      heading('Profile', mainX, mainW);
+      lines(d.summary.trim(), mainX, mainW, 9.8, reg, dark, 13.5);
+      y -= 10;
+    }
+    section('Experience', d.experience, mainX, mainW);
+    section('Education', d.education, mainX, mainW);
+    section('Projects', d.projects, mainX, mainW);
+  } else {
+    const w = pw - 2 * m;
+    if (d.summary.trim()) {
+      heading('Profile', m, w);
+      lines(d.summary.trim(), m, w, 9.8, reg, dark, 13.5);
+      y -= 10;
+    }
+    section('Experience', d.experience, m, w);
+    section('Education', d.education, m, w);
+    section('Projects', d.projects, m, w);
+    if (skills.length) {
+      heading('Skills', m, w);
+      lines(skills.join('  ·  '), m, w, 9.5, reg, dark, 13);
+      y -= 10;
+    }
+    if (languages.length) {
+      heading('Languages', m, w);
+      lines(languages.join('  ·  '), m, w, 9.5, reg, dark, 13);
     }
   }
   return doc.save();

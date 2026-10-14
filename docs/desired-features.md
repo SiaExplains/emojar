@@ -114,7 +114,19 @@
 
 ### [ ] Full-width follow-ups (from v0.19.0)
 
-**Description:** Pages are full width since v0.19.0. Two small decisions are open: (1) game boards still play in a centred area — stretch them only if a game benefits (e.g. Minesweeper's grid), never by default; (2) the 12 "Start here" picks leave 2 cards on the last row at 5 columns — use 10 or 15 picks (`FEATURED_TOOLS` in `lib/online-tools/registry.ts`).
+**Description:** Pages are full width since v0.19.0. Two small decisions are open: (1) game boards still play in a centred area — stretch them only if a game benefits (e.g. Minesweeper's grid), never by default; (2) the 12 "Popular tools" picks (homepage and `/online-tool` since v0.22.0) leave 2 tiles on the last row at 5 columns — use 10 or 15 picks (`FEATURED_TOOLS` in `lib/online-tools/registry.ts`).
+
+### [x] iLovePDF-style redesign
+
+**Description:** Shipped in v0.22.0: grey page with white tiles and category-tinted icon squares, every tool on the homepage under filter pills, uppercase header nav with a Tools mega-menu, centred tool headers, card surfaces for how-to/about/FAQ, restyled blog, games and footer.
+
+### [ ] Lighter homepage after the redesign
+
+**Description:** Since v0.22.0 the homepage HTML is ~86 KB gzipped (was ~40 KB) because it lists all tools. The hero `ToolSearch` also inlines the whole search index (~100 KB raw) — load it on first focus from `/search-index.json` like `HeaderSearch` does, on the homepage and `/online-tool`. Optionally wrap the plain-text info pages (about, privacy, terms, contact) in a white `card`.
+
+### [ ] Pre-existing hydration errors
+
+**Description:** Found during the v0.22.0 sweep: Emoji 2048 builds its random start board during render (server and client differ); 28 MDX posts in `app/blog/*/page.mdx` wrap text in a styled `<p>` that MDX wraps in another `<p>`. Fix by hand — never run prettier on the MDX files.
 
 ### [x] E — Technical SEO
 

@@ -277,7 +277,7 @@ export function ToolPage({
         )}
 
         <div
-          className={`${card} grid gap-8 p-5 sm:p-7 lg:grid-cols-2 lg:gap-12`}
+          className={`${card} grid gap-8 p-5 sm:p-7 lg:grid-cols-2 lg:gap-12 [&>*]:min-w-0`}
         >
           <section aria-labelledby="howto-heading" className="space-y-3">
             <h2
@@ -295,7 +295,7 @@ export function ToolPage({
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-700">
                     {i + 1}
                   </span>
-                  <span>{step}</span>
+                  <span className="min-w-0 break-words">{step}</span>
                 </li>
               ))}
             </ol>
@@ -309,7 +309,10 @@ export function ToolPage({
               What is the {tool.name}?
             </h2>
             {tool.about.map((p) => (
-              <p key={p} className="text-sm leading-relaxed text-gray-700">
+              <p
+                key={p}
+                className="break-words text-sm leading-relaxed text-gray-700"
+              >
                 {p}
               </p>
             ))}

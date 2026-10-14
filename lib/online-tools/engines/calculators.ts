@@ -17,6 +17,7 @@ import {
 } from './dates';
 import { fail, money, num, pct, plural } from './calc-helpers';
 import { MORE_CALCULATORS } from './calculators-more';
+import { EXTRA_CALCULATORS } from './calculators-extra';
 import { formatNumber } from './units';
 
 export type ShowIf = { field: string; values: string[] };
@@ -1683,4 +1684,4 @@ export function initialValues(
   );
 }
 
-Object.assign(CALCULATORS, MORE_CALCULATORS);
+Object.assign(CALCULATORS, MORE_CALCULATORS, EXTRA_CALCULATORS);

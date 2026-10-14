@@ -1500,4 +1500,110 @@ export const IMAGE_TOOLS: ToolDefinition[] = [
       },
     ],
   },
+  {
+    slug: 'image-color-picker',
+    category: 'image-tools',
+    alsoIn: ['color-tools'],
+    name: 'Image Color Picker',
+    icon: '🎯',
+    shortDescription: 'Click any pixel of an image to get its colour.',
+    description:
+      'Open an image and click or tap any pixel to get its exact HEX, RGB and HSL colour and its x/y coordinates, with a magnifier for precise picking and arrow-key nudging. The image is shown at any size but read at full resolution, and it never leaves your device.',
+    title: 'Image Color Picker – Get the Color of Any Pixel',
+    metaDescription:
+      'Free image color picker: click or tap a pixel to get its HEX, RGB and HSL code and coordinates, with a magnifier and arrow-key nudging. Full resolution, no upload.',
+    keywords: [
+      'image color picker',
+      'color picker from image',
+      'pixel color picker',
+      'get color from image',
+      'eyedropper from image',
+      'hex color from image',
+    ],
+    relatedTools: [
+      'image-color-palette-extractor',
+      'color-picker',
+      'color-converter',
+      'contrast-checker',
+      'image-exif-viewer',
+    ],
+    component: 'image-color-picker',
+    handlesFiles: true,
+    howTo: [
+      'Choose or drop an image.',
+      'Move over the image — the magnifier shows the pixels around the pointer — and click or tap to pick one.',
+      'Copy the HEX, RGB or HSL value. Use the arrow keys (with Shift for 10 pixels) to nudge the selection, and recent picks stay available below.',
+    ],
+    about: [
+      'Pointer positions on a scaled image don’t match the image’s own pixels: an image 4,000 pixels wide shown 800 pixels wide maps five source pixels to every screen pixel. The picker converts the pointer position to the image’s natural size before reading the colour, so the coordinates and values are those of the original pixel — counted from 0,0 in the top-left corner.',
+      'Photos from phones often store their rotation in EXIF metadata; the picker applies it first, so coordinates match the image as you see it. Very large images are reduced to 8,192 pixels on the longest side to stay within browser memory limits, and the page says so when that happens. For a whole-image palette instead of single pixels, use the Image Color Palette Extractor.',
+    ],
+    faqs: [
+      {
+        q: 'Are the coordinates of the original image?',
+        a: 'Yes. Whatever size the image is shown at, x and y are in the image’s own pixels, starting at 0,0 in the top-left corner (unless a very large image had to be reduced, which the tool tells you).',
+      },
+      {
+        q: 'Can I pick a colour from my screen instead?',
+        a: 'In Chrome and Edge, the Color Picker tool on this site has a screen eyedropper. This tool works on image files on any browser.',
+      },
+      {
+        q: 'Why is the colour slightly different from the design file?',
+        a: 'JPEG compression and colour profiles change pixel values a little. For exact brand colours, check the original design file or a lossless PNG.',
+      },
+    ],
+  },
+  {
+    slug: 'dpi-calculator',
+    category: 'image-tools',
+    alsoIn: ['calculators'],
+    name: 'DPI & Print Size Calculator',
+    icon: '🖨️',
+    shortDescription: 'Pixels, DPI and print size — calculate any one.',
+    description:
+      'Work out how big an image prints at a given DPI, how many pixels you need for a print size, or the effective DPI of an image at a size — in inches, centimetres or millimetres. Includes a quality guide for photo prints and posters.',
+    title: 'DPI Calculator – Pixels to Print Size in cm, mm & Inches',
+    metaDescription:
+      'Free DPI calculator: convert pixels to print size at any DPI, find the pixels needed for a print, or the effective DPI of an image, in inches, cm or mm, with a quality guide.',
+    keywords: [
+      'dpi calculator',
+      'pixels to inches',
+      'print size calculator',
+      'ppi calculator',
+      'pixels to cm',
+      'image resolution for print',
+    ],
+    relatedTools: [
+      'image-resizer',
+      'aspect-ratio-calculator',
+      'measurement-reference',
+      'passport-photo-maker',
+      'length-converter',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'dpi' },
+    howTo: [
+      'Choose what to calculate: print size, the pixels needed, or the DPI of an image at a given size.',
+      'Enter the known values and pick inches, centimetres or millimetres.',
+      'Read the result, the formula used and the print-quality guide.',
+    ],
+    about: [
+      'DPI (dots per inch) — strictly PPI, pixels per inch, for digital images — links pixel dimensions to physical size: inches = pixels ÷ DPI, and pixels = inches × DPI. A 3000 × 2000 pixel photo printed at 300 DPI is 10 × 6.67 inches (25.4 × 16.9 cm); at 150 DPI it prints twice as large but half as sharp.',
+      'The DPI number stored in an image file changes nothing about the image itself — it only tells software what size to print it by default. More pixels mean more detail; a higher DPI setting on the same pixels just makes the print smaller. As a guide, 300 DPI looks sharp in the hand, 150–200 DPI is fine for posters viewed from a metre or more, and large banners viewed from far away can go lower. Upscaling a small image adds pixels but not real detail.',
+    ],
+    faqs: [
+      {
+        q: 'What DPI do I need for printing?',
+        a: '300 DPI for photos and documents you hold close, 150–200 DPI for posters, and less for large banners seen from a distance. Many print shops ask for 300 DPI at the final size.',
+      },
+      {
+        q: 'How many pixels do I need for an A4 print at 300 DPI?',
+        a: 'A4 is 210 × 297 mm (8.27 × 11.69 in), so about 2,481 × 3,508 pixels. Choose “Pixels needed”, enter 210 × 297 mm and 300 DPI to check.',
+      },
+      {
+        q: 'Does changing the DPI make my image sharper?',
+        a: 'No. Changing only the DPI value changes the default print size, not the detail. Sharpness depends on the number of pixels and on how large you print them.',
+      },
+    ],
+  },
 ];

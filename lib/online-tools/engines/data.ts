@@ -22,6 +22,88 @@ function lineColumnAt(text: string, index: number) {
   return { line, column };
 }
 
+/**
+ * Offset of the first syntax error in `text`, or -1. A small validating
+ * scanner used when the engine's error message has no position (current
+ * Chrome and Node only say "Unexpected token").
+ */
+export function jsonErrorOffset(text: string): number {
+  let i = 0;
+  const ws = () => {
+    while (i < text.length && ' \t\n\r'.includes(text[i])) i++;
+  };
+  const fail = () => {
+    throw i;
+  };
+  const value = (depth: number): void => {
+    if (depth > 512) fail();
+    ws();
+    const c = text[i];
+    if (c === '{') {
+      i++;
+      ws();
+      if (text[i] === '}') return void i++;
+      for (;;) {
+        ws();
+        if (text[i] !== '"') fail();
+        string();
+        ws();
+        if (text[i] !== ':') fail();
+        i++;
+        value(depth + 1);
+        ws();
+        if (text[i] === ',') i++;
+        else if (text[i] === '}') return void i++;
+        else fail();
+      }
+    }
+    if (c === '[') {
+      i++;
+      ws();
+      if (text[i] === ']') return void i++;
+      for (;;) {
+        value(depth + 1);
+        ws();
+        if (text[i] === ',') i++;
+        else if (text[i] === ']') return void i++;
+        else fail();
+      }
+    }
+    if (c === '"') return string();
+    for (const lit of ['true', 'false', 'null'])
+      if (text.startsWith(lit, i)) return void (i += lit.length);
+    const m = /^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/.exec(
+      text.slice(i, i + 400),
+    );
+    if (!m) fail();
+    i += m![0].length;
+  };
+  const string = () => {
+    i++;
+    while (i < text.length) {
+      const c = text[i];
+      if (c === '"') return void i++;
+      if (c === '\\') {
+        const e = text[i + 1];
+        if (e === 'u') {
+          if (!/^[0-9a-fA-F]{4}$/.test(text.slice(i + 2, i + 6))) fail();
+          i += 6;
+        } else if (e !== undefined && '"\\/bfnrt'.includes(e)) i += 2;
+        else fail();
+      } else if (c < ' ') fail();
+      else i++;
+    }
+    fail();
+  };
+  try {
+    value(0);
+    ws();
+    return i < text.length ? i : -1;
+  } catch (pos) {
+    return typeof pos === 'number' ? Math.min(pos, text.length) : -1;
+  }
+}
+
 export function validateJson(input: string): JsonValidation {
   if (!input.trim())
     return { valid: false, message: 'Please enter some JSON.' };
@@ -38,11 +120,17 @@ export function validateJson(input: string): JsonValidation {
       column = Number(lc[2]);
     } else if (pos) {
       ({ line, column } = lineColumnAt(input, Number(pos[1])));
+    } else {
+      const at = jsonErrorOffset(input);
+      if (at !== -1) ({ line, column } = lineColumnAt(input, at));
     }
     const cleaned = raw
       .replace(/^JSON\.parse: /, '')
-      .replace(/ in JSON at position \d+.*$/, '')
-      .replace(/ at line \d+ column \d+.*$/, '');
+      .replace(/ (in JSON )?at position \d+.*$/, '')
+      .replace(/ at line \d+ column \d+.*$/, '')
+      // V8 quotes the input: `Unexpected token '}', "…" is not valid JSON`.
+      .replace(/, (\.\.\.)?"[\s\S]*" is not valid JSON$/, '')
+      .replace(/^"[\s\S]*" is not valid JSON$/, 'unexpected input');
     return {
       valid: false,
       message: `Invalid JSON: ${cleaned}${line ? ` (line ${line}, column ${column})` : ''}.`,

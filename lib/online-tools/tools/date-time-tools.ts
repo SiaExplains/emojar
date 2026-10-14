@@ -62,6 +62,7 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       'rfc 2822',
     ],
     relatedTools: [
+      'date-format-converter',
       'unix-timestamp-converter',
       'timezone-converter',
       'date-difference-calculator',
@@ -733,6 +734,60 @@ export const DATE_TIME_TOOLS: ToolDefinition[] = [
       {
         q: 'Why do some places have 30- or 45-minute offsets?',
         a: 'Countries choose their offsets: India is UTC+5:30, Nepal UTC+5:45 and Newfoundland UTC−3:30 (UTC−2:30 in summer).',
+      },
+    ],
+  },
+  {
+    slug: 'date-format-converter',
+    category: 'date-time-tools',
+    name: 'Date Format Converter',
+    icon: '📆',
+    shortDescription: 'Convert dates between DD/MM/YYYY, MM/DD/YYYY and ISO.',
+    description:
+      'Convert a date — or a list of dates, one per line — between ISO 8601 (YYYY-MM-DD), DD/MM/YYYY, MM/DD/YYYY, DD.MM.YYYY, written-out formats and more. Ambiguous dates such as 03/04/2026 are flagged instead of guessed, calendar dates are checked (including leap years) and dates never shift across time zones.',
+    title: 'Date Format Converter – DD/MM/YYYY, MM/DD/YYYY & ISO 8601',
+    metaDescription:
+      'Free date format converter: convert dates between ISO 8601, DD/MM/YYYY, MM/DD/YYYY, DD.MM.YYYY and written formats, one or many at once. Flags ambiguous dates.',
+    keywords: [
+      'date format converter',
+      'convert date format',
+      'dd/mm/yyyy to mm/dd/yyyy',
+      'iso 8601 date converter',
+      'yyyy-mm-dd converter',
+    ],
+    relatedTools: [
+      'timestamp-converter',
+      'day-of-week-calculator',
+      'date-difference-calculator',
+      'date-add-subtract',
+      'week-number-calculator',
+    ],
+    component: 'date-format',
+    howTo: [
+      'Type or paste a date, or a list with one date per line.',
+      'Leave the input format on Detect, or choose it — you must choose when a date like 03/04/2026 could be read two ways.',
+      'Pick the output format and copy the result. A single date is shown in every format at once.',
+    ],
+    about: [
+      'The same date is written differently around the world: 14/10/2026 in the UK, Europe and most of the world, 10/14/2026 in the United States, 2026-10-14 in ISO 8601 (the international standard used in software and filenames) and 14.10.2026 in Germany. Dates where both the day and month are 12 or less are genuinely ambiguous — 03/04/2026 is 3 April in London and March 4 in New York — so the converter shows both readings and asks rather than guessing.',
+      'The converter works with calendar dates only: year, month and day. It never turns them into a timestamp in your local time zone, which is how many tools accidentally move a date to the previous day. It checks that the date exists — 29 February only in leap years, which are divisible by 4 except century years not divisible by 400 — and reads two-digit years only when you choose that format (00–49 as 2000–2049, 50–99 as 1950–1999).',
+    ],
+    faqs: [
+      {
+        q: 'Why does it ask me to choose a format?',
+        a: 'Because the date is ambiguous: 03/04/2026 is 3 April in day-first countries and March 4 in the US. Choose the input format and every line is read the same way.',
+      },
+      {
+        q: 'Which format should I use for files and databases?',
+        a: 'ISO 8601, YYYY-MM-DD. It is unambiguous worldwide and sorts correctly as text.',
+      },
+      {
+        q: 'Can it convert dates with times?',
+        a: 'No — times bring time zones into play. Use the Timestamp Converter for dates with times, Unix timestamps and time zones.',
+      },
+      {
+        q: 'Is 2100 a leap year?',
+        a: 'No. Century years are leap years only if divisible by 400, so 2000 was a leap year but 2100 won’t be.',
       },
     ],
   },

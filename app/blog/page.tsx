@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { publishedGuides } from '@/lib/blog/guides';
 import { getCategory, getTool } from '@/lib/online-tools/registry';
 import { ogImages } from '@/lib/og';
+import { card, textLink, tile } from '@/components/ui/styles';
 
 const BLOG_DESCRIPTION =
   'Practical guides to free online tools — images, PDFs, text, code, calculators and more — plus emoji game tips and updates from Emojar founder Siavash Ghanbari.';
@@ -436,10 +437,12 @@ export default async function BlogIndexPage({
   const allTags = getAllTags(allPosts).slice(0, 30);
 
   return (
-    <div className="py-10">
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight mb-1">Blog</h1>
-        <p className="text-gray-500 text-sm">
+    <div className="py-4">
+      <div className="mx-auto mb-10 max-w-3xl text-center">
+        <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+          Blog
+        </h1>
+        <p className="text-sm text-gray-500">
           By <span className="font-medium text-gray-700">Siavash Ghanbari</span>
           {' · '}Founder of Emojar
         </p>
@@ -453,7 +456,7 @@ export default async function BlogIndexPage({
               <span>
                 Showing: <strong className="text-gray-800">{activeTag}</strong>
               </span>
-              <Link href="/blog" className="text-blue-600 hover:underline">
+              <Link href="/blog" className={textLink}>
                 Clear
               </Link>
             </div>
@@ -463,12 +466,12 @@ export default async function BlogIndexPage({
             <p className="text-gray-400 text-sm">No posts found.</p>
           )}
 
-          <ul className="space-y-3">
+          <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4 2xl:grid-cols-3">
             {filtered.map((post) => (
               <li key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group block rounded-xl border border-gray-100 bg-white px-5 py-4 shadow-sm hover:bg-gray-50 transition-colors no-underline"
+                  className={`${tile} no-underline`}
                 >
                   <time className="text-xs text-gray-400 tracking-wide uppercase">
                     {new Date(post.date + 'T12:00:00').toLocaleDateString(
@@ -476,27 +479,24 @@ export default async function BlogIndexPage({
                       { day: 'numeric', month: 'long', year: 'numeric' },
                     )}
                   </time>
-                  <h2 className="mt-1 text-base font-semibold leading-snug text-gray-900">
+                  <h2 className="mt-2 text-[15px] font-semibold leading-snug text-gray-900 group-hover:text-brand-700">
                     {post.emoji && <span className="mr-1.5">{post.emoji}</span>}
                     {post.title}
                   </h2>
-                  <p className="mt-1 text-gray-500 text-sm leading-6">
+                  <p className="mt-1.5 line-clamp-3 flex-1 text-[13px] leading-relaxed text-gray-500">
                     {post.description}
                   </p>
-                  <div className="flex items-center justify-between mt-2.5">
+                  <div className="mt-3 flex items-center justify-between">
                     <div className="flex flex-wrap gap-1.5">
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs bg-gray-100 text-gray-500 rounded-full px-2.5 py-0.5 font-medium"
+                          className="rounded-md bg-gray-50 px-2 py-0.5 text-[11px] font-medium text-gray-500 ring-1 ring-inset ring-gray-100"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <span className="text-xs text-gray-400 flex-shrink-0 ml-2 hidden sm:block">
-                      Siavash Ghanbari
-                    </span>
                   </div>
                 </Link>
               </li>
@@ -509,10 +509,7 @@ export default async function BlogIndexPage({
               className="mt-8 flex items-center justify-between text-sm"
             >
               {page > 1 ? (
-                <Link
-                  href={pageHref(page - 1)}
-                  className="text-blue-600 hover:underline"
-                >
+                <Link href={pageHref(page - 1)} className={textLink}>
                   ← Newer posts
                 </Link>
               ) : (
@@ -522,10 +519,7 @@ export default async function BlogIndexPage({
                 Page {page} of {pages}
               </span>
               {page < pages ? (
-                <Link
-                  href={pageHref(page + 1)}
-                  className="text-blue-600 hover:underline"
-                >
+                <Link href={pageHref(page + 1)} className={textLink}>
                   Older posts →
                 </Link>
               ) : (
@@ -553,8 +547,8 @@ export default async function BlogIndexPage({
                   }
                   className={`text-xs rounded-full px-2.5 py-1 font-medium transition-colors no-underline ${
                     activeTag === tag
-                      ? 'bg-emerald-600 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      ? 'bg-gray-900 text-white'
+                      : 'border border-[#dedee8] bg-white text-gray-700 hover:bg-gray-50'
                   }`}
                 >
                   {tag} <span className="opacity-60">{count}</span>
@@ -579,7 +573,7 @@ export default async function BlogIndexPage({
           </div>
 
           {/* About */}
-          <div className="rounded-xl border border-gray-100 bg-gray-50 p-4">
+          <div className={`${card} p-4`}>
             <div className="flex items-center gap-2.5 mb-2">
               <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs flex-shrink-0">
                 SG

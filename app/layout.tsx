@@ -154,8 +154,8 @@ export default function RootLayout({
           >
             Skip to content
           </a>
-          <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/80 backdrop-blur">
-            <div className="flex w-full items-center justify-between py-3 px-4 sm:px-6 lg:px-8 2xl:px-12">
+          <header className="sticky top-0 z-40 border-b border-[#e8e8f0] bg-white">
+            <div className="flex h-16 w-full items-center justify-between gap-2 px-4 sm:px-6 lg:px-8 2xl:px-12">
               <div className="logo-container flex-shrink-0">
                 <Link href="/" className="font-semibold">
                   <HeaderLogo />
@@ -176,13 +176,13 @@ export default function RootLayout({
         <SiteChrome>
           <BackToTopButton />
 
-          <footer className="mt-12 border-t border-gray-100 bg-gray-50 text-sm">
+          <footer className="mt-16 border-t border-[#e8e8f0] bg-white text-sm">
             <nav
               aria-label="Footer"
               className="grid w-full gap-8 py-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] px-4 sm:px-6 lg:px-8 2xl:px-12"
             >
               <div>
-                <h2 className="font-semibold text-gray-900">
+                <h2 className="text-xs font-bold uppercase tracking-wider text-gray-900">
                   <Link href="/online-tool" className="hover:text-brand-700">
                     Online tools
                   </Link>
@@ -202,7 +202,9 @@ export default function RootLayout({
               </div>
               {FOOTER_GROUPS.map((g) => (
                 <div key={g.title}>
-                  <h2 className="font-semibold text-gray-900">{g.title}</h2>
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-gray-900">
+                    {g.title}
+                  </h2>
                   <ul className="mt-3 space-y-2 text-gray-600">
                     {g.links.map(([href, label]) => (
                       <li key={href}>
@@ -215,8 +217,8 @@ export default function RootLayout({
                 </div>
               ))}
             </nav>
-            <div className="border-t border-gray-100">
-              <p className="w-full py-5 text-gray-500 px-4 sm:px-6 lg:px-8 2xl:px-12">
+            <div className="border-t border-[#e8e8f0]">
+              <p className="w-full py-5 text-xs text-gray-500 px-4 sm:px-6 lg:px-8 2xl:px-12">
                 © {new Date().getFullYear()} Emojar · Free tools that run in
                 your browser
               </p>

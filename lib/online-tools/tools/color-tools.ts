@@ -240,7 +240,7 @@ export const COLOR_TOOLS: ToolDefinition[] = [
     howTo: [
       'Enter or pick the text and background colors.',
       'Read the contrast ratio and the pass/fail results.',
-      'Use “Swap” or adjust lightness until the checks pass.',
+      'Use “Swap colors” or pick a darker or lighter shade until the checks pass.',
     ],
     about: [
       'WCAG requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text (18pt, or 14pt bold) at level AA; AAA requires 7:1 and 4.5:1. User-interface components and icons need 3:1.',

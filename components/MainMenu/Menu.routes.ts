@@ -1,6 +1,13 @@
 import { CATEGORIES } from '@/lib/online-tools/categories';
 
-export type MenuLink = { href: string; label: string };
+export type MenuLink = {
+  href: string;
+  label: string;
+  /** Shown in a tinted square in the desktop panel (tool categories). */
+  icon?: string;
+  /** Category slug for the icon square's tint. */
+  tint?: string;
+};
 export type MenuEntry = MenuLink & {
   /** Links shown in the entry's panel; the entry itself is always a link too. */
   children?: MenuLink[];
@@ -13,10 +20,12 @@ export const MENU_ROUTES: MenuEntry[] = [
     href: '/online-tool',
     label: 'Tools',
     children: [
-      { href: '/online-tool', label: '🧰 All tools' },
+      { href: '/online-tool', label: 'All tools', icon: '🧰' },
       ...CATEGORIES.map((c) => ({
         href: `/online-tool/${c.slug}`,
-        label: `${c.icon} ${c.name}`,
+        label: c.name,
+        icon: c.icon,
+        tint: c.slug,
       })),
     ],
   },

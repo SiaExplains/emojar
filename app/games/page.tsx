@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ogImages } from '@/lib/og';
+import { tile } from '@/components/ui/styles';
 
 export const metadata: Metadata = {
   title: 'Emoji Games | Emojar',
@@ -172,12 +173,12 @@ const games = [
 
 const GamesPage = () => {
   return (
-    <section className="space-y-10 py-6">
-      <div>
-        <h1 className="text-3xl font-semibold tracking-tight mb-2">
+    <section className="space-y-10 py-4">
+      <div className="mx-auto max-w-3xl text-center">
+        <h1 className="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
           Emoji Games
         </h1>
-        <p className="text-gray-500">
+        <p className="text-base leading-relaxed text-gray-600 sm:text-lg">
           19 free emoji-themed games, all playable right in your browser — no
           download, no sign-up. From memory puzzles and logic challenges to
           trivia and classic arcade games, there&apos;s something for every kind
@@ -185,26 +186,25 @@ const GamesPage = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
         {games.map((game) => (
           <Link
             key={game.path}
             href={game.path}
-            className="group flex flex-col rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 no-underline bg-white"
+            className={`${tile} no-underline`}
           >
-            <div
-              className={`bg-gradient-to-br ${game.color} flex items-center justify-center py-6 text-4xl`}
+            <span
+              aria-hidden
+              className={`flex h-11 w-fit items-center justify-center rounded-xl bg-gradient-to-br px-2.5 text-xl leading-none ${game.color}`}
             >
               {game.emoji}
-            </div>
-            <div className="px-3 py-3 flex flex-col gap-0.5">
-              <p className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
-                {game.name}
-              </p>
-              <p className="text-xs text-gray-400 leading-snug line-clamp-2">
-                {game.description}
-              </p>
-            </div>
+            </span>
+            <span className="mt-4 block text-[15px] font-semibold leading-snug text-gray-900 group-hover:text-brand-700">
+              {game.name}
+            </span>
+            <span className="mt-1.5 line-clamp-3 block text-[13px] leading-relaxed text-gray-500">
+              {game.description}
+            </span>
           </Link>
         ))}
       </div>

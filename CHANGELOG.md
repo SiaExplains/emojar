@@ -4,6 +4,50 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.22.0] — 2026-10-14
+
+### Changed
+
+- A new look across the site, inspired by iLovePDF: a soft grey page
+  background with white rounded tiles. Each tool tile has a colour-coded
+  icon for its category, its name and a short description.
+- The homepage lists every tool, grouped by category, with filter pills
+  ("All", "PDF", "Image"…) that show one category at a time. The Online
+  Tools page uses the same layout.
+- A cleaner header with compact uppercase navigation; the Tools menu shows
+  each category with its coloured icon.
+- Tool pages have a centred title, and the steps, explanation and FAQ sit
+  on white cards. Category pages, the blog, games and the footer use the
+  same tiles and cards.
+- A more compact homepage top, so the first tools show without scrolling.
+
+### Fixed
+
+- Removed an empty gap above the title on the homepage, the Online Tools
+  page, category pages and tool pages.
+
+### Added
+
+- A short FAQ on the homepage: is it free, are files uploaded, do you need
+  an account, and which browsers work.
+
+## [0.21.0] — 2026-10-12
+
+### Added
+
+- Six new blog posts that walk through a real task with several tools each:
+  fixing, signing and shrinking a PDF; quick photo fixes before you post; a
+  browser toolbox for debugging an API and shipping UI; planning a week or a
+  small project; everyday money maths; and polishing website text and
+  colours.
+
+### Changed
+
+- The remaining tool guides now publish six a day, so every guide is live by
+  20 November 2026 instead of February 2027.
+- The Readability Score FAQ now says German, Spanish and French are
+  supported, and the Contrast Checker steps match its controls.
+
 ## [0.20.1] — 2026-10-11
 
 ### Changed

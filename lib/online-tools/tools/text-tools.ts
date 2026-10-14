@@ -1062,7 +1062,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       },
       {
         q: 'Does it work for languages other than English?',
-        a: 'The formulas and syllable counting are tuned for English, so results for other languages are not meaningful.',
+        a: 'Yes — choose German, Spanish or French in the language menu to get scores built for that language (Amstad and the Wiener Sachtextformel, Fernández Huerta and Szigriszt-Pazos, Kandel–Moles). The English formulas are only meaningful for English text.',
       },
     ],
   },

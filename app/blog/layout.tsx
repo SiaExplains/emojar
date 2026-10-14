@@ -8,7 +8,7 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-full px-5 py-12">
+    <div className="w-full py-2">
       <BlogStructuredData />
       <Breadcrumb crumbs={[{ label: 'Blog', href: '/blog' }]} />
       <BlogLayoutWrapper>{children}</BlogLayoutWrapper>

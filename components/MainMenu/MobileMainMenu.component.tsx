@@ -53,7 +53,7 @@ export default function MobileMainMenu() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-gray-300 px-3 text-sm font-medium text-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#dedee8] bg-white px-4 text-sm font-semibold text-gray-800 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
           <path
@@ -70,7 +70,7 @@ export default function MobileMainMenu() {
         ref={panel}
         id={panelId}
         hidden={!open}
-        className="absolute right-0 top-full z-50 mt-2 w-[88vw] max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
+        className="absolute right-0 top-full z-50 mt-2 w-[88vw] max-w-sm overflow-hidden rounded-2xl border border-[#e8e8f0] bg-white shadow-[0_16px_40px_-12px_rgba(30,30,60,0.25)]"
       >
         <ul className="max-h-[70vh] divide-y divide-gray-100 overflow-auto p-2">
           {MENU_ROUTES.map((item, i) => {
@@ -83,7 +83,7 @@ export default function MobileMainMenu() {
                   <Link
                     href={item.href}
                     aria-current={pathname === item.href ? 'page' : undefined}
-                    className={`${row} font-medium ${
+                    className={`${row} text-[13px] font-semibold uppercase tracking-wide ${
                       isActive(pathname, item.href)
                         ? 'text-brand-700'
                         : 'text-gray-900'
@@ -133,6 +133,11 @@ export default function MobileMainMenu() {
                               : 'text-gray-700'
                           }`}
                         >
+                          {child.icon && (
+                            <span aria-hidden className="mr-1.5">
+                              {child.icon}
+                            </span>
+                          )}
                           {child.label}
                         </Link>
                       </li>

@@ -1,4 +1,13 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
+import {
+  tile,
+  tileBadge,
+  tileDesc,
+  tileIcon,
+  tileTitle,
+} from '@/components/ui/styles';
+import { tintFor } from '@/lib/online-tools/category-style';
 
 export type ToolCardData = {
   href: string;
@@ -9,10 +18,42 @@ export type ToolCardData = {
   external?: boolean;
   /** Category label, shown on mixed lists so the kind of tool is clear. */
   category?: string;
+  /** Category slug, which picks the icon square's tint. */
+  tint?: string;
 };
 
-const CARD =
-  'group flex items-start gap-3 rounded-2xl border border-gray-100 bg-white px-4 py-3.5 transition hover:border-gray-200 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500';
+function TileBody({
+  tool,
+  badge,
+  note,
+}: {
+  tool: ToolCardData;
+  badge?: ReactNode;
+  note?: string;
+}) {
+  return (
+    <>
+      <span className="flex items-start justify-between gap-2">
+        <span aria-hidden className={`${tileIcon} ${tintFor(tool.tint)}`}>
+          {tool.icon}
+        </span>
+        {badge}
+      </span>
+      <span className={tileTitle}>
+        {tool.name}
+        {tool.external && (
+          <span aria-hidden className="ml-1 text-xs font-normal text-gray-400">
+            ↗
+          </span>
+        )}
+      </span>
+      <span className={tileDesc}>{tool.description}</span>
+      {note && (
+        <span className="mt-auto block pt-2 text-xs text-gray-400">{note}</span>
+      )}
+    </>
+  );
+}
 
 export function ToolCard({ tool }: { tool: ToolCardData }) {
   if (tool.external)
@@ -21,45 +62,19 @@ export function ToolCard({ tool }: { tool: ToolCardData }) {
         href={tool.href}
         target="_blank"
         rel="noopener noreferrer"
-        className={CARD}
+        className={tile}
       >
-        <span aria-hidden className="mt-0.5 shrink-0 text-2xl leading-none">
-          {tool.icon}
-        </span>
-        <span className="min-w-0">
-          <span className="block text-sm font-semibold text-gray-900 group-hover:text-brand-700">
-            {tool.name}{' '}
-            <span aria-hidden className="text-xs font-normal text-gray-400">
-              ↗
-            </span>
-          </span>
-          <span className="mt-0.5 block text-xs leading-snug text-gray-500">
-            {tool.description}
-          </span>
-          <span className="mt-1 block text-xs text-gray-400">
-            External site · opens in a new tab
-          </span>
-        </span>
+        <TileBody tool={tool} note="External site · opens in a new tab" />
       </a>
     );
   return (
-    <Link href={tool.href} className={CARD}>
-      <span aria-hidden className="mt-0.5 shrink-0 text-2xl leading-none">
-        {tool.icon}
-      </span>
-      <span className="min-w-0">
-        <span className="block text-sm font-semibold text-gray-900 group-hover:text-brand-700">
-          {tool.name}
-        </span>
-        <span className="mt-0.5 block text-xs leading-snug text-gray-500">
-          {tool.description}
-        </span>
-        {tool.category && (
-          <span className="mt-1.5 inline-block rounded-full bg-gray-50 px-2 py-0.5 text-xs text-gray-500">
-            {tool.category}
-          </span>
-        )}
-      </span>
+    <Link href={tool.href} className={tile}>
+      <TileBody
+        tool={tool}
+        badge={
+          tool.category && <span className={tileBadge}>{tool.category}</span>
+        }
+      />
     </Link>
   );
 }
@@ -73,7 +88,7 @@ export function ToolGrid({
 }) {
   return (
     <ul
-      className={`grid grid-cols-1 gap-2 sm:grid-cols-2 ${columns === 3 ? 'lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5' : 'xl:grid-cols-3'}`}
+      className={`grid grid-cols-2 gap-3 sm:gap-4 ${columns === 3 ? 'md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6' : 'md:grid-cols-3 xl:grid-cols-4'}`}
     >
       {tools.map((t) => (
         <li key={t.href}>

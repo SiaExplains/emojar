@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.24.1] — 2026-10-14
+
+### Changed
+
+- Docs refreshed after the 0.24.0 release: the AdSense notes give the
+  current tool count (288), and the backlog lists real-device checks and
+  known heuristics for the 20 new tools.
+
 ## [0.24.0] — 2026-10-14
 
 ### Added

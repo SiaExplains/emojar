@@ -241,4 +241,12 @@
 
 **Description:** Generators now live in `scripts/reference-data/` (see its README). Run `npm run data:reference` once a year and when Unicode ships a new major version, then review the diff and run the tests. Last run: October 2026 (discovery years corrected).
 
+### [ ] New tools (v0.23.0): checks on real devices
+
+**Description:** Typing Speed Test, Resume Builder, Online Notepad and Flashcard Maker were tested in a desktop browser at 1280 and 375 px. Still to do on real phones: typing with on-screen keyboards and autocorrect (iOS Safari, Android Chrome), the resume's Print → Save as PDF on iOS, and localStorage persistence in Safari after a week without visits (Safari can evict site data).
+
+### [ ] Resume PDF: fonts for non-Latin scripts
+
+**Description:** `resumePdf()` uses pdf-lib's standard Helvetica (WinAnsi), so Cyrillic, Greek, Arabic, Persian and CJK resumes get an error that points to Print → Save as PDF. Option: lazy-load a subset font (e.g. Noto Sans, OFL) with `@pdf-lib/fontkit` only when the text needs it, so Latin users don't pay the ~200 KB+ download.
+
 ---

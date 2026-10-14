@@ -70,6 +70,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'json syntax',
     ],
     relatedTools: [
+      'json-schema-generator',
       'json-formatter',
       'json-minifier',
       'yaml-to-json',
@@ -142,6 +143,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'Convert JSON to YAML online instantly. Clean output for Kubernetes, Docker Compose and CI configs. Free and private.',
     keywords: ['json to yaml', 'convert json to yaml', 'json yaml converter'],
     relatedTools: [
+      'json-to-toml',
       'yaml-to-json',
       'json-formatter',
       'json-to-csv',
@@ -293,6 +295,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'pretty print xml',
     ],
     relatedTools: [
+      'csv-viewer',
       'json-to-xml',
       'html-formatter',
       'json-formatter',
@@ -1347,6 +1350,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'remove utm parameters',
     ],
     relatedTools: [
+      'utm-builder',
       'url-encoder',
       'url-decoder',
       'meta-tag-generator',
@@ -1598,6 +1602,7 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       'seo meta tags',
     ],
     relatedTools: [
+      'social-share-preview',
       'robots-txt-generator',
       'url-parser',
       'favicon-generator',
@@ -2728,6 +2733,578 @@ export const DEVELOPER_TOOLS: ToolDefinition[] = [
       {
         q: 'Can I upload a file with multipart?',
         a: 'The builder writes text fields only, because a web page can’t embed your local files into code. Add a file part by hand, for example -F \'file=@photo.jpg\' in cURL or files={"file": open("photo.jpg", "rb")} in Python.',
+      },
+    ],
+  },
+  {
+    slug: 'utm-builder',
+    category: 'developer-tools',
+    name: 'UTM Link Builder',
+    icon: '🔗',
+    shortDescription: 'Add UTM campaign tags to any URL.',
+    description:
+      'Build campaign URLs with UTM parameters for Google Analytics and other analytics tools. Enter the page URL plus source, medium and campaign (and optionally term and content) to get a correctly encoded link. Existing query parameters and the #fragment are kept, and the page is never visited.',
+    title: 'UTM Link Builder – Create Campaign URLs with UTM Tags',
+    metaDescription:
+      'Free UTM builder: add utm_source, utm_medium, utm_campaign, utm_term and utm_content to any URL. Keeps existing parameters and #fragments; copy the link in one click.',
+    keywords: [
+      'utm builder',
+      'utm link builder',
+      'campaign url builder',
+      'utm generator',
+      'utm parameters',
+      'google analytics campaign url',
+    ],
+    relatedTools: [
+      'url-parser',
+      'url-encoder',
+      'qr-code-generator',
+      'social-share-preview',
+      'meta-tag-generator',
+    ],
+    component: 'utm-builder',
+    howTo: [
+      'Paste the page you want to send people to, for example https://example.com/sale.',
+      'Fill in campaign source (where the visit comes from, e.g. newsletter), medium (the channel, e.g. email) and campaign name (e.g. spring_sale). Term and content are optional.',
+      'Copy the finished URL and use it in your email, ad or post. Reset clears the form for the next link.',
+    ],
+    about: [
+      'UTM parameters are five standard query-string tags — utm_source, utm_medium, utm_campaign, utm_term and utm_content — that analytics tools such as Google Analytics read to attribute a visit to a campaign. A link like https://example.com/sale?utm_source=newsletter&utm_medium=email&utm_campaign=spring_sale tells your reports that the visitor came from the spring sale newsletter.',
+      'The values are case-sensitive in most analytics tools, so “Email” and “email” appear as two different mediums. Pick a naming convention — lowercase words joined with underscores or dashes is common — and use it everywhere. This builder encodes special characters, keeps any parameters and #fragments already in the URL, and replaces a UTM tag that is already present instead of adding a duplicate.',
+    ],
+    faqs: [
+      {
+        q: 'Which UTM parameters are required?',
+        a: 'Google Analytics needs utm_source, utm_medium and utm_campaign to attribute a visit properly. utm_term (paid search keyword) and utm_content (to tell apart links in the same ad or email) are optional.',
+      },
+      {
+        q: 'What happens to parameters already in my URL?',
+        a: 'They are kept in their original order and the UTM tags are added after them. If the URL already contains a UTM tag that you fill in, the old value is replaced and the tool tells you so. A #fragment stays at the end, where browsers expect it.',
+      },
+      {
+        q: 'Should I use UTM tags on links within my own site?',
+        a: 'No. A UTM tag on an internal link replaces the visit’s real traffic source in your reports, so the original campaign loses the credit. Use them only on links from outside your site — emails, ads, social posts, QR codes.',
+      },
+      {
+        q: 'Does the tool visit or check my URL?',
+        a: 'No. The link is assembled in your browser with the built-in URL API; nothing is requested from the destination or sent anywhere.',
+      },
+    ],
+  },
+  {
+    slug: 'faq-schema-generator',
+    category: 'developer-tools',
+    name: 'FAQ Schema Generator',
+    icon: '❓',
+    shortDescription: 'Create FAQPage JSON-LD structured data.',
+    description:
+      'Generate FAQPage structured data (JSON-LD) from your questions and answers. Add, edit and remove pairs and copy or download valid, correctly escaped Schema.org markup, ready to paste into your page as a script tag.',
+    title: 'FAQ Schema Generator – FAQPage JSON-LD Markup',
+    metaDescription:
+      'Free FAQ schema generator: add questions and answers and get valid FAQPage JSON-LD (Schema.org), escaped and ready to paste. Copy or download — runs in your browser.',
+    keywords: [
+      'faq schema generator',
+      'faqpage schema',
+      'faq json-ld',
+      'faq structured data',
+      'schema markup generator',
+    ],
+    relatedTools: [
+      'article-schema-generator',
+      'json-ld-validator',
+      'meta-tag-generator',
+      'json-formatter',
+      'html-entity-encoder',
+    ],
+    component: 'faq-schema',
+    howTo: [
+      'Type each question and its answer. Use the same wording that appears on the page.',
+      'Add more pairs with Add question and remove any you don’t need. Empty pairs are ignored.',
+      'Copy the JSON-LD (wrapped in a script tag by default) and paste it into the page’s HTML, or download it as a file.',
+    ],
+    about: [
+      'FAQPage is the Schema.org type for a page with a list of questions and answers. In JSON-LD it is an object with "@type": "FAQPage" and a mainEntity array of Question items, each with a name (the question) and an acceptedAnswer whose text is the answer. Search engines and AI assistants can read this markup to understand the page’s Q&A content.',
+      'Valid markup is not a promise of special search results. Since August 2023 Google shows FAQ rich results only for well-known, authoritative government and health websites, so most sites won’t see the expandable questions in search. The markup still describes your content accurately — just make sure every question and answer is visible on the page, and never mark up content users can’t see.',
+    ],
+    faqs: [
+      {
+        q: 'Will FAQ schema give my page rich results in Google?',
+        a: 'Probably not. Since 2023 Google limits FAQ rich results to authoritative government and health sites. Other search engines and AI tools may still use the markup, but no tool can guarantee how it is displayed.',
+      },
+      {
+        q: 'Where do I put the JSON-LD?',
+        a: 'Inside a <script type="application/ld+json"> element anywhere in the page’s HTML — the head or the body both work. The tool can wrap the output in that tag for you.',
+      },
+      {
+        q: 'Can I use HTML in the answers?',
+        a: 'Google allows a few basic tags (links, lists, bold and paragraphs) in the answer text, but plain text is the safest choice. Quotes, backslashes and line breaks are escaped automatically so the JSON stays valid.',
+      },
+      {
+        q: 'How do I check the result?',
+        a: 'Paste it into the JSON-LD Validator on this site for a structure check, then into Google’s Rich Results Test or the Schema Markup Validator for the official view.',
+      },
+    ],
+  },
+  {
+    slug: 'article-schema-generator',
+    category: 'developer-tools',
+    name: 'Article Schema Generator',
+    icon: '📰',
+    shortDescription: 'Create Article or BlogPosting JSON-LD.',
+    description:
+      'Generate Article, BlogPosting or NewsArticle structured data in JSON-LD: headline, images, author, publisher and publication dates. Only the fields you fill in are included, dates and URLs are checked, and the output is valid, escaped JSON ready to copy or download.',
+    title: 'Article Schema Generator – BlogPosting JSON-LD Markup',
+    metaDescription:
+      'Free article schema generator: create Article, BlogPosting or NewsArticle JSON-LD with headline, author, images and dates. Validates URLs and ISO dates; copy or download.',
+    keywords: [
+      'article schema generator',
+      'blogposting schema',
+      'article structured data',
+      'newsarticle schema',
+      'json-ld generator',
+    ],
+    relatedTools: [
+      'faq-schema-generator',
+      'json-ld-validator',
+      'meta-tag-generator',
+      'social-share-preview',
+      'slug-generator',
+    ],
+    component: 'article-schema',
+    howTo: [
+      'Choose BlogPosting, Article or NewsArticle and enter the headline exactly as it appears on the page.',
+      'Add image URLs (one per line), the author and publisher, and the publication and update dates in ISO 8601 format such as 2026-10-14.',
+      'Fix anything flagged in red, review the suggestions, then copy the JSON-LD into the page or download it.',
+    ],
+    about: [
+      'Article structured data tells search engines the headline, author, images and dates of a piece of writing. Google’s documentation lists no strictly required properties for Article, but recommends headline, image, datePublished, dateModified and author — with the author’s name and, ideally, a URL to their profile — because these appear in search features and help attribute the content.',
+      'Dates must be ISO 8601: a date such as 2026-10-14, or a date and time with a time zone such as 2026-10-14T09:30:00+02:00. Images should be full https URLs; Google recommends several high-resolution images in 16:9, 4:3 and 1:1, each at least 50,000 pixels (width × height). The generator leaves out empty fields rather than writing empty strings, which validators would flag.',
+    ],
+    faqs: [
+      {
+        q: 'Should I use Article, BlogPosting or NewsArticle?',
+        a: 'BlogPosting for blog posts, NewsArticle for news reporting and Article for everything else. BlogPosting and NewsArticle are more specific kinds of Article, so search engines treat all three alike.',
+      },
+      {
+        q: 'Which date format is required?',
+        a: 'ISO 8601. Use YYYY-MM-DD, or add a time and time zone (2026-10-14T09:30:00+02:00). Formats like 14/10/2026 are ambiguous and are rejected.',
+      },
+      {
+        q: 'Does the headline have to match the page title?',
+        a: 'It should match the visible headline of the article. Keep it concise; very long headlines may be truncated in search features.',
+      },
+    ],
+  },
+  {
+    slug: 'social-share-preview',
+    category: 'developer-tools',
+    name: 'Social Share Card Preview',
+    icon: '🪪',
+    shortDescription: 'Mock up how a link card may look when shared.',
+    description:
+      'Preview how a shared link card might look with your title, description, domain and image, in the large 1.91:1 layout used by Facebook and LinkedIn (X’s large card is close to it) or a square 1:1 layout. Choose the image from your device, check its size and crop, and download a PNG mockup. It simulates a card — it doesn’t read a live page.',
+    title: 'Social Share Preview – Mock Up Open Graph Link Cards',
+    metaDescription:
+      'Preview a social share card with your title, description and image in 1.91:1 or 1:1 layouts, check image size and crop, and download a PNG mockup. Private, no upload.',
+    keywords: [
+      'social share preview',
+      'open graph preview',
+      'og image preview',
+      'link preview mockup',
+      'social card preview',
+    ],
+    relatedTools: [
+      'meta-tag-generator',
+      'social-media-image-resizer',
+      'image-cropper',
+      'utm-builder',
+      'article-schema-generator',
+    ],
+    component: 'social-preview',
+    handlesFiles: true,
+    howTo: [
+      'Type the title and description you plan to use in your og:title and og:description tags, and the page URL (only its domain is shown).',
+      'Choose the share image from your device, or load one from a URL, and pick the large 1.91:1 or square 1:1 layout.',
+      'Check the size hint under the preview, then download the mockup as a PNG to share with your team.',
+    ],
+    about: [
+      'When a link is shared, most platforms build a card from the page’s Open Graph tags: og:title, og:description, og:image and the site’s domain. The common large layout is about 1.91:1 — an image of 1200 × 630 pixels is the usual recommendation — while some apps and messaging services show square or small thumbnails instead.',
+      'This tool is a mockup: it shows what you type, not what a live page currently publishes, and every platform crops and truncates a little differently and caches cards for days. To write the tags themselves, use the Meta Tag Generator; to check a live page, use each platform’s own debugger after publishing.',
+    ],
+    faqs: [
+      {
+        q: 'What size should a share image be?',
+        a: '1200 × 630 pixels (1.91:1) is the safe default for Facebook and LinkedIn, and works for X’s large card with a slight crop. Keep text and faces away from the edges, because some apps crop to a square.',
+      },
+      {
+        q: 'Does this read the tags from my website?',
+        a: 'No. It doesn’t fetch any page; the preview uses only what you type. That makes it useful before a page is published.',
+      },
+      {
+        q: 'Why isn’t the image in the downloaded PNG?',
+        a: 'Browsers don’t allow drawing an image from another website into a downloadable file. Choose the image from your device and it will be included.',
+      },
+    ],
+  },
+  {
+    slug: 'json-schema-generator',
+    category: 'developer-tools',
+    name: 'JSON Schema Generator',
+    icon: '🧬',
+    shortDescription: 'Infer a JSON Schema from sample JSON.',
+    description:
+      'Paste a JSON sample and get a JSON Schema that describes it: types, nested objects, arrays and the keys every object has. Choose draft 2020-12, 2019-09 or draft-07, optionally forbid extra keys and detect formats such as date-time and email, then copy or download the schema.',
+    title: 'JSON Schema Generator – Infer a Schema from JSON',
+    metaDescription:
+      'Free JSON Schema generator: paste sample JSON and get a draft 2020-12, 2019-09 or draft-07 schema with types, nested objects, arrays and required keys. Runs locally.',
+    keywords: [
+      'json schema generator',
+      'json to json schema',
+      'generate json schema',
+      'infer json schema',
+      'json schema from json',
+    ],
+    relatedTools: [
+      'json-formatter',
+      'json-validator',
+      'json-to-typescript',
+      'json-viewer',
+      'json-to-toml',
+    ],
+    component: 'json-schema',
+    howTo: [
+      'Paste a representative JSON sample — ideally with every field your data can have.',
+      'Pick the JSON Schema version (2020-12 is the default) and the options: required keys, no extra keys, and format detection.',
+      'Copy or download the schema, then refine it by hand with limits, enums or descriptions.',
+    ],
+    about: [
+      'JSON Schema is a vocabulary for describing the shape of JSON documents, used for API validation, form generation and documentation. This generator walks your sample and writes a type for every value: objects get properties, arrays get an items schema, integers and decimals are told apart, and strings that look like dates, emails, URIs or UUIDs can get a format.',
+      'When an array contains objects with different keys, they are merged: every key found becomes a property, and only keys present in every object are marked as required. Values of different types become a type list such as ["string", "null"], or an anyOf when the shapes differ. The result describes the sample you pasted, not every rule of the real data contract, so review it before relying on it.',
+    ],
+    faqs: [
+      {
+        q: 'Which JSON Schema version should I choose?',
+        a: 'Draft 2020-12 is the current version and the default. Choose draft-07 if your validator or tool (many older libraries and OpenAPI 3.0) doesn’t support newer drafts. For the schemas this tool produces, the only difference is the $schema URI.',
+      },
+      {
+        q: 'How are arrays with mixed objects handled?',
+        a: 'All objects in the array are merged into one schema. A key that appears in only some objects becomes an optional property; the required list contains only keys that every object has.',
+      },
+      {
+        q: 'Is the generated schema complete?',
+        a: 'It matches your sample, but it can’t know rules the sample doesn’t show — maximum lengths, allowed values, number ranges or optional fields that happen to be missing. Treat it as a starting point.',
+      },
+      {
+        q: 'Is my JSON uploaded?',
+        a: 'No. Parsing and inference run in your browser, so you can safely paste API responses with real data.',
+      },
+    ],
+  },
+  {
+    slug: 'html-to-jsx',
+    category: 'developer-tools',
+    name: 'HTML to JSX Converter',
+    icon: '⚛️',
+    shortDescription: 'Convert HTML markup to React JSX.',
+    description:
+      'Convert HTML to JSX for React: class becomes className, for becomes htmlFor, inline styles become style objects, void elements self-close, comments become JSX comments and braces in text are escaped. Optionally wrap the result in a fragment or a component. The HTML is only read as text — never rendered or run.',
+    title: 'HTML to JSX Converter – Convert HTML to React Online',
+    metaDescription:
+      'Free HTML to JSX converter: className, htmlFor, style objects, self-closing tags, SVG attributes and escaped braces. Wrap in a fragment or component. Runs in your browser.',
+    keywords: [
+      'html to jsx',
+      'html to jsx converter',
+      'html to react',
+      'convert html to jsx',
+      'jsx converter',
+    ],
+    relatedTools: [
+      'html-formatter',
+      'css-formatter',
+      'javascript-formatter',
+      'html-entity-encoder',
+      'svg-optimizer',
+    ],
+    component: 'html-to-jsx',
+    howTo: [
+      'Paste HTML — a snippet, a component’s markup or an SVG icon.',
+      'Turn on “Wrap in a fragment” when there are several top-level elements, or “Wrap in a component” to get a ready-made function component.',
+      'Copy the JSX and read the notes under it: they point out anything that needs a manual change, such as inline event handlers.',
+    ],
+    about: [
+      "JSX looks like HTML but follows JavaScript rules: attributes are camelCase (tabindex → tabIndex, stroke-width → strokeWidth), class and for are reserved words (className, htmlFor), style takes an object ({{ fontSize: '12px' }}), every element must be closed (<br />) and curly braces start a JavaScript expression, so literal { and } in text must be escaped.",
+      'The converter tokenizes the HTML and rewrites it without building a live DOM, so scripts and event handlers in the input are never executed. Inline handlers such as onclick="…" become empty arrow functions with the original code in a comment, and value/checked on form fields become defaultValue/defaultChecked so the fields stay editable. It covers everyday markup; unusual or invalid HTML may still need a manual touch.',
+    ],
+    faqs: [
+      {
+        q: 'What does the converter change?',
+        a: 'Attribute names (class, for, tabindex, readonly, SVG attributes like stroke-width and xlink:href), inline style strings, void elements such as <br> and <img>, HTML comments, braces in text, and unclosed tags like <li> or <p>.',
+      },
+      {
+        q: 'What happens to onclick and other inline handlers?',
+        a: 'React handlers take functions, not strings, so onclick="go()" becomes onClick={() => { /* go() */ }}. Move the logic into a real handler in your component.',
+      },
+      {
+        q: 'Is the output guaranteed to compile?',
+        a: 'For typical HTML, yes, but it isn’t a full React compiler. Template syntax from other frameworks, broken markup or very unusual attributes may need edits.',
+      },
+    ],
+  },
+  {
+    slug: 'csv-viewer',
+    category: 'developer-tools',
+    name: 'CSV Viewer',
+    icon: '🗃️',
+    shortDescription: 'Open CSV files as a sortable, searchable table.',
+    description:
+      'Open a CSV or TSV file in your browser as a table: sort any column, search all cells, filter by column and download the filtered rows as a new CSV. Quoted fields, commas and line breaks inside quotes and UTF-8 files with a byte-order mark are handled. Files up to 25 MB stay on your device.',
+    title: 'CSV Viewer – Open, Sort & Filter CSV Files Online',
+    metaDescription:
+      'Free online CSV viewer: open CSV or TSV files as a table, sort and search columns, filter rows and download the result. Handles quotes and UTF-8; nothing is uploaded.',
+    keywords: [
+      'csv viewer',
+      'open csv file online',
+      'csv file viewer',
+      'view csv online',
+      'csv explorer',
+      'tsv viewer',
+    ],
+    relatedTools: [
+      'csv-to-json',
+      'csv-to-markdown',
+      'json-to-csv',
+      'markdown-table-generator',
+      'remove-duplicate-lines',
+    ],
+    component: 'csv-viewer',
+    handlesFiles: true,
+    howTo: [
+      'Drop a .csv or .tsv file on the box (or paste CSV text). The delimiter — comma, semicolon, tab or pipe — is detected automatically.',
+      'Click a column heading to sort it (again for descending, a third time to reset). Type in the search box to filter rows, or use “Filter by column” for one column at a time.',
+      'Download the rows you see as a CSV file. Rows are shown 200 at a time; “Show more” loads the next ones.',
+    ],
+    about: [
+      'CSV (comma-separated values) is the most common way to export data from spreadsheets, databases and online services, but double-clicking a CSV often opens it in a spreadsheet that guesses wrongly — turning long numbers into scientific notation or dates into a different format. This viewer shows every cell exactly as written in the file.',
+      'It follows the usual CSV rules (RFC 4180): fields in double quotes may contain commas and line breaks, and a doubled quote ("") inside a quoted field is a literal quote. Numbers sort numerically and text sorts naturally (file2 before file10). The whole file is parsed in memory, so the limit is 25 MB to keep the page responsive; a file of that size typically holds a few hundred thousand rows.',
+    ],
+    faqs: [
+      {
+        q: 'Is my CSV file uploaded?',
+        a: 'No. The file is read with your browser’s File API and parsed in this tab. Nothing is sent to a server, so it is safe for customer lists and exports.',
+      },
+      {
+        q: 'Why do some rows show “different number of cells”?',
+        a: 'The row has more or fewer fields than the header — usually a wrong delimiter (try Semicolon for European exports) or an unclosed quote in the data.',
+      },
+      {
+        q: 'Can it open Excel files?',
+        a: 'No — .xlsx is a different, zipped format. In Excel or Google Sheets choose “Save as CSV (UTF-8)” first, then open the CSV here.',
+      },
+      {
+        q: 'Does the download keep my sort and filters?',
+        a: 'Yes. The CSV contains exactly the rows that match your search and filters, in the current sort order, with a UTF-8 byte-order mark so Excel reads accents correctly.',
+      },
+    ],
+  },
+  {
+    slug: 'markdown-table-generator',
+    category: 'developer-tools',
+    alsoIn: ['text-tools'],
+    name: 'Markdown Table Generator',
+    icon: '▦',
+    shortDescription: 'Build Markdown tables in a visual editor.',
+    description:
+      'Create Markdown tables without counting pipes: edit cells in a grid, add or remove rows and columns, set each column’s alignment and copy GitHub-flavoured Markdown with a live preview. Pipes and line breaks in cells are escaped so the table never breaks.',
+    title: 'Markdown Table Generator – Visual Table Editor',
+    metaDescription:
+      'Free Markdown table generator: edit cells in a grid, add rows and columns, set left, centre or right alignment and copy GFM Markdown with a live preview and escaping.',
+    keywords: [
+      'markdown table generator',
+      'markdown table',
+      'markdown table editor',
+      'gfm table generator',
+      'create markdown table',
+    ],
+    relatedTools: [
+      'csv-to-markdown',
+      'markdown-previewer',
+      'markdown-to-html',
+      'ascii-table',
+      'csv-viewer',
+    ],
+    component: 'markdown-table',
+    howTo: [
+      'Type the column headings and cells. Use ＋ Row and ＋ Column to grow the table and ✕ to delete a row or column.',
+      'Choose the alignment of each column under its heading: default, left, centre or right.',
+      'Copy or download the Markdown. Turn off “Align columns” if you prefer compact source without padding.',
+    ],
+    about: [
+      'Markdown tables (from GitHub-flavoured Markdown, GFM) use pipes to separate cells and a separator line of dashes under the header. Colons in the separator set alignment: :--- is left, :---: is centre and ---: is right. The format works on GitHub, GitLab, many wikis, static site generators and note apps.',
+      'A pipe character inside a cell would start a new column, so it is written as \\|, and a line break would end the row, so it becomes <br>, which most renderers show as a line break. Padding the columns with spaces is optional — renderers ignore it — but it makes the Markdown source easy to read in a code review.',
+    ],
+    faqs: [
+      {
+        q: 'How do I align a column in Markdown?',
+        a: 'Put colons in the separator line: :--- for left, :---: for centre and ---: for right. In this editor, pick the alignment under the column heading.',
+      },
+      {
+        q: 'How do I put a pipe | in a table cell?',
+        a: 'Escape it as \\|. The generator does this automatically, along with backslashes and line breaks.',
+      },
+      {
+        q: 'Can I merge cells?',
+        a: 'No. GitHub-flavoured Markdown tables don’t support merged cells or multi-line rows; use an HTML table if you need them.',
+      },
+    ],
+  },
+  {
+    slug: 'csv-to-markdown',
+    category: 'developer-tools',
+    name: 'CSV to Markdown Converter',
+    icon: '📑',
+    shortDescription: 'Turn CSV data into a Markdown table.',
+    description:
+      'Convert CSV or TSV data into a GitHub-flavoured Markdown table. Paste CSV or open a file, choose the delimiter, header row, alignment and an optional row limit, and copy or download the Markdown. Quoted fields are parsed correctly and pipes and line breaks are escaped.',
+    title: 'CSV to Markdown Converter – CSV to Markdown Table',
+    metaDescription:
+      'Free CSV to Markdown converter: paste CSV or open a file and get a GitHub Markdown table with alignment, row limit and escaped pipes. Quotes handled; runs in your browser.',
+    keywords: [
+      'csv to markdown',
+      'csv to markdown table',
+      'convert csv to markdown',
+      'tsv to markdown',
+      'spreadsheet to markdown',
+    ],
+    relatedTools: [
+      'markdown-table-generator',
+      'csv-viewer',
+      'csv-to-json',
+      'markdown-previewer',
+      'json-to-csv',
+    ],
+    component: 'csv-to-markdown',
+    handlesFiles: true,
+    howTo: [
+      'Paste CSV (or tab-separated data copied from a spreadsheet), or drop a .csv file on the box.',
+      'Check the delimiter and whether the first row is the header, and pick an alignment. Enter a row limit to convert only the first rows.',
+      'Copy or download the Markdown table and paste it into your README, wiki or issue.',
+    ],
+    about: [
+      'Converting CSV to Markdown is the quickest way to put spreadsheet data into a README, a pull request or documentation. The converter reads the CSV with the standard quoting rules — commas and line breaks inside double quotes stay in one cell, and "" is a literal quote — then writes one Markdown row per record.',
+      'Markdown has no way to escape a line break inside a table row, so line breaks inside cells become <br>; pipes become \\| so they don’t split the cell. Very large tables are hard to read in Markdown and slow to render, so output is capped at 5,000 rows and column padding is switched off above 1,000 rows.',
+    ],
+    faqs: [
+      {
+        q: 'Can I paste data straight from Excel or Google Sheets?',
+        a: 'Yes. Copied cells arrive tab-separated; the delimiter is detected automatically.',
+      },
+      {
+        q: 'What if my CSV has no header row?',
+        a: 'Untick “First row is the header”. The columns get the headings Column 1, Column 2 and so on, which you can edit afterwards.',
+      },
+      {
+        q: 'Is there a size limit?',
+        a: 'Files up to 25 MB can be opened, and up to 5,000 rows are converted (use the row limit for fewer). Bigger tables are better shared as CSV.',
+      },
+    ],
+  },
+  {
+    slug: 'json-to-toml',
+    category: 'developer-tools',
+    name: 'JSON to TOML Converter',
+    icon: '🧾',
+    shortDescription: 'Convert JSON to TOML configuration.',
+    description:
+      'Convert JSON to TOML for config files such as pyproject.toml, Cargo.toml or Hugo settings. Objects become [tables], arrays of objects become [[arrays of tables]], keys are quoted when needed and strings are escaped. Values TOML can’t represent, like null, are reported — never silently dropped.',
+    title: 'JSON to TOML Converter – Convert JSON Config to TOML',
+    metaDescription:
+      'Free JSON to TOML converter: tables, arrays of tables, quoted keys and escaped strings. Reports null and other values TOML can’t hold instead of dropping them. Runs locally.',
+    keywords: [
+      'json to toml',
+      'json to toml converter',
+      'convert json to toml',
+      'toml converter',
+      'toml generator',
+    ],
+    relatedTools: [
+      'json-to-yaml',
+      'json-formatter',
+      'json-validator',
+      'json-schema-generator',
+      'json-to-xml',
+    ],
+    component: 'json-to-toml',
+    howTo: [
+      'Paste a JSON object — TOML files are tables, so the top level must be an object.',
+      'If the JSON contains null, either replace those values or tick “Leave out null values”; the omitted keys are listed.',
+      'Copy or download the TOML and check the notes under the output.',
+    ],
+    about: [
+      'TOML is a configuration format designed to be easy to read: key = value pairs grouped under [table] headers. A JSON object maps neatly onto it — nested objects become [parent.child] tables, arrays of objects become repeated [[array]] tables, and arrays of plain values are written inline like tags = ["a", "b"].',
+      'Not everything converts losslessly. TOML has no null, so the converter stops and lists every null unless you choose to leave them out — and nulls inside arrays can’t be left out without shifting the other items. A JSON number such as 1.0 is already a whole number once parsed, so it is written as 1. This converter supports that conservative, documented subset of TOML 1.0 rather than guessing.',
+    ],
+    faqs: [
+      {
+        q: 'Why does the converter refuse null values?',
+        a: 'TOML has no null or “empty” value. Dropping keys silently could change how your program behaves, so the converter lists them. Tick “Leave out null values” if leaving them out is what you want.',
+      },
+      {
+        q: 'Why must the top level be an object?',
+        a: 'A TOML document is always a table of key/value pairs. Wrap a JSON array in an object first, for example {"items": [...]}.',
+      },
+      {
+        q: 'Are dates converted to TOML dates?',
+        a: 'No. JSON has no date type, so date-like strings stay quoted strings. Remove the quotes by hand if your program expects a TOML datetime.',
+      },
+    ],
+  },
+  {
+    slug: 'json-ld-validator',
+    category: 'developer-tools',
+    name: 'JSON-LD Validator & Viewer',
+    icon: '🔍',
+    shortDescription: 'Check JSON-LD structured data and browse it.',
+    description:
+      'Paste JSON-LD or an HTML snippet with script tags to check it: JSON syntax with line and column, @context and @type, unknown keywords, ISO dates, absolute URLs and properties Google lists as required for common types. Browse the data in an expandable tree and copy it formatted. Remote contexts are never fetched.',
+    title: 'JSON-LD Validator – Check Structured Data & Schema Markup',
+    metaDescription:
+      'Free JSON-LD validator and viewer: check syntax, @context, @type, dates, URLs and required properties for common Schema.org types, and browse the data as a tree. Local only.',
+    keywords: [
+      'json-ld validator',
+      'structured data validator',
+      'schema markup validator',
+      'json-ld checker',
+      'json-ld viewer',
+    ],
+    relatedTools: [
+      'faq-schema-generator',
+      'article-schema-generator',
+      'json-validator',
+      'json-viewer',
+      'meta-tag-generator',
+    ],
+    component: 'json-ld-validator',
+    howTo: [
+      'Paste JSON-LD, or copy a page’s HTML source (or just its <script type="application/ld+json"> tags) and paste that.',
+      'Read the summary and the list of errors and warnings; each one shows the JSON path it refers to, such as $.author.name.',
+      'Expand the tree to explore nested entities, and copy the formatted JSON when you’re done.',
+    ],
+    about: [
+      'JSON-LD is the format search engines recommend for structured data: a JSON object with an @context (usually https://schema.org) and an @type such as Article, Product or FAQPage, placed in a <script type="application/ld+json"> element. Mistakes are easy — a trailing comma breaks the JSON, a date like 14/10/2026 isn’t ISO 8601, and a misspelled keyword such as @Type is ignored.',
+      'This validator runs entirely in your browser. It checks JSON syntax, the structure of contexts, types and @id references, date and URL formats, and the properties that Google’s documentation lists as required for common types. It doesn’t download remote contexts or check every Schema.org property, and it can’t predict rich results — use Google’s Rich Results Test for that final check.',
+    ],
+    faqs: [
+      {
+        q: 'Is this the same as Google’s Rich Results Test?',
+        a: 'No. It’s a fast local check of syntax and structure. Google’s test also checks eligibility for specific search features and renders the live page.',
+      },
+      {
+        q: 'Can I paste a whole HTML page?',
+        a: 'Yes. Every <script type="application/ld+json"> block in it is extracted and checked; the rest of the HTML is ignored.',
+      },
+      {
+        q: 'Why is there a warning about a missing property?',
+        a: 'Some types have properties Google lists as required — for example, Question needs acceptedAnswer and Offer needs price and priceCurrency. Without them the markup is still valid JSON-LD but won’t qualify for those features.',
       },
     ],
   },

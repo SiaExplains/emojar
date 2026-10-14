@@ -80,6 +80,7 @@ export const COLOR_TOOLS: ToolDefinition[] = [
       'color code',
     ],
     relatedTools: [
+      'image-color-picker',
       'color-converter',
       'color-palette-generator',
       'contrast-checker',
@@ -150,6 +151,7 @@ export const COLOR_TOOLS: ToolDefinition[] = [
       'color harmony',
     ],
     relatedTools: [
+      'image-color-palette-extractor',
       'random-color-generator',
       'color-picker',
       'gradient-generator',
@@ -456,6 +458,58 @@ export const COLOR_TOOLS: ToolDefinition[] = [
       {
         q: 'What do the ΔE numbers mean?',
         a: 'ΔE is a perceptual colour difference (CIEDE2000). Around 2 is barely noticeable; below about 10, two colours used side by side in a chart can easily be mistaken for each other.',
+      },
+    ],
+  },
+  {
+    slug: 'image-color-palette-extractor',
+    category: 'color-tools',
+    alsoIn: ['image-tools'],
+    name: 'Image Color Palette Extractor',
+    icon: '🖌️',
+    shortDescription: 'Extract the main colours from an image.',
+    description:
+      'Choose an image to extract its dominant colours — 3 to 12 swatches with HEX, RGB and HSL values and how much of the image each covers. Copy single values, a HEX list, CSS variables or JSON. The image is analysed in your browser and never uploaded.',
+    title: 'Image Color Palette Extractor – Get Colors from an Image',
+    metaDescription:
+      'Free image color palette extractor: pick 3–12 dominant colors from a photo with HEX, RGB and HSL codes and coverage. Copy as CSS variables or JSON. No upload.',
+    keywords: [
+      'color palette from image',
+      'image color extractor',
+      'extract colors from image',
+      'dominant color',
+      'photo color palette',
+    ],
+    relatedTools: [
+      'image-color-picker',
+      'color-palette-generator',
+      'color-picker',
+      'contrast-checker',
+      'color-converter',
+    ],
+    component: 'palette-extractor',
+    handlesFiles: true,
+    howTo: [
+      'Choose or drop an image: a photo, logo, illustration or screenshot.',
+      'Pick how many colours you want, from 3 to 12.',
+      'Copy any HEX, RGB or HSL value, or the whole palette as a HEX list, CSS variables or JSON.',
+    ],
+    about: [
+      'The extractor reduces the image to at most 400 pixels on its longest side — plenty for colour statistics — and samples the pixels, skipping transparent ones. It then groups similar colours with k-means clustering: it starts from well-spread colours (k-means++), assigns every pixel to the nearest one, moves each to the average of its group and repeats until the groups settle. Each swatch is the average colour of a group, sorted by how much of the image it covers.',
+      'Because swatches are averages, a photo with smooth gradients gives slightly muted colours, and a small but striking accent can be absorbed into a larger group — increase the number of colours to separate it. Results are deterministic: the same image and settings always give the same palette.',
+    ],
+    faqs: [
+      {
+        q: 'Is my image uploaded?',
+        a: 'No. The image is decoded and analysed in your browser with the Canvas API; it never leaves your device.',
+      },
+      {
+        q: 'Why doesn’t the palette include a colour I can see?',
+        a: 'Small areas are merged into the nearest large group. Choose more colours, or use the Image Color Picker to read that exact pixel.',
+      },
+      {
+        q: 'What do the percentages mean?',
+        a: 'Roughly how much of the image each colour covers, based on the sampled pixels. Transparent areas aren’t counted.',
       },
     ],
   },

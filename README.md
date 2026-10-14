@@ -4,7 +4,7 @@ Free, privacy-first **online tools** that run entirely in the browser — plus
 3,790 emojis to search and copy, 18 emoji games and 8 emoji tools.
 Live at [emojar.com](https://emojar.com).
 
-- **Online tools** (`/online-tool`) — 268 tools in 13 categories: image, PDF,
+- **Online tools** (`/online-tool`) — 288 tools in 13 categories: image, PDF,
   developer, text, color, calculators, unit converters, security & generators,
   date & time, audio & video, device tests, reference & learning, and productivity. Each tool has an in-depth guide
   on the blog (`content/guides/`, drip-published on a schedule), and `/faq`

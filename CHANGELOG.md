@@ -4,6 +4,30 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.24.0] — 2026-10-14
+
+### Added
+
+- 20 new browser-only tools, each with its own guide:
+  - **Marketing and SEO:** UTM Link Builder, FAQ Schema Generator, Article
+    Schema Generator, Social Share Card Preview and JSON-LD Validator.
+  - **Writing:** Reading Time Calculator, Keyword Density Checker, Duplicate
+    Word Finder and Sentence Length Checker.
+  - **Images and colour:** Image Color Palette Extractor, Image Color Picker
+    (exact pixel, magnifier, coordinates) and DPI & Print Size Calculator.
+  - **Data and code:** JSON Schema Generator, HTML to JSX Converter, JSON to
+    TOML Converter, CSV Viewer, Markdown Table Generator and CSV to Markdown
+    Converter.
+  - **Dates and numbers:** Date Format Converter (flags ambiguous dates) and
+    Percentage Difference Calculator.
+
+### Fixed
+
+- JSON errors in every JSON tool show the line and column again in Chrome,
+  and the message no longer repeats the position.
+- Long words or URLs in a tool page's explanation no longer make the page
+  wider than a phone screen.
+
 ## [0.23.1] — 2026-10-14
 
 ### Changed

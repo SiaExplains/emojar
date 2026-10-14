@@ -20,6 +20,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'essay word count',
     ],
     relatedTools: [
+      'reading-time-calculator',
       'character-counter',
       'sentence-counter',
       'readability-score',
@@ -298,6 +299,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'remove duplicates',
     ],
     relatedTools: [
+      'duplicate-word-finder',
       'sort-lines',
       'remove-empty-lines',
       'find-and-replace',
@@ -568,6 +570,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'morse to text',
     ],
     relatedTools: [
+      'markdown-table-generator',
       'text-to-binary',
       'text-case-converter',
       'base64-encoder',
@@ -1036,6 +1039,7 @@ export const TEXT_TOOLS: ToolDefinition[] = [
       'fernandez huerta',
     ],
     relatedTools: [
+      'sentence-length-checker',
       'word-counter',
       'sentence-counter',
       'text-case-converter',
@@ -1419,5 +1423,211 @@ export const TEXT_TOOLS: ToolDefinition[] = [
         `${v.name.toLowerCase().replace(' typing test', '')} wpm test`,
       ],
     })),
+  },
+  {
+    slug: 'reading-time-calculator',
+    category: 'text-tools',
+    name: 'Reading Time Calculator',
+    icon: '⏱️',
+    shortDescription: 'Estimate reading and speaking time for any text.',
+    description:
+      'Paste text to see how long it takes to read and to say out loud, with word and character counts that update as you type. Pick a reading speed (slow, average or fast) and a speaking speed, or enter your own words per minute — useful for blog posts, speeches, presentations and video scripts.',
+    title: 'Reading Time Calculator – Words to Minutes, Read & Speak',
+    metaDescription:
+      'Free reading time calculator: paste text to estimate reading and speaking time with adjustable words per minute, plus word and character counts. Instant and private.',
+    keywords: [
+      'reading time calculator',
+      'words to minutes',
+      'speech time calculator',
+      'how long to read',
+      'speaking time calculator',
+      'read time estimator',
+    ],
+    relatedTools: [
+      'word-counter',
+      'readability-score',
+      'sentence-length-checker',
+      'text-to-speech',
+      'keyword-density-checker',
+    ],
+    component: 'reading-time',
+    howTo: [
+      'Paste or type your text. Reading and speaking times update instantly.',
+      'Choose a reading speed — 238 words per minute is the adult average for non-fiction — and a speaking speed, or select Custom to enter your own.',
+      'Use the speaking time to plan a talk or video and the reading time for a blog post’s “x min read” label.',
+    ],
+    about: [
+      'Reading time is simply the number of words divided by a reading speed. A 2018 meta-analysis of 190 studies (Brysbaert, 2019) found that adults read English non-fiction silently at about 238 words per minute and fiction at about 260; speaking is slower, around 140–160 words per minute for a presentation. So a 1,200-word article takes about five minutes to read and eight minutes to deliver as a talk.',
+      'Real speed varies with the reader and the text: technical writing is slower, familiar topics faster, and reading on a phone a little slower than on paper. For languages written without spaces, such as Chinese and Japanese, each character is counted as one word, which is how reading-speed studies measure them — choose a custom speed for those, since typical rates are given in characters per minute.',
+    ],
+    faqs: [
+      {
+        q: 'How is reading time calculated?',
+        a: 'Reading time = number of words ÷ reading speed in words per minute. With the default 238 wpm, 1,000 words take about 4 minutes 12 seconds.',
+      },
+      {
+        q: 'How many words is a 5-minute speech?',
+        a: 'At a comfortable 150 words per minute, about 750 words. Plan for pauses, slides and audience reactions by aiming slightly lower.',
+      },
+      {
+        q: 'How do sites like Medium estimate read time?',
+        a: 'In the same way: words divided by an average speed (Medium uses about 265 wpm and adds time for images). Choose Custom and enter 265 to match.',
+      },
+      {
+        q: 'Is my text stored or sent anywhere?',
+        a: 'No. Everything is counted in your browser and nothing is saved.',
+      },
+    ],
+  },
+  {
+    slug: 'keyword-density-checker',
+    category: 'text-tools',
+    name: 'Keyword Density Checker',
+    icon: '🔑',
+    shortDescription: 'See how often words and phrases appear in text.',
+    description:
+      'Paste text to see which words and 2-, 3- or 4-word phrases appear most, with counts and density percentages. Ignore common words, set a minimum word length and check one target keyword. It’s a local analysis of your text — not search volume or ranking data.',
+    title: 'Keyword Density Checker – Word & Phrase Frequency',
+    metaDescription:
+      'Free keyword density checker: find the most frequent words and 2–4 word phrases in your text with counts and percentages, ignore stop words and check a target keyword.',
+    keywords: [
+      'keyword density checker',
+      'keyword density',
+      'word frequency counter',
+      'phrase frequency',
+      'keyword counter',
+      'seo keyword density',
+    ],
+    relatedTools: [
+      'word-counter',
+      'reading-time-calculator',
+      'duplicate-word-finder',
+      'readability-score',
+      'meta-tag-generator',
+    ],
+    component: 'keyword-density',
+    howTo: [
+      'Paste your article or page text.',
+      'Choose whether to count single words or 2-, 3- or 4-word phrases, set the minimum word length and decide whether to ignore common words like “the” and “and”.',
+      'Read the table of top terms, check a specific keyword in the box above it, and copy or download the results as CSV.',
+    ],
+    about: [
+      'Keyword density is the share of a text taken up by a word or phrase: occurrences × words in the phrase ÷ total words × 100. If “coffee beans” appears 6 times in a 600-word article, it covers 12 of 600 words, a density of 2%. Phrase counts stop at sentence breaks, so the end of one sentence and the start of the next never form a fake phrase.',
+      'Modern search engines don’t reward a particular density, and repeating a keyword unnaturally can read as spam. The useful questions are simpler: does the page mention its topic clearly, are you over-using one phrase, and are related terms present? This tool answers those for the text you paste; it has no data about search volume, competition or rankings.',
+    ],
+    faqs: [
+      {
+        q: 'What is a good keyword density?',
+        a: 'There is no ideal number. Write naturally for readers; if one phrase is far above everything else (say 4–5% for a long article), it may read as repetitive.',
+      },
+      {
+        q: 'How is density calculated?',
+        a: 'Occurrences × number of words in the phrase ÷ total words × 100. A two-word phrase found 5 times in 500 words has a density of 2%.',
+      },
+      {
+        q: 'Which words are ignored?',
+        a: 'With “Ignore common words” on, about 190 English function words (articles, pronouns, prepositions, auxiliaries) are skipped, and phrases that start or end with one are dropped.',
+      },
+    ],
+  },
+  {
+    slug: 'duplicate-word-finder',
+    category: 'text-tools',
+    name: 'Duplicate Word Finder',
+    icon: '👯',
+    shortDescription: 'Find accidentally repeated words like “the the”.',
+    description:
+      'Find words typed twice in a row — “the the”, “and and” — even across line breaks, highlighted in your text with previous and next navigation. Legitimate doubles such as “had had” are skipped unless you ask, and you can remove all repeats in one click.',
+    title: 'Duplicate Word Finder – Find Repeated Words Like “the the”',
+    metaDescription:
+      'Free duplicate word finder: highlight words typed twice in a row, such as “the the”, across line breaks, jump between them and remove them in one click. Runs in your browser.',
+    keywords: [
+      'duplicate word finder',
+      'repeated words checker',
+      'find repeated words',
+      'double word checker',
+      'the the error',
+    ],
+    relatedTools: [
+      'remove-duplicate-lines',
+      'sentence-length-checker',
+      'find-and-replace',
+      'word-counter',
+      'text-diff',
+    ],
+    component: 'duplicate-words',
+    howTo: [
+      'Paste your text. Repeated words are highlighted straight away and counted above the text.',
+      'Use Previous and Next to jump between them, and read each in context.',
+      'Fix them by hand, or press “Remove all repeats” and copy the corrected text.',
+    ],
+    about: [
+      'A doubled word is one of the most common typos and one of the hardest to see, because the brain skips the repeat — especially when the two words are split across a line break. Spell checkers often miss it because both words are spelled correctly.',
+      'The finder flags a word immediately repeated with only spaces or a line break in between, ignoring capitalisation (“The the”). It doesn’t flag words separated by punctuation (“Well, well”) or numbers, and by default it skips doubles that are often correct in English, such as “had had”, “that that” and “very very”. Turn on the stricter option to see those too.',
+    ],
+    faqs: [
+      {
+        q: 'Does it find repeated words across line breaks?',
+        a: 'Yes — that’s where they hide most often. A word at the end of one line and the same word at the start of the next is flagged.',
+      },
+      {
+        q: 'Why isn’t “had had” flagged?',
+        a: 'Because it is often correct (“She had had enough”). Tick the stricter option to include it and similar doubles such as “that that”.',
+      },
+      {
+        q: 'Does it work in other languages?',
+        a: 'Yes, for languages that separate words with spaces. Chinese and Japanese text is skipped because repeated characters are normal there.',
+      },
+    ],
+  },
+  {
+    slug: 'sentence-length-checker',
+    category: 'text-tools',
+    name: 'Sentence Length Checker',
+    icon: '📏',
+    shortDescription: 'Find long sentences and see the average length.',
+    description:
+      'Paste text to see how many sentences it has, the average and median sentence length and which sentences are longer than your limit, highlighted in context with navigation. A quick way to find passages that are hard to read.',
+    title: 'Sentence Length Checker – Find Long Sentences',
+    metaDescription:
+      'Free sentence length checker: count sentences, see average and median length, and highlight sentences over a word limit you choose, with navigation between them.',
+    keywords: [
+      'sentence length checker',
+      'long sentence checker',
+      'average sentence length',
+      'sentence counter',
+      'readability checker',
+    ],
+    relatedTools: [
+      'readability-score',
+      'sentence-counter',
+      'reading-time-calculator',
+      'duplicate-word-finder',
+      'word-counter',
+    ],
+    component: 'sentence-length',
+    howTo: [
+      'Paste your text.',
+      'Set the word limit — 25 is a common guide for web writing; plain-language guides often suggest 20.',
+      'Review the highlighted sentences one by one with Previous and Next, and check the longest five listed below.',
+    ],
+    about: [
+      'Long sentences make readers hold more in their head before the point arrives. Style guides for plain writing suggest averaging 15–20 words per sentence and splitting anything much over 25–30 words, while still varying length so the text doesn’t become choppy. The average, the median and the distribution chart show whether long sentences are rare or a habit.',
+      'Sentences are found with rules: a full stop, question mark or exclamation mark followed by a space and a capital letter, or a blank line. Common abbreviations (Dr., e.g., etc.), initials (J. R. R.) and decimals (3.5) are skipped. It’s a heuristic — unusual punctuation, lists or quotes can still split or join sentences, so treat the numbers as a guide.',
+    ],
+    faqs: [
+      {
+        q: 'What is a good sentence length?',
+        a: 'An average of 15–20 words is easy to read for most audiences. Individual sentences can be longer, but more than 30 words is worth a second look.',
+      },
+      {
+        q: 'How are words counted?',
+        a: 'Runs of letters and numbers count as words; contractions and hyphenated words count once, and a decimal such as 3.50 is one word.',
+      },
+      {
+        q: 'Why is a heading counted as a sentence?',
+        a: 'Text followed by a blank line is treated as its own sentence. Headings and list items without full stops are counted the same way.',
+      },
+    ],
   },
 ];

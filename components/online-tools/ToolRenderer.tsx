@@ -223,6 +223,92 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
   'resume-builder': load(() => import('./tools/ResumeBuilderTool')),
   'online-notepad': load(() => import('./tools/NotepadTool')),
   flashcards: load(() => import('./tools/FlashcardsTool')),
+  'utm-builder': load(() =>
+    import('./tools/MarketingTools').then((m) => ({
+      default: m.UtmBuilderTool,
+    })),
+  ),
+  'faq-schema': load(() =>
+    import('./tools/MarketingTools').then((m) => ({
+      default: m.FaqSchemaTool,
+    })),
+  ),
+  'article-schema': load(() =>
+    import('./tools/MarketingTools').then((m) => ({
+      default: m.ArticleSchemaTool,
+    })),
+  ),
+  'social-preview': load(() =>
+    import('./tools/MarketingTools').then((m) => ({
+      default: m.SocialPreviewTool,
+    })),
+  ),
+  'reading-time': load(() =>
+    import('./tools/WritingTools').then((m) => ({
+      default: m.ReadingTimeTool,
+    })),
+  ),
+  'keyword-density': load(() =>
+    import('./tools/WritingTools').then((m) => ({
+      default: m.KeywordDensityTool,
+    })),
+  ),
+  'duplicate-words': load(() =>
+    import('./tools/WritingTools').then((m) => ({
+      default: m.DuplicateWordTool,
+    })),
+  ),
+  'sentence-length': load(() =>
+    import('./tools/WritingTools').then((m) => ({
+      default: m.SentenceLengthTool,
+    })),
+  ),
+  'palette-extractor': load(() =>
+    import('./tools/ImageColorTools').then((m) => ({
+      default: m.PaletteExtractorTool,
+    })),
+  ),
+  'image-color-picker': load(() =>
+    import('./tools/ImageColorTools').then((m) => ({
+      default: m.ImageColorPickerTool,
+    })),
+  ),
+  'json-schema': load(() =>
+    import('./tools/DataFormatTools').then((m) => ({
+      default: m.JsonSchemaTool,
+    })),
+  ),
+  'html-to-jsx': load(() =>
+    import('./tools/DataFormatTools').then((m) => ({
+      default: m.HtmlToJsxTool,
+    })),
+  ),
+  'json-to-toml': load(() =>
+    import('./tools/DataFormatTools').then((m) => ({
+      default: m.JsonToTomlTool,
+    })),
+  ),
+  'json-ld-validator': load(() =>
+    import('./tools/DataFormatTools').then((m) => ({
+      default: m.JsonLdValidatorTool,
+    })),
+  ),
+  'markdown-table': load(() =>
+    import('./tools/DataFormatTools').then((m) => ({
+      default: m.MarkdownTableTool,
+    })),
+  ),
+  'csv-to-markdown': load(() =>
+    import('./tools/DataFormatTools').then((m) => ({
+      default: m.CsvToMarkdownTool,
+    })),
+  ),
+  'csv-viewer': load(() =>
+    import('./tools/DataFormatTools').then((m) => ({
+      default: m.CsvViewerTool,
+    })),
+  ),
+  'date-format': load(() => import('./tools/DateFormatTool')),
   'keyboard-shortcuts': load(() => import('./tools/KeyboardShortcutsTool')),
   'unicode-explorer': load(() => import('./tools/UnicodeExplorerTool')),
   'math-symbols': load(() => import('./tools/MathSymbolsTool')),

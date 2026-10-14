@@ -19,6 +19,7 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       'percentage of a number',
     ],
     relatedTools: [
+      'percentage-difference-calculator',
       'percentage-increase-calculator',
       'discount-calculator',
       'vat-calculator',
@@ -62,6 +63,7 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       'increase by percent',
     ],
     relatedTools: [
+      'percentage-difference-calculator',
       'percentage-calculator',
       'discount-calculator',
       'compound-interest-calculator',
@@ -1020,6 +1022,7 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       'screen ratio',
     ],
     relatedTools: [
+      'dpi-calculator',
       'screen-resolution-checker',
       'ratio-calculator',
       'image-resizer',
@@ -1592,6 +1595,62 @@ export const CALCULATOR_TOOLS: ToolDefinition[] = [
       {
         q: 'How do I convert grams to moles?',
         a: 'Divide the mass by the molar mass: 36 g of water ÷ 18.015 g/mol ≈ 2.0 mol. Enter the grams below the result to do it automatically.',
+      },
+    ],
+  },
+  {
+    slug: 'percentage-difference-calculator',
+    category: 'calculators',
+    name: 'Percentage Difference Calculator',
+    icon: '↔️',
+    shortDescription:
+      'Percentage change and percentage difference of two numbers.',
+    description:
+      'Compare two numbers: the absolute difference, the percentage change from the first to the second, and the symmetric percentage difference, each with the formula worked out. Zero and negative values are handled explicitly, and you choose the decimal places.',
+    title: 'Percentage Difference Calculator – Change vs Difference',
+    metaDescription:
+      'Free percentage difference calculator: get the absolute difference, percentage change and symmetric difference of two values, with formulas. Handles zero and negatives.',
+    keywords: [
+      'percentage difference calculator',
+      'percent difference',
+      'percentage change calculator',
+      'difference between two numbers in percentage',
+      'relative difference',
+    ],
+    relatedTools: [
+      'percentage-calculator',
+      'percentage-increase-calculator',
+      'ratio-calculator',
+      'average-calculator',
+      'profit-margin-calculator',
+    ],
+    component: 'form-calculator',
+    config: { calculator: 'percentage-difference' },
+    howTo: [
+      'Enter value A (the first or original value) and value B (the second or new value).',
+      'Choose how many decimal places to show.',
+      'Read the absolute difference, the percentage change from A to B and the symmetric percentage difference, with each formula worked out.',
+    ],
+    about: [
+      'Percentage change and percentage difference answer different questions. Percentage change measures a move from an original value: (B − A) ÷ |A| × 100. Going from 50 to 75 is +50%. Percentage difference compares two values without either being the reference: |A − B| ÷ ((|A| + |B|) ÷ 2) × 100. For 50 and 75 that is 25 ÷ 62.5 × 100 = 40%, and it’s the same whichever value comes first.',
+      'Use percentage change for prices, salaries and anything with a before and after; use percentage difference to compare two measurements, two shops or two groups. Percentage change from zero is undefined — any change from nothing is infinitely large — and when the two values have opposite signs both percentages can exceed 100%, so the absolute difference is often the clearer number.',
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between percentage change and percentage difference?',
+        a: 'Percentage change compares a new value with an original one, so the order matters: 50 → 75 is +50% but 75 → 50 is −33.3%. Percentage difference compares two values with their average and is 40% both ways.',
+      },
+      {
+        q: 'How do I calculate the percentage difference between two numbers?',
+        a: 'Divide the absolute difference by the average of the two values and multiply by 100: |A − B| ÷ ((A + B) ÷ 2) × 100. For 40 and 60: 20 ÷ 50 × 100 = 40%.',
+      },
+      {
+        q: 'Why is the percentage change undefined when A is 0?',
+        a: 'The formula divides by the original value, and you can’t divide by zero. Report the absolute change instead, or use the percentage difference, which is defined unless both values are 0.',
+      },
+      {
+        q: 'How are negative numbers handled?',
+        a: 'Percentage change divides by |A|, so a move from −20 to −10 is reported as +50%, an increase. When A and B have opposite signs, the tool adds a note because the percentages can be misleading.',
       },
     ],
   },

@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.23.1] — 2026-10-14
+
+### Changed
+
+- Docs refreshed after the 0.23.0 release: the AdSense notes give the
+  current tool count and guide schedule, and the backlog adds real-device
+  checks for the four new tools and an option for non-Latin fonts in the
+  resume PDF.
+
 ## [0.23.0] — 2026-10-14
 
 ### Added

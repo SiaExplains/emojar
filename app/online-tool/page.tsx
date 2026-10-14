@@ -1,20 +1,14 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb';
 import { FAQ, JsonLd } from '@/components/online-tools/ToolPage';
-import { ToolGrid } from '@/components/online-tools/ToolCard';
+import { ToolDirectory } from '@/components/online-tools/ToolDirectory';
 import { ToolSearch } from '@/components/online-tools/ToolSearch';
 import {
   CATEGORIES,
   TOOLS,
   categoryPath,
-  featuredTools,
-  getCategory,
   searchIndex,
-  toolPath,
-  toolsInCategory,
 } from '@/lib/online-tools/registry';
-import { externalToolsIn } from '@/lib/online-tools/external';
 import { faqJsonLd, hubMetadata, itemListJsonLd } from '@/lib/online-tools/seo';
 
 export const metadata: Metadata = hubMetadata(TOOLS.length);
@@ -40,7 +34,7 @@ const HUB_FAQS = [
 
 export default function OnlineToolsHub() {
   return (
-    <div className="space-y-12">
+    <>
       <JsonLd
         data={itemListJsonLd(
           'Online Tools',
@@ -49,106 +43,27 @@ export default function OnlineToolsHub() {
         )}
       />
       <JsonLd data={faqJsonLd(HUB_FAQS)} />
-
-      <div>
-        <Breadcrumb crumbs={[{ label: 'Online Tools' }]} />
-        <header className="space-y-4 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Online Tools
-          </h1>
-          <p className="text-base leading-relaxed text-gray-600">
-            {TOOLS.length} free, fast and privacy-friendly tools that run
-            directly in your browser — image and PDF converters, developer
-            utilities, text tools, calculators and more. No sign-up, and your
-            files never leave your device.
-          </p>
-          <ToolSearch entries={searchIndex()} syncUrl />
-          <nav
-            aria-label="Tool categories"
-            className="flex flex-wrap justify-center gap-2 pt-2"
-          >
-            {CATEGORIES.map((c) => (
-              <a
-                key={c.slug}
-                href={`#${c.slug}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-700 hover:border-gray-300 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-              >
-                <span aria-hidden>{c.icon}</span> {c.name}
-                <span className="text-xs text-gray-500">
-                  {toolsInCategory(c.slug).length}
-                </span>
-              </a>
-            ))}
-          </nav>
-        </header>
-      </div>
-
-      <section aria-labelledby="start-here" className="space-y-3">
+      <div className="space-y-12">
         <div>
-          <h2 id="start-here" className="text-xl font-semibold text-gray-900">
-            Start here
-          </h2>
-          <p className="text-sm text-gray-500">
-            Our picks — every tool is listed by category below.
-          </p>
+          <Breadcrumb crumbs={[{ label: 'Online Tools' }]} />
+          <header className="mx-auto max-w-4xl space-y-4 text-center">
+            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+              Online Tools
+            </h1>
+            <p className="text-base leading-relaxed text-gray-600 sm:text-lg">
+              {TOOLS.length} free, fast and privacy-friendly tools that run
+              directly in your browser — image and PDF converters, developer
+              utilities, text tools, calculators and more. No sign-up, and your
+              files never leave your device.
+            </p>
+            <ToolSearch entries={searchIndex()} syncUrl />
+          </header>
         </div>
-        <ToolGrid
-          tools={featuredTools().map((t) => ({
-            href: toolPath(t),
-            name: t.name,
-            description: t.shortDescription,
-            icon: t.icon,
-            category: getCategory(t.category)?.shortName,
-          }))}
-        />
-      </section>
 
-      {CATEGORIES.map((c) => {
-        const tools = toolsInCategory(c.slug);
-        return (
-          <section
-            key={c.slug}
-            id={c.slug}
-            aria-labelledby={`h-${c.slug}`}
-            className="scroll-mt-24 space-y-3"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-gray-100 pb-2">
-              <h2
-                id={`h-${c.slug}`}
-                className="text-xl font-semibold text-gray-900"
-              >
-                <span aria-hidden>{c.icon}</span> {c.name}
-              </h2>
-              <Link
-                href={categoryPath(c.slug)}
-                className="text-sm text-brand-700 hover:underline"
-              >
-                All {tools.length} {c.name.toLowerCase()} →
-              </Link>
-            </div>
-            <p className="text-sm text-gray-600">{c.intro}</p>
-            <ToolGrid
-              tools={[
-                ...tools.map((t) => ({
-                  href: toolPath(t),
-                  name: t.name,
-                  description: t.shortDescription,
-                  icon: t.icon,
-                })),
-                ...externalToolsIn(c.slug).map((t) => ({
-                  href: t.url,
-                  name: t.name,
-                  description: t.description,
-                  icon: t.icon,
-                  external: true,
-                })),
-              ]}
-            />
-          </section>
-        );
-      })}
+        <ToolDirectory fullIntro />
 
-      <FAQ faqs={HUB_FAQS} heading="About these tools" />
-    </div>
+        <FAQ faqs={HUB_FAQS} heading="About these tools" />
+      </div>
+    </>
   );
 }

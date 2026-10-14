@@ -93,7 +93,7 @@ export function ToolSearch({
           placeholder={placeholder}
           aria-controls={`${id}-results`}
           aria-describedby={`${id}-status`}
-          className="w-full rounded-2xl border border-gray-200 bg-white py-3 pl-11 pr-20 text-sm shadow-sm outline-none focus:border-brand-300 focus:ring-2 focus:ring-brand-100 [&::-webkit-search-cancel-button]:hidden"
+          className="w-full rounded-full border border-[#dedee8] bg-white py-3 pl-11 pr-20 text-sm shadow-[0_2px_10px_-4px_rgba(30,30,60,0.12)] outline-none focus:border-brand-300 focus:ring-2 focus:ring-brand-100 [&::-webkit-search-cancel-button]:hidden"
         />
         {q && (
           <button

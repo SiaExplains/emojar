@@ -136,7 +136,7 @@ export default async function GuidePage({
         <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand-600">
           {category ? `${category.name} guide` : (g.tags[0] ?? 'Guide')}
         </p>
-        <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">
+        <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl tracking-tight text-gray-900">
           {g.title}
         </h1>
         <p className="mt-3 text-sm text-gray-500">

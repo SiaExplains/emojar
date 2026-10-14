@@ -5,6 +5,10 @@ One Markdown file per online tool, named after the tool slug
 `app/blog/[slug]/page.tsx` and published on the schedule in
 `lib/blog/schedule.ts` (a guide is hidden until its publish date).
 
+Topic posts that cover several tools use any file name (e.g.
+`topic-pdf-workflows.md`) and leave out the `tool:` line; they still need a
+schedule entry.
+
 ## Format
 
 ```markdown

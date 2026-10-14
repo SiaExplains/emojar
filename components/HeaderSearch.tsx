@@ -205,7 +205,7 @@ export default function HeaderSearch() {
               setOpen(true);
             }}
             onKeyDown={onKeyDown}
-            className="w-full rounded-xl border border-gray-200 bg-white/90 py-1.5 pl-9 pr-3 text-sm outline-none transition focus:border-brand-300 focus:ring-2 focus:ring-brand-100"
+            className="w-full rounded-full border border-transparent bg-[#f2f2f7] py-2 pl-9 pr-3 text-sm outline-none transition focus:border-brand-300 focus:bg-white focus:ring-2 focus:ring-brand-100"
           />
         </div>
         {open && q && (

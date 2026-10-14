@@ -16,6 +16,8 @@ import {
 import { categoryItemList, categoryMetadata } from '@/lib/online-tools/seo';
 import { externalToolsIn } from '@/lib/online-tools/external';
 import type { CategorySlug } from '@/lib/online-tools/types';
+import { tintFor } from '@/lib/online-tools/category-style';
+import { pill, sectionTitle, tileIcon } from '@/components/ui/styles';
 
 type Params = { category: string };
 
@@ -47,104 +49,101 @@ export default async function CategoryPage({
   );
 
   return (
-    <div className="space-y-10">
+    <>
       <JsonLd data={categoryItemList(c)} />
-      <div>
-        <Breadcrumb
-          crumbs={[
-            { label: 'Online Tools', href: '/online-tool' },
-            { label: c.name },
-          ]}
-        />
-        <header className="space-y-3">
-          <div className="flex items-center gap-3">
-            <span aria-hidden className="text-4xl leading-none">
+      <div className="space-y-10">
+        <div>
+          <Breadcrumb
+            crumbs={[
+              { label: 'Online Tools', href: '/online-tool' },
+              { label: c.name },
+            ]}
+          />
+          <header className="mx-auto max-w-4xl space-y-4 text-center">
+            <span
+              aria-hidden
+              className={`${tileIcon} mx-auto h-14 w-14 text-3xl ${tintFor(c.slug)}`}
+            >
               {c.icon}
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
               {c.name}
             </h1>
-          </div>
-          <p className="text-base leading-relaxed text-gray-600">{c.intro}</p>
-          <p className="text-sm text-gray-500">
-            {tools.length} free tools · no sign-up · runs in your browser
-          </p>
-        </header>
-      </div>
+            <p className="text-base leading-relaxed text-gray-600 sm:text-lg">
+              {c.intro}
+            </p>
+            <p className="text-sm text-gray-500">
+              {tools.length} free tools · no sign-up · runs in your browser
+            </p>
+          </header>
+        </div>
 
-      <ToolSearch
-        entries={index}
-        placeholder={`Search ${c.name.toLowerCase()}…`}
-      />
+        <div className="mx-auto max-w-2xl">
+          <ToolSearch
+            entries={index}
+            placeholder={`Search ${c.name.toLowerCase()}…`}
+          />
+        </div>
 
-      <section aria-labelledby="all-tools" className="space-y-3">
-        <h2 id="all-tools" className="text-xl font-semibold text-gray-900">
-          All {c.name.toLowerCase()}
-        </h2>
-        <ToolGrid
-          tools={[
-            ...tools.map((t) => ({
-              href: toolPath(t),
-              name: t.name,
-              description: t.shortDescription,
-              icon: t.icon,
-            })),
-            ...externalToolsIn(c.slug as CategorySlug).map((t) => ({
-              href: t.url,
-              name: t.name,
-              description: t.description,
-              icon: t.icon,
-              external: true,
-            })),
-          ]}
-        />
-      </section>
+        <section aria-labelledby="all-tools" className="space-y-3">
+          <h2 id="all-tools" className={sectionTitle}>
+            All {c.name.toLowerCase()}
+          </h2>
+          <ToolGrid
+            tools={[
+              ...tools.map((t) => ({
+                href: toolPath(t),
+                name: t.name,
+                description: t.shortDescription,
+                icon: t.icon,
+                tint: c.slug,
+              })),
+              ...externalToolsIn(c.slug as CategorySlug).map((t) => ({
+                href: t.url,
+                name: t.name,
+                description: t.description,
+                icon: t.icon,
+                tint: c.slug,
+                external: true,
+              })),
+            ]}
+          />
+        </section>
 
-      {tools.some((t) => t.variants?.length) && (
-        <section aria-labelledby="popular-conversions" className="space-y-3">
-          <h2
-            id="popular-conversions"
-            className="text-xl font-semibold text-gray-900"
-          >
-            Popular conversions
+        {tools.some((t) => t.variants?.length) && (
+          <section aria-labelledby="popular-conversions" className="space-y-3">
+            <h2 id="popular-conversions" className={sectionTitle}>
+              Popular conversions
+            </h2>
+            <ul className="flex flex-wrap gap-2">
+              {tools.flatMap((t) =>
+                (t.variants ?? []).map((v) => (
+                  <li key={v.slug}>
+                    <Link href={`${toolPath(t)}/${v.slug}`} className={pill}>
+                      {v.name}
+                    </Link>
+                  </li>
+                )),
+              )}
+            </ul>
+          </section>
+        )}
+
+        <nav aria-labelledby="other-categories" className="space-y-3">
+          <h2 id="other-categories" className={sectionTitle}>
+            More tool categories
           </h2>
           <ul className="flex flex-wrap gap-2">
-            {tools.flatMap((t) =>
-              (t.variants ?? []).map((v) => (
-                <li key={v.slug}>
-                  <Link
-                    href={`${toolPath(t)}/${v.slug}`}
-                    className="inline-block rounded-full border border-gray-200 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    {v.name}
-                  </Link>
-                </li>
-              )),
-            )}
+            {CATEGORIES.filter((o) => o.slug !== c.slug).map((o) => (
+              <li key={o.slug}>
+                <Link href={categoryPath(o.slug)} className={pill}>
+                  <span aria-hidden>{o.icon}</span> {o.name}
+                </Link>
+              </li>
+            ))}
           </ul>
-        </section>
-      )}
-
-      <nav aria-labelledby="other-categories" className="space-y-3">
-        <h2
-          id="other-categories"
-          className="text-xl font-semibold text-gray-900"
-        >
-          More tool categories
-        </h2>
-        <ul className="flex flex-wrap gap-2">
-          {CATEGORIES.filter((o) => o.slug !== c.slug).map((o) => (
-            <li key={o.slug}>
-              <Link
-                href={categoryPath(o.slug)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50"
-              >
-                <span aria-hidden>{o.icon}</span> {o.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
+        </nav>
+      </div>
+    </>
   );
 }

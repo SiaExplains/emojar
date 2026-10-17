@@ -4,6 +4,26 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.25.0] — 2026-10-17
+
+### Added
+
+- Three new blog posts about the emoji side of Emojar: how to copy and
+  paste emojis on any device, the ten emoji categories explained, and emoji
+  letters (regional indicators, 🅰️ 🅱️ and look-alikes).
+- The AI-assistant index (llms.txt) now lists the emoji pages and all 33
+  older blog posts, not just the tool guides.
+
+### Changed
+
+- All remaining 200 tool guides are published now instead of a few each day
+  until 20 November.
+
+### Fixed
+
+- 14 older blog posts (Emoji Wordle, 2048, Emoji Kitchen and others) were
+  missing from the sitemap; every post is listed now.
+
 ## [0.24.1] — 2026-10-14
 
 ### Changed

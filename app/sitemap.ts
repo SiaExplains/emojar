@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import data from '@/data/emojis.json';
+import BLOG_POSTS_DATA from '@/data/blog-posts-data';
 import { publishedGuides } from '@/lib/blog/guides';
 import {
   CATEGORIES,
@@ -274,121 +275,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
-    // Blog posts
-    {
-      url: `${base}/blog/emoji-events-collection`,
-      lastModified: new Date('2026-05-14'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/odd-one-out-game`,
-      lastModified: new Date('2026-05-14'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/guess-the-animal-game`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/older-or-newer-game`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emoji-puzzle-game`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emojar-may-2026-updates`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emojar-games-launched`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emoji-tools-collection-2026`,
-      lastModified: new Date('2026-06-24'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emoji-xo-game-guide`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emoji-snake-game-guide`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emoji-minesweeper-game-guide`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emoji-hangman-game-guide`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emoji-bubble-shooter-game-guide`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/guess-the-flag-game`,
-      lastModified: new Date('2026-05-13'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/seo-indexation-recovery`,
-      lastModified: new Date('2026-05-14'),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${base}/blog/find-your-emoji-personality`,
-      lastModified: new Date('2026-05-25'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/emoji-to-png-download`,
-      lastModified: new Date('2026-06-19'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/blog/homepage-redesign-june-2026`,
-      lastModified: new Date('2026-06-20'),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${base}/blog/emoji-games-batch-2`,
-      lastModified: new Date('2026-06-24'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
   ];
 
   const categories = Array.from(new Set(data.map((e) => e.category)));
@@ -443,6 +329,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    // Hand-written MDX posts in app/blog/*, listed in data/blog-posts-data.ts.
+    ...Object.entries(BLOG_POSTS_DATA).map(([slug, p]) => ({
+      url: `${base}/blog/${slug}`,
+      lastModified: new Date(p.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     ...publishedGuides().map((g) => ({
       url: `${base}/blog/${g.slug}`,
       lastModified: new Date(g.publishDate),

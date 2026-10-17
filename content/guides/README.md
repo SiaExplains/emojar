@@ -5,9 +5,11 @@ One Markdown file per online tool, named after the tool slug
 `app/blog/[slug]/page.tsx` and published on the schedule in
 `lib/blog/schedule.ts` (a guide is hidden until its publish date).
 
-Topic posts that cover several tools use any file name (e.g.
-`topic-pdf-workflows.md`) and leave out the `tool:` line; they still need a
-schedule entry.
+Topic posts that cover several tools or an emoji feature use any file name
+(e.g. `topic-pdf-workflows.md`, `topic-emoji-categories.md`) and leave out the
+`tool:` line; they still need a schedule entry. Hand-written MDX posts in
+`app/blog/<slug>/page.mdx` must also be added to `data/blog-posts-data.ts`,
+which feeds the sitemap and llms.txt (a test checks this).
 
 ## Format
 
@@ -30,6 +32,8 @@ Opening paragraph that answers the reader's question directly.
 Rules:
 
 - No `#` H1 in the body (the page renders the title as H1).
-- Internal links only to tool pages (`/online-tool/...`), the hub
-  (`/online-tool`) or `/faq`.
+- Internal links only to pages listed in `KNOWN_URLS` in
+  `lib/blog/guides.test.ts`: tool and category pages (`/online-tool/...`), the
+  hub, `/faq`, `/blog`, `/games`, and the emoji hubs and tools (`/emoji`,
+  `/categories`, `/collection/alphabet`, `/emoji-to-png` …).
 - Facts about a tool must match its registry entry and component.

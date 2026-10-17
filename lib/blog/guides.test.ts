@@ -17,6 +17,7 @@ import {
   wordCount,
 } from './guides';
 import { extractFaq, renderMarkdown } from './render';
+import BLOG_POSTS_DATA from '../../data/blog-posts-data';
 
 const guides = allGuides();
 
@@ -27,6 +28,18 @@ const KNOWN_URLS = new Set<string>([
   '/blog',
   '/contact',
   '/games',
+  // Emoji hubs and tools that guides may link to.
+  '/categories',
+  '/collection/alphabet',
+  '/collection/detail',
+  '/table/emoji-alphabet-shaped',
+  '/emoji-collections/events',
+  '/emoji-tools',
+  '/emoji-to-png',
+  '/emoji-kitchen',
+  '/emoji-inspector',
+  '/emoji-favicon',
+  '/emoji-card',
   ...CATEGORIES.map((c) => categoryPath(c.slug)),
   ...TOOLS.flatMap((t) => [
     toolPath(t),
@@ -120,6 +133,17 @@ describe('tool guides', () => {
       expect(prose(g.body), `${g.key} has an H1`).not.toMatch(/^#\s/m);
       expect(prose(g.body), `${g.key} has no ## headings`).toMatch(/^##\s/m);
     }
+  });
+
+  it('lists every MDX post in blog-posts-data (sitemap and llms.txt)', () => {
+    expect(STATIC_BLOG_SLUGS.filter((s) => !(s in BLOG_POSTS_DATA))).toEqual(
+      [],
+    );
+    expect(
+      Object.keys(BLOG_POSTS_DATA).filter(
+        (s) => !STATIC_BLOG_SLUGS.includes(s),
+      ),
+    ).toEqual([]);
   });
 
   it('links only to pages that exist', () => {

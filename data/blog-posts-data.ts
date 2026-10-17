@@ -5,6 +5,12 @@ export type BlogPostMeta = {
 };
 
 const BLOG_POSTS_DATA: Record<string, BlogPostMeta> = {
+  'guess-the-flag-game': {
+    title: 'Guess the Flag — New Emoji Quiz Game on Emojar',
+    description:
+      'Test your world geography knowledge with Guess the Flag, our new emoji quiz game. See a country flag emoji and pick the right country from four options.',
+    date: '2026-05-13',
+  },
   'emoji-games-batch-2': {
     title: '8 New Emoji Games: Wordle, 2048, Whack-a-Mole & More',
     description:

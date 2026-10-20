@@ -297,11 +297,8 @@ export default function TermsPage() {
         <h2 className="text-xl font-semibold mb-3">11. Contact</h2>
         <p className="leading-7">
           Questions about these Terms can be sent to:{' '}
-          <a
-            href="mailto:emojar.info@gmail.com"
-            className="text-blue-600 underline"
-          >
-            emojar.info@gmail.com
+          <a href="mailto:hi@emojar.com" className="text-blue-600 underline">
+            hi@emojar.com
           </a>{' '}
           or via the{' '}
           <Link href="/contact" className="text-blue-600 underline">

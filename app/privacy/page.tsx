@@ -62,8 +62,8 @@ export default function PrivacyPage() {
             10117 Berlin, Germany
             <br />
             E-Mail:{' '}
-            <a href="mailto:emojar.info@gmail.com" className="underline">
-              emojar.info@gmail.com
+            <a href="mailto:hi@emojar.com" className="underline">
+              hi@emojar.com
             </a>
           </address>
           <p className="mt-2 text-sm text-gray-500">
@@ -267,8 +267,8 @@ export default function PrivacyPage() {
           </ul>
           <p className="mt-3">
             To exercise any of these rights, email{' '}
-            <a href="mailto:emojar.info@gmail.com" className="underline">
-              emojar.info@gmail.com
+            <a href="mailto:hi@emojar.com" className="underline">
+              hi@emojar.com
             </a>{' '}
             with &quot;GDPR Request&quot; in the subject. We will respond within
             30 days.
@@ -326,8 +326,8 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold">11. Contact</h2>
           <p className="mt-2">
             For any privacy-related questions:{' '}
-            <a href="mailto:emojar.info@gmail.com" className="underline">
-              emojar.info@gmail.com
+            <a href="mailto:hi@emojar.com" className="underline">
+              hi@emojar.com
             </a>{' '}
             or visit our{' '}
             <Link href="/contact" className="underline">

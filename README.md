@@ -7,7 +7,7 @@ Live at [emojar.com](https://emojar.com).
 - **Online tools** (`/online-tool`) — 288 tools in 13 categories: image, PDF,
   developer, text, color, calculators, unit converters, security & generators,
   date & time, audio & video, device tests, reference & learning, and productivity. Each tool has an in-depth guide
-  on the blog (`content/guides/`, drip-published on a schedule), and `/faq`
+  on the blog (`content/guides/`, publish dates in `lib/blog/guide-schedule.ts`), and `/faq`
   answers common questions by category. Files and text are processed on the user's device; there are
   no upload APIs and nothing is stored.
   Category pages can also list a few related free tools on other sites (FocusCrew under Date & Time

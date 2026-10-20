@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
 import Breadcrumb from '@/components/Breadcrumb';
+import { useRandomState } from '@/lib/games/use-random-state';
 
 type EmojiEntry = {
   char: string;
@@ -55,9 +56,8 @@ type HistoryRow = {
 };
 
 export default function OlderOrNewerPage() {
-  const [[emojiA, emojiB], setPair] = useState<[EmojiEntry, EmojiEntry]>(() =>
-    pickTwo(),
-  );
+  const [[emojiA, emojiB], setPair] =
+    useRandomState<[EmojiEntry, EmojiEntry]>(pickTwo);
   const [guess, setGuess] = useState<'older' | 'newer' | null>(null);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);

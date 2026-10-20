@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
 import Breadcrumb from '@/components/Breadcrumb';
+import { useRandomState } from '@/lib/games/use-random-state';
 
 type EmojiItem = {
   char: string;
@@ -136,7 +137,7 @@ function HangmanSVG({ wrong }: { wrong: number }) {
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 export default function Page() {
-  const [current, setCurrent] = useState<EmojiItem>(() => pickRandom());
+  const [current, setCurrent] = useRandomState<EmojiItem>(pickRandom);
   const [guessed, setGuessed] = useState<Set<string>>(new Set());
   const [startAt, setStartAt] = useState<number>(Date.now());
   const [scores, setScores] = useState<ScoreRow[]>([]);

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
 import Breadcrumb from '@/components/Breadcrumb';
+import { shuffle } from '@/lib/games/use-random-state';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
 
@@ -25,7 +26,7 @@ type Card = {
 };
 
 function buildDeck(pairs: number): Card[] {
-  const pool = [...EMOJI_POOL].sort(() => Math.random() - 0.5).slice(0, pairs);
+  const pool = shuffle(EMOJI_POOL).slice(0, pairs);
   const doubled = [...pool, ...pool];
   for (let i = doubled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

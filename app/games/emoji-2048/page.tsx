@@ -144,12 +144,19 @@ function hasMovesLeft(grid: Grid): boolean {
 }
 
 export default function Emoji2048Page() {
-  const [grid, setGrid] = useState<Grid>(() => initGame().grid);
+  // The server renders an empty board; the random start tiles and the saved
+  // best score are set after mount, so the first client render matches.
+  const [grid, setGrid] = useState<Grid>(emptyGrid);
   const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(() => {
-    if (typeof window === 'undefined') return 0;
-    return Number(localStorage.getItem('emoji-2048-best') ?? 0);
-  });
+  const [bestScore, setBestScore] = useState(0);
+  useEffect(() => {
+    setGrid(initGame().grid);
+    try {
+      setBestScore(Number(localStorage.getItem('emoji-2048-best') ?? 0) || 0);
+    } catch {
+      // Storage blocked (private mode): the best score just starts at 0.
+    }
+  }, []);
   const [won, setWon] = useState(false);
   const [lost, setLost] = useState(false);
   const [continueAfterWin, setContinueAfterWin] = useState(false);

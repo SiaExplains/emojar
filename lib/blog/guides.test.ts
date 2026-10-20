@@ -146,6 +146,18 @@ describe('tool guides', () => {
     ).toEqual([]);
   });
 
+  it('keeps MDX <p>/<time> text inline (MDX wraps a separate line in another <p>)', () => {
+    const bad = STATIC_BLOG_SLUGS.filter((slug) =>
+      /<(p|time)(\s[^>\n]*)?>\n[ \t]*[^<\n]/.test(
+        fs.readFileSync(
+          path.join(process.cwd(), 'app', 'blog', slug, 'page.mdx'),
+          'utf8',
+        ),
+      ),
+    );
+    expect(bad).toEqual([]);
+  });
+
   it('links only to pages that exist', () => {
     const bad: string[] = [];
     for (const g of guides) {

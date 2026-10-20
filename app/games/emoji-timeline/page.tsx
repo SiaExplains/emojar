@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
 import Breadcrumb from '@/components/Breadcrumb';
+import { shuffle, useRandomState } from '@/lib/games/use-random-state';
 
 type EmojiItem = {
   char: string;
@@ -20,7 +21,7 @@ const TOTAL_ROUNDS = 5;
 const ITEMS_PER_ROUND = 5;
 
 function pickRound(): EmojiItem[] {
-  const shuffled = EMOJIS.slice().sort(() => Math.random() - 0.5);
+  const shuffled = shuffle(EMOJIS);
   return shuffled.slice(0, ITEMS_PER_ROUND);
 }
 
@@ -33,7 +34,10 @@ function countCorrectPositions(
 
 export default function EmojiTimelinePage() {
   const [round, setRound] = useState(1);
-  const [emojis, setEmojis] = useState<EmojiItem[]>(() => pickRound());
+  // The order list starts as a copy of the round, here and after the re-roll.
+  const [emojis, setEmojis] = useRandomState<EmojiItem[]>(pickRound, (fresh) =>
+    setOrder([...fresh]),
+  );
   const [order, setOrder] = useState<EmojiItem[]>(() => [...emojis]);
   const [selected, setSelected] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);

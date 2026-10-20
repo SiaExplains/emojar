@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
 import Breadcrumb from '@/components/Breadcrumb';
+import { useRandomState } from '@/lib/games/use-random-state';
 
 type FlagItem = {
   char: string;
@@ -58,7 +59,7 @@ function newRound(exclude?: FlagItem): {
 }
 
 export default function GuessFlagPage() {
-  const [{ current, choices }, setRound] = useState(() => newRound());
+  const [{ current, choices }, setRound] = useRandomState(newRound);
   const [selected, setSelected] = useState<string | null>(null);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);

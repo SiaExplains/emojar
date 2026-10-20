@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
+import { useRandomState } from '@/lib/games/use-random-state';
 
 const COLS = 10;
 const ROWS = 12;
@@ -96,9 +97,9 @@ function findFloating(grid: Grid): [number, number][] {
 }
 
 export default function Page() {
-  const [grid, setGrid] = useState<Grid>(makeInitialGrid);
-  const [current, setCurrent] = useState(randomEmoji);
-  const [next, setNext] = useState(randomEmoji);
+  const [grid, setGrid] = useRandomState<Grid>(makeInitialGrid);
+  const [current, setCurrent] = useRandomState(randomEmoji);
+  const [next, setNext] = useRandomState(randomEmoji);
   const [score, setScore] = useState(0);
   const [shots, setShots] = useState(0);
   const [gameState, setGameState] = useState<GameState>('idle');

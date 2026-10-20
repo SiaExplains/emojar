@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
 import Breadcrumb from '@/components/Breadcrumb';
+import { shuffle, useRandomState } from '@/lib/games/use-random-state';
 
 type EmojiItem = {
   char: string;
@@ -38,7 +39,7 @@ const CATEGORIES_POOL = [
 
 function pickOptions(): EmojiItem[] {
   // Pick 4 emojis from 4 different categories
-  const shuffledCats = CATEGORIES_POOL.slice().sort(() => Math.random() - 0.5);
+  const shuffledCats = shuffle(CATEGORIES_POOL);
   const options: EmojiItem[] = [];
   for (const cat of shuffledCats.slice(0, 4)) {
     const pool = EMOJIS.filter((e) => e.category === cat);
@@ -55,9 +56,8 @@ function buildChapterOptions(): EmojiItem[][] {
 }
 
 export default function StoryBuilderPage() {
-  const [chapterOptions, setChapterOptions] = useState<EmojiItem[][]>(() =>
-    buildChapterOptions(),
-  );
+  const [chapterOptions, setChapterOptions] =
+    useRandomState<EmojiItem[][]>(buildChapterOptions);
   const [picks, setPicks] = useState<(EmojiItem | null)[]>(
     Array(CHAPTERS).fill(null),
   );

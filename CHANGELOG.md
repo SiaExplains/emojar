@@ -4,6 +4,17 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.25.4] — 2026-10-20
+
+### Fixed
+
+- Ten games (Emoji 2048, Hangman, Bubble Shooter, Guess the Flag, Guess the
+  Animal, Older or Newer, Odd One Out, Emoji Timeline, Missing Piece and
+  Story Builder) no longer throw a page error when they load. Each visit
+  still starts with a fresh random round, and shuffles are now evenly random.
+- The 33 older blog posts no longer produce invalid HTML (a paragraph inside
+  a paragraph) in their header.
+
 ## [0.25.3] — 2026-10-20
 
 ### Changed

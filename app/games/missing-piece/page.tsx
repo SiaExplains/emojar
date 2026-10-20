@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import allEmojis from '../../../data/emojis.json';
 import Breadcrumb from '@/components/Breadcrumb';
+import { shuffle, useRandomState } from '@/lib/games/use-random-state';
 
 type EmojiItem = {
   char: string;
@@ -39,7 +40,7 @@ type RoundData = {
 function buildRound(): RoundData {
   const cat =
     VALID_CATEGORIES[Math.floor(Math.random() * VALID_CATEGORIES.length)];
-  const pool = BY_CATEGORY[cat].slice().sort(() => Math.random() - 0.5);
+  const pool = shuffle(BY_CATEGORY[cat]);
   const grid = pool.slice(0, 9);
   const distractors = pool.slice(9, 12);
 
@@ -47,14 +48,14 @@ function buildRound(): RoundData {
   const correct = grid[hiddenIdx];
 
   // 4 options: correct + 3 distractors, shuffled
-  const options = [correct, ...distractors].sort(() => Math.random() - 0.5);
+  const options = shuffle([correct, ...distractors]);
 
   return { grid, hiddenIdx, options, correct };
 }
 
 export default function MissingPiecePage() {
   const [round, setRound] = useState(1);
-  const [roundData, setRoundData] = useState<RoundData>(() => buildRound());
+  const [roundData, setRoundData] = useRandomState<RoundData>(buildRound);
   const [chosen, setChosen] = useState<EmojiItem | null>(null);
   const [score, setScore] = useState(0);
   const [results, setResults] = useState<boolean[]>([]);

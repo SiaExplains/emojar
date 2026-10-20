@@ -124,9 +124,9 @@
 
 **Description:** Since v0.22.0 the homepage HTML is ~86 KB gzipped (was ~40 KB) because it lists all tools. The hero `ToolSearch` also inlines the whole search index (~100 KB raw) — load it on first focus from `/search-index.json` like `HeaderSearch` does, on the homepage and `/online-tool`. Optionally wrap the plain-text info pages (about, privacy, terms, contact) in a white `card`.
 
-### [ ] Pre-existing hydration errors
+### [x] Pre-existing hydration errors
 
-**Description:** Found during the v0.22.0 sweep: Emoji 2048 builds its random start board during render (server and client differ); 28 MDX posts in `app/blog/*/page.mdx` wrap text in a styled `<p>` that MDX wraps in another `<p>`. Fix by hand — never run prettier on the MDX files.
+**Description:** Fixed in v0.25.4. Ten games (2048, Hangman, Bubble Shooter, Guess the Flag, Guess the Animal, Older or Newer, Odd One Out, Emoji Timeline, Missing Piece, Story Builder) built a random first round during render; they now use `useRandomState` (seeded on the server and first client render, re-rolled after mount) and the Fisher–Yates `shuffle` from `lib/games/use-random-state.ts`. All 33 MDX posts had `<p>`/`<time>` text on its own line, which MDX wraps in another `<p>`; the text is inline now. Tests guard both.
 
 ### [x] E — Technical SEO
 

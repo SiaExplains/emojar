@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
+import { useRandomState } from '@/lib/games/use-random-state';
 
 type Round = {
   emojis: string[];
@@ -408,7 +409,7 @@ type HistoryRow = {
 };
 
 export default function OddOneOutPage() {
-  const [queue, setQueue] = useState<GameRound[]>(() => buildQueue());
+  const [queue, setQueue] = useRandomState<GameRound[]>(buildQueue);
   const [qIndex, setQIndex] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [score, setScore] = useState(0);

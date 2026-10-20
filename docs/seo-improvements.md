@@ -613,7 +613,7 @@ const orgSchema = {
 **File:** Create `/public/.well-known/security.txt`
 
 ```
-Contact: mailto:contact@emojar.com
+Contact: mailto:hi@emojar.com
 Expires: 2027-01-01T00:00:00.000Z
 Preferred-Languages: en
 ```

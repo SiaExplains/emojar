@@ -4,7 +4,7 @@
 **Ads.txt status in AdSense dashboard:** Not found  
 **Reviewed:** 2026-06-24 · **Status re-checked against the code and live site:** 2026-10-09 (v0.15.2)
 
-> **Since the review:** Emojar became a tools site (288 browser tools as of v0.24.0), and every tool has its own in-depth guide (600+ words, Person author, visible date, FAQ, related guides), drip-published from 2026-10-07 at up to six a day, with all guides live by 2026-11-20; six multi-tool topic posts went live on 2026-10-12. The privacy policy, About and Terms were corrected in v0.15.2. The site-wide audit with the next steps is `emojar-docs/audit-2026-10/stage-a-audit.md`.
+> **Since the review:** Emojar became a tools site (288 browser tools as of v0.24.0), and every tool has its own in-depth guide (600+ words, Person author, visible date, FAQ, related guides), published from 2026-10-07, with every remaining guide made live on 2026-10-17 (v0.25.0); nine topic posts cover multi-tool workflows and the emoji features. All 331 blog posts are in the sitemap and in `llms.txt` since v0.25.0. The privacy policy, About and Terms were corrected in v0.15.2. The site-wide audit with the next steps is `emojar-docs/audit-2026-10/stage-a-audit.md`.
 
 ---
 

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const EMAIL = 'emojar.info@gmail.com';
+const EMAIL = 'hi@emojar.com';
 
 function ContactCard({
   title,

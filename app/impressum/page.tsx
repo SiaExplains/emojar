@@ -34,8 +34,8 @@ export default function ImpressumPage() {
           <h2 className="text-lg font-semibold">Kontakt / Contact</h2>
           <p>
             E-Mail:{' '}
-            <a href="mailto:emojar.info@gmail.com" className="underline">
-              emojar.info@gmail.com
+            <a href="mailto:hi@emojar.com" className="underline">
+              hi@emojar.com
             </a>
           </p>
           <p>Telefon: +49 157 34589750</p>
@@ -64,8 +64,8 @@ export default function ImpressumPage() {
           </p>
           <p>
             E-Mail:{' '}
-            <a href="mailto:emojar.info@gmail.com" className="underline">
-              emojar.info@gmail.com
+            <a href="mailto:hi@emojar.com" className="underline">
+              hi@emojar.com
             </a>
           </p>
           <p>Sprachen / Languages: Deutsch, English</p>

@@ -4,6 +4,21 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.25.2] — 2026-10-20
+
+### Changed
+
+- The contact email is now hi@emojar.com on the Contact, Privacy, Terms and
+  Impressum pages.
+
+## [0.25.1] — 2026-10-17
+
+### Changed
+
+- Docs refreshed after the 0.25.0 release: the README and AdSense notes no
+  longer describe a drip schedule, and the backlog notes what's done for
+  content and what to watch in Search Console.
+
 ## [0.25.0] — 2026-10-17
 
 ### Added

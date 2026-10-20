@@ -130,11 +130,11 @@
 
 ### [x] E — Technical SEO
 
-**Description:** Shipped in v0.20.0 — still manual: Vercel www → apex redirect as permanent (308). Metadata and canonicals for `/emoji-collections/events`, `/collection/alphabet`, `/collection/detail` and `/table/emoji-alphabet-shaped`; self-canonical blog pages 2+ and `noindex,follow` tag views; shorter title templates (no slug changes); OG images for blog, games and info pages; fix the `/sorted/alphabet` link. Manual (Sia): make the www → apex redirect permanent in Vercel.
+**Description:** Shipped in v0.20.0; the Vercel www → apex redirect is permanent (308) since 2026-10-20. Metadata and canonicals for `/emoji-collections/events`, `/collection/alphabet`, `/collection/detail` and `/table/emoji-alphabet-shaped`; self-canonical blog pages 2+ and `noindex,follow` tag views; shorter title templates (no slug changes); OG images for blog, games and info pages; fix the `/sorted/alphabet` link. Manual step done 2026-10-20: www → apex is a 308.
 
 ### [ ] Watch the v0.20.0 title change in Search Console
 
-**Description:** v0.20.0 shortened the titles of all 3,789 emoji pages ("🍕 Pizza Emoji — Meaning & Copy | Emojar") and ~35 tool/blog titles. Compare impressions, clicks and CTR for `/emoji/*` for four weeks before and after the release; revert the template in `app/emoji/[slug]/page.tsx` if CTR drops noticeably. Also still manual: Vercel www → apex redirect as permanent (308).
+**Description:** v0.20.0 shortened the titles of all 3,789 emoji pages ("🍕 Pizza Emoji — Meaning & Copy | Emojar") and ~35 tool/blog titles. Compare impressions, clicks and CTR for `/emoji/*` for four weeks before and after the release; revert the template in `app/emoji/[slug]/page.tsx` if CTR drops noticeably. Vercel www → apex is a permanent 308 since 2026-10-20.
 
 ### [ ] F — Performance and ads
 

@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.25.3] — 2026-10-20
+
+### Changed
+
+- Docs: AdSense notes record the current state — review requested and
+  "Getting ready", ads.txt "Authorized", the www → emojar.com redirect now
+  permanent, and hi@emojar.com confirmed to receive mail.
+
 ## [0.25.2] — 2026-10-20
 
 ### Changed

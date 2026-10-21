@@ -317,4 +317,13 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-copy-paste-emojis': '2026-10-17',
   'topic-emoji-categories': '2026-10-17',
   'topic-emoji-alphabet': '2026-10-17',
+  // v0.26.0 topic posts for tools no workflow post covered yet.
+  'topic-seo-launch-checklist': '2026-10-21',
+  'topic-convert-data-formats': '2026-10-21',
+  'topic-check-your-setup-before-a-call': '2026-10-21',
+  'topic-everyday-security-toolkit': '2026-10-21',
+  'topic-study-toolkit': '2026-10-21',
+  'topic-job-application-kit': '2026-10-21',
+  'topic-edit-audio-and-video-in-the-browser': '2026-10-21',
+  'topic-work-across-time-zones': '2026-10-21',
 };

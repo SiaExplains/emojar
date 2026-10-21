@@ -116,6 +116,18 @@ filter or link chips use `pill` / `pillActive`. Tint an icon square with
 category must get an entry in `CATEGORY_TINT`. Put JSON-LD `<script>`s outside
 `space-y-*` wrappers, otherwise the first visible child gets a top margin.
 
+**Games and randomness.** Game pages are rendered on the server too, so a
+random first round must not be built during render. Use `useRandomState` from
+`lib/games/use-random-state.ts` (seeded on the server and the first client
+render, re-rolled after mount) and its `shuffle()` (Fisher–Yates) — never
+`sort(() => Math.random() - 0.5)`. Read `localStorage` in an effect, not in a
+`useState` initializer. A test fails on sort-based shuffles in game pages.
+
+**MDX posts.** Inside JSX in `app/blog/*/page.mdx`, keep `<p>` and `<time>`
+text on the same line as the tag — MDX wraps a separate line in another `<p>`
+(invalid HTML and a hydration error). A test checks this. Never run prettier
+on the MDX files.
+
 ## Environment variables
 
 All optional; none are secrets.

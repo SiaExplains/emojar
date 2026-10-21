@@ -4,6 +4,24 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.26.0] — 2026-10-22
+
+### Added
+
+- Eight new blog posts that walk through a real task with several tools:
+  an SEO launch checklist for a new page, converting data between CSV, JSON,
+  YAML, XML, TOML and Markdown, checking your camera, mic and screen before a
+  call, an everyday security toolkit, a study toolkit, a job application kit,
+  editing audio and video in the browser, and working across time zones.
+
+## [0.25.5] — 2026-10-20
+
+### Changed
+
+- Docs refreshed after the 0.25.4 release: the README explains how game
+  pages must build random rounds and how to write MDX headers so the
+  hydration errors don't come back.
+
 ## [0.25.4] — 2026-10-20
 
 ### Fixed

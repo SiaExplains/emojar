@@ -4,7 +4,7 @@ Free, privacy-first **online tools** that run entirely in the browser — plus
 3,790 emojis to search and copy, 18 emoji games and 8 emoji tools.
 Live at [emojar.com](https://emojar.com).
 
-- **Online tools** (`/online-tool`) — 288 tools in 13 categories: image, PDF,
+- **Online tools** (`/online-tool`) — 289 tools in 13 categories: image, PDF,
   developer, text, color, calculators, unit converters, security & generators,
   date & time, audio & video, device tests, reference & learning, and productivity. Each tool has an in-depth guide
   on the blog (`content/guides/`, publish dates in `lib/blog/guide-schedule.ts`), and `/faq`
@@ -44,6 +44,15 @@ the xkcd colour survey (CC0). Regenerate it with `npm run data:reference`
 Braille Grade 2 uses liblouis 3.39 (LGPL-2.1+) compiled to WebAssembly in
 `public/vendor/liblouis/`; rebuild it with `npm run build:liblouis` (needs
 Emscripten).
+
+The ARW Converter decodes Sony RAW files with LibRaw 0.22 (LGPL-2.1 / CDDL)
+from the `libraw-wasm` package, copied to `public/vendor/libraw/` with
+`npm run vendor:libraw`. Its WebAssembly build uses threads, so
+`next.config.ts` makes only `/online-tool/image-tools/arw-converter/*` and
+`/vendor/libraw/*` cross-origin isolated (COOP `same-origin`, COEP
+`require-corp`). Those pages load no ads and must not embed anything from
+another origin; the tool reloads once when reached by an in-site link, and
+falls back to the camera's embedded JPEG preview if isolation is unavailable.
 
 ## Getting started
 

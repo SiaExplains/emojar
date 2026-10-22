@@ -67,6 +67,7 @@ export type ToolComponentKey =
   | 'pdf-to-text'
   | 'pdf-metadata'
   | 'heic-to-jpg'
+  | 'raw-converter'
   | 'image-to-text'
   | 'compress-to-size'
   | 'meme-generator'
@@ -240,6 +241,11 @@ export type ToolDefinition = {
   faqs: FAQItem[];
   /** True when the tool reads files — drives the privacy wording. */
   handlesFiles?: boolean;
+  /**
+   * No ads on this tool's pages. Needed where the page is cross-origin
+   * isolated (COOP/COEP in next.config.ts), which blocks ad iframes.
+   */
+  noAds?: boolean;
   /** Honest note about a technical limitation, shown next to the tool. */
   limitation?: string;
   variants?: ToolVariant[];

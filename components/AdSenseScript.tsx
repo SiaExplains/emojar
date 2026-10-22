@@ -3,9 +3,13 @@
 import Script from 'next/script';
 import { usePathname } from 'next/navigation';
 
-// Full-bleed surfaces that must never load ads (game screens, etc.).
-// Kept in sync with ChromeGate's BARE_PREFIXES.
-const NO_ADS_PREFIXES = ['/games/emopet'];
+// Surfaces that must never load ads: full-bleed game screens (kept in sync
+// with ChromeGate's BARE_PREFIXES) and the cross-origin-isolated ARW
+// Converter, whose COEP header would block the ad iframes anyway.
+const NO_ADS_PREFIXES = [
+  '/games/emopet',
+  '/online-tool/image-tools/arw-converter',
+];
 
 /**
  * Loads the AdSense loader script, except on ad-free surfaces. Because this

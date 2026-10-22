@@ -4,6 +4,31 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.0] — 2026-10-22
+
+### Added
+
+- ARW Converter: convert Sony ARW (and older SR2/SRF) RAW photos to JPG or
+  PNG in the browser, with ARW to JPG and ARW to PNG pages. Photos are fully
+  decoded at the camera's resolution with LibRaw, with options for white
+  balance, brightness, JPG quality and half size, and a ZIP of all results.
+  Nothing is uploaded. If full decoding isn't possible, the tool uses the
+  JPEG preview stored in the file and says so.
+- A guide explaining what's inside an ARW file and when to choose JPG or PNG.
+
+### Changed
+
+- The ARW Converter pages run in a stricter browser security mode that the
+  RAW decoder needs, so they show no ads.
+
+## [0.26.1] — 2026-10-22
+
+### Changed
+
+- Docs refreshed after the 0.26.0 release: the AdSense notes give the
+  current post counts (17 topic posts, 339 blog posts), and the backlog adds
+  a small fix for how JSON to YAML writes values like "NO".
+
 ## [0.26.0] — 2026-10-22
 
 ### Added

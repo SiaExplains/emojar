@@ -69,6 +69,7 @@ const COMPONENTS: Record<ToolComponentKey, ComponentType<ToolProps>> = {
   'pdf-to-text': load(() => import('./tools/PdfToTextTool')),
   'pdf-metadata': load(() => import('./tools/PdfMetadataTool')),
   'heic-to-jpg': load(() => import('./tools/HeicToJpgTool')),
+  'raw-converter': load(() => import('./tools/RawConverterTool')),
   'image-to-text': load(() => import('./tools/ImageToTextTool')),
   'compress-to-size': load(() => import('./tools/CompressToSizeTool')),
   'meme-generator': load(() => import('./tools/MemeGeneratorTool')),

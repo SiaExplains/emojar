@@ -248,7 +248,7 @@ export function ToolPage({
           )}
         </section>
 
-        <AdSlot placement="tool" />
+        {!tool.noAds && <AdSlot placement="tool" />}
 
         {siblings && siblings.length > 0 && (
           <nav aria-labelledby="variants-heading" className="space-y-3">

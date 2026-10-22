@@ -326,4 +326,6 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-job-application-kit': '2026-10-21',
   'topic-edit-audio-and-video-in-the-browser': '2026-10-21',
   'topic-work-across-time-zones': '2026-10-21',
+  // v0.27.0 ARW Converter.
+  'arw-converter': '2026-10-22',
 };

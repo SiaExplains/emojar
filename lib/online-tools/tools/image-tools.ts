@@ -132,6 +132,7 @@ export const IMAGE_TOOLS: ToolDefinition[] = [
       'pdf-to-jpg',
       'image-to-base64',
       'merge-pdf',
+      'arw-converter',
     ],
     component: 'image-converter',
     config: { from: 'any', to: 'png' },
@@ -627,6 +628,7 @@ export const IMAGE_TOOLS: ToolDefinition[] = [
       'image-exif-viewer',
       'image-resizer',
       'compress-image-to-size',
+      'arw-converter',
     ],
     component: 'heic-to-jpg',
     handlesFiles: true,
@@ -652,6 +654,94 @@ export const IMAGE_TOOLS: ToolDefinition[] = [
       {
         q: 'Can I stop my iPhone from saving HEIC?',
         a: 'Yes: Settings → Camera → Formats → “Most Compatible” makes the camera save JPG instead.',
+      },
+    ],
+  },
+  {
+    slug: 'arw-converter',
+    category: 'image-tools',
+    name: 'ARW Converter',
+    icon: '📷',
+    shortDescription: 'Convert Sony ARW RAW photos to JPG or PNG.',
+    description:
+      'Convert Sony ARW RAW photos to JPG or PNG in your browser. The RAW sensor data is fully decoded with LibRaw — the same open-source engine many photo apps use — at the camera’s full resolution, and your files are never uploaded.',
+    title: 'ARW Converter – Convert Sony RAW to JPG or PNG Online, No Upload',
+    metaDescription:
+      'Convert Sony ARW RAW files to JPG or PNG online for free. Full-resolution RAW decoding in your browser, batch conversion, no upload and no sign-up.',
+    keywords: [
+      'arw converter',
+      'sony raw converter',
+      'convert arw',
+      'arw file converter',
+      'sony arw to jpg',
+    ],
+    relatedTools: [
+      'heic-to-jpg',
+      'image-converter',
+      'image-compressor',
+      'image-resizer',
+      'image-exif-viewer',
+    ],
+    component: 'raw-converter',
+    config: { format: 'jpg' },
+    handlesFiles: true,
+    noAds: true,
+    limitation:
+      'The decoder (about 1.5 MB) loads the first time you convert. Decoding needs several hundred MB of memory for a 24 MP photo and over 1 GB for 61 MP, so on phones use “Half size”. Colours follow LibRaw’s neutral defaults and can differ slightly from the JPG your camera makes.',
+    howTo: [
+      'Drop your .ARW files (or .SR2 / .SRF from older Sony cameras) into the box.',
+      'Choose JPG or PNG, and optionally white balance, brightness or half size.',
+      'Click Convert, then download each photo or all of them as a ZIP.',
+    ],
+    about: [
+      'ARW (Sony Alpha Raw) is the RAW format of Sony Alpha, RX and ZV cameras. Instead of a finished picture it stores what the sensor recorded: one brightness value per pixel behind a red, green or blue filter, usually with 12 or 14 bits of detail. Turning that into a photo — demosaicing, white balance, colour conversion and gamma — is what a RAW converter does.',
+      'This tool runs LibRaw compiled to WebAssembly on your device. It uses the white balance recorded by the camera, interpolates colours with the AHD algorithm and outputs sRGB, which is what screens, browsers and print services expect. If a file can’t be decoded (for example a format newer than the decoder), the tool falls back to the JPEG preview the camera stores inside the ARW and labels the result.',
+      'Choose JPG to share, upload or email the photos — at 92% quality a 24 MP picture is typically 6–10 MB. Choose PNG when you want a lossless copy to edit further; expect 50–60 MB per 24 MP photo.',
+    ],
+    faqs: [
+      {
+        q: 'Are my RAW files uploaded?',
+        a: 'No. The files are read and decoded in your browser tab; nothing is sent to a server. You can even disconnect from the internet after the page and decoder have loaded.',
+      },
+      {
+        q: 'Which Sony cameras are supported?',
+        a: 'ARW files from Sony Alpha (A7, A9, A1, A6000-series and older DSLR-style Alphas), RX and ZV cameras, plus SR2 and SRF from early models. Support comes from LibRaw 0.22; very new bodies may fall back to the embedded preview until the decoder catches up.',
+      },
+      {
+        q: 'Why does the converted photo look different from the camera’s JPG?',
+        a: 'Your camera applies Sony’s own picture profile (contrast, saturation, sharpening, lens corrections). This converter uses neutral LibRaw settings, so results are usually a little flatter. Adjust brightness here, or edit the PNG in a photo editor.',
+      },
+      {
+        q: 'Does the JPG keep the EXIF data?',
+        a: 'No. Camera, ISO, shutter speed and aperture are shown next to each result, but the new file contains only the pixels, which also removes location data before sharing.',
+      },
+      {
+        q: 'Why is there no ad on this page?',
+        a: 'The RAW decoder uses several CPU threads, which browsers only allow on pages that are isolated from other websites. That isolation blocks third-party content such as ads, so this tool runs without them.',
+      },
+    ],
+    variants: [
+      {
+        slug: 'arw-to-jpg',
+        name: 'ARW to JPG Converter',
+        title: 'ARW to JPG Converter – Sony RAW to JPEG Online, Free',
+        metaDescription:
+          'Convert Sony ARW to JPG online. Full RAW decoding at camera resolution, adjustable quality and batch conversion — in your browser, never uploaded.',
+        description:
+          'Convert Sony ARW RAW photos to JPG in your browser. Each file is fully decoded at the camera’s resolution and saved as a JPEG you can share, upload or print — batch convert a whole shoot, and nothing is uploaded.',
+        config: { format: 'jpg' },
+        keywords: ['arw to jpg', 'arw to jpeg', 'sony raw to jpg'],
+      },
+      {
+        slug: 'arw-to-png',
+        name: 'ARW to PNG Converter',
+        title: 'ARW to PNG Converter – Sony RAW to Lossless PNG Online',
+        metaDescription:
+          'Convert Sony ARW RAW files to lossless PNG online. Full-resolution decoding in your browser, batch conversion, no upload and no sign-up.',
+        description:
+          'Convert Sony ARW RAW photos to lossless PNG in your browser. Each file is decoded at full resolution and saved without compression artefacts, ready for further editing — and your photos never leave your device.',
+        config: { format: 'png' },
+        keywords: ['arw to png', 'sony raw to png', 'convert arw to png'],
       },
     ],
   },

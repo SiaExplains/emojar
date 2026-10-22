@@ -39,6 +39,28 @@ const nextConfig = {
     }
     return config;
   },
+  // The ARW Converter's RAW decoder (public/vendor/libraw) runs WebAssembly
+  // threads, which need a cross-origin-isolated page. Only these routes get
+  // COOP/COEP: under `require-corp` every cross-origin resource without a
+  // CORP/CORS header is blocked, so don't add third-party embeds, images or
+  // ads to these pages (AdSense is switched off there in AdSenseScript).
+  async headers() {
+    const isolation = [
+      { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+      { key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
+    ];
+    return [
+      {
+        source: '/online-tool/image-tools/arw-converter',
+        headers: isolation,
+      },
+      {
+        source: '/online-tool/image-tools/arw-converter/:path*',
+        headers: isolation,
+      },
+      { source: '/vendor/libraw/:path*', headers: isolation },
+    ];
+  },
   async redirects() {
     return [
       // NOTE: www → non-www redirect must be configured in the Vercel dashboard

@@ -142,7 +142,7 @@
 
 ### [ ] G — Content and AdSense resubmission
 
-**Description:** Visible guide bylines and Person author on the older posts, an RSS feed; improve the highest-traffic pages using Search Console data; then resubmit (see `docs/adsense-tasks.md`). Done in v0.25.0: every guide is published, the sitemap lists all 331 blog posts and `llms.txt` covers the emoji pages and older posts. Watch Search Console coverage for the ~200 guides published at once on 2026-10-17.
+**Description:** Visible guide bylines and Person author on the older posts, an RSS feed; improve the highest-traffic pages using Search Console data; then resubmit (see `docs/adsense-tasks.md`). Done in v0.25.0–v0.26.0: every guide is published, eight more workflow posts went live on 2026-10-22, the sitemap lists all 339 blog posts and `llms.txt` covers the emoji pages and older posts. Watch Search Console coverage for the ~200 guides published at once on 2026-10-17.
 
 ---
 
@@ -252,5 +252,9 @@
 ### [ ] Resume PDF: fonts for non-Latin scripts
 
 **Description:** `resumePdf()` uses pdf-lib's standard Helvetica (WinAnsi), so Cyrillic, Greek, Arabic, Persian and CJK resumes get an error that points to Print → Save as PDF. Option: lazy-load a subset font (e.g. Noto Sans, OFL) with `@pdf-lib/fontkit` only when the text needs it, so Latin users don't pay the ~200 KB+ download.
+
+### [ ] JSON to YAML: quote YAML 1.1 booleans
+
+**Description:** Found while writing the v0.26.0 data-formats post: the JSON to YAML converter writes strings such as `NO`, `yes`, `on` and `off` unquoted. YAML 1.2 parsers read them as strings, but YAML 1.1 parsers (older PyYAML, some CI tools) read them as booleans — the "Norway problem". Quote these values in the output and add a test.
 
 ---

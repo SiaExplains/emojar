@@ -5,7 +5,7 @@
 **Earlier rejection:** Needs attention — Low value content (reviewed 2026-06-24) · **Status re-checked against the code and live site:** 2026-10-09 (v0.15.2)  
 **Also done (2026-10-20):** `www.emojar.com` redirects permanently (308) to `emojar.com` (Vercel domain setting), and the contact address `hi@emojar.com` (Contact, Privacy, Terms, Impressum) receives mail.
 
-> **Since the review:** Emojar became a tools site (288 browser tools as of v0.24.0), and every tool has its own in-depth guide (600+ words, Person author, visible date, FAQ, related guides), published from 2026-10-07, with every remaining guide made live on 2026-10-17 (v0.25.0); nine topic posts cover multi-tool workflows and the emoji features. All 331 blog posts are in the sitemap and in `llms.txt` since v0.25.0. The privacy policy, About and Terms were corrected in v0.15.2. The site-wide audit with the next steps is `emojar-docs/audit-2026-10/stage-a-audit.md`.
+> **Since the review:** Emojar became a tools site (288 browser tools as of v0.24.0), and every tool has its own in-depth guide (600+ words, Person author, visible date, FAQ, related guides), published from 2026-10-07, with every remaining guide made live on 2026-10-17 (v0.25.0); 17 topic posts cover multi-tool workflows and the emoji features (eight added on 2026-10-22 in v0.26.0). All 339 blog posts are in the sitemap and in `llms.txt`. The privacy policy, About and Terms were corrected in v0.15.2. The site-wide audit with the next steps is `emojar-docs/audit-2026-10/stage-a-audit.md`.
 
 ---
 
@@ -197,7 +197,7 @@ Before clicking "Request review" in AdSense:
 
 - [x] `ads.txt` accessible at `https://emojar.com/ads.txt` (verify with browser and `curl`) — verified 2026-10-09
 - [x] At least 5 blog posts are 800+ words of actual prose — 15 live guides on 2026-10-09
-- [x] At least 3 new topical/educational posts published — all 288 tool guides plus 9 topic posts live since 2026-10-17
+- [x] At least 3 new topical/educational posts published — all 288 tool guides plus 17 topic posts live (latest eight on 2026-10-22)
 - [x] Author name and bio visible on About page
 - [ ] Author bylines on all blog posts
 - [x] Article JSON-LD on all blog posts

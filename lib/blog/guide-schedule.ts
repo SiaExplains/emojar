@@ -328,4 +328,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-work-across-time-zones': '2026-10-21',
   // v0.27.0 ARW Converter.
   'arw-converter': '2026-10-22',
+  'topic-game-night-tools': '2026-10-29',
 };

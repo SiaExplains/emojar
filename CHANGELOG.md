@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.1] — 2026-10-29
+
+### Added
+
+- Blog post on running a board game and chess club night with the random team
+  generator, dice roller, probability calculator, chess board editor and
+  random number generator.
+
 ## [0.27.0] — 2026-10-22
 
 ### Added

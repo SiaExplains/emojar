@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.2] — 2026-10-29
+
+### Added
+
+- Blog post on buying clothes and shoes from an online shop abroad with the
+  clothing size converter, shoe size converter, length converter, Country
+  Explorer and percentage difference calculator.
+
 ## [0.27.1] — 2026-10-29
 
 ### Added

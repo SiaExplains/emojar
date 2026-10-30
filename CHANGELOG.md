@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.3] — 2026-10-30
+
+### Added
+
+- Blog post on cleaning up a pasted list and joining it into one quoted,
+  comma-separated line with Remove Empty Lines, the Lowercase Converter, Remove
+  Duplicate Lines, String Escape / Unescape, Add Prefix / Suffix to Lines and
+  Remove Line Breaks.
+
 ## [0.27.2] — 2026-10-29
 
 ### Added

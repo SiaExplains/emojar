@@ -330,4 +330,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'arw-converter': '2026-10-22',
   'topic-game-night-tools': '2026-10-29',
   'topic-buy-clothes-from-abroad': '2026-10-29',
+  'topic-clean-up-a-pasted-list': '2026-10-30',
 };

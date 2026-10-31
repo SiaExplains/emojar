@@ -331,4 +331,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-game-night-tools': '2026-10-29',
   'topic-buy-clothes-from-abroad': '2026-10-29',
   'topic-clean-up-a-pasted-list': '2026-10-30',
+  'topic-home-server-setup': '2026-10-31',
 };

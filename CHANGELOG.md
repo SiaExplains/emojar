@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.6] — 2026-11-03
+
+### Added
+
+- Blog post on turning one pixel-art sprite into game, website and README
+  assets with the Pixel Art Editor, the Favicon Generator, Image to Base64 and
+  Image to ASCII Art.
+
 ## [0.27.5] — 2026-11-02
 
 ### Added

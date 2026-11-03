@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.5] — 2026-11-02
+
+### Added
+
+- Blog post on pricing, labelling and photographing handmade goods for a craft
+  fair with the Profit Margin Calculator, the Barcode Generator, Watermark
+  Image, the Photo Collage Maker and the ROI Calculator.
+
 ## [0.27.4] — 2026-10-31
 
 ### Added

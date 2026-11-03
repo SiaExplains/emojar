@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.4] — 2026-10-31
+
+### Added
+
+- Blog post on setting up a Raspberry Pi home server with the Subnet
+  Calculator, the Chmod Calculator, the User Agent Parser and the Base64
+  Encoder and Decoder.
+
 ## [0.27.3] — 2026-10-30
 
 ### Added

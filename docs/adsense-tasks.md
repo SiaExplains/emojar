@@ -1,6 +1,8 @@
 # AdSense Rejection — Root Cause Analysis & Optimization Tasks
 
-**Current status (2026-10-20):** **Getting ready** — review requested on 2026-10-18; Google says this usually takes a few days and sometimes 2–4 weeks.  
+**Current status (2026-11-03):** **Needs attention — Low value content**, the second rejection (review requested on 2026-10-18). The new wording also asks for "a consistent presence on the web" and "user interest", which are age and traffic signals that no code change can supply.  
+**Response (v0.27.6, 2026-11-03):** 3,633 of the 3,789 emoji detail pages are `noindex, follow` and out of the sitemap, which goes from about 4,540 to about 900 URLs. The 156 that stay are listed in `lib/emoji-index.ts`. **Next:** resubmit the sitemap in Search Console, add no more pages in bulk, build traffic to the top tools, and request another review only once coverage shows the excluded pages and clicks are steady (about 8–12 weeks, so not before 2027-01).  
+**Previous status (2026-10-20):** Getting ready — Google says this usually takes a few days and sometimes 2–4 weeks.  
 **Ads.txt status in AdSense dashboard:** **Authorized** (2026-10-20). It showed "Not found" for a few days after the site was re-added, although the live file was correct — the crawler just hadn't re-checked.  
 **Earlier rejection:** Needs attention — Low value content (reviewed 2026-06-24) · **Status re-checked against the code and live site:** 2026-10-09 (v0.15.2)  
 **Also done (2026-10-20):** `www.emojar.com` redirects permanently (308) to `emojar.com` (Vercel domain setting), and the contact address `hi@emojar.com` (Contact, Privacy, Terms, Impressum) receives mail.

@@ -4,6 +4,16 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.6] — 2026-11-03
+
+### Changed
+
+- Only 156 emoji pages, the most used emoji according to Unicode's frequency
+  ranking, are now offered to search engines. The other 3,633 emoji pages
+  work as before for visitors but carry `noindex, follow` and are no longer
+  in the sitemap, which drops from about 4,540 to about 900 URLs. This
+  follows the second AdSense "Low value content" review.
+
 ## [0.27.5] — 2026-11-02
 
 ### Added

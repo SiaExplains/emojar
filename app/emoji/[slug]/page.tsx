@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import CopyButton from '@/components/CopyButton';
 import { brandedTitle } from '@/lib/og';
+import { isEmojiIndexed } from '@/lib/emoji-index';
 
 type EmojiEntry = (typeof data)[number];
 
@@ -66,7 +67,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       images: [ogImageUrl],
     },
-    robots: { index: true, follow: true },
+    robots: { index: isEmojiIndexed(emoji.slug), follow: true },
   };
 }
 

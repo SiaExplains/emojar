@@ -4,13 +4,47 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.27.4] — 2026-11-03
+## [0.27.8] — 2026-11-04
 
 ### Added
 
 - Blog post on finding a fitness starting point: averaging a week of weigh-ins
   with the Average Calculator, then the Body Fat, Ideal Weight, BMR and Calorie
   Calculators.
+
+## [0.27.7] — 2026-11-04
+
+### Added
+
+- New blog post on planning for a baby: fertile window, due date, work notice
+  and leave dates, a monthly savings target and the sibling age gap, using the
+  ovulation, due date, date, day of the week, savings goal and age calculators.
+
+## [0.27.6] — 2026-11-03
+
+### Changed
+
+- Only 156 emoji pages, the most used emoji according to Unicode's frequency
+  ranking, are now offered to search engines. The other 3,633 emoji pages
+  work as before for visitors but carry `noindex, follow` and are no longer
+  in the sitemap, which drops from about 4,540 to about 900 URLs. This
+  follows the second AdSense "Low value content" review.
+
+## [0.27.5] — 2026-11-02
+
+### Added
+
+- Blog post on pricing, labelling and photographing handmade goods for a craft
+  fair with the Profit Margin Calculator, the Barcode Generator, Watermark
+  Image, the Photo Collage Maker and the ROI Calculator.
+
+## [0.27.4] — 2026-10-31
+
+### Added
+
+- Blog post on setting up a Raspberry Pi home server with the Subnet
+  Calculator, the Chmod Calculator, the User Agent Parser and the Base64
+  Encoder and Decoder.
 
 ## [0.27.3] — 2026-10-30
 

@@ -4,13 +4,31 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.27.6] — 2026-11-03
+## [0.27.9] — 2026-11-04
 
 ### Added
 
 - Blog post on turning one pixel-art sprite into game, website and README
   assets with the Pixel Art Editor, the Favicon Generator, Image to Base64 and
   Image to ASCII Art.
+
+## [0.27.7] — 2026-11-04
+
+### Added
+
+- New blog post on planning for a baby: fertile window, due date, work notice
+  and leave dates, a monthly savings target and the sibling age gap, using the
+  ovulation, due date, date, day of the week, savings goal and age calculators.
+
+## [0.27.6] — 2026-11-03
+
+### Changed
+
+- Only 156 emoji pages, the most used emoji according to Unicode's frequency
+  ranking, are now offered to search engines. The other 3,633 emoji pages
+  work as before for visitors but carry `noindex, follow` and are no longer
+  in the sitemap, which drops from about 4,540 to about 900 URLs. This
+  follows the second AdSense "Low value content" review.
 
 ## [0.27.5] — 2026-11-02
 

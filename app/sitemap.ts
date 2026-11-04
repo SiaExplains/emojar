@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import data from '@/data/emojis.json';
 import BLOG_POSTS_DATA from '@/data/blog-posts-data';
 import { publishedGuides } from '@/lib/blog/guides';
+import { isEmojiIndexed } from '@/lib/emoji-index';
 import {
   CATEGORIES,
   TOOLS,
@@ -285,12 +286,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const emojiRoutes: MetadataRoute.Sitemap = data.map((e) => ({
-    url: `${base}/emoji/${e.slug}`,
-    lastModified: SITE_LAUNCH,
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
+  // Only the allowlisted emoji pages; the rest are noindex (lib/emoji-index.ts).
+  const emojiRoutes: MetadataRoute.Sitemap = data
+    .filter((e) => isEmojiIndexed(e.slug))
+    .map((e) => ({
+      url: `${base}/emoji/${e.slug}`,
+      lastModified: SITE_LAUNCH,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    }));
 
   const toolsUpdated = new Date(TOOLS_UPDATED);
   const onlineToolRoutes: MetadataRoute.Sitemap = [

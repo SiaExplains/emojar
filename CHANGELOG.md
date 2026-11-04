@@ -12,6 +12,14 @@ All notable changes to Emojar are documented here. The format follows
   assets with the Pixel Art Editor, the Favicon Generator, Image to Base64 and
   Image to ASCII Art.
 
+## [0.27.8] — 2026-11-04
+
+### Added
+
+- Blog post on finding a fitness starting point: averaging a week of weigh-ins
+  with the Average Calculator, then the Body Fat, Ideal Weight, BMR and Calorie
+  Calculators.
+
 ## [0.27.7] — 2026-11-04
 
 ### Added

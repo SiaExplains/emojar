@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.7] — 2026-11-04
+
+### Added
+
+- New blog post on planning for a baby: fertile window, due date, work notice
+  and leave dates, a monthly savings target and the sibling age gap, using the
+  ovulation, due date, date, day of the week, savings goal and age calculators.
+
 ## [0.27.6] — 2026-11-03
 
 ### Changed

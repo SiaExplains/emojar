@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.8] — 2026-11-04
+
+### Added
+
+- Blog post on finding a fitness starting point: averaging a week of weigh-ins
+  with the Average Calculator, then the Body Fat, Ideal Weight, BMR and Calorie
+  Calculators.
+
 ## [0.27.7] — 2026-11-04
 
 ### Added

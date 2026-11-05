@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.10] — 2026-11-05
+
+### Added
+
+- Blog post on making a secret-code treasure hunt for kids with the Morse Code
+  Converter, Reverse Text, the Upside Down Text Generator, the Strikethrough
+  Text Generator, Flag Explorer and the Wheel Spinner.
+
 ## [0.27.9] — 2026-11-04
 
 ### Added

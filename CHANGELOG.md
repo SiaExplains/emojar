@@ -4,6 +4,14 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.11] — 2026-11-06
+
+### Added
+
+- Blog post on turning an HTML template into a React component with the HTML
+  Formatter, the HTML to JSX Converter, the JavaScript Formatter, the CSS
+  Formatter, the CSS Grid Playground and Code to Image.
+
 ## [0.27.10] — 2026-11-05
 
 ### Added

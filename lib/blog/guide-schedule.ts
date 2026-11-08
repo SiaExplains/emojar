@@ -338,4 +338,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-plan-for-a-baby': '2026-11-04',
   'topic-secret-code-treasure-hunt': '2026-11-05',
   'topic-html-template-to-react': '2026-11-06',
+  'topic-print-a-long-pdf': '2026-11-08',
 };

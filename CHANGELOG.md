@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.12] — 2026-11-08
+
+### Added
+
+- Blog post on printing a long PDF at home: checking its paper size with the
+  PDF Metadata Viewer and Measurement Reference, converting it with Grayscale
+  PDF, and using Extract PDF Pages and Split PDF to print odd and even pages
+  and stapled sections.
+
 ## [0.27.11] — 2026-11-06
 
 ### Added

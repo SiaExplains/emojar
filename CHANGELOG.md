@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.13] — 2026-11-09
+
+### Added
+
+- Blog post on styling a discount coupon card in CSS: a brand colour from the
+  Color Converter, a background from the CSS Gradient Generator, a layout from
+  the CSS Flexbox Playground, a shape from the Border Radius and Clip-Path
+  Generators, and a hover tilt from the CSS Transform Playground.
+
 ## [0.27.12] — 2026-11-08
 
 ### Added

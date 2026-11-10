@@ -340,4 +340,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-html-template-to-react': '2026-11-06',
   'topic-print-a-long-pdf': '2026-11-08',
   'topic-css-coupon-card': '2026-11-09',
+  'topic-essay-character-limit': '2026-11-10',
 };

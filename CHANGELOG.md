@@ -4,6 +4,16 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.14] — 2026-11-10
+
+### Added
+
+- Blog post on getting an application essay into a character-limited form:
+  removing hidden characters with Invisible Character, fixing doubled words
+  with the Duplicate Word Finder, correcting a caps-lock title with the Text
+  Case Converter, and checking length with the Sentence Counter and Character
+  Counter.
+
 ## [0.27.13] — 2026-11-09
 
 ### Added

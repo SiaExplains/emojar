@@ -4,6 +4,16 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.15] — 2026-11-11
+
+### Added
+
+- Blog post on turning PDF slides into images for a blog or newsletter:
+  exporting chosen slides with PDF to PNG and PDF to JPG, checking the 16:9
+  ratio with the Aspect Ratio Calculator, resizing to 1200 px with the Image
+  Resizer, re-exporting a chart with SVG to PNG and copying slide text with
+  PDF to Text.
+
 ## [0.27.14] — 2026-11-10
 
 ### Added

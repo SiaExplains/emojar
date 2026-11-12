@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.16] — 2026-11-12
+
+### Added
+
+- Blog post on building an HTML email newsletter by hand: placeholder copy
+  from the Lorem Ipsum Generator, campaign links built with the URL Encoder,
+  escaped for href attributes with the HTML Entity Encoder, checked with the
+  URL Decoder, and embedded images pulled out with Base64 to Image.
+
 ## [0.27.15] — 2026-11-11
 
 ### Added

@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.17] — 2026-11-13
+
+### Added
+
+- Blog post on minifying a hand-written static site without a build step:
+  the script through the JavaScript Minifier, the data file through the JSON
+  Minifier, the logo through the SVG Optimizer and the sitemap checked and
+  minified with the XML Formatter, with before and after sizes.
+
 ## [0.27.16] — 2026-11-12
 
 ### Added

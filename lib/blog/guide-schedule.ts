@@ -344,4 +344,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-pdf-slides-to-images': '2026-11-11',
   'topic-html-email-newsletter': '2026-11-12',
   'topic-minify-static-site-files': '2026-11-13',
+  'topic-scale-a-bread-recipe': '2026-11-14',
 };

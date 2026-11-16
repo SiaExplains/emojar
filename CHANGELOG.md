@@ -4,7 +4,7 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [0.27.18] — 2026-11-16
+## [0.27.19] — 2026-11-16
 
 ### Added
 
@@ -12,6 +12,16 @@ All notable changes to Emojar are documented here. The format follows
   schedule from the EMI Calculator, the last due date from the date
   calculator, the amounts in words from Number to Words, and a one-page draft
   in the Markdown Previewer with headings from the Uppercase Converter.
+
+## [0.27.18] — 2026-11-14
+
+### Added
+
+- Blog post on scaling a bread recipe with baker's percentages: cups to grams
+  in the Cooking Measurement Converter, percentages and scaling in the
+  Percentage and Ratio calculators, extra water for whole wheat flour in the
+  Percentage Increase Calculator and an overnight proof in the Time Duration
+  Calculator.
 
 ## [0.27.17] — 2026-11-13
 

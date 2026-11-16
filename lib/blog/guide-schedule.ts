@@ -346,4 +346,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-minify-static-site-files': '2026-11-13',
   'topic-scale-a-bread-recipe': '2026-11-14',
   'topic-family-loan-agreement': '2026-11-16',
+  'topic-five-a-side-game-night': '2026-11-16',
 };

@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.20] — 2026-11-16
+
+### Added
+
+- Blog post on organising a weekly five-a-side game: cleaning group-chat
+  sign-ups with Remove Duplicate Lines and Sort Lines, splitting two teams
+  with captains in the Random Team Generator, a Coin Flip for kick-off and
+  the Online Timer for both halves.
+
 ## [0.27.19] — 2026-11-16
 
 ### Added

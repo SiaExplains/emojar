@@ -4,6 +4,16 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.21] — 2026-11-17
+
+### Added
+
+- Blog post on checking whether retirement savings are on track: finding the
+  years left with the Age Calculator, testing the return assumption with the
+  ROI Calculator, projecting the pot and drawdown with the Retirement
+  Calculator, and comparing scenarios with the Percentage Difference
+  Calculator.
+
 ## [0.27.20] — 2026-11-16
 
 ### Added

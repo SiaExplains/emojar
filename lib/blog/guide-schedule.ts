@@ -347,4 +347,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-scale-a-bread-recipe': '2026-11-14',
   'topic-family-loan-agreement': '2026-11-16',
   'topic-five-a-side-game-night': '2026-11-16',
+  'topic-retirement-savings-check': '2026-11-17',
 };

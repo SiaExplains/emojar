@@ -4,6 +4,16 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.22] — 2026-11-18
+
+### Added
+
+- Blog post on fixing a card layout that breaks on long names on phones:
+  reading the reporter's browser with the User Agent Parser, building a test
+  string with the Text Repeater, finding the device-toolbar shortcut in the
+  Keyboard Shortcut Reference, sizing the card with the CSS Unit Visualizer,
+  and finding the winning rule with the CSS Specificity Calculator.
+
 ## [0.27.21] — 2026-11-17
 
 ### Added

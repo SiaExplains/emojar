@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.23] — 2026-11-19
+
+### Added
+
+- Blog post on sharing Sony RAW photos online: converting ARW files to JPG
+  with the ARW Converter, hiding faces and number plates with Blur & Pixelate
+  Image, building a 4:5 Instagram collage with the Photo Collage Maker, and
+  splitting a wide shot into profile tiles with the Image Grid Splitter.
+
 ## [0.27.22] — 2026-11-18
 
 ### Added

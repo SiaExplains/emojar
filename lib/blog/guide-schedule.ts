@@ -350,4 +350,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-retirement-savings-check': '2026-11-17',
   'topic-long-name-overflow-on-mobile': '2026-11-18',
   'topic-share-sony-raw-photos': '2026-11-19',
+  'topic-write-a-reproducible-bug-report': '2026-11-21',
 };

@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.24] — 2026-11-20
+
+### Added
+
+- Blog post on scheduling a nightly database backup and checking it restores:
+  writing the cron lines with the Cron Expression Generator, verifying the dump
+  with the SHA-256 Generator, tidying the restore-test queries with the SQL
+  Formatter and normalising backup dates with the Date Format Converter.
+
 ## [0.27.23] — 2026-11-19
 
 ### Added

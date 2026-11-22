@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.26] — 2026-11-22
+
+### Added
+
+- Blog post on setting up a new gaming profile: picking a gamer tag with the
+  Username Generator, testing the password with the Password Strength Checker,
+  drawing a 32×32 avatar in the Pixel Art Editor, and dressing up the bio with
+  Image to ASCII Art, the Strikethrough Text Generator and the Text Repeater.
+
 ## [0.27.25] — 2026-11-21
 
 ### Added

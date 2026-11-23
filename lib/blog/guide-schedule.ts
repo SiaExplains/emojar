@@ -353,4 +353,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-nightly-database-backup': '2026-11-20',
   'topic-write-a-reproducible-bug-report': '2026-11-21',
   'topic-set-up-a-gaming-profile': '2026-11-22',
+  'topic-plan-a-group-trip-abroad': '2026-11-23',
 };

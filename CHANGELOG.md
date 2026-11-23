@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.27] — 2026-11-23
+
+### Added
+
+- Blog post on planning a group trip abroad: choosing the city with the
+  Decision Matrix, reading the forecast and distances with the Celsius to
+  Fahrenheit and Kilometers to Miles converters, splitting a dinner bill with
+  the Tip Calculator, and setting the Online Alarm Clock for an early flight.
+
 ## [0.27.26] — 2026-11-22
 
 ### Added

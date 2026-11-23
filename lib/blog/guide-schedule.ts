@@ -352,4 +352,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-share-sony-raw-photos': '2026-11-19',
   'topic-nightly-database-backup': '2026-11-20',
   'topic-write-a-reproducible-bug-report': '2026-11-21',
+  'topic-set-up-a-gaming-profile': '2026-11-22',
 };

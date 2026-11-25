@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.29] — 2026-11-25
+
+### Added
+
+- Blog post on writing a pub quiz: a flag round with Flag Explorer, menu words
+  in element numbers with the Interactive Periodic Table, backwards capitals
+  with Reverse Text, sound clips with the Audio Converter and the odds of
+  guessing with the Probability Calculator.
+
 ## [0.27.28] — 2026-11-24
 
 ### Added

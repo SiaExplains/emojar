@@ -4,6 +4,16 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.28] — 2026-11-24
+
+### Added
+
+- Blog post on setting and marking a class test: turning the Word paper into a
+  PDF with Word to PDF, numbering it with Add Page Numbers to PDF, drawing a
+  random seating order with the Random Number Generator, summarising marks with
+  the Average Calculator and answering "what do I need on the final" with the
+  Grade Calculator.
+
 ## [0.27.27] — 2026-11-23
 
 ### Added

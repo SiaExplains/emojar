@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.30] — 2026-11-26
+
+### Added
+
+- Blog post on preparing visa application documents for upload: a 35 × 45 mm
+  photo with the Passport Photo Maker, a cropped passport scan with Crop PDF,
+  a bank statement without blank and terms pages using Delete PDF Pages, one
+  file per document with Split PDF, and Compress PDF for files that are too big.
+
 ## [0.27.29] — 2026-11-25
 
 ### Added

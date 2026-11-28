@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.32] — 2026-11-28
+
+### Added
+
+- Blog post on setting up a small office: splitting the network with the
+  Subnet Calculator, staff and guest Wi-Fi passwords from the Password
+  Generator, a guest Wi-Fi QR code, checking new monitors with the Dead Pixel
+  Test and Screen Resolution Checker, and asset tags from the Barcode Generator.
+
 ## [0.27.31] — 2026-11-28
 
 ### Added

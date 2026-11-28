@@ -357,4 +357,5 @@ export const GUIDE_SCHEDULE: Record<string, string> = {
   'topic-set-and-mark-a-class-test': '2026-11-24',
   'topic-write-a-pub-quiz': '2026-11-25',
   'topic-visa-application-documents': '2026-11-26',
+  'topic-online-shop-product-listing': '2026-11-28',
 };

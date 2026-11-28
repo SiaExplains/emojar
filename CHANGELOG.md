@@ -4,6 +4,15 @@ All notable changes to Emojar are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.27.31] — 2026-11-28
+
+### Added
+
+- Blog post on writing an online shop product listing: a title with the Title
+  Case Converter, a description checked with the Keyword Density Checker, a
+  product photo cut out with the Background Remover, a short clip from the
+  Video Trimmer and a share card from the Social Share Card Preview.
+
 ## [0.27.30] — 2026-11-26
 
 ### Added
